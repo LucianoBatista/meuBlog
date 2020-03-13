@@ -1,4 +1,4 @@
-baseurl = "https://lobdata.com.br"
+baseurl = ""
 title = "LOB.DATA"
 theme = "hugo-theme-cleanwhite"
 languageCode = "pt-br"
