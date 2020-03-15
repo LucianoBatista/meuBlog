@@ -14,9 +14,9 @@ home = ["HTML", "RSS", "Algolia"]
 
 [params]
   header_image = "img/header_profile.jpg"
-  SEOTitle = "Meu blog de data science"
-  description = "Meu blog de data science"
-  keyword = "machine learning, artificial inteligence, data science"
+  SEOTitle = "Blog de Data Science"
+  description = "Meu blog de data science, onde serão abordados tutoriais, projetos e experiências"
+  keyword = "machine learning, artificial intelligence, data science, big data, automl"
   slogan = ""
 
   image_404 = "img/404-bg.jpg"
@@ -35,7 +35,7 @@ home = ["HTML", "RSS", "Algolia"]
   algolia_apiKey = ""
 
   # Sidebar settings
-  sidebar_about_description = "Engenheiro Químico, entusiasta em ciência de dados"
+  sidebar_about_description = "Engenheiro Químico formado pela UESC e Cientista de Dados em formação."
   #sidebar_avatar = "img/avatar-zhaohuabing.jpg"      # use absolute URL, seeing it's used in both `/` and `/about/`
   sidebar_avatar = "img/lucianobatista.jpg"      # use absolute URL, seeing it's used in both `/` and `/about/`
 

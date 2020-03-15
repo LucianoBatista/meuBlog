@@ -11,6 +11,7 @@ tags:
     - learning
     - jazz
 categories: [ Tech ]
+draft: true
 ---
 
 # Clean White Theme for Hugo
