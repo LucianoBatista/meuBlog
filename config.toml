@@ -30,9 +30,9 @@ home = ["HTML", "RSS", "Algolia"]
 
   # algolia site search
   algolia_search = true
-  algolia_appId = ""
-  algolia_indexName = ""
-  algolia_apiKey = ""
+  algolia_appId = "56XLI6KGAP"
+  algolia_indexName = "lobdata"
+  algolia_apiKey = "a16633b8987200fe609a19b91969fc7c"
 
   # Sidebar settings
   sidebar_about_description = "Engenheiro Químico formado pela UESC e Cientista de Dados em formação."

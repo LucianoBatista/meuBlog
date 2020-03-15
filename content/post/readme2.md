@@ -10,8 +10,7 @@ tags:
     - machine
     - learning
     - jazz
-categories: [ Tech2 ]
-draft: true
+categories: [ Tech2, Tech3, tech4 ]
 ---
 
 # Clean White Theme for Hugo
