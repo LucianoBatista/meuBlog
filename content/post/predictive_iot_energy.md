@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Modelagem Preditiva em IoT"
-date:       2019-03-16
+date:       2019-04-04
 author:     "Luciano"
 image:      "img/post_0_3.jpg"
 tags:
