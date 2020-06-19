@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Segmentação de clientes de Food Delivery"
-date:       2019-06-19
+date:       2020-06-19
 author:     "Luciano"
 image:      "img/post_0_4.png"
 tags:
