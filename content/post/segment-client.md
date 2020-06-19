@@ -16,7 +16,7 @@ categories: [ Projetos ]
 
 Neste projeto o objetivo é segmentar clientes de um food delivery. A segmentação permite que profissionais de marketing e product managers possam identificar subconjuntos de público-alvo para melhor adaptar suas estratégias.
 
-O dataset utilizado foi cedido pela Data Science Academy, e pode ser encontrado no meu [github](meu.github.com) juntamente com todo o código apresentado aqui.
+O dataset utilizado foi cedido pela Data Science Academy, e pode ser encontrado no meu [github](https://github.com/LucianoBatista/food-deliver) juntamente com todo o código apresentado aqui.
 
 Um breve overview do que será abordado no projeto:
 - Preparação de dados
