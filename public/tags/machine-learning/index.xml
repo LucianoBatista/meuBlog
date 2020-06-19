@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Machine Learning on LOB.DATA</title>
+    <link>/tags/machine-learning/</link>
+    <description>Recent content in Machine Learning on LOB.DATA</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <lastBuildDate>Mon, 04 Nov 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Categorical Feature Encoding Challenge</title>
+      <link>/post/cat_in_the_dat/</link>
+      <pubDate>Mon, 04 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/cat_in_the_dat/</guid>
+      <description>Is there a cat in your dat? Esse é um playground do Kaggle, onde diferentes pessoas competem dentro de um determinado problema &amp;lsquo;incomum&amp;rsquo; porém bastante relevante. Nesta competição foi disponibilizado um dataset repleto de variáveis categóricas.
+Sabemos que uma das tarefas do processo de machine learning é realizar o encoding de variáveis categóricas de forma que os algoritmos possam executar seus cálculos e retornar um resultado. Dominar tal skill é de grande importância para o Cientista de Dados.</description>
+    </item>
+    
+    <item>
+      <title>Modelagem Preditiva em IoT</title>
+      <link>/post/predictive_iot_energy/</link>
+      <pubDate>Thu, 04 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/predictive_iot_energy/</guid>
+      <description>Previsão de Uso de Energia Quando falamos de revolução tecnológica, a noção de Internet das Coisas, ou Internet of Things (IoT), é um dos assuntos principais. O seu desenvolvimento está mudando a forma como o ser humando tem se conectado com diversos dispositivos tecnlógicos.
+IoT vem gerando uma quantidade imensa de dados, um dos maiores responsáveis pelo Big Data. Diante da geração de tanta informação, o papel do Cientista de Dados se faz cada vez mais presente, pois torna-se possível a obteção de grandes insights sobre diferentes área até então não analisadas.</description>
+    </item>
+    
+    <item>
+      <title>5 Diferentes Aplicações de Ciência de Dados</title>
+      <link>/post/5_topics_data_science_application/</link>
+      <pubDate>Sat, 16 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/5_topics_data_science_application/</guid>
+      <description>Olá, como sabemos a ciência de dados é uma tecnologia de grande potencial e vem sendo aplicada em diferentes áreas de negócio. Estou iniciando uma série de artigos que visam aprensentar sua aplicação em 5 áreas distintas: Logística, Saúde, Turismo, Esporte e E-Sports e Engenharia.
+Antes de iniciar propriamente os tópicos, é interessante que estejamos na mesma página quando falamos de Data Science. Devido ao grande hype dessa tecnologia, ela pode acabar sendo mal interpretada, por isso eu gosto de utilizar uma definição dada pela DataRobot uma empresa pioneira em Machine Learning, localizada no Quadrante mágico do Gartner.</description>
+    </item>
+    
+  </channel>
+</rss>

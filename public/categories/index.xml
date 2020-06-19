@@ -6,44 +6,26 @@
     <description>Recent content in Categories on LOB.DATA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
-    <lastBuildDate>Sat, 09 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 04 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Tech</title>
-      <link>/categories/tech/</link>
-      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+      <title>Projetos</title>
+      <link>/categories/projetos/</link>
+      <pubDate>Mon, 04 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/categories/tech/</guid>
+      <guid>/categories/projetos/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Tech2</title>
-      <link>/categories/tech2/</link>
-      <pubDate>Wed, 09 Jan 2019 00:00:00 +0000</pubDate>
+      <title>Aplicações</title>
+      <link>/categories/aplica%C3%A7%C3%B5es/</link>
+      <pubDate>Sat, 16 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>/categories/tech2/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tech3</title>
-      <link>/categories/tech3/</link>
-      <pubDate>Wed, 09 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/tech3/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>tech4</title>
-      <link>/categories/tech4/</link>
-      <pubDate>Wed, 09 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/tech4/</guid>
+      <guid>/categories/aplica%C3%A7%C3%B5es/</guid>
       <description></description>
     </item>
     

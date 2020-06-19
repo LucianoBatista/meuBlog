@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Challenge on LOB.DATA</title>
+    <link>/tags/challenge/</link>
+    <description>Recent content in Challenge on LOB.DATA</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <lastBuildDate>Mon, 04 Nov 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/challenge/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Categorical Feature Encoding Challenge</title>
+      <link>/post/cat_in_the_dat/</link>
+      <pubDate>Mon, 04 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/cat_in_the_dat/</guid>
+      <description>Is there a cat in your dat? Esse é um playground do Kaggle, onde diferentes pessoas competem dentro de um determinado problema &amp;lsquo;incomum&amp;rsquo; porém bastante relevante. Nesta competição foi disponibilizado um dataset repleto de variáveis categóricas.
+Sabemos que uma das tarefas do processo de machine learning é realizar o encoding de variáveis categóricas de forma que os algoritmos possam executar seus cálculos e retornar um resultado. Dominar tal skill é de grande importância para o Cientista de Dados.</description>
+    </item>
+    
+  </channel>
+</rss>

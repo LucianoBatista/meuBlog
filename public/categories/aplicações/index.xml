@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Aplicações on LOB.DATA</title>
+    <link>/categories/aplica%C3%A7%C3%B5es/</link>
+    <description>Recent content in Aplicações on LOB.DATA</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <lastBuildDate>Sat, 16 Mar 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/aplica%C3%A7%C3%B5es/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>5 Diferentes Aplicações de Ciência de Dados</title>
+      <link>/post/5_topics_data_science_application/</link>
+      <pubDate>Sat, 16 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/5_topics_data_science_application/</guid>
+      <description>Olá, como sabemos a ciência de dados é uma tecnologia de grande potencial e vem sendo aplicada em diferentes áreas de negócio. Estou iniciando uma série de artigos que visam aprensentar sua aplicação em 5 áreas distintas: Logística, Saúde, Turismo, Esporte e E-Sports e Engenharia.
+Antes de iniciar propriamente os tópicos, é interessante que estejamos na mesma página quando falamos de Data Science. Devido ao grande hype dessa tecnologia, ela pode acabar sendo mal interpretada, por isso eu gosto de utilizar uma definição dada pela DataRobot uma empresa pioneira em Machine Learning, localizada no Quadrante mágico do Gartner.</description>
+    </item>
+    
+  </channel>
+</rss>

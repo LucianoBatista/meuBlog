@@ -6,44 +6,62 @@
     <description>Recent content in Tags on LOB.DATA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
-    <lastBuildDate>Sat, 09 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 04 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>cabelo</title>
-      <link>/tags/cabelo/</link>
-      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+      <title>Challenge</title>
+      <link>/tags/challenge/</link>
+      <pubDate>Mon, 04 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/cabelo/</guid>
+      <guid>/tags/challenge/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>jazz</title>
-      <link>/tags/jazz/</link>
-      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+      <title>Data Science</title>
+      <link>/tags/data-science/</link>
+      <pubDate>Mon, 04 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/jazz/</guid>
+      <guid>/tags/data-science/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>learning</title>
-      <link>/tags/learning/</link>
-      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+      <title>Machine Learning</title>
+      <link>/tags/machine-learning/</link>
+      <pubDate>Mon, 04 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/learning/</guid>
+      <guid>/tags/machine-learning/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>machine</title>
-      <link>/tags/machine/</link>
-      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+      <title>Project</title>
+      <link>/tags/project/</link>
+      <pubDate>Mon, 04 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/machine/</guid>
+      <guid>/tags/project/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Logistic</title>
+      <link>/tags/logistic/</link>
+      <pubDate>Sat, 16 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/logistic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Logística</title>
+      <link>/tags/log%C3%ADstica/</link>
+      <pubDate>Sat, 16 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/log%C3%ADstica/</guid>
       <description></description>
     </item>
     
