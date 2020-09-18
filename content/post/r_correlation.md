@@ -16,23 +16,21 @@ categories: [ Tutorials ]
 
 The concept of correlation is the same used in non-time series data: *identify and quantify the relationship between two variables.* Due to the continuous and chronologically ordered nature of time series data, there is a likelihood that there will be some degree of correlation between the series observations. 
 
-Measuring and analyzing the correlation between two variables, in the context of time series analysis, can be categorized in the following two categories:
+Measuring and analyzing the correlation between two variables, in the context of time series analysis, can be understood by two different aspects:
 
-- Analyzing the correlation between a series and its lags, as some of the past lags may contain predictive information, which can be utilized to forecast future events of the series. One of the most popular methods for measuring the level of correlation between a series and its lags is the **autocorrelation function and partial autocorrelation function.**
+- Analyzing the correlation between a series and its lags, as some of the past lags may contain predictive information, which can be utilized to forecast events of the series. One of the most popular methods for measuring the level of correlation between a series and its lags is the **autocorrelation function and partial autocorrelation function.**
 
 - Analyzing the correlation between two series in order to identify exogenous factors or predictors, which can explain the variation of the series over time. In this case, the measurement of correlation is typically done with the **cross-correlation function**.
 
 Looking at these characteristics can be very useful to find new features to use in the modeling step, also to understand patterns of behavior throughout the time.
 
-# How to Perform Correlation Analysis in Time Series data on R?
+# How to Perform Correlation Analysis in Time Series Data Using R?
 
-Find a way to do this in R can be overwhelming, because of the vast quantity of packages, and each package use one different kind of object. Similar to the tidymodels, that apply modeling and machine learning in a tidy approach, we also have one tidy way to do correlation analysis in R that you will see later in this article.
+Finding a way to do this in R can be overwhelming, because of the vast quantity of packages, and each package use one different kind of object. The objective of this article is to walk you through three different ways of doing the correlation analysis, which the last one is a general (tidy) way, and also what I prefer.
 
-That been said, the object of the article is to walk you through three different ways of doing the correlation analysis, which the last one is a general (tidy) way, and also what I prefer.
+A short disclaimer before start, this article is not meant to explain all the theory behind the correlation analysis and for a more complete explanation, you can access this great reference: [Forecasting: Principles and Pratice](https://otexts.com/fpp3/graphics.html).
 
-A short disclaimer before start, this article is not meant to explain all the theary behind the Correlation Analysis, for a more complete explanation, you can access this great reference: [Forecasting: Principles and Pratice](https://otexts.com/fpp3/graphics.html).
-
-# The Different Approachs
+# The Different Approaches
 
 Let's set our environment:
 
