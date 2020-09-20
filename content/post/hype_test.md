@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Hypothesis Testing by Computational Methodology - Part 1"
-date:       2020-09-15
+date:       2020-09-20
 author:     "Luciano"
 image:      "img/post_0_4.png"
 tags:
