@@ -1,6 +1,6 @@
 ![](/img/lucianobatista.jpg)
 
-Meu nome é Luciano Oliveira Batista, Engenheiro Químico formado pela Universidade Estadual de Santa Cruz (UESC) e Cientista de Dados em formação. Ao longo da minha formação como Engenheiro pude trabalhar com diversas ferramentas analíticas aplicadas em [projetos de pesquisa](http://lattes.cnpq.br/4340837477932502), como matlab, R e Statistica.
+Meu nome é Luciano Oliveira Batista, Engenheiro Químico formado pela Universidade Estadual de Santa Cruz (UESC) e Cientista de Dados. Ao longo da minha formação como Engenheiro pude trabalhar com diversas ferramentas analíticas aplicadas em [projetos de pesquisa](http://lattes.cnpq.br/4340837477932502), como matlab, R e Statistica.
 
 Há aproximadamente 1 ano me apaixonei pela área de Data Science, e decidi estudar e agregar à minha formação acadêmica este tópico extremamente útil e aplicável. Durante esse tempo eu era bolsista de mestrado em Ciência Inovação e Modelagem em Materiais na UESC, como infelizmente meu projeto de pesquisa já estava estabelecido, e no período que eu comecei minha jornada em Data Science não havia janela para utilização dessa tecnologia, eu decidi abandonar e voltar meu foco para o que mais fazia sentido para mim nesse momento, Data Science.
 
