@@ -6,6 +6,4 @@ Há aproximadamente 1 ano me apaixonei pela área de Data Science, e decidi estu
 
 Acredito muito que a ciência de dados, e tudo que ela agrega, tem um grande potencial de aplicação em 99% das áreas de negócio. Seja pela aplicação de modelos preditivos, análise exploratória dos dados e criação de insights, tomada de decisões baseadas em dados ou utilização de inteligência artificial. Estamos no período de consolidação dessa tecnologia, onde os profissionais estão sendo cada vez mais cobrados, e as vagas cada vez mais exigentes.
 
-No sentido de refinar meu estudos e melhor me qualificar para este mercado, resolvi adquirir 2 cursos oferecidos pela [Data Science Academy](https://www.datascienceacademy.com.br): a Formação Cientista de Dados e a Formação Inteligência Artificial aplicada a Medicina.
-
 Caso queira entrar em contato comigo, pode me enviar um [email](luciano.eq@outlook.com), se conectar à minha network pelo [LinkedIn](https://www.linkedin.com/in/lucianobatistads/) ou pelo [Github](https://github.com/lucianobatista)
