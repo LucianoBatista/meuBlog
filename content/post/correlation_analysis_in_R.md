@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "How to do a correlation analysis in R?"
-subtitle:   "Great packages: corplot vs corrr"
+title:      "Effective approach to analyze correlation coefficients"
+subtitle:   "Learn how to use corplot and corrr packages"
 date:       2020-10-13
 author:     "Luciano"
 image:      "img/post_0_4.png"
@@ -14,6 +14,8 @@ tags:
     - R
 categories: [ Tutorials ]
 ---
+
+![Plot](/img/correlation/correlation_post.png)
 
 **Correlation analysis** is a key task when you're exploring any dataset. The principal objective is to find linear relationships between features that can help to understanding the big picture.
 
@@ -70,7 +72,7 @@ I choose this dataset because we have a lot of variables, high dimensionality, a
 
 Let's begin!
 
-``` {.r}
+```r
 # libraries used in this tutorial
 library(tidyverse)
 library(corrr)
@@ -84,6 +86,8 @@ lol_diamond_tbl <- read_csv("data/lol_diamond_numeric_final.csv")
 
 
 lol_diamond_tbl %>% glimpse()
+```
+
 ```
 
     Rows: 99,727
@@ -101,8 +105,9 @@ lol_diamond_tbl %>% glimpse()
     $ quadraKills                      <dbl> -0.1065788, -0.1065788, -0.1065788, -0.1065788, -0.1065788, -0.1065788, -0.1…
     $ pentaKills                       <dbl> -0.04710454, -0.04710454, -0.04710454, -0.04710454, -0.04710454, -0.04710454…
     (...)
+```
 
-I cleaned the dataset before, and the script used for that is in my [GitHub repo](putTheRepoHere.com). Besides that, you can find the description of the variables used here on this [kaggle kernel](https://www.kaggle.com/dsluciano/league-of-legends-match-statistics/) created by me. If you have any questions, please let me know.
+I cleaned the dataset before, and the script used for that is in my [GitHub repo](todo). Besides that, you can find the description of the variables used here on this [kaggle kernel](https://www.kaggle.com/dsluciano/league-of-legends-match-statistics/) created by me. If you have any questions, please let me know.
 
 ### Using corplot package
 
@@ -116,7 +121,7 @@ But the procedure to plot the correlation coefficients using `corrplot` is fairl
 
 Although the simplicity of this process, the final result it's not so beautiful and it's not the best chart to put in your report.
 
-``` {.r}
+```r
 # basic procedure
 corr_matrix_train_mtx <- lol_diamond_tbl %>% cor()
 corrplot(corr_matrix_train_mtx)
@@ -138,7 +143,7 @@ In the following sequence of steps I'll show you how to improve the final result
 
 5.  And the most important, we can rearrange the variables using clustering methods, the corrplot function accept 5 different ways: AOE, FPC, hclust and alphabet (look the documentation to see more).
 
-``` {.r}
+```r
 # first plot
 corrplot(corr_matrix_train_mtx, method = "square")
 
@@ -170,7 +175,7 @@ This second approach is the most tidy way to perform a correlation analysis. To 
 
 ![flowchart](/img/correlation/correlation_07.png)
 
-``` {.r}
+```r
 # plot 1
 lol_diamond_tbl %>% 
     correlate() %>% 
@@ -192,7 +197,7 @@ Yes, it's a mess and difficult to read. Let's improve this plot following some c
 
 3.  I'll choose better colors. And at the end, I will set the x-axis label angle to 45 and `hjust = 1`, to put the axis text in right place.
 
-``` {.r}
+```r
 lol_diamond_tbl %>% 
     correlate(use = "pairwise.complete.obs") %>% 
     rearrange(method = "PCA") %>% 
