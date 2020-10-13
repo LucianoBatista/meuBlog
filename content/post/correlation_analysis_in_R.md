@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Effective approach to analyze correlation coefficients"
-subtitle:   "Learn how to use corplot and corrr packages"
+subtitle:   "Learn how to use corrplot and corrr packages"
 date:       2020-10-13
 author:     "Luciano"
 image:      "img/post_0_4.png"
@@ -107,7 +107,7 @@ lol_diamond_tbl %>% glimpse()
     (...)
 ```
 
-I cleaned the dataset before, and the script used for that is in my [GitHub repo](todo). Besides that, you can find the description of the variables used here on this [kaggle kernel](https://www.kaggle.com/dsluciano/league-of-legends-match-statistics/) created by me. If you have any questions, please let me know.
+I cleaned the dataset before, and the script used for that is in my [GitHub repo](https://github.com/LucianoBatista/articles). Besides that, you can find the description of the variables used here on this [kaggle kernel](https://www.kaggle.com/dsluciano/league-of-legends-match-statistics/) created by me. If you have any questions, please let me know.
 
 ### Using corplot package
 
