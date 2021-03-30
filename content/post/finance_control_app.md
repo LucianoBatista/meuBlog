@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Criando uma API Pronta para Produção com FastAPI"
+title: "Criando uma API Pronta para Produção com FastAPI - PT.1"
 date: 2021-03-30
 author: "Luciano"
 image: "img/post_0_4.png"
@@ -19,9 +19,9 @@ categories: [Tutorials]
 
 # Motivação
 
-Atualmente tenho passado bastante raiva em voltar a utilizar o Excel para fazer um controle de gastos, apesar da simplicidade do software, era muito fácil ter situações onde os registros de compras feitas ou alguma outra movimentação financeira ficarem uma completa bagunça. Muito provavelmente pela minha falta de habilidade, mas a experiência estava deixando a desejar e consequentemente acabei perdendo a disciplina de organizar meus gastos, o que não recomendo a ninguém.
+Atualmente tenho tido bastante dor de cabeça em voltar a utilizar o Excel para fazer uma planilha de controle de gastos, apesar da simplicidade do software, constantemente meus registros de compras feitas ou alguma outra movimentação financeira ficam uma completa bagunça. O que pode ser justificado pela minha falta de destreza com a ferramenta, mas fato é que a experiência estava deixando a desejar e consequentemente acabei perdendo a disciplina de organizar meus gastos, o que não recomendo a ninguém.
 
-Foi então que me veio a ideia de largar as planilhas e armazenar essa informação em um banco de dados, o que me facilitaria muita coisa, como: facilidade para geração de um relatório com o nível de personalização muito superior ao Excel (utilizando **R** ou **Python** para consumir os dados), manter a integridade dos dados de forma confiável e robusta, criar modelos de machine learning para prever próximos gastos e muito mais.
+Foi então que me veio a ideia de largar as planilhas e armazenar essa informação em um banco de dados, o que me facilitaria muita coisa, como por exemplo: facilidade para geração de um relatório com o nível de personalização muito superior ao Excel (utilizando **R** ou **Python** para consumir os dados e fazer a parte analítica), manter a integridade dos dados de forma confiável e robusta, criar modelos de machine learning para prever próximos gastos e muito mais.
 
 Coincidentemente a tudo isso, tenho brincado bastante com o **FastAPI**, um framework fantástico para criação de RESTFull APIs utilizando linguagem python.
 
@@ -29,7 +29,9 @@ E, por fim, um último quesito foi que vejo poucos tutoriais em português que t
 
 # Overview do app
 
-Diante do que foi dito acima, eu decidi criar um projeto com várias tecnologias que vão auxiliar na entrega de um produto bem robusto e escalável (não que fosse necessário para essa situação). Então, juntamente com o **FastAPI**, vamos desenvolver usando um ambiente **Docker** e torná-lo o mais próximo possível de um ambiente de deploy. Utilizaremos o **SQLAlchemy** como nosso ORM (Object Relational Mapper) para "conversar" com o banco de dados (**Postgres**). Ainda iremos tentar desenvolver utilizando o **TDD** (Test Driven Development) com o **pytest**. Irei também adicionar o **Celery**, que vai permitir que tenhámos um produto altamente escalável ao final do projeto. Por fim, configuraremos GitHub Actions para configurar entrega e integração contínua entre desenvolvimento (CI/CD) e o deploy no **Heroku**.
+Diante do que foi dito acima, decidi criar um projeto com várias tecnologias que eu considero super interessante e que vão auxiliar na entrega de um produto bem robusto e escalável (não que fosse necessário para essa situação).
+
+Então, juntamente com o **FastAPI**, vamos desenvolver usando um ambiente **Docker** e torná-lo o mais próximo possível de um ambiente de deploy. Utilizaremos o **SQLAlchemy** como nosso ORM (Object Relational Mapper) para "conversar" com o banco de dados (**Postgres**). Ainda iremos tentar desenvolver utilizando o **TDD** (Test Driven Development) com o **pytest**. Irei também adicionar o **Celery**, que vai permitir que tenhámos um produto altamente escalável ao final do projeto. Por fim, configuraremos GitHub Actions para implementar entrega e integração contínua (CI/CD) entre o desenvolvimento e o deploy no **Heroku**.
 
 ![Mix Techs](/img/finance_app_tutorial/mix_techs.png)
 
@@ -37,11 +39,11 @@ Muito provavelmente existem soluções prontas e aplicativos para controle finan
 
 # Tecnologias
 
-Nesse projeto vou trazer muitas tecnologias interessantes como citado acima e com código que você poderá reutilizar nos mais variados projetos. A seguir eu trouxe um pouco sobre cada tecnologia que será utilizada.
+Nesse projeto vou trazer muitas ferramentas como citado acima e com código que você poderá reutilizar nos mais variados projetos. A seguir eu trouxe um pouco sobre cada tecnologia que será utilizada.
 
 ## FastAPI
 
-Como disse antes, tenho tido muito contato com o **FastAPI** e é incrível como é intuitivo codar com este framework, abaixo eu trouxe alguns motivos que fazem o **FastAPI** diferenciado (retirados da própria documentação).
+Como disse antes, tenho tido muito contato com o **FastAPI** e é incrível como é intuitivo codar com este framework. Abaixo eu trouxe alguns motivos que fazem o **FastAPI** diferenciado dos outros frameworks em python (retirados da própria documentação).
 
 - Tão rápido quanto NodeJS e GO (FastAPI é construído em cima do Starlette e Pydantic)
 - Muito rápido para desenvolver APIs (200% a 300% em comparação a concorrentes)
@@ -49,7 +51,7 @@ Como disse antes, tenho tido muito contato com o **FastAPI** e é incrível como
 - Intuitivo
 - Fácil de aprender
 - Robusto
-- _Automagicamente_ gera documentação para a API e JSON Schemas
+- _Automagicamente_ gera documentação para a API e JSON Schemas (**Muito Legal**)
 
 Acesse a [documentação](https://fastapi.tiangolo.com) do FastAPI para mais detalhes, que por sinal é muito bem feita.
 
@@ -62,7 +64,7 @@ Docker é uma plataforma de construção de containers utilizada para simular am
 **pytest** é um framework para escrever tests em Python, ele torna fácil e divertido escrever, organizar e rodar tests, quando comparado com o **unittest** (outro framework bastante conhecido). Abaixo cito algumas características do pytest:
 
 - Requer menos código _boilerplate_
-- Suporta declaração assert (built-in do Python) ao invés de assertSomething (como no unittest)
+- Suporta declaração `assert` (built-in do Python) ao invés de `assertSomething` (como no unittest)
 - Atualizado frequentemente
 - Possui as famosas _fixtures_ que auxiliam na inicialização e finalização de configurações para determinados testes.
 - Utiliza uma abordagem funcional
@@ -81,7 +83,7 @@ O **Celery** é um _task queue manager_ utilizado para implementar processamento
 
 ![Celery Schema](/img/finance_app_tutorial/celery.jpeg)
 
-O Celery é utilizado em várias tecnologias de Big Data como **Apache SuperSet** e **Apache Airflow**, justamente por ser um framework muito útil para escalabilidade.
+O Celery é utilizado na arquitetura de várias tecnologias de Big Data como **Apache SuperSet** e **Apache Airflow**, justamente por ser um framework muito útil para escalabilidade.
 
 ## GitHub
 
