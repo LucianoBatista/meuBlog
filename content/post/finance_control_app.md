@@ -15,9 +15,9 @@ tags:
 categories: [Tutorials]
 ---
 
-# Motivação
-
 ![Personal Finance](/img/finance_app_tutorial/finance.jpg)
+
+# Motivação
 
 Atualmente tenho passado bastante raiva em voltar a utilizar o Excel para fazer um controle de gastos, apesar da simplicidade do software, era muito fácil ter situações onde os registros de compras feitas ou alguma outra movimentação financeira ficarem uma completa bagunça. Muito provavelmente pela minha falta de habilidade, mas a experiência estava deixando a desejar e consequentemente acabei perdendo a disciplina de organizar meus gastos, o que não recomendo a ninguém.
 
