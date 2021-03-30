@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Criando uma API Pronta para Produção com FastApi"
+title: "Criando uma API Pronta para Produção com FastAPI"
 date: 2021-03-30
 author: "Luciano"
 image: "img/post_0_4.png"
@@ -17,13 +17,15 @@ categories: [Tutorials]
 
 # Motivação
 
+![Personal Finance](/img/finance_app_tutorial/finance.jpg)
+
 Atualmente tenho passado bastante raiva em voltar a utilizar o Excel para fazer um controle de gastos, apesar da simplicidade do software, era muito fácil ter situações onde os registros de compras feitas ou alguma outra movimentação financeira ficarem uma completa bagunça. Muito provavelmente pela minha falta de habilidade, mas a experiência estava deixando a desejar e consequentemente acabei perdendo a disciplina de organizar meus gastos, o que não recomendo a ninguém.
 
-Foi então que me veio a ideia de largar as planilhas e armazenar essa informação em um banco de dados, o que me facilitaria muita coisa, como: geração de um relatório com o nível de personalização muito superior ao Excel, manter a integridade dos dados de forma confiável e robusta, criar modelos de machine learning para prever próximos gastos e muito mais.
+Foi então que me veio a ideia de largar as planilhas e armazenar essa informação em um banco de dados, o que me facilitaria muita coisa, como: facilidade para geração de um relatório com o nível de personalização muito superior ao Excel (utilizando **R** ou **Python** para consumir os dados), manter a integridade dos dados de forma confiável e robusta, criar modelos de machine learning para prever próximos gastos e muito mais.
 
 Coincidentemente a tudo isso, tenho brincado bastante com o **FastAPI**, um framework fantástico para criação de RESTFull APIs utilizando linguagem python.
 
-E, por fim, um último quesito foi que vejo poucos tutoriais em português que trazem um material interessante sobre como criar APIs com o **FastAPI** em um nível pronto para produção.
+E, por fim, um último quesito foi que vejo poucos tutoriais em português que trazem um material interessante sobre como criar APIs com o **FastAPI** em um nível pronto (ou mais próximo possível) para produção.
 
 # Overview do app
 
