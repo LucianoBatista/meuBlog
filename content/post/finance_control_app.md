@@ -79,7 +79,7 @@ Docker é uma plataforma de construção de containers utilizada para simular am
 
 O **Celery** é um _task queue manager_ utilizado para implementar processamento assíncrono ao seu código. Fique atento que não estamos falando aqui de utilização de mais threads para realização de uma task, e sim de desiginar as tasks à diferentes "workers", o que possibilita um escalonamento horizontal e por isso acaba sendo muito atrativo ao design de microserviços.
 
-![Celery Schema](img/finance_app_tutorial/celery.jpeg)
+![Celery Schema](/img/finance_app_tutorial/celery.jpeg)
 
 O Celery é utilizado em várias tecnologias de Big Data como **Apache SuperSet** e **Apache Airflow**, justamente por ser um framework muito útil para escalabilidade.
 
@@ -100,6 +100,6 @@ Heroku é uma cloud _Platform as a Service_ (PaaS) que provê um local para depl
 
 Próximos tutoriais iremos partir para o hands-on!!!
 
-![Coding fast](img/finance_app_tutorial/coding_fast.gif)
+![Coding fast](/img/finance_app_tutorial/coding_fast.gif)
 
 Até lá!
