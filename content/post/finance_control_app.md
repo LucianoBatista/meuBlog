@@ -51,17 +51,17 @@ Como disse antes, tenho tido muito contato com o **FastAPI** e é incrível como
 - Robusto
 - _Automagicamente_ gera documentação para a API e JSON Schemas
 
-[(Documentação FastAPI para mais detalhes)](https://fastapi.tiangolo.com)
+Acesse a [documentação](https://fastapi.tiangolo.com) do FastAPI para mais detalhes, que por sinal é muito bem feita.
 
 ## Docker
 
-Docker é uma plataforma de construção de containers utilizada para simular ambientes de desenvolvimento e deploy de forma isolada do seu sistema, ou seja, independentemente do seu SO (sistema operacional) você consegue ter o mesmo comportamento da aplicação.
+Docker é uma plataforma de construção de containers utilizada para simular ambientes de desenvolvimento e deploy de forma isolada do seu sistema, ou seja, independentemente do seu SO (sistema operacional) você consegue ter o mesmo comportamento da aplicação pois cada container contém todas as dependências necessárias para sua execução.
 
 ## Pytest
 
 **pytest** é um framework para escrever tests em Python, ele torna fácil e divertido escrever, organizar e rodar tests, quando comparado com o **unittest** (outro framework bastante conhecido). Abaixo cito algumas características do pytest:
 
-- Requer menos código
+- Requer menos código _boilerplate_
 - Suporta declaração assert (built-in do Python) ao invés de assertSomething (como no unittest)
 - Atualizado frequentemente
 - Possui as famosas _fixtures_ que auxiliam na inicialização e finalização de configurações para determinados testes.
@@ -79,9 +79,9 @@ Docker é uma plataforma de construção de containers utilizada para simular am
 
 O **Celery** é um _task queue manager_ utilizado para implementar processamento assíncrono ao seu código. Fique atento que não estamos falando aqui de utilização de mais threads para realização de uma task, e sim de desiginar as tasks à diferentes "workers", o que possibilita um escalonamento horizontal e por isso acaba sendo muito atrativo ao design de microserviços.
 
-[image]
+![Celery Schema](img/finance_app_tutorial/celery.jpeg)
 
-O Celery é utilizado em várias tecnologias de Big Data como Apache SuperSet e Apache Airflow, justamente por ser um framework muito útil para escalabidade.
+O Celery é utilizado em várias tecnologias de Big Data como **Apache SuperSet** e **Apache Airflow**, justamente por ser um framework muito útil para escalabilidade.
 
 ## GitHub
 
@@ -98,4 +98,8 @@ Mas como já utilizo o GitHub para outros projetos, resolvi seguir com a mesma p
 
 Heroku é uma cloud _Platform as a Service_ (PaaS) que provê um local para deployar aplicações web. Eles abstraem muita da complixidade de infraestrutura e torna fácil hospedar aplicações com segurança e escalabilidade. Para esse projeto irei utilizar planos gratuitos, para que todos possam seguir o passo-a-passo. Porém, como nossa aplicação vai estar conteinerizada você pode deployar em basicamente em qualquer plataforma cloud que existe com poucas modificações no código. Mas aqui iremos ficar com o Heroku.
 
-Até os próximos tutoriais!
+Próximos tutoriais iremos partir para o hands-on!!!
+
+![Coding fast](img/finance_app_tutorial/coding_fast.gif)
+
+Até lá!
