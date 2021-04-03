@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Criando uma API Pronta para Produção com FastAPI - PT.2"
-date: 2021-03-30
+date: 2021-04-02
 author: "Luciano"
 image: "img/post_0_4.png"
 tags:
