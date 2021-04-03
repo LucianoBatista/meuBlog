@@ -15,9 +15,9 @@ tags:
 categories: [Tutorials]
 ---
 
-![Personal Finance](/img/finance_app_tutorial/pt2/fastapi.png)
+![fastapi](/img/finance_app_tutorial/pt2/fastapi.png)
 
-Neste tutorial iremos iniciar o **Econowallet**, essa aplicação que vai contar com uma API COMPLETONA para controle financeiro de suas despesas e investimentos, se você não viu o post passado (onde explico mais sobre meu objetivo com esse projeto) [clique aqui](https://www.lobdata.com.br/post/finance_control_app/).
+Neste tutorial iremos iniciar o **Econowallet**, essa aplicação que vai contar com uma API para controle financeiro de suas despesas e investimentos, se você não viu o post passado (onde explico mais sobre meu objetivo com esse projeto) [clique aqui](https://www.lobdata.com.br/post/finance_control_app/).
 
 Tópicos que serão abordados nesse post:
 
@@ -159,7 +159,7 @@ def get_settings() -> BaseSettings:
 
 ```
 
-![WHAT?!](/img/finance_app_tutorial/pt2/what.gif)
+![WHAT?!](/img/finance_app_tutorial/pt2/what.gif =250x200)
 
 > O que está acontecendo aqui?
 
