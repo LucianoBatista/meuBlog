@@ -15,6 +15,8 @@ tags:
 categories: [Tutorials]
 ---
 
+![Creating Project](/img/finance_app_tutorial/pt2/create_project.png)
+
 ![fastapi](/img/finance_app_tutorial/pt2/fast_api.png)
 
 Neste tutorial iremos iniciar o **Econowallet**, essa aplicação que vai contar com uma API para controle financeiro de suas despesas e investimentos, se você não viu o post passado (onde explico mais sobre meu objetivo com esse projeto) [clique aqui](https://www.lobdata.com.br/post/finance_control_app/).
