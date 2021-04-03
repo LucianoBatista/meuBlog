@@ -15,7 +15,7 @@ tags:
 categories: [Tutorials]
 ---
 
-![Personal Finance](/img/finance_app_tutorial/fastapi.jpg)
+![Personal Finance](/img/finance_app_tutorial/pt2/fastapi.png)
 
 Neste tutorial iremos iniciar o **Econowallet**, essa aplicação que vai contar com uma API COMPLETONA para controle financeiro de suas despesas e investimentos, se você não viu o post passado (onde explico mais sobre meu objetivo com esse projeto) [clique aqui](https://www.lobdata.com.br/post/finance_control_app/).
 
@@ -37,7 +37,7 @@ Estarei utilizando aqui o Pipenv, sinta-se a vontade para usar o que tenha mais 
 
 Como IDE estarei usando o Pycharm 2020.3.5 (minha preferida no momento para desenvolver em python) e utilizaremos python 3.9.0. Ao clicar em "New Project" temos a seguinte imagem:
 
-![Creating Project](/img/finance_app_tutorial/pt2/create_project.jpg)
+![Creating Project](/img/finance_app_tutorial/pt2/create_project.png)
 
 Veja na lateral esquerda como o Pycharm já traz um template para diversos tipos de projeto, porém no momento ainda não temos a opção para o FastAPI. Após iniciado o projeto, você deve encontrar um chamado Pipfile (se está usando o Pipenv) ou apenas uma pasta vazia. Então iremos executar os seguintes comandos no terminal:
 
@@ -113,9 +113,9 @@ Agora, se navegarmos até http://127.0.0.1:8000/ping iremos ver a seguinte respo
 
 Além disso o FastAPI automágicamente gerou um esquema baseado no padrão OpenAPI e juntamente com o Swagger UI criou uma documentação inicial (bem crua) para sua API. Podendo ser acessada em http://localhost:8000/docs ou ainda se não gostou dessa interface do Swager você pode acessar http://localhost:8000/redoc para uma interface diferente.
 
-![Ping Pong Swager](/img/finance_app_tutorial/pt2/ping_pong_swager.jpg)
+![Ping Pong Swager](/img/finance_app_tutorial/pt2/ping_pong_swager.png)
 
-![Ping Pong Redocs](/img/finance_app_tutorial/pt2/ping_pong_redoc.jpg)
+![Ping Pong Redocs](/img/finance_app_tutorial/pt2/ping_pong_redoc.png)
 
 ...além disso, essa interface pode ser personalizada de acordo com seu projeto e necessidades, você pode encontrar detalhes na documentação [clicando aqui](https://fastapi.tiangolo.com/advanced/extending-openapi/).
 
@@ -159,7 +159,7 @@ def get_settings() -> BaseSettings:
 
 ```
 
-![WHAT?!](/img/finance_app_tutorial/what.gif)
+![WHAT?!](/img/finance_app_tutorial/pt2/what.gif)
 
 > O que está acontecendo aqui?
 
@@ -198,7 +198,7 @@ def ping(settings: Settings = Depends(get_settings)):
 
 Dessa forma nós estamos setando dependências à aplicação sempre que acessamos a rota http://127.0.0.1:8000/ping. De uma forma mais intuitiva, o que estamos dizendo é o seguinte:
 
-![Flow Dependencies](/img/finance_app_tutorial/pt2/ping_pong_redoc.jpg)
+![Flow Dependencies](/img/finance_app_tutorial/pt2/flow_dependencies.png)
 
 Agora, se rodarmos novamente nosso server, iremos ver uma resposta da seguinte forma:
 
