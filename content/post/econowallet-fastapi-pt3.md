@@ -15,6 +15,8 @@ tags:
 categories: [Tutorials]
 ---
 
+# Nos Capítulos Anteriores ...
+
 Essa é a parte 3 do nosso projeto do EconoWallet, se quiser verificar o que já fizemos até o momento, verifique os links abaixo:
 
 - [Parte 1](https://www.lobdata.com.br/post/finance_control_app/)
@@ -36,21 +38,21 @@ $ docker-compose -v
 docker-compose version 1.27.4, build 40524192
 ```
 
-O workflow que vamos seguir aqui é o de containerizar cada parte da aplicação e depois orquestrar isso de alguma forma, para que cada parte se comunique de forma harmônica e a aplicação final funcione através dos containers e imagens criadas. Nesse processo cada "bloco" da aplicação vai ser construído utilizando um template de instruções, nossos Dockerfiles, e a orquestração aqui vai ser feita por um arquivo chamado docker-compose.yml.
+O workflow que vamos seguir aqui é o de containerizar cada parte da aplicação e depois orquestrar isso de alguma forma, para que cada parte se comunique de forma harmônica e a aplicação final funcione através dos containers e imagens criadas. Nesse processo, cada "bloco" da aplicação vai ser construído utilizando um template de instruções, nossos Dockerfiles, e a orquestração aqui vai ser feita por um arquivo chamado docker-compose.yml.
 
-Ao final desse workflow você vai ter um _bundle_ onde cada container contêm parte da aplicação mas tudo funciona em conjunto. Veja na imagem (de forma simplificada) o que acontece.
+Ao final desse workflow você vai ter um _bundle_ onde cada container contêm parte da aplicação, mas tudo funciona em conjunto. Veja na imagem (de forma simplificada) o que acontece.
 
 ![Containerized Application](/img/finance_app_tutorial/pt3/container_application.png)
 
-> imagem retirada do Google
+> Imagem retirada do Google
 
-> Uma ressalva que gostaria de fazer é que você possui outras formas de orquestrar os containers que não seja utilizando um docker-compose.yml, como por exemplo utilizando Kubernetes (k8s).
+> Uma ressalva que gostaria de fazer é que existem outras formas de orquestrar os containers que não seja utilizando um arquivo docker-compose.yml, como por exemplo utilizando Kubernetes (k8s).
 
 # Criando o primeiro Dockerfile
 
-Uma regra básica na hora de criar seus Dockerfiles é considerar que suas instruções ao longo do arquivo representam camadas e as camadas que exigem mais processamento e mais tempo para "construir" devem estar posicionadas no início. Dessa forma, você otimiza o tempo de processamento caso seja precise rebuildar a imagem com alguma modificação em camadas mais superiores, pois as que não sofrem modificação são recarregadas a partir de um cache.
+Uma regra básica na hora de criar seus Dockerfiles é considerar que suas instruções ao longo do arquivo representam camadas, e as camadas que exigem mais processamento e mais tempo para "construir" devem estar posicionadas no início. Dessa forma, você otimiza o tempo de processamento, e caso seja precise rebuildar a imagem com alguma modificação em camadas mais superiores, pois as que não sofrem modificação são recarregadas a partir de um cache.
 
-No caso de Dockerfiles para aplicações web em python eu costumo seguir um pipeline básico do que é preciso/interessante ter no arquivo, e ao longo do projeto vou modificando de acordo a necessidade:
+No caso de Dockerfiles para aplicações web em python eu costumo seguir um pipeline básico do que é preciso/interessante ter na imagem, e ao longo do projeto vou modificando de acordo a necessidade:
 
 ![Diagram](/img/finance_app_tutorial/pt3/diagrams.png)
 
@@ -76,14 +78,14 @@ RUN pipenv install --deploy --system
 COPY . .
 ```
 
-Como visto no fluxograma, primeiramente vemos uma imagem base do python, que aqui estamos utilizando o `python:3.9.0-slim-buster` que uma espécie de imagem mínima apenas com o essencial para podermos rodar uma aplicação python, além da slim-buster temos outras variações que buscam aplicar o mesmo conceito de economia de espaço. Este artigo do [Medium](https://medium.com/swlh/alpine-slim-stretch-buster-jessie-bullseye-bookworm-what-are-the-differences-in-docker-62171ed4531d) contém uma boa explicação sobre a diferença entre os tipos: Slim, Alpine, Strech, Buster, Jessie e Bullseye.
+Como visto no fluxograma, primeiramente vemos uma imagem base do python, que aqui estamos utilizando o `python:3.9.0-slim-buster`, uma espécie de imagem mínima apenas com o essencial para podermos rodar uma aplicação python, além da slim-buster temos outras variações que buscam aplicar o mesmo conceito de economia de espaço. Este artigo do [Medium](https://medium.com/swlh/alpine-slim-stretch-buster-jessie-bullseye-bookworm-what-are-the-differences-in-docker-62171ed4531d) contém uma boa explicação sobre a diferença entre os tipos: Slim, Alpine, Strech, Buster, Jessie e Bullseye.
 
-> Como são imagens mínimas de tamanho reduzido, pode ser que a depender de sua aplicação, você precise completar a imagem com alguma dependência. É difícil saber de antemão qual a imagem que vai funcionar corretamente com seu projeto, mas graças a praticidade de trabalhar com Docker, podemos facilmente trocar e buscar a que melhor se adapte.
+> Como são imagens mínimas e de tamanho reduzido, pode ser que a depender de sua aplicação, você precise completar a imagem com alguma dependência. É difícil saber de antemão qual a imagem que vai funcionar corretamente com seu projeto, mas graças a praticidade de trabalhar com Docker, podemos facilmente trocar e buscar a que melhor se adapte.
 
 Voltando ao código que escrevemos, nas variáveis de ambiente (`ENV`), é uma boa prática ao trabalhar com projetos em python que adicionemos as seguintes variáveis:
 
-`PYTHONDONTWRITEBYTECODE`: Impede que o Python grave arquivos pyc no disco (equivalente a opção -B)
-`PYTHONUNBUFFERED`: Evita que o Python armazene um buffer stdout e stderr (equivalente a opção -u)
+- `PYTHONDONTWRITEBYTECODE`: Impede que o Python grave arquivos pyc no disco (equivalente a opção -B)
+- `PYTHONUNBUFFERED`: Evita que o Python armazene um buffer stdout e stderr (equivalente a opção -u)
 
 # Criando o primeiro docker-compose.yml
 
