@@ -115,7 +115,7 @@ Se você nunca trabalhou com esse tipo de arquivo, não se assuste, é apenas um
 
 Com essas instruções nós construímos nossos serviços. O primeiro será nosso serviço web, onde foi especificado um diretório para `build` onde basicamente o Docker vai buscar o seu template (Dockerfile), depois a gente inicia o container rodando o `uvicorn` na porta 8000.
 
-A chave de `volumes` é extremamente interessante/importante para que tenhámos persistência de dados ao longo do desenvolvimento e em produção. Basicamente estou dizendo que o `./project` local vai ser mapeado no diretório `/usr/src/app`, e tudo que acontecer localmente também vai ser atualizado dentro do ambiente docker sem necessidade de rebuildar a imagem.
+A marcação de `volumes` é extremamente interessante/importante para que tenhámos persistência de dados ao longo do desenvolvimento e em produção. Basicamente estou dizendo que o `./project` local vai ser mapeado no diretório `/usr/src/app`, e tudo que acontecer localmente também vai ser atualizado dentro do ambiente docker sem necessidade de rebuildar a imagem.
 
 Depois disso nós expomos uma porta 8004 que vai escutar a porta 8000 dentro da nossa image Docker. E por fim adicionamos duas variáveis de ambiente, que são as mesmas que estão na nossa classe Settings no arquivo `config.py`.
 
@@ -187,7 +187,7 @@ Em nosso diretório de projeto, você deverá ter uma estrutura semelhante a ess
 
 ```
 
-# Próximo Post
+# Próximo Capítulo...
 
 Na próxima etapa, iremos adicionar um banco de dados para nossa aplicação, onde irei containerizar o PostgreSQL e adicionar um ORM (SqlAlchemy) para abstrair parte da complexidade de trabalhar diretamente com o banco.
 
