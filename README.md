@@ -14,5 +14,3 @@
 <br>
 
 ![](https://media.giphy.com/media/M3o3fL9nnxG4o/giphy.gif)
-
-{"mode":"full","isActive":false}
