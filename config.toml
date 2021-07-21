@@ -16,7 +16,7 @@ home = ["HTML", "RSS", "Algolia"]
   unsafe= true
 
 [params]
-  header_image = "img/banner/header_profile.jpg"
+  header_image = "img/banner/beach.jpg"
   twitter_image = "img/banner/banner.png"
   copyright = "Luba"
   SEOTitle = "Luba"
@@ -39,8 +39,8 @@ home = ["HTML", "RSS", "Algolia"]
   algolia_apiKey = ""
 
   # Sidebar settings
-  sidebar_about_description = "Always coding. Passionate about Data. Drawer on vactions."
-  sidebar_avatar = "img/profile/lucianobatista.jpg"
+  sidebar_about_description = "Always coding. Passionate about Data. Love to draw on free time."
+  sidebar_avatar = "img/profile/me.png"
 
   featured_tags = true
   featured_condition_size = 1
