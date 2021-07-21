@@ -16,7 +16,7 @@ home = ["HTML", "RSS", "Algolia"]
   unsafe= true
 
 [params]
-  header_image = "img/banner/beach.jpg"
+  header_image = "img/banner/beach_more_sea.jpg"
   twitter_image = "img/banner/banner.png"
   copyright = "Luba"
   SEOTitle = "Luba"
