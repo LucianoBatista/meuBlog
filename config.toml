@@ -3,7 +3,6 @@ title = "LOB.DATA"
 theme = "hugo-theme-cleanwhite"
 languageCode = "en-us"
 # Enable comments by entering your Disqus shortname
-#disqusShortname = "Cédric"
 googleAnalytics = ""
 preserveTaxonomyNames = true
 paginate = 6 #frontpage pagination
