@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>purrr on LOB.DATA</title>
+    <link>https://www.lobdata.com.br/tags/purrr/</link>
+    <description>Recent content in purrr on LOB.DATA</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 02 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/purrr/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to automate exploratory plots?</title>
+      <link>https://www.lobdata.com.br/2020/10/02/how-to-automate-exploratory-plots/</link>
+      <pubDate>Fri, 02 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/2020/10/02/how-to-automate-exploratory-plots/</guid>
+      <description>When you are plotting different charts during your exploratory data analysis, you sometimes end up doing a lot of repeated coding. That&amp;rsquo;s moments you feel like would faster if you go back to excel or other tools you feel more comfortable, and that&amp;rsquo;s great if you have no time to learn some new technique or adjust some parameters by coding.
+What I want to show here is a batter way to do your EDA, and with less unnecessary coding and more flexibility.</description>
+    </item>
+    
+  </channel>
+</rss>

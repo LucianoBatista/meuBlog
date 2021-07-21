@@ -217,7 +217,7 @@
         _.opts.autoCreate = !!_.opts.autoCreate || !!_.opts.auto;
 
         // emoji 表情
-        _.opts.emojiPath = _.opts.emojiPath || _.opts.emoji_path || 'https://cdn.jsdelivr.net/emojione/assets/png/';
+        _.opts.emojiPath = _.opts.emojiPath || _.opts.emoji_path || 'https://assets-cdn.github.com/images/icons/emoji/unicode/';
         _.emojiList = _.opts.emojiList || _.opts.emoji_list || [{
             code:'smile',
             title:'笑脸',
@@ -313,7 +313,7 @@
         window.disqus_config = function () {
             this.page.identifier = _.opts.identifier;
             this.page.title = _.opts.title;
-            this.page.url = _.opts.link;
+            this..Permalink = _.opts.link;
             this.callbacks.onReady.push(function() {
                 _.stat.current = 'disqus';
                 _.stat.disqusLoaded = true;

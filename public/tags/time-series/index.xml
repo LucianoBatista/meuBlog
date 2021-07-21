@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Time Series on LOB.DATA</title>
+    <link>https://www.lobdata.com.br/tags/time-series/</link>
+    <description>Recent content in Time Series on LOB.DATA</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 25 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/time-series/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Demand Forecasting of Brazilian Commodities</title>
+      <link>https://www.lobdata.com.br/2020/10/25/demand-forecasting-of-brazilian-commodities/</link>
+      <pubDate>Sun, 25 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/2020/10/25/demand-forecasting-of-brazilian-commodities/</guid>
+      <description>Demand Forecasting of Brazilian Commodities  Soybean, Corn, Sugar, Soybean Meal, Soybean Oil and Wheat (left to right).
+ Demand Forecasting is a technique for estimation of probable demand for a product or services. It is based on the analysis of past demand for that product or service in the present market condition. Demand forecasting should be done on a scientific basis and facts and events related to forecasting should be considered.</description>
+    </item>
+    
+    <item>
+      <title>How to Perform Correlation Analysis in Time Series data using R?</title>
+      <link>https://www.lobdata.com.br/2020/09/15/how-to-perform-correlation-analysis-in-time-series-data-using-r/</link>
+      <pubDate>Tue, 15 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/2020/09/15/how-to-perform-correlation-analysis-in-time-series-data-using-r/</guid>
+      <description>What is it correlation analysis? The concept of correlation is the same used in non-time series data: identify and quantify the relationship between two variables. Due to the continuous and chronologically ordered nature of time series data, there is a likelihood that there will be some degree of correlation between the series observations.
+Measuring and analyzing the correlation between two variables, in the context of time series analysis, can be understood by two different aspects:</description>
+    </item>
+    
+  </channel>
+</rss>

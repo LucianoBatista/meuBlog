@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>corrr on LOB.DATA</title>
+    <link>https://www.lobdata.com.br/tags/corrr/</link>
+    <description>Recent content in corrr on LOB.DATA</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 13 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/corrr/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Effective approach to analyze correlation coefficients</title>
+      <link>https://www.lobdata.com.br/2020/10/13/effective-approach-to-analyze-correlation-coefficients/</link>
+      <pubDate>Tue, 13 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/2020/10/13/effective-approach-to-analyze-correlation-coefficients/</guid>
+      <description>Correlation analysis is a key task when you&amp;rsquo;re exploring any dataset. The principal objective is to find linear relationships between features that can help to understanding the big picture.
+Probably, the best way to see correlations between variables is to use scatterplots, but in most of time you&amp;rsquo;re working with a high dimensional dataset with a high number of variables, in these situations you have two major problems:
+ It&amp;rsquo;s a high computational task to plot lots of scatterplot, specially if you have a big dataset.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on LOB.DATA</title>
+    <link>https://www.lobdata.com.br/tags/r/</link>
+    <description>Recent content in R on LOB.DATA</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 13 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Effective approach to analyze correlation coefficients</title>
+      <link>https://www.lobdata.com.br/2020/10/13/effective-approach-to-analyze-correlation-coefficients/</link>
+      <pubDate>Tue, 13 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/2020/10/13/effective-approach-to-analyze-correlation-coefficients/</guid>
+      <description>Correlation analysis is a key task when you&amp;rsquo;re exploring any dataset. The principal objective is to find linear relationships between features that can help to understanding the big picture.
+Probably, the best way to see correlations between variables is to use scatterplots, but in most of time you&amp;rsquo;re working with a high dimensional dataset with a high number of variables, in these situations you have two major problems:
+ It&amp;rsquo;s a high computational task to plot lots of scatterplot, specially if you have a big dataset.</description>
+    </item>
+    
+    <item>
+      <title>How to automate exploratory plots?</title>
+      <link>https://www.lobdata.com.br/2020/10/02/how-to-automate-exploratory-plots/</link>
+      <pubDate>Fri, 02 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/2020/10/02/how-to-automate-exploratory-plots/</guid>
+      <description>When you are plotting different charts during your exploratory data analysis, you sometimes end up doing a lot of repeated coding. That&amp;rsquo;s moments you feel like would faster if you go back to excel or other tools you feel more comfortable, and that&amp;rsquo;s great if you have no time to learn some new technique or adjust some parameters by coding.
+What I want to show here is a batter way to do your EDA, and with less unnecessary coding and more flexibility.</description>
+    </item>
+    
+    <item>
+      <title>Hypothesis Testing by Computational Methodology - Part 1</title>
+      <link>https://www.lobdata.com.br/2020/09/20/hypothesis-testing-by-computational-methodology-part-1/</link>
+      <pubDate>Sun, 20 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/2020/09/20/hypothesis-testing-by-computational-methodology-part-1/</guid>
+      <description>Introduction This is the first of two articles that we&amp;rsquo;ll talk about two different approaches to perform hypotheses tests, covering the classical and computational methodologies. In the end I&amp;rsquo;ll show you one R package (Infer) capable to execute any of these methods in an easy, flexible, and less error-prone way.
+In the second article, we&amp;rsquo;ll go deeper in a hands-on experiment using the Infer package, if you already know the package and want to see more code than text, click here.</description>
+    </item>
+    
+    <item>
+      <title>How to Perform Correlation Analysis in Time Series data using R?</title>
+      <link>https://www.lobdata.com.br/2020/09/15/how-to-perform-correlation-analysis-in-time-series-data-using-r/</link>
+      <pubDate>Tue, 15 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/2020/09/15/how-to-perform-correlation-analysis-in-time-series-data-using-r/</guid>
+      <description>What is it correlation analysis? The concept of correlation is the same used in non-time series data: identify and quantify the relationship between two variables. Due to the continuous and chronologically ordered nature of time series data, there is a likelihood that there will be some degree of correlation between the series observations.
+Measuring and analyzing the correlation between two variables, in the context of time series analysis, can be understood by two different aspects:</description>
+    </item>
+    
+  </channel>
+</rss>

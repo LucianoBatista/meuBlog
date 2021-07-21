@@ -1,79 +1,81 @@
-baseurl = ""
+baseurl = "https://www.lobdata.com.br/"
 title = "LOB.DATA"
 theme = "hugo-theme-cleanwhite"
-languageCode = "pt-br"
+languageCode = "en-us"
 # Enable comments by entering your Disqus shortname
-disqusShortname = ""
+#disqusShortname = "Cédric"
 googleAnalytics = ""
 preserveTaxonomyNames = true
-paginate = 5 #frontpage pagination
+paginate = 6 #frontpage pagination
 hasCJKLanguage = true
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
 [outputs]
 home = ["HTML", "RSS", "Algolia"]
 
-[params]
-  header_image = "img/header_profile.jpg"
-  SEOTitle = "Blog de Data Science"
-  description = "Meu blog de data science, onde serão abordados tutoriais, projetos e experiências"
-  keyword = "machine learning, artificial intelligence, data science, big data, automl"
-  slogan = ""
+[markup.goldmark.renderer]
+  unsafe= true
 
-  image_404 = "img/404-bg.jpg"
-  title_404 = "你来到了没有知识的荒原 :("
-  omit_categories = false
+[params]
+  header_image = "img/banner/header_profile.jpg"
+  twitter_image = "img/banner/banner.png"
+  copyright = "Luba"
+  SEOTitle = "Luba"
+  title = "Luba"
+  description = "Blog by LuBa"
+  keyword = "Data Visualization, Data Science, Programming, Web Development"
+  slogan = "Everything about Data"
+  google_fonts = ""
+  title_404 = ""
 
   # leancloud storage for page view counter
-  page_view_conter = false
+  page_view_conter = true
   leancloud_app_id = ""
   leancloud_app_key = ""
 
   # algolia site search
-  algolia_search = true
-  algolia_appId = "56XLI6KGAP"
-  algolia_indexName = "lobdata"
-  algolia_apiKey = "a16633b8987200fe609a19b91969fc7c"
+  algolia_search = false
+  algolia_appId = ""
+  algolia_indexName = ""
+  algolia_apiKey = ""
 
   # Sidebar settings
-  sidebar_about_description = "Python / R Developer at Studos."
-  #sidebar_avatar = "img/avatar-zhaohuabing.jpg"      # use absolute URL, seeing it's used in both `/` and `/about/`
-  sidebar_avatar = "img/lucianobatista.jpg"      # use absolute URL, seeing it's used in both `/` and `/about/`
+  sidebar_about_description = "Always coding. Passionate about Data. Drawer on vactions."
+  sidebar_avatar = "img/profile/lucianobatista.jpg"
 
   featured_tags = true
   featured_condition_size = 1
 
+  support_button = true
+
   # Baidu Analytics
   ba_track_id = ""
 
-  # We need a proxy to access Disqus api in China
+  # We need a proxy to access Disqus api in Chian
   # Follow https://github.com/zhaohuabing/disqus-php-api to set up your own disqus proxy
   disqus_proxy = ""
   disqus_site = ""
 
   #Enable wechat pay & alipay to allow readers send reward money if they like the articles
-  reward = true
-  # reward_guide = "如果这篇文章对你有用,请随意打赏"
+  reward = false
 
   friends = false
-  bookmarks = false
+  bookmarks = true
   about_me = true
 
-  # Include any custom CSS and/or JS files, url or relative to /static folder
-  #custom_css = ["css/lightbox.css", "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css", "css/main.css"]
-  #custom_js = ["js/lightbox.js", "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js", "js/main.js"]
 
   [params.social]
-  rss            = true
-  email          = "luciano.eq@outlook.com"
+  rss            = true 
+  #email          = "youremail@gmail.com"
   #facebook      = "full profile url in facebook"
   #googleplus    = "full profile url in googleplus"
   #twitter       = "full profile url in twitter"
   linkedin       = "https://www.linkedin.com/in/lucianobatistads/"
-#  stackoverflow  = "https://stackoverflow.com/users/yourstackoverflowid"
+  #stackoverflow  = "https://stackoverflow.com/users/yourstackoverflowid"
   #instagram     = "full profile url in instagram"
-  github         = "https://github.com/lucianobatista"
-#  wechat         = "your wechat qr code image"
-#  medium         = "full profile url in medium"
+  github         = "https://github.com/LucianoBatista"
+  #wechat         = "your wechat qr code image"
+  #medium         = "full profile url in medium"
   #pinterest     = "full profile url in pinterest"
   #reddit        = "full profile url in reddit"
   #gitlab        = "full profile url in gitlab"
@@ -81,30 +83,42 @@ home = ["HTML", "RSS", "Algolia"]
   #keybase       = "full profile url in keybase"
   #xing          = "https://www.xing.com/profile/yourxingid"
   #git           = "full profile url for git user"
-
+  
   #[[params.friend_link]]
   #title = "Linda的博客"
   #href =  "https://zhaozhihan.com"
 
-  #[[params.bookmark_link]]
-  #title =  "Martin Fowler"
-  #href =  "https://martinfowler.com"
-  #[[params.bookmark_link]]
-  #title = "ServiceMesher"
-  #href =  "http://www.servicemesher.com"
-  #[[params.bookmark_link]]
-  #title =  "Pxhere"
-  #href = "https://pxhere.com"
-  #[[params.bookmark_link]]
-  #title = "unsplash"
-  #href = "https://unsplash.com"
-
-  #[[params.addtional_menus]]
-  #title =  "BOOKS"
-  #href =  "/top/books/"
+  [[params.bookmark_link]]
+  title = "Fundamentals of DataViz"
+  href =  "https://serialmentor.com/dataviz/"
+  [[params.bookmark_link]]
+  title = "R for Data Science"
+  href =  "https://r4ds.had.co.nz/"
+  [[params.bookmark_link]]
+  title = "JavaScript for R"
+  href =  "https://javascript-for-r.com/"
+  [[params.bookmark_link]]
+  title = "Mastering Shiny"
+  href =  "https://mastering-shiny.org/index.html"
+  [[params.bookmark_link]]
+  title = "Egineering Shiny"
+  href =  "https://engineering-shiny.org"
+  [[params.bookmark_link]]
+  title = "FastAPI"
+  href =  "https://fastapi.tiangolo.com"
+  
   [[params.addtional_menus]]
-  title =  "ABOUT"
+  title =  "Portfolio"
+  href =  "/top/portfolio/"  # get reference from Cedric
+  [[params.addtional_menus]]
+  title =  "Gallery"
+  href =  "/top/dataviz/"  # can be prints of shiny dashboards
+  [[params.addtional_menus]]
+  title =  "About Me"
   href =  "/top/about/"
+  [[params.addtional_menus]]
+  title = "Links"
+  href =  "/top/links/"  # usefull links about data science stuffs
 
 [outputFormats.Algolia]
 baseName = "algolia"
@@ -116,9 +130,16 @@ notAlternative = true
 vars = ["title", "summary", "date", "publishdate", "expirydate", "permalink"]
 params = ["categories", "tags"]
 
-[markup]
-  [markup.tableOfContents]
-    endLevel = false
-    startLevel = false
-  [markup.highlight]
-    style = "dracula"
+[permalinks]
+    post = "/:year/:month/:day/:slug/"
+
+[[plugins]]
+package = "netlify-plugin-rss"
+  [plugins.inputs]
+  # required configs, customize as needed
+  dirToScan = "/posts" # a subfolder to scan. "/" to scan all
+  authorName = "Luba"
+  site_url = "https://www.lobdata.com.br"
+  title = "Luba RSS Feed"
+  rssDescription = "RSS Feed of the blog by Luba focussing on Data Science."
+  categories = ['Data Visualization', 'Infographics', 'Data Science', 'R Programming']

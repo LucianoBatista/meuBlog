@@ -82,6 +82,10 @@ body {
   min-height: 100%;
 }
 
+u {
+  text-decoration: underline;
+}
+
 .main {
   background: #222;
   padding-bottom: 1.5em;
@@ -144,19 +148,20 @@ h3 {
 }
 
 h4 {
-  font-size: 1.313em;
+  font-size: 1.413em;
   /* 21px / 16px */
   line-height: 1.143;
 }
 
 h5 {
-  font-size: 1.125em;
-  /* 18px / 16px */
+  font-size: 1.313em;
+  /* 21px / 16px */
   line-height: 1.34;
 }
 
 h6 {
-  font-size: 1em;
+  font-size: 5.125em;
+  /* 18px / 16px */
   line-height: 1.5;
 }
 
@@ -277,8 +282,12 @@ th {
 }
 
 img {
-  height: auto;
-  line-height: 0;
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    line-height: 0
 }
 
 .singular-attachment img {
@@ -322,7 +331,7 @@ textarea {
 
 textarea {
   max-width: 41.625em;
-  overflow: auto;
+  overflow: visible;
 }
 
 input[type="submit"] {
@@ -361,6 +370,12 @@ input[type="search"] {
 /* ie image border fix */
 a img {
   border: none;
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  line-height: 0
 }
 
 .screen-reader-text {
@@ -624,8 +639,12 @@ a img {
   }
 
   .site-title img {
-    max-width: 8em;
-    max-height: 3em;
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    line-height: 0
   }
 
   .toggle-navigation {

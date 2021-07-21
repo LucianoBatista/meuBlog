@@ -2,30 +2,35 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on LOB.DATA</title>
-    <link>/categories/</link>
+    <link>https://www.lobdata.com.br/categories/</link>
     <description>Recent content in Categories on LOB.DATA</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>pt-br</language>
-    <lastBuildDate>Mon, 04 Nov 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
-    
+    <language>en-us</language>
+    <lastBuildDate>Thu, 08 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tutorials</title>
+      <link>https://www.lobdata.com.br/categories/tutorials/</link>
+      <pubDate>Thu, 08 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/categories/tutorials/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Projetos</title>
-      <link>/categories/projetos/</link>
-      <pubDate>Mon, 04 Nov 2019 00:00:00 +0000</pubDate>
+      <link>https://www.lobdata.com.br/categories/projetos/</link>
+      <pubDate>Sun, 25 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>/categories/projetos/</guid>
+      <guid>https://www.lobdata.com.br/categories/projetos/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Aplicações</title>
-      <link>/categories/aplica%C3%A7%C3%B5es/</link>
+      <link>https://www.lobdata.com.br/categories/aplica%C3%A7%C3%B5es/</link>
       <pubDate>Sat, 16 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>/categories/aplica%C3%A7%C3%B5es/</guid>
+      <guid>https://www.lobdata.com.br/categories/aplica%C3%A7%C3%B5es/</guid>
       <description></description>
     </item>
     

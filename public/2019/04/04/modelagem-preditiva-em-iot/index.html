@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="LOB.DATA">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://www.lobdata.com.br/img/banner/header_profile.jpg">
+
+    
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:image" content="https://www.cedricscherer.com/img/banner/banner.png" >
+    
+
+    
+
+    
+      <meta name="title" content="Modelagem Preditiva em IoT" />
+      <meta property="og:title" content="Modelagem Preditiva em IoT - Luba" />
+      <meta property="twitter:title" content="Modelagem Preditiva em IoT - Luba" />
+      <meta property="twitter:text:title" content="Modelagem Preditiva em IoT - Luba" />
+    
+
+    
+      <meta name="description" content="Blog by LuBa">
+      <meta property="og:description" content="Blog by LuBa" />
+      <meta property="twitter:description" content="Blog by LuBa" />
+    
+
+    
+
+    <meta name="keyword"  content="Data Visualization, Data Science, Programming, Web Development">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Modelagem Preditiva em IoT - Luba</title>
+
+    <link rel="canonical" href="/2019/04/04/modelagem-preditiva-em-iot/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/styles/foundation.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">LOB.DATA</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Blog</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/aplica%C3%A7%C3%B5es">aplicações</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/projetos">projetos</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/tutorials">tutorials</a>
+                    </li>
+                    
+
+		    
+                        <li><a href="/top/portfolio/">Portfolio</a></li>
+                    
+                        <li><a href="/top/dataviz/">Gallery</a></li>
+                    
+                        <li><a href="/top/about/">About Me</a></li>
+                    
+                        <li><a href="/top/links/">Links</a></li>
+                    
+
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/post_0_3.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/project" title="Project">
+                            Project
+                        </a>
+                        
+                        <a class="tag" href="/tags/data-science" title="Data Science">
+                            Data Science
+                        </a>
+                        
+                        <a class="tag" href="/tags/machine-learning" title="Machine Learning">
+                            Machine Learning
+                        </a>
+                        
+                    </div>
+                    <h1>Modelagem Preditiva em IoT</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+			Posted by
+			
+			    Luciano
+			
+			on
+			Thursday, April 4, 2019
+                        
+                            <span id="/2019/04/04/modelagem-preditiva-em-iot/" class="leancloud_visitors meta_data_item" data-flag-title="">
+    <span class="post-meta-item-icon">
+      <span class="octicon octicon-eye"></span> 
+    </span>
+    <i class="fa fa-eye"></i>
+    <span class="old-visitors-count" style="display: none;"></span>
+    <span class="leancloud-visitors-count"></span>
+</span>
+
+
+
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+
+<script>
+	AV.initialize("", "");
+</script>
+
+<script type="text/javascript">
+function showTime(Counter) {
+    var query = new AV.Query(Counter);
+    var entries = [];
+    var $visitors = $(".leancloud_visitors");
+
+    $visitors.each(function() {
+        entries.push($(this).attr("id").trim());
+    });
+
+    query.containedIn('url', entries);
+    query.find()
+        .done(function(results) {
+            var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+            var OLD_COUNT_CONTAINER_REF = '.old-visitors-count';
+
+            
+            
+            
+            
+
+            for (var i = 0; i < results.length; i++) {
+                var item = results[i];
+                var url = item.get('url');
+                var time = item.get('time');
+                var element = document.getElementById(url);
+
+                $(element).find(COUNT_CONTAINER_REF).text(time);
+            }
+            for (var i = 0; i < entries.length; i++) {
+                var url = entries[i];
+                var element = document.getElementById(url);
+                var countSpan = $(element).find(COUNT_CONTAINER_REF);
+                if (countSpan.text() == '') {
+                    var oldCountSpan = $(element).find(OLD_COUNT_CONTAINER_REF).text();
+                    if(oldCountSpan!=''){
+                        countSpan.text(0+parseInt(oldCountSpan));
+                    }else{
+                        countSpan.text(0);          
+                    }
+                }
+            }
+        })
+        .fail(function(object, error) {
+            console.log("Error: " + error.code + " " + error.message);
+        });
+}
+
+function addCount(Counter) {
+    var $visitors = $(".leancloud_visitors");
+    var url = $visitors.attr('id').trim();
+    var title = $visitors.attr('data-flag-title').trim();
+    var query = new AV.Query(Counter);
+
+    query.equalTo("url", url);
+    query.find({
+        success: function(results) {
+            if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment("time");
+                counter.save(null, {
+                    success: function(counter) {
+                        var $element = $(document.getElementById(url));
+                        $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                    },
+                    error: function(counter, error) {
+                        console.log('Failed to save Visitor num, with error message: ' + error.message);
+                    }
+                });
+            } else {
+                var newcounter = new Counter();
+                 
+                var acl = new AV.ACL();
+                acl.setPublicReadAccess(true);
+                acl.setPublicWriteAccess(true);
+                newcounter.setACL(acl);
+                 
+                newcounter.set("title", title);
+                newcounter.set("url", url);
+                var OLD_COUNT_CONTAINER_REF = '.old-visitors-count';
+                var $element = $(document.getElementById(url));
+                var oldCountSpan = $element.find(OLD_COUNT_CONTAINER_REF).text();
+                if(oldCountSpan!=''){
+                    newcounter.set("time", parseInt(oldCountSpan)+1);
+                }else{
+ 	                    newcounter.set("time",  1);
+                }
+                newcounter.save(null, {
+                    success: function(newcounter) {
+                        var $element = $(document.getElementById(url));
+                        $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                    },
+                    error: function(newcounter, error) {
+                        console.log('Failed to create');
+                    }
+                });
+            }
+        },
+        error: function(error) {
+            console.log('Error:' + error.code + " " + error.message);
+        }
+    });
+}
+$(function() {
+    var Counter = AV.Object.extend("Counter");
+    
+    
+    if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+    } else {
+        showTime(Counter);
+    }
+});
+</script>
+
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h3>Table of Contents</h3>
+                </header>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#o-que-representa-cada-variável-no-dataset">O que representa cada variável no dataset?</a></li>
+    <li><a href="#agora-vamos-observar-um-conjunto-de-plots-que-ajudaram-a-entender-melhor-os-dados">Agora vamos observar um conjunto de plots que ajudaram a entender melhor os dados.</a></li>
+    <li><a href="#pairplot">Pairplot</a></li>
+    <li><a href="#boxplot">Boxplot</a></li>
+    <li><a href="#plot-comparativo">Plot Comparativo</a></li>
+    <li><a href="#facetgrid">FacetGrid</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#tratamento-de-outliers">Tratamento de outliers</a></li>
+    <li><a href="#correlation">Correlation</a></li>
+    <li><a href="#normalização">Normalização</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#recursive-elimination">Recursive Elimination</a></li>
+    <li><a href="#embedded-method">Embedded Method</a></li>
+  </ul>
+</nav>
+                
+                <h1 id="previsao-de-uso-de-energia">Previsão de Uso de Energia</h1>
+<p>Quando falamos de revolução tecnológica, a noção de Internet das Coisas, ou Internet of Things (IoT), é um dos assuntos principais. O seu desenvolvimento está mudando a forma como o ser humando tem se conectado com diversos dispositivos tecnlógicos.</p>
+<p>IoT vem gerando uma quantidade imensa de dados, um dos maiores responsáveis pelo Big Data. Diante da geração de tanta informação, o papel do Cientista de Dados se faz cada vez mais presente, pois torna-se possível a obteção de grandes insights sobre diferentes área até então não analisadas.</p>
+<p>Este projeto de IoT tem como objetivo a criação de modelos preditivos para a previsão de consumo de energia de eletrodomésticos. Os dados utilizados incluem medições de sensores de temperatura e umidade de uma rede sem fio, previsão do tempo de uma estação de um aeroporto e uso de energia utilizada por luminárias.</p>
+<p>A versão completa do projeto pode ser encontrada no repositório do meu <a href="https://github.com/LucianoBatista/iot_energy_consumption_prediction">GitHub</a>, assim como os dados que foram utilizados.</p>
+<h1 id="análise-exploratória-dos-dados">Análise Exploratória dos Dados</h1>
+<h2 id="o-que-representa-cada-variável-no-dataset">O que representa cada variável no dataset?</h2>
+<ul>
+<li><strong>date:</strong> Tempo de coleta dos dados pelos sensores</li>
+<li><strong>Appliances:</strong> Uso de energia (em W)</li>
+<li><strong>lights:</strong> Potência de energia de eletrodomésticos na casa (em W)</li>
+<li><strong>TX:</strong> Temperatura em um lugar da casa (em Celsius)</li>
+<li><strong>RH_X:</strong> Umidade relativa em algum ponto da casa (em %)</li>
+<li><strong>Windspeed:</strong> Velocidade do vento (em m/s)</li>
+<li><strong>Visibility:</strong> Visibilidade (em Km)</li>
+<li><strong>Tdewpoint:</strong> Não foi informado.</li>
+<li><strong>rv1:</strong> Variável randômica adicional</li>
+<li><strong>rv2:</strong> Variável randômica adicional</li>
+<li><strong>WeekStatus:</strong> Indica se é dia de semana ou final de semana</li>
+<li><strong>Day_of_week:</strong> Dia da semana</li>
+<li><strong>NSM:</strong> Medida de tempo (em s)</li>
+</ul>
+<p>Ao importar os dados foi visto que os dados possuem a mesma quantidade de colunas e que elas são iguais, sendo assim, os dados de teste e treino foram concatenados para realizar uma análise conjunta dos dados.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>concat([train, test], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;O novo dataset possui </span><span style="color:#e6db74">{</span>df<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74"> linhas e </span><span style="color:#e6db74">{</span>df<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74"> variáveis&#39;</span>)
+print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;O dataset possui </span><span style="color:#e6db74">{</span>sum(df<span style="color:#f92672">.</span>isnull()<span style="color:#f92672">.</span>sum())<span style="color:#e6db74">}</span><span style="color:#e6db74"> valores nulos&#39;</span>)
+</code></pre></div><pre><code>O novo dataset possui 19735 linhas e 32 variáveis
+O dataset possui 0 valores nulos
+</code></pre>
+<p>Optei por separar variáveis numéricas e categóricas para melhor observar algumas informações que são características de cada tipo.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">num_vars <span style="color:#f92672">=</span> [name <span style="color:#66d9ef">for</span> name <span style="color:#f92672">in</span> df<span style="color:#f92672">.</span>columns <span style="color:#66d9ef">if</span> df[name]<span style="color:#f92672">.</span>dtype <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;object&#39;</span>]
+cat_vars <span style="color:#f92672">=</span> [name <span style="color:#66d9ef">for</span> name <span style="color:#f92672">in</span> df<span style="color:#f92672">.</span>columns <span style="color:#66d9ef">if</span> df[name]<span style="color:#f92672">.</span>dtype <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;object&#39;</span>]
+df_num <span style="color:#f92672">=</span> df[num_vars]
+df_cat <span style="color:#f92672">=</span> df[cat_vars]
+print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;O data set possui </span><span style="color:#e6db74">{</span>len(num_vars)<span style="color:#e6db74">}</span><span style="color:#e6db74"> variáveis numéricas e </span><span style="color:#e6db74">{</span>len(cat_vars)<span style="color:#e6db74">}</span><span style="color:#e6db74"> de tipo objeto, sendo todas relacionadas à data&#39;</span>)
+</code></pre></div><pre><code>O data set possui 29 variáveis numéricas e 3 de tipo objeto, sendo todas relacionadas à data.
+</code></pre>
+<p>Uma observação interessante é que precisamos estar sempre atentos ao tipo de dado que está sendo manipulado, no atual conjunto de dados a variável <em>&lsquo;date&rsquo;</em> não foi importada como tipo de data. Logo, foi preciso realizar essa conversão, além disso, a data (agora convertida) foi adicionada ao index do DataFrame.</p>
+<p>A adição da variável de data ao index do objeto DataFrame do pacote Pandas permite uma manipulação mais intuitiva desse tipo de dado. Mais à frente tal funcionalidade será observada.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># converter a coluna &#39;date&#39; para tipo data</span>
+df_cat[<span style="color:#e6db74">&#39;date&#39;</span>] <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>to_datetime(df_cat[<span style="color:#e6db74">&#39;date&#39;</span>])
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df_cat<span style="color:#f92672">.</span>dtypes
+</code></pre></div><pre><code>date           datetime64[ns]
+WeekStatus             object
+Day_of_week            object
+dtype: object
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Transformando a coluna de data em index podemos realizar algumas análises</span>
+<span style="color:#75715e"># de forma mais simples.</span>
+df_cat<span style="color:#f92672">.</span>index <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DatetimeIndex(df_cat[<span style="color:#e6db74">&#39;date&#39;</span>])
+df_num<span style="color:#f92672">.</span>index <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DatetimeIndex(df_cat[<span style="color:#e6db74">&#39;date&#39;</span>])
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Também precisaremos de uma coluna com as datas (utilizada para alguns plots).</span>
+df_num[<span style="color:#e6db74">&#39;date&#39;</span>] <span style="color:#f92672">=</span> df_cat[<span style="color:#e6db74">&#39;date&#39;</span>]<span style="color:#f92672">.</span>copy()
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df_num<span style="color:#f92672">.</span>columns
+</code></pre></div><pre><code>Index(['Appliances', 'lights', 'T1', 'RH_1', 'T2', 'RH_2', 'T3', 'RH_3', 'T4',
+       'RH_4', 'T5', 'RH_5', 'T6', 'RH_6', 'T7', 'RH_7', 'T8', 'RH_8', 'T9',
+       'RH_9', 'T_out', 'Press_mm_hg', 'RH_out', 'Windspeed', 'Visibility',
+       'Tdewpoint', 'rv1', 'rv2', 'NSM', 'date'],
+      dtype='object')
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df_cat<span style="color:#f92672">.</span>columns
+</code></pre></div><pre><code>Index(['date', 'WeekStatus', 'Day_of_week'], dtype='object')
+</code></pre>
+<hr>
+<h2 id="agora-vamos-observar-um-conjunto-de-plots-que-ajudaram-a-entender-melhor-os-dados">Agora vamos observar um conjunto de plots que ajudaram a entender melhor os dados.</h2>
+<h2 id="pairplot">Pairplot</h2>
+<p>O código abaixo permite a visualização de um pairplot filtrado por períodos. È possível visualizar os dados em diferentes intervalos de dias, semanas, meses e ano (caso nosso dataset tivesse dados de um ano diferente à 2016).</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Precisa editar algumas linhas caso precise plotar um dia específico</span>
+<span style="color:#75715e"># ou intervalo específico.</span>
+year_start <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;2016&#39;</span>
+month_start <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;05&#39;</span>
+day <span style="color:#f92672">=</span> int(<span style="color:#e6db74">&#39;01&#39;</span>)
+<span style="color:#75715e"># fim</span>
+year_end <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;2016&#39;</span>
+month_end <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;05&#39;</span>
+
+<span style="color:#66d9ef">if</span> day <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span>:
+    <span style="color:#75715e"># date_start = year_start + &#39;-&#39; + month_start + &#39;-&#39; + &#39;0&#39; + str(day_range) + &#39; 00:00:00&#39;</span>
+    date_start <span style="color:#f92672">=</span> year_start <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#f92672">+</span> month_start
+    date_end <span style="color:#f92672">=</span> year_end <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#f92672">+</span> month_end <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">+</span> str(day) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; 23:00:00&#39;</span>
+<span style="color:#66d9ef">else</span>:
+    <span style="color:#75715e"># date_start = year_start + &#39;-&#39; + month_start + &#39;-&#39; + str(day_range) + &#39; 00:00:00&#39;</span>
+    date_start <span style="color:#f92672">=</span> year_start <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#f92672">+</span> month_start
+    date_end <span style="color:#f92672">=</span> year_end <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#f92672">+</span> month_end <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#f92672">+</span> str(day) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; 23:00:00&#39;</span>
+
+print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>date_start<span style="color:#e6db74">}</span><span style="color:#e6db74"> até </span><span style="color:#e6db74">{</span>date_end<span style="color:#e6db74">}</span><span style="color:#e6db74"> com </span><span style="color:#e6db74">{</span>len(df_num[date_start])<span style="color:#e6db74">}</span><span style="color:#e6db74"> pontos&#39;</span>)
+
+sns<span style="color:#f92672">.</span>set(style<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ticks&#34;</span>, color_codes<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+df_filter <span style="color:#f92672">=</span> df_num[date_start] <span style="color:#75715e"># date_start:date_end</span>
+g <span style="color:#f92672">=</span> sns<span style="color:#f92672">.</span>pairplot(df_filter)
+plt<span style="color:#f92672">.</span>show()
+</code></pre></div><pre><code>2016-05 até 2016-05-01 23:00:00 com 3853 pontos
+</code></pre>
+<p><img src="/img/output_21_1.png" alt="png"></p>
+<p>Podemos visualizar que a maioria das distribuição se assemelham à uma distribuição normal, sendo que algumas poucas possuem desvios. Vamos verificar agora se existe a presença de muitos outliers nos dados</p>
+<h2 id="boxplot">Boxplot</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Novamente, cada plot tem um código que permite o filtro por data.</span>
+year_start <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;2016&#39;</span>
+month_start <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;04&#39;</span>
+day <span style="color:#f92672">=</span> int(<span style="color:#e6db74">&#39;01&#39;</span>)
+<span style="color:#75715e"># fim</span>
+year_end <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;2016&#39;</span>
+month_end <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;05&#39;</span>
+
+<span style="color:#66d9ef">if</span> day <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span>:
+    date_start <span style="color:#f92672">=</span> year_start <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#f92672">+</span> month_start
+    date_end <span style="color:#f92672">=</span> year_end <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#f92672">+</span> month_end <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">+</span> str(day) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; 23:00:00&#39;</span>
+<span style="color:#66d9ef">else</span>:
+    date_start <span style="color:#f92672">=</span> year_start <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#f92672">+</span> month_start
+    date_end <span style="color:#f92672">=</span> year_end <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#f92672">+</span> month_end <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#f92672">+</span> str(day) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; 23:00:00&#39;</span>
+
+print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>date_start<span style="color:#e6db74">}</span><span style="color:#e6db74"> até </span><span style="color:#e6db74">{</span>date_end<span style="color:#e6db74">}</span><span style="color:#e6db74"> com </span><span style="color:#e6db74">{</span>len(df_num[date_start])<span style="color:#e6db74">}</span><span style="color:#e6db74"> pontos&#39;</span>)
+
+plt<span style="color:#f92672">.</span>subplots(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">20</span>))
+sns<span style="color:#f92672">.</span>set(style<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ticks&#34;</span>, color_codes<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+df_filter <span style="color:#f92672">=</span> df_num[date_start]
+df_filter <span style="color:#f92672">=</span> df_filter<span style="color:#f92672">.</span>drop([<span style="color:#e6db74">&#39;date&#39;</span>, <span style="color:#e6db74">&#39;NSM&#39;</span>], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+df_filter<span style="color:#f92672">.</span>boxplot()
+plt<span style="color:#f92672">.</span>show()
+</code></pre></div><pre><code>2016-04 até 2016-05-01 23:00:00 com 4320 pontos
+</code></pre>
+<p><img src="/img/output_24_1.png" alt="png"></p>
+<p>Os dados que mais possuem outliers é a variável target. Nesse caso é essencial que esse pontos sejam tratados, o que será feito mais a frente.</p>
+<h2 id="plot-comparativo">Plot Comparativo</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Gráficos comparativo de qualquer variável ao longo de um período</span>
+<span style="color:#75715e"># Determine o período de início e fim que deseja visualizar</span>
+<span style="color:#75715e"># E determine a variável name com a variável a ser observada</span>
+<span style="color:#75715e"># início</span>
+year_start <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;2016&#39;</span>
+month_start <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;04&#39;</span>
+day <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;01&#39;</span>
+<span style="color:#75715e"># fim</span>
+year_end <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;2016&#39;</span>
+month_end <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;04&#39;</span>
+
+<span style="color:#75715e"># plot automatizado</span>
+<span style="color:#75715e"># n = número de subplots (dias para visualizar)</span>
+n <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Appliances&#39;</span>
+fig, ax <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>subplots(n, figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">70</span>))
+<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>, n):
+    day_range <span style="color:#f92672">=</span> int(day) <span style="color:#f92672">+</span> i
+    <span style="color:#66d9ef">if</span> day_range <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span>:
+        date_start <span style="color:#f92672">=</span> year_start <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#f92672">+</span> month_start <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">+</span> str(day_range) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; 00:00:00&#39;</span>
+        date_end <span style="color:#f92672">=</span> year_end <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#f92672">+</span> month_end <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">+</span> str(day_range) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; 23:00:00&#39;</span>
+    <span style="color:#66d9ef">else</span>:
+        date_start <span style="color:#f92672">=</span> year_start <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#f92672">+</span> month_start <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#f92672">+</span> str(day_range) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; 00:00:00&#39;</span>
+        date_end <span style="color:#f92672">=</span> year_end <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#f92672">+</span> month_end <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#f92672">+</span> str(day_range) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; 23:00:00&#39;</span>
+    dates, values <span style="color:#f92672">=</span> zip(<span style="color:#f92672">*</span>sorted(zip(df_num[<span style="color:#e6db74">&#39;date&#39;</span>],df_num[date_start: date_end][name])))
+    ax[i]<span style="color:#f92672">.</span>plot_date(dates,values, <span style="color:#e6db74">&#39;-&#39;</span>)
+    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>date_start<span style="color:#e6db74">}</span><span style="color:#e6db74"> até </span><span style="color:#e6db74">{</span>date_end<span style="color:#e6db74">}</span><span style="color:#e6db74"> com </span><span style="color:#e6db74">{</span>len(df_num[date_start: date_end][name])<span style="color:#e6db74">}</span><span style="color:#e6db74"> pontos&#39;</span>)
+</code></pre></div><p><img src="/img/output_27_2.png" alt="png"></p>
+<p>Com o código acima é possível visualizar o comportamento de qualquer variável numérica em relação ao tempo. Por conta de ser um post no blog, eu optei em apenas mostrar uma das figuras criadas pelo código. Mas você pode acessar o <a href="https://github.com/LucianoBatista/iot_energy_consumption_prediction/blob/master/modelagem_preditiva_iot.ipynb">link</a> para visualizar a saída completa dessa célula.</p>
+<p>Podemos observar o seguinte:</p>
+<ul>
+<li><strong>temperatura interna:</strong> Possui valores de 20 a 25, acredito que graus Celsius, tendo picos durante a noite. Período em que provavelmente o aquecedor está ligado.</li>
+<li><strong>temperatura externa:</strong> Possui valores baixos, categorizando um país frio que é a Bélgica. Também apresenta variação de acordo o por e nascer do sol</li>
+<li><strong>RH e RH_out:</strong> Apresenta uma variabilidade interessante para explicar o comportament do Appliances.</li>
+<li><strong>Pressão:</strong> Apresenta um comportamento bem padrão.</li>
+<li><strong>rv_1, rv_2:</strong> Possuem um comportamento bem aleatório ao longo do tempo, já que se trata realmente de uma variável aleatória adicionada aos dados.</li>
+</ul>
+<h2 id="facetgrid">FacetGrid</h2>
+<p>Este é um tipo de gráfico que permite a visualização do comportamento de mais de duas variáveis ao mesmo tempo. Na figura, optei por visualizar a variável <em>&lsquo;Appliances&rsquo;</em> em relação à <em>&lsquo;rv1&rsquo;</em> e <em>&lsquo;T_out&rsquo;</em>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Aqui basta alterar o intervalo desejado e as variáveis desejadas</span>
+g <span style="color:#f92672">=</span> sns<span style="color:#f92672">.</span>FacetGrid(df_num[<span style="color:#e6db74">&#39;2016-05&#39;</span>], col<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Appliances&#34;</span>, col_wrap<span style="color:#f92672">=</span><span style="color:#ae81ff">8</span>, height<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, ylim<span style="color:#f92672">=</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">50</span>))
+g<span style="color:#f92672">.</span>map(sns<span style="color:#f92672">.</span>scatterplot, <span style="color:#e6db74">&#34;rv1&#34;</span>, <span style="color:#e6db74">&#34;T_out&#34;</span>, ci<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>);
+</code></pre></div><p><img src="/img/output_31_0.png" alt="png"></p>
+<p>Vemos que a maior varialibilidade dos dados se dá entre 20 a 130 do Appliance. Logo a modelagem pode ser favorecida a partir da remoção de outliers.</p>
+<h1 id="feature-engineering">Feature Engineering</h1>
+<h2 id="tratamento-de-outliers">Tratamento de outliers</h2>
+<p>Como vimos que o &lsquo;Appliances&rsquo; possui muito valores outliers. Podemos iniciar o tratamento pela elimação desses valores.</p>
+<p>Para isso, identifiquei o Interquantile Range para remvover o whisker superior do boxplot. Como pode ser visto no código a seguir.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Primeiro e terceiro quartil e cálculo da distância IQR</span>
+Q1 <span style="color:#f92672">=</span> df_num[<span style="color:#e6db74">&#39;Appliances&#39;</span>]<span style="color:#f92672">.</span>quantile(<span style="color:#ae81ff">0.25</span>)
+Q3 <span style="color:#f92672">=</span> df_num[<span style="color:#e6db74">&#39;Appliances&#39;</span>]<span style="color:#f92672">.</span>quantile(<span style="color:#ae81ff">0.75</span>)
+IQR <span style="color:#f92672">=</span> Q3 <span style="color:#f92672">-</span> Q1
+print(Q1)
+print(Q3)
+print(IQR)
+</code></pre></div><pre><code>50.0
+100.0
+50.0
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Determinação dos ranges inferiores e superiores do boxplot</span>
+Lower_Whisker <span style="color:#f92672">=</span> Q1 <span style="color:#f92672">-</span> <span style="color:#ae81ff">1.5</span><span style="color:#f92672">*</span>IQR
+Upper_Whisker <span style="color:#f92672">=</span> Q3 <span style="color:#f92672">+</span> <span style="color:#ae81ff">1.5</span><span style="color:#f92672">*</span>IQR
+print(Lower_Whisker, Upper_Whisker)
+</code></pre></div><pre><code>-25.0 175.0
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Remoção dos dados outiliers</span>
+new_df <span style="color:#f92672">=</span> df_num[df_num[<span style="color:#e6db74">&#39;Appliances&#39;</span>] <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">175.0</span>]
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">year_start <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;2016&#39;</span>
+month_start <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;04&#39;</span>
+day <span style="color:#f92672">=</span> int(<span style="color:#e6db74">&#39;01&#39;</span>)
+<span style="color:#75715e"># fim</span>
+year_end <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;2016&#39;</span>
+month_end <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;05&#39;</span>
+
+<span style="color:#66d9ef">if</span> day <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span>:
+    date_start <span style="color:#f92672">=</span> year_start <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#f92672">+</span> month_start
+    date_end <span style="color:#f92672">=</span> year_end <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#f92672">+</span> month_end <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">+</span> str(day) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; 23:00:00&#39;</span>
+<span style="color:#66d9ef">else</span>:
+    date_start <span style="color:#f92672">=</span> year_start <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#f92672">+</span> month_start
+    date_end <span style="color:#f92672">=</span> year_end <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#f92672">+</span> month_end <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#f92672">+</span> str(day) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; 23:00:00&#39;</span>
+
+print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>date_start<span style="color:#e6db74">}</span><span style="color:#e6db74"> até </span><span style="color:#e6db74">{</span>date_end<span style="color:#e6db74">}</span><span style="color:#e6db74"> com </span><span style="color:#e6db74">{</span>len(new_df[date_start])<span style="color:#e6db74">}</span><span style="color:#e6db74"> pontos&#39;</span>)
+
+plt<span style="color:#f92672">.</span>subplots(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">20</span>))
+sns<span style="color:#f92672">.</span>set(style<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ticks&#34;</span>, color_codes<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+df_filter <span style="color:#f92672">=</span> new_df[date_start]
+df_filter <span style="color:#f92672">=</span> df_filter<span style="color:#f92672">.</span>drop([<span style="color:#e6db74">&#39;date&#39;</span>, <span style="color:#e6db74">&#39;NSM&#39;</span>], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+df_filter<span style="color:#f92672">.</span>boxplot()
+plt<span style="color:#f92672">.</span>show()
+</code></pre></div><pre><code>2016-04 até 2016-05-01 23:00:00 com 3870 pontos
+</code></pre>
+<p><img src="/img/output_39_1.png" alt="png"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Removendo variável de data, adicionada para ajudar na construção dos gráficos</span>
+new_df_num <span style="color:#f92672">=</span> new_df<span style="color:#f92672">.</span>drop([<span style="color:#e6db74">&#39;date&#39;</span>], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Resetando o index</span>
+new_df_num<span style="color:#f92672">.</span>reset_index(drop<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+new_df_num<span style="color:#f92672">.</span>index
+</code></pre></div><pre><code>RangeIndex(start=0, stop=17597, step=1)
+</code></pre>
+<h2 id="correlation">Correlation</h2>
+<p>Aqui foi observado como se dá a relação entre as variáveis. Particularmente se existe uma correlação linear entre as variáveis. A correlação é uma medida que varia de 0 a 1, onde valores próximos a 0 possuem uma correlação negativa e próximos a 1 uma correlação positiva.</p>
+<p>A correlação negativa entre duas variáveis representa que a cada vez que eu aumento uma a outra diminui e virse-versa. O contrário também acontece quando temos uma correlação positiva, a medida que uma variável aumenta a outra também aumenta.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Using Pearson Correlation</span>
+<span style="color:#75715e"># General correlation</span>
+plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">25</span>,<span style="color:#ae81ff">15</span>))
+cor <span style="color:#f92672">=</span> new_df_num<span style="color:#f92672">.</span>corr()
+sns<span style="color:#f92672">.</span>heatmap(cor, annot<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, cmap<span style="color:#f92672">=</span>plt<span style="color:#f92672">.</span>cm<span style="color:#f92672">.</span>Reds)
+plt<span style="color:#f92672">.</span>show()
+</code></pre></div><p><img src="/img/output_43_0.png" alt="png"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Correlation with output variable</span>
+cor_target <span style="color:#f92672">=</span> abs(cor[<span style="color:#e6db74">&#34;Appliances&#34;</span>])
+<span style="color:#75715e">#Selecting highly correlated features</span>
+relevant_features <span style="color:#f92672">=</span> cor_target[cor_target<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0.2</span>]
+relevant_features
+</code></pre></div><pre><code>RH_1           0.045596
+RH_2           0.109746
+T3             0.180061
+RH_3           0.088410
+T4             0.195689
+RH_4           0.036932
+T5             0.191782
+RH_5           0.072040
+T7             0.175519
+RH_7           0.128740
+T9             0.154471
+Press_mm_hg    0.089829
+Windspeed      0.055363
+Visibility     0.024974
+Tdewpoint      0.081550
+rv1            0.009986
+rv2            0.009986
+Name: Appliances, dtype: float64
+</code></pre>
+<p>Uma observação interessante é que maioria das variáveis possuem uma correlação negativa com a variável target, ou seja, o &lsquo;Appliances&rsquo; aumenta a medida que uma variável específica diminui.</p>
+<h2 id="normalização">Normalização</h2>
+<p>Como estamos trabalhando com dados numéricos e que possuem uma distribuição com intervalos diferentes, pode ser que o algoritmo de machine learning escolhido seja sensível a este tipo de comportamento. Outro ajuste que se faz necessário é a normalização dos dados.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># lembrando que a variável target não tem necessidade de ser normalizada</span>
+new_df_num_Y <span style="color:#f92672">=</span> new_df_num[<span style="color:#e6db74">&#39;Appliances&#39;</span>]
+new_df_num <span style="color:#f92672">=</span> new_df_num<span style="color:#f92672">.</span>drop([<span style="color:#e6db74">&#39;Appliances&#39;</span>], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+<span style="color:#75715e"># normalização</span>
+min_max_scaler <span style="color:#f92672">=</span> MinMaxScaler()
+columns <span style="color:#f92672">=</span> list(new_df_num<span style="color:#f92672">.</span>columns)
+print(columns)
+<span style="color:#66d9ef">for</span> name <span style="color:#f92672">in</span> columns:
+    <span style="color:#75715e"># convertemos para np array pois é a forma que o min_max_scaler</span>
+    <span style="color:#75715e"># recebe os dados</span>
+    new_df_num[name] <span style="color:#f92672">=</span> min_max_scaler<span style="color:#f92672">.</span>fit_transform(np<span style="color:#f92672">.</span>array(new_df_num[name])<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>))
+</code></pre></div><pre><code>['lights', 'T1', 'RH_1', 'T2', 'RH_2', 'T3', 'RH_3', 'T4', 'RH_4', 'T5', 'RH_5', 'T6', 'RH_6', 'T7', 'RH_7', 'T8', 'RH_8', 'T9', 'RH_9', 'T_out', 'Press_mm_hg', 'RH_out', 'Windspeed', 'Visibility', 'Tdewpoint', 'rv1', 'rv2', 'NSM']
+</code></pre>
+<p>Algumas variáveis ainda possuem muitos outliers, mas serão mantidas.</p>
+<h1 id="feature-selection">Feature Selection</h1>
+<p>Aqui apliquei 2 diferentes métodos de seleção de variáveis.</p>
+<h2 id="recursive-elimination">Recursive Elimination</h2>
+<p>Neste método, precisamos definir quantas variáveis queremos para rodar o modelo, e depois, quando obtido o número ótimo aplicamos a seleção de variáveis. O método identifica, recursivamente, qual conjunto de variáveis possuem maior score.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">new_df_num<span style="color:#f92672">.</span>shape
+</code></pre></div><pre><code>(17597, 28)
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#no of features</span>
+nof_list<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">28</span>)            
+high_score<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+<span style="color:#75715e">#Variable to store the optimum features</span>
+nof<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>           
+score_list <span style="color:#f92672">=</span>[]
+<span style="color:#66d9ef">for</span> n <span style="color:#f92672">in</span> range(len(nof_list)):
+    X_train, X_test, y_train, y_test <span style="color:#f92672">=</span> train_test_split(new_df_num, new_df_num_Y, test_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.3</span>, random_state <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
+    model <span style="color:#f92672">=</span> LinearRegression()
+    rfe <span style="color:#f92672">=</span> RFE(model,nof_list[n])
+    X_train_rfe <span style="color:#f92672">=</span> rfe<span style="color:#f92672">.</span>fit_transform(X_train,y_train)
+    X_test_rfe <span style="color:#f92672">=</span> rfe<span style="color:#f92672">.</span>transform(X_test)
+    model<span style="color:#f92672">.</span>fit(X_train_rfe,y_train)
+    score <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>score(X_test_rfe,y_test)
+    score_list<span style="color:#f92672">.</span>append(score)
+    <span style="color:#66d9ef">if</span>(score<span style="color:#f92672">&gt;</span>high_score):
+        high_score <span style="color:#f92672">=</span> score
+        nof <span style="color:#f92672">=</span> nof_list[n]
+print(<span style="color:#e6db74">&#34;Optimum number of features: </span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span>nof)
+print(<span style="color:#e6db74">&#34;Score with </span><span style="color:#e6db74">%d</span><span style="color:#e6db74"> features: </span><span style="color:#e6db74">%f</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> (nof, high_score))
+</code></pre></div><pre><code>Optimum number of features: 21
+Score with 21 features: 0.353213
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">cols <span style="color:#f92672">=</span> list(new_df_num<span style="color:#f92672">.</span>columns)
+model <span style="color:#f92672">=</span> LinearRegression()
+<span style="color:#75715e">#Initializing RFE model</span>
+rfe <span style="color:#f92672">=</span> RFE(model, <span style="color:#ae81ff">21</span>)
+<span style="color:#75715e">#Transforming data using RFE</span>
+X_train, X_test, y_train, y_test <span style="color:#f92672">=</span> train_test_split(new_df_num, new_df_num_Y, test_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.3</span>, random_state <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
+X_rfe <span style="color:#f92672">=</span> rfe<span style="color:#f92672">.</span>fit_transform(X_train,y_train)  
+<span style="color:#75715e">#Fitting the data to model</span>
+model<span style="color:#f92672">.</span>fit(X_rfe,y_train)             
+temp <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>Series(rfe<span style="color:#f92672">.</span>support_,index <span style="color:#f92672">=</span> cols)
+selected_features_rfe <span style="color:#f92672">=</span> temp[temp<span style="color:#f92672">==</span><span style="color:#66d9ef">True</span>]<span style="color:#f92672">.</span>index
+print(selected_features_rfe)
+</code></pre></div><pre><code>Index(['lights', 'T1', 'RH_1', 'T2', 'RH_2', 'T3', 'RH_3', 'T4', 'RH_4', 'T5',
+       'RH_5', 'T6', 'T7', 'RH_7', 'T8', 'RH_8', 'T9', 'RH_9', 'T_out',
+       'Windspeed', 'NSM'],
+      dtype='object')
+</code></pre>
+<h2 id="embedded-method">Embedded Method</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">reg <span style="color:#f92672">=</span> LassoCV()
+reg<span style="color:#f92672">.</span>fit(X_train, y_train)
+print(<span style="color:#e6db74">&#34;Best alpha using built-in LassoCV: </span><span style="color:#e6db74">%f</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> reg<span style="color:#f92672">.</span>alpha_)
+print(<span style="color:#e6db74">&#34;Best score using built-in LassoCV: </span><span style="color:#e6db74">%f</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span>reg<span style="color:#f92672">.</span>score(X_train,y_train))
+coef <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>Series(reg<span style="color:#f92672">.</span>coef_, index <span style="color:#f92672">=</span> new_df_num<span style="color:#f92672">.</span>columns)
+
+imp_coef <span style="color:#f92672">=</span> coef<span style="color:#f92672">.</span>sort_values()
+<span style="color:#f92672">import</span> matplotlib
+matplotlib<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#39;figure.figsize&#39;</span>] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">8.0</span>, <span style="color:#ae81ff">10.0</span>)
+imp_coef<span style="color:#f92672">.</span>plot(kind <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;barh&#34;</span>)
+plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#34;Feature importance using Lasso Model&#34;</span>)
+</code></pre></div><pre><code>Best alpha using built-in LassoCV: 0.003504
+Best score using built-in LassoCV: 0.356319
+
+
+
+
+
+Text(0.5, 1.0, 'Feature importance using Lasso Model')
+</code></pre>
+<p><img src="/img/output_57_2.png" alt="png"></p>
+<h1 id="machine-learning">Machine Learning</h1>
+<p>Na etapa de escolha do modelo, selecionei 3 métodos para problemas de regressão, problema que está sendo modelado, e avaliei a métria de R².</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># removendo variáveis aletórias antes de aplicar o modelo</span>
+new_df_v <span style="color:#f92672">=</span> new_df_num<span style="color:#f92672">.</span>drop([<span style="color:#e6db74">&#39;rv1&#39;</span>, <span style="color:#e6db74">&#39;rv2&#39;</span>], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">X_train, X_test, y_train, y_test <span style="color:#f92672">=</span> train_test_split(new_df_v, new_df_num_Y, train_size<span style="color:#f92672">=</span><span style="color:#ae81ff">0.7</span>)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Regressão Linear Múltipla</span>
+modelo <span style="color:#f92672">=</span> LinearRegression()
+modelo<span style="color:#f92672">.</span>fit(X_train, y_train)
+y_pred <span style="color:#f92672">=</span> modelo<span style="color:#f92672">.</span>predict(X_test)
+
+score <span style="color:#f92672">=</span>  r2_score(y_test, y_pred)
+print(score)
+</code></pre></div><pre><code>0.34058856776814994
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Support Vector Regression</span>
+modelo <span style="color:#f92672">=</span> SVR()
+modelo<span style="color:#f92672">.</span>fit(X_train, y_train)
+y_pred <span style="color:#f92672">=</span> modelo<span style="color:#f92672">.</span>predict(X_test)
+
+score <span style="color:#f92672">=</span>  r2_score(y_test, y_pred)
+print(score)
+</code></pre></div><pre><code>0.3594652532873541
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Gradient Boosting Regressor</span>
+params <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;n_estimators&#39;</span>: <span style="color:#ae81ff">500</span>, <span style="color:#e6db74">&#39;max_depth&#39;</span>: <span style="color:#ae81ff">8</span>, <span style="color:#e6db74">&#39;min_samples_split&#39;</span>: <span style="color:#ae81ff">2</span>,
+          <span style="color:#e6db74">&#39;learning_rate&#39;</span>: <span style="color:#ae81ff">0.01</span>, <span style="color:#e6db74">&#39;loss&#39;</span>: <span style="color:#e6db74">&#39;ls&#39;</span>}
+clf <span style="color:#f92672">=</span> ensemble<span style="color:#f92672">.</span>GradientBoostingRegressor(<span style="color:#f92672">**</span>params)
+
+clf<span style="color:#f92672">.</span>fit(X_train, y_train)
+y_pred <span style="color:#f92672">=</span> clf<span style="color:#f92672">.</span>predict(X_test)
+mse <span style="color:#f92672">=</span> mean_squared_error(y_test, y_pred)
+r2score <span style="color:#f92672">=</span> r2_score(y_test, y_pred)
+print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;R2 SCORE: </span><span style="color:#e6db74">{</span>r2score<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+
+</code></pre></div><pre><code>R2 SCORE: 0.6598
+</code></pre>
+<p>Vemos então que o modelo que apresentou melhor resultado foi o Gradient Boosting Regressor, com 65,98% na métrica de R². Tal resultado pode ser tido como um resultado preliminar, e etapas de otimização podem ser realizadas daqui em diante para melhorar o score do modelo.</p>
+<p>Como formas de otimização que ainda não foram testadas, temos:</p>
+<ul>
+<li>Utilização da técnica de Análise por Componentes Principais para diminuição da dimensionalidade do modelo.</li>
+<li>Criação de novas variáveis.</li>
+<li>Utilização das variáveis categóricas de data como; dia da semana, mês, feriado etc.</li>
+<li>Utilização do gridsearch para buscar um refinamento do modelo de maior score.</li>
+</ul>
+
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2019/03/16/5-diferentes-aplica%C3%A7%C3%B5es-de-ci%C3%AAncia-de-dados/" data-toggle="tooltip" data-placement="top" title="5 Diferentes Aplicações de Ciência de Dados">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2019/11/04/categorical-feature-encoding-challenge/" data-toggle="tooltip" data-placement="top" title="Categorical Feature Encoding Challenge">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        <a href="/tags/asynchronous" title="asynchronous">
+                            asynchronous
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/backend" title="backend">
+                            backend
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/data-science" title="data-science">
+                            data-science
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/data-visualization" title="data-visualization">
+                            data-visualization
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/docker" title="docker">
+                            docker
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/fastapi" title="fastapi">
+                            fastapi
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/ggplot2" title="ggplot2">
+                            ggplot2
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/machine-learning" title="machine-learning">
+                            machine-learning
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/project" title="project">
+                            project
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/r" title="r">
+                            r
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/restfull-api" title="restfull-api">
+                            restfull-api
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/sqlalchemy" title="sqlalchemy">
+                            sqlalchemy
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/time-series" title="time-series">
+                            time-series
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/web-development" title="web-development">
+                            web-development
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <li>
+                       <a href="" rel="alternate" type="application/rss+xml" title="LOB.DATA" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fa fa-circle fa-stack-2x"></i>
+                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/LucianoBatista">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		                
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/lucianobatistads/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		                
+                    
+                </ul>
+		<p class="copyright text-muted">
+                    A <a href="https://gohugo.io/">HUGO</a> <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite</a> page build with ♥ and powered by <a href="https://www.netlify.com/">Netlify</a>&nbsp;&nbsp;&bull;&nbsp;&nbsp;Header images by <a href="https://www.instagram.com/richard.strozynski/?hl=en">Richard Strozynski</a>
+    </p>
+    <p class="copyright text-muted" style='font-size:8pt;'>
+                    &copy; LOB.DATA 2019–2021. All rights reserved.&nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="https://cedricscherer.netlify.com/top/impressum/">Impressum</a>&nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="https://cedricscherer.netlify.com/top/conduct/">Code of Conduct</a>
+                    <br>
+                    Content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>.
+                    <br>
+                    <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#28a87d'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>

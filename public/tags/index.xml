@@ -2,66 +2,242 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on LOB.DATA</title>
-    <link>/tags/</link>
+    <link>https://www.lobdata.com.br/tags/</link>
     <description>Recent content in Tags on LOB.DATA</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>pt-br</language>
-    <lastBuildDate>Mon, 04 Nov 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
-    
+    <language>en-us</language>
+    <lastBuildDate>Thu, 08 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Asynchronous</title>
+      <link>https://www.lobdata.com.br/tags/asynchronous/</link>
+      <pubDate>Thu, 08 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/tags/asynchronous/</guid>
+      <description></description>
+    </item>
     
     <item>
-      <title>Challenge</title>
-      <link>/tags/challenge/</link>
-      <pubDate>Mon, 04 Nov 2019 00:00:00 +0000</pubDate>
+      <title>Backend</title>
+      <link>https://www.lobdata.com.br/tags/backend/</link>
+      <pubDate>Thu, 08 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>/tags/challenge/</guid>
+      <guid>https://www.lobdata.com.br/tags/backend/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>https://www.lobdata.com.br/tags/docker/</link>
+      <pubDate>Thu, 08 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>FastAPI</title>
+      <link>https://www.lobdata.com.br/tags/fastapi/</link>
+      <pubDate>Thu, 08 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/tags/fastapi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RESTFull API</title>
+      <link>https://www.lobdata.com.br/tags/restfull-api/</link>
+      <pubDate>Thu, 08 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/tags/restfull-api/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SQLAlchemy</title>
+      <link>https://www.lobdata.com.br/tags/sqlalchemy/</link>
+      <pubDate>Thu, 08 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/tags/sqlalchemy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web Development</title>
+      <link>https://www.lobdata.com.br/tags/web-development/</link>
+      <pubDate>Thu, 08 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/tags/web-development/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Data Science</title>
-      <link>/tags/data-science/</link>
-      <pubDate>Mon, 04 Nov 2019 00:00:00 +0000</pubDate>
+      <link>https://www.lobdata.com.br/tags/data-science/</link>
+      <pubDate>Sun, 25 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>/tags/data-science/</guid>
+      <guid>https://www.lobdata.com.br/tags/data-science/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Machine Learning</title>
-      <link>/tags/machine-learning/</link>
-      <pubDate>Mon, 04 Nov 2019 00:00:00 +0000</pubDate>
+      <link>https://www.lobdata.com.br/tags/machine-learning/</link>
+      <pubDate>Sun, 25 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>/tags/machine-learning/</guid>
+      <guid>https://www.lobdata.com.br/tags/machine-learning/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Project</title>
-      <link>/tags/project/</link>
+      <link>https://www.lobdata.com.br/tags/project/</link>
+      <pubDate>Sun, 25 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/tags/project/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Time Series</title>
+      <link>https://www.lobdata.com.br/tags/time-series/</link>
+      <pubDate>Sun, 25 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/tags/time-series/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>corplot</title>
+      <link>https://www.lobdata.com.br/tags/corplot/</link>
+      <pubDate>Tue, 13 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/tags/corplot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>corrr</title>
+      <link>https://www.lobdata.com.br/tags/corrr/</link>
+      <pubDate>Tue, 13 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/tags/corrr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data exploration</title>
+      <link>https://www.lobdata.com.br/tags/data-exploration/</link>
+      <pubDate>Tue, 13 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/tags/data-exploration/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data visualization</title>
+      <link>https://www.lobdata.com.br/tags/data-visualization/</link>
+      <pubDate>Tue, 13 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/tags/data-visualization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ggplot2</title>
+      <link>https://www.lobdata.com.br/tags/ggplot2/</link>
+      <pubDate>Tue, 13 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/tags/ggplot2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>https://www.lobdata.com.br/tags/r/</link>
+      <pubDate>Tue, 13 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/tags/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>purrr</title>
+      <link>https://www.lobdata.com.br/tags/purrr/</link>
+      <pubDate>Fri, 02 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/tags/purrr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hypothesis Testing</title>
+      <link>https://www.lobdata.com.br/tags/hypothesis-testing/</link>
+      <pubDate>Sun, 20 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/tags/hypothesis-testing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Infer</title>
+      <link>https://www.lobdata.com.br/tags/infer/</link>
+      <pubDate>Sun, 20 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/tags/infer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Statistics</title>
+      <link>https://www.lobdata.com.br/tags/statistics/</link>
+      <pubDate>Sun, 20 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/tags/statistics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Autocorrelation</title>
+      <link>https://www.lobdata.com.br/tags/autocorrelation/</link>
+      <pubDate>Tue, 15 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/tags/autocorrelation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>K-Means</title>
+      <link>https://www.lobdata.com.br/tags/k-means/</link>
+      <pubDate>Fri, 19 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/tags/k-means/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Challenge</title>
+      <link>https://www.lobdata.com.br/tags/challenge/</link>
       <pubDate>Mon, 04 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/project/</guid>
+      <guid>https://www.lobdata.com.br/tags/challenge/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Logistic</title>
-      <link>/tags/logistic/</link>
+      <link>https://www.lobdata.com.br/tags/logistic/</link>
       <pubDate>Sat, 16 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/logistic/</guid>
+      <guid>https://www.lobdata.com.br/tags/logistic/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Logística</title>
-      <link>/tags/log%C3%ADstica/</link>
+      <link>https://www.lobdata.com.br/tags/log%C3%ADstica/</link>
       <pubDate>Sat, 16 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/log%C3%ADstica/</guid>
+      <guid>https://www.lobdata.com.br/tags/log%C3%ADstica/</guid>
       <description></description>
     </item>
     

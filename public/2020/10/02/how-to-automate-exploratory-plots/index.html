@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="LOB.DATA">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://www.lobdata.com.br/img/banner/header_profile.jpg">
+
+    
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:image" content="https://www.cedricscherer.com/img/banner/banner.png" >
+    
+
+    
+
+    
+      <meta name="title" content="How to automate exploratory plots?" />
+      <meta property="og:title" content="How to automate exploratory plots? - Luba" />
+      <meta property="twitter:title" content="How to automate exploratory plots? - Luba" />
+      <meta property="twitter:text:title" content="How to automate exploratory plots? - Luba" />
+    
+
+    
+      <meta name="description" content="Blog by LuBa">
+      <meta property="og:description" content="Blog by LuBa" />
+      <meta property="twitter:description" content="Blog by LuBa" />
+    
+
+    
+
+    <meta name="keyword"  content="Data Visualization, Data Science, Programming, Web Development">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>How to automate exploratory plots? - Luba</title>
+
+    <link rel="canonical" href="/2020/10/02/how-to-automate-exploratory-plots/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/styles/foundation.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">LOB.DATA</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Blog</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/aplica%C3%A7%C3%B5es">aplicações</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/projetos">projetos</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/tutorials">tutorials</a>
+                    </li>
+                    
+
+		    
+                        <li><a href="/top/portfolio/">Portfolio</a></li>
+                    
+                        <li><a href="/top/dataviz/">Gallery</a></li>
+                    
+                        <li><a href="/top/about/">About Me</a></li>
+                    
+                        <li><a href="/top/links/">Links</a></li>
+                    
+
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/post_0_4.png')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/ggplot2" title="ggplot2">
+                            ggplot2
+                        </a>
+                        
+                        <a class="tag" href="/tags/data-visualization" title="Data visualization">
+                            Data visualization
+                        </a>
+                        
+                        <a class="tag" href="/tags/purrr" title="purrr">
+                            purrr
+                        </a>
+                        
+                        <a class="tag" href="/tags/r" title="R">
+                            R
+                        </a>
+                        
+                    </div>
+                    <h1>How to automate exploratory plots?</h1>
+                    <h2 class="subheading">An awesome package combo: ggplot2 and purrr</h2>
+                    <span class="meta">
+			Posted by
+			
+			    Luciano
+			
+			on
+			Friday, October 2, 2020
+                        
+                            <span id="/2020/10/02/how-to-automate-exploratory-plots/" class="leancloud_visitors meta_data_item" data-flag-title="">
+    <span class="post-meta-item-icon">
+      <span class="octicon octicon-eye"></span> 
+    </span>
+    <i class="fa fa-eye"></i>
+    <span class="old-visitors-count" style="display: none;"></span>
+    <span class="leancloud-visitors-count"></span>
+</span>
+
+
+
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+
+<script>
+	AV.initialize("", "");
+</script>
+
+<script type="text/javascript">
+function showTime(Counter) {
+    var query = new AV.Query(Counter);
+    var entries = [];
+    var $visitors = $(".leancloud_visitors");
+
+    $visitors.each(function() {
+        entries.push($(this).attr("id").trim());
+    });
+
+    query.containedIn('url', entries);
+    query.find()
+        .done(function(results) {
+            var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+            var OLD_COUNT_CONTAINER_REF = '.old-visitors-count';
+
+            
+            
+            
+            
+
+            for (var i = 0; i < results.length; i++) {
+                var item = results[i];
+                var url = item.get('url');
+                var time = item.get('time');
+                var element = document.getElementById(url);
+
+                $(element).find(COUNT_CONTAINER_REF).text(time);
+            }
+            for (var i = 0; i < entries.length; i++) {
+                var url = entries[i];
+                var element = document.getElementById(url);
+                var countSpan = $(element).find(COUNT_CONTAINER_REF);
+                if (countSpan.text() == '') {
+                    var oldCountSpan = $(element).find(OLD_COUNT_CONTAINER_REF).text();
+                    if(oldCountSpan!=''){
+                        countSpan.text(0+parseInt(oldCountSpan));
+                    }else{
+                        countSpan.text(0);          
+                    }
+                }
+            }
+        })
+        .fail(function(object, error) {
+            console.log("Error: " + error.code + " " + error.message);
+        });
+}
+
+function addCount(Counter) {
+    var $visitors = $(".leancloud_visitors");
+    var url = $visitors.attr('id').trim();
+    var title = $visitors.attr('data-flag-title').trim();
+    var query = new AV.Query(Counter);
+
+    query.equalTo("url", url);
+    query.find({
+        success: function(results) {
+            if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment("time");
+                counter.save(null, {
+                    success: function(counter) {
+                        var $element = $(document.getElementById(url));
+                        $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                    },
+                    error: function(counter, error) {
+                        console.log('Failed to save Visitor num, with error message: ' + error.message);
+                    }
+                });
+            } else {
+                var newcounter = new Counter();
+                 
+                var acl = new AV.ACL();
+                acl.setPublicReadAccess(true);
+                acl.setPublicWriteAccess(true);
+                newcounter.setACL(acl);
+                 
+                newcounter.set("title", title);
+                newcounter.set("url", url);
+                var OLD_COUNT_CONTAINER_REF = '.old-visitors-count';
+                var $element = $(document.getElementById(url));
+                var oldCountSpan = $element.find(OLD_COUNT_CONTAINER_REF).text();
+                if(oldCountSpan!=''){
+                    newcounter.set("time", parseInt(oldCountSpan)+1);
+                }else{
+ 	                    newcounter.set("time",  1);
+                }
+                newcounter.save(null, {
+                    success: function(newcounter) {
+                        var $element = $(document.getElementById(url));
+                        $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                    },
+                    error: function(newcounter, error) {
+                        console.log('Failed to create');
+                    }
+                });
+            }
+        },
+        error: function(error) {
+            console.log('Error:' + error.code + " " + error.message);
+        }
+    });
+}
+$(function() {
+    var Counter = AV.Object.extend("Counter");
+    
+    
+    if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+    } else {
+        showTime(Counter);
+    }
+});
+</script>
+
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h3>Table of Contents</h3>
+                </header>
+                <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#packages">Packages</a></li>
+        <li><a href="#data">Data</a></li>
+        <li><a href="#requirements">Requirements</a></li>
+        <li><a href="#create-a-plot">Create a plot</a></li>
+        <li><a href="#creating-our-plotting-function">Creating our plotting function</a></li>
+        <li><a href="#using-purrr">Using purrr</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                
+                <p>When you are plotting different charts during your exploratory data analysis, you sometimes end up doing a lot of repeated coding. That&rsquo;s moments you feel like would faster if you go back to excel or other tools you feel more comfortable, and that&rsquo;s great if you have no time to learn some new technique or adjust some parameters by coding.</p>
+<p>What I want to show here is a batter way to do your EDA, and with less unnecessary coding and more flexibility. So, let me introduce you to the powerful package combo <strong>GGPLOT2 + PURRR</strong>.</p>
+<p><img src="/img/linkedin_post_ggplot_purrr.png" alt="Plot"></p>
+<h3 id="packages">Packages</h3>
+<p><a href="https://ggplot2.tidyverse.org/" title="ggplot2">ggplot2</a> is an awesome package for data visualization very well know in the Data Science community and probably the library that you use to build your charts during the EDA. And, <a href="https://purrr.tidyverse.org/" title="purrr">purr</a> package enhances R&rsquo;s functional programming (FP) toolkit by providing a complete and consistent set of tools for working with functions and vectors.</p>
+<p>Here will use an implementation similar to loops, but written in a more efficient way and easier to read, <code>purrr::map()</code> function.</p>
+<h3 id="data">Data</h3>
+<p>The dataset is an imaginary <a href="https://www.kaggle.com/pavansubhasht/ibm-hr-analytics-attrition-dataset">HR dataset made by data scientists of IBM Company</a>. In our study, we&rsquo;ll look just at categorical variables, and plotting the proportion of each class within the categorical variable.</p>
+<p>The dataset has a total of 35 features, being 9 of them categorical, and also which we will use.</p>
+<pre><code class="language-{r}" data-lang="{r}"># libraries
+library(tidyverse) # include ggplot2, purrr and some others usefull packages
+library(cowplot)
+library(readxl)
+library(ggsci) # nice palletes =)
+
+# data
+hr_people_analytics_tbl &lt;- read_xlsx(&quot;00_Data/telco_train.xlsx&quot;)
+
+</code></pre><h3 id="requirements">Requirements</h3>
+<p>Before we start to build our plot, we need to specify which variable will be used in the analysis. As here we&rsquo;ll use just look at categorical features, in order to see the proportion between different classes, we&rsquo;ll write a named vector with this information.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># selecting character variables</span>
+hr_people_analytics_char_tbl <span style="color:#f92672">&lt;-</span> hr_people_analytics_tbl <span style="color:#f92672">%&gt;%</span> 
+    <span style="color:#a6e22e">select_if</span>(is.character)
+
+<span style="color:#75715e"># setting a named vector</span>
+names <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">names</span>(hr_people_analytics_char_tbl)
+names <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">set_names</span>(names)
+
+</code></pre></div><p>The <code>set_names</code> is super handy for naming character vectors since it can use the values of the vector as names.</p>
+<h3 id="create-a-plot">Create a plot</h3>
+<p>My approach to this problem is, first just plot the chart that you want, and second, replace the variable with an input of a function. This part is where you need to put more effort into coding.</p>
+<p>In the code chunk below you&rsquo;ll find a plot for a specific variable, &ldquo;Attrition&rdquo;.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">scale_color <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">pal_jco</span>()(<span style="color:#ae81ff">10</span>)
+    
+hr_people_analytics_char_tbl <span style="color:#f92672">%&gt;%</span> 
+    <span style="color:#a6e22e">count</span>(Attrition) <span style="color:#f92672">%&gt;%</span> 
+    <span style="color:#a6e22e">mutate</span>(prop <span style="color:#f92672">=</span> n<span style="color:#f92672">/</span><span style="color:#a6e22e">sum</span>(n)) <span style="color:#f92672">%&gt;%</span> 
+    <span style="color:#a6e22e">ggplot</span>(<span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> <span style="color:#a6e22e">fct_reorder</span>(Attrition, prop),
+               y <span style="color:#f92672">=</span> prop,
+               color <span style="color:#f92672">=</span> Attrition)) <span style="color:#f92672">+</span>
+    <span style="color:#a6e22e">scale_color_manual</span>(values <span style="color:#f92672">=</span> scale_color) <span style="color:#f92672">+</span>
+    <span style="color:#a6e22e">geom_segment</span>(<span style="color:#a6e22e">aes</span>(xend <span style="color:#f92672">=</span> Attrition, yend <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>),
+                 show.legend <span style="color:#f92672">=</span> F) <span style="color:#f92672">+</span>
+    <span style="color:#a6e22e">geom_point</span>(<span style="color:#a6e22e">aes</span>(size <span style="color:#f92672">=</span> prop),
+               show.legend <span style="color:#f92672">=</span> F) <span style="color:#f92672">+</span>
+    <span style="color:#a6e22e">geom_label</span>(<span style="color:#a6e22e">aes</span>(label <span style="color:#f92672">=</span> prop, size <span style="color:#f92672">=</span> prop<span style="color:#f92672">*</span><span style="color:#ae81ff">10</span>), 
+               fill <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;white&#34;</span>, 
+               hjust <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;inward&#34;</span>,
+               show.legend <span style="color:#f92672">=</span> F) <span style="color:#f92672">+</span>
+    <span style="color:#a6e22e">labs</span>(
+        x <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Attrition&#34;</span>
+    ) <span style="color:#f92672">+</span>
+    <span style="color:#a6e22e">coord_flip</span>() <span style="color:#f92672">+</span>
+    <span style="color:#a6e22e">theme_minimal</span>()
+
+</code></pre></div><p><img src="/img/ggplot_purr_01.png" alt="Plot"></p>
+<p>I like to use this kind of plot when we will have a lot of different plots together, instead of use bar charts. The columns of bar charts can throw to the user too much useless information when just the end of the bar is important.</p>
+<p>One tip to really grasp the steps for building this kind of chart (lollipop chart) is to thinking plots like layers (grammar of graphics) and put one on top of the other.</p>
+<p>So, there are three core layers that need to be built in sequence:</p>
+<ol>
+<li><code>geom_segment()</code></li>
+<li><code>geom_point()</code></li>
+<li><code>geom_label()</code></li>
+</ol>
+<p>The rest of the plot is trivial to any ggplot chart that you already build.</p>
+<p>Nice, now, we need to replace the variable used before as input in a function. Let&rsquo;s go!</p>
+<h3 id="creating-our-plotting-function">Creating our plotting function</h3>
+<p>To do this replacement we will use the pronoun <code>.data</code> from <a href="https://rlang.r-lib.org/">rlang</a> package, this <a href="https://rlang.r-lib.org/reference/tidyeval-data.html">pronoun</a> allows you to be explicit about where to find objects when programming with data masked functions.</p>
+<p>Using this strategy we will have the following function:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># second: plot_function</span>
+plot_frequency <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(x) {
+    
+    scale_color <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">pal_jco</span>()(<span style="color:#ae81ff">10</span>)
+    
+    hr_people_analytics_char_tbl <span style="color:#f92672">%&gt;%</span> 
+        <span style="color:#a6e22e">count</span>(.data[[x]]) <span style="color:#f92672">%&gt;%</span> 
+        <span style="color:#a6e22e">mutate</span>(prop <span style="color:#f92672">=</span> n<span style="color:#f92672">/</span><span style="color:#a6e22e">sum</span>(n)) <span style="color:#f92672">%&gt;%</span> 
+        <span style="color:#a6e22e">ggplot</span>(<span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> <span style="color:#a6e22e">fct_reorder</span>(.data[[x]], prop),
+                   y <span style="color:#f92672">=</span> prop,
+                   color <span style="color:#f92672">=</span> .data[[x]])) <span style="color:#f92672">+</span>
+        <span style="color:#a6e22e">scale_color_manual</span>(values <span style="color:#f92672">=</span> scale_color) <span style="color:#f92672">+</span>
+        <span style="color:#a6e22e">geom_segment</span>(<span style="color:#a6e22e">aes</span>(xend <span style="color:#f92672">=</span> .data[[x]], yend <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>),
+                     show.legend <span style="color:#f92672">=</span> F) <span style="color:#f92672">+</span>
+        <span style="color:#a6e22e">geom_point</span>(<span style="color:#a6e22e">aes</span>(size <span style="color:#f92672">=</span> prop),
+                   show.legend <span style="color:#f92672">=</span> F) <span style="color:#f92672">+</span>
+        <span style="color:#a6e22e">geom_label</span>(<span style="color:#a6e22e">aes</span>(label <span style="color:#f92672">=</span> prop, size <span style="color:#f92672">=</span> prop<span style="color:#f92672">*</span><span style="color:#ae81ff">10</span>), 
+                   fill <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;white&#34;</span>, 
+                   hjust <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;inward&#34;</span>,
+                   show.legend <span style="color:#f92672">=</span> F) <span style="color:#f92672">+</span>
+        <span style="color:#a6e22e">labs</span>(
+            x <span style="color:#f92672">=</span> x
+        ) <span style="color:#f92672">+</span>
+        <span style="color:#a6e22e">coord_flip</span>() <span style="color:#f92672">+</span>
+        <span style="color:#a6e22e">theme_minimal</span>()
+}
+
+
+</code></pre></div><h3 id="using-purrr">Using purrr</h3>
+<p>Now, here is the best step of all tutorial, apply the function that we create to all character features in the dataset. And also, we&rsquo;ll apply the <code>cowplot::plot_grid()</code> that put together all ggplot2 objects in <code>all_plots</code> list, AWESOME =D!</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">all_plots <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">map</span>(names, plot_frequency)
+cowplot<span style="color:#f92672">::</span><span style="color:#a6e22e">plot_grid</span>(plotlist <span style="color:#f92672">=</span> all_plots)
+
+</code></pre></div><p><img src="/img/ggplot_purr_02.png" alt="Plot"></p>
+<h3 id="conclusion">Conclusion</h3>
+<p>In this tutorial, you learned how to save time when was needed to plot a chart a lot of times. I hope that was useful for you. Bye!</p>
+<p><strong>Sources</strong></p>
+<ul>
+<li><a href="http://allendowney.blogspot.com/2016/06/there-is-still-only-one-test.html">Ariel Muldoon - Automating exploratory plots with ggplot2 and purrr</a></li>
+<li><a href="https://datavizm20.classes.andrewheiss.com/slides/04-slides.html#46">Andrew Heiss</a></li>
+</ul>
+
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2020/09/20/hypothesis-testing-by-computational-methodology-part-1/" data-toggle="tooltip" data-placement="top" title="Hypothesis Testing by Computational Methodology - Part 1">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2020/10/13/effective-approach-to-analyze-correlation-coefficients/" data-toggle="tooltip" data-placement="top" title="Effective approach to analyze correlation coefficients">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        <a href="/tags/asynchronous" title="asynchronous">
+                            asynchronous
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/backend" title="backend">
+                            backend
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/data-science" title="data-science">
+                            data-science
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/data-visualization" title="data-visualization">
+                            data-visualization
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/docker" title="docker">
+                            docker
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/fastapi" title="fastapi">
+                            fastapi
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/ggplot2" title="ggplot2">
+                            ggplot2
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/machine-learning" title="machine-learning">
+                            machine-learning
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/project" title="project">
+                            project
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/r" title="r">
+                            r
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/restfull-api" title="restfull-api">
+                            restfull-api
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/sqlalchemy" title="sqlalchemy">
+                            sqlalchemy
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/time-series" title="time-series">
+                            time-series
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/web-development" title="web-development">
+                            web-development
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <li>
+                       <a href="" rel="alternate" type="application/rss+xml" title="LOB.DATA" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fa fa-circle fa-stack-2x"></i>
+                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/LucianoBatista">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		                
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/lucianobatistads/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		                
+                    
+                </ul>
+		<p class="copyright text-muted">
+                    A <a href="https://gohugo.io/">HUGO</a> <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite</a> page build with ♥ and powered by <a href="https://www.netlify.com/">Netlify</a>&nbsp;&nbsp;&bull;&nbsp;&nbsp;Header images by <a href="https://www.instagram.com/richard.strozynski/?hl=en">Richard Strozynski</a>
+    </p>
+    <p class="copyright text-muted" style='font-size:8pt;'>
+                    &copy; LOB.DATA 2019–2021. All rights reserved.&nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="https://cedricscherer.netlify.com/top/impressum/">Impressum</a>&nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="https://cedricscherer.netlify.com/top/conduct/">Code of Conduct</a>
+                    <br>
+                    Content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>.
+                    <br>
+                    <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#28a87d'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>

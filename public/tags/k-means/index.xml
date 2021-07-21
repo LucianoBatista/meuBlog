@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>K-Means on LOB.DATA</title>
+    <link>https://www.lobdata.com.br/tags/k-means/</link>
+    <description>Recent content in K-Means on LOB.DATA</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 19 Jun 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/k-means/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Segmentação de clientes de Food Delivery</title>
+      <link>https://www.lobdata.com.br/2020/06/19/segmenta%C3%A7%C3%A3o-de-clientes-de-food-delivery/</link>
+      <pubDate>Fri, 19 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/2020/06/19/segmenta%C3%A7%C3%A3o-de-clientes-de-food-delivery/</guid>
+      <description>Segmentação de clientes de Food Delivery Neste projeto o objetivo é segmentar clientes de um food delivery. A segmentação permite que profissionais de marketing e product managers possam identificar subconjuntos de público-alvo para melhor adaptar suas estratégias.
+O dataset utilizado foi cedido pela Data Science Academy, e pode ser encontrado no meu github juntamente com todo o código apresentado aqui.
+Um breve overview do que será abordado no projeto:
+ Preparação de dados Visualização de dados Padronização de variáveis Clusterização com K-Means Avaliação do melhor número de cluster com o índice de Calinski-Harabasz Bootstrap para avaliar consistência do cluster Visualização dos clusters  Sem mais delongas, vamos ao código!</description>
+    </item>
+    
+  </channel>
+</rss>

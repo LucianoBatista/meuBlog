@@ -2,20 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Searches on LOB.DATA</title>
-    <link>/search/</link>
+    <link>https://www.lobdata.com.br/search/</link>
     <description>Recent content in Searches on LOB.DATA</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>pt-br</language>
-    
-	<atom:link href="/search/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>en-us</language><atom:link href="https://www.lobdata.com.br/search/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
-      <link>/search/placeholder/</link>
+      <link>https://www.lobdata.com.br/search/placeholder/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/search/placeholder/</guid>
+      <guid>https://www.lobdata.com.br/search/placeholder/</guid>
       <description></description>
     </item>
     

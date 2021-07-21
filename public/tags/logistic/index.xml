@@ -2,21 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Logistic on LOB.DATA</title>
-    <link>/tags/logistic/</link>
+    <link>https://www.lobdata.com.br/tags/logistic/</link>
     <description>Recent content in Logistic on LOB.DATA</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>pt-br</language>
-    <lastBuildDate>Sat, 16 Mar 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/tags/logistic/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>en-us</language>
+    <lastBuildDate>Sat, 16 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/logistic/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>5 Diferentes Aplicações de Ciência de Dados</title>
-      <link>/post/5_topics_data_science_application/</link>
+      <link>https://www.lobdata.com.br/2019/03/16/5-diferentes-aplica%C3%A7%C3%B5es-de-ci%C3%AAncia-de-dados/</link>
       <pubDate>Sat, 16 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/5_topics_data_science_application/</guid>
+      <guid>https://www.lobdata.com.br/2019/03/16/5-diferentes-aplica%C3%A7%C3%B5es-de-ci%C3%AAncia-de-dados/</guid>
       <description>Olá, como sabemos a ciência de dados é uma tecnologia de grande potencial e vem sendo aplicada em diferentes áreas de negócio. Estou iniciando uma série de artigos que visam aprensentar sua aplicação em 5 áreas distintas: Logística, Saúde, Turismo, Esporte e E-Sports e Engenharia.
 Antes de iniciar propriamente os tópicos, é interessante que estejamos na mesma página quando falamos de Data Science. Devido ao grande hype dessa tecnologia, ela pode acabar sendo mal interpretada, por isso eu gosto de utilizar uma definição dada pela DataRobot uma empresa pioneira em Machine Learning, localizada no Quadrante mágico do Gartner.</description>
     </item>

@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="LOB.DATA">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://www.lobdata.com.br/img/banner/header_profile.jpg">
+
+    
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:image" content="https://www.cedricscherer.com/img/banner/banner.png" >
+    
+
+    
+
+    
+      <meta name="title" content="Categorical Feature Encoding Challenge" />
+      <meta property="og:title" content="Categorical Feature Encoding Challenge - Luba" />
+      <meta property="twitter:title" content="Categorical Feature Encoding Challenge - Luba" />
+      <meta property="twitter:text:title" content="Categorical Feature Encoding Challenge - Luba" />
+    
+
+    
+      <meta name="description" content="Blog by LuBa">
+      <meta property="og:description" content="Blog by LuBa" />
+      <meta property="twitter:description" content="Blog by LuBa" />
+    
+
+    
+
+    <meta name="keyword"  content="Data Visualization, Data Science, Programming, Web Development">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Categorical Feature Encoding Challenge - Luba</title>
+
+    <link rel="canonical" href="/2019/11/04/categorical-feature-encoding-challenge/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/styles/foundation.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">LOB.DATA</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Blog</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/aplica%C3%A7%C3%B5es">aplicações</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/projetos">projetos</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/tutorials">tutorials</a>
+                    </li>
+                    
+
+		    
+                        <li><a href="/top/portfolio/">Portfolio</a></li>
+                    
+                        <li><a href="/top/dataviz/">Gallery</a></li>
+                    
+                        <li><a href="/top/about/">About Me</a></li>
+                    
+                        <li><a href="/top/links/">Links</a></li>
+                    
+
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/post_0_3.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/project" title="Project">
+                            Project
+                        </a>
+                        
+                        <a class="tag" href="/tags/challenge" title="Challenge">
+                            Challenge
+                        </a>
+                        
+                        <a class="tag" href="/tags/data-science" title="Data Science">
+                            Data Science
+                        </a>
+                        
+                        <a class="tag" href="/tags/machine-learning" title="Machine Learning">
+                            Machine Learning
+                        </a>
+                        
+                    </div>
+                    <h1>Categorical Feature Encoding Challenge</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+			Posted by
+			
+			    Luciano
+			
+			on
+			Monday, November 4, 2019
+                        
+                            <span id="/2019/11/04/categorical-feature-encoding-challenge/" class="leancloud_visitors meta_data_item" data-flag-title="">
+    <span class="post-meta-item-icon">
+      <span class="octicon octicon-eye"></span> 
+    </span>
+    <i class="fa fa-eye"></i>
+    <span class="old-visitors-count" style="display: none;"></span>
+    <span class="leancloud-visitors-count"></span>
+</span>
+
+
+
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+
+<script>
+	AV.initialize("", "");
+</script>
+
+<script type="text/javascript">
+function showTime(Counter) {
+    var query = new AV.Query(Counter);
+    var entries = [];
+    var $visitors = $(".leancloud_visitors");
+
+    $visitors.each(function() {
+        entries.push($(this).attr("id").trim());
+    });
+
+    query.containedIn('url', entries);
+    query.find()
+        .done(function(results) {
+            var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+            var OLD_COUNT_CONTAINER_REF = '.old-visitors-count';
+
+            
+            
+            
+            
+
+            for (var i = 0; i < results.length; i++) {
+                var item = results[i];
+                var url = item.get('url');
+                var time = item.get('time');
+                var element = document.getElementById(url);
+
+                $(element).find(COUNT_CONTAINER_REF).text(time);
+            }
+            for (var i = 0; i < entries.length; i++) {
+                var url = entries[i];
+                var element = document.getElementById(url);
+                var countSpan = $(element).find(COUNT_CONTAINER_REF);
+                if (countSpan.text() == '') {
+                    var oldCountSpan = $(element).find(OLD_COUNT_CONTAINER_REF).text();
+                    if(oldCountSpan!=''){
+                        countSpan.text(0+parseInt(oldCountSpan));
+                    }else{
+                        countSpan.text(0);          
+                    }
+                }
+            }
+        })
+        .fail(function(object, error) {
+            console.log("Error: " + error.code + " " + error.message);
+        });
+}
+
+function addCount(Counter) {
+    var $visitors = $(".leancloud_visitors");
+    var url = $visitors.attr('id').trim();
+    var title = $visitors.attr('data-flag-title').trim();
+    var query = new AV.Query(Counter);
+
+    query.equalTo("url", url);
+    query.find({
+        success: function(results) {
+            if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment("time");
+                counter.save(null, {
+                    success: function(counter) {
+                        var $element = $(document.getElementById(url));
+                        $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                    },
+                    error: function(counter, error) {
+                        console.log('Failed to save Visitor num, with error message: ' + error.message);
+                    }
+                });
+            } else {
+                var newcounter = new Counter();
+                 
+                var acl = new AV.ACL();
+                acl.setPublicReadAccess(true);
+                acl.setPublicWriteAccess(true);
+                newcounter.setACL(acl);
+                 
+                newcounter.set("title", title);
+                newcounter.set("url", url);
+                var OLD_COUNT_CONTAINER_REF = '.old-visitors-count';
+                var $element = $(document.getElementById(url));
+                var oldCountSpan = $element.find(OLD_COUNT_CONTAINER_REF).text();
+                if(oldCountSpan!=''){
+                    newcounter.set("time", parseInt(oldCountSpan)+1);
+                }else{
+ 	                    newcounter.set("time",  1);
+                }
+                newcounter.save(null, {
+                    success: function(newcounter) {
+                        var $element = $(document.getElementById(url));
+                        $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                    },
+                    error: function(newcounter, error) {
+                        console.log('Failed to create');
+                    }
+                });
+            }
+        },
+        error: function(error) {
+            console.log('Error:' + error.code + " " + error.message);
+        }
+    });
+}
+$(function() {
+    var Counter = AV.Object.extend("Counter");
+    
+    
+    if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+    } else {
+        showTime(Counter);
+    }
+});
+</script>
+
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h3>Table of Contents</h3>
+                </header>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#visualizações-target">Visualizações: Target</a></li>
+    <li><a href="#visualizações-binárias">Visualizações: Binárias</a></li>
+    <li><a href="#visualizações-nominais">Visualizações: Nominais</a></li>
+    <li><a href="#visualização-ordinais">Visualização: Ordinais</a></li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#temos-dia-da-semana-e-meses-do-ano">Temos dia da semana e meses do ano</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#fontes">Fontes:</a></li>
+  </ul>
+</nav>
+                
+                <h1 id="is-there-a-cat-in-your-dat">Is there a cat in your dat?</h1>
+<p>Esse é um playground do Kaggle, onde diferentes pessoas competem dentro de um determinado problema &lsquo;incomum&rsquo; porém bastante relevante. Nesta competição foi disponibilizado um dataset repleto de variáveis categóricas.</p>
+<p>Sabemos que uma das tarefas do processo de machine learning é realizar o encoding de variáveis categóricas de forma que os algoritmos possam executar seus cálculos e retornar um resultado. Dominar tal skill é de grande importância para o Cientista de Dados.</p>
+<p>Entre os tipos de variáveis categóricas, temos:</p>
+<ul>
+<li><strong>Binárias:</strong> variáveis com apenas 2 valores (S/N, F/V, 0/1&hellip;).</li>
+<li><strong>Nominais:</strong> variáveis que são apenas palavras.</li>
+<li><strong>Ordinais:</strong> variáveis que apresentam certa ordem no seu dataset.</li>
+<li><strong>Cíclicas:</strong> variáveis que possuem algum tipo de periodização (dia da semana, horas e minutos do dia, velocidade do vento, período de marés&hellip;).</li>
+</ul>
+<p>Esta foi o primeiro <em>Categorical Feature Encoding Challenge</em>, já está disponível o segundo, com maior nível de dificuldade, mas vamos por partes.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Import</span>
+<span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+<span style="color:#f92672">from</span> scipy <span style="color:#f92672">import</span> sparse, stats
+<span style="color:#f92672">from</span> sklearn.preprocessing <span style="color:#f92672">import</span> LabelEncoder, OneHotEncoder
+<span style="color:#f92672">from</span> sklearn.model_selection <span style="color:#f92672">import</span> train_test_split, StratifiedKFold, GridSearchCV
+<span style="color:#f92672">from</span> sklearn.metrics <span style="color:#f92672">import</span> accuracy_score, roc_auc_score
+<span style="color:#f92672">from</span> sklearn.linear_model <span style="color:#f92672">import</span> LogisticRegressionCV
+<span style="color:#f92672">from</span> xgboost <span style="color:#f92672">import</span> XGBClassifier
+<span style="color:#f92672">import</span> matplotlib.gridspec <span style="color:#66d9ef">as</span> gridspec
+<span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+<span style="color:#f92672">import</span> seaborn <span style="color:#66d9ef">as</span> sns
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Carregando os dados</span>
+df_train <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;data/train.csv&#39;</span>)
+df_test <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;data/test.csv&#39;</span>)
+submission <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;sample_submission.csv&#39;</span>)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">train <span style="color:#f92672">=</span> df_train<span style="color:#f92672">.</span>copy()
+test <span style="color:#f92672">=</span> df_test<span style="color:#f92672">.</span>copy()
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># removendo target dos dados</span>
+labels <span style="color:#f92672">=</span> train<span style="color:#f92672">.</span>pop(<span style="color:#e6db74">&#39;target&#39;</span>)
+y <span style="color:#f92672">=</span> labels<span style="color:#f92672">.</span>values
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># removendo e salvando o id dos datasets</span>
+<span style="color:#75715e"># será últil mais tarde</span>
+train_id <span style="color:#f92672">=</span> train<span style="color:#f92672">.</span>pop(<span style="color:#e6db74">&#39;id&#39;</span>)
+test_id <span style="color:#f92672">=</span> test<span style="color:#f92672">.</span>pop(<span style="color:#e6db74">&#39;id&#39;</span>)
+</code></pre></div><p>Antes de começarmos a fazer qualquer tipo de tratamento no dataset é importante que analisemos o comportamento das variáveis. E para isso entra em ação a Análise Exploratória dos Ddaos. Vamos a ela!</p>
+<h1 id="eda-exploratory-data-analysis">EDA (Exploratory Data Analysis)</h1>
+<p>Primeiramente é interessante ter uma função que nos permita ter uma visão geral dos dados, para dados numéricos poderíamos utilizar o <em>describe</em>, porém aqui não seria nada útil. Portanto a seguinte função foi desenvolvida.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">resumetable</span>(df):
+    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Dataset Shape: </span><span style="color:#e6db74">{</span>df<span style="color:#f92672">.</span>shape<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+    summary <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(df<span style="color:#f92672">.</span>dtypes,columns<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;dtypes&#39;</span>])
+    summary <span style="color:#f92672">=</span> summary<span style="color:#f92672">.</span>reset_index()
+    summary[<span style="color:#e6db74">&#39;Name&#39;</span>] <span style="color:#f92672">=</span> summary[<span style="color:#e6db74">&#39;index&#39;</span>]
+    summary <span style="color:#f92672">=</span> summary[[<span style="color:#e6db74">&#39;Name&#39;</span>,<span style="color:#e6db74">&#39;dtypes&#39;</span>]]
+    summary[<span style="color:#e6db74">&#39;Missing&#39;</span>] <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>isnull()<span style="color:#f92672">.</span>sum()<span style="color:#f92672">.</span>values    
+    summary[<span style="color:#e6db74">&#39;Uniques&#39;</span>] <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>nunique()<span style="color:#f92672">.</span>values
+
+    <span style="color:#75715e"># Cálcula da Entropia dos dados</span>
+    <span style="color:#66d9ef">for</span> name <span style="color:#f92672">in</span> summary[<span style="color:#e6db74">&#39;Name&#39;</span>]<span style="color:#f92672">.</span>value_counts()<span style="color:#f92672">.</span>index:
+        summary<span style="color:#f92672">.</span>loc[summary[<span style="color:#e6db74">&#39;Name&#39;</span>] <span style="color:#f92672">==</span> name, <span style="color:#e6db74">&#39;Entropy&#39;</span>] <span style="color:#f92672">=</span> round(stats<span style="color:#f92672">.</span>entropy(df[name]<span style="color:#f92672">.</span>value_counts(normalize<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>), base<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>),<span style="color:#ae81ff">2</span>)
+
+    <span style="color:#66d9ef">return</span> summary
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">summary <span style="color:#f92672">=</span> resumetable(train)
+summary
+</code></pre></div><pre><code>Dataset Shape: (300000, 23)
+</code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>dtypes</th>
+      <th>Missing</th>
+      <th>Uniques</th>
+      <th>Entropy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>bin_0</td>
+      <td>int64</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0.55</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>bin_1</td>
+      <td>int64</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0.82</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>bin_2</td>
+      <td>int64</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0.96</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>bin_3</td>
+      <td>object</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1.00</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>bin_4</td>
+      <td>object</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0.94</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>nom_0</td>
+      <td>object</td>
+      <td>0</td>
+      <td>3</td>
+      <td>1.55</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>nom_1</td>
+      <td>object</td>
+      <td>0</td>
+      <td>6</td>
+      <td>2.45</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>nom_2</td>
+      <td>object</td>
+      <td>0</td>
+      <td>6</td>
+      <td>2.44</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>nom_3</td>
+      <td>object</td>
+      <td>0</td>
+      <td>6</td>
+      <td>2.45</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>nom_4</td>
+      <td>object</td>
+      <td>0</td>
+      <td>4</td>
+      <td>1.97</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>nom_5</td>
+      <td>object</td>
+      <td>0</td>
+      <td>222</td>
+      <td>7.49</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>nom_6</td>
+      <td>object</td>
+      <td>0</td>
+      <td>522</td>
+      <td>8.74</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>nom_7</td>
+      <td>object</td>
+      <td>0</td>
+      <td>1220</td>
+      <td>9.97</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>nom_8</td>
+      <td>object</td>
+      <td>0</td>
+      <td>2215</td>
+      <td>10.84</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>nom_9</td>
+      <td>object</td>
+      <td>0</td>
+      <td>11981</td>
+      <td>13.27</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>ord_0</td>
+      <td>int64</td>
+      <td>0</td>
+      <td>3</td>
+      <td>1.27</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>ord_1</td>
+      <td>object</td>
+      <td>0</td>
+      <td>5</td>
+      <td>2.05</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>ord_2</td>
+      <td>object</td>
+      <td>0</td>
+      <td>6</td>
+      <td>2.36</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>ord_3</td>
+      <td>object</td>
+      <td>0</td>
+      <td>15</td>
+      <td>3.61</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>ord_4</td>
+      <td>object</td>
+      <td>0</td>
+      <td>26</td>
+      <td>4.51</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>ord_5</td>
+      <td>object</td>
+      <td>0</td>
+      <td>192</td>
+      <td>7.31</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>day</td>
+      <td>int64</td>
+      <td>0</td>
+      <td>7</td>
+      <td>2.47</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>month</td>
+      <td>int64</td>
+      <td>0</td>
+      <td>12</td>
+      <td>3.37</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p>Com esse simples resumo, já temos algumas informações bem úteis. Sabemos que algumas variáveis possuem um <strong>alto nível de cardinalidade</strong>, ou seja, apresentam um conjunto muito grande de valores únicos, e que os casos mais críticos estão nas variáveis nominais. A <em>ord_5</em> (ordinal) também exigirá um tratamento mais cuidadoso.</p>
+<p>Veja também que foi calculado a entropia, que corrobora com a informação de valores únicos, possuindo um valor mais alto para variáveis de maior nível de cardinalidade. De forma simples, a Entropia (aqui baseada na Teoria da Informação), mede o grau de heterogeneidade dos dados.</p>
+<p>Porém, como estamos lidando com variáveis categóricas e ainda por cima com alto número de valores únicos, é possível que exista alguns desse valores que esteja no dataset de treino e não esteja no dataset de teste e virse-versa. O impacto provocado por essa característica é que nosso modelo será treinado sobre um determinado conjunto de classes e avaliado com classes que ele nunca viu, o que pode ser bem crítico para o desempenho do modelo.</p>
+<p>Vamos então em busca dessa informação!</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">describe_infos</span>(train, test):
+    <span style="color:#e6db74">&#39;&#39;&#39;Diferença entre os datasets.&#39;&#39;&#39;</span>
+
+    stats <span style="color:#f92672">=</span> []
+    featToAnalyze <span style="color:#f92672">=</span> list(train<span style="color:#f92672">.</span>columns)
+
+    <span style="color:#66d9ef">for</span> col <span style="color:#f92672">in</span> featToAnalyze:
+        <span style="color:#75715e"># Retorna quantos valores existem em cada item único da coluna, salvando como dict</span>
+        dtrain <span style="color:#f92672">=</span> dict(train[col]<span style="color:#f92672">.</span>value_counts())
+        dtest <span style="color:#f92672">=</span> dict(test[col]<span style="color:#f92672">.</span>value_counts())
+        <span style="color:#75715e"># Retorna exatamente a chave ou as chaves (item/s) que tem no teste e não tem no treino</span>
+        <span style="color:#75715e"># E virse-versa</span>
+        set_test_not_in_train <span style="color:#f92672">=</span> set(dtest<span style="color:#f92672">.</span>keys()) <span style="color:#f92672">-</span> set(dtrain<span style="color:#f92672">.</span>keys())
+        set_train_not_in_test <span style="color:#f92672">=</span> set(dtrain<span style="color:#f92672">.</span>keys()) <span style="color:#f92672">-</span> set(dtest<span style="color:#f92672">.</span>keys())
+        <span style="color:#75715e"># Esse é um dict comprehension que retorna chave:valores das chaves identificadas no test_not_in_train</span>
+        <span style="color:#75715e"># e no train_not_in_test.</span>
+        dict_train_not_in_test <span style="color:#f92672">=</span> {key:value <span style="color:#66d9ef">for</span> key, value <span style="color:#f92672">in</span> dtrain<span style="color:#f92672">.</span>items() <span style="color:#66d9ef">if</span> key <span style="color:#f92672">in</span> set_train_not_in_test}
+        dict_test_not_in_train <span style="color:#f92672">=</span> {key:value <span style="color:#66d9ef">for</span> key, value <span style="color:#f92672">in</span> dtest<span style="color:#f92672">.</span>items() <span style="color:#66d9ef">if</span> key <span style="color:#f92672">in</span> set_test_not_in_train}
+        <span style="color:#75715e"># são variáveis para poder calcular a porcentagem de variáveis que estão no teste</span>
+        <span style="color:#75715e"># e não estão no treino e virse-versa</span>
+        items_test, tot_test <span style="color:#f92672">=</span> len(dtest), pd<span style="color:#f92672">.</span>Series(dtest)<span style="color:#f92672">.</span>sum()
+        items_train_not_test, tot_train_not_test <span style="color:#f92672">=</span> len(dict_train_not_in_test), pd<span style="color:#f92672">.</span>Series(dict_train_not_in_test, dtype<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;float32&#39;</span>)<span style="color:#f92672">.</span>sum()
+        items_train, tot_train <span style="color:#f92672">=</span> len(dtrain), pd<span style="color:#f92672">.</span>Series(dtrain)<span style="color:#f92672">.</span>sum()
+        items_test_not_train, tot_test_not_train <span style="color:#f92672">=</span> len(dict_test_not_in_train), pd<span style="color:#f92672">.</span>Series(dict_test_not_in_train, dtype<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;float32&#39;</span>)<span style="color:#f92672">.</span>sum()
+        <span style="color:#75715e"># a cada iteração calcula essas métricas e adiciona à lista stats.</span>
+        stats<span style="color:#f92672">.</span>append((
+            str(col),
+            str(items_train_not_test) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;   (&#39;</span> <span style="color:#f92672">+</span> str(round(<span style="color:#ae81ff">100</span> <span style="color:#f92672">*</span> items_train_not_test <span style="color:#f92672">/</span> items_train, <span style="color:#ae81ff">1</span>))<span style="color:#f92672">+</span><span style="color:#e6db74">&#39;%)&#39;</span>,
+            str(items_test_not_train) <span style="color:#f92672">+</span><span style="color:#e6db74">&#39;   (&#39;</span> <span style="color:#f92672">+</span> str(round(<span style="color:#ae81ff">100</span> <span style="color:#f92672">*</span> items_test_not_train <span style="color:#f92672">/</span> items_test, <span style="color:#ae81ff">1</span>))<span style="color:#f92672">+</span><span style="color:#e6db74">&#39;%)&#39;</span>))
+
+    <span style="color:#75715e"># cria um dataframe com tudo que foi criado acima</span>
+    df_stats <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(stats, columns<span style="color:#f92672">=</span>[
+        <span style="color:#e6db74">&#34;Variáveis&#34;</span>,
+        <span style="color:#e6db74">&#34;Valores únicos em treino e não no teste (%)&#34;</span>,
+        <span style="color:#e6db74">&#34;Valores únicos em teste e não no treino (%)&#34;</span>])
+
+    <span style="color:#66d9ef">return</span> df_stats
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">describe_infos(train, test)
+</code></pre></div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Variáveis</th>
+      <th>Valores únicos em treino e não no teste (%)</th>
+      <th>Valores únicos em teste e não no treino (%)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>bin_0</td>
+      <td>0   (0.0%)</td>
+      <td>0   (0.0%)</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>bin_1</td>
+      <td>0   (0.0%)</td>
+      <td>0   (0.0%)</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>bin_2</td>
+      <td>0   (0.0%)</td>
+      <td>0   (0.0%)</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>bin_3</td>
+      <td>0   (0.0%)</td>
+      <td>0   (0.0%)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>bin_4</td>
+      <td>0   (0.0%)</td>
+      <td>0   (0.0%)</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>nom_0</td>
+      <td>0   (0.0%)</td>
+      <td>0   (0.0%)</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>nom_1</td>
+      <td>0   (0.0%)</td>
+      <td>0   (0.0%)</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>nom_2</td>
+      <td>0   (0.0%)</td>
+      <td>0   (0.0%)</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>nom_3</td>
+      <td>0   (0.0%)</td>
+      <td>0   (0.0%)</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>nom_4</td>
+      <td>0   (0.0%)</td>
+      <td>0   (0.0%)</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>nom_5</td>
+      <td>0   (0.0%)</td>
+      <td>0   (0.0%)</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>nom_6</td>
+      <td>0   (0.0%)</td>
+      <td>0   (0.0%)</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>nom_7</td>
+      <td>1   (0.1%)</td>
+      <td>0   (0.0%)</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>nom_8</td>
+      <td>5   (0.2%)</td>
+      <td>4   (0.2%)</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>nom_9</td>
+      <td>229   (1.9%)</td>
+      <td>87   (0.7%)</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>ord_0</td>
+      <td>0   (0.0%)</td>
+      <td>0   (0.0%)</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>ord_1</td>
+      <td>0   (0.0%)</td>
+      <td>0   (0.0%)</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>ord_2</td>
+      <td>0   (0.0%)</td>
+      <td>0   (0.0%)</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>ord_3</td>
+      <td>0   (0.0%)</td>
+      <td>0   (0.0%)</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>ord_4</td>
+      <td>0   (0.0%)</td>
+      <td>0   (0.0%)</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>ord_5</td>
+      <td>0   (0.0%)</td>
+      <td>0   (0.0%)</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>day</td>
+      <td>0   (0.0%)</td>
+      <td>0   (0.0%)</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>month</td>
+      <td>0   (0.0%)</td>
+      <td>0   (0.0%)</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p>Vemos pela tabela acima que a variável <em>nom_9</em> é bastante <em>problemática</em>, possuíndo valores únicos espalhados pelos datasets de treino e teste. Diante disso é válido algumas considerações:</p>
+<ul>
+<li>Como se trata de uma competição do Kaggle, o dataset de teste não pode sofrer alterações, como a exclusão de observações (linhas) por exemplo.</li>
+<li>Em uma situação real os dados poderiam ser rebalanceados de forma que não existisse essas diferenças nos datasets.</li>
+<li>Para minimizar esta situação, algumas transformações podem ser realizadas no dataset como um todo. Essas transformações serão vistas mais a frente.</li>
+</ul>
+<h2 id="visualizações-target">Visualizações: Target</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Criando uma paleta de cores</span>
+flatui <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;#e74c3c&#34;</span>, <span style="color:#e6db74">&#34;#3498db&#34;</span>, <span style="color:#e6db74">&#34;#95a5a6&#34;</span>, <span style="color:#e6db74">&#34;#9b59b6&#34;</span>, <span style="color:#e6db74">&#34;#f1c40fff&#34;</span>, <span style="color:#e6db74">&#34;#34495e&#34;</span>, <span style="color:#e6db74">&#34;#2ecc71&#34;</span>]
+flatui <span style="color:#f92672">=</span> sns<span style="color:#f92672">.</span>color_palette(flatui)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">total <span style="color:#f92672">=</span> len(df_train)
+
+plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">12</span>,<span style="color:#ae81ff">6</span>))
+
+sns<span style="color:#f92672">.</span>set(style<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;darkgrid&#34;</span>)
+g <span style="color:#f92672">=</span> sns<span style="color:#f92672">.</span>countplot(x<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;target&#39;</span>, data<span style="color:#f92672">=</span>df_train, palette<span style="color:#f92672">=</span>flatui)
+g<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#34;Contagem das classes&#34;</span>, fontsize <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>)
+g<span style="color:#f92672">.</span>set_xlabel(<span style="color:#e6db74">&#34;Target Values&#34;</span>, fontsize <span style="color:#f92672">=</span> <span style="color:#ae81ff">15</span>)
+g<span style="color:#f92672">.</span>set_ylabel(<span style="color:#e6db74">&#34;Count&#34;</span>, fontsize <span style="color:#f92672">=</span> <span style="color:#ae81ff">15</span>)
+sizes<span style="color:#f92672">=</span>[]
+<span style="color:#75715e"># código para porcentagens em cada barra</span>
+<span style="color:#66d9ef">for</span> p <span style="color:#f92672">in</span> g<span style="color:#f92672">.</span>patches:
+    height <span style="color:#f92672">=</span> p<span style="color:#f92672">.</span>get_height()
+    sizes<span style="color:#f92672">.</span>append(height)
+    g<span style="color:#f92672">.</span>text(p<span style="color:#f92672">.</span>get_x()<span style="color:#f92672">+</span>p<span style="color:#f92672">.</span>get_width()<span style="color:#f92672">/</span><span style="color:#ae81ff">2.</span>,
+            height <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span>,
+            <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{:1.2f}</span><span style="color:#e6db74">%&#39;</span><span style="color:#f92672">.</span>format(height<span style="color:#f92672">/</span>total<span style="color:#f92672">*</span><span style="color:#ae81ff">100</span>),
+            ha<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;center&#34;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">14</span>)
+g<span style="color:#f92672">.</span>set_ylim(<span style="color:#ae81ff">0</span>, max(sizes) <span style="color:#f92672">*</span> <span style="color:#ae81ff">1.15</span>)
+
+plt<span style="color:#f92672">.</span>show()
+</code></pre></div><p><img src="/img/output_18_02.png" alt="png"></p>
+<p>O que observamos é que os dados não são tão desbalanceados:</p>
+<ul>
+<li><strong>69,41%</strong> pertence a classe 0</li>
+<li><strong>30,59%</strong> pertence a classe 1</li>
+</ul>
+<h2 id="visualizações-binárias">Visualizações: Binárias</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># vamos fazer um grid</span>
+<span style="color:#75715e"># temos 5 variáveis binárias, logo uma iremos</span>
+<span style="color:#75715e"># plotar em 2 linhas e 3 colunas.</span>
+grid <span style="color:#f92672">=</span> gridspec<span style="color:#f92672">.</span>GridSpec(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>)
+plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">16</span>,<span style="color:#ae81ff">20</span>))
+
+<span style="color:#75715e"># queremos um countplot, em cada variável binária</span>
+<span style="color:#75715e"># por isso o loop for</span>
+bin_cols <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;bin_0&#39;</span>, <span style="color:#e6db74">&#39;bin_1&#39;</span>, <span style="color:#e6db74">&#39;bin_2&#39;</span>, <span style="color:#e6db74">&#39;bin_3&#39;</span>, <span style="color:#e6db74">&#39;bin_4&#39;</span>]
+<span style="color:#66d9ef">for</span> n, col <span style="color:#f92672">in</span> enumerate(df_train[bin_cols]):
+    ax <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>subplot(grid[n])
+    sns<span style="color:#f92672">.</span>countplot(x<span style="color:#f92672">=</span>col, data<span style="color:#f92672">=</span>df_train, hue<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;target&#39;</span>, palette<span style="color:#f92672">=</span>flatui)
+    ax<span style="color:#f92672">.</span>set_ylabel(<span style="color:#e6db74">&#39;Count&#39;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">15</span>)
+    ax<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>col<span style="color:#e6db74">}</span><span style="color:#e6db74"> Por classe&#39;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">18</span>)
+    ax<span style="color:#f92672">.</span>set_xlabel(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>col<span style="color:#e6db74">}</span><span style="color:#e6db74"> values&#39;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">15</span>)
+    sizes<span style="color:#f92672">=</span>[]
+    <span style="color:#75715e"># código para porcentagens em cada barra</span>
+    <span style="color:#66d9ef">for</span> p <span style="color:#f92672">in</span> ax<span style="color:#f92672">.</span>patches:
+        height <span style="color:#f92672">=</span> p<span style="color:#f92672">.</span>get_height()
+        sizes<span style="color:#f92672">.</span>append(height)
+        ax<span style="color:#f92672">.</span>text(p<span style="color:#f92672">.</span>get_x()<span style="color:#f92672">+</span>p<span style="color:#f92672">.</span>get_width()<span style="color:#f92672">/</span><span style="color:#ae81ff">2.</span>,
+                height <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span>,
+                <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{:1.2f}</span><span style="color:#e6db74">%&#39;</span><span style="color:#f92672">.</span>format(height<span style="color:#f92672">/</span>total<span style="color:#f92672">*</span><span style="color:#ae81ff">100</span>),
+                ha<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;center&#34;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">12</span>)
+    ax<span style="color:#f92672">.</span>set_ylim(<span style="color:#ae81ff">0</span>, max(sizes) <span style="color:#f92672">*</span> <span style="color:#ae81ff">1.15</span>)
+
+plt<span style="color:#f92672">.</span>show()
+</code></pre></div><p><img src="/img/output_21_02.png" alt="png"></p>
+<p>Vemos que as variáveis numéricas variam entre 3 tipos de classes:</p>
+<ul>
+<li>T/F</li>
+<li>Y/N</li>
+<li>0/1</li>
+</ul>
+<p>Novamente fica bem claro que os dados são relativamente bem balanceados, apenas variável <em>bin_1</em> apresenta uma maior diferença entre as classes da variável target.</p>
+<h2 id="visualizações-nominais">Visualizações: Nominais</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># nom_cols = [&#39;nom_0&#39;, &#39;nom_1&#39;, &#39;nom_2&#39;, &#39;nom_3&#39;, &#39;nom_4&#39;, &#39;nom_5&#39;, &#39;nom_6&#39;, &#39;nom_7&#39;, &#39;nom_8&#39;, &#39;nom_9&#39;]</span>
+nom_cols <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;nom_0&#39;</span>, <span style="color:#e6db74">&#39;nom_1&#39;</span>, <span style="color:#e6db74">&#39;nom_2&#39;</span>, <span style="color:#e6db74">&#39;nom_3&#39;</span>, <span style="color:#e6db74">&#39;nom_4&#39;</span>]
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ploting_cat_fet</span>(df, cols, vis_row<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>, vis_col<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>):
+    sns<span style="color:#f92672">.</span>set(style<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;white&#34;</span>)
+
+    grid <span style="color:#f92672">=</span> gridspec<span style="color:#f92672">.</span>GridSpec(vis_row,vis_col) <span style="color:#75715e"># The grid of chart</span>
+    plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">17</span>, <span style="color:#ae81ff">35</span>)) <span style="color:#75715e"># size of figure</span>
+
+    <span style="color:#75715e"># loop to get column and the count of plots</span>
+    <span style="color:#66d9ef">for</span> n, col <span style="color:#f92672">in</span> enumerate(df_train[cols]):
+        tmp <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>crosstab(df_train[col], df_train[<span style="color:#e6db74">&#39;target&#39;</span>], normalize<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;index&#39;</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>
+        tmp <span style="color:#f92672">=</span> tmp<span style="color:#f92672">.</span>reset_index()
+        tmp<span style="color:#f92672">.</span>rename(columns<span style="color:#f92672">=</span>{<span style="color:#ae81ff">0</span>:<span style="color:#e6db74">&#39;No&#39;</span>,<span style="color:#ae81ff">1</span>:<span style="color:#e6db74">&#39;Yes&#39;</span>}, inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+
+        ax <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>subplot(grid[n]) <span style="color:#75715e"># feeding the figure of grid</span>
+        sns<span style="color:#f92672">.</span>countplot(x<span style="color:#f92672">=</span>col, data<span style="color:#f92672">=</span>df_train, order<span style="color:#f92672">=</span>list(tmp[col]<span style="color:#f92672">.</span>values), palette<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Spectral&#39;</span>)
+        ax<span style="color:#f92672">.</span>set_ylabel(<span style="color:#e6db74">&#39;Count&#39;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">15</span>) <span style="color:#75715e"># y axis label</span>
+        ax<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>col<span style="color:#e6db74">}</span><span style="color:#e6db74"> Por Classe&#39;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">18</span>) <span style="color:#75715e"># title label</span>
+        ax<span style="color:#f92672">.</span>set_xlabel(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>col<span style="color:#e6db74">}</span><span style="color:#e6db74"> values&#39;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">15</span>) <span style="color:#75715e"># x axis label</span>
+
+        <span style="color:#75715e"># twinX - to build a second yaxis</span>
+        gt <span style="color:#f92672">=</span> ax<span style="color:#f92672">.</span>twinx()
+        gt <span style="color:#f92672">=</span> sns<span style="color:#f92672">.</span>pointplot(x<span style="color:#f92672">=</span>col, y<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Yes&#39;</span>, data<span style="color:#f92672">=</span>tmp,
+                           order<span style="color:#f92672">=</span>list(tmp[col]<span style="color:#f92672">.</span>values),
+                           color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;black&#39;</span>, legend<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+        gt<span style="color:#f92672">.</span>set_ylim(tmp[<span style="color:#e6db74">&#39;Yes&#39;</span>]<span style="color:#f92672">.</span>min()<span style="color:#f92672">-</span><span style="color:#ae81ff">5</span>,tmp[<span style="color:#e6db74">&#39;Yes&#39;</span>]<span style="color:#f92672">.</span>max()<span style="color:#f92672">*</span><span style="color:#ae81ff">1.1</span>)
+        gt<span style="color:#f92672">.</span>set_ylabel(<span style="color:#e6db74">&#34;Target %True(1)&#34;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">16</span>)
+        sizes<span style="color:#f92672">=</span>[] <span style="color:#75715e"># Get highest values in y</span>
+        <span style="color:#66d9ef">for</span> p <span style="color:#f92672">in</span> ax<span style="color:#f92672">.</span>patches: <span style="color:#75715e"># loop to all objects</span>
+            height <span style="color:#f92672">=</span> p<span style="color:#f92672">.</span>get_height()
+            sizes<span style="color:#f92672">.</span>append(height)
+            ax<span style="color:#f92672">.</span>text(p<span style="color:#f92672">.</span>get_x()<span style="color:#f92672">+</span>p<span style="color:#f92672">.</span>get_width()<span style="color:#f92672">/</span><span style="color:#ae81ff">2.</span>,
+                    height <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span>,
+                    <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{:1.2f}</span><span style="color:#e6db74">%&#39;</span><span style="color:#f92672">.</span>format(height<span style="color:#f92672">/</span>total<span style="color:#f92672">*</span><span style="color:#ae81ff">100</span>),
+                    ha<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;center&#34;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">14</span>)
+        ax<span style="color:#f92672">.</span>set_ylim(<span style="color:#ae81ff">0</span>, max(sizes) <span style="color:#f92672">*</span> <span style="color:#ae81ff">1.15</span>) <span style="color:#75715e"># set y limit based on highest heights</span>
+
+
+    plt<span style="color:#f92672">.</span>subplots_adjust(hspace <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span>, wspace<span style="color:#f92672">=</span><span style="color:#ae81ff">.3</span>)
+    plt<span style="color:#f92672">.</span>show()
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">ploting_cat_fet(df_train, nom_cols, vis_row<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>, vis_col<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
+</code></pre></div><p><img src="/img/output_26_02.png" alt="png"></p>
+<p>Esse gráfico mescla 2 tipos diferentes de plots, o point plot com um gráfico de count plot, a intenção é mostrar o comportamento de algumas das variáveis nominais e a ocorrência de valores <em>True (1)</em> na aquela variável.</p>
+<p>É observado que a ocorrência de valores True é maior em classes de variáveis nominais que possuem menor ocorrência no grupo.</p>
+<p>Para variáveis nominais de alta cardinalidade (<em>nom_5</em> a <em>nom_9</em>) se torna inviável de realizar o mesmo tipo de plot</p>
+<h2 id="visualização-ordinais">Visualização: Ordinais</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">ord_cols <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;ord_0&#39;</span>, <span style="color:#e6db74">&#39;ord_1&#39;</span>, <span style="color:#e6db74">&#39;ord_2&#39;</span>, <span style="color:#e6db74">&#39;ord_3&#39;</span>, <span style="color:#e6db74">&#39;ord_4&#39;</span>]
+ploting_cat_fet(df_train, ord_cols, vis_row<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>, vis_col<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
+</code></pre></div><p><img src="/img/output_30_02.png" alt="png"></p>
+<p>Muito interessante, como estamos tratando de variáveis ordinais, significa que cada ordem irá possuir um nível de importância. O que fica nítido ao visualizar ord_4 e ord_5, que estão ordenados de A a Z.</p>
+<p>O mesmo padrão também é visto em ord_0. Mas por que não vemos o mesmo comportamento em ord_1 e ord_2?</p>
+<p>O motivo é que as variáveis não estão ordenadas pelo que de fato elas representam, e sim por ordem alfabética. Vamos visualizar então quando organizamos as variáveis ord_1 e ord_2 por uma ordem espécífica e para isso definimos algumas funções.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Vamos definir algumas funções para conversão</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ord_to_fac</span>(df, name, categories):
+    <span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">    A função converte para uma ordem específica
+</span><span style="color:#e6db74">    de fatores.
+</span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
+    raw_cat <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>Categorical(df[name], categories<span style="color:#f92672">=</span>categories, ordered<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+    labels, unique <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>factorize(raw_cat, sort<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+    new_name <span style="color:#f92672">=</span> name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;_v2&#39;</span>
+    df[new_name] <span style="color:#f92672">=</span> labels
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ord_to_num</span>(name, df, categories):
+    <span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">    A função converte para ordem numérica ou
+</span><span style="color:#e6db74">    alfabética.
+</span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
+    raw_cat <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>Categorical(df[name], categories<span style="color:#f92672">=</span>categories, ordered<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+    encoder <span style="color:#f92672">=</span> LabelEncoder()
+    encoded <span style="color:#f92672">=</span> encoder<span style="color:#f92672">.</span>fit_transform(raw_cat)
+    new_name <span style="color:#f92672">=</span> name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;_v2&#39;</span>
+    df[new_name] <span style="color:#f92672">=</span> encoded
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Verificando as classes nas variáveis ordinais</span>
+unique_ord0 <span style="color:#f92672">=</span> df_train[<span style="color:#e6db74">&#39;ord_0&#39;</span>]<span style="color:#f92672">.</span>unique()
+unique_ord1 <span style="color:#f92672">=</span> df_train[<span style="color:#e6db74">&#39;ord_1&#39;</span>]<span style="color:#f92672">.</span>unique()
+unique_ord2 <span style="color:#f92672">=</span> df_train[<span style="color:#e6db74">&#39;ord_2&#39;</span>]<span style="color:#f92672">.</span>unique()
+unique_ord3 <span style="color:#f92672">=</span> df_train[<span style="color:#e6db74">&#39;ord_3&#39;</span>]<span style="color:#f92672">.</span>unique()
+unique_ord4 <span style="color:#f92672">=</span> df_train[<span style="color:#e6db74">&#39;ord_4&#39;</span>]<span style="color:#f92672">.</span>unique()
+unique_ord5 <span style="color:#f92672">=</span> df_train[<span style="color:#e6db74">&#39;ord_5&#39;</span>]<span style="color:#f92672">.</span>unique()
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ord_1&#39;</span>
+categories <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;Novice&#39;</span>, <span style="color:#e6db74">&#39;Contributor&#39;</span>, <span style="color:#e6db74">&#39;Expert&#39;</span>, <span style="color:#e6db74">&#39;Master&#39;</span>, <span style="color:#e6db74">&#39;Grandmaster&#39;</span>]
+ord_to_fac(df_train, name, categories)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df_train<span style="color:#f92672">.</span>columns
+</code></pre></div><pre><code>Index(['id', 'bin_0', 'bin_1', 'bin_2', 'bin_3', 'bin_4', 'nom_0', 'nom_1',
+       'nom_2', 'nom_3', 'nom_4', 'nom_5', 'nom_6', 'nom_7', 'nom_8', 'nom_9',
+       'ord_0', 'ord_1', 'ord_2', 'ord_3', 'ord_4', 'ord_5', 'day', 'month',
+       'target', 'ord_1_v2'],
+      dtype='object')
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ord_2&#39;</span>
+categories <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;Freezing&#39;</span>, <span style="color:#e6db74">&#39;Cold&#39;</span>, <span style="color:#e6db74">&#39;Warm&#39;</span>, <span style="color:#e6db74">&#39;Hot&#39;</span>, <span style="color:#e6db74">&#39;Boiling Hot&#39;</span>, <span style="color:#e6db74">&#39;Lava Hot&#39;</span>]
+ord_to_fac(df_train, name, categories)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">ord_cols <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;ord_1_v2&#39;</span>, <span style="color:#e6db74">&#39;ord_2_v2&#39;</span>]
+ploting_cat_fet(df_train, ord_cols, vis_row<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, vis_col<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
+</code></pre></div><p><img src="/img/output_37_02.png" alt="png"></p>
+<p>Muito bom, agora o padrão se torna nítido. Por último vamos observar a variável <em>ord_5</em>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ord_5&#39;</span>
+categories <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;AP&#39;</span>, <span style="color:#e6db74">&#39;Ai&#39;</span>, <span style="color:#e6db74">&#39;Aj&#39;</span>, <span style="color:#e6db74">&#39;BA&#39;</span>, <span style="color:#e6db74">&#39;BE&#39;</span>, <span style="color:#e6db74">&#39;Bb&#39;</span>, <span style="color:#e6db74">&#39;Bd&#39;</span>, <span style="color:#e6db74">&#39;Bn&#39;</span>, <span style="color:#e6db74">&#39;CL&#39;</span>, <span style="color:#e6db74">&#39;CM&#39;</span>, <span style="color:#e6db74">&#39;CU&#39;</span>,
+       <span style="color:#e6db74">&#39;CZ&#39;</span>, <span style="color:#e6db74">&#39;Cl&#39;</span>, <span style="color:#e6db74">&#39;DH&#39;</span>, <span style="color:#e6db74">&#39;DN&#39;</span>, <span style="color:#e6db74">&#39;Dc&#39;</span>, <span style="color:#e6db74">&#39;Dx&#39;</span>, <span style="color:#e6db74">&#39;Ed&#39;</span>, <span style="color:#e6db74">&#39;Eg&#39;</span>, <span style="color:#e6db74">&#39;Er&#39;</span>, <span style="color:#e6db74">&#39;FI&#39;</span>, <span style="color:#e6db74">&#39;Fd&#39;</span>,
+       <span style="color:#e6db74">&#39;Fo&#39;</span>, <span style="color:#e6db74">&#39;GD&#39;</span>, <span style="color:#e6db74">&#39;GJ&#39;</span>, <span style="color:#e6db74">&#39;Gb&#39;</span>, <span style="color:#e6db74">&#39;Gx&#39;</span>, <span style="color:#e6db74">&#39;Hj&#39;</span>, <span style="color:#e6db74">&#39;IK&#39;</span>, <span style="color:#e6db74">&#39;Id&#39;</span>, <span style="color:#e6db74">&#39;JX&#39;</span>, <span style="color:#e6db74">&#39;Jc&#39;</span>, <span style="color:#e6db74">&#39;Jf&#39;</span>,
+       <span style="color:#e6db74">&#39;Jt&#39;</span>, <span style="color:#e6db74">&#39;KR&#39;</span>, <span style="color:#e6db74">&#39;KZ&#39;</span>, <span style="color:#e6db74">&#39;Kf&#39;</span>, <span style="color:#e6db74">&#39;Kq&#39;</span>, <span style="color:#e6db74">&#39;LE&#39;</span>, <span style="color:#e6db74">&#39;MC&#39;</span>, <span style="color:#e6db74">&#39;MO&#39;</span>, <span style="color:#e6db74">&#39;MV&#39;</span>, <span style="color:#e6db74">&#39;Mf&#39;</span>, <span style="color:#e6db74">&#39;Ml&#39;</span>,
+       <span style="color:#e6db74">&#39;Mx&#39;</span>, <span style="color:#e6db74">&#39;NV&#39;</span>, <span style="color:#e6db74">&#39;Nf&#39;</span>, <span style="color:#e6db74">&#39;Nk&#39;</span>, <span style="color:#e6db74">&#39;OR&#39;</span>, <span style="color:#e6db74">&#39;Ob&#39;</span>, <span style="color:#e6db74">&#39;Os&#39;</span>, <span style="color:#e6db74">&#39;PA&#39;</span>, <span style="color:#e6db74">&#39;PQ&#39;</span>, <span style="color:#e6db74">&#39;PZ&#39;</span>, <span style="color:#e6db74">&#39;Ps&#39;</span>,
+       <span style="color:#e6db74">&#39;QM&#39;</span>, <span style="color:#e6db74">&#39;Qb&#39;</span>, <span style="color:#e6db74">&#39;Qh&#39;</span>, <span style="color:#e6db74">&#39;Qo&#39;</span>, <span style="color:#e6db74">&#39;RG&#39;</span>, <span style="color:#e6db74">&#39;RL&#39;</span>, <span style="color:#e6db74">&#39;RP&#39;</span>, <span style="color:#e6db74">&#39;Rm&#39;</span>, <span style="color:#e6db74">&#39;Ry&#39;</span>, <span style="color:#e6db74">&#39;SB&#39;</span>, <span style="color:#e6db74">&#39;Sc&#39;</span>,
+       <span style="color:#e6db74">&#39;TR&#39;</span>, <span style="color:#e6db74">&#39;TZ&#39;</span>, <span style="color:#e6db74">&#39;To&#39;</span>, <span style="color:#e6db74">&#39;UO&#39;</span>, <span style="color:#e6db74">&#39;Uk&#39;</span>, <span style="color:#e6db74">&#39;Uu&#39;</span>, <span style="color:#e6db74">&#39;Vf&#39;</span>, <span style="color:#e6db74">&#39;Vx&#39;</span>, <span style="color:#e6db74">&#39;WE&#39;</span>, <span style="color:#e6db74">&#39;Wc&#39;</span>, <span style="color:#e6db74">&#39;Wv&#39;</span>,
+       <span style="color:#e6db74">&#39;XI&#39;</span>, <span style="color:#e6db74">&#39;Xh&#39;</span>, <span style="color:#e6db74">&#39;Xi&#39;</span>, <span style="color:#e6db74">&#39;YC&#39;</span>, <span style="color:#e6db74">&#39;Yb&#39;</span>, <span style="color:#e6db74">&#39;Ye&#39;</span>, <span style="color:#e6db74">&#39;ZR&#39;</span>, <span style="color:#e6db74">&#39;ZS&#39;</span>, <span style="color:#e6db74">&#39;Zc&#39;</span>, <span style="color:#e6db74">&#39;Zq&#39;</span>, <span style="color:#e6db74">&#39;aF&#39;</span>,
+       <span style="color:#e6db74">&#39;aM&#39;</span>, <span style="color:#e6db74">&#39;aO&#39;</span>, <span style="color:#e6db74">&#39;aP&#39;</span>, <span style="color:#e6db74">&#39;ac&#39;</span>, <span style="color:#e6db74">&#39;av&#39;</span>, <span style="color:#e6db74">&#39;bF&#39;</span>, <span style="color:#e6db74">&#39;bJ&#39;</span>, <span style="color:#e6db74">&#39;be&#39;</span>, <span style="color:#e6db74">&#39;cA&#39;</span>, <span style="color:#e6db74">&#39;cG&#39;</span>, <span style="color:#e6db74">&#39;cW&#39;</span>,
+       <span style="color:#e6db74">&#39;ck&#39;</span>, <span style="color:#e6db74">&#39;cp&#39;</span>, <span style="color:#e6db74">&#39;dB&#39;</span>, <span style="color:#e6db74">&#39;dE&#39;</span>, <span style="color:#e6db74">&#39;dN&#39;</span>, <span style="color:#e6db74">&#39;dO&#39;</span>, <span style="color:#e6db74">&#39;dP&#39;</span>, <span style="color:#e6db74">&#39;dQ&#39;</span>, <span style="color:#e6db74">&#39;dZ&#39;</span>, <span style="color:#e6db74">&#39;dh&#39;</span>, <span style="color:#e6db74">&#39;eG&#39;</span>,
+       <span style="color:#e6db74">&#39;eQ&#39;</span>, <span style="color:#e6db74">&#39;eb&#39;</span>, <span style="color:#e6db74">&#39;eg&#39;</span>, <span style="color:#e6db74">&#39;ek&#39;</span>, <span style="color:#e6db74">&#39;ex&#39;</span>, <span style="color:#e6db74">&#39;fO&#39;</span>, <span style="color:#e6db74">&#39;fh&#39;</span>, <span style="color:#e6db74">&#39;gJ&#39;</span>, <span style="color:#e6db74">&#39;gM&#39;</span>, <span style="color:#e6db74">&#39;hL&#39;</span>, <span style="color:#e6db74">&#39;hT&#39;</span>,
+       <span style="color:#e6db74">&#39;hh&#39;</span>, <span style="color:#e6db74">&#39;hp&#39;</span>, <span style="color:#e6db74">&#39;iT&#39;</span>, <span style="color:#e6db74">&#39;ih&#39;</span>, <span style="color:#e6db74">&#39;jS&#39;</span>, <span style="color:#e6db74">&#39;jV&#39;</span>, <span style="color:#e6db74">&#39;je&#39;</span>, <span style="color:#e6db74">&#39;jp&#39;</span>, <span style="color:#e6db74">&#39;kC&#39;</span>, <span style="color:#e6db74">&#39;kE&#39;</span>, <span style="color:#e6db74">&#39;kK&#39;</span>,
+       <span style="color:#e6db74">&#39;kL&#39;</span>, <span style="color:#e6db74">&#39;kU&#39;</span>, <span style="color:#e6db74">&#39;kW&#39;</span>, <span style="color:#e6db74">&#39;ke&#39;</span>, <span style="color:#e6db74">&#39;kr&#39;</span>, <span style="color:#e6db74">&#39;kw&#39;</span>, <span style="color:#e6db74">&#39;lF&#39;</span>, <span style="color:#e6db74">&#39;lL&#39;</span>, <span style="color:#e6db74">&#39;ll&#39;</span>, <span style="color:#e6db74">&#39;lx&#39;</span>, <span style="color:#e6db74">&#39;mb&#39;</span>,
+       <span style="color:#e6db74">&#39;mc&#39;</span>, <span style="color:#e6db74">&#39;mm&#39;</span>, <span style="color:#e6db74">&#39;nX&#39;</span>, <span style="color:#e6db74">&#39;nh&#39;</span>, <span style="color:#e6db74">&#39;oC&#39;</span>, <span style="color:#e6db74">&#39;oG&#39;</span>, <span style="color:#e6db74">&#39;oH&#39;</span>, <span style="color:#e6db74">&#39;oK&#39;</span>, <span style="color:#e6db74">&#39;od&#39;</span>, <span style="color:#e6db74">&#39;on&#39;</span>, <span style="color:#e6db74">&#39;pa&#39;</span>,
+       <span style="color:#e6db74">&#39;ps&#39;</span>, <span style="color:#e6db74">&#39;qA&#39;</span>, <span style="color:#e6db74">&#39;qJ&#39;</span>, <span style="color:#e6db74">&#39;qK&#39;</span>, <span style="color:#e6db74">&#39;qP&#39;</span>, <span style="color:#e6db74">&#39;qX&#39;</span>, <span style="color:#e6db74">&#39;qo&#39;</span>, <span style="color:#e6db74">&#39;qv&#39;</span>, <span style="color:#e6db74">&#39;qw&#39;</span>, <span style="color:#e6db74">&#39;rZ&#39;</span>, <span style="color:#e6db74">&#39;ri&#39;</span>,
+       <span style="color:#e6db74">&#39;rp&#39;</span>, <span style="color:#e6db74">&#39;sD&#39;</span>, <span style="color:#e6db74">&#39;sV&#39;</span>, <span style="color:#e6db74">&#39;sY&#39;</span>, <span style="color:#e6db74">&#39;sn&#39;</span>, <span style="color:#e6db74">&#39;su&#39;</span>, <span style="color:#e6db74">&#39;tM&#39;</span>, <span style="color:#e6db74">&#39;tP&#39;</span>, <span style="color:#e6db74">&#39;tv&#39;</span>, <span style="color:#e6db74">&#39;uJ&#39;</span>, <span style="color:#e6db74">&#39;uS&#39;</span>,
+       <span style="color:#e6db74">&#39;ud&#39;</span>, <span style="color:#e6db74">&#39;us&#39;</span>, <span style="color:#e6db74">&#39;ut&#39;</span>, <span style="color:#e6db74">&#39;ux&#39;</span>, <span style="color:#e6db74">&#39;uy&#39;</span>, <span style="color:#e6db74">&#39;vK&#39;</span>, <span style="color:#e6db74">&#39;vq&#39;</span>, <span style="color:#e6db74">&#39;vy&#39;</span>, <span style="color:#e6db74">&#39;wu&#39;</span>, <span style="color:#e6db74">&#39;wy&#39;</span>, <span style="color:#e6db74">&#39;xP&#39;</span>,
+       <span style="color:#e6db74">&#39;xy&#39;</span>, <span style="color:#e6db74">&#39;yN&#39;</span>, <span style="color:#e6db74">&#39;yY&#39;</span>, <span style="color:#e6db74">&#39;yc&#39;</span>, <span style="color:#e6db74">&#39;zU&#39;</span>]
+ord_to_num(name, df_train, categories)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">ord_cols <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;ord_5_v2&#39;</span>]
+ploting_cat_fet(df_train, ord_cols, vis_row<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, vis_col<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</code></pre></div><p><img src="/img/output_40_02.png" alt="png"></p>
+<p>O que observamos é que as classes da variável <em>ord_5</em> não possuem o comportamento tão linear quanto as outras variáveis ordinais. Nos levando a duas hipóteses:</p>
+<ul>
+<li>Ou a variável é resultado de combinação de variáveis, que acabou proporcionando esse ruído observado.</li>
+<li>Ou ela realmente possui (intrinsecamente) esse ruído, e não teríamos muito oq fazer.</li>
+</ul>
+<p>Podemos então testar a primeira suposição, e realizar a separação da <em>ord_5</em> em novas duas variáveis. Onde a primeira coluna diz respeito ao primeiro caractere de cada amostra, e a segunda coluna ao segundo caractere de cada amostra.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Iremos considerar que a variável ord_5 foi resultado da junção de 2 outras</span>
+<span style="color:#75715e"># sendo um caractere oriundo de uma variável e o outro de outra.</span>
+<span style="color:#75715e"># Dessa forma separaremos cada elemento da ord_5 do dataset.</span>
+categories <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;AP&#39;</span>, <span style="color:#e6db74">&#39;Ai&#39;</span>, <span style="color:#e6db74">&#39;Aj&#39;</span>, <span style="color:#e6db74">&#39;BA&#39;</span>, <span style="color:#e6db74">&#39;BE&#39;</span>, <span style="color:#e6db74">&#39;Bb&#39;</span>, <span style="color:#e6db74">&#39;Bd&#39;</span>, <span style="color:#e6db74">&#39;Bn&#39;</span>, <span style="color:#e6db74">&#39;CL&#39;</span>, <span style="color:#e6db74">&#39;CM&#39;</span>, <span style="color:#e6db74">&#39;CU&#39;</span>,
+       <span style="color:#e6db74">&#39;CZ&#39;</span>, <span style="color:#e6db74">&#39;Cl&#39;</span>, <span style="color:#e6db74">&#39;DH&#39;</span>, <span style="color:#e6db74">&#39;DN&#39;</span>, <span style="color:#e6db74">&#39;Dc&#39;</span>, <span style="color:#e6db74">&#39;Dx&#39;</span>, <span style="color:#e6db74">&#39;Ed&#39;</span>, <span style="color:#e6db74">&#39;Eg&#39;</span>, <span style="color:#e6db74">&#39;Er&#39;</span>, <span style="color:#e6db74">&#39;FI&#39;</span>, <span style="color:#e6db74">&#39;Fd&#39;</span>,
+       <span style="color:#e6db74">&#39;Fo&#39;</span>, <span style="color:#e6db74">&#39;GD&#39;</span>, <span style="color:#e6db74">&#39;GJ&#39;</span>, <span style="color:#e6db74">&#39;Gb&#39;</span>, <span style="color:#e6db74">&#39;Gx&#39;</span>, <span style="color:#e6db74">&#39;Hj&#39;</span>, <span style="color:#e6db74">&#39;IK&#39;</span>, <span style="color:#e6db74">&#39;Id&#39;</span>, <span style="color:#e6db74">&#39;JX&#39;</span>, <span style="color:#e6db74">&#39;Jc&#39;</span>, <span style="color:#e6db74">&#39;Jf&#39;</span>,
+       <span style="color:#e6db74">&#39;Jt&#39;</span>, <span style="color:#e6db74">&#39;KR&#39;</span>, <span style="color:#e6db74">&#39;KZ&#39;</span>, <span style="color:#e6db74">&#39;Kf&#39;</span>, <span style="color:#e6db74">&#39;Kq&#39;</span>, <span style="color:#e6db74">&#39;LE&#39;</span>, <span style="color:#e6db74">&#39;MC&#39;</span>, <span style="color:#e6db74">&#39;MO&#39;</span>, <span style="color:#e6db74">&#39;MV&#39;</span>, <span style="color:#e6db74">&#39;Mf&#39;</span>, <span style="color:#e6db74">&#39;Ml&#39;</span>,
+       <span style="color:#e6db74">&#39;Mx&#39;</span>, <span style="color:#e6db74">&#39;NV&#39;</span>, <span style="color:#e6db74">&#39;Nf&#39;</span>, <span style="color:#e6db74">&#39;Nk&#39;</span>, <span style="color:#e6db74">&#39;OR&#39;</span>, <span style="color:#e6db74">&#39;Ob&#39;</span>, <span style="color:#e6db74">&#39;Os&#39;</span>, <span style="color:#e6db74">&#39;PA&#39;</span>, <span style="color:#e6db74">&#39;PQ&#39;</span>, <span style="color:#e6db74">&#39;PZ&#39;</span>, <span style="color:#e6db74">&#39;Ps&#39;</span>,
+       <span style="color:#e6db74">&#39;QM&#39;</span>, <span style="color:#e6db74">&#39;Qb&#39;</span>, <span style="color:#e6db74">&#39;Qh&#39;</span>, <span style="color:#e6db74">&#39;Qo&#39;</span>, <span style="color:#e6db74">&#39;RG&#39;</span>, <span style="color:#e6db74">&#39;RL&#39;</span>, <span style="color:#e6db74">&#39;RP&#39;</span>, <span style="color:#e6db74">&#39;Rm&#39;</span>, <span style="color:#e6db74">&#39;Ry&#39;</span>, <span style="color:#e6db74">&#39;SB&#39;</span>, <span style="color:#e6db74">&#39;Sc&#39;</span>,
+       <span style="color:#e6db74">&#39;TR&#39;</span>, <span style="color:#e6db74">&#39;TZ&#39;</span>, <span style="color:#e6db74">&#39;To&#39;</span>, <span style="color:#e6db74">&#39;UO&#39;</span>, <span style="color:#e6db74">&#39;Uk&#39;</span>, <span style="color:#e6db74">&#39;Uu&#39;</span>, <span style="color:#e6db74">&#39;Vf&#39;</span>, <span style="color:#e6db74">&#39;Vx&#39;</span>, <span style="color:#e6db74">&#39;WE&#39;</span>, <span style="color:#e6db74">&#39;Wc&#39;</span>, <span style="color:#e6db74">&#39;Wv&#39;</span>,
+       <span style="color:#e6db74">&#39;XI&#39;</span>, <span style="color:#e6db74">&#39;Xh&#39;</span>, <span style="color:#e6db74">&#39;Xi&#39;</span>, <span style="color:#e6db74">&#39;YC&#39;</span>, <span style="color:#e6db74">&#39;Yb&#39;</span>, <span style="color:#e6db74">&#39;Ye&#39;</span>, <span style="color:#e6db74">&#39;ZR&#39;</span>, <span style="color:#e6db74">&#39;ZS&#39;</span>, <span style="color:#e6db74">&#39;Zc&#39;</span>, <span style="color:#e6db74">&#39;Zq&#39;</span>, <span style="color:#e6db74">&#39;aF&#39;</span>,
+       <span style="color:#e6db74">&#39;aM&#39;</span>, <span style="color:#e6db74">&#39;aO&#39;</span>, <span style="color:#e6db74">&#39;aP&#39;</span>, <span style="color:#e6db74">&#39;ac&#39;</span>, <span style="color:#e6db74">&#39;av&#39;</span>, <span style="color:#e6db74">&#39;bF&#39;</span>, <span style="color:#e6db74">&#39;bJ&#39;</span>, <span style="color:#e6db74">&#39;be&#39;</span>, <span style="color:#e6db74">&#39;cA&#39;</span>, <span style="color:#e6db74">&#39;cG&#39;</span>, <span style="color:#e6db74">&#39;cW&#39;</span>,
+       <span style="color:#e6db74">&#39;ck&#39;</span>, <span style="color:#e6db74">&#39;cp&#39;</span>, <span style="color:#e6db74">&#39;dB&#39;</span>, <span style="color:#e6db74">&#39;dE&#39;</span>, <span style="color:#e6db74">&#39;dN&#39;</span>, <span style="color:#e6db74">&#39;dO&#39;</span>, <span style="color:#e6db74">&#39;dP&#39;</span>, <span style="color:#e6db74">&#39;dQ&#39;</span>, <span style="color:#e6db74">&#39;dZ&#39;</span>, <span style="color:#e6db74">&#39;dh&#39;</span>, <span style="color:#e6db74">&#39;eG&#39;</span>,
+       <span style="color:#e6db74">&#39;eQ&#39;</span>, <span style="color:#e6db74">&#39;eb&#39;</span>, <span style="color:#e6db74">&#39;eg&#39;</span>, <span style="color:#e6db74">&#39;ek&#39;</span>, <span style="color:#e6db74">&#39;ex&#39;</span>, <span style="color:#e6db74">&#39;fO&#39;</span>, <span style="color:#e6db74">&#39;fh&#39;</span>, <span style="color:#e6db74">&#39;gJ&#39;</span>, <span style="color:#e6db74">&#39;gM&#39;</span>, <span style="color:#e6db74">&#39;hL&#39;</span>, <span style="color:#e6db74">&#39;hT&#39;</span>,
+       <span style="color:#e6db74">&#39;hh&#39;</span>, <span style="color:#e6db74">&#39;hp&#39;</span>, <span style="color:#e6db74">&#39;iT&#39;</span>, <span style="color:#e6db74">&#39;ih&#39;</span>, <span style="color:#e6db74">&#39;jS&#39;</span>, <span style="color:#e6db74">&#39;jV&#39;</span>, <span style="color:#e6db74">&#39;je&#39;</span>, <span style="color:#e6db74">&#39;jp&#39;</span>, <span style="color:#e6db74">&#39;kC&#39;</span>, <span style="color:#e6db74">&#39;kE&#39;</span>, <span style="color:#e6db74">&#39;kK&#39;</span>,
+       <span style="color:#e6db74">&#39;kL&#39;</span>, <span style="color:#e6db74">&#39;kU&#39;</span>, <span style="color:#e6db74">&#39;kW&#39;</span>, <span style="color:#e6db74">&#39;ke&#39;</span>, <span style="color:#e6db74">&#39;kr&#39;</span>, <span style="color:#e6db74">&#39;kw&#39;</span>, <span style="color:#e6db74">&#39;lF&#39;</span>, <span style="color:#e6db74">&#39;lL&#39;</span>, <span style="color:#e6db74">&#39;ll&#39;</span>, <span style="color:#e6db74">&#39;lx&#39;</span>, <span style="color:#e6db74">&#39;mb&#39;</span>,
+       <span style="color:#e6db74">&#39;mc&#39;</span>, <span style="color:#e6db74">&#39;mm&#39;</span>, <span style="color:#e6db74">&#39;nX&#39;</span>, <span style="color:#e6db74">&#39;nh&#39;</span>, <span style="color:#e6db74">&#39;oC&#39;</span>, <span style="color:#e6db74">&#39;oG&#39;</span>, <span style="color:#e6db74">&#39;oH&#39;</span>, <span style="color:#e6db74">&#39;oK&#39;</span>, <span style="color:#e6db74">&#39;od&#39;</span>, <span style="color:#e6db74">&#39;on&#39;</span>, <span style="color:#e6db74">&#39;pa&#39;</span>,
+       <span style="color:#e6db74">&#39;ps&#39;</span>, <span style="color:#e6db74">&#39;qA&#39;</span>, <span style="color:#e6db74">&#39;qJ&#39;</span>, <span style="color:#e6db74">&#39;qK&#39;</span>, <span style="color:#e6db74">&#39;qP&#39;</span>, <span style="color:#e6db74">&#39;qX&#39;</span>, <span style="color:#e6db74">&#39;qo&#39;</span>, <span style="color:#e6db74">&#39;qv&#39;</span>, <span style="color:#e6db74">&#39;qw&#39;</span>, <span style="color:#e6db74">&#39;rZ&#39;</span>, <span style="color:#e6db74">&#39;ri&#39;</span>,
+       <span style="color:#e6db74">&#39;rp&#39;</span>, <span style="color:#e6db74">&#39;sD&#39;</span>, <span style="color:#e6db74">&#39;sV&#39;</span>, <span style="color:#e6db74">&#39;sY&#39;</span>, <span style="color:#e6db74">&#39;sn&#39;</span>, <span style="color:#e6db74">&#39;su&#39;</span>, <span style="color:#e6db74">&#39;tM&#39;</span>, <span style="color:#e6db74">&#39;tP&#39;</span>, <span style="color:#e6db74">&#39;tv&#39;</span>, <span style="color:#e6db74">&#39;uJ&#39;</span>, <span style="color:#e6db74">&#39;uS&#39;</span>,
+       <span style="color:#e6db74">&#39;ud&#39;</span>, <span style="color:#e6db74">&#39;us&#39;</span>, <span style="color:#e6db74">&#39;ut&#39;</span>, <span style="color:#e6db74">&#39;ux&#39;</span>, <span style="color:#e6db74">&#39;uy&#39;</span>, <span style="color:#e6db74">&#39;vK&#39;</span>, <span style="color:#e6db74">&#39;vq&#39;</span>, <span style="color:#e6db74">&#39;vy&#39;</span>, <span style="color:#e6db74">&#39;wu&#39;</span>, <span style="color:#e6db74">&#39;wy&#39;</span>, <span style="color:#e6db74">&#39;xP&#39;</span>,
+       <span style="color:#e6db74">&#39;xy&#39;</span>, <span style="color:#e6db74">&#39;yN&#39;</span>, <span style="color:#e6db74">&#39;yY&#39;</span>, <span style="color:#e6db74">&#39;yc&#39;</span>, <span style="color:#e6db74">&#39;zU&#39;</span>]
+
+ord_5_v3 <span style="color:#f92672">=</span> []
+ord_5_v4 <span style="color:#f92672">=</span> []
+<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> df_train[<span style="color:#e6db74">&#39;ord_5&#39;</span>]:
+    lista <span style="color:#f92672">=</span> list(i)
+    ord_5_v3<span style="color:#f92672">.</span>append(i[<span style="color:#ae81ff">0</span>])
+    ord_5_v4<span style="color:#f92672">.</span>append(i[<span style="color:#ae81ff">1</span>])
+
+df_train[<span style="color:#e6db74">&#39;ord_5_v3&#39;</span>] <span style="color:#f92672">=</span> ord_5_v3
+df_train[<span style="color:#e6db74">&#39;ord_5_v4&#39;</span>] <span style="color:#f92672">=</span> ord_5_v4
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df_train<span style="color:#f92672">.</span>columns
+</code></pre></div><pre><code>Index(['id', 'bin_0', 'bin_1', 'bin_2', 'bin_3', 'bin_4', 'nom_0', 'nom_1',
+       'nom_2', 'nom_3', 'nom_4', 'nom_5', 'nom_6', 'nom_7', 'nom_8', 'nom_9',
+       'ord_0', 'ord_1', 'ord_2', 'ord_3', 'ord_4', 'ord_5', 'day', 'month',
+       'target', 'ord_1_v2', 'ord_2_v2', 'ord_5_v2', 'ord_5_v3', 'ord_5_v4'],
+      dtype='object')
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">ord_cols <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;ord_5_v4&#39;</span>]
+ploting_cat_fet(df_train, ord_cols, vis_row<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, vis_col<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">ord_cols <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;ord_5_v3&#39;</span>]
+ploting_cat_fet(df_train, ord_cols, vis_row<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, vis_col<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</code></pre></div><p><img src="/img/output_44_452.png" alt="png"></p>
+<p>Incrível! Vemos que ao separar a variável <em>ord_5</em> em duas, uma delas mostrou um padrão muito mais linear que a original. E que a outra variável criada apresenta apenas ruído.</p>
+<h1 id="visualização-data">Visualização: Data</h1>
+<p>Temos no dataset algumas variáveis de data. Uma representando alguns meses do ano e a outra os dias da semana.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">total <span style="color:#f92672">=</span> len(df_train)
+
+plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">12</span>,<span style="color:#ae81ff">6</span>))
+
+sns<span style="color:#f92672">.</span>set(style<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;darkgrid&#34;</span>)
+g <span style="color:#f92672">=</span> sns<span style="color:#f92672">.</span>countplot(x<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;month&#39;</span>, hue<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;target&#39;</span>, data<span style="color:#f92672">=</span>df_train, palette<span style="color:#f92672">=</span>flatui)
+g<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#34;Contagem das classes&#34;</span>, fontsize <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>)
+g<span style="color:#f92672">.</span>set_xlabel(<span style="color:#e6db74">&#34;month&#34;</span>, fontsize <span style="color:#f92672">=</span> <span style="color:#ae81ff">15</span>)
+g<span style="color:#f92672">.</span>set_ylabel(<span style="color:#e6db74">&#34;Count&#34;</span>, fontsize <span style="color:#f92672">=</span> <span style="color:#ae81ff">15</span>)
+sizes<span style="color:#f92672">=</span>[]
+<span style="color:#75715e"># código para porcentagens em cada barra</span>
+<span style="color:#66d9ef">for</span> p <span style="color:#f92672">in</span> g<span style="color:#f92672">.</span>patches:
+    height <span style="color:#f92672">=</span> p<span style="color:#f92672">.</span>get_height()
+    sizes<span style="color:#f92672">.</span>append(height)
+    g<span style="color:#f92672">.</span>text(p<span style="color:#f92672">.</span>get_x()<span style="color:#f92672">+</span>p<span style="color:#f92672">.</span>get_width()<span style="color:#f92672">/</span><span style="color:#ae81ff">2.</span>,
+            height <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span>,
+            <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{:1.2f}</span><span style="color:#e6db74">%&#39;</span><span style="color:#f92672">.</span>format(height<span style="color:#f92672">/</span>total<span style="color:#f92672">*</span><span style="color:#ae81ff">100</span>),
+            ha<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;center&#34;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">14</span>)
+g<span style="color:#f92672">.</span>set_ylim(<span style="color:#ae81ff">0</span>, max(sizes) <span style="color:#f92672">*</span> <span style="color:#ae81ff">1.15</span>)
+
+plt<span style="color:#f92672">.</span>show()
+</code></pre></div><p><img src="/img/output_49_02.png" alt="png"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">total <span style="color:#f92672">=</span> len(df_train)
+
+plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">12</span>,<span style="color:#ae81ff">6</span>))
+
+sns<span style="color:#f92672">.</span>set(style<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;darkgrid&#34;</span>)
+g <span style="color:#f92672">=</span> sns<span style="color:#f92672">.</span>countplot(x<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;day&#39;</span>, hue<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;target&#39;</span>, data<span style="color:#f92672">=</span>df_train, palette<span style="color:#f92672">=</span>flatui)
+g<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#34;Contagem das classes&#34;</span>, fontsize <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>)
+g<span style="color:#f92672">.</span>set_xlabel(<span style="color:#e6db74">&#34;day&#34;</span>, fontsize <span style="color:#f92672">=</span> <span style="color:#ae81ff">15</span>)
+g<span style="color:#f92672">.</span>set_ylabel(<span style="color:#e6db74">&#34;Count&#34;</span>, fontsize <span style="color:#f92672">=</span> <span style="color:#ae81ff">15</span>)
+sizes<span style="color:#f92672">=</span>[]
+<span style="color:#75715e"># código para porcentagens em cada barra</span>
+<span style="color:#66d9ef">for</span> p <span style="color:#f92672">in</span> g<span style="color:#f92672">.</span>patches:
+    height <span style="color:#f92672">=</span> p<span style="color:#f92672">.</span>get_height()
+    sizes<span style="color:#f92672">.</span>append(height)
+    g<span style="color:#f92672">.</span>text(p<span style="color:#f92672">.</span>get_x()<span style="color:#f92672">+</span>p<span style="color:#f92672">.</span>get_width()<span style="color:#f92672">/</span><span style="color:#ae81ff">2.</span>,
+            height <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span>,
+            <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{:1.2f}</span><span style="color:#e6db74">%&#39;</span><span style="color:#f92672">.</span>format(height<span style="color:#f92672">/</span>total<span style="color:#f92672">*</span><span style="color:#ae81ff">100</span>),
+            ha<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;center&#34;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">14</span>)
+g<span style="color:#f92672">.</span>set_ylim(<span style="color:#ae81ff">0</span>, max(sizes) <span style="color:#f92672">*</span> <span style="color:#ae81ff">1.15</span>)
+
+plt<span style="color:#f92672">.</span>show()
+</code></pre></div><p><img src="/img/output_50_02.png" alt="png"></p>
+<p>Uma observação, apesar de ser irrelevante, é que o dia 6 e o mês 6 apresentaram a menor ocorrência de 0 e 1. A distribuição de valores do target, ao longo das datas não apresentam muito desbalanceamento, permanecendo dentro do que vem sendo observado.</p>
+<p>Começaremos agora o pré-processamento dos dados, onde será tratado cada tipo das variáveis (binária, ordinal, nominal e data).</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># para evitar de não identificar alguma classe nos dados</span>
+<span style="color:#75715e"># vamos trabalhar com os dois dataset juntos, depois iremos separar na etapa de machine learning.</span>
+df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>concat([train, test], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+</code></pre></div><h1 id="tratamento-de-variáveis-ordinais">Tratamento de variáveis ordinais</h1>
+<p>Aqui aplicaremos 2 principais técnicas de tratamento de variáveis categóricas. O Label Encoder e o One Hot Encoder disponíveis no Scikit Learn e no Pandas, respectivamente.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Como foi informado que possuímos variáveis ordinais</span>
+<span style="color:#75715e"># faz sentido que a var_7 tenha mais importância que a var_0.</span>
+<span style="color:#75715e"># Vamos definir algumas funções para conversão</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ord_to_fac</span>(df, name, categories):
+    <span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">    A função converte para uma ordem específica
+</span><span style="color:#e6db74">    de fatores.
+</span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
+    raw_cat <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>Categorical(df[name], categories<span style="color:#f92672">=</span>categories, ordered<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+    labels, unique <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>factorize(raw_cat, sort<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+    new_name <span style="color:#f92672">=</span> name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;_v2&#39;</span>
+    df[new_name] <span style="color:#f92672">=</span> labels
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ord_to_num</span>(name, df, categories):
+    <span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">    A função converte para ordem numérica ou
+</span><span style="color:#e6db74">    alfabética.
+</span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
+    raw_cat <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>Categorical(df[name], categories<span style="color:#f92672">=</span>categories, ordered<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+    encoder <span style="color:#f92672">=</span> LabelEncoder()
+    encoded <span style="color:#f92672">=</span> encoder<span style="color:#f92672">.</span>fit_transform(raw_cat)
+    new_name <span style="color:#f92672">=</span> name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;_v2&#39;</span>
+    df[new_name] <span style="color:#f92672">=</span> encoded
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Verificando as classes nas variáveis ordinais</span>
+unique_ord0 <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;ord_0&#39;</span>]<span style="color:#f92672">.</span>unique()
+unique_ord1 <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;ord_1&#39;</span>]<span style="color:#f92672">.</span>unique()
+unique_ord2 <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;ord_2&#39;</span>]<span style="color:#f92672">.</span>unique()
+unique_ord3 <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;ord_3&#39;</span>]<span style="color:#f92672">.</span>unique()
+unique_ord4 <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;ord_4&#39;</span>]<span style="color:#f92672">.</span>unique()
+unique_ord5 <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;ord_5&#39;</span>]<span style="color:#f92672">.</span>unique()
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ord_1&#39;</span>
+categories <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;Novice&#39;</span>, <span style="color:#e6db74">&#39;Contributor&#39;</span>, <span style="color:#e6db74">&#39;Expert&#39;</span>, <span style="color:#e6db74">&#39;Master&#39;</span>, <span style="color:#e6db74">&#39;Grandmaster&#39;</span>]
+ord_to_fac(df, name, categories)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ord_2&#39;</span>
+categories <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;Freezing&#39;</span>, <span style="color:#e6db74">&#39;Cold&#39;</span>, <span style="color:#e6db74">&#39;Warm&#39;</span>, <span style="color:#e6db74">&#39;Hot&#39;</span>, <span style="color:#e6db74">&#39;Boiling Hot&#39;</span>, <span style="color:#e6db74">&#39;Lava Hot&#39;</span>]
+ord_to_fac(df, name, categories)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ord_3&#39;</span>
+categories <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;a&#39;</span>, <span style="color:#e6db74">&#39;b&#39;</span>, <span style="color:#e6db74">&#39;c&#39;</span>, <span style="color:#e6db74">&#39;d&#39;</span>, <span style="color:#e6db74">&#39;e&#39;</span>, <span style="color:#e6db74">&#39;f&#39;</span>, <span style="color:#e6db74">&#39;g&#39;</span>, <span style="color:#e6db74">&#39;h&#39;</span>, <span style="color:#e6db74">&#39;i&#39;</span>, <span style="color:#e6db74">&#39;j&#39;</span>, <span style="color:#e6db74">&#39;k&#39;</span>, <span style="color:#e6db74">&#39;l&#39;</span>, <span style="color:#e6db74">&#39;m&#39;</span>, <span style="color:#e6db74">&#39;n&#39;</span>, <span style="color:#e6db74">&#39;o&#39;</span>]
+ord_to_num(name, df, categories)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ord_4&#39;</span>
+categories <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;A&#39;</span>, <span style="color:#e6db74">&#39;B&#39;</span>, <span style="color:#e6db74">&#39;C&#39;</span>, <span style="color:#e6db74">&#39;D&#39;</span>, <span style="color:#e6db74">&#39;E&#39;</span>, <span style="color:#e6db74">&#39;F&#39;</span>, <span style="color:#e6db74">&#39;G&#39;</span>, <span style="color:#e6db74">&#39;H&#39;</span>, <span style="color:#e6db74">&#39;I&#39;</span>, <span style="color:#e6db74">&#39;J&#39;</span>, <span style="color:#e6db74">&#39;K&#39;</span>, <span style="color:#e6db74">&#39;L&#39;</span>, <span style="color:#e6db74">&#39;M&#39;</span>, <span style="color:#e6db74">&#39;N&#39;</span>, <span style="color:#e6db74">&#39;O&#39;</span>, <span style="color:#e6db74">&#39;P&#39;</span>, <span style="color:#e6db74">&#39;Q&#39;</span>, <span style="color:#e6db74">&#39;R&#39;</span>, <span style="color:#e6db74">&#39;S&#39;</span>, <span style="color:#e6db74">&#39;T&#39;</span>, <span style="color:#e6db74">&#39;U&#39;</span>, <span style="color:#e6db74">&#39;V&#39;</span>, <span style="color:#e6db74">&#39;W&#39;</span>, <span style="color:#e6db74">&#39;X&#39;</span>, <span style="color:#e6db74">&#39;Y&#39;</span>, <span style="color:#e6db74">&#39;Z&#39;</span>]
+ord_to_num(name, df, categories)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">ord_5_v3 <span style="color:#f92672">=</span> []
+ord_5_v4 <span style="color:#f92672">=</span> []
+<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> df[<span style="color:#e6db74">&#39;ord_5&#39;</span>]:
+    lista <span style="color:#f92672">=</span> list(i)
+    ord_5_v3<span style="color:#f92672">.</span>append(i[<span style="color:#ae81ff">0</span>])
+    ord_5_v4<span style="color:#f92672">.</span>append(i[<span style="color:#ae81ff">1</span>])
+
+df[<span style="color:#e6db74">&#39;ord_5_v3&#39;</span>] <span style="color:#f92672">=</span> ord_5_v3
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ord_5_v3&#39;</span>
+categories <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;A&#39;</span>, <span style="color:#e6db74">&#39;B&#39;</span>, <span style="color:#e6db74">&#39;C&#39;</span>, <span style="color:#e6db74">&#39;D&#39;</span>, <span style="color:#e6db74">&#39;E&#39;</span>, <span style="color:#e6db74">&#39;F&#39;</span>, <span style="color:#e6db74">&#39;G&#39;</span>, <span style="color:#e6db74">&#39;H&#39;</span>, <span style="color:#e6db74">&#39;I&#39;</span>, <span style="color:#e6db74">&#39;J&#39;</span>, <span style="color:#e6db74">&#39;K&#39;</span>, <span style="color:#e6db74">&#39;L&#39;</span>, <span style="color:#e6db74">&#39;M&#39;</span>, <span style="color:#e6db74">&#39;N&#39;</span>, <span style="color:#e6db74">&#39;O&#39;</span>, <span style="color:#e6db74">&#39;P&#39;</span>, <span style="color:#e6db74">&#39;Q&#39;</span>, <span style="color:#e6db74">&#39;R&#39;</span>, <span style="color:#e6db74">&#39;S&#39;</span>, <span style="color:#e6db74">&#39;T&#39;</span>, <span style="color:#e6db74">&#39;U&#39;</span>, <span style="color:#e6db74">&#39;V&#39;</span>, <span style="color:#e6db74">&#39;W&#39;</span>, <span style="color:#e6db74">&#39;X&#39;</span>, <span style="color:#e6db74">&#39;Y&#39;</span>, <span style="color:#e6db74">&#39;Z&#39;</span>, <span style="color:#e6db74">&#39;a&#39;</span>, <span style="color:#e6db74">&#39;b&#39;</span>, <span style="color:#e6db74">&#39;c&#39;</span>, <span style="color:#e6db74">&#39;d&#39;</span>, <span style="color:#e6db74">&#39;e&#39;</span>, <span style="color:#e6db74">&#39;f&#39;</span>, <span style="color:#e6db74">&#39;g&#39;</span>, <span style="color:#e6db74">&#39;h&#39;</span>, <span style="color:#e6db74">&#39;i&#39;</span>, <span style="color:#e6db74">&#39;j&#39;</span>, <span style="color:#e6db74">&#39;k&#39;</span>, <span style="color:#e6db74">&#39;l&#39;</span>, <span style="color:#e6db74">&#39;m&#39;</span>, <span style="color:#e6db74">&#39;n&#39;</span>, <span style="color:#e6db74">&#39;o&#39;</span>, <span style="color:#e6db74">&#39;p&#39;</span>, <span style="color:#e6db74">&#39;q&#39;</span>, <span style="color:#e6db74">&#39;r&#39;</span>, <span style="color:#e6db74">&#39;s&#39;</span>, <span style="color:#e6db74">&#39;t&#39;</span>, <span style="color:#e6db74">&#39;u&#39;</span>, <span style="color:#e6db74">&#39;v&#39;</span>, <span style="color:#e6db74">&#39;w&#39;</span>, <span style="color:#e6db74">&#39;x&#39;</span>, <span style="color:#e6db74">&#39;y&#39;</span>, <span style="color:#e6db74">&#39;z&#39;</span>]
+ord_to_num(name, df, categories)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df<span style="color:#f92672">.</span>columns
+</code></pre></div><pre><code>Index(['bin_0', 'bin_1', 'bin_2', 'bin_3', 'bin_4', 'nom_0', 'nom_1', 'nom_2',
+       'nom_3', 'nom_4', 'nom_5', 'nom_6', 'nom_7', 'nom_8', 'nom_9', 'ord_0',
+       'ord_1', 'ord_2', 'ord_3', 'ord_4', 'ord_5', 'day', 'month', 'ord_1_v2',
+       'ord_2_v2', 'ord_3_v2', 'ord_4_v2', 'ord_5_v3', 'ord_5_v3_v2'],
+      dtype='object')
+</code></pre>
+<h1 id="tratamento-de-variáveis-binárias">Tratamento de variáveis binárias</h1>
+<p>As variáveis <em>bin_0</em>, <em>bin_1</em> e <em>bin_2</em> já possuem valores numéricos, então iremos apenas substituir das variáveis <em>bin_3</em> e <em>bin_4</em>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">unique_bin3 <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;bin_3&#39;</span>]<span style="color:#f92672">.</span>unique()
+unique_bin4 <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;bin_4&#39;</span>]<span style="color:#f92672">.</span>unique()
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;bin_3&#39;</span>
+categories <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;T&#39;</span>, <span style="color:#e6db74">&#39;F&#39;</span>]
+ord_to_num(name, df, categories)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;bin_4&#39;</span>
+categories <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;Y&#39;</span>, <span style="color:#e6db74">&#39;N&#39;</span>]
+ord_to_num(name, df, categories)
+</code></pre></div><h1 id="tratando-variáveis-cíclicas">Tratando variáveis cíclicas</h1>
+<h3 id="temos-dia-da-semana-e-meses-do-ano">Temos dia da semana e meses do ano</h3>
+<p>Para os meses do ano, o mais indicado é que se divida os dados em trimestres. Aos quais as novas variáveis serão: <em>Q1</em>, <em>Q2</em>, <em>Q3</em>, <em>Q4</em>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df[<span style="color:#e6db74">&#39;quarters&#39;</span>] <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>to_datetime(df[<span style="color:#e6db74">&#39;month&#39;</span>]<span style="color:#f92672">.</span>values, format<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;%m&#39;</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;period[Q]&#39;</span>)
+df_month <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>get_dummies(df[<span style="color:#e6db74">&#39;quarters&#39;</span>], prefix<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;v2&#39;</span>, drop_first<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>concat([df, df_month], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</code></pre></div><h1 id="drop-de-algumas-colunas">Drop de algumas colunas</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df<span style="color:#f92672">.</span>columns
+</code></pre></div><pre><code>Index(['bin_0', 'bin_1', 'bin_2', 'bin_3', 'bin_4', 'nom_0', 'nom_1', 'nom_2',
+       'nom_3', 'nom_4', 'nom_5', 'nom_6', 'nom_7', 'nom_8', 'nom_9', 'ord_0',
+       'ord_1', 'ord_2', 'ord_3', 'ord_4', 'ord_5', 'day', 'month', 'ord_1_v2',
+       'ord_2_v2', 'ord_3_v2', 'ord_4_v2', 'ord_5_v3', 'ord_5_v3_v2',
+       'bin_3_v2', 'bin_4_v2', 'quarters', 'v2_1900Q1', 'v2_1900Q2',
+       'v2_1900Q3', 'v2_1900Q4'],
+      dtype='object')
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># para não perder o progresso no dataset original por algum comando</span>
+new_df <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>copy()
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">new_df<span style="color:#f92672">.</span>drop([<span style="color:#e6db74">&#39;bin_3&#39;</span>, <span style="color:#e6db74">&#39;bin_4&#39;</span>, <span style="color:#e6db74">&#39;ord_1&#39;</span>, <span style="color:#e6db74">&#39;ord_2&#39;</span>, <span style="color:#e6db74">&#39;ord_3&#39;</span>, <span style="color:#e6db74">&#39;ord_4&#39;</span>, <span style="color:#e6db74">&#39;ord_5&#39;</span>, <span style="color:#e6db74">&#39;month&#39;</span>, <span style="color:#e6db74">&#39;quarters&#39;</span>, <span style="color:#e6db74">&#39;ord_5_v3&#39;</span>], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">new_df<span style="color:#f92672">.</span>columns
+</code></pre></div><pre><code>Index(['bin_0', 'bin_1', 'bin_2', 'nom_0', 'nom_1', 'nom_2', 'nom_3', 'nom_4',
+       'nom_5', 'nom_6', 'nom_7', 'nom_8', 'nom_9', 'ord_0', 'day', 'ord_1_v2',
+       'ord_2_v2', 'ord_3_v2', 'ord_4_v2', 'ord_5_v3_v2', 'bin_3_v2',
+       'bin_4_v2', 'v2_1900Q1', 'v2_1900Q2', 'v2_1900Q3', 'v2_1900Q4'],
+      dtype='object')
+</code></pre>
+<h1 id="iniciando-a-criação-da-matriz-esparsa">Iniciando a criação da matriz esparsa</h1>
+<p>Como iremos aplicar o one hot encoder em toda a matriz, a quantidade de memória utilizada é extremamente grande. Para minimizar isso podemos realizar a criação de uma matriz esparsa, que justamente é especializada no armazenamento de uma matriz que possui grande quantidades de zeros com valores esparssados ao longo de sua dimensão.</p>
+<p>Para isso, o Pandas possui o <em>get_dummies</em> com o parâmetro <em>sparse</em>, que precisa receber o valor <strong>True</strong>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">columns <span style="color:#f92672">=</span> [i <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> new_df<span style="color:#f92672">.</span>columns]
+print(columns)
+</code></pre></div><pre><code>['bin_0', 'bin_1', 'bin_2', 'nom_0', 'nom_1', 'nom_2', 'nom_3', 'nom_4', 'nom_5', 'nom_6', 'nom_7', 'nom_8', 'nom_9', 'ord_0', 'day', 'ord_1_v2', 'ord_2_v2', 'ord_3_v2', 'ord_4_v2', 'ord_5_v3_v2', 'bin_3_v2', 'bin_4_v2', 'v2_1900Q1', 'v2_1900Q2', 'v2_1900Q3', 'v2_1900Q4']
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">dummies <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>get_dummies(new_df, columns<span style="color:#f92672">=</span>columns, drop_first<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, sparse<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">dummies<span style="color:#f92672">.</span>shape
+</code></pre></div><pre><code>(500000, 16382)
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">train <span style="color:#f92672">=</span> dummies<span style="color:#f92672">.</span>iloc[:train<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>], :]
+test <span style="color:#f92672">=</span> dummies<span style="color:#f92672">.</span>iloc[train<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>]:, :]
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># preenchemos os NAs com 0, pois fica complicado verificar se existe valor nulo</span>
+<span style="color:#75715e"># devido a dimens</span>
+train <span style="color:#f92672">=</span> train<span style="color:#f92672">.</span>fillna(<span style="color:#ae81ff">0</span>)
+train<span style="color:#f92672">.</span>head(<span style="color:#ae81ff">5</span>)
+</code></pre></div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>bin_0_1</th>
+      <th>bin_1_1</th>
+      <th>bin_2_1</th>
+      <th>nom_0_Green</th>
+      <th>nom_0_Red</th>
+      <th>nom_1_Polygon</th>
+      <th>nom_1_Square</th>
+      <th>nom_1_Star</th>
+      <th>nom_1_Trapezoid</th>
+      <th>nom_1_Triangle</th>
+      <th>...</th>
+      <th>ord_5_v3_v2_48</th>
+      <th>ord_5_v3_v2_49</th>
+      <th>ord_5_v3_v2_50</th>
+      <th>ord_5_v3_v2_51</th>
+      <th>bin_3_v2_1</th>
+      <th>bin_4_v2_1</th>
+      <th>v2_1900Q1_1</th>
+      <th>v2_1900Q2_1</th>
+      <th>v2_1900Q3_1</th>
+      <th>v2_1900Q4_1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 16382 columns</p>
+</div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">train <span style="color:#f92672">=</span> train<span style="color:#f92672">.</span>sparse<span style="color:#f92672">.</span>to_coo()<span style="color:#f92672">.</span>tocsr()
+test <span style="color:#f92672">=</span> test<span style="color:#f92672">.</span>sparse<span style="color:#f92672">.</span>to_coo()<span style="color:#f92672">.</span>tocsr()
+</code></pre></div><h1 id="modelagem-preditiva">Modelagem Preditiva</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">seed <span style="color:#f92672">=</span> <span style="color:#ae81ff">7</span>
+cv_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.30</span>
+X_train, X_cv, y_train, y_cv <span style="color:#f92672">=</span> train_test_split(train, y, test_size<span style="color:#f92672">=</span>cv_size, random_state<span style="color:#f92672">=</span>seed)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">model <span style="color:#f92672">=</span> XGBClassifier()
+model<span style="color:#f92672">.</span>fit(X_train, y_train)
+prediction <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>predict_proba(X_cv)[:, <span style="color:#ae81ff">1</span>]
+roc_score <span style="color:#f92672">=</span> roc_auc_score(y_cv, prediction)
+print(roc_score)
+</code></pre></div><pre><code>0.7631479991590155
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">lr_cv <span style="color:#f92672">=</span> LogisticRegressionCV(Cs<span style="color:#f92672">=</span><span style="color:#ae81ff">7</span>,
+                        solver<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lbfgs&#34;</span>,
+                        tol<span style="color:#f92672">=</span><span style="color:#ae81ff">0.0002</span>,
+                        max_iter<span style="color:#f92672">=</span><span style="color:#ae81ff">10000</span>,
+                        cv<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>,
+                        n_jobs<span style="color:#f92672">=</span><span style="color:#ae81ff">6</span>)
+
+lr_cv<span style="color:#f92672">.</span>fit(train, y)
+
+lr_cv_pred <span style="color:#f92672">=</span> lr_cv<span style="color:#f92672">.</span>predict_proba(train)[:, <span style="color:#ae81ff">1</span>]
+score <span style="color:#f92672">=</span> roc_auc_score(y, lr_cv_pred)
+
+print(<span style="color:#e6db74">&#34;score: &#34;</span>, score)
+</code></pre></div><pre><code>score:  0.8177916253269919
+</code></pre>
+<p>O melhor score encontrado foi do método utilizando a Regressão Logística, que teve um comportamento fantástico sendo que processou dados de 16 mil colunas com um score de 81,78% na métrica AUC utilizada para avaliação do modelo.</p>
+<h1 id="geração-do-arquivo-de-submissão-ao-kaggle">Geração do arquivo de Submissão ao Kaggle</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">submission[<span style="color:#e6db74">&#34;id&#34;</span>] <span style="color:#f92672">=</span> test_id
+submission[<span style="color:#e6db74">&#34;target&#34;</span>] <span style="color:#f92672">=</span> lr_cv<span style="color:#f92672">.</span>predict_proba(test)[:, <span style="color:#ae81ff">1</span>]
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">submission<span style="color:#f92672">.</span>head()
+</code></pre></div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>300000</td>
+      <td>0.326448</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>300001</td>
+      <td>0.688898</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>300002</td>
+      <td>0.149882</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>300003</td>
+      <td>0.390202</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>300004</td>
+      <td>0.845298</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">submission<span style="color:#f92672">.</span>to_csv(<span style="color:#e6db74">&#34;submission_verX.csv&#34;</span>, index<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</code></pre></div><h1 id="conclusões">Conclusões</h1>
+<p>Logicamente que esses dados possuem uma caracteristica bastante acentuada, que é de ser composto apenas de dados categóricos e ainda com algumas colunas possuíndo mais de 11 mil valores únicos. Na realidade é possivel que não encontremos uma base de dados tão peculiar no dia a dia, mas as skills desenvolvidas aqui continuam sendo válidas para a resolução de diversos problemas.</p>
+<h2 id="fontes">Fontes:</h2>
+<p>Algumas funções são de dois kernels incríveis do kaggle.</p>
+<p><a href="https://www.kaggle.com/kabure/eda-feat-engineering-encode-conquer">https://www.kaggle.com/kabure/eda-feat-engineering-encode-conquer</a>
+<a href="https://www.kaggle.com/adaubas/2nd-place-solution-categorical-fe-callenge">https://www.kaggle.com/adaubas/2nd-place-solution-categorical-fe-callenge</a></p>
+
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2019/04/04/modelagem-preditiva-em-iot/" data-toggle="tooltip" data-placement="top" title="Modelagem Preditiva em IoT">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2020/06/19/segmenta%C3%A7%C3%A3o-de-clientes-de-food-delivery/" data-toggle="tooltip" data-placement="top" title="Segmentação de clientes de Food Delivery">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        <a href="/tags/asynchronous" title="asynchronous">
+                            asynchronous
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/backend" title="backend">
+                            backend
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/data-science" title="data-science">
+                            data-science
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/data-visualization" title="data-visualization">
+                            data-visualization
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/docker" title="docker">
+                            docker
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/fastapi" title="fastapi">
+                            fastapi
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/ggplot2" title="ggplot2">
+                            ggplot2
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/machine-learning" title="machine-learning">
+                            machine-learning
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/project" title="project">
+                            project
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/r" title="r">
+                            r
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/restfull-api" title="restfull-api">
+                            restfull-api
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/sqlalchemy" title="sqlalchemy">
+                            sqlalchemy
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/time-series" title="time-series">
+                            time-series
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/web-development" title="web-development">
+                            web-development
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <li>
+                       <a href="" rel="alternate" type="application/rss+xml" title="LOB.DATA" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fa fa-circle fa-stack-2x"></i>
+                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/LucianoBatista">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		                
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/lucianobatistads/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		                
+                    
+                </ul>
+		<p class="copyright text-muted">
+                    A <a href="https://gohugo.io/">HUGO</a> <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite</a> page build with ♥ and powered by <a href="https://www.netlify.com/">Netlify</a>&nbsp;&nbsp;&bull;&nbsp;&nbsp;Header images by <a href="https://www.instagram.com/richard.strozynski/?hl=en">Richard Strozynski</a>
+    </p>
+    <p class="copyright text-muted" style='font-size:8pt;'>
+                    &copy; LOB.DATA 2019–2021. All rights reserved.&nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="https://cedricscherer.netlify.com/top/impressum/">Impressum</a>&nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="https://cedricscherer.netlify.com/top/conduct/">Code of Conduct</a>
+                    <br>
+                    Content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>.
+                    <br>
+                    <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#28a87d'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>

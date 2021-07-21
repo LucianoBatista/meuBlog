@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="LOB.DATA">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://www.lobdata.com.br/img/banner/header_profile.jpg">
+
+    
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:image" content="https://www.cedricscherer.com/img/banner/banner.png" >
+    
+
+    
+
+    
+      <meta name="title" content="Criando uma API Pronta para Produção com FastAPI - PT.2" />
+      <meta property="og:title" content="Criando uma API Pronta para Produção com FastAPI - PT.2 - Luba" />
+      <meta property="twitter:title" content="Criando uma API Pronta para Produção com FastAPI - PT.2 - Luba" />
+      <meta property="twitter:text:title" content="Criando uma API Pronta para Produção com FastAPI - PT.2 - Luba" />
+    
+
+    
+      <meta name="description" content="Blog by LuBa">
+      <meta property="og:description" content="Blog by LuBa" />
+      <meta property="twitter:description" content="Blog by LuBa" />
+    
+
+    
+
+    <meta name="keyword"  content="Data Visualization, Data Science, Programming, Web Development">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Criando uma API Pronta para Produção com FastAPI - PT.2 - Luba</title>
+
+    <link rel="canonical" href="/2021/04/03/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.2/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/styles/foundation.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">LOB.DATA</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Blog</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/aplica%C3%A7%C3%B5es">aplicações</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/projetos">projetos</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/tutorials">tutorials</a>
+                    </li>
+                    
+
+		    
+                        <li><a href="/top/portfolio/">Portfolio</a></li>
+                    
+                        <li><a href="/top/dataviz/">Gallery</a></li>
+                    
+                        <li><a href="/top/about/">About Me</a></li>
+                    
+                        <li><a href="/top/links/">Links</a></li>
+                    
+
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/post_0_4.png')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/restfull-api" title="RESTFull API">
+                            RESTFull API
+                        </a>
+                        
+                        <a class="tag" href="/tags/web-development" title="Web Development">
+                            Web Development
+                        </a>
+                        
+                        <a class="tag" href="/tags/backend" title="Backend">
+                            Backend
+                        </a>
+                        
+                        <a class="tag" href="/tags/asynchronous" title="Asynchronous">
+                            Asynchronous
+                        </a>
+                        
+                        <a class="tag" href="/tags/fastapi" title="FastAPI">
+                            FastAPI
+                        </a>
+                        
+                        <a class="tag" href="/tags/docker" title="Docker">
+                            Docker
+                        </a>
+                        
+                        <a class="tag" href="/tags/sqlalchemy" title="SQLAlchemy">
+                            SQLAlchemy
+                        </a>
+                        
+                    </div>
+                    <h1>Criando uma API Pronta para Produção com FastAPI - PT.2</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+			Posted by
+			
+			    Luciano
+			
+			on
+			Saturday, April 3, 2021
+                        
+                            <span id="/2021/04/03/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.2/" class="leancloud_visitors meta_data_item" data-flag-title="">
+    <span class="post-meta-item-icon">
+      <span class="octicon octicon-eye"></span> 
+    </span>
+    <i class="fa fa-eye"></i>
+    <span class="old-visitors-count" style="display: none;"></span>
+    <span class="leancloud-visitors-count"></span>
+</span>
+
+
+
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+
+<script>
+	AV.initialize("", "");
+</script>
+
+<script type="text/javascript">
+function showTime(Counter) {
+    var query = new AV.Query(Counter);
+    var entries = [];
+    var $visitors = $(".leancloud_visitors");
+
+    $visitors.each(function() {
+        entries.push($(this).attr("id").trim());
+    });
+
+    query.containedIn('url', entries);
+    query.find()
+        .done(function(results) {
+            var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+            var OLD_COUNT_CONTAINER_REF = '.old-visitors-count';
+
+            
+            
+            
+            
+
+            for (var i = 0; i < results.length; i++) {
+                var item = results[i];
+                var url = item.get('url');
+                var time = item.get('time');
+                var element = document.getElementById(url);
+
+                $(element).find(COUNT_CONTAINER_REF).text(time);
+            }
+            for (var i = 0; i < entries.length; i++) {
+                var url = entries[i];
+                var element = document.getElementById(url);
+                var countSpan = $(element).find(COUNT_CONTAINER_REF);
+                if (countSpan.text() == '') {
+                    var oldCountSpan = $(element).find(OLD_COUNT_CONTAINER_REF).text();
+                    if(oldCountSpan!=''){
+                        countSpan.text(0+parseInt(oldCountSpan));
+                    }else{
+                        countSpan.text(0);          
+                    }
+                }
+            }
+        })
+        .fail(function(object, error) {
+            console.log("Error: " + error.code + " " + error.message);
+        });
+}
+
+function addCount(Counter) {
+    var $visitors = $(".leancloud_visitors");
+    var url = $visitors.attr('id').trim();
+    var title = $visitors.attr('data-flag-title').trim();
+    var query = new AV.Query(Counter);
+
+    query.equalTo("url", url);
+    query.find({
+        success: function(results) {
+            if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment("time");
+                counter.save(null, {
+                    success: function(counter) {
+                        var $element = $(document.getElementById(url));
+                        $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                    },
+                    error: function(counter, error) {
+                        console.log('Failed to save Visitor num, with error message: ' + error.message);
+                    }
+                });
+            } else {
+                var newcounter = new Counter();
+                 
+                var acl = new AV.ACL();
+                acl.setPublicReadAccess(true);
+                acl.setPublicWriteAccess(true);
+                newcounter.setACL(acl);
+                 
+                newcounter.set("title", title);
+                newcounter.set("url", url);
+                var OLD_COUNT_CONTAINER_REF = '.old-visitors-count';
+                var $element = $(document.getElementById(url));
+                var oldCountSpan = $element.find(OLD_COUNT_CONTAINER_REF).text();
+                if(oldCountSpan!=''){
+                    newcounter.set("time", parseInt(oldCountSpan)+1);
+                }else{
+ 	                    newcounter.set("time",  1);
+                }
+                newcounter.save(null, {
+                    success: function(newcounter) {
+                        var $element = $(document.getElementById(url));
+                        $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                    },
+                    error: function(newcounter, error) {
+                        console.log('Failed to create');
+                    }
+                });
+            }
+        },
+        error: function(error) {
+            console.log('Error:' + error.code + " " + error.message);
+        }
+    });
+}
+$(function() {
+    var Counter = AV.Object.extend("Counter");
+    
+    
+    if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+    } else {
+        showTime(Counter);
+    }
+});
+</script>
+
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h3>Table of Contents</h3>
+                </header>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#main">Main</a></li>
+    <li><a href="#config">Config</a></li>
+    <li><a href="#rotas-async">Rotas Async</a></li>
+  </ul>
+</nav>
+                
+                <p><img src="/img/finance_app_tutorial/pt2/fast_api.png" alt="Personal Finance"></p>
+<p>Neste tutorial iremos iniciar o <strong>Econowallet</strong>, essa aplicação que vai contar com uma API para controle financeiro de suas despesas e investimentos, se você não viu o post passado (onde explico mais sobre meu objetivo com esse projeto) <a href="https://www.lobdata.com.br/post/finance_control_app/">clique aqui</a>.</p>
+<p>Tópicos que serão abordados nesse post:</p>
+<ul>
+<li>Setup Inicial: <code>main.py</code> e <code>config.py</code></li>
+<li>Rotas async</li>
+</ul>
+<h1 id="setup">Setup</h1>
+<p>Como todo projeto python, é uma boa prática que você crie um ambiente virtual isolando as dependências do projeto, isso evita que você possa ter conflito entre diferentes libs de outros projetos que esteja trabalhando. Para este fiom temos várias opções:</p>
+<ul>
+<li>Pip + virtualenv</li>
+<li>Poetry</li>
+<li>Pipenv</li>
+<li>Conda</li>
+</ul>
+<p>Estarei utilizando aqui o Pipenv, sinta-se a vontade para usar o que tenha mais familiaridade.</p>
+<p>Como IDE estarei usando o Pycharm 2020.3.5 (minha preferida no momento para desenvolver em python) e utilizaremos python 3.9.0. Ao clicar em &ldquo;New Project&rdquo; temos a seguinte imagem:</p>
+<p><img src="/img/finance_app_tutorial/pt2/create_project.png" alt="Creating Project"></p>
+<p>Veja na lateral esquerda como o Pycharm já traz um template para diversos tipos de projeto, porém no momento ainda não temos a opção para o FastAPI. Após iniciado o projeto, você deve encontrar um arquivo chamado Pipfile (se está usando o Pipenv) ou apenas uma pasta vazia. Então iremos executar os seguintes comandos no terminal:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mkdir project
+$ mkdir project/app
+$ touch project/app/main.py
+$ touch project/app/__init__.py
+$ mv Pipfile project/
+$ cd project
+$ pipenv install fastapi<span style="color:#f92672">==</span>0.63.0
+$ pipenv install uvicorn<span style="color:#f92672">==</span>0.13.4
+</code></pre></div><p>Aqui vale uma ressalva, não sou nenhum expert em arquitetura de software e talvez a estrutura de projeto utilizada aqui não seja a melhor possível, mas busco sempre dividir o código em blocos que contenham uma lógica ou função semelhante. Isso permite que tenhámos um código bom para manter, bom para ser entendido por outros desenvolvedores e também para colaborar.</p>
+<p>Após os comandos anteriores você deveria ter uma estrutura de diretórios semelhante à mostrada abaixo:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">.
+└── project
+    ├── app
+    │   ├── __init__.py
+    │   └── main.py
+    ├── Pipfile
+    └── Pipfile.lock
+</code></pre></div><p>Veja que além do <strong>FastAPI</strong>, instalamos o <strong>Uvicorn</strong>. O papel dessa lib é permitir que consigamos interagir com o serviço que estamos contruíndo (será nosso web server), além disso, ela utiliza o protocolo ASGI que permite assincronosidade com suporte aos verbos <code>async</code> e <code>await</code> do python. Outros frames como o Django e Flask já possuem um server built-in que é muito útil para fases de desenvolvimento mas que pode gerar confusão nas etapas de deploy pois o mesmo precisa ser substituído. Aqui, iremos ficar desde o início com o Uvicorn, saiba mais na documentação clicando no <a href="https://www.uvicorn.org">link</a>.</p>
+<h2 id="main">Main</h2>
+<p>Vamos configurar apenas uma rota inicial com o mínimo de código possível para ver se nosso web server está funcionando.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># project/app/main.py</span>
+
+<span style="color:#f92672">from</span> fastapi <span style="color:#f92672">import</span> FastAPI
+
+app <span style="color:#f92672">=</span> FastAPI()
+
+
+<span style="color:#a6e22e">@app</span><span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;/ping&#34;</span>)
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ping</span>():
+    <span style="color:#66d9ef">return</span> {
+        <span style="color:#e6db74">&#34;ping&#34;</span>: <span style="color:#e6db74">&#34;pong!&#34;</span>
+    }
+</code></pre></div><p>E então iremos rodar o uvicorn buscando a instância que acabamos de criar do FastAPI (linha 5). Observe que o comando depende de qual diretório estiver:</p>
+<ul>
+<li>uvicorn project.app.main:app (do diretório root)</li>
+<li>uvicorn app.main:app (do diretório de projeto)</li>
+</ul>
+<p>e assim em diante&hellip;</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ uvicorn project.app.main:app
+
+INFO:     Started server process <span style="color:#f92672">[</span>654351<span style="color:#f92672">]</span>
+INFO:     Waiting <span style="color:#66d9ef">for</span> application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 <span style="color:#f92672">(</span>Press CTRL+C to quit<span style="color:#f92672">)</span>
+</code></pre></div><p>Agora, se navegarmos até <a href="http://127.0.0.1:8000/ping">http://127.0.0.1:8000/ping</a> iremos ver a seguinte resposta:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;ping&#34;</span>: <span style="color:#e6db74">&#34;pong!&#34;</span>
+}
+</code></pre></div><p>Além disso o FastAPI <em>automágicamente</em> gerou um esquema baseado no padrão OpenAPI e juntamente com o Swagger UI criou uma documentação inicial (bem crua) para sua API. Podendo ser acessada em <a href="http://localhost:8000/docs">http://localhost:8000/docs</a> ou ainda se não gostou dessa interface do Swager você pode acessar <a href="http://localhost:8000/redoc">http://localhost:8000/redoc</a> para uma interface diferente.</p>
+<p><img src="/img/finance_app_tutorial/pt2/ping_pong_swager.png" alt="Ping Pong Swager"></p>
+<blockquote>
+<p>Swagger UI</p>
+</blockquote>
+<p><img src="/img/finance_app_tutorial/pt2/ping_pong_redoc.png" alt="Ping Pong Redocs"></p>
+<blockquote>
+<p>redoc</p>
+</blockquote>
+<p>&hellip;além disso, essa interface pode ser personalizada de acordo com seu projeto e necessidades, você pode encontrar detalhes na documentação <a href="https://fastapi.tiangolo.com/advanced/extending-openapi/">clicando aqui</a>.</p>
+<p>Agora iremos reiniciar nosso web server e adicionar um comando bem útil que iremos utilizar daqui em diante com o uvicorn, o <code>--reload</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ uvicorn project.app.main:app --reload
+
+INFO:     Uvicorn running on http://127.0.0.1:8000 <span style="color:#f92672">(</span>Press CTRL+C to quit<span style="color:#f92672">)</span>
+INFO:     Started reloader process <span style="color:#f92672">[</span>663530<span style="color:#f92672">]</span> using statreload
+INFO:     Started server process <span style="color:#f92672">[</span>663532<span style="color:#f92672">]</span>
+INFO:     Waiting <span style="color:#66d9ef">for</span> application startup.
+INFO:     Application startup complete.
+</code></pre></div><p>Dessa forma, sempre que fizermos alguma alteração no código, o Uvicorn vai reiniciar o server para nós. Experimente remover a exclamação do &ldquo;pong!&rdquo; e veja o que acontece.</p>
+<h2 id="config">Config</h2>
+<p>Agora iremos adicionar um arquivo muito importante para nossa aplicação e que vai lidar com nossas variáveis de ambiente tanto localmente quanto quando estivermos no ambiente do Docker.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># project/app/config.py</span>
+
+<span style="color:#f92672">import</span> logging
+<span style="color:#f92672">import</span> os
+
+<span style="color:#f92672">from</span> pydantic <span style="color:#f92672">import</span> BaseSettings
+
+log <span style="color:#f92672">=</span> logging<span style="color:#f92672">.</span>getLogger(<span style="color:#e6db74">&#34;uvicorn&#34;</span>)
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Settings</span>(BaseSettings):
+    environment: str <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>getenv(<span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>, <span style="color:#e6db74">&#34;dev&#34;</span>)
+    testing: bool <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>getenv(<span style="color:#e6db74">&#34;TESTING&#34;</span>, <span style="color:#ae81ff">0</span>)
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_settings</span>() <span style="color:#f92672">-&gt;</span> BaseSettings:
+    log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;Loading config settings from the environment...&#34;</span>)
+    <span style="color:#66d9ef">return</span> Settings()
+
+</code></pre></div><p><img src="/img/finance_app_tutorial/pt2/what.gif" alt="WHAT?!"></p>
+<blockquote>
+<p>O que está acontecendo aqui?</p>
+</blockquote>
+<p>Primeiramente, declaramos uma classe <code>Settings</code> com dois atributos:</p>
+<ul>
+<li><code>environment</code>: que define nosso ambiente (prod, stage, dev).</li>
+<li><code>testing</code>: que define se estamos ou não em um modo de teste.</li>
+</ul>
+<p>Outro ponto importante a ressaltar é a sintaxe da classe <code>Settings</code> (<code>testing: bool</code>), essa é uma forma de explicitar o tipo da variável que a nossa imputação retornará, iremos utilizar muito ao longo do projeto. <strong>Pontos positivos</strong> de adotar essa sintaxe ao longo do projeto são:</p>
+<ul>
+<li>código mais legível.</li>
+<li>auxilia a IDE a fornecer melhores formas de auto-complete e sugestões de métodos.</li>
+<li>previne alguns bugs, pois a IDE tem maior entendimento do que acontece com as funções, classes&hellip;</li>
+</ul>
+<p>Agora iremos atualizar nosso arquivo main.py:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># project/app/main.py</span>
+
+<span style="color:#f92672">from</span> fastapi <span style="color:#f92672">import</span> FastAPI, Depends
+
+<span style="color:#f92672">from</span> project.app.config <span style="color:#f92672">import</span> Settings, get_settings
+
+app <span style="color:#f92672">=</span> FastAPI()
+
+
+<span style="color:#a6e22e">@app</span><span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;/ping&#34;</span>)
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ping</span>(settings: Settings <span style="color:#f92672">=</span> Depends(get_settings)):
+    <span style="color:#66d9ef">return</span> {
+        <span style="color:#e6db74">&#34;ping&#34;</span>: <span style="color:#e6db74">&#34;pong!&#34;</span>,
+        <span style="color:#e6db74">&#34;environment&#34;</span>: settings<span style="color:#f92672">.</span>environment,
+        <span style="color:#e6db74">&#34;testing&#34;</span>: settings<span style="color:#f92672">.</span>testing
+    }
+
+</code></pre></div><p>Com essa alteração no código estamos setando dependências à aplicação sempre que acessamos a rota <a href="http://127.0.0.1:8000/ping">http://127.0.0.1:8000/ping</a>. De uma forma mais intuitiva, o que estamos dizendo é o seguinte:</p>
+<p><img src="/img/finance_app_tutorial/pt2/flow_dependencies.png" alt="Flow Dependencies"></p>
+<p>Agora, se rodarmos novamente nosso server, iremos ver uma resposta da seguinte forma:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;ping&#34;</span>: <span style="color:#e6db74">&#34;pong!&#34;</span>,
+  <span style="color:#f92672">&#34;environment&#34;</span>: <span style="color:#e6db74">&#34;dev&#34;</span>,
+  <span style="color:#f92672">&#34;testing&#34;</span>: <span style="color:#66d9ef">false</span>
+}
+</code></pre></div><p>Legal, agora sabemos, por exemplo, que estamos no ambiente de desenvolvimento e não de teste. Outro ponto importante é que da forma como nosso config.py está, sempre que <em>batemos</em> na rota <a href="http://127.0.0.1:8000/ping">http://127.0.0.1:8000/ping</a> ele reconfigura as settings.</p>
+<p>Esse comportamento de reconfigurar as settings não é muito atrativo, pois futuramente ao migrarmos o carregamento das variáveis de ambiente a partir de um arquivo (<code>.env</code> por exemplo) esse comportamento irá diminuir a velocidade com que nosso app responde aos requests.</p>
+<p>Usaremos então o decorator <code>@lru_cache</code> para cachiar as settings, de forma que get_settings é chamada apenas uma vez e reusará valores de chamadas recentes para atribuir às variáveis.</p>
+<blockquote>
+<p>Tenha em mente que isso é indicado apenas para casos onde você não tem a necessidade de recomputar esses valores várias vezes.</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># project/app/config.py</span>
+
+<span style="color:#f92672">import</span> logging
+<span style="color:#f92672">import</span> os
+<span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> lru_cache
+
+<span style="color:#f92672">from</span> pydantic <span style="color:#f92672">import</span> BaseSettings
+
+log <span style="color:#f92672">=</span> logging<span style="color:#f92672">.</span>getLogger(<span style="color:#e6db74">&#34;uvicorn&#34;</span>)
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Settings</span>(BaseSettings):
+    environment: str <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>getenv(<span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>, <span style="color:#e6db74">&#34;dev&#34;</span>)
+    testing: bool <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>getenv(<span style="color:#e6db74">&#34;TESTING&#34;</span>, <span style="color:#ae81ff">0</span>)
+
+
+<span style="color:#a6e22e">@lru_cache</span>()
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_settings</span>() <span style="color:#f92672">-&gt;</span> BaseSettings:
+    log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;Loading config settings from the environment...&#34;</span>)
+    <span style="color:#66d9ef">return</span> Settings()
+</code></pre></div><p>Agora se atualizarmos várias vezes o <a href="http://127.0.0.1:8000/ping">http://127.0.0.1:8000/ping</a> não veremos o recarregamento do &ldquo;Loading config settings from the environment&hellip;&rdquo;, indicando que nosso cache funcionou 🎉.</p>
+<h2 id="rotas-async">Rotas Async</h2>
+<p>Como dito no início do post, estamos usando um web server ASGI e além disso um frame com suporte ao <code>async</code> e <code>await</code> (FastAPI). Portanto, podemos facilmente converter nosso endpoint para uma rota assíncrona simplesmente adicionando o verbo <code>async</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> fastapi <span style="color:#f92672">import</span> FastAPI, Depends
+
+<span style="color:#f92672">from</span> project.app.config <span style="color:#f92672">import</span> Settings, get_settings
+
+app <span style="color:#f92672">=</span> FastAPI()
+
+
+<span style="color:#a6e22e">@app</span><span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;/ping&#34;</span>)
+<span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ping</span>(settings: Settings <span style="color:#f92672">=</span> Depends(get_settings)):
+    <span style="color:#66d9ef">return</span> {
+        <span style="color:#e6db74">&#34;ping&#34;</span>: <span style="color:#e6db74">&#34;pong!&#34;</span>,
+        <span style="color:#e6db74">&#34;environment&#34;</span>: settings<span style="color:#f92672">.</span>environment,
+        <span style="color:#e6db74">&#34;testing&#34;</span>: settings<span style="color:#f92672">.</span>testing
+    }
+
+</code></pre></div><p>Teste novamente a rota <a href="http://127.0.0.1:8000/ping">http://127.0.0.1:8000/ping</a> para ver se tudo continua functionando.</p>
+<blockquote>
+<p><strong>ATENÇÃO!</strong>: O async e await do python não está relacionado ao uso de mais threads ou de processamento paralelo. O conceito aqui é permitir que o código execute outras funcionalidades enquanto aguarda resposta de um outro serviço.</p>
+</blockquote>
+<p>Irei adicionar um .gitignore ao projeto para irmos adicionando coisinhas que não queremos expor no repositório:</p>
+<pre><code>__pycache__
+env
+</code></pre><p>É um bom momento para inicializar nosso repositório e comitarmos nosso código até o momento.</p>
+<p>Como irei atualizando o repo do projeto de acordo for postando aqui no blog, é possível que quando você esteja lendo esse conteúdo o repositório esteja com o projeto completo. Mas, qualquer coisa, segue o link do repositório:</p>
+<p><a href="https://github.com/LucianoBatista/econowallet">GitHub - Econowallet</a></p>
+<p>Até a próxima! 👋</p>
+
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2021/03/30/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.1/" data-toggle="tooltip" data-placement="top" title="Criando uma API Pronta para Produção com FastAPI - PT.1">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2021/04/08/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.3/" data-toggle="tooltip" data-placement="top" title="Criando uma API Pronta para Produção com FastAPI - PT.3">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        <a href="/tags/asynchronous" title="asynchronous">
+                            asynchronous
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/backend" title="backend">
+                            backend
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/data-science" title="data-science">
+                            data-science
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/data-visualization" title="data-visualization">
+                            data-visualization
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/docker" title="docker">
+                            docker
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/fastapi" title="fastapi">
+                            fastapi
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/ggplot2" title="ggplot2">
+                            ggplot2
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/machine-learning" title="machine-learning">
+                            machine-learning
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/project" title="project">
+                            project
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/r" title="r">
+                            r
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/restfull-api" title="restfull-api">
+                            restfull-api
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/sqlalchemy" title="sqlalchemy">
+                            sqlalchemy
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/time-series" title="time-series">
+                            time-series
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/web-development" title="web-development">
+                            web-development
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <li>
+                       <a href="" rel="alternate" type="application/rss+xml" title="LOB.DATA" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fa fa-circle fa-stack-2x"></i>
+                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/LucianoBatista">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		                
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/lucianobatistads/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		                
+                    
+                </ul>
+		<p class="copyright text-muted">
+                    A <a href="https://gohugo.io/">HUGO</a> <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite</a> page build with ♥ and powered by <a href="https://www.netlify.com/">Netlify</a>&nbsp;&nbsp;&bull;&nbsp;&nbsp;Header images by <a href="https://www.instagram.com/richard.strozynski/?hl=en">Richard Strozynski</a>
+    </p>
+    <p class="copyright text-muted" style='font-size:8pt;'>
+                    &copy; LOB.DATA 2019–2021. All rights reserved.&nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="https://cedricscherer.netlify.com/top/impressum/">Impressum</a>&nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="https://cedricscherer.netlify.com/top/conduct/">Code of Conduct</a>
+                    <br>
+                    Content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>.
+                    <br>
+                    <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#28a87d'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>
