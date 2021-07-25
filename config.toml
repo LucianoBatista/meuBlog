@@ -106,9 +106,9 @@ home = ["HTML", "RSS", "Algolia"]
   title = "FastAPI"
   href =  "https://fastapi.tiangolo.com"
   
-  [[params.addtional_menus]]
-  title =  "Portfolio"
-  href =  "/top/portfolio/"  # get reference from Cedric
+  # [[params.addtional_menus]]
+  # title =  "Portfolio"
+  # href =  "/top/portfolio/"  # get reference from Cedric
   # [[params.addtional_menus]]
   # title =  "Gallery"
   # href =  "/top/dataviz/"  # can be prints of shiny dashboards
