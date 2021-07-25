@@ -109,15 +109,15 @@ home = ["HTML", "RSS", "Algolia"]
   [[params.addtional_menus]]
   title =  "Portfolio"
   href =  "/top/portfolio/"  # get reference from Cedric
-  [[params.addtional_menus]]
-  title =  "Gallery"
-  href =  "/top/dataviz/"  # can be prints of shiny dashboards
+  # [[params.addtional_menus]]
+  # title =  "Gallery"
+  # href =  "/top/dataviz/"  # can be prints of shiny dashboards
   [[params.addtional_menus]]
   title =  "About Me"
   href =  "/top/about/"
-  [[params.addtional_menus]]
-  title = "Links"
-  href =  "/top/links/"  # usefull links about data science stuffs
+  # [[params.addtional_menus]]
+  # title = "Links"
+  # href =  "/top/links/"  # usefull links about data science stuffs
 
 [outputFormats.Algolia]
 baseName = "algolia"
