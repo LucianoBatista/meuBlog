@@ -19,6 +19,27 @@ A documentação do Docker para instalação é muito bem explicada.</descriptio
     </item>
     
     <item>
+      <title>Criando uma API Pronta para Produção com FastAPI - PT.4</title>
+      <link>https://www.lobdata.com.br/2021/04/08/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.4/</link>
+      <pubDate>Thu, 08 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/2021/04/08/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.4/</guid>
+      <description>Nos Capítulos Anteriores &amp;hellip; Após um tempinho sem postar nada, vamos dar continuidade a essa série sobre como desenvolver uma API pronta pro Deploy! 🚀 🚀
+Essa é a parte 4 do nosso projeto do EconoWallet e se você quiser verificar o que já fizemos até o momento, acesse os links abaixo:
+ Parte 1 Parte 2 Parte 3  Dando continuidade a nossa aplicação, hoje vamos configurar qual será nosso banco de dados.</description>
+    </item>
+    
+    <item>
+      <title>Criando uma API Pronta para Produção com FastAPI - PT.5</title>
+      <link>https://www.lobdata.com.br/2021/04/08/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.5/</link>
+      <pubDate>Thu, 08 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/2021/04/08/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.5/</guid>
+      <description>Reorganizando o projeto Antes de configurar o ORM, vamos ajustar algumas coisas no nosso diretório. Como estamos seguindo para um estágio mais maduro da aplicação e que você já compreende o básico de configuração do FastAPI, precisaremos agora separar melhor as competências dentro do projeto.
+mkdir project/app/api mkdir project/app/database mkdir project/app/models touch project/app/api/__init__.py touch project/app/database/__init__.py touch project/app/models/__init__.py touch project/app/api/status.py Veja que agora nós temos alguns diferentes diretório que irão comportar diferentes lógicas no nosso projeto:</description>
+    </item>
+    
+    <item>
       <title>Criando uma API Pronta para Produção com FastAPI - PT.2</title>
       <link>https://www.lobdata.com.br/2021/04/03/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.2/</link>
       <pubDate>Sat, 03 Apr 2021 00:00:00 +0000</pubDate>
