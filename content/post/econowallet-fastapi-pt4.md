@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Criando uma API Pronta para Produção com FastAPI - PT.4"
-date: 2021-04-08
+date: 2021-08-01
 author: "Luciano"
 image: "img/post_0_4.png"
 tags:
@@ -193,9 +193,8 @@ Veja que partimos de uma classe mãe chamada de `declarative_base` pelo SQLAlche
 
 Aqui nós vemos como é feita a conexão com o banco e é por meio da session que faremos transações com as nossas tabelas criadas, o famoso **C**reate/**R**ead/**U**pdate/**D**elete. Um ponto para ficar atento é que ao configurar as sessions na nossa aplicação precisamos cuidar para que as sessions sejam sempre finalizadas, mesmo quando algum problema aconteça.
 
-IMAGEM SOMEONE ACCOMPLISH SOMETHIHNG!
 
-# Próximo Capítulo...
+# Próximo Capítulo... 🎉
 
 Na próxima etapa, iremos configurar o **SQLAlchemy** e fazer com que nosso app comece a interagir com o banco!! 
 
