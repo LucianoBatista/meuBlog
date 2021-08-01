@@ -428,7 +428,7 @@ uvicorn project.app.main:app --reload --workers 1 --host 0.0.0.0 --port 8000
 
 Nesse script é executado um loop que finaliza apenas quando o MySQL estiver disponível. Precisamos agora apontar nosso `Dockerfile` para esse entrypoint.
 
-```dockerfile
+```
 # Dockerfile
 FROM python:3.9.0-slim-buster
 

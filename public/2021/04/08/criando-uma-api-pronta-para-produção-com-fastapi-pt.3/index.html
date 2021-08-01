@@ -392,24 +392,24 @@ docker-compose version 1.27.4, build <span style="color:#ae81ff">40524192</span>
 <p>No caso de Dockerfiles para aplicações web em python eu costumo seguir um pipeline básico do que é preciso/interessante ter na imagem, e ao longo do projeto vou modificando de acordo a necessidade:</p>
 <p><img src="/img/finance_app_tutorial/pt3/diagrams.png" alt="Diagram"></p>
 <p>Ainda assim, é fácil encontrar modelos de Dockerfile para diversos tipos de aplicação no github, apenas busque entender o que de fato está acontecendo antes de copiar e colar.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> python:3.9.0-slim-buster</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /usr/src/app</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> PYTHONDONTWRITEBYTECODE <span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> PYTHONUNBUFFERED <span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  <span style="color:#f92672">&amp;&amp;</span> apt-get -y install netcat gcc <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  <span style="color:#f92672">&amp;&amp;</span> apt-get clean<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> pip install --upgrade pip <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  <span style="color:#f92672">&amp;&amp;</span> pip install pipenv<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> /Pipenv Pipfile.lock ./<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> pipenv install --deploy --system<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> . .<span style="color:#960050;background-color:#1e0010">
-</span></code></pre></div><p>Como visto no fluxograma, primeiramente vemos uma imagem base do python, que aqui estamos utilizando o <code>python:3.9.0-slim-buster</code>, uma espécie de imagem mínima apenas com o essencial para podermos rodar uma aplicação python, além da slim-buster temos outras variações que buscam aplicar o mesmo conceito de economia de espaço. Este artigo do <a href="https://medium.com/swlh/alpine-slim-stretch-buster-jessie-bullseye-bookworm-what-are-the-differences-in-docker-62171ed4531d">Medium</a> contém uma boa explicação sobre a diferença entre os tipos: Slim, Alpine, Strech, Buster, Jessie e Bullseye.</p>
+<pre><code>FROM python:3.9.0-slim-buster
+
+WORKDIR /usr/src/app
+
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+RUN apt-get update \
+  &amp;&amp; apt-get -y install netcat gcc \
+  &amp;&amp; apt-get clean
+
+RUN pip install --upgrade pip \
+  &amp;&amp; pip install pipenv
+COPY /Pipenv Pipfile.lock ./
+RUN pipenv install --deploy --system
+
+COPY . .
+</code></pre><p>Como visto no fluxograma, primeiramente vemos uma imagem base do python, que aqui estamos utilizando o <code>python:3.9.0-slim-buster</code>, uma espécie de imagem mínima apenas com o essencial para podermos rodar uma aplicação python, além da slim-buster temos outras variações que buscam aplicar o mesmo conceito de economia de espaço. Este artigo do <a href="https://medium.com/swlh/alpine-slim-stretch-buster-jessie-bullseye-bookworm-what-are-the-differences-in-docker-62171ed4531d">Medium</a> contém uma boa explicação sobre a diferença entre os tipos: Slim, Alpine, Strech, Buster, Jessie e Bullseye.</p>
 <blockquote>
 <p>Como são imagens mínimas e de tamanho reduzido, pode ser que a depender de sua aplicação, você precise completar a imagem com alguma dependência. É difícil saber de antemão qual a imagem que vai funcionar corretamente com seu projeto, mas graças a praticidade de trabalhar com Docker, podemos facilmente trocar e buscar a que melhor se adapte.</p>
 </blockquote>

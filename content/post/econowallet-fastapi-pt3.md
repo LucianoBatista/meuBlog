@@ -61,7 +61,7 @@ No caso de Dockerfiles para aplicações web em python eu costumo seguir um pipe
 
 Ainda assim, é fácil encontrar modelos de Dockerfile para diversos tipos de aplicação no github, apenas busque entender o que de fato está acontecendo antes de copiar e colar.
 
-```dockerfile
+```
 FROM python:3.9.0-slim-buster
 
 WORKDIR /usr/src/app
