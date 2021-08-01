@@ -365,8 +365,11 @@ $(function() {
                 <h1 id="nos-capítulos-anteriores-">Nos Capítulos Anteriores &hellip;</h1>
 <p>Essa é a parte 3 do nosso projeto do EconoWallet, se quiser verificar o que já fizemos até o momento, verifique os links abaixo:</p>
 <ul>
-<li><a href="https://www.lobdata.com.br/post/finance_control_app/">Parte 1</a></li>
-<li><a href="https://www.lobdata.com.br/post/econowallet-fastapi-pt2/">Parte 2</a></li>
+<li><a href="https://www.lobdata.com.br/2021/03/30/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.1/">Parte 1</a></li>
+<li><a href="https://www.lobdata.com.br/2021/04/03/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.2/">Parte 2</a></li>
+<li><a href="https://www.lobdata.com.br/2021/04/08/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.3/">Parte 3</a></li>
+<li><a href="https://www.lobdata.com.br/2021/07/31/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.4/">Parte 4</a></li>
+<li><a href="https://www.lobdata.com.br/2021/08/01/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.5/">Parte 5</a></li>
 </ul>
 <p>Dando continuidade a nossa aplicação, hoje vamos iniciar a configuração do Docker em nosso ambiente. E antes de mais nada, precisaremos instalar o Docker e o Docker Compose na nossa máquina.</p>
 <p><img src="/img/finance_app_tutorial/pt3/lets_do_it.gif" alt="Let&rsquo;s Do This"></p>
@@ -389,7 +392,7 @@ docker-compose version 1.27.4, build <span style="color:#ae81ff">40524192</span>
 <p>No caso de Dockerfiles para aplicações web em python eu costumo seguir um pipeline básico do que é preciso/interessante ter na imagem, e ao longo do projeto vou modificando de acordo a necessidade:</p>
 <p><img src="/img/finance_app_tutorial/pt3/diagrams.png" alt="Diagram"></p>
 <p>Ainda assim, é fácil encontrar modelos de Dockerfile para diversos tipos de aplicação no github, apenas busque entender o que de fato está acontecendo antes de copiar e colar.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> python:3.9.0-slim-buster</span><span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> python:3.9.0-slim-buster</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /usr/src/app</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">
@@ -500,10 +503,15 @@ app <span style="color:#f92672">=</span> FastAPI()
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2021/04/08/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.4/" data-toggle="tooltip" data-placement="top" title="Criando uma API Pronta para Produção com FastAPI - PT.4">&larr;
+                        <a href="/2021/04/03/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.2/" data-toggle="tooltip" data-placement="top" title="Criando uma API Pronta para Produção com FastAPI - PT.2">&larr;
                             Previous Post</a>
                     </li>
                     
+                    
+                    <li class="next">
+                        <a href="/2021/07/31/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.4/" data-toggle="tooltip" data-placement="top" title="Criando uma API Pronta para Produção com FastAPI - PT.4">Next
+                            Post &rarr;</a>
+                    </li>
                     
                 </ul>
 
