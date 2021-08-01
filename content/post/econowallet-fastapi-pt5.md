@@ -307,7 +307,7 @@ Show! Agora, localmente teremos como testar nossa aplicação, e quando a mesma 
 
 Por fim, dentro do `docker-compose.yml` nós iremos apontar onde o arquivo de variáveis de ambiente está localizado:
 
-```
+```yaml
 version: '3.8'
 
 services:
@@ -428,7 +428,7 @@ uvicorn project.app.main:app --reload --workers 1 --host 0.0.0.0 --port 8000
 
 Nesse script é executado um loop que finaliza apenas quando o MySQL estiver disponível. Precisamos agora apontar nosso `Dockerfile` para esse entrypoint.
 
-```
+```dockerfile
 # Dockerfile
 FROM python:3.9.0-slim-buster
 
@@ -460,7 +460,7 @@ CMD ["/bin/bash", "-c", "./local-entrypoint.sh"]
 
 Nosso `docker-compose.yml` também precisará ser alterado:
 
-```
+```yaml
 # docker-compose.yml
 version: '3.8'
 
