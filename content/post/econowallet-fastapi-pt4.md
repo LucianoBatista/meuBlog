@@ -15,7 +15,7 @@ tags:
 categories: [Tutorials]
 ---
 
-# Nos Capítulos Anteriores ...
+## Nos Capítulos Anteriores ...
 
 Após um tempinho sem postar nada, vamos dar continuidade a essa série sobre como desenvolver uma API pronta pro Deploy! 🚀 🚀
 
@@ -29,7 +29,7 @@ Dando continuidade a nossa aplicação, hoje vamos configurar qual será nosso b
 
 ![I'm ready when you are](/img/finance_app_tutorial/pt4/areYouReady.gif)
 
-# Modificações
+## Modificações
 
 Eu fiz algumas modificações de localização de arquivos de uma forma que fica simples a separação de competências do nosso app. Basicamente agora temos tudo que diz respeito às configurações do Docker (`Dockerfile`, `docker-compose`, `.dockerignore`) fora do diretório do projeto. Veja o resultado:
 
@@ -68,13 +68,13 @@ services:
 
 Agora provavelmente tudo deve estar funcionando normalmente. Build novamente e tente acessar o [swager da API](http://127.0.0.1:8004/docs/) (`docker-compose up --build -d`).
 
-# Database
+## Database
 
 Nossa intenção durante o desenvolvimento é buscar ao máximo que nosso ambiente se assemelhe ao ambiente de produção, onde nossa API vai estar sendo acessada por usuários reais. Nesse cenário, as informações trafegadas precisam ser persistidas em algum lugar, e normalmente é nesse ponto onde o banco de dados se encaixa.
 
 Saiba que existem diferentes banco de dados para diferentes tipos de problemas, para nossa aplicação iremos utilizar o **MySQL**.
 
-## Configurando o MySQL
+### Configurando o MySQL
 
 É realmente muito simples configurar suporte à uma base de dados à sua aplicação utilizando o **docker-compose**. Tudo que você precisa fazer é adicionar mais um *service*, veja:
 
@@ -122,7 +122,7 @@ O que está acontecendo aqui é bem semelhante ao serviço `web`, com algumas re
 
 Além disso, agora precisamos especificar algumas variáveis de ambiente que serão utilizadas para criar nossa base de dados para o **EconoWallet** e a porta que iremos nos conectar para acessar as informações. E, como para nosso banco de dados estamos especificando um volume que não é um diretório, o mesmo precisa ser indicado ao final do `docker-compose.yml`.
 
-## Conectando ao MySQL
+### Conectando ao MySQL
 
 Agora que nosso `docker-compose.yml` está configurado, podemos rebuildar nossa aplicação, eu gosto de *derrubar* o serviço removendo os volumes sempre que tem uma modificação relativamente grande, e em seguida *subir* novamente.
 
@@ -139,7 +139,7 @@ Se você tem uma versão premium do PyCharm é bem simples de fazer isso, mas aq
 
 Aqui tem o [link oficial](https://dbeaver.io) do site deles, a instalação é super direta para qualquer SO.
 
-### Passo a Passo
+#### Passo a Passo
 
 1. Com o software instalado, vá na lateral superior esquerda e clique no símbolo de uma tomada:
 
@@ -156,7 +156,7 @@ Aqui tem o [link oficial](https://dbeaver.io) do site deles, a instalação é s
 
 Apesar de estarmos com nosso banco configurado, ainda não temos nenhuma tabela para interagir e também não temos nenhuma interação entre a API e o banco. **SQLAlchemy ao resgate!!**
 
-# SQLAlchemy
+## SQLAlchemy
 
 ![SQLAlchemy](/img/finance_app_tutorial/pt4/sqlalchemy.png)
 
@@ -168,7 +168,7 @@ Apesar de estarmos com nosso banco configurado, ainda não temos nenhuma tabela 
 
 Saiba que o `SQLAlchemy` está sendo atualizado e parte da sintaxe de como realizar queries no banco irá mudar, apesar dessa nova sintaxe estar disponível na versão atual da lib ela ainda não está oficialmente lançada, para mais detalhes acesse a [documentação](https://www.sqlalchemy.org). Aqui iremos utilizar a sintaxe mais tradicional. 
 
-## Como funciona o SQLAlchemy OMR?
+### Como funciona o SQLAlchemy OMR?
 
 É importante deixar claro que aqui nós estamos utilizando o componente ORM do SQLAlchemy e não o Core. A diferença é que o ORM adiciona uma camada de abstração que torna a interação com o banco mais *pythonica* e menos *SQL raiz*.
 
@@ -194,7 +194,7 @@ Veja que partimos de uma classe mãe chamada de `declarative_base` pelo SQLAlche
 Aqui nós vemos como é feita a conexão com o banco e é por meio da session que faremos transações com as nossas tabelas criadas, o famoso **C**reate/**R**ead/**U**pdate/**D**elete. Um ponto para ficar atento é que ao configurar as sessions na nossa aplicação precisamos cuidar para que as sessions sejam sempre finalizadas, mesmo quando algum problema aconteça.
 
 
-# Próximo Capítulo... 🎉
+## Próximo Capítulo... 🎉
 
 Na próxima etapa, iremos configurar o **SQLAlchemy** e fazer com que nosso app comece a interagir com o banco!! 
 
