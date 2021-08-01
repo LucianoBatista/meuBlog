@@ -49,7 +49,7 @@ Eu fiz algumas modificações de localização de arquivos de uma forma que fica
 
 E além de alterar a localização dos arquivos, foi preciso fazer um pequeno ajuste no `docker-compose.yml` para referenciar o Dockerfile no root do projeto.
 
-```Dockerfile
+```
 # modified
 version: '3.8'
 
@@ -78,7 +78,7 @@ Saiba que existem diferentes banco de dados para diferentes tipos de problemas, 
 
 É realmente muito simples configurar suporte à uma base de dados à sua aplicação utilizando o **docker-compose**. Tudo que você precisa fazer é adicionar mais um *service*, veja:
 
-```Dockerfile
+```
 version: '3.8'
 
 services:
