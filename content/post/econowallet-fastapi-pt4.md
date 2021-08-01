@@ -21,9 +21,10 @@ Após um tempinho sem postar nada, vamos dar continuidade a essa série sobre co
 
 Essa é a parte 4 do nosso projeto do **EconoWallet** e se você quiser verificar o que já fizemos até o momento, acesse os links abaixo:
 
-- [Parte 1](https://www.lobdata.com.br/post/finance_control_app/)
-- [Parte 2](https://www.lobdata.com.br/post/econowallet-fastapi-pt2/)
+- [Parte 1](https://www.lobdata.com.br/2021/03/30/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.1/)
+- [Parte 2](https://www.lobdata.com.br/2021/04/03/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.2/)
 - [Parte 3](https://www.lobdata.com.br/2021/04/08/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.3/)
+- [Parte 4](https://www.lobdata.com.br/2021/08/01/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.4/)
 
 Dando continuidade a nossa aplicação, hoje vamos configurar qual será nosso banco de dados. Apesar de ter tido que nesse post iríamos também configurar o **SQLAlchemy**, prefirir deixar para o próximo post, pois iria ficar muito conteúdo nesse artigo.
 

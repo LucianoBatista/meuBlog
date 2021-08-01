@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Criando uma API Pronta para Produção com FastAPI - PT.5"
-date: 2021-04-08
+date: 2021-08-01
 author: "Luciano"
 image: "img/post_0_4.png"
 tags:
@@ -15,6 +15,21 @@ tags:
 categories: [Tutorials]
 ---
 
+## Nos Capítulos Anteriores ...
+
+Como dito anteriormente, hoje vamos configurar o **SQLAlchemy**!!
+
+Essa é a parte 5 do nosso projeto do **EconoWallet** e se você quiser verificar o que já fizemos até o momento, acesse os links abaixo:
+
+- [Parte 1](https://www.lobdata.com.br/2021/03/30/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.1/)
+- [Parte 2](https://www.lobdata.com.br/2021/04/03/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.2/)
+- [Parte 3](https://www.lobdata.com.br/2021/04/08/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.3/)
+- [Parte 4](https://www.lobdata.com.br/2021/08/01/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.4/)
+- [Parte 5](https://www.lobdata.com.br/2021/08/01/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.5/)
+
+Dando continuidade a nossa aplicação, hoje vamos configurar qual será nosso banco de dados. Apesar de ter tido que nesse post iríamos também configurar o **SQLAlchemy**, prefirir deixar para o próximo post, pois iria ficar muito conteúdo nesse artigo.
+
+![I'm ready when you are](/img/finance_app_tutorial/pt4/areYouReady.gif)
 
 ## Reorganizando o projeto
 
