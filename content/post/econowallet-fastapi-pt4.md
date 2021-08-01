@@ -25,7 +25,7 @@ Essa é a parte 4 do nosso projeto do **EconoWallet** e se você quiser verifica
 - [Parte 2](https://www.lobdata.com.br/post/econowallet-fastapi-pt2/)
 - [Parte 3](https://www.lobdata.com.br/2021/04/08/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.3/)
 
-Dando continuidade a nossa aplicação, hoje vamos configurar qual será nosso banco de dados. Apesar de ter tido que nesse post iríamos também configurar o SQLAlchemy, prefirir deixar pro próximo post, pois iria ficar muito conteúdo nesse artigo.
+Dando continuidade a nossa aplicação, hoje vamos configurar qual será nosso banco de dados. Apesar de ter tido que nesse post iríamos também configurar o **SQLAlchemy**, prefirir deixar para o próximo post, pois iria ficar muito conteúdo nesse artigo.
 
 ![I'm ready when you are](/img/finance_app_tutorial/pt4/areYouReady.gif)
 
@@ -133,7 +133,7 @@ docker-compose up --build -d
 
 Você pode também consultar os logs para saber se tudo correu bem, basta rodar `docker-compose logs -f`. Se tudo correu bem você já está apto a conectar no nosso banco de dados.
 
-Se você tem uma versão premium do PyCharm é bem simples de fazer isso, mas aqui eu mostrarei como configurar pelo **DBeaver** um software gratuito e todos tem acesso.
+Se você tem uma versão premium do PyCharm é bem simples de fazer isso, mas aqui eu mostrarei como configurar pelo **DBeaver** um software gratuito e que todos tem acesso.
 
 ![DBeaver](/img/finance_app_tutorial/pt4/dbeaver.png)
 
@@ -151,10 +151,10 @@ Aqui tem o [link oficial](https://dbeaver.io) do site deles, a instalação é s
 3. Provavelmente ele vai solicitar instalar alguns drives e se tudo correr bem verá uma mensagem como no print.
 ![DBeaver](/img/finance_app_tutorial/pt4/dbeaver-3.png)
 
-4. Clique em finish e na lateral agora você deve estar vendo nosso banco já configurado!! ✨ :sparkles:
+4. Clique em finish e na lateral agora você deve estar vendo nosso banco já configurado!! ✨
 ![DBeaver](/img/finance_app_tutorial/pt4/dbeaver-4.png)
 
-Apesar de estarmos com nosso banco configurado, ainda não temos nenhuma tabela para interagir e também não temos nenhuma interação entre a API e o banco. **SQLAlchemy ao resgate!!**
+Apesar de estarmos com nosso banco configurado, ainda não temos nenhuma tabela para interagir e também não temos nenhuma interação entre a API e o banco. **SQLAlchemy ao resgate!!** 🩺
 
 ## SQLAlchemy
 
@@ -166,11 +166,11 @@ Apesar de estarmos com nosso banco configurado, ainda não temos nenhuma tabela 
 - muito tempo presente na comunidade: o que torna mais fácil lidar com problemas e bugs caso eles apareçam (e irão aparecer =D).
 - ter sido bastante utilizado e testado em produção: isso atribui maior confiabilidade ao software.
 
-Saiba que o `SQLAlchemy` está sendo atualizado e parte da sintaxe de como realizar queries no banco irá mudar, apesar dessa nova sintaxe estar disponível na versão atual da lib ela ainda não está oficialmente lançada, para mais detalhes acesse a [documentação](https://www.sqlalchemy.org). Aqui iremos utilizar a sintaxe mais tradicional. 
+Saiba que os desenvolvedores do `SQLAlchemy` estão trabalhando numa nova versão da lib e parte da sintaxe de como realizar queries com o ORM irá mudar. Apesar dessa nova sintaxe estar disponível na versão atual da lib ela ainda não está oficialmente lançada, para mais detalhes acesse a [documentação](https://www.sqlalchemy.org). Aqui iremos manter a sintaxe mais tradicional. 
 
 ### Como funciona o SQLAlchemy OMR?
 
-É importante deixar claro que aqui nós estamos utilizando o componente ORM do SQLAlchemy e não o Core. A diferença é que o ORM adiciona uma camada de abstração que torna a interação com o banco mais *pythonica* e menos *SQL raiz*.
+É importante deixar claro que aqui nós estamos utilizando o componente **ORM** do SQLAlchemy e não o **Core**. A diferença é que o ORM adiciona uma camada de abstração que torna a interação com o banco mais *pythonica* e menos *SQL raiz*.
 
 Minha intenção não é explicar todos os detalhes do SQLAlchemy, mas sim o de ajudar a compreender os componentes que iremos utilizar aqui. Existe um livro muito bom com várias informações super relevantes chamado [Essential SQLAlchemy](https://www.amazon.com.br/Essential-SQLAlchemy-Rick-Copeland/dp/0596516142).
 
@@ -181,13 +181,13 @@ Dito isso, eu costumo pensar o SQLAlchemy como duas sessões diferentes:
 
 No diagrama abaixo eu tento ilustrar esses dois cenários:
 
-1. Cenário Um
+1. **Cenário Um**
 
 ![SQLAlchemy Explain](/img/finance_app_tutorial/pt4/sqlal-1.png)
 
 Veja que partimos de uma classe mãe chamada de `declarative_base` pelo SQLAlchemy e que a mesma é utilizada na criação de cada um dos models. Além disso, após configurados os models, nós utilizamos o `.metadata.create_all(engine)` para de fato materializar esses models em tabelas no banco. Essa **engine** é justamente onde está a informação de qual banco de dados utilizar.
 
-1. Cenário Dois
+1. **Cenário Dois**
 
 ![SQLAlchemy Explain](/img/finance_app_tutorial/pt4/sqlal-2.png)
 
