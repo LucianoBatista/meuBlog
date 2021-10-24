@@ -346,30 +346,34 @@ $(function() {
                 </header>
                 <nav id="TableOfContents">
   <ul>
-    <li><a href="#iloc-e-loc">.iloc e .loc</a></li>
-    <li><a href="#amostragem-aleatória">Amostragem aleatória</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#substituindo-valores-únicos-utilizando-o-replace">Substituindo valores únicos utilizando o <code>.replace</code></a></li>
-    <li><a href="#substituindo-múltiplos-valores-com-listas-e-dicionários">Substituindo múltiplos valores com listas e dicionários</a></li>
+    <li><a href="#parte-i-selecionando-colunas-e-linhas-de-forma-eficiente">Parte I: Selecionando colunas e linhas de forma eficiente</a>
+      <ul>
+        <li><a href="#iloc-e-loc">.iloc e .loc</a></li>
+        <li><a href="#amostragem-aleatória">Amostragem aleatória</a></li>
+      </ul>
+    </li>
+    <li><a href="#parte-ii-substituindo-valores-em-colunas-do-dataset">Parte II: Substituindo valores em colunas do dataset</a>
+      <ul>
+        <li><a href="#substituindo-valores-únicos-utilizando-o-replace">Substituindo valores únicos utilizando o <code>.replace</code></a></li>
+        <li><a href="#substituindo-múltiplos-valores-com-listas-e-dicionários">Substituindo múltiplos valores com listas e dicionários</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
                 
                 <p><img src="/img/efficient-pandas/part1-2.gif" alt="efficient-pandas"></p>
-<p>Fala galera, tudo certo com vocês? Se você é um Cientista/Analista de dados, ou curte utilizar python para realizar diferentes análises de dados, certamente já utilizou a biblioteca <code>Pandas</code>. Pandas é uma biblioteca open-source para estruturação e análise de dados, seus comandos se assemelham muitas vezes ao SQL, porém sua API traz um conjunto maior operações, maior robustez e se executado de forma correta, mais parformance.</p>
-<p>Nesse tutorial estou me baseando em um minicurso do DataCamp <a href="https://app.datacamp.com/learn/courses/writing-efficient-code-with-pandas">Writing Efficient Code with pandas</a>. Como nem todos tem acesso a esse material, ou por não ter familiariedade com o inglês, pode ser de grande valia compartilhar esse conhecimento com a comunidade.</p>
-<p>Bom, mas sem enrolação, aqui vamos tratar de 4 principais tópicos:</p>
+<p>Fala galera, tudo certo com vocês? Se você é um Cientista/Analista de dados, ou curte utilizar python para realizar diferentes análises em seu dataset, certamente já utilizou a biblioteca <code>Pandas</code>. Pandas é uma biblioteca open-source para estruturação e análise de dados, seus comandos se assemelham muitas vezes ao SQL, porém sua API traz um conjunto maior operações, maior robustez e se executado de forma correta, mais parformance.</p>
+<p>Nesse tutorial estou me baseando em um minicurso do DataCamp <a href="https://app.datacamp.com/learn/courses/writing-efficient-code-with-pandas">Writing Efficient Code with pandas</a>. Como nem todos tem acesso a esse material, pode ser de grande valia compartilhar esse conhecimento com a comunidade.</p>
+<p>Bom, mas sem enrolação, vamos tratar aqui de 4 principais tópicos:</p>
 <ul>
 <li>Parte 1: Selecionando colunas e linhas de forma eficiente.</li>
 <li>Parte 2: Substituindo valores em colunas do <code>DataFrame</code>.</li>
 <li>Parte 3: Iterando no dataset de forma eficiente.</li>
 <li>Parte 4: Manipulação de dados com o <code>.groupby</code>, <code>.transform</code> e <code>.filter</code>.</li>
 </ul>
-<p>Todos os tópicos serão abordados utilizando tarefas cotidianas de manipulação de dados. Estaremos utilizando uma base de dados pública oriunda do kaggle, que são os dados das Olimpíadas de Tokyo 2021. Você pode realizar o download dos arquivos pelo site ou clonar o repositório deste post, links abaixo:</p>
+<p>Todos os tópicos serão abordados utilizando tarefas cotidianas de manipulação de dados. Estaremos utilizando uma base de dados pública oriunda do kaggle, que são os dados das Olimpíadas de Tokyo 2021. Você pode realizar o download dos arquivos pelo site no link abaixo:</p>
 <ul>
 <li>Kaggle: <a href="https://www.kaggle.com/arjunprasadsarkhel/2021-olympics-in-tokyo">https://www.kaggle.com/arjunprasadsarkhel/2021-olympics-in-tokyo</a></li>
-<li>Github do post:</li>
 </ul>
 <p>Como bibliotecas estarei utilizando: <code>numpy</code>, <code>pandas</code>, <code>pyjanitor</code> e <code>time</code>. Certifique-se de ter todas elas instaladas no seu ambiente.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> time
@@ -389,13 +393,13 @@ medals_reshaped_df <span style="color:#f92672">=</span> medals_df<span style="co
     var_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;medals&#34;</span>,
     value_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;qtt&#34;</span>,
 )
-</code></pre></div><p>Após importar os dados eu realizei algumas transformações nos dados:</p>
+</code></pre></div><p>Após importar os dados eu realizei algumas transformações:</p>
 <ul>
-<li>.clean_names: é um método do pyjanitor, que limpa o nome das colunas automaticamente.</li>
-<li>.melt: é um pivoteamento nos dados para o formato longer, melhor para análise.</li>
-<li>.drop: removi algumas colunas que não são necessárias nesse momento.</li>
+<li><code>.clean_names</code>: é um método do pyjanitor, que limpa o nome das colunas automaticamente.</li>
+<li><code>.melt</code>: é um pivoteamento nos dados para o formato longer, melhor para análise.</li>
+<li><code>.drop</code>: removi algumas colunas que não são necessárias nesse momento.</li>
 </ul>
-<p>Como iremos calcular um comparativo várias vezes durante o tutorial, eu criei uma função para nos ajudar a calcular o quanto um método é mais rápido que o outro para executar uma função. Aqui entramos como input, com os valores do tempos gastos por cada método e depois calculamos o quanto um é maior que o outro.</p>
+<p>Como iremos calcular um comparativo várias vezes durante o tutorial, eu criei uma função para nos ajudar a calcular o quanto um método é mais rápido que o outro. Aqui entramos como input, com os valores do tempos gastos por cada método e depois calculamos o quanto um é maior que o outro.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># helper function to calculate pct diff between the times</span>
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_how_much_diff</span>(method_1: float, method_2: float) <span style="color:#f92672">-&gt;</span> str:
     diff <span style="color:#f92672">=</span> method_2 <span style="color:#f92672">/</span> method_1
@@ -408,9 +412,9 @@ medals_reshaped_df <span style="color:#f92672">=</span> medals_df<span style="co
 
     <span style="color:#66d9ef">return</span> ans
 </code></pre></div><p>Agora estamos prontos para começar!!</p>
-<h1 id="parte-i-selecionando-colunas-e-linhas-de-forma-eficiente">Parte I: Selecionando colunas e linhas de forma eficiente</h1>
-<h2 id="iloc-e-loc">.iloc e .loc</h2>
-<p>Essa é uma tarefa bem comum utilizada com DataFrames do Pandas, muitas vezes precisamos selecionar apenas uma porção dos dados, seja por colunas, seja por linhas. É ae que entra a utilização dos métodos <code>.iloc</code> e <code>.loc</code>.</p>
+<h2 id="parte-i-selecionando-colunas-e-linhas-de-forma-eficiente">Parte I: Selecionando colunas e linhas de forma eficiente</h2>
+<h3 id="iloc-e-loc">.iloc e .loc</h3>
+<p>Essa é uma tarefa bem comum utilizada com <code>DataFrames</code> do Pandas, muitas vezes precisamos selecionar apenas uma porção dos dados, seja por colunas, seja por linhas. É ae que entra a utilização dos métodos <code>.iloc</code> e <code>.loc</code>.</p>
 <ul>
 <li><code>.iloc</code>: Localizador numérico</li>
 <li><code>.loc</code>: Localizador nominal</li>
@@ -443,7 +447,7 @@ delta_iloc <span style="color:#f92672">=</span> time<span style="color:#f92672">
 <span style="color:#75715e"># who is faster?</span>
 calculate_how_much_diff(method_1<span style="color:#f92672">=</span>delta_loc, method_2<span style="color:#f92672">=</span>delta_iloc)
 </code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#e6db74">&#39;Método 2 é 169.56% vezes mais rápido que o Método 1&#39;</span>
-</code></pre></div><p>Pelos resultados acima, conseguimos ver que em ambos os casos, utilizar o <code>.iloc</code> é muito mais eficiente para selecionar tanto linhas quanto colunas de um <code>DataFrame</code> do <code>Pandas</code>. Porém, é muito comum também autilizarmos apenas uma lista com o nome das colunas desejadas do dataset, vamos verificar então se o <code>.iloc</code> continua vitorioso nessa comparação:</p>
+</code></pre></div><p>Pelos resultados acima, conseguimos ver que em ambos os casos, utilizar o <code>.iloc</code> é muito mais eficiente para selecionar tanto linhas quanto colunas de um <code>DataFrame</code> do <code>Pandas</code>. Porém, é muito comum também utilizarmos apenas uma lista com o nome das colunas desejadas do dataset, vamos verificar então se o <code>.iloc</code> continua vitorioso nessa comparação:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># iloc time</span>
 start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
 medals_reshaped_df<span style="color:#f92672">.</span>iloc[:, <span style="color:#ae81ff">1</span>:<span style="color:#ae81ff">4</span>]
@@ -457,9 +461,9 @@ delta_direct <span style="color:#f92672">=</span> time<span style="color:#f92672
 <span style="color:#75715e"># who is faster?</span>
 calculate_how_much_diff(method_1<span style="color:#f92672">=</span>delta_iloc, method_2<span style="color:#f92672">=</span>delta_direct)
 </code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#e6db74">&#39;Método 1 é 179.69% vezes mais rápido que o Método 2&#39;</span>
-</code></pre></div><p>Como vimos, o <code>.iloc</code> ainda se mostra vitorioso nesta comparação. Neste tópico nós vemos uma divergência entre o que está no material do DataCamp e o que observamos em nosso código, pois lá o método de selecionar as colunas diretamente é mais eficiente.</p>
+</code></pre></div><p>Como vimos, o <code>.iloc</code> ainda se mostra vitorioso nesta comparação. Neste tópico nós vemos uma <strong>divergência entre o que está no material do DataCamp</strong> e o que observamos em nosso código, pois lá o método de selecionar as colunas diretamente é mais eficiente.</p>
 <p>Como toda biblioteca sofre atualizações e otimizações ao longo do tempo, é possível que o método <code>.iloc</code> tenha sido otimizado desde que o curso do DataCamp foi lançado.</p>
-<h2 id="amostragem-aleatória">Amostragem aleatória</h2>
+<h3 id="amostragem-aleatória">Amostragem aleatória</h3>
 <p>Outra tarefa bem comum dentro do dia-a-dia de Cientistas e Analistas de dados é a amostragem aleatória do nosso dataset, tal tarefa pode ter diferentes objetivos:</p>
 <ul>
 <li>diminuir o tamanho do dataset original</li>
@@ -485,7 +489,7 @@ delta_sample <span style="color:#f92672">=</span> time<span style="color:#f92672
 <span style="color:#75715e"># who is faster?</span>
 calculate_how_much_diff(method_1<span style="color:#f92672">=</span>delta_numpy, method_2<span style="color:#f92672">=</span>delta_sample)
 </code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#e6db74">&#39;Método 2 é 192.69% vezes mais rápido que o Método 1&#39;</span>
-</code></pre></div><p>Veja que o método do Pandas é muito mais efetivo, então, prefira utilizar o <code>.sample</code> caso precise de uma amostra aleatória a nível de linhas do seu dataset. Caso precise de selecionar amostras aleatórias a nível de colunas (menos comum), também podemos adaptar o que foi feito acima e verificar se o <code>.sample</code> continua vencendor.</p>
+</code></pre></div><p>Veja que o método do Pandas é muito mais efetivo, então, prefira utilizar o <code>.sample</code> caso precise de uma amostra aleatória a nível de linhas do seu dataset. Caso precise de selecionar amostras aleatórias a nível de colunas (<em>menos comum</em>), também podemos adaptar o que foi feito acima e verificar se o <code>.sample</code> continua vencendor.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># numpy random integers</span>
 start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
 medals_reshaped_df<span style="color:#f92672">.</span>iloc[:, np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(low<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, high<span style="color:#f92672">=</span>medals_reshaped_df<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>], size<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)]
@@ -502,31 +506,31 @@ calculate_how_much_diff(method_1<span style="color:#f92672">=</span>delta_numpy,
 </code></pre></div><p>Ainda assim, temos o .sample como vencedor!</p>
 <p>Com isso nós finalizamos a <strong>Parte I</strong> dessa série de tutoriais, e em resumo temos o seguinte:</p>
 <ul>
-<li>iloc é mais rápido que loc</li>
-<li>iloc é mais rápido que selecionar diretamente as colunas</li>
-<li>sample é mais rápido utilizar <code>numpy</code> para gerar um array de números aleatórios</li>
+<li><code>.iloc</code> é mais rápido que <code>.loc</code></li>
+<li><code>.iloc</code> é mais rápido que selecionar diretamente as colunas</li>
+<li><code>.sample</code> é mais rápido utilizar <code>numpy</code> para gerar um array de números aleatórios</li>
 </ul>
 <p>Vamos à segunda parte!!</p>
-<h1 id="parte-ii-substituindo-valores-em-colunas-do-dataframe">Parte II: Substituindo valores em colunas do <code>DataFrame</code></h1>
-<h2 id="substituindo-valores-únicos-utilizando-o-replace">Substituindo valores únicos utilizando o <code>.replace</code></h2>
-<p>Você provavelmente deve ter cruzado com situações onde precisou substituir valores de algumas colunas baseando-se em algum condicional, algumas linguagens de programação chamam esse padrão de <em>switch case</em>, em python não possuíamos essa feature anterior a versão 3.10 (recém lançada). No Pandas, esse padrão já existia no método <code>.replace</code>, sendo assim, vamos analisar qual forma mais efetiva de realizar tal tarefa.</p>
+<h2 id="parte-ii-substituindo-valores-em-colunas-do-dataset">Parte II: Substituindo valores em colunas do dataset</h2>
+<h3 id="substituindo-valores-únicos-utilizando-o-replace">Substituindo valores únicos utilizando o <code>.replace</code></h3>
+<p>Você provavelmente deve ter cruzado com situações onde precisou substituir valores de algumas colunas baseando-se em algum condicional, algumas linguagens de programação chamam esse padrão de <em>switch case</em>, em python não possuíamos essa feature anterior a versão 3.10 (recém lançada). No Pandas, esse padrão já existia no método <code>.replace</code>, sendo assim, vamos analisar qual é forma mais efetiva de realizar tal tarefa.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># pure Pandas</span>
 medals_reshaped_replace_pd_df <span style="color:#f92672">=</span> medals_reshaped_df<span style="color:#f92672">.</span>copy()
 start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
 medals_reshaped_replace_pd_df<span style="color:#f92672">.</span>medals<span style="color:#f92672">.</span>loc[medals_reshaped_replace_pd_df<span style="color:#f92672">.</span>medals<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;gold&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Gold&#39;</span>
-delta_numpy <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
+delta_pure_pandas <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
 
 <span style="color:#75715e"># using .replace</span>
 medals_reshaped_replace_df <span style="color:#f92672">=</span> medals_reshaped_df<span style="color:#f92672">.</span>copy()
 start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
 medals_reshaped_replace_df[<span style="color:#e6db74">&#34;medals&#34;</span>]<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;gold&#34;</span>, <span style="color:#e6db74">&#34;Gold&#34;</span>)  <span style="color:#75715e"># adjusting the axis = 1 for columns</span>
-delta_sample <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
+delta_replace <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
 
 <span style="color:#75715e"># who is faster?</span>
-calculate_how_much_diff(method_1<span style="color:#f92672">=</span>delta_numpy, method_2<span style="color:#f92672">=</span>delta_sample)
+calculate_how_much_diff(method_1<span style="color:#f92672">=</span>delta_pure_pandas, method_2<span style="color:#f92672">=</span>delta_replace)
 </code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#e6db74">&#39;Método 2 é 204.11% vezes mais rápido que o Método 1&#39;</span>
 </code></pre></div><p>Como podemos ver, utilizar o <code>.replace</code> é incrivelmente mais rápido e pythônico que apenas fazer isso com o Pandas básico.</p>
-<h2 id="substituindo-múltiplos-valores-com-listas-e-dicionários">Substituindo múltiplos valores com listas e dicionários</h2>
+<h3 id="substituindo-múltiplos-valores-com-listas-e-dicionários">Substituindo múltiplos valores com listas e dicionários</h3>
 <p>Uma outra comparação que podemos fazer é em relação a alteração de múltiplos valores numa columa de um <code>DataFrame</code>, e para isso o <code>.replace</code> nos oferece o recurso de utilizar listas e dicionários. Os quais veremos agora.</p>
 <p>Antes de realizar os comparativos, eu montei um esquema que nos permite visualizar como funciona a sintaxe para o <code>.replace</code> com listas e dicinários</p>
 <p><img src="/img/efficient-pandas/replace-lists.png" alt="Replace-lists"></p>
@@ -549,7 +553,7 @@ medals_reshaped_replace_pd_df[<span style="color:#e6db74">&#34;rank&#34;</span>]
 medals_reshaped_replace_pd_df[<span style="color:#e6db74">&#34;rank&#34;</span>]<span style="color:#f92672">.</span>loc[
     (medals_reshaped_replace_pd_df[<span style="color:#e6db74">&#34;rank&#34;</span>] <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;TOP 3&#34;</span>)
 ] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;OUTRAS&#34;</span>
-delta_numpy <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
+delta_pure_pandas <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
 
 <span style="color:#75715e"># using .replace</span>
 medals_reshaped_replace_df <span style="color:#f92672">=</span> medals_reshaped_df<span style="color:#f92672">.</span>copy()
@@ -558,10 +562,10 @@ max_rank <span style="color:#f92672">=</span> medals_reshaped_replace_df[<span s
 medals_reshaped_replace_df[<span style="color:#e6db74">&#34;rank&#34;</span>]<span style="color:#f92672">.</span>replace(
     [[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>], [range(<span style="color:#ae81ff">4</span>, max_rank <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)]], [<span style="color:#e6db74">&#34;TOP 3&#34;</span>, <span style="color:#e6db74">&#34;OUTRAS&#34;</span>], inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>
 )
-delta_sample <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
+delta_replace <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
 
 <span style="color:#75715e"># who is faster?</span>
-calculate_how_much_diff(method_1<span style="color:#f92672">=</span>delta_numpy, method_2<span style="color:#f92672">=</span>delta_sample)
+calculate_how_much_diff(method_1<span style="color:#f92672">=</span>delta_pure_pandas, method_2<span style="color:#f92672">=</span>delta_replace)
 </code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#e6db74">&#39;Método 2 é 136.03% vezes mais rápido que o Método 1&#39;</span>
 </code></pre></div><p>Novamente, obtemos o mesmo resultado e de forma muito mais eficiente ao utilizar o <code>.replace</code> do pandas, mesmo quando queremos substituir valores baseando-se em mais de uma condição ao dataset.</p>
 <p>Uma outra estrutura de dados que o Pandas nos permite usar é o dicionário, vamos realizar o comparativo:</p>
@@ -571,7 +575,7 @@ start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">
 medals_reshaped_replace_df[<span style="color:#e6db74">&#34;medals&#34;</span>]<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;gold&#34;</span>, <span style="color:#e6db74">&#34;GOLD&#34;</span>, inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
 medals_reshaped_replace_df[<span style="color:#e6db74">&#34;medals&#34;</span>]<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;silver&#34;</span>, <span style="color:#e6db74">&#34;Silver&#34;</span>, inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
 medals_reshaped_replace_df[<span style="color:#e6db74">&#34;medals&#34;</span>]<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;bronze&#34;</span>, <span style="color:#e6db74">&#34;Bronze&#34;</span>, inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
-delta_numpy <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
+delta_pure_pandas <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
 
 <span style="color:#75715e"># using .replace</span>
 medals_reshaped_replace_df <span style="color:#f92672">=</span> medals_reshaped_df<span style="color:#f92672">.</span>copy()
@@ -579,18 +583,18 @@ start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">
 medals_reshaped_replace_df[<span style="color:#e6db74">&#34;medals&#34;</span>]<span style="color:#f92672">.</span>replace(
     {<span style="color:#e6db74">&#34;gold&#34;</span>: <span style="color:#e6db74">&#34;Gold&#34;</span>, <span style="color:#e6db74">&#34;silver&#34;</span>: <span style="color:#e6db74">&#34;Silver&#34;</span>, <span style="color:#e6db74">&#34;bronze&#34;</span>: <span style="color:#e6db74">&#34;Bronze&#34;</span>}, inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>
 )
-delta_sample <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
+delta_replace <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
 
 <span style="color:#75715e"># who is faster?</span>
-calculate_how_much_diff(method_1<span style="color:#f92672">=</span>delta_numpy, method_2<span style="color:#f92672">=</span>delta_sample)
+calculate_how_much_diff(method_1<span style="color:#f92672">=</span>delta_pure_pandas, method_2<span style="color:#f92672">=</span>delta_replace)
 </code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#e6db74">&#39;Método 2 é 171.75% vezes mais rápido que o Método 1&#39;</span>
-</code></pre></div><p>Aqui nós vemos então, que até mesmo dentro do próprio método <code>.replace</code> é possível encontrar formas mais performáticas de realizar uma terefa, que nesse caso é por meio dos dicionários.</p>
-<p>Com isso nós finalizamos a segunda parte do tutorial. Resumindo o que vimos até aqui, temos:</p>
+</code></pre></div><p>Aqui vemos que até mesmo dentro do próprio método <code>.replace</code> é possível encontrar formas mais performáticas de realizar uma terefa, que nesse caso é por meio dos dicionários.</p>
+<p>Com isso, finalizamos a segunda parte do tutorial. Resumindo o que vimos até aqui, temos:</p>
 <ul>
 <li><code>.replace</code> é muito mais efetivo que operações &ldquo;<em>puras</em>&rdquo; do <code>Pandas</code></li>
 <li><code>.replace</code> utilizando dicionários é mais efetivo que utilizando listas.</li>
 </ul>
-<p>Fique ligado para o próximo post, onde será tratado das Parte III e Parte IV.</p>
+<p>Fique ligado para o próximo post, onde será abordado a Parte III e a Parte IV.</p>
 
 
                 
