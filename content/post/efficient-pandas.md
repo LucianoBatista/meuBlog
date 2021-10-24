@@ -11,6 +11,9 @@ tags:
 categories: [ Tutorials ]
 ---
 
+![efficient-pandas](/img/efficient-pandas/part1-2.gif)
+
+
 Fala galera, tudo certo com vocês? Se você é um Cientista/Analista de dados, ou curte utilizar python para realizar diferentes análises de dados, certamente já utilizou a biblioteca `Pandas`. Pandas é uma biblioteca open-source para estruturação e análise de dados, seus comandos se assemelham muitas vezes ao SQL, porém sua API traz um conjunto maior operações, maior robustez e se executado de forma correta, mais parformance. 
 
 Nesse tutorial estou me baseando em um minicurso do DataCamp [Writing Efficient Code with pandas](https://app.datacamp.com/learn/courses/writing-efficient-code-with-pandas). Como nem todos tem acesso a esse material, ou por não ter familiariedade com o inglês, pode ser de grande valia compartilhar esse conhecimento com a comunidade.
@@ -251,7 +254,7 @@ Antes de realizar os comparativos, eu montei um esquema que nos permite visualiz
 ![Replace-lists](/img/efficient-pandas/replace-lists.png)
 >Utilizando listas
 
-![Replace-dict](/img/efficient-pandas/replace-lists.png)
+![Replace-dict](/img/efficient-pandas/replace-dict.png)
 >Utilizando dicionários
 
 ```python
