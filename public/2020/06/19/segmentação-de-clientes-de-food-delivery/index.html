@@ -389,7 +389,7 @@ $(function() {
 <p>Sem mais delongas, vamos ao código!</p>
 <p><img src="/img/food_delivery.png" alt="food_delivery"></p>
 <h2 id="libs">Libs</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">library</span>(tidyverse)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">library</span>(tidyverse)
 <span style="color:#a6e22e">library</span>(scales)
 <span style="color:#a6e22e">library</span>(lubridate)
 <span style="color:#a6e22e">library</span>(ggridges)
@@ -402,10 +402,10 @@ $(function() {
 <span style="color:#a6e22e">library</span>(skimr)
 </code></pre></div><h2 id="análise-exploratória-dos-dados">Análise Exploratória dos Dados</h2>
 <p>Vamos importar os dados e visualizar quais são as variáveis que iremos trabalhar ao longo desse projeto.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">orders_client_raw <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">read_csv</span>(<span style="color:#e6db74">&#34;data/dataset.csv&#34;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">orders_client_raw <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">read_csv</span>(<span style="color:#e6db74">&#34;data/dataset.csv&#34;</span>)
 
 <span style="color:#a6e22e">glimpse</span>(orders_client_raw)
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">Rows<span style="color:#f92672">:</span> <span style="color:#ae81ff">260</span>,<span style="color:#ae81ff">645</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">Rows<span style="color:#f92672">:</span> <span style="color:#ae81ff">260</span>,<span style="color:#ae81ff">645</span>
 Columns<span style="color:#f92672">:</span> <span style="color:#ae81ff">8</span>
 <span style="color:#f92672">$</span> id_transacao    <span style="color:#f92672">&lt;</span>chr<span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#34;0x7901ee&#34;</span>, <span style="color:#e6db74">&#34;0x7901ee&#34;</span>, <span style="color:#e6db74">&#34;0x7901ee&#34;</span>, <span style="color:#e6db74">&#34;0x12b47f&#34;</span>, <span style="color:#e6db74">&#34;0x12b47f&#34;</span>, <span style="color:#e6db74">&#34;0x6d6979&#34;</span>, <span style="color:#e6db74">&#34;0x6d6979&#34;</span>, <span style="color:#e6db74">&#34;0x78dd1e&#34;</span>, <span style="color:#e6db74">&#34;0x78dd1e&#34;</span>, <span style="color:#e6db74">&#34;0x78dd1e&#34;</span>, <span style="color:#e6db74">&#34;0x4df8ab&#34;</span>, <span style="color:#e6db74">&#34;…
 </span><span style="color:#e6db74">$ horario_pedido  &lt;dttm&gt; 2019-01-16 18:33:00, 2019-01-16 18:33:00, 2019-01-16 18:33:00, 2019-09-04 12:36:00, 2019-09-04 12:36:00, 2019-03-18 00:27:00, 2019-0…
@@ -426,10 +426,10 @@ Columns<span style="color:#f92672">:</span> <span style="color:#ae81ff">8</span>
 <li><strong>longitude</strong>: Longitude da localidade onde o pedido foi gerado.</li>
 </ul>
 <p>Observamos que a variável nome_item possui um tipo de character, porém é mais indicado trabalhar com a mesma como fator.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">orders_client_raw<span style="color:#f92672">$</span>nome_item_fac <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">as.factor</span>(orders_client_raw<span style="color:#f92672">$</span>nome_item)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">orders_client_raw<span style="color:#f92672">$</span>nome_item_fac <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">as.factor</span>(orders_client_raw<span style="color:#f92672">$</span>nome_item)
 </code></pre></div><p>No R temos um pacote muito interessante que permite ter um panorama geral sobre os dados, com várias estatísticas mais básicas, chamado <code>skimr</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">skim</span>(orders_client_raw)
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">── Data Summary ────────────────────────
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">skim</span>(orders_client_raw)
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">── Data Summary ────────────────────────
                            Values           
 Name                       orders_client_raw
 Number of rows             <span style="color:#ae81ff">260645</span>           
@@ -464,7 +464,7 @@ Group variables            None
 <span style="color:#ae81ff">1</span> horario_pedido         <span style="color:#ae81ff">0</span>             <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2019-01-01</span> <span style="color:#ae81ff">00</span><span style="color:#f92672">:</span><span style="color:#ae81ff">00</span><span style="color:#f92672">:</span><span style="color:#ae81ff">00</span> <span style="color:#ae81ff">2019-12-30</span> <span style="color:#ae81ff">23</span><span style="color:#f92672">:</span><span style="color:#ae81ff">59</span><span style="color:#f92672">:</span><span style="color:#ae81ff">00</span> <span style="color:#ae81ff">2019-07-01</span> <span style="color:#ae81ff">11</span><span style="color:#f92672">:</span><span style="color:#ae81ff">49</span><span style="color:#f92672">:</span><span style="color:#ae81ff">00</span>    <span style="color:#ae81ff">76799</span>
 </code></pre></div><p>De mais importante no resumo acima, podemos ver que os dados não possuem valores missing (=D), temos 100.000 valores únicos no <code>id_transacao</code> e temos 4 produtos de diferentes categorias.</p>
 <p>Localidade possívelmente precisará ser convertida à fator, pois cada valor representa um local diferente de onde o pedido processado. Mas caso venhámos a fazer alguma análise com esta variável podemos converte-la mais a frente.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">orders_client_v1 <span style="color:#f92672">&lt;-</span> orders_client_raw <span style="color:#f92672">%&gt;%</span> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">orders_client_v1 <span style="color:#f92672">&lt;-</span> orders_client_raw <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">mutate</span>(month <span style="color:#f92672">=</span> <span style="color:#a6e22e">month</span>(horario_pedido, label <span style="color:#f92672">=</span> T, abbr <span style="color:#f92672">=</span> F),
          year <span style="color:#f92672">=</span> <span style="color:#a6e22e">year</span>(horario_pedido))
 
@@ -473,12 +473,12 @@ orders_client_v1 <span style="color:#f92672">%&gt;%</span>
   <span style="color:#a6e22e">select</span>(year) <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">unique</span>()
 
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># A tibble: 1 x 1</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># A tibble: 1 x 1</span>
    year
   <span style="color:#f92672">&lt;</span>dbl<span style="color:#f92672">&gt;</span>
 <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">2019</span>
 </code></pre></div><p>Vemos que os dados são referentes ao ano de 2019. Uma visualização interessante seria dos pedidos ao longo dos meses, podendo entender o que vende mais em determinado período.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># pedidos em cada mês</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># pedidos em cada mês</span>
 order_by_month_name <span style="color:#f92672">&lt;-</span> orders_client_v1 <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">select</span>(month, nome_item_fac, quantidade_item) <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">group_by</span>(month, nome_item_fac) <span style="color:#f92672">%&gt;%</span> 
@@ -501,7 +501,7 @@ order_by_month_name <span style="color:#f92672">%&gt;%</span>
 </code></pre></div><p><img src="/img/graph1.png" alt="graph1"></p>
 <p>Vimos que ao longo dos meses essa loja recebeu praticamente a mesma quantidade de pedidos todos os meses. Sempre com a menor preferência por salada e a maior preferência por sobremesa.</p>
 <p>Como nós também temos os dados durante as horas do dia, vamos realizar mais uma preparação nos dados.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># incluindo a hora do dia para visualizar depois</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># incluindo a hora do dia para visualizar depois</span>
 orders_client_v2 <span style="color:#f92672">&lt;-</span> orders_client_raw <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">mutate</span>(month <span style="color:#f92672">=</span> <span style="color:#a6e22e">month</span>(horario_pedido),
          year <span style="color:#f92672">=</span> <span style="color:#a6e22e">year</span>(horario_pedido),
@@ -513,7 +513,7 @@ order_by_hour_name <span style="color:#f92672">&lt;-</span> orders_client_v2 <sp
   <span style="color:#a6e22e">summarise</span>(tot <span style="color:#f92672">=</span> <span style="color:#a6e22e">sum</span>(quantidade_item))
 
 </code></pre></div><p>Agora que o dataset <code>order_by_hour_name</code> possui as informações necesssárias para fazer a visualização, vamos visualizar então como foram os pedidos para cada hora do dia ao longo dos meses e do ano de 2019.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">order_by_hour_name <span style="color:#f92672">%&gt;%</span> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">order_by_hour_name <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">ggplot</span>(<span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> tot,
              y <span style="color:#f92672">=</span> <span style="color:#a6e22e">reorder</span>(nome_item_fac, tot),
              fill <span style="color:#f92672">=</span> nome_item_fac)) <span style="color:#f92672">+</span>
@@ -536,7 +536,7 @@ order_by_hour_name <span style="color:#f92672">&lt;-</span> orders_client_v2 <sp
 </ul>
 <p>Bom, até agora nós visualizamos os pedidos durante o mês e durante as horas nos meses do ano. Mas seria interessante também observar o total da distribuição de pedidos no ano como um todo.</p>
 <p>Para isso eu gosto muito de utilizar o pacote <code>ggridgs</code>, com ele podemos observar as várias distribuições de uma forma mais compacta e ainda traçar linhas referentes aos diferentes quartis.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">order_by_hour_name <span style="color:#f92672">%&gt;%</span> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">order_by_hour_name <span style="color:#f92672">%&gt;%</span> 
 <span style="color:#a6e22e">ggplot</span>(<span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> tot, 
            y <span style="color:#f92672">=</span> <span style="color:#a6e22e">reorder</span>(nome_item_fac, tot),
            fill <span style="color:#f92672">=</span> nome_item_fac)) <span style="color:#f92672">+</span> 
@@ -550,7 +550,7 @@ order_by_hour_name <span style="color:#f92672">&lt;-</span> orders_client_v2 <sp
 </code></pre></div><p><img src="/img/graph3.png" alt="graph3"></p>
 <p>Legal, nesse gráfico nós vemos que em algumas distribuições nós temos caudas muito longas, e outras parecem ser bimodal. Pode ser interessante visualizar se esse comportamento está sendo provocado por outliers ou se é um comportamento &ldquo;real&rdquo; desses dados.</p>
 <p>Para isso chamaremos o bom e velho boxplot/violinoplot, porém adicionamos à ele uma camada de visualização dos pontos que o compões. Vamos lá!</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">order_by_hour_name <span style="color:#f92672">%&gt;%</span> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">order_by_hour_name <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">ggplot</span>(<span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> nome_item_fac, 
              y <span style="color:#f92672">=</span> tot)) <span style="color:#f92672">+</span> 
   <span style="color:#a6e22e">geom_half_boxplot</span>(<span style="color:#a6e22e">aes</span>(fill <span style="color:#f92672">=</span> nome_item_fac), side <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;r&#39;</span>, alpha <span style="color:#f92672">=</span> <span style="color:#ae81ff">.3</span>) <span style="color:#f92672">+</span> 
@@ -562,7 +562,7 @@ order_by_hour_name <span style="color:#f92672">&lt;-</span> orders_client_v2 <sp
 
 <span style="color:#a6e22e">ggsave</span>(<span style="color:#e6db74">&#34;graph5.png&#34;</span>, width <span style="color:#f92672">=</span> <span style="color:#ae81ff">7</span>, height <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>)
 </code></pre></div><p><img src="/img/graph5.png" alt="graph5"></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">order_by_hour_name <span style="color:#f92672">%&gt;%</span> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">order_by_hour_name <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">ggplot</span>(<span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> nome_item_fac, 
              y <span style="color:#f92672">=</span> tot)) <span style="color:#f92672">+</span> 
   <span style="color:#a6e22e">geom_half_violin</span>(<span style="color:#a6e22e">aes</span>(fill <span style="color:#f92672">=</span> nome_item_fac), side <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;r&#39;</span>, alpha <span style="color:#f92672">=</span> <span style="color:#ae81ff">.3</span>, scale <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>) <span style="color:#f92672">+</span> 
@@ -573,7 +573,7 @@ order_by_hour_name <span style="color:#f92672">&lt;-</span> orders_client_v2 <sp
   <span style="color:#a6e22e">guides</span>(color <span style="color:#f92672">=</span> F, fill <span style="color:#f92672">=</span> F)
 </code></pre></div><p><img src="/img/graph4.png" alt="graph4"></p>
 <p>Vamos colocar um highlight na região de outliers</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">order_by_hour_name <span style="color:#f92672">%&gt;%</span> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">order_by_hour_name <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">ggplot</span>(<span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> nome_item_fac, 
              y <span style="color:#f92672">=</span> tot)) <span style="color:#f92672">+</span> 
   <span style="color:#a6e22e">geom_half_boxplot</span>(<span style="color:#a6e22e">aes</span>(fill <span style="color:#f92672">=</span> nome_item_fac), side <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;r&#39;</span>, alpha <span style="color:#f92672">=</span> <span style="color:#ae81ff">.3</span>) <span style="color:#f92672">+</span> 
@@ -591,7 +591,7 @@ order_by_hour_name <span style="color:#f92672">&lt;-</span> orders_client_v2 <sp
 <p>Ótimo, na sequência acima nós podemos visualizar as regiões com outliers para cada classe de pedido. Como nós estamos tentando entender melhor os dados, não faremos nenhum tratamento neles e levaremos para o modelo final (k-means).</p>
 <p>Uma observação interessante é que, realizando essa segmentação, poderemos entender melhor qual grupo de clientes que consomem mais saladas e que também bebem mais que outros consumidores (outliers do nossos dados).</p>
 <p>Vamos visualizar como está sendo os pedidos referente a cada localidade.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># como dito antes, aqui nós convertemos a localidade para fator</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># como dito antes, aqui nós convertemos a localidade para fator</span>
 order_by_localidade <span style="color:#f92672">&lt;-</span> orders_client_v2 <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">select</span>(localidade, month, hour, nome_item_fac, quantidade_item) <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">mutate</span>(localidade <span style="color:#f92672">=</span> <span style="color:#a6e22e">as.factor</span>(localidade)) <span style="color:#f92672">%&gt;%</span> 
@@ -617,7 +617,7 @@ order_by_localidade <span style="color:#f92672">%&gt;%</span>
 <li>Maior consumo de pizza, sobremesa e bebida do grupo 4, 7 e 9.</li>
 </ul>
 <p>Por fim, como temos dados períodos bem completos pode ser interessante dá uma olhada num heatmap da quantidade de pedidos ao longo do ano.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">order_by_localidade <span style="color:#f92672">%&gt;%</span> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">order_by_localidade <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">ggplot</span>(<span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> hour, 
              y <span style="color:#f92672">=</span> <span style="color:#a6e22e">as.factor</span>(month), 
              fill <span style="color:#f92672">=</span> tot)) <span style="color:#f92672">+</span> 
@@ -637,12 +637,12 @@ order_by_localidade <span style="color:#f92672">%&gt;%</span>
 <p>Cada distância dessa é indicada para um tipo de dado, sendo a mais usada a euclidiana (dados numéricos). Ao mudar a medida de distância damos origem a diferentes algorítmos de clusterização, e como você pode imaginar, essa pluralidade é tão grande que facilmente encontramos livros inteiros apenas sobre clusterização.</p>
 <p>Aqui nós optamos por utilizar o mais popular entre eles, o k-means, e primeiramente vamos pivotar os dados para um formato que será melhor analisado pelo algorítmo.</p>
 <h2 id="pivotando">Pivotando</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">order_client_clustering <span style="color:#f92672">&lt;-</span> orders_client_raw <span style="color:#f92672">%&gt;%</span> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">order_client_clustering <span style="color:#f92672">&lt;-</span> orders_client_raw <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">select</span>(id_transacao, nome_item_fac, quantidade_item) <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">pivot_wider</span>(id_transacao, names_from <span style="color:#f92672">=</span> nome_item_fac, values_from <span style="color:#f92672">=</span> quantidade_item, values_fill <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
 
 order_client_clustering
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># A tibble: 100,000 x 5</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># A tibble: 100,000 x 5</span>
    id_transacao bebida pizza sobremesa salada
    <span style="color:#f92672">&lt;</span>chr<span style="color:#f92672">&gt;</span>         <span style="color:#f92672">&lt;</span>dbl<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&lt;</span>dbl<span style="color:#f92672">&gt;</span>     <span style="color:#f92672">&lt;</span>dbl<span style="color:#f92672">&gt;</span>  <span style="color:#f92672">&lt;</span>dbl<span style="color:#f92672">&gt;</span>
  <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">0x7901ee</span>          <span style="color:#ae81ff">2</span>     <span style="color:#ae81ff">2</span>         <span style="color:#ae81ff">2</span>      <span style="color:#ae81ff">0</span>
@@ -658,7 +658,7 @@ order_client_clustering
 <span style="color:#75715e"># … with 99,990 more rows</span>
 </code></pre></div><p>Como falamos antes, o k-means e outros algorítmos dessa classe de modelos, trabalham com distâncias, por isso é extremamente interessante que tenhamos os dados numa mesma escala e unidade. Aqui aplicaremos uma padronização (média = 0 e desvio = 1), assumindo assim que nossa distribuição é uma distribuição normal, o que de fato vimos que na maioria dos casos essa premissa se fez verdade.</p>
 <h2 id="padronização">Padronização</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># variáveis para padronizar</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># variáveis para padronizar</span>
 vars_to_use <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">colnames</span>(order_client_clustering)[<span style="color:#ae81ff">-1</span>]
 pmatrix <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">scale</span>(order_client_clustering[, vars_to_use])
 pcenter <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">attr</span>(pmatrix, <span style="color:#e6db74">&#34;scaled:center&#34;</span>) <span style="color:#75715e"># parâmetro que foi utilizado para centralizar</span>
@@ -682,7 +682,7 @@ pmatrix <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">rm_
 </ul>
 <p>O último ponto trás o conceito de &ldquo;clusters reais&rdquo;, que de forma simplificada nada mais é do que um cluster de pontos que não são bem explicados por nenhum outro cluster. Para verificar isso vamos utilizar uma reamostragem bootstrap e rodar o kmeans() várias vezes e em diferentes porções dos dados e medir isso.</p>
 <p>E por fim, iremos utilizar o index <strong>Calinski-Harabasz</strong> para identificar o melhor cluster. Existem <em>váaarias</em> formas de fazer isso, mas eu preferi escolher essa e aqui segue um <a href="https://ethen8181.github.io/machine-learning/clustering_old/clustering/clustering.html">link</a> caso você queira entender melhor sobres as definições matemáticos por trás desse método, <strong>muito bem explicado</strong> por sinal.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># 1 - kmeansruns para encontrar o melhor número de cluster e visualizar o calinski-harabasz index</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># 1 - kmeansruns para encontrar o melhor número de cluster e visualizar o calinski-harabasz index</span>
 <span style="color:#75715e"># 4 - clusterboot() para analisar a estabilidade do cluster</span>
 <span style="color:#75715e"># 2 - col_to_print</span>
 <span style="color:#75715e"># 3 - print_cluster()</span>
@@ -707,7 +707,7 @@ data <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">tibble
   <span style="color:#a6e22e">labs</span>(y <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Calinski-Harabasz Index&#34;</span>)
 </code></pre></div><p><img src="/img/graph9.png" alt="graph9"></p>
 <p>Quanto maior o índice, melhor. Então eu optei por escolher dois dos maiores pontos (3 e 8 clusters) e visualizar como se dá o comportamento deles quando realizado o bootstrap.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># essa célula pode demorar um pouco para rodar dependendo da sua máquina</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># essa célula pode demorar um pouco para rodar dependendo da sua máquina</span>
 <span style="color:#75715e"># running o clusterboot pra melhor escolher o k</span>
 <span style="color:#75715e"># k = 3</span>
 cboot_3 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">clusterboot</span>(pmatrix, clustermethod <span style="color:#f92672">=</span> kmeansCBI, runs <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>, iter.max <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>, krange <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>, seed <span style="color:#f92672">=</span> <span style="color:#ae81ff">2020</span>)
@@ -715,9 +715,9 @@ cboot_3 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">clu
 cboot_8 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">clusterboot</span>(pmatrix, clustermethod <span style="color:#f92672">=</span> kmeansCBI, runs <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>, iter.max <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>, krange <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>, seed <span style="color:#f92672">=</span> <span style="color:#ae81ff">2020</span>)
 
 </code></pre></div><p>No objeto <code>cboot_x</code> retornado pela função <code>clusterboot()</code> podemos chamar o camapo <code>$bootmean</code> que indica justamente qual foi a estabilidade do cluster ao longo das 100 iterações do bootstrap.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#f92672">&gt;</span> cboot_3<span style="color:#f92672">$</span>bootmean
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#f92672">&gt;</span> cboot_3<span style="color:#f92672">$</span>bootmean
 [1] <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">1</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#f92672">&gt;</span> cboot_8<span style="color:#f92672">$</span>bootmean
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#f92672">&gt;</span> cboot_8<span style="color:#f92672">$</span>bootmean
 [1] <span style="color:#ae81ff">0.6846583</span> <span style="color:#ae81ff">0.9253406</span> <span style="color:#ae81ff">0.8652381</span> <span style="color:#ae81ff">0.7604600</span> <span style="color:#ae81ff">0.6980723</span> <span style="color:#ae81ff">0.9149958</span> <span style="color:#ae81ff">0.8921955</span> <span style="color:#ae81ff">0.7588892</span>
 </code></pre></div><p>O que vemos aqui é que estranhamente o modelo com 3 clusters tem uma estabilidade de 1, o que seria perfeito em se tratando que o range de valores possíveis dessa técnica é de 0 a 1, provavelmente tem alguma coisa errada com esse número de clusters já que nada na vida é tão perfeito assim. Por isso, vamos optar de seguir com 8 clusters, utilizando então o objeto <code>cboot_8</code>.</p>
 <p>O que os números do <code>$bootmean</code> nos dizem?</p>
@@ -726,7 +726,7 @@ cboot_8 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">clu
 <li>valores <strong>entre 0.6 e 0.75</strong> indicam que o cluster encontrou algum nível de padrão nos dados.</li>
 <li>valores acima disso possui maior estabilidade, sendo os mais estáveis os valores <strong>acima de 0.85</strong>.</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># groups recebe os datasets com os cluster</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># groups recebe os datasets com os cluster</span>
 groups <span style="color:#f92672">&lt;-</span> cboot_8<span style="color:#f92672">$</span>result<span style="color:#f92672">$</span>partition
 
 <span style="color:#75715e"># colunas que serão utilizadas dataset final com os clusters</span>
@@ -746,7 +746,7 @@ clusters <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">pr
 <p>Uma linha horizontal foi traçada para representar um cliente dentre os milhares presentes nos plots.</p>
 <h3 id="cluster-1">Cluster 1</h3>
 <p>O cluster 1 trás os clientes que possuem um maior consumo de sobremesa e salada, e que consomem pouco, ou não consomem nem bebida nem pizza. Aqueles que querem ser saudáveis mas não dispensam um docinho.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">cluster_1 <span style="color:#f92672">&lt;-</span> clusters[[1]] <span style="color:#f92672">%&gt;%</span> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">cluster_1 <span style="color:#f92672">&lt;-</span> clusters[[1]] <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">pivot_longer</span>(cols <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;bebida&#34;</span>, <span style="color:#e6db74">&#34;pizza&#34;</span>, <span style="color:#e6db74">&#34;sobremesa&#34;</span>, <span style="color:#e6db74">&#34;salada&#34;</span>), names_to <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;pedidos&#34;</span>, values_to <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;values&#34;</span>)
 
 
@@ -766,7 +766,7 @@ cluster_1 <span style="color:#f92672">%&gt;%</span>
 </code></pre></div><p><img src="/img/graph10.png" alt="graph10"></p>
 <h3 id="cluster-2">Cluster 2</h3>
 <p>O cluster 2 é um público que consome bem pouco, e quando consome, consome mais pizza, sobremesa e alguns ainda consomem bebida. Esses são realmente aversos a saladas.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">cluster_2 <span style="color:#f92672">&lt;-</span> clusters[[2]] <span style="color:#f92672">%&gt;%</span> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">cluster_2 <span style="color:#f92672">&lt;-</span> clusters[[2]] <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">pivot_longer</span>(cols <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;bebida&#34;</span>, <span style="color:#e6db74">&#34;pizza&#34;</span>, <span style="color:#e6db74">&#34;sobremesa&#34;</span>, <span style="color:#e6db74">&#34;salada&#34;</span>), names_to <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;pedidos&#34;</span>, values_to <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;values&#34;</span>)
 
 
@@ -786,7 +786,7 @@ cluster_2 <span style="color:#f92672">%&gt;%</span>
 </code></pre></div><p><img src="/img/graph11.png" alt="graph11"></p>
 <h3 id="cluster-3">Cluster 3</h3>
 <p>No cluster 3 nós vemos os clientes que pedem em maior quantidade pizza e sobremesa e optam por não pedir ou pedir pouco salada e bebida.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">cluster_3 <span style="color:#f92672">&lt;-</span> clusters[[3]] <span style="color:#f92672">%&gt;%</span> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">cluster_3 <span style="color:#f92672">&lt;-</span> clusters[[3]] <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">pivot_longer</span>(cols <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;bebida&#34;</span>, <span style="color:#e6db74">&#34;pizza&#34;</span>, <span style="color:#e6db74">&#34;sobremesa&#34;</span>, <span style="color:#e6db74">&#34;salada&#34;</span>), names_to <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;pedidos&#34;</span>, values_to <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;values&#34;</span>)
 
 
@@ -806,7 +806,7 @@ cluster_3 <span style="color:#f92672">%&gt;%</span>
 </code></pre></div><p><img src="/img/graph12.png" alt="graph12"></p>
 <h3 id="cluster-4">Cluster 4</h3>
 <p>O cluster 4 trás as pessoas que gostam de sobremesa mas que pedem um pouco de pizza e salada. Além disso não costuma pedir bebidas.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">cluster_4 <span style="color:#f92672">&lt;-</span> clusters[[4]] <span style="color:#f92672">%&gt;%</span> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">cluster_4 <span style="color:#f92672">&lt;-</span> clusters[[4]] <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">pivot_longer</span>(cols <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;bebida&#34;</span>, <span style="color:#e6db74">&#34;pizza&#34;</span>, <span style="color:#e6db74">&#34;sobremesa&#34;</span>, <span style="color:#e6db74">&#34;salada&#34;</span>), names_to <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;pedidos&#34;</span>, values_to <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;values&#34;</span>)
 
 
@@ -826,7 +826,7 @@ cluster_4 <span style="color:#f92672">%&gt;%</span>
 </code></pre></div><p><img src="/img/graph13.png" alt="graph13"></p>
 <h3 id="cluster-5">Cluster 5</h3>
 <p>Aqui vemos mais um cluster onde os clientes gostam de pedir muita salda com sobremesa, mas não dispensam uma pizza em algumas situações.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">cluster_5 <span style="color:#f92672">&lt;-</span> clusters[[5]] <span style="color:#f92672">%&gt;%</span> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">cluster_5 <span style="color:#f92672">&lt;-</span> clusters[[5]] <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">pivot_longer</span>(cols <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;bebida&#34;</span>, <span style="color:#e6db74">&#34;pizza&#34;</span>, <span style="color:#e6db74">&#34;sobremesa&#34;</span>, <span style="color:#e6db74">&#34;salada&#34;</span>), names_to <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;pedidos&#34;</span>, values_to <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;values&#34;</span>)
 
 
@@ -846,7 +846,7 @@ cluster_5 <span style="color:#f92672">%&gt;%</span>
 </code></pre></div><p><img src="/img/graph14.png" alt="graph14"></p>
 <h3 id="cluster-6">Cluster 6</h3>
 <p>Os clientes do grupo 6 são também bem aversos a salada, optando por uma combinação perfeita, sobremesa e pizza.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">cluster_6 <span style="color:#f92672">&lt;-</span> clusters[[6]] <span style="color:#f92672">%&gt;%</span> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">cluster_6 <span style="color:#f92672">&lt;-</span> clusters[[6]] <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">pivot_longer</span>(cols <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;bebida&#34;</span>, <span style="color:#e6db74">&#34;pizza&#34;</span>, <span style="color:#e6db74">&#34;sobremesa&#34;</span>, <span style="color:#e6db74">&#34;salada&#34;</span>), names_to <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;pedidos&#34;</span>, values_to <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;values&#34;</span>)
 
 
@@ -866,7 +866,7 @@ cluster_6 <span style="color:#f92672">%&gt;%</span>
 </code></pre></div><p><img src="/img/graph15.png" alt="graph15"></p>
 <h3 id="cluster-7">Cluster 7</h3>
 <p>No cluster 7 temos aqueles clientes que juntamente a pizza com sobremesa, adicionam uma bebida.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">cluster_7 <span style="color:#f92672">&lt;-</span> clusters[[7]] <span style="color:#f92672">%&gt;%</span> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">cluster_7 <span style="color:#f92672">&lt;-</span> clusters[[7]] <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">pivot_longer</span>(cols <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;bebida&#34;</span>, <span style="color:#e6db74">&#34;pizza&#34;</span>, <span style="color:#e6db74">&#34;sobremesa&#34;</span>, <span style="color:#e6db74">&#34;salada&#34;</span>), names_to <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;pedidos&#34;</span>, values_to <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;values&#34;</span>)
 
 
@@ -886,7 +886,7 @@ cluster_7 <span style="color:#f92672">%&gt;%</span>
 </code></pre></div><p><img src="/img/graph16.png" alt="graph16"></p>
 <h3 id="cluster-8">Cluster 8</h3>
 <p>E por fim, o cluster os loucos por sobremesa.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">cluster_8 <span style="color:#f92672">&lt;-</span> clusters[[8]] <span style="color:#f92672">%&gt;%</span> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">cluster_8 <span style="color:#f92672">&lt;-</span> clusters[[8]] <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">pivot_longer</span>(cols <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;bebida&#34;</span>, <span style="color:#e6db74">&#34;pizza&#34;</span>, <span style="color:#e6db74">&#34;sobremesa&#34;</span>, <span style="color:#e6db74">&#34;salada&#34;</span>), names_to <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;pedidos&#34;</span>, values_to <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;values&#34;</span>)
 
 
@@ -1013,6 +1013,8 @@ cluster_8 <span style="color:#f92672">%&gt;%</span>
                         
                         
                         
+                        
+                        
                         <a href="/tags/project" title="project">
                             project
                         </a>
@@ -1044,6 +1046,8 @@ cluster_8 <span style="color:#f92672">%&gt;%</span>
                         <a href="/tags/time-series" title="time-series">
                             time-series
                         </a>
+                        
+                        
                         
                         
                         

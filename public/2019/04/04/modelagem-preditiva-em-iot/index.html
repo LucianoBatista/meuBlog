@@ -389,14 +389,14 @@ $(function() {
 <li><strong>NSM:</strong> Medida de tempo (em s)</li>
 </ul>
 <p>Ao importar os dados foi visto que os dados possuem a mesma quantidade de colunas e que elas são iguais, sendo assim, os dados de teste e treino foram concatenados para realizar uma análise conjunta dos dados.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>concat([train, test], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;O novo dataset possui </span><span style="color:#e6db74">{</span>df<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74"> linhas e </span><span style="color:#e6db74">{</span>df<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74"> variáveis&#39;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>concat([train, test], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;O novo dataset possui </span><span style="color:#e6db74">{</span>df<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74"> linhas e </span><span style="color:#e6db74">{</span>df<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74"> variáveis&#39;</span>)
 print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;O dataset possui </span><span style="color:#e6db74">{</span>sum(df<span style="color:#f92672">.</span>isnull()<span style="color:#f92672">.</span>sum())<span style="color:#e6db74">}</span><span style="color:#e6db74"> valores nulos&#39;</span>)
 </code></pre></div><pre><code>O novo dataset possui 19735 linhas e 32 variáveis
 O dataset possui 0 valores nulos
 </code></pre>
 <p>Optei por separar variáveis numéricas e categóricas para melhor observar algumas informações que são características de cada tipo.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">num_vars <span style="color:#f92672">=</span> [name <span style="color:#66d9ef">for</span> name <span style="color:#f92672">in</span> df<span style="color:#f92672">.</span>columns <span style="color:#66d9ef">if</span> df[name]<span style="color:#f92672">.</span>dtype <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;object&#39;</span>]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">num_vars <span style="color:#f92672">=</span> [name <span style="color:#66d9ef">for</span> name <span style="color:#f92672">in</span> df<span style="color:#f92672">.</span>columns <span style="color:#66d9ef">if</span> df[name]<span style="color:#f92672">.</span>dtype <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;object&#39;</span>]
 cat_vars <span style="color:#f92672">=</span> [name <span style="color:#66d9ef">for</span> name <span style="color:#f92672">in</span> df<span style="color:#f92672">.</span>columns <span style="color:#66d9ef">if</span> df[name]<span style="color:#f92672">.</span>dtype <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;object&#39;</span>]
 df_num <span style="color:#f92672">=</span> df[num_vars]
 df_cat <span style="color:#f92672">=</span> df[cat_vars]
@@ -405,35 +405,35 @@ print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;O dat
 </code></pre>
 <p>Uma observação interessante é que precisamos estar sempre atentos ao tipo de dado que está sendo manipulado, no atual conjunto de dados a variável <em>&lsquo;date&rsquo;</em> não foi importada como tipo de data. Logo, foi preciso realizar essa conversão, além disso, a data (agora convertida) foi adicionada ao index do DataFrame.</p>
 <p>A adição da variável de data ao index do objeto DataFrame do pacote Pandas permite uma manipulação mais intuitiva desse tipo de dado. Mais à frente tal funcionalidade será observada.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># converter a coluna &#39;date&#39; para tipo data</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># converter a coluna &#39;date&#39; para tipo data</span>
 df_cat[<span style="color:#e6db74">&#39;date&#39;</span>] <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>to_datetime(df_cat[<span style="color:#e6db74">&#39;date&#39;</span>])
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df_cat<span style="color:#f92672">.</span>dtypes
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df_cat<span style="color:#f92672">.</span>dtypes
 </code></pre></div><pre><code>date           datetime64[ns]
 WeekStatus             object
 Day_of_week            object
 dtype: object
 </code></pre>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Transformando a coluna de data em index podemos realizar algumas análises</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Transformando a coluna de data em index podemos realizar algumas análises</span>
 <span style="color:#75715e"># de forma mais simples.</span>
 df_cat<span style="color:#f92672">.</span>index <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DatetimeIndex(df_cat[<span style="color:#e6db74">&#39;date&#39;</span>])
 df_num<span style="color:#f92672">.</span>index <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DatetimeIndex(df_cat[<span style="color:#e6db74">&#39;date&#39;</span>])
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Também precisaremos de uma coluna com as datas (utilizada para alguns plots).</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Também precisaremos de uma coluna com as datas (utilizada para alguns plots).</span>
 df_num[<span style="color:#e6db74">&#39;date&#39;</span>] <span style="color:#f92672">=</span> df_cat[<span style="color:#e6db74">&#39;date&#39;</span>]<span style="color:#f92672">.</span>copy()
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df_num<span style="color:#f92672">.</span>columns
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df_num<span style="color:#f92672">.</span>columns
 </code></pre></div><pre><code>Index(['Appliances', 'lights', 'T1', 'RH_1', 'T2', 'RH_2', 'T3', 'RH_3', 'T4',
        'RH_4', 'T5', 'RH_5', 'T6', 'RH_6', 'T7', 'RH_7', 'T8', 'RH_8', 'T9',
        'RH_9', 'T_out', 'Press_mm_hg', 'RH_out', 'Windspeed', 'Visibility',
        'Tdewpoint', 'rv1', 'rv2', 'NSM', 'date'],
       dtype='object')
 </code></pre>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df_cat<span style="color:#f92672">.</span>columns
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df_cat<span style="color:#f92672">.</span>columns
 </code></pre></div><pre><code>Index(['date', 'WeekStatus', 'Day_of_week'], dtype='object')
 </code></pre>
 <hr>
 <h2 id="agora-vamos-observar-um-conjunto-de-plots-que-ajudaram-a-entender-melhor-os-dados">Agora vamos observar um conjunto de plots que ajudaram a entender melhor os dados.</h2>
 <h2 id="pairplot">Pairplot</h2>
 <p>O código abaixo permite a visualização de um pairplot filtrado por períodos. È possível visualizar os dados em diferentes intervalos de dias, semanas, meses e ano (caso nosso dataset tivesse dados de um ano diferente à 2016).</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Precisa editar algumas linhas caso precise plotar um dia específico</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Precisa editar algumas linhas caso precise plotar um dia específico</span>
 <span style="color:#75715e"># ou intervalo específico.</span>
 year_start <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;2016&#39;</span>
 month_start <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;05&#39;</span>
@@ -462,7 +462,7 @@ plt<span style="color:#f92672">.</span>show()
 <p><img src="/img/output_21_1.png" alt="png"></p>
 <p>Podemos visualizar que a maioria das distribuição se assemelham à uma distribuição normal, sendo que algumas poucas possuem desvios. Vamos verificar agora se existe a presença de muitos outliers nos dados</p>
 <h2 id="boxplot">Boxplot</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Novamente, cada plot tem um código que permite o filtro por data.</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Novamente, cada plot tem um código que permite o filtro por data.</span>
 year_start <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;2016&#39;</span>
 month_start <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;04&#39;</span>
 day <span style="color:#f92672">=</span> int(<span style="color:#e6db74">&#39;01&#39;</span>)
@@ -490,7 +490,7 @@ plt<span style="color:#f92672">.</span>show()
 <p><img src="/img/output_24_1.png" alt="png"></p>
 <p>Os dados que mais possuem outliers é a variável target. Nesse caso é essencial que esse pontos sejam tratados, o que será feito mais a frente.</p>
 <h2 id="plot-comparativo">Plot Comparativo</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Gráficos comparativo de qualquer variável ao longo de um período</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Gráficos comparativo de qualquer variável ao longo de um período</span>
 <span style="color:#75715e"># Determine o período de início e fim que deseja visualizar</span>
 <span style="color:#75715e"># E determine a variável name com a variável a ser observada</span>
 <span style="color:#75715e"># início</span>
@@ -529,7 +529,7 @@ fig, ax <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</s
 </ul>
 <h2 id="facetgrid">FacetGrid</h2>
 <p>Este é um tipo de gráfico que permite a visualização do comportamento de mais de duas variáveis ao mesmo tempo. Na figura, optei por visualizar a variável <em>&lsquo;Appliances&rsquo;</em> em relação à <em>&lsquo;rv1&rsquo;</em> e <em>&lsquo;T_out&rsquo;</em>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Aqui basta alterar o intervalo desejado e as variáveis desejadas</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Aqui basta alterar o intervalo desejado e as variáveis desejadas</span>
 g <span style="color:#f92672">=</span> sns<span style="color:#f92672">.</span>FacetGrid(df_num[<span style="color:#e6db74">&#39;2016-05&#39;</span>], col<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Appliances&#34;</span>, col_wrap<span style="color:#f92672">=</span><span style="color:#ae81ff">8</span>, height<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, ylim<span style="color:#f92672">=</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">50</span>))
 g<span style="color:#f92672">.</span>map(sns<span style="color:#f92672">.</span>scatterplot, <span style="color:#e6db74">&#34;rv1&#34;</span>, <span style="color:#e6db74">&#34;T_out&#34;</span>, ci<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>);
 </code></pre></div><p><img src="/img/output_31_0.png" alt="png"></p>
@@ -538,7 +538,7 @@ g<span style="color:#f92672">.</span>map(sns<span style="color:#f92672">.</span>
 <h2 id="tratamento-de-outliers">Tratamento de outliers</h2>
 <p>Como vimos que o &lsquo;Appliances&rsquo; possui muito valores outliers. Podemos iniciar o tratamento pela elimação desses valores.</p>
 <p>Para isso, identifiquei o Interquantile Range para remvover o whisker superior do boxplot. Como pode ser visto no código a seguir.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Primeiro e terceiro quartil e cálculo da distância IQR</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Primeiro e terceiro quartil e cálculo da distância IQR</span>
 Q1 <span style="color:#f92672">=</span> df_num[<span style="color:#e6db74">&#39;Appliances&#39;</span>]<span style="color:#f92672">.</span>quantile(<span style="color:#ae81ff">0.25</span>)
 Q3 <span style="color:#f92672">=</span> df_num[<span style="color:#e6db74">&#39;Appliances&#39;</span>]<span style="color:#f92672">.</span>quantile(<span style="color:#ae81ff">0.75</span>)
 IQR <span style="color:#f92672">=</span> Q3 <span style="color:#f92672">-</span> Q1
@@ -549,15 +549,15 @@ print(IQR)
 100.0
 50.0
 </code></pre>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Determinação dos ranges inferiores e superiores do boxplot</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Determinação dos ranges inferiores e superiores do boxplot</span>
 Lower_Whisker <span style="color:#f92672">=</span> Q1 <span style="color:#f92672">-</span> <span style="color:#ae81ff">1.5</span><span style="color:#f92672">*</span>IQR
 Upper_Whisker <span style="color:#f92672">=</span> Q3 <span style="color:#f92672">+</span> <span style="color:#ae81ff">1.5</span><span style="color:#f92672">*</span>IQR
 print(Lower_Whisker, Upper_Whisker)
 </code></pre></div><pre><code>-25.0 175.0
 </code></pre>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Remoção dos dados outiliers</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Remoção dos dados outiliers</span>
 new_df <span style="color:#f92672">=</span> df_num[df_num[<span style="color:#e6db74">&#39;Appliances&#39;</span>] <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">175.0</span>]
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">year_start <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;2016&#39;</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">year_start <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;2016&#39;</span>
 month_start <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;04&#39;</span>
 day <span style="color:#f92672">=</span> int(<span style="color:#e6db74">&#39;01&#39;</span>)
 <span style="color:#75715e"># fim</span>
@@ -582,9 +582,9 @@ plt<span style="color:#f92672">.</span>show()
 </code></pre></div><pre><code>2016-04 até 2016-05-01 23:00:00 com 3870 pontos
 </code></pre>
 <p><img src="/img/output_39_1.png" alt="png"></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Removendo variável de data, adicionada para ajudar na construção dos gráficos</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Removendo variável de data, adicionada para ajudar na construção dos gráficos</span>
 new_df_num <span style="color:#f92672">=</span> new_df<span style="color:#f92672">.</span>drop([<span style="color:#e6db74">&#39;date&#39;</span>], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Resetando o index</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Resetando o index</span>
 new_df_num<span style="color:#f92672">.</span>reset_index(drop<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
 new_df_num<span style="color:#f92672">.</span>index
 </code></pre></div><pre><code>RangeIndex(start=0, stop=17597, step=1)
@@ -592,14 +592,14 @@ new_df_num<span style="color:#f92672">.</span>index
 <h2 id="correlation">Correlation</h2>
 <p>Aqui foi observado como se dá a relação entre as variáveis. Particularmente se existe uma correlação linear entre as variáveis. A correlação é uma medida que varia de 0 a 1, onde valores próximos a 0 possuem uma correlação negativa e próximos a 1 uma correlação positiva.</p>
 <p>A correlação negativa entre duas variáveis representa que a cada vez que eu aumento uma a outra diminui e virse-versa. O contrário também acontece quando temos uma correlação positiva, a medida que uma variável aumenta a outra também aumenta.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Using Pearson Correlation</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Using Pearson Correlation</span>
 <span style="color:#75715e"># General correlation</span>
 plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">25</span>,<span style="color:#ae81ff">15</span>))
 cor <span style="color:#f92672">=</span> new_df_num<span style="color:#f92672">.</span>corr()
 sns<span style="color:#f92672">.</span>heatmap(cor, annot<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, cmap<span style="color:#f92672">=</span>plt<span style="color:#f92672">.</span>cm<span style="color:#f92672">.</span>Reds)
 plt<span style="color:#f92672">.</span>show()
 </code></pre></div><p><img src="/img/output_43_0.png" alt="png"></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Correlation with output variable</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Correlation with output variable</span>
 cor_target <span style="color:#f92672">=</span> abs(cor[<span style="color:#e6db74">&#34;Appliances&#34;</span>])
 <span style="color:#75715e">#Selecting highly correlated features</span>
 relevant_features <span style="color:#f92672">=</span> cor_target[cor_target<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0.2</span>]
@@ -626,7 +626,7 @@ Name: Appliances, dtype: float64
 <p>Uma observação interessante é que maioria das variáveis possuem uma correlação negativa com a variável target, ou seja, o &lsquo;Appliances&rsquo; aumenta a medida que uma variável específica diminui.</p>
 <h2 id="normalização">Normalização</h2>
 <p>Como estamos trabalhando com dados numéricos e que possuem uma distribuição com intervalos diferentes, pode ser que o algoritmo de machine learning escolhido seja sensível a este tipo de comportamento. Outro ajuste que se faz necessário é a normalização dos dados.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># lembrando que a variável target não tem necessidade de ser normalizada</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># lembrando que a variável target não tem necessidade de ser normalizada</span>
 new_df_num_Y <span style="color:#f92672">=</span> new_df_num[<span style="color:#e6db74">&#39;Appliances&#39;</span>]
 new_df_num <span style="color:#f92672">=</span> new_df_num<span style="color:#f92672">.</span>drop([<span style="color:#e6db74">&#39;Appliances&#39;</span>], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
 <span style="color:#75715e"># normalização</span>
@@ -644,10 +644,10 @@ print(columns)
 <p>Aqui apliquei 2 diferentes métodos de seleção de variáveis.</p>
 <h2 id="recursive-elimination">Recursive Elimination</h2>
 <p>Neste método, precisamos definir quantas variáveis queremos para rodar o modelo, e depois, quando obtido o número ótimo aplicamos a seleção de variáveis. O método identifica, recursivamente, qual conjunto de variáveis possuem maior score.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">new_df_num<span style="color:#f92672">.</span>shape
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">new_df_num<span style="color:#f92672">.</span>shape
 </code></pre></div><pre><code>(17597, 28)
 </code></pre>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#no of features</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#no of features</span>
 nof_list<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">28</span>)            
 high_score<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
 <span style="color:#75715e">#Variable to store the optimum features</span>
@@ -670,7 +670,7 @@ print(<span style="color:#e6db74">&#34;Score with </span><span style="color:#e6d
 </code></pre></div><pre><code>Optimum number of features: 21
 Score with 21 features: 0.353213
 </code></pre>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">cols <span style="color:#f92672">=</span> list(new_df_num<span style="color:#f92672">.</span>columns)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">cols <span style="color:#f92672">=</span> list(new_df_num<span style="color:#f92672">.</span>columns)
 model <span style="color:#f92672">=</span> LinearRegression()
 <span style="color:#75715e">#Initializing RFE model</span>
 rfe <span style="color:#f92672">=</span> RFE(model, <span style="color:#ae81ff">21</span>)
@@ -688,7 +688,7 @@ print(selected_features_rfe)
       dtype='object')
 </code></pre>
 <h2 id="embedded-method">Embedded Method</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">reg <span style="color:#f92672">=</span> LassoCV()
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">reg <span style="color:#f92672">=</span> LassoCV()
 reg<span style="color:#f92672">.</span>fit(X_train, y_train)
 print(<span style="color:#e6db74">&#34;Best alpha using built-in LassoCV: </span><span style="color:#e6db74">%f</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> reg<span style="color:#f92672">.</span>alpha_)
 print(<span style="color:#e6db74">&#34;Best score using built-in LassoCV: </span><span style="color:#e6db74">%f</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span>reg<span style="color:#f92672">.</span>score(X_train,y_train))
@@ -711,10 +711,10 @@ Text(0.5, 1.0, 'Feature importance using Lasso Model')
 <p><img src="/img/output_57_2.png" alt="png"></p>
 <h1 id="machine-learning">Machine Learning</h1>
 <p>Na etapa de escolha do modelo, selecionei 3 métodos para problemas de regressão, problema que está sendo modelado, e avaliei a métria de R².</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># removendo variáveis aletórias antes de aplicar o modelo</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># removendo variáveis aletórias antes de aplicar o modelo</span>
 new_df_v <span style="color:#f92672">=</span> new_df_num<span style="color:#f92672">.</span>drop([<span style="color:#e6db74">&#39;rv1&#39;</span>, <span style="color:#e6db74">&#39;rv2&#39;</span>], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">X_train, X_test, y_train, y_test <span style="color:#f92672">=</span> train_test_split(new_df_v, new_df_num_Y, train_size<span style="color:#f92672">=</span><span style="color:#ae81ff">0.7</span>)
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Regressão Linear Múltipla</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">X_train, X_test, y_train, y_test <span style="color:#f92672">=</span> train_test_split(new_df_v, new_df_num_Y, train_size<span style="color:#f92672">=</span><span style="color:#ae81ff">0.7</span>)
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Regressão Linear Múltipla</span>
 modelo <span style="color:#f92672">=</span> LinearRegression()
 modelo<span style="color:#f92672">.</span>fit(X_train, y_train)
 y_pred <span style="color:#f92672">=</span> modelo<span style="color:#f92672">.</span>predict(X_test)
@@ -723,7 +723,7 @@ score <span style="color:#f92672">=</span>  r2_score(y_test, y_pred)
 print(score)
 </code></pre></div><pre><code>0.34058856776814994
 </code></pre>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Support Vector Regression</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Support Vector Regression</span>
 modelo <span style="color:#f92672">=</span> SVR()
 modelo<span style="color:#f92672">.</span>fit(X_train, y_train)
 y_pred <span style="color:#f92672">=</span> modelo<span style="color:#f92672">.</span>predict(X_test)
@@ -732,7 +732,7 @@ score <span style="color:#f92672">=</span>  r2_score(y_test, y_pred)
 print(score)
 </code></pre></div><pre><code>0.3594652532873541
 </code></pre>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Gradient Boosting Regressor</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Gradient Boosting Regressor</span>
 params <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;n_estimators&#39;</span>: <span style="color:#ae81ff">500</span>, <span style="color:#e6db74">&#39;max_depth&#39;</span>: <span style="color:#ae81ff">8</span>, <span style="color:#e6db74">&#39;min_samples_split&#39;</span>: <span style="color:#ae81ff">2</span>,
           <span style="color:#e6db74">&#39;learning_rate&#39;</span>: <span style="color:#ae81ff">0.01</span>, <span style="color:#e6db74">&#39;loss&#39;</span>: <span style="color:#e6db74">&#39;ls&#39;</span>}
 clf <span style="color:#f92672">=</span> ensemble<span style="color:#f92672">.</span>GradientBoostingRegressor(<span style="color:#f92672">**</span>params)
@@ -862,6 +862,8 @@ print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;R2 SC
                         
                         
                         
+                        
+                        
                         <a href="/tags/project" title="project">
                             project
                         </a>
@@ -893,6 +895,8 @@ print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;R2 SC
                         <a href="/tags/time-series" title="time-series">
                             time-series
                         </a>
+                        
+                        
                         
                         
                         

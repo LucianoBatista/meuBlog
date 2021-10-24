@@ -2,13 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://www.lobdata.com.br/categories/</loc>
+    <lastmod>2021-10-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lobdata.com.br/tags/data-science/</loc>
+    <lastmod>2021-10-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lobdata.com.br/2021/10/24/efficient-pandas/</loc>
+    <lastmod>2021-10-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lobdata.com.br/</loc>
+    <lastmod>2021-10-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lobdata.com.br/tags/pandas/</loc>
+    <lastmod>2021-10-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lobdata.com.br/post/</loc>
+    <lastmod>2021-10-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lobdata.com.br/tags/</loc>
+    <lastmod>2021-10-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lobdata.com.br/tags/tutorial/</loc>
+    <lastmod>2021-10-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lobdata.com.br/categories/tutorials/</loc>
+    <lastmod>2021-10-24T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://www.lobdata.com.br/tags/asynchronous/</loc>
     <lastmod>2021-08-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lobdata.com.br/tags/backend/</loc>
-    <lastmod>2021-08-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lobdata.com.br/categories/</loc>
     <lastmod>2021-08-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lobdata.com.br/2021/08/01/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.5/</loc>
@@ -20,22 +44,10 @@
     <loc>https://www.lobdata.com.br/tags/fastapi/</loc>
     <lastmod>2021-08-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lobdata.com.br/</loc>
-    <lastmod>2021-08-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lobdata.com.br/post/</loc>
-    <lastmod>2021-08-01T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.lobdata.com.br/tags/restfull-api/</loc>
     <lastmod>2021-08-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lobdata.com.br/tags/sqlalchemy/</loc>
-    <lastmod>2021-08-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lobdata.com.br/tags/</loc>
-    <lastmod>2021-08-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lobdata.com.br/categories/tutorials/</loc>
     <lastmod>2021-08-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lobdata.com.br/tags/web-development/</loc>
@@ -52,9 +64,6 @@
   </url><url>
     <loc>https://www.lobdata.com.br/2021/03/30/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.1/</loc>
     <lastmod>2021-03-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lobdata.com.br/tags/data-science/</loc>
-    <lastmod>2020-10-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lobdata.com.br/2020/10/25/demand-forecasting-of-brazilian-commodities/</loc>
     <lastmod>2020-10-25T00:00:00+00:00</lastmod>

@@ -6,7 +6,34 @@
     <description>Recent content in Tags on LOB.DATA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 24 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Data Science</title>
+      <link>https://www.lobdata.com.br/tags/data-science/</link>
+      <pubDate>Sun, 24 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/tags/data-science/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pandas</title>
+      <link>https://www.lobdata.com.br/tags/pandas/</link>
+      <pubDate>Sun, 24 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/tags/pandas/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tutorial</title>
+      <link>https://www.lobdata.com.br/tags/tutorial/</link>
+      <pubDate>Sun, 24 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/tags/tutorial/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Asynchronous</title>
       <link>https://www.lobdata.com.br/tags/asynchronous/</link>
@@ -67,15 +94,6 @@
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lobdata.com.br/tags/web-development/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Data Science</title>
-      <link>https://www.lobdata.com.br/tags/data-science/</link>
-      <pubDate>Sun, 25 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lobdata.com.br/tags/data-science/</guid>
       <description></description>
     </item>
     

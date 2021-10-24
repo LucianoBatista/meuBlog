@@ -389,7 +389,7 @@ $(function() {
 <p>A short disclaimer before start, this article is not meant to explain all the theory behind the correlation analysis and for a more complete explanation, you can access this great reference: <a href="https://otexts.com/fpp3/graphics.html">Forecasting: Principles and Pratice</a>.</p>
 <h1 id="the-different-approaches">The Different Approaches</h1>
 <p>Let&rsquo;s set our environment:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># packages for this tutorial</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># packages for this tutorial</span>
 <span style="color:#75715e"># first approach</span>
 <span style="color:#a6e22e">library</span>(feasts)
 <span style="color:#a6e22e">library</span>(tsibble)
@@ -406,7 +406,7 @@ $(function() {
 </code></pre></div><h2 id="data">Data</h2>
 <p>We&rsquo;ll use a dataset from Stack Overflow, that have the numbers of questions for each month from 2009 to 2019, in different topics. You can access the data using this <a href="https://www.kaggle.com/aishu200023/stackindex">link</a>.</p>
 <p>The dataset contains 9 different features regarding keywords used in Stack Overflow questions, but here, we&rsquo;ll use just <code>r</code> and <code>python</code> columns.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># reading the dataset</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># reading the dataset</span>
 stackoverflow_raw <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">read_csv</span>(<span style="color:#e6db74">&#34;00_data/MLTollsStackOverflow.csv&#34;</span>)
 
 <span style="color:#75715e"># selecting columns to use in this tutorial</span>
@@ -414,13 +414,13 @@ stackoverflow_tbl <span style="color:#f92672">&lt;-</span> stackoverflow_raw <sp
   <span style="color:#a6e22e">select</span>(month, r, python)
 
 </code></pre></div><p>I&rsquo;ll do one basic transformation in this dataset that must help-us during the tutorial and in all methods.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># convert to date</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># convert to date</span>
 stackoverflow_prep_tbl <span style="color:#f92672">&lt;-</span> stackoverflow_tbl <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">mutate</span>(date <span style="color:#f92672">=</span> <span style="color:#a6e22e">str_glue</span>(<span style="color:#e6db74">&#34;20{month}&#34;</span>),
          date <span style="color:#f92672">=</span> <span style="color:#a6e22e">yearmonth</span>(date) <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">as_date</span>()) <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">select</span>(date, r, python, <span style="color:#f92672">-</span>month)
 
-</code></pre></div><pre><code># A tibble: 132 x 3
+</code></pre></div><pre tabindex="0"><code># A tibble: 132 x 3
    date           r python
    &lt;date&gt;     &lt;dbl&gt;  &lt;dbl&gt;
  1 2009-01-01     8    631
@@ -437,21 +437,21 @@ stackoverflow_prep_tbl <span style="color:#f92672">&lt;-</span> stackoverflow_tb
 </code></pre><p>Now we can start!!</p>
 <h2 id="first-approach">First Approach</h2>
 <p>The first method that I want to show you use the <code>ts</code> object, a built-in format in R for time series. I choose this approach because with the <code>ts</code> object we have a good integration with <code>TSstudio</code> package and nice interactive functions to use.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># ts function is responsible to convert to ts object</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># ts function is responsible to convert to ts object</span>
 stackOverflow_ts <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">ts</span>(data <span style="color:#f92672">=</span> stackoverflow_prep_tbl[, <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;python&#34;</span>, <span style="color:#e6db74">&#34;r&#34;</span>)], <span style="color:#75715e"># selecting 2 variables</span>
    start <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">2009</span>, <span style="color:#ae81ff">01</span>), <span style="color:#75715e"># start date</span>
    end <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">2019</span>, <span style="color:#ae81ff">12</span>), <span style="color:#75715e"># end date </span>
    frequency <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span>)
 
 </code></pre></div><p>Now you can see all information about the time series that was created with the <code>ts</code> function.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">ts_info</span>(stackOverflow_ts)
-</code></pre></div><pre><code> The stackOverflow_ts series is a mts object with 2 variables and 132 observations
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">ts_info</span>(stackOverflow_ts)
+</code></pre></div><pre tabindex="0"><code> The stackOverflow_ts series is a mts object with 2 variables and 132 observations
  Frequency: 12 
  Start time: 2009 1 
 ` End time: 2019 12 
 </code></pre><p>With this summary, it&rsquo;s possible to see that we have two variables, that represent two different time series. Each time series represent one feature (r and python).</p>
 <p>Lets visualize the time series.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">ts_plot</span>(stackOverflow_ts,
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">ts_plot</span>(stackOverflow_ts,
         title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Monthly questions on Stack Overflow platform&#34;</span>,
         Ytitle <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;# Questions&#34;</span>,
         Xtitle <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Year&#34;</span>)
@@ -463,7 +463,7 @@ stackOverflow_ts <span style="color:#f92672">&lt;-</span> <span style="color:#a6
 <p>The <code>TSstudio</code> package doesn&rsquo;t have any function to plot the ACF and PACF measures, and for that, we use the built-in functions <code>acf</code> and <code>pacf</code>. The downside here, for me, is that the object generated by these functions is not a <code>ggplot2</code> object, and we lose all beautiful features from the grammar of graphics.</p>
 <p>Obviously, you can go through the data and try to plot in the <code>ggplot2</code> by yourself but will be a little burdensome.</p>
 <p>For R time series:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">par</span>(mfrow <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>))
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">par</span>(mfrow <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>))
 <span style="color:#75715e"># acf R time series</span>
 stackOverflow_ts[, <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;r&#34;</span>)] <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">acf</span>(lag.max <span style="color:#f92672">=</span> <span style="color:#ae81ff">300</span>, 
@@ -475,7 +475,7 @@ stackOverflow_ts[, <span style="color:#a6e22e">c</span>(<span style="color:#e6db
        main <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Partial Autocorrelation Plot - R&#34;</span>)
 </code></pre></div><p><img src="/img/ts_02.png" alt="Plot"></p>
 <p>For Python time series:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># acf Python time series</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># acf Python time series</span>
 stackOverflow_ts[, <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;python&#34;</span>)] <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">acf</span>(lag.max <span style="color:#f92672">=</span> <span style="color:#ae81ff">300</span>,
       main <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Autocorrelation Plot - Python&#34;</span>)
@@ -497,7 +497,7 @@ stackOverflow_ts[, <span style="color:#a6e22e">c</span>(<span style="color:#e6db
 <p>To summarize, when we look at the PACF plot, we want to know each lag that has relevant information to use as a predictor in a future forecast. How much greater the PACF score, the better.</p>
 <p>And, in our plots, we see that both time series have one lag (closer to lag 1) that may be useful.</p>
 <p>Just know which correlation score has the higher score is not enough, it&rsquo;s important to see visually how these points are distributed. In that, <code>TSstudio</code> has a great interactive function, called <code>ts_lags</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># Looking at lag plots</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># Looking at lag plots</span>
 <span style="color:#a6e22e">ts_lags</span>(stackOverflow_ts,
         lags <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">40</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">80</span>)) <span style="color:#f92672">%&gt;%</span> <span style="color:#75715e"># choosing what lags to plot</span>
   <span style="color:#a6e22e">layout</span>(title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Series vs Lags&#34;</span>)
@@ -505,7 +505,7 @@ stackOverflow_ts[, <span style="color:#a6e22e">c</span>(<span style="color:#e6db
 <h3 id="causality-analysis-i">Causality analysis I</h3>
 <p>Just look at the past pattern within the series is not always a good idea. The main pitfall of this method is that it will fail whenever the changes in the series derive from the exogenous factors. The goal of causality analysis, in the context of time series analysis, is to identify whether a causality relationship exists between the series we wish to forecast other potential exogenous factors.</p>
 <p>Be careful about the fact that correlation doesn&rsquo;t imply causation, we just looking for something that could help the forecast model. In our current case, we just can see if exist some lag in R time series correlated to Python time series.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># ccf time series</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># ccf time series</span>
 <span style="color:#a6e22e">par</span>(mfrow<span style="color:#f92672">=</span><span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>))
 <span style="color:#a6e22e">ccf</span>(stackOverflow_ts[, <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;r&#34;</span>)], stackOverflow_ts[, <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;python&#34;</span>)], 
     lag.max <span style="color:#f92672">=</span> <span style="color:#ae81ff">300</span>,
@@ -517,7 +517,7 @@ stackOverflow_ts[, <span style="color:#a6e22e">c</span>(<span style="color:#e6db
 <p>The graphic is saying to us that currently (at the date of the dataset) the growth of R questions is highly correlated to Python questions.</p>
 <h2 id="second-approach">Second Approach</h2>
 <p>This second approach uses what is called tsibble, like a tibble with an implicit date index. So, let&rsquo;s convert our tibble to a tsibble.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">stackoverflow_prep_tsbl <span style="color:#f92672">&lt;-</span> stackoverflow_prep_tbl <span style="color:#f92672">%&gt;%</span> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">stackoverflow_prep_tsbl <span style="color:#f92672">&lt;-</span> stackoverflow_prep_tbl <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">mutate</span>(date <span style="color:#f92672">=</span> <span style="color:#a6e22e">yearmonth</span>(date)) <span style="color:#f92672">%&gt;%</span>
   <span style="color:#a6e22e">pivot_longer</span>(cols <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(r, python), names_to <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;names&#34;</span>, values_to <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;value&#34;</span>) <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">as_tsibble</span>(key <span style="color:#f92672">=</span> names,index <span style="color:#f92672">=</span> date) <span style="color:#75715e"># specifying the time series in the object</span>
@@ -527,11 +527,11 @@ stackOverflow_ts[, <span style="color:#a6e22e">c</span>(<span style="color:#e6db
 <h3 id="lag-analysis-ii">Lag Analysis II</h3>
 <p>Unlike <code>TSstudio</code>, we do not have interactivity plots, all plots are static, but they are objects of ggplot2 and allow us to use the concepts of the grammar of graphics.</p>
 <p>A problem with these functions is that they may behave differently than expected. Plugging the data to the acf and pacf functions, we are able to automatically see the faceted plots between all time series within the object. But if we try to simply visualize the series over time, it will not be possible to facet. It&rsquo;s not a big problem, and you can plot using ggplot normally (see the code).</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># looking at the data</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># looking at the data</span>
 stackoverflow_prep_tsbl <span style="color:#f92672">%&gt;%</span> 
   feasts<span style="color:#f92672">::</span><span style="color:#a6e22e">autoplot</span>()
 </code></pre></div><p><img src="/img/ts_06.png" alt="Plot"></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">
 <span style="color:#75715e"># looking at the data facet way</span>
 stackoverflow_prep_tsbl <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">ggplot</span>(<span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> date,
@@ -540,26 +540,26 @@ stackoverflow_prep_tsbl <span style="color:#f92672">%&gt;%</span>
   <span style="color:#a6e22e">geom_line</span>() <span style="color:#f92672">+</span>
   <span style="color:#a6e22e">facet_wrap</span>(<span style="color:#f92672">~</span>names, scales <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;free_y&#34;</span>)
 </code></pre></div><p><img src="/img/ts_07.png" alt="Plot"></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">
 <span style="color:#75715e"># lag plots</span>
 stackoverflow_prep_tsbl <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">filter</span>(names <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;python&#34;</span>) <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">gg_lag</span>(value, geom<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;point&#34;</span>)
 
 </code></pre></div><p><img src="/img/ts_08.png" alt="Plot"></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">
 <span style="color:#75715e"># acf</span>
 stackoverflow_prep_tsbl <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">ACF</span>(value, lag_max <span style="color:#f92672">=</span> <span style="color:#ae81ff">300</span>) <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">autoplot</span>()
 </code></pre></div><p><img src="/img/ts_09.png" alt="Plot"></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># pacf  </span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># pacf  </span>
 stackoverflow_prep_tsbl <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">PACF</span>(value, lag_max <span style="color:#f92672">=</span> <span style="color:#ae81ff">300</span>) <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">autoplot</span>()
 </code></pre></div><p><img src="/img/ts_10.png" alt="Plot"></p>
 <h3 id="casuality-analysis-ii">Casuality Analysis II</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># ccf</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># ccf</span>
 stackoverflow_prep_tsbl <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">pivot_wider</span>(names_from <span style="color:#f92672">=</span> names, values_from <span style="color:#f92672">=</span> value) <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">CCF</span>(python, r, lag_max <span style="color:#f92672">=</span> <span style="color:#ae81ff">300</span>) <span style="color:#f92672">%&gt;%</span> 
@@ -570,16 +570,16 @@ stackoverflow_prep_tsbl <span style="color:#f92672">%&gt;%</span>
 <p>Until now we have changed our original object several times, but using the <code>timetk</code> package you can perform all these analyzes using just the original object, a tibble data frame. Making analysis much more intuitive, and also integrating with all <code>tidyverse</code> packages.</p>
 <h3 id="lag-analysis-iii">Lag Analysis III</h3>
 <p>You basically use 2 functions to perform all the correlation analysis with much less code and more flexibility. The only thing that you need to do is put the dataset in a long format.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># passing to a long format</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># passing to a long format</span>
 stackoverflow_prep_long_tbl <span style="color:#f92672">&lt;-</span> stackoverflow_prep_tbl <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">pivot_longer</span>(cols <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(r, python), names_to <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;names&#34;</span>, values_to <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;value&#34;</span>)
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># the series</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># the series</span>
 stackoverflow_prep_long_tbl <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">plot_time_series</span>(.date_var <span style="color:#f92672">=</span> date,
                    .value <span style="color:#f92672">=</span> value,
                    .facet_vars <span style="color:#f92672">=</span> names)
 </code></pre></div><p><img src="/img/ts_12.png" alt="Plot"></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># acf/pacf plots</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># acf/pacf plots</span>
 stackoverflow_prep_long_tbl <span style="color:#f92672">%&gt;%</span>
   <span style="color:#a6e22e">group_by</span>(names) <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">plot_acf_diagnostics</span>(.date_var <span style="color:#f92672">=</span> date,
@@ -588,7 +588,7 @@ stackoverflow_prep_long_tbl <span style="color:#f92672">%&gt;%</span>
 </code></pre></div><p><img src="/img/ts_13.png" alt="Plot"></p>
 <h3 id="causality-analysis-iii">Causality Analysis III</h3>
 <p>In the real world, the time series you want to compare will probably not be in the same range as here, and you will probably need to do some transformation to put in the same interval and only then calculate the ccf score.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># CCF plot</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># CCF plot</span>
 stackoverflow_prep_tbl <span style="color:#f92672">%&gt;%</span> 
   <span style="color:#a6e22e">plot_acf_diagnostics</span>(.date_var <span style="color:#f92672">=</span> date,
                        .value <span style="color:#f92672">=</span> r,
@@ -720,6 +720,8 @@ stackoverflow_prep_tbl <span style="color:#f92672">%&gt;%</span>
                         
                         
                         
+                        
+                        
                         <a href="/tags/project" title="project">
                             project
                         </a>
@@ -751,6 +753,8 @@ stackoverflow_prep_tbl <span style="color:#f92672">%&gt;%</span>
                         <a href="/tags/time-series" title="time-series">
                             time-series
                         </a>
+                        
+                        
                         
                         
                         

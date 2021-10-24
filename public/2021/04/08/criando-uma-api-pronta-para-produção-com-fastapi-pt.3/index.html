@@ -374,9 +374,9 @@ $(function() {
 <p>Dando continuidade a nossa aplicação, hoje vamos iniciar a configuração do Docker em nosso ambiente. E antes de mais nada, precisaremos instalar o Docker e o Docker Compose na nossa máquina.</p>
 <p><img src="/img/finance_app_tutorial/pt3/lets_do_it.gif" alt="Let&rsquo;s Do This"></p>
 <p>A <a href="https://docs.docker.com/get-docker/">documentação</a> do Docker para instalação é muito bem explicada. Ao acessar o link você encontrará um passo-a-passo para qualquer SO que esteja usando (macOS, Linux ou Windows). Ao final da instalação, o próprio tutorial indica como verificar se está tudo funcionando corretamente, a versão que estarei utilizando aqui é:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker -v
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker -v
 Docker version 20.10.5, build 55c4c88
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker-compose -v
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker-compose -v
 docker-compose version 1.27.4, build <span style="color:#ae81ff">40524192</span>
 </code></pre></div><p>O workflow que vamos seguir aqui é o de containerizar cada parte da aplicação e depois orquestrar isso de alguma forma, para que cada parte se comunique de forma harmônica e a aplicação final funcione através dos containers e imagens criadas. Nesse processo, cada &ldquo;bloco&rdquo; da aplicação vai ser construído utilizando um template de instruções, nossos Dockerfiles, e a orquestração aqui vai ser feita por um arquivo chamado docker-compose.yml.</p>
 <p>Ao final desse workflow você vai ter um <em>bundle</em> onde cada container contêm parte da aplicação, mas tudo funciona em conjunto. Veja na imagem (de forma simplificada) o que acontece.</p>
@@ -392,7 +392,7 @@ docker-compose version 1.27.4, build <span style="color:#ae81ff">40524192</span>
 <p>No caso de Dockerfiles para aplicações web em python eu costumo seguir um pipeline básico do que é preciso/interessante ter na imagem, e ao longo do projeto vou modificando de acordo a necessidade:</p>
 <p><img src="/img/finance_app_tutorial/pt3/diagrams.png" alt="Diagram"></p>
 <p>Ainda assim, é fácil encontrar modelos de Dockerfile para diversos tipos de aplicação no github, apenas busque entender o que de fato está acontecendo antes de copiar e colar.</p>
-<pre><code>FROM python:3.9.0-slim-buster
+<pre tabindex="0"><code>FROM python:3.9.0-slim-buster
 
 WORKDIR /usr/src/app
 
@@ -424,7 +424,7 @@ COPY . .
 <p>Se quiser fazer um review de boas práticas de Docker para desenvolvedores python, <a href="https://mherman.org/presentations/dockercon-2018/">acesse</a>.</p>
 </blockquote>
 <p>Adicione à sua pasta <code>project/</code> o arquivo <code>docker-compose.yml</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#34;3.8&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#34;3.8&#34;</span>
 
 <span style="color:#f92672">services</span>:
   <span style="color:#f92672">web</span>:
@@ -442,13 +442,13 @@ COPY . .
 <p>A marcação de <code>volumes</code> é extremamente interessante/importante para que tenhámos persistência de dados ao longo do desenvolvimento e em produção. Basicamente estou dizendo que o <code>./project</code> local vai ser mapeado no diretório <code>/usr/src/app</code>, e tudo que acontecer localmente também vai ser atualizado dentro do ambiente docker sem necessidade de rebuildar a imagem.</p>
 <p>Depois disso nós expomos uma porta 8004 que vai escutar a porta 8000 dentro da nossa image Docker. E por fim adicionamos duas variáveis de ambiente, que são as mesmas que estão na nossa classe Settings no arquivo <code>config.py</code>.</p>
 <p>Vamos buidar nossa imagem:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker-compose build
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker-compose build
 
 </code></pre></div><blockquote>
 <p>Eu tive um problema ao buildar a imagem pois o diretório root da imagem é diferente do que está meu projeto no pyCharm. Para resolver isso eu tive que alterar o main.py e mudar o que o pyCharm considera como root.</p>
 </blockquote>
 <p>Modificando o <code>main.py</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># project/app/main.py</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># project/app/main.py</span>
 
 <span style="color:#f92672">from</span> fastapi <span style="color:#f92672">import</span> FastAPI, Depends
 
@@ -468,16 +468,16 @@ app <span style="color:#f92672">=</span> FastAPI()
 
 </code></pre></div><p>Para configurar o pyCharm, clique com o botão direito em cima da pasta do project e vá em <strong>Mark Directory as</strong> &gt; <strong>Sources Root</strong>. Agora rode a build novamente e provavelmente deve funcionar.</p>
 <p>Assim que a build estiver pronta, vamos iniciar o container em background (detached <code>-d</code>):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker-compose up -d
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker-compose up -d
 
 </code></pre></div><p>Vá até o link <a href="http://localhost:8004/ping">http://localhost:8004/ping</a> e você verá o seguinte output:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
   <span style="color:#f92672">&#34;ping&#34;</span>: <span style="color:#e6db74">&#34;pong!&#34;</span>,
   <span style="color:#f92672">&#34;environment&#34;</span>: <span style="color:#e6db74">&#34;dev&#34;</span>,
   <span style="color:#f92672">&#34;testing&#34;</span>: <span style="color:#66d9ef">false</span>
 }
 </code></pre></div><p>Em nosso diretório de projeto, você deverá ter uma estrutura semelhante a essa:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">.
 ├── docker-compose.yml
 ├── project
 │   ├── app
@@ -604,6 +604,8 @@ app <span style="color:#f92672">=</span> FastAPI()
                         
                         
                         
+                        
+                        
                         <a href="/tags/project" title="project">
                             project
                         </a>
@@ -635,6 +637,8 @@ app <span style="color:#f92672">=</span> FastAPI()
                         <a href="/tags/time-series" title="time-series">
                             time-series
                         </a>
+                        
+                        
                         
                         
                         

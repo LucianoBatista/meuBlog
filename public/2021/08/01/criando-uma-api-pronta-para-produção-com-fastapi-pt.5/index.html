@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="LOB.DATA">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://www.lobdata.com.br/img/banner/beach_more_sea.jpg">
+
+    
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:image" content="https://www.cedricscherer.com/img/banner/banner.png" >
+    
+
+    
+
+    
+      <meta name="title" content="Criando uma API Pronta para Produção com FastAPI - PT.5" />
+      <meta property="og:title" content="Criando uma API Pronta para Produção com FastAPI - PT.5 - Luba" />
+      <meta property="twitter:title" content="Criando uma API Pronta para Produção com FastAPI - PT.5 - Luba" />
+      <meta property="twitter:text:title" content="Criando uma API Pronta para Produção com FastAPI - PT.5 - Luba" />
+    
+
+    
+      <meta name="description" content="Blog by LuBa">
+      <meta property="og:description" content="Blog by LuBa" />
+      <meta property="twitter:description" content="Blog by LuBa" />
+    
+
+    
+
+    <meta name="keyword"  content="Data Visualization, Data Science, Programming, Web Development">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Criando uma API Pronta para Produção com FastAPI - PT.5 - Luba</title>
+
+    <link rel="canonical" href="/2021/08/01/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.5/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/styles/foundation.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">LOB.DATA</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Blog</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/aplica%C3%A7%C3%B5es">aplicações</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/projetos">projetos</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/tutorials">tutorials</a>
+                    </li>
+                    
+
+		    
+                        <li><a href="/top/about/">About Me</a></li>
+                    
+
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/post_0_4.png')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/restfull-api" title="RESTFull API">
+                            RESTFull API
+                        </a>
+                        
+                        <a class="tag" href="/tags/web-development" title="Web Development">
+                            Web Development
+                        </a>
+                        
+                        <a class="tag" href="/tags/backend" title="Backend">
+                            Backend
+                        </a>
+                        
+                        <a class="tag" href="/tags/asynchronous" title="Asynchronous">
+                            Asynchronous
+                        </a>
+                        
+                        <a class="tag" href="/tags/fastapi" title="FastAPI">
+                            FastAPI
+                        </a>
+                        
+                        <a class="tag" href="/tags/docker" title="Docker">
+                            Docker
+                        </a>
+                        
+                        <a class="tag" href="/tags/sqlalchemy" title="SQLAlchemy">
+                            SQLAlchemy
+                        </a>
+                        
+                    </div>
+                    <h1>Criando uma API Pronta para Produção com FastAPI - PT.5</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+			Posted by
+			
+			    Luciano
+			
+			on
+			Sunday, August 1, 2021
+                        
+                            <span id="/2021/08/01/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.5/" class="leancloud_visitors meta_data_item" data-flag-title="">
+    <span class="post-meta-item-icon">
+      <span class="octicon octicon-eye"></span> 
+    </span>
+    <i class="fa fa-eye"></i>
+    <span class="old-visitors-count" style="display: none;"></span>
+    <span class="leancloud-visitors-count"></span>
+</span>
+
+
+
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+
+<script>
+	AV.initialize("", "");
+</script>
+
+<script type="text/javascript">
+function showTime(Counter) {
+    var query = new AV.Query(Counter);
+    var entries = [];
+    var $visitors = $(".leancloud_visitors");
+
+    $visitors.each(function() {
+        entries.push($(this).attr("id").trim());
+    });
+
+    query.containedIn('url', entries);
+    query.find()
+        .done(function(results) {
+            var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+            var OLD_COUNT_CONTAINER_REF = '.old-visitors-count';
+
+            
+            
+            
+            
+
+            for (var i = 0; i < results.length; i++) {
+                var item = results[i];
+                var url = item.get('url');
+                var time = item.get('time');
+                var element = document.getElementById(url);
+
+                $(element).find(COUNT_CONTAINER_REF).text(time);
+            }
+            for (var i = 0; i < entries.length; i++) {
+                var url = entries[i];
+                var element = document.getElementById(url);
+                var countSpan = $(element).find(COUNT_CONTAINER_REF);
+                if (countSpan.text() == '') {
+                    var oldCountSpan = $(element).find(OLD_COUNT_CONTAINER_REF).text();
+                    if(oldCountSpan!=''){
+                        countSpan.text(0+parseInt(oldCountSpan));
+                    }else{
+                        countSpan.text(0);          
+                    }
+                }
+            }
+        })
+        .fail(function(object, error) {
+            console.log("Error: " + error.code + " " + error.message);
+        });
+}
+
+function addCount(Counter) {
+    var $visitors = $(".leancloud_visitors");
+    var url = $visitors.attr('id').trim();
+    var title = $visitors.attr('data-flag-title').trim();
+    var query = new AV.Query(Counter);
+
+    query.equalTo("url", url);
+    query.find({
+        success: function(results) {
+            if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment("time");
+                counter.save(null, {
+                    success: function(counter) {
+                        var $element = $(document.getElementById(url));
+                        $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                    },
+                    error: function(counter, error) {
+                        console.log('Failed to save Visitor num, with error message: ' + error.message);
+                    }
+                });
+            } else {
+                var newcounter = new Counter();
+                 
+                var acl = new AV.ACL();
+                acl.setPublicReadAccess(true);
+                acl.setPublicWriteAccess(true);
+                newcounter.setACL(acl);
+                 
+                newcounter.set("title", title);
+                newcounter.set("url", url);
+                var OLD_COUNT_CONTAINER_REF = '.old-visitors-count';
+                var $element = $(document.getElementById(url));
+                var oldCountSpan = $element.find(OLD_COUNT_CONTAINER_REF).text();
+                if(oldCountSpan!=''){
+                    newcounter.set("time", parseInt(oldCountSpan)+1);
+                }else{
+ 	                    newcounter.set("time",  1);
+                }
+                newcounter.save(null, {
+                    success: function(newcounter) {
+                        var $element = $(document.getElementById(url));
+                        $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                    },
+                    error: function(newcounter, error) {
+                        console.log('Failed to create');
+                    }
+                });
+            }
+        },
+        error: function(error) {
+            console.log('Error:' + error.code + " " + error.message);
+        }
+    });
+}
+$(function() {
+    var Counter = AV.Object.extend("Counter");
+    
+    
+    if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+    } else {
+        showTime(Counter);
+    }
+});
+</script>
+
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h3>Table of Contents</h3>
+                </header>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#nos-capítulos-anteriores-">Nos Capítulos Anteriores &hellip;</a></li>
+    <li><a href="#reorganizando-o-projeto">Reorganizando o projeto</a></li>
+    <li><a href="#configurando-o-sqlalchemy-no-projeto">Configurando o SQLAlchemy no Projeto</a>
+      <ul>
+        <li><a href="#alerta-boas-práticas-">Alerta Boas Práticas 🚨</a></li>
+        <li><a href="#configurando-variáveis-de-ambiente">Configurando Variáveis de Ambiente</a></li>
+        <li><a href="#inicializando-em-conjunto-com-o-sqlalchemy">Inicializando em Conjunto com o SQLAlchemy</a></li>
+        <li><a href="#bug-do-mysql-">Bug do MySQL 🐛</a></li>
+        <li><a href="#refatoração-">Refatoração 🔨</a></li>
+      </ul>
+    </li>
+    <li><a href="#próximo-capítulo">Próximo Capítulo&hellip;</a></li>
+  </ul>
+</nav>
+                
+                <h2 id="nos-capítulos-anteriores-">Nos Capítulos Anteriores &hellip;</h2>
+<p>Como dito anteriormente, hoje vamos configurar o <strong>SQLAlchemy</strong>!!</p>
+<p>Essa é a parte 5 do nosso projeto do <strong>EconoWallet</strong> e se você quiser verificar o que já fizemos até o momento, acesse os links abaixo:</p>
+<ul>
+<li><a href="https://www.lobdata.com.br/2021/03/30/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.1/">Parte 1</a></li>
+<li><a href="https://www.lobdata.com.br/2021/04/03/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.2/">Parte 2</a></li>
+<li><a href="https://www.lobdata.com.br/2021/04/08/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.3/">Parte 3</a></li>
+<li><a href="https://www.lobdata.com.br/2021/07/31/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.4/">Parte 4</a></li>
+<li><a href="https://www.lobdata.com.br/2021/08/01/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.5/">Parte 5</a></li>
+</ul>
+<p>Sem enrolação, vamos logo ao que interessa!!!</p>
+<p><img src="/img/finance_app_tutorial/pt4/letscode.gif" alt="I&rsquo;m ready when you are"></p>
+<h2 id="reorganizando-o-projeto">Reorganizando o projeto</h2>
+<p>Antes de configurar o ORM, vamos ajustar algumas coisas no nosso diretório. Como estamos seguindo para um estágio mais maduro da aplicação e que você já compreende o básico de configuração do FastAPI, precisaremos agora <strong>separar melhor as competências</strong> dentro do projeto.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir project/app/api      
+mkdir project/app/database           
+mkdir project/app/models  
+touch project/app/api/__init__.py           
+touch project/app/database/__init__.py         
+touch project/app/models/__init__.py        
+touch project/app/api/status.py     
+</code></pre></div><p>Veja que agora nós temos alguns diretórios novos✨ que irão comportar diferentes lógicas no nosso projeto:</p>
+<ul>
+<li><strong>api</strong>: todas as nossas rotas da api.</li>
+<li><strong>database</strong>: toda a lógica de configuração do SQLAlchemy.</li>
+<li><strong>models</strong>: toda a especificação de como deverão ser nossas tabelas.</li>
+</ul>
+<p>Nós também adicionamos um arquivo chamado <code>status.py</code>, esse irá conter a rota de status da nossa aplicação, que antes estava no nosso arquivo <code>main.py</code>. Veja como está nosso <code>main.py</code> e nosso <code>status.py</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># main.py</span>
+<span style="color:#f92672">import</span> logging
+
+<span style="color:#f92672">from</span> fastapi <span style="color:#f92672">import</span> FastAPI
+
+<span style="color:#f92672">from</span> app.api <span style="color:#f92672">import</span> status
+
+log <span style="color:#f92672">=</span> logging<span style="color:#f92672">.</span>getLogger(<span style="color:#e6db74">&#34;uvicorn&#34;</span>)
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">create_application</span>() <span style="color:#f92672">-&gt;</span> FastAPI:
+    application <span style="color:#f92672">=</span> FastAPI()
+    application<span style="color:#f92672">.</span>include_router(
+        status<span style="color:#f92672">.</span>router,
+        tags<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;Hello&#34;</span>],
+        prefix<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/api/v1&#34;</span>
+    )
+    <span style="color:#66d9ef">return</span> application
+
+
+app <span style="color:#f92672">=</span> create_application()
+
+
+<span style="color:#a6e22e">@app</span><span style="color:#f92672">.</span>on_event(<span style="color:#e6db74">&#34;startup&#34;</span>)
+<span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">startup_event</span>():
+    log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;Starting up...&#34;</span>)
+</code></pre></div><p>Aqui nós não configuramos mais diretamente as rotas no <code>main.py</code>, elas agora ficam em diretórios separados, e sempre na inicialização da aplicação é carregado todas as rotas ao chamar a função <code>create_application</code>. Dentro dessa função nós adicionamos um <code>include_router</code> que faz algumas coisas interessantes:</p>
+<ul>
+<li>inclui todas as rotas de um determinado arquivo.</li>
+<li>adiciona uma tag para separar melhor no contexto de exibição no swager.</li>
+<li>adiciona um prefixo à rota: eu normalmente utilizo <code>/api/v1</code> pelo motivo de que fica fácil alterar para uma versão 2 caso a mesma venha a existir.</li>
+</ul>
+<p>Um decorator muito legal do FastAPI é <code>@app.on_event</code>, onde você pode configurar métodos que irão rodar sempre que a aplicação inicializar ou finalizar. Iremos adicionar mais coisas nesse <em>event</em>, mas por enquanto apenas estamos printando um log no console.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># status.py</span>
+<span style="color:#f92672">import</span> os
+
+<span style="color:#f92672">from</span> fastapi <span style="color:#f92672">import</span> APIRouter, Depends
+
+<span style="color:#f92672">from</span> app.config <span style="color:#f92672">import</span> Settings, get_settings
+
+router <span style="color:#f92672">=</span> APIRouter()
+APP_VERSION <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>getenv(<span style="color:#e6db74">&#34;APP_VERSION&#34;</span>, <span style="color:#e6db74">&#34;1.0.0&#34;</span>)
+
+
+<span style="color:#a6e22e">@router</span><span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;/status&#34;</span>)
+<span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ping</span>(settings: Settings <span style="color:#f92672">=</span> Depends(get_settings)):
+    <span style="color:#66d9ef">return</span> {
+        <span style="color:#e6db74">&#34;ping&#34;</span>: <span style="color:#e6db74">&#34;pong!&#34;</span>,
+        <span style="color:#e6db74">&#34;version&#34;</span>: APP_VERSION,
+        <span style="color:#e6db74">&#34;environment&#34;</span>: settings<span style="color:#f92672">.</span>environment,
+        <span style="color:#e6db74">&#34;testing&#34;</span>: settings<span style="color:#f92672">.</span>testing
+    }
+</code></pre></div><p>Veja que aqui nós temos uma modificação da rota <em>/ping</em> para <em>/status</em> e ela é definida por <em>@router.get</em> e não mais <em>@app.get</em>. Eu adicionei também uma variável chamada <code>APP_VERSION</code> que é responsável por manter atualizado o registro da verssão da aplicação.</p>
+<p>Executamos assim nosso workflow de teste, para saber se tudo está funcionando:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker-compose down -v
+docker-compose up --build -d
+</code></pre></div><p>Ao acessar <a href="http://127.0.0.1:8004/docs/">http://127.0.0.1:8004/docs/</a> você deverá ver uma tela igual a de baixo:</p>
+<p><img src="/img/finance_app_tutorial/pt4/status-router.png" alt="status"></p>
+<p>E nossa árvore de diretórios deve estar como no seguinte snippet:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">.
+├── docker-compose.yml
+├── Dockerfile
+├── Pipfile
+├── Pipfile.lock
+├── project
+│   └── app
+│       ├── api
+│       │   ├── __init__.py
+│       │   └── status.py
+│       ├── config.py
+│       ├── database
+│       │   └── __init__.py
+│       ├── __init__.py
+│       ├── main.py
+│       └── models
+│           └── __init__.py
+└── README.md
+</code></pre></div><h2 id="configurando-o-sqlalchemy-no-projeto">Configurando o SQLAlchemy no Projeto</h2>
+<p>No intuito de ter uma tabela inicial bem simples no nosso banco de dados, apenas para iniciar a configuração do SQLAlchemy, vamos iniciar o processo criando um model. Como dito no post <a href="https://www.lobdata.com.br/2021/08/01/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.4/">anterior</a>, estamos no que estou chamando de <em>primeiro cenário do SQLAlchemy</em>, onde precisamos da classe <code>declarative_base</code> antes de iniciar a configuração do model.</p>
+<p>Antes de tudo, primeiro iremos instalar o <strong>SQLAlchemy</strong>: <code>pipenv install sqlalchemy==1.4.20</code>. Agora, vamos criar dois novos arquivos:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">touch project/app/database/modelbase.py
+touch project/app/models/register.py
+</code></pre></div><p>O <code>modelbase.py</code> é onde eu normalmente coloco a <code>declarative_base</code>, sendo assim, é desse arquivo que nossos models irão buscar a <strong>classe mãe</strong>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># modelbase.py</span>
+<span style="color:#f92672">from</span> sqlalchemy.ext <span style="color:#f92672">import</span> declarative
+
+Base <span style="color:#f92672">=</span> declarative<span style="color:#f92672">.</span>declarative_base()
+</code></pre></div><p>Podemos agora criar o model. Um model é uma abstração de tudo que você faria se estivesse criando uma tabela diretamente no banco, com a diferença de que aqui a gente tem uma abordagem <em>python-like</em>. Cada tipo de ORM tem uma sintaxe própria, e no SQLAlchemy a gente tem a configuração como no arquivo abaixo:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># register.py</span>
+<span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> date
+
+<span style="color:#f92672">from</span> sqlalchemy <span style="color:#f92672">import</span> Column, Date, BigInteger, String
+
+<span style="color:#f92672">from</span> app.database.modelbase <span style="color:#f92672">import</span> Base
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Register</span>(Base):
+    __tablename__ <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;registers&#34;</span>
+
+    id: int <span style="color:#f92672">=</span> Column(BigInteger, primary_key<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, autoincrement<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+    products: str <span style="color:#f92672">=</span> Column(String(<span style="color:#ae81ff">20</span>), nullable<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+    created_at: date <span style="color:#f92672">=</span> Column(Date, nullable<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, index<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+    expire_at: date <span style="color:#f92672">=</span> Column(Date, nullable<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, index<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</code></pre></div><p>Pronto, nosso primeiro model está criado. Como você pode ver, é basicamente uma classe que herda da <code>declarative_base</code>, e nosso dever é configurar como vai ser cada coluna da tabela. Diferentemente de outros ORMs como o <code>django</code>, aqui nós precisamos explicitamente determinar a coluna de id.</p>
+<p>Para as outras colunas, nós temos formato de string e data. Sendo que nenhuma delas podem ser atribuídos valores nulos, ou seja, são campos obrigatórios da nossa tabela. Veja que eu já estou adicionando alguns indexes, que basicamente permitem que a consulta à essas colunas seja feita de forma mais rápida.</p>
+<p>Até agora nós já temos alguns elementos do primeiro cenário do SQLAlchemy, porém, para criar as tabelas no banco e expor uma session, nós iremos precisar criar um novo arquivo: <code>touch project/app/database/database_session.py</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># database_session.py</span>
+<span style="color:#f92672">import</span> logging
+<span style="color:#f92672">import</span> os
+<span style="color:#f92672">from</span> typing <span style="color:#f92672">import</span> Callable, Optional
+
+<span style="color:#f92672">import</span> sqlalchemy
+<span style="color:#f92672">from</span> sqlalchemy.orm <span style="color:#f92672">import</span> Session
+
+<span style="color:#f92672">from</span> app.database.modelbase <span style="color:#f92672">import</span> Base
+
+__factory: Optional[Callable[[], Session]] <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+log <span style="color:#f92672">=</span> logging<span style="color:#f92672">.</span>getLogger(<span style="color:#e6db74">&#34;uvicorn&#34;</span>)
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_db</span>() <span style="color:#f92672">-&gt;</span> Session:
+    db <span style="color:#f92672">=</span> create_session()
+    <span style="color:#66d9ef">try</span>:
+        <span style="color:#66d9ef">yield</span> db
+    <span style="color:#66d9ef">finally</span>:
+        db<span style="color:#f92672">.</span>close()
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">global_init</span>() <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">None</span>:
+    <span style="color:#66d9ef">global</span> __factory
+
+    <span style="color:#66d9ef">if</span> __factory:
+        <span style="color:#66d9ef">return</span>
+
+    conn_str <span style="color:#f92672">=</span> str(
+        os<span style="color:#f92672">.</span>environ<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;DATABASE_URL&#34;</span>, <span style="color:#e6db74">&#34;sqlite:///project/db/local_database.db&#34;</span>)
+    )
+    log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;Connecting to the database...&#34;</span>)
+    engine <span style="color:#f92672">=</span> sqlalchemy<span style="color:#f92672">.</span>create_engine(conn_str, echo<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+    __factory <span style="color:#f92672">=</span> sqlalchemy<span style="color:#f92672">.</span>orm<span style="color:#f92672">.</span>sessionmaker(bind<span style="color:#f92672">=</span>engine)
+
+    <span style="color:#f92672">from</span> app.models.register <span style="color:#f92672">import</span> Register
+
+    Base<span style="color:#f92672">.</span>metadata<span style="color:#f92672">.</span>create_all(engine)
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">create_session</span>() <span style="color:#f92672">-&gt;</span> Session:
+    <span style="color:#66d9ef">global</span> __factory
+
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> __factory:
+        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">Exception</span>(<span style="color:#e6db74">&#34;You must call global_init() before using this method&#34;</span>)
+
+    session: Session <span style="color:#f92672">=</span> __factory()
+    session<span style="color:#f92672">.</span>expire_on_commit <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+
+    <span style="color:#66d9ef">return</span> session
+</code></pre></div><p><img src="/img/finance_app_tutorial/pt4/what.gif" alt="what?"></p>
+<p>Calma, vou traduzir o que está acontecendo aqui:</p>
+<ol>
+<li>Criamos uma função para inicializar uma variável global chamada <code>__factory</code>, essa é responsável por expor uma conexão com o banco para toda a aplicação.</li>
+<li>Por meio do <code>create_session()</code> essa variável é acessada e a session é enfim estabelecida.</li>
+<li>Setamos uma forma padrão de acessar essa session por meio da função <code>get_db()</code>, que expõe a session e garante que a mesma vai ser finalizada (<code>finaly</code>), <strong>aconteça o que acontecer</strong>.</li>
+</ol>
+<p>Eu ainda não comentei sobre variáveis de ambiente, mas vai ser algo que precisaremos fazer aqui. Uma variável de ambiente é basicamente um valor atribuído dinamicamente que pode afetar o modo como alguns processos irão se comportar em seu projeto.</p>
+<p>Em python, normalmente acessamos essas variáveis utilizando a lib <code>os</code>, builtin da linguagem, por meio do comando: <code>os.environ.get(&quot;NOME_DA_VARIAVEL&quot;)</code>.</p>
+<h3 id="alerta-boas-práticas-">Alerta Boas Práticas 🚨</h3>
+<p>Gostaria de pontuar aqui a importância de utilizarmos variáveis de ambiente em nossos projetos. Normalmente projetos reais possuem informações sensíveis que pessoas externas ao projeto não podem ter acesso, ou informações que precisam ser alteradas dinamicamente, como:</p>
+<ul>
+<li>Senha do banco</li>
+<li>Token de um bucket</li>
+<li>Token de alguma API de terceiro</li>
+<li>Senha de login em outro serviço
+&hellip;</li>
+</ul>
+<p>É extremamente indicado não <strong>hard coded</strong> essas informações diretamente no código. Ao invés disso, que coloquemos as mesmas como variáveis de ambiente em um arquivo separado e oculto do repositório onde você está versionando o seu projeto. Vamos ver então como fazer isso!!</p>
+<h3 id="configurando-variáveis-de-ambiente">Configurando Variáveis de Ambiente</h3>
+<p>Graças ao Docker, é simples configurar variáveis de ambiente para nosso projeto. Primeiro, vamos criar alguns arquivos:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir env
+touch env/.dev
+</code></pre></div><p>Dentro do <code>.dev</code> é onde você vai colocar todas as suas variáveis de ambiente:</p>
+<pre tabindex="0"><code>ENVIRONMENT=dev
+TESTING=0
+DATABASE_URL=mysql://user:password@db:3306/econowallet
+
+SQL_DATABASE=econowallet
+SQL_USER=user
+SQL_PASSWORD=password
+SQL_HOST=db
+SQL_PORT=3306
+</code></pre><p>E agora, atualizamos nosso <code>.gitignore</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># .gitignore</span>
+__pycache__
+<span style="color:#75715e"># new</span>
+env
+</code></pre></div><p>Show! Agora, localmente teremos como testar nossa aplicação, e quando a mesma for funcionar em um ambiente de produção, essas variáveis de ambiente serão substituídas dinamicamente para funcionar com as configurações de produção 😍.</p>
+<p>Por fim, dentro do <code>docker-compose.yml</code> nós iremos apontar onde o arquivo de variáveis de ambiente está localizado:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3.8&#39;</span>
+
+<span style="color:#f92672">services</span>:
+  <span style="color:#f92672">web</span>:
+    <span style="color:#f92672">build</span>: <span style="color:#ae81ff">.</span>
+    <span style="color:#f92672">volumes</span>:
+      - <span style="color:#ae81ff">.project:/usr/src/app</span>
+    <span style="color:#f92672">ports</span>:
+      - <span style="color:#ae81ff">8004</span>:<span style="color:#ae81ff">8000</span>
+    <span style="color:#75715e"># new</span>
+    <span style="color:#f92672">env_file</span>:
+      - <span style="color:#ae81ff">env/.dev</span>
+    <span style="color:#f92672">environment</span>:
+      - <span style="color:#ae81ff">ENVIRONMENT=dev</span>
+      - <span style="color:#ae81ff">TESTING=0</span>
+    <span style="color:#f92672">depends_on</span>:
+      - <span style="color:#ae81ff">db</span>
+
+  <span style="color:#f92672">db</span>:
+    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">mysql:8.0</span>
+    <span style="color:#f92672">command</span>: --<span style="color:#ae81ff">default-authentication-plugin=mysql_native_password</span>
+    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
+    <span style="color:#f92672">volumes</span>:
+      - <span style="color:#ae81ff">mysql_data:/var/lib/mysql_data/data/</span>
+    <span style="color:#f92672">environment</span>:
+      <span style="color:#f92672">MYSQL_DATABASE</span>: <span style="color:#ae81ff">econowallet</span>
+      <span style="color:#f92672">MYSQL_USER</span>: <span style="color:#ae81ff">user</span>
+      <span style="color:#f92672">MYSQL_PASSWORD</span>: <span style="color:#ae81ff">password</span>
+      <span style="color:#f92672">MYSQL_ROOT_PASSWORD</span>: <span style="color:#ae81ff">password</span>
+    <span style="color:#f92672">ports</span>:
+      - <span style="color:#ae81ff">3320</span>:<span style="color:#ae81ff">3306</span>
+
+<span style="color:#f92672">volumes</span>:
+  <span style="color:#f92672">mysql_data</span>:
+</code></pre></div><h3 id="inicializando-em-conjunto-com-o-sqlalchemy">Inicializando em Conjunto com o SQLAlchemy</h3>
+<p>Lembrando que precisamos inicializar uma sessão global por meio do <code>global_init()</code> que vimos anteriormente, vamos então fazer uso de uma feature do FastAPI que vimos anteriormente, <code>@app.on_event()</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> logging
+
+<span style="color:#f92672">from</span> fastapi <span style="color:#f92672">import</span> FastAPI
+
+<span style="color:#f92672">from</span> app.api <span style="color:#f92672">import</span> status
+<span style="color:#f92672">from</span> app.database.database_session <span style="color:#f92672">import</span> global_init
+
+log <span style="color:#f92672">=</span> logging<span style="color:#f92672">.</span>getLogger(<span style="color:#e6db74">&#34;uvicorn&#34;</span>)
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">create_application</span>() <span style="color:#f92672">-&gt;</span> FastAPI:
+    application <span style="color:#f92672">=</span> FastAPI()
+    application<span style="color:#f92672">.</span>include_router(
+        status<span style="color:#f92672">.</span>router,
+        tags<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;Hello&#34;</span>],
+        prefix<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/api/v1&#34;</span>
+    )
+    <span style="color:#66d9ef">return</span> application
+
+
+app <span style="color:#f92672">=</span> create_application()
+
+<span style="color:#75715e"># updated</span>
+<span style="color:#a6e22e">@app</span><span style="color:#f92672">.</span>on_event(<span style="color:#e6db74">&#34;startup&#34;</span>)
+<span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">startup_event</span>():
+    log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;Starting up...&#34;</span>)
+    global_init()
+</code></pre></div><p>Sendo assim, sempre que o app inicializar, vamos iniciar as configurações do SQLAlchemy em conjunto!!</p>
+<p>Estamos quaseee lá!</p>
+<h3 id="bug-do-mysql-">Bug do MySQL 🐛</h3>
+<p>Se você tentar buildar o projeto, provavelmente irá se deparar com um problema onde o serviço web não irá conseguir inicializar pois não vai ter encontrado um banco MySQL disponível. Eu já busquei explicação do por que disso acontecer, mesmo especificando o <code>depends_on: db</code> no <code>docker-compose.yml</code> o serviço <strong>web</strong> tenta inicializar primeiro, e como não encontra um banco online, temos uma mensagem de erro.</p>
+<p>Para driblar isso, vamos utilizar um pouquinho de conhecimento de bash e adicionar o que chamamos de <code>entrypoint</code> para garantir que nosso serviço web apenas siga em frente após conectar com o banco.</p>
+<p>Crie um arquivo chamado <code>local-entrypoint.sh</code> e copie o seguinte código:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
+</span><span style="color:#75715e"></span><span style="color:#75715e"># if any of the commands in your code fails for any reason, the entire script fails</span>
+set -o errexit
+<span style="color:#75715e"># fail exit if one of your pipe command fails</span>
+set -o pipefail
+<span style="color:#75715e"># exits if any of your variables is not set</span>
+set -o nounset
+
+mysql_ready<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+python <span style="color:#e6db74">&lt;&lt; END
+</span><span style="color:#e6db74">import sys
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">import mysql.connector
+</span><span style="color:#e6db74">from mysql.connector import Error
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">try:
+</span><span style="color:#e6db74">    connection = mysql.connector.connect(host=&#34;${SQL_HOST}&#34;,
+</span><span style="color:#e6db74">                                         database=&#34;${SQL_DATABASE}&#34;,
+</span><span style="color:#e6db74">                                         user=&#34;${SQL_USER}&#34;,
+</span><span style="color:#e6db74">                                         password=&#34;${SQL_PASSWORD}&#34;)
+</span><span style="color:#e6db74">except:
+</span><span style="color:#e6db74">    sys.exit(-1)
+</span><span style="color:#e6db74">sys.exit(0)
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">END</span>
+<span style="color:#f92672">}</span>
+<span style="color:#66d9ef">until</span> mysql_ready; <span style="color:#66d9ef">do</span>
+  &gt;&amp;<span style="color:#ae81ff">2</span> echo <span style="color:#e6db74">&#39;Waiting for Mysql to become available...&#39;</span>
+  sleep <span style="color:#ae81ff">1</span>
+<span style="color:#66d9ef">done</span>
+&gt;&amp;<span style="color:#ae81ff">2</span> echo <span style="color:#e6db74">&#39;Mysql is available&#39;</span>
+
+uvicorn project.app.main:app --reload --workers <span style="color:#ae81ff">1</span> --host 0.0.0.0 --port <span style="color:#ae81ff">8000</span>
+</code></pre></div><p>Nesse script é executado um loop que finaliza apenas quando o MySQL estiver disponível. Precisamos agora apontar nosso <code>Dockerfile</code> para esse entrypoint.</p>
+<pre tabindex="0"><code># Dockerfile
+FROM python:3.9.0-slim-buster
+
+WORKDIR /usr/src/app
+
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+RUN apt-get update \
+  &amp;&amp; apt-get -y install netcat gcc \
+  # mysql dependencies
+  &amp;&amp; apt-get -y install default-libmysqlclient-dev build-essential \
+  &amp;&amp; apt-get clean
+
+RUN pip install --upgrade pip \
+  &amp;&amp; pip install pipenv
+COPY ./Pipfile .
+COPY ./Pipfile.lock .
+RUN pipenv install --deploy --system
+
+COPY . .
+
+# entrypoint
+COPY ./local-entrypoint.sh /usr/src/app/local-entrypoint.sh
+RUN chmod +x /usr/src/app/local-entrypoint.sh
+
+CMD [&quot;/bin/bash&quot;, &quot;-c&quot;, &quot;./local-entrypoint.sh&quot;]
+</code></pre><p>Nosso <code>docker-compose.yml</code> também precisará ser alterado:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># docker-compose.yml</span>
+<span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3.8&#39;</span>
+
+<span style="color:#f92672">services</span>:
+  <span style="color:#75715e"># updated</span>
+  <span style="color:#f92672">web</span>:
+    <span style="color:#f92672">build</span>: <span style="color:#ae81ff">.</span>
+    <span style="color:#f92672">volumes</span>:
+      - <span style="color:#ae81ff">.:/usr/src/app</span>
+    <span style="color:#f92672">ports</span>:
+      - <span style="color:#ae81ff">8004</span>:<span style="color:#ae81ff">8000</span>
+    <span style="color:#f92672">env_file</span>:
+      - <span style="color:#ae81ff">env/.dev</span>
+    <span style="color:#f92672">environment</span>:
+      - <span style="color:#ae81ff">ENVIRONMENT=dev</span>
+      - <span style="color:#ae81ff">TESTING=0</span>
+    <span style="color:#f92672">depends_on</span>:
+      - <span style="color:#ae81ff">db</span>
+
+  <span style="color:#f92672">db</span>:
+    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">mysql:8.0</span>
+    <span style="color:#f92672">command</span>: --<span style="color:#ae81ff">default-authentication-plugin=mysql_native_password</span>
+    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
+    <span style="color:#f92672">volumes</span>:
+      - <span style="color:#ae81ff">mysql_data:/var/lib/mysql_data/data/</span>
+    <span style="color:#f92672">environment</span>:
+      <span style="color:#f92672">MYSQL_DATABASE</span>: <span style="color:#ae81ff">econowallet</span>
+      <span style="color:#f92672">MYSQL_USER</span>: <span style="color:#ae81ff">user</span>
+      <span style="color:#f92672">MYSQL_PASSWORD</span>: <span style="color:#ae81ff">password</span>
+      <span style="color:#f92672">MYSQL_ROOT_PASSWORD</span>: <span style="color:#ae81ff">password</span>
+    <span style="color:#f92672">ports</span>:
+      - <span style="color:#ae81ff">3320</span>:<span style="color:#ae81ff">3306</span>
+
+<span style="color:#f92672">volumes</span>:
+  <span style="color:#f92672">mysql_data</span>:
+</code></pre></div><p>Aqui tivemos <strong>duas mudanças</strong>:</p>
+<ol>
+<li>nosso volume não é referente ao <code>.project</code> e sim a pasta root <code>.</code> (caso contrário o <code>local-entrypoint.sh</code> não será encontrado).</li>
+<li>removemos o <code>command</code> que estava inicializando app, e jogamos para dentro do entrypoint.</li>
+</ol>
+<p>Por fim, garanta a instalação do drive do MySQL e do pacote <code>mysql-connector-python</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pipenv install mysqlclient<span style="color:#f92672">==</span>2.0.3
+pipenv install mysql-connector-python<span style="color:#f92672">==</span>8.0.25
+</code></pre></div><h3 id="refatoração-">Refatoração 🔨</h3>
+<p>No início do projeto nós fizemos uma configuração no PyCharm para considerar o diretório <strong>project</strong> como root. Porém, teremos que retornar para o diretório anterior (efetuando os mesmos passos <a href="https://www.lobdata.com.br/2021/04/08/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.3/">link de como fazer</a>.</p>
+<p>E além disso, iremos alterar todas as referências nos nossos arquivos de volta para <code>project.app</code>&hellip; Os arquivos que precisarão sofrer essa refatoração são:</p>
+<ul>
+<li><code>status.py</code></li>
+<li><code>database_session.py</code></li>
+<li><code>modelbase.py</code></li>
+<li><code>register.py</code></li>
+<li><code>main.py</code></li>
+</ul>
+<p>Sorry!</p>
+<p>Agora sim, vamos rebuildar a aplicação e observar no DBeaver se veremos uma nova tabela (como especificado nosso model).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker-compose down -v
+docker-compose up --build -d
+docker-compose logs -f
+</code></pre></div><p><img src="/img/finance_app_tutorial/pt4/dbeaver-registers.png" alt="dbeaver-registers"></p>
+<p>🎊 🎉 Agora temos nossa tabela materializada no banco e podemos iniciar as transações!! 🎊 🎉</p>
+<h2 id="próximo-capítulo">Próximo Capítulo&hellip;</h2>
+<p>Na próxima etapa, iremos configurar quais rotas teremos na aplicação. Assim como que as rotas interagem com o banco de dados 👋🏽.</p>
+<p>Você pode acompanhar o repositório do projeto no link abaixo:</p>
+<ul>
+<li><a href="https://github.com/LucianoBatista/econowallet">GitHub - Econowallet</a> 🥂</li>
+</ul>
+
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2021/07/31/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.4/" data-toggle="tooltip" data-placement="top" title="Criando uma API Pronta para Produção com FastAPI - PT.4">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2021/10/24/efficient-pandas/" data-toggle="tooltip" data-placement="top" title="Efficient Pandas">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        <a href="/tags/asynchronous" title="asynchronous">
+                            asynchronous
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/backend" title="backend">
+                            backend
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/data-science" title="data-science">
+                            data-science
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/data-visualization" title="data-visualization">
+                            data-visualization
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/docker" title="docker">
+                            docker
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/fastapi" title="fastapi">
+                            fastapi
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/ggplot2" title="ggplot2">
+                            ggplot2
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/machine-learning" title="machine-learning">
+                            machine-learning
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/project" title="project">
+                            project
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/r" title="r">
+                            r
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/restfull-api" title="restfull-api">
+                            restfull-api
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/sqlalchemy" title="sqlalchemy">
+                            sqlalchemy
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/time-series" title="time-series">
+                            time-series
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/web-development" title="web-development">
+                            web-development
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <li>
+                       <a href="" rel="alternate" type="application/rss+xml" title="LOB.DATA" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fa fa-circle fa-stack-2x"></i>
+                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/LucianoBatista">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		                
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/lucianobatistads/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		                
+                    
+                </ul>
+		<p class="copyright text-muted">
+                    A <a href="https://gohugo.io/">HUGO</a> <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite</a> page build with ♥ and powered by <a href="https://www.netlify.com/">Netlify</a>&nbsp;&nbsp;&bull;&nbsp;&nbsp;Header images by <a href="https://www.pexels.com/photo/climate-sea-landscape-nature-35626/">Pexels</a>
+    </p>
+    <p class="copyright text-muted" style='font-size:8pt;'>
+                    &copy; LOB.DATA 2019–2021. All rights reserved.&nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="https://lobdata.com.br/top/conduct/">Code of Conduct</a>
+                    <br>
+                    Content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>.
+                    <br>
+                    <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#28a87d'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-5NWJ42KMKC', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>

@@ -373,7 +373,7 @@ $(function() {
 <h3 id="data">Data</h3>
 <p>The dataset is an imaginary <a href="https://www.kaggle.com/pavansubhasht/ibm-hr-analytics-attrition-dataset">HR dataset made by data scientists of IBM Company</a>. In our study, we&rsquo;ll look just at categorical variables, and plotting the proportion of each class within the categorical variable.</p>
 <p>The dataset has a total of 35 features, being 9 of them categorical, and also which we will use.</p>
-<pre><code class="language-{r}" data-lang="{r}"># libraries
+<pre tabindex="0"><code class="language-{r}" data-lang="{r}"># libraries
 library(tidyverse) # include ggplot2, purrr and some others usefull packages
 library(cowplot)
 library(readxl)
@@ -384,7 +384,7 @@ hr_people_analytics_tbl &lt;- read_xlsx(&quot;00_Data/telco_train.xlsx&quot;)
 
 </code></pre><h3 id="requirements">Requirements</h3>
 <p>Before we start to build our plot, we need to specify which variable will be used in the analysis. As here we&rsquo;ll use just look at categorical features, in order to see the proportion between different classes, we&rsquo;ll write a named vector with this information.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># selecting character variables</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># selecting character variables</span>
 hr_people_analytics_char_tbl <span style="color:#f92672">&lt;-</span> hr_people_analytics_tbl <span style="color:#f92672">%&gt;%</span> 
     <span style="color:#a6e22e">select_if</span>(is.character)
 
@@ -396,7 +396,7 @@ names <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">set_n
 <h3 id="create-a-plot">Create a plot</h3>
 <p>My approach to this problem is, first just plot the chart that you want, and second, replace the variable with an input of a function. This part is where you need to put more effort into coding.</p>
 <p>In the code chunk below you&rsquo;ll find a plot for a specific variable, &ldquo;Attrition&rdquo;.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">scale_color <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">pal_jco</span>()(<span style="color:#ae81ff">10</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">scale_color <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">pal_jco</span>()(<span style="color:#ae81ff">10</span>)
     
 hr_people_analytics_char_tbl <span style="color:#f92672">%&gt;%</span> 
     <span style="color:#a6e22e">count</span>(Attrition) <span style="color:#f92672">%&gt;%</span> 
@@ -433,7 +433,7 @@ hr_people_analytics_char_tbl <span style="color:#f92672">%&gt;%</span>
 <h3 id="creating-our-plotting-function">Creating our plotting function</h3>
 <p>To do this replacement we will use the pronoun <code>.data</code> from <a href="https://rlang.r-lib.org/">rlang</a> package, this <a href="https://rlang.r-lib.org/reference/tidyeval-data.html">pronoun</a> allows you to be explicit about where to find objects when programming with data masked functions.</p>
 <p>Using this strategy we will have the following function:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># second: plot_function</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># second: plot_function</span>
 plot_frequency <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(x) {
     
     scale_color <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">pal_jco</span>()(<span style="color:#ae81ff">10</span>)
@@ -463,7 +463,7 @@ plot_frequency <span style="color:#f92672">&lt;-</span> <span style="color:#a6e2
 
 </code></pre></div><h3 id="using-purrr">Using purrr</h3>
 <p>Now, here is the best step of all tutorial, apply the function that we create to all character features in the dataset. And also, we&rsquo;ll apply the <code>cowplot::plot_grid()</code> that put together all ggplot2 objects in <code>all_plots</code> list, AWESOME =D!</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">all_plots <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">map</span>(names, plot_frequency)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">all_plots <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">map</span>(names, plot_frequency)
 cowplot<span style="color:#f92672">::</span><span style="color:#a6e22e">plot_grid</span>(plotlist <span style="color:#f92672">=</span> all_plots)
 
 </code></pre></div><p><img src="/img/ggplot_purr_02.png" alt="Plot"></p>
@@ -583,6 +583,8 @@ cowplot<span style="color:#f92672">::</span><span style="color:#a6e22e">plot_gri
                         
                         
                         
+                        
+                        
                         <a href="/tags/project" title="project">
                             project
                         </a>
@@ -614,6 +616,8 @@ cowplot<span style="color:#f92672">::</span><span style="color:#a6e22e">plot_gri
                         <a href="/tags/time-series" title="time-series">
                             time-series
                         </a>
+                        
+                        
                         
                         
                         

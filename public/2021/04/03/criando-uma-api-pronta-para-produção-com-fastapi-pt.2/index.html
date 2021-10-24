@@ -387,7 +387,7 @@ $(function() {
 <p>Como IDE estarei usando o Pycharm 2020.3.5 (minha preferida no momento para desenvolver em python) e utilizaremos python 3.9.0. Ao clicar em &ldquo;New Project&rdquo; temos a seguinte imagem:</p>
 <p><img src="/img/finance_app_tutorial/pt2/create_project.png" alt="Creating Project"></p>
 <p>Veja na lateral esquerda como o Pycharm já traz um template para diversos tipos de projeto, porém no momento ainda não temos a opção para o FastAPI. Após iniciado o projeto, você deve encontrar um arquivo chamado Pipfile (se está usando o Pipenv) ou apenas uma pasta vazia. Então iremos executar os seguintes comandos no terminal:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mkdir project
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mkdir project
 $ mkdir project/app
 $ touch project/app/main.py
 $ touch project/app/__init__.py
@@ -397,7 +397,7 @@ $ pipenv install fastapi<span style="color:#f92672">==</span>0.63.0
 $ pipenv install uvicorn<span style="color:#f92672">==</span>0.13.4
 </code></pre></div><p>Aqui vale uma ressalva, não sou nenhum expert em arquitetura de software e talvez a estrutura de projeto utilizada aqui não seja a melhor possível, mas busco sempre dividir o código em blocos que contenham uma lógica ou função semelhante. Isso permite que tenhámos um código bom para manter, bom para ser entendido por outros desenvolvedores e também para colaborar.</p>
 <p>Após os comandos anteriores você deveria ter uma estrutura de diretórios semelhante à mostrada abaixo:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">.
 └── project
     ├── app
     │   ├── __init__.py
@@ -407,7 +407,7 @@ $ pipenv install uvicorn<span style="color:#f92672">==</span>0.13.4
 </code></pre></div><p>Veja que além do <strong>FastAPI</strong>, instalamos o <strong>Uvicorn</strong>. O papel dessa lib é permitir que consigamos interagir com o serviço que estamos contruíndo (será nosso web server), além disso, ela utiliza o protocolo ASGI que permite assincronosidade com suporte aos verbos <code>async</code> e <code>await</code> do python. Outros frames como o Django e Flask já possuem um server built-in que é muito útil para fases de desenvolvimento mas que pode gerar confusão nas etapas de deploy pois o mesmo precisa ser substituído. Aqui, iremos ficar desde o início com o Uvicorn, saiba mais na documentação clicando no <a href="https://www.uvicorn.org">link</a>.</p>
 <h2 id="main">Main</h2>
 <p>Vamos configurar apenas uma rota inicial com o mínimo de código possível para ver se nosso web server está funcionando.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># project/app/main.py</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># project/app/main.py</span>
 
 <span style="color:#f92672">from</span> fastapi <span style="color:#f92672">import</span> FastAPI
 
@@ -425,14 +425,14 @@ app <span style="color:#f92672">=</span> FastAPI()
 <li>uvicorn app.main:app (do diretório de projeto)</li>
 </ul>
 <p>e assim em diante&hellip;</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ uvicorn project.app.main:app
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ uvicorn project.app.main:app
 
 INFO:     Started server process <span style="color:#f92672">[</span>654351<span style="color:#f92672">]</span>
 INFO:     Waiting <span style="color:#66d9ef">for</span> application startup.
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://127.0.0.1:8000 <span style="color:#f92672">(</span>Press CTRL+C to quit<span style="color:#f92672">)</span>
 </code></pre></div><p>Agora, se navegarmos até <a href="http://127.0.0.1:8000/ping">http://127.0.0.1:8000/ping</a> iremos ver a seguinte resposta:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
   <span style="color:#f92672">&#34;ping&#34;</span>: <span style="color:#e6db74">&#34;pong!&#34;</span>
 }
 </code></pre></div><p>Além disso o FastAPI <em>automágicamente</em> gerou um esquema baseado no padrão OpenAPI e juntamente com o Swagger UI criou uma documentação inicial (bem crua) para sua API. Podendo ser acessada em <a href="http://localhost:8000/docs">http://localhost:8000/docs</a> ou ainda se não gostou dessa interface do Swager você pode acessar <a href="http://localhost:8000/redoc">http://localhost:8000/redoc</a> para uma interface diferente.</p>
@@ -446,7 +446,7 @@ INFO:     Uvicorn running on http://127.0.0.1:8000 <span style="color:#f92672">(
 </blockquote>
 <p>&hellip;além disso, essa interface pode ser personalizada de acordo com seu projeto e necessidades, você pode encontrar detalhes na documentação <a href="https://fastapi.tiangolo.com/advanced/extending-openapi/">clicando aqui</a>.</p>
 <p>Agora iremos reiniciar nosso web server e adicionar um comando bem útil que iremos utilizar daqui em diante com o uvicorn, o <code>--reload</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ uvicorn project.app.main:app --reload
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ uvicorn project.app.main:app --reload
 
 INFO:     Uvicorn running on http://127.0.0.1:8000 <span style="color:#f92672">(</span>Press CTRL+C to quit<span style="color:#f92672">)</span>
 INFO:     Started reloader process <span style="color:#f92672">[</span>663530<span style="color:#f92672">]</span> using statreload
@@ -456,7 +456,7 @@ INFO:     Application startup complete.
 </code></pre></div><p>Dessa forma, sempre que fizermos alguma alteração no código, o Uvicorn vai reiniciar o server para nós. Experimente remover a exclamação do &ldquo;pong!&rdquo; e veja o que acontece.</p>
 <h2 id="config">Config</h2>
 <p>Agora iremos adicionar um arquivo muito importante para nossa aplicação e que vai lidar com nossas variáveis de ambiente tanto localmente quanto quando estivermos no ambiente do Docker.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># project/app/config.py</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># project/app/config.py</span>
 
 <span style="color:#f92672">import</span> logging
 <span style="color:#f92672">import</span> os
@@ -491,7 +491,7 @@ log <span style="color:#f92672">=</span> logging<span style="color:#f92672">.</s
 <li>previne alguns bugs, pois a IDE tem maior entendimento do que acontece com as funções, classes&hellip;</li>
 </ul>
 <p>Agora iremos atualizar nosso arquivo main.py:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># project/app/main.py</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># project/app/main.py</span>
 
 <span style="color:#f92672">from</span> fastapi <span style="color:#f92672">import</span> FastAPI, Depends
 
@@ -511,7 +511,7 @@ app <span style="color:#f92672">=</span> FastAPI()
 </code></pre></div><p>Com essa alteração no código estamos setando dependências à aplicação sempre que acessamos a rota <a href="http://127.0.0.1:8000/ping">http://127.0.0.1:8000/ping</a>. De uma forma mais intuitiva, o que estamos dizendo é o seguinte:</p>
 <p><img src="/img/finance_app_tutorial/pt2/flow_dependencies.png" alt="Flow Dependencies"></p>
 <p>Agora, se rodarmos novamente nosso server, iremos ver uma resposta da seguinte forma:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
   <span style="color:#f92672">&#34;ping&#34;</span>: <span style="color:#e6db74">&#34;pong!&#34;</span>,
   <span style="color:#f92672">&#34;environment&#34;</span>: <span style="color:#e6db74">&#34;dev&#34;</span>,
   <span style="color:#f92672">&#34;testing&#34;</span>: <span style="color:#66d9ef">false</span>
@@ -522,7 +522,7 @@ app <span style="color:#f92672">=</span> FastAPI()
 <blockquote>
 <p>Tenha em mente que isso é indicado apenas para casos onde você não tem a necessidade de recomputar esses valores várias vezes.</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># project/app/config.py</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># project/app/config.py</span>
 
 <span style="color:#f92672">import</span> logging
 <span style="color:#f92672">import</span> os
@@ -545,7 +545,7 @@ log <span style="color:#f92672">=</span> logging<span style="color:#f92672">.</s
 </code></pre></div><p>Agora se atualizarmos várias vezes o <a href="http://127.0.0.1:8000/ping">http://127.0.0.1:8000/ping</a> não veremos o recarregamento do &ldquo;Loading config settings from the environment&hellip;&rdquo;, indicando que nosso cache funcionou 🎉.</p>
 <h2 id="rotas-async">Rotas Async</h2>
 <p>Como dito no início do post, estamos usando um web server ASGI e além disso um frame com suporte ao <code>async</code> e <code>await</code> (FastAPI). Portanto, podemos facilmente converter nosso endpoint para uma rota assíncrona simplesmente adicionando o verbo <code>async</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> fastapi <span style="color:#f92672">import</span> FastAPI, Depends
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> fastapi <span style="color:#f92672">import</span> FastAPI, Depends
 
 <span style="color:#f92672">from</span> project.app.config <span style="color:#f92672">import</span> Settings, get_settings
 
@@ -565,7 +565,7 @@ app <span style="color:#f92672">=</span> FastAPI()
 <p><strong>ATENÇÃO!</strong>: O async e await do python não está relacionado ao uso de mais threads ou de processamento paralelo. O conceito aqui é permitir que o código execute outras funcionalidades enquanto aguarda resposta de um outro serviço.</p>
 </blockquote>
 <p>Irei adicionar um .gitignore ao projeto para irmos adicionando coisinhas que não queremos expor no repositório:</p>
-<pre><code>__pycache__
+<pre tabindex="0"><code>__pycache__
 env
 </code></pre><p>É um bom momento para inicializar nosso repositório e comitarmos nosso código até o momento.</p>
 <p>Como irei atualizando o repo do projeto de acordo for postando aqui no blog, é possível que quando você esteja lendo esse conteúdo o repositório esteja com o projeto completo. Mas, qualquer coisa, segue o link do repositório:</p>
@@ -680,6 +680,8 @@ env
                         
                         
                         
+                        
+                        
                         <a href="/tags/project" title="project">
                             project
                         </a>
@@ -711,6 +713,8 @@ env
                         <a href="/tags/time-series" title="time-series">
                             time-series
                         </a>
+                        
+                        
                         
                         
                         

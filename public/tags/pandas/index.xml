@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pandas on LOB.DATA</title>
+    <link>https://www.lobdata.com.br/tags/pandas/</link>
+    <description>Recent content in Pandas on LOB.DATA</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 24 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/pandas/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Efficient Pandas</title>
+      <link>https://www.lobdata.com.br/2021/10/24/efficient-pandas/</link>
+      <pubDate>Sun, 24 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/2021/10/24/efficient-pandas/</guid>
+      <description>Fala galera, tudo certo com vocês? Se você é um Cientista/Analista de dados, ou curte utilizar python para realizar diferentes análises de dados, certamente já utilizou a biblioteca Pandas. Pandas é uma biblioteca open-source para estruturação e análise de dados, seus comandos se assemelham muitas vezes ao SQL, porém sua API traz um conjunto maior operações, maior robustez e se executado de forma correta, mais parformance.
+Nesse tutorial estou me baseando em um minicurso do DataCamp Writing Efficient Code with pandas.</description>
+    </item>
+    
+  </channel>
+</rss>

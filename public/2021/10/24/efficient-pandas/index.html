@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="LOB.DATA">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://www.lobdata.com.br/img/banner/beach_more_sea.jpg">
+
+    
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:image" content="https://www.cedricscherer.com/img/banner/banner.png" >
+    
+
+    
+
+    
+      <meta name="title" content="Efficient Pandas" />
+      <meta property="og:title" content="Efficient Pandas - Luba" />
+      <meta property="twitter:title" content="Efficient Pandas - Luba" />
+      <meta property="twitter:text:title" content="Efficient Pandas - Luba" />
+    
+
+    
+      <meta name="description" content="Blog by LuBa">
+      <meta property="og:description" content="Blog by LuBa" />
+      <meta property="twitter:description" content="Blog by LuBa" />
+    
+
+    
+
+    <meta name="keyword"  content="Data Visualization, Data Science, Programming, Web Development">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Efficient Pandas - Luba</title>
+
+    <link rel="canonical" href="/2021/10/24/efficient-pandas/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/styles/foundation.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">LOB.DATA</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Blog</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/aplica%C3%A7%C3%B5es">aplicações</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/projetos">projetos</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/tutorials">tutorials</a>
+                    </li>
+                    
+
+		    
+                        <li><a href="/top/about/">About Me</a></li>
+                    
+
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/post_0_4.png')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/tutorial" title="Tutorial">
+                            Tutorial
+                        </a>
+                        
+                        <a class="tag" href="/tags/data-science" title="Data Science">
+                            Data Science
+                        </a>
+                        
+                        <a class="tag" href="/tags/pandas" title="Pandas">
+                            Pandas
+                        </a>
+                        
+                    </div>
+                    <h1>Efficient Pandas</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+			Posted by
+			
+			    Luciano
+			
+			on
+			Sunday, October 24, 2021
+                        
+                            <span id="/2021/10/24/efficient-pandas/" class="leancloud_visitors meta_data_item" data-flag-title="">
+    <span class="post-meta-item-icon">
+      <span class="octicon octicon-eye"></span> 
+    </span>
+    <i class="fa fa-eye"></i>
+    <span class="old-visitors-count" style="display: none;"></span>
+    <span class="leancloud-visitors-count"></span>
+</span>
+
+
+
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+
+<script>
+	AV.initialize("", "");
+</script>
+
+<script type="text/javascript">
+function showTime(Counter) {
+    var query = new AV.Query(Counter);
+    var entries = [];
+    var $visitors = $(".leancloud_visitors");
+
+    $visitors.each(function() {
+        entries.push($(this).attr("id").trim());
+    });
+
+    query.containedIn('url', entries);
+    query.find()
+        .done(function(results) {
+            var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+            var OLD_COUNT_CONTAINER_REF = '.old-visitors-count';
+
+            
+            
+            
+            
+
+            for (var i = 0; i < results.length; i++) {
+                var item = results[i];
+                var url = item.get('url');
+                var time = item.get('time');
+                var element = document.getElementById(url);
+
+                $(element).find(COUNT_CONTAINER_REF).text(time);
+            }
+            for (var i = 0; i < entries.length; i++) {
+                var url = entries[i];
+                var element = document.getElementById(url);
+                var countSpan = $(element).find(COUNT_CONTAINER_REF);
+                if (countSpan.text() == '') {
+                    var oldCountSpan = $(element).find(OLD_COUNT_CONTAINER_REF).text();
+                    if(oldCountSpan!=''){
+                        countSpan.text(0+parseInt(oldCountSpan));
+                    }else{
+                        countSpan.text(0);          
+                    }
+                }
+            }
+        })
+        .fail(function(object, error) {
+            console.log("Error: " + error.code + " " + error.message);
+        });
+}
+
+function addCount(Counter) {
+    var $visitors = $(".leancloud_visitors");
+    var url = $visitors.attr('id').trim();
+    var title = $visitors.attr('data-flag-title').trim();
+    var query = new AV.Query(Counter);
+
+    query.equalTo("url", url);
+    query.find({
+        success: function(results) {
+            if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment("time");
+                counter.save(null, {
+                    success: function(counter) {
+                        var $element = $(document.getElementById(url));
+                        $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                    },
+                    error: function(counter, error) {
+                        console.log('Failed to save Visitor num, with error message: ' + error.message);
+                    }
+                });
+            } else {
+                var newcounter = new Counter();
+                 
+                var acl = new AV.ACL();
+                acl.setPublicReadAccess(true);
+                acl.setPublicWriteAccess(true);
+                newcounter.setACL(acl);
+                 
+                newcounter.set("title", title);
+                newcounter.set("url", url);
+                var OLD_COUNT_CONTAINER_REF = '.old-visitors-count';
+                var $element = $(document.getElementById(url));
+                var oldCountSpan = $element.find(OLD_COUNT_CONTAINER_REF).text();
+                if(oldCountSpan!=''){
+                    newcounter.set("time", parseInt(oldCountSpan)+1);
+                }else{
+ 	                    newcounter.set("time",  1);
+                }
+                newcounter.save(null, {
+                    success: function(newcounter) {
+                        var $element = $(document.getElementById(url));
+                        $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                    },
+                    error: function(newcounter, error) {
+                        console.log('Failed to create');
+                    }
+                });
+            }
+        },
+        error: function(error) {
+            console.log('Error:' + error.code + " " + error.message);
+        }
+    });
+}
+$(function() {
+    var Counter = AV.Object.extend("Counter");
+    
+    
+    if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+    } else {
+        showTime(Counter);
+    }
+});
+</script>
+
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h3>Table of Contents</h3>
+                </header>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#iloc-e-loc">.iloc e .loc</a></li>
+    <li><a href="#amostragem-aleatória">Amostragem aleatória</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#substituindo-valores-únicos-utilizando-o-replace">Substituindo valores únicos utilizando o <code>.replace</code></a></li>
+    <li><a href="#substituindo-múltiplos-valores-com-listas-e-dicionários">Substituindo múltiplos valores com listas e dicionários</a></li>
+  </ul>
+</nav>
+                
+                <p>Fala galera, tudo certo com vocês? Se você é um Cientista/Analista de dados, ou curte utilizar python para realizar diferentes análises de dados, certamente já utilizou a biblioteca <code>Pandas</code>. Pandas é uma biblioteca open-source para estruturação e análise de dados, seus comandos se assemelham muitas vezes ao SQL, porém sua API traz um conjunto maior operações, maior robustez e se executado de forma correta, mais parformance.</p>
+<p>Nesse tutorial estou me baseando em um minicurso do DataCamp <a href="https://app.datacamp.com/learn/courses/writing-efficient-code-with-pandas">Writing Efficient Code with pandas</a>. Como nem todos tem acesso a esse material, ou por não ter familiariedade com o inglês, pode ser de grande valia compartilhar esse conhecimento com a comunidade.</p>
+<p>Bom, mas sem enrolação, aqui vamos tratar de 4 principais tópicos:</p>
+<ul>
+<li>Parte 1: Selecionando colunas e linhas de forma eficiente.</li>
+<li>Parte 2: Substituindo valores em colunas do <code>DataFrame</code>.</li>
+<li>Parte 3: Iterando no dataset de forma eficiente.</li>
+<li>Parte 4: Manipulação de dados com o <code>.groupby</code>, <code>.transform</code> e <code>.filter</code>.</li>
+</ul>
+<p>Todos os tópicos serão abordados utilizando tarefas cotidianas de manipulação de dados. Estaremos utilizando uma base de dados pública oriunda do kaggle, que são os dados das Olimpíadas de Tokyo 2021. Você pode realizar o download dos arquivos pelo site ou clonar o repositório deste post, links abaixo:</p>
+<ul>
+<li>Kaggle: <a href="https://www.kaggle.com/arjunprasadsarkhel/2021-olympics-in-tokyo">https://www.kaggle.com/arjunprasadsarkhel/2021-olympics-in-tokyo</a></li>
+<li>Github do post:</li>
+</ul>
+<p>Como bibliotecas estarei utilizando: <code>numpy</code>, <code>pandas</code>, <code>pyjanitor</code> e <code>time</code>. Certifique-se de ter todas elas instaladas no seu ambiente.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> time
+
+<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+<span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+<span style="color:#f92672">from</span> janitor <span style="color:#f92672">import</span> clean_names
+
+<span style="color:#75715e"># importing and cleaning the data</span>
+medals_df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_excel(<span style="color:#e6db74">&#34;Data/Medals.xlsx&#34;</span>)<span style="color:#f92672">.</span>clean_names()
+
+<span style="color:#75715e"># tidying the data</span>
+medals_df<span style="color:#f92672">.</span>drop([<span style="color:#e6db74">&#34;total&#34;</span>, <span style="color:#e6db74">&#34;rank_by_total&#34;</span>], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+medals_reshaped_df <span style="color:#f92672">=</span> medals_df<span style="color:#f92672">.</span>melt(
+    id_vars<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;rank&#34;</span>, <span style="color:#e6db74">&#34;team_noc&#34;</span>],
+    value_vars<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;gold&#34;</span>, <span style="color:#e6db74">&#34;silver&#34;</span>, <span style="color:#e6db74">&#34;bronze&#34;</span>],
+    var_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;medals&#34;</span>,
+    value_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;qtt&#34;</span>,
+)
+</code></pre></div><p>Após importar os dados eu realizei algumas transformações nos dados:</p>
+<ul>
+<li>.clean_names: é um método do pyjanitor, que limpa o nome das colunas automaticamente.</li>
+<li>.melt: é um pivoteamento nos dados para o formato longer, melhor para análise.</li>
+<li>.drop: removi algumas colunas que não são necessárias nesse momento.</li>
+</ul>
+<p>Como iremos calcular um comparativo várias vezes durante o tutorial, eu criei uma função para nos ajudar a calcular o quanto um método é mais rápido que o outro para executar uma função. Aqui entramos como input, com os valores do tempos gastos por cada método e depois calculamos o quanto um é maior que o outro.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># helper function to calculate pct diff between the times</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_how_much_diff</span>(method_1: float, method_2: float) <span style="color:#f92672">-&gt;</span> str:
+    diff <span style="color:#f92672">=</span> method_2 <span style="color:#f92672">/</span> method_1
+
+    <span style="color:#66d9ef">if</span> diff <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>:
+        ans <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Método 1 é </span><span style="color:#e6db74">{</span>round(diff<span style="color:#f92672">*</span><span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">2</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">% vezes mais rápido que o Método 2&#34;</span>
+    <span style="color:#66d9ef">elif</span> diff <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1</span>:
+        new_diff <span style="color:#f92672">=</span> method_1 <span style="color:#f92672">/</span> method_2
+        ans <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Método 2 é </span><span style="color:#e6db74">{</span>round(new_diff<span style="color:#f92672">*</span><span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">2</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">% vezes mais rápido que o Método 1&#34;</span>
+
+    <span style="color:#66d9ef">return</span> ans
+</code></pre></div><p>Agora estamos prontos para começar!!</p>
+<h1 id="parte-i-selecionando-colunas-e-linhas-de-forma-eficiente">Parte I: Selecionando colunas e linhas de forma eficiente</h1>
+<h2 id="iloc-e-loc">.iloc e .loc</h2>
+<p>Essa é uma tarefa bem comum utilizada com DataFrames do Pandas, muitas vezes precisamos selecionar apenas uma porção dos dados, seja por colunas, seja por linhas. É ae que entra a utilização dos métodos <code>.iloc</code> e <code>.loc</code>.</p>
+<ul>
+<li><code>.iloc</code>: Localizador numérico</li>
+<li><code>.loc</code>: Localizador nominal</li>
+</ul>
+<p>Existe diferença em utilizar um ou outro? Vamos decobrir:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># timing how long will run each of those: .iloc and .loc</span>
+<span style="color:#75715e"># loc time</span>
+start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+medals_reshaped_df<span style="color:#f92672">.</span>loc[:, [<span style="color:#e6db74">&#34;team_noc&#34;</span>, <span style="color:#e6db74">&#34;medals&#34;</span>, <span style="color:#e6db74">&#34;qtt&#34;</span>]]
+delta_loc <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
+
+<span style="color:#75715e"># iloc time</span>
+start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+medals_reshaped_df<span style="color:#f92672">.</span>iloc[:, [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]]
+delta_iloc <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
+
+<span style="color:#75715e"># who is faster?</span>
+calculate_how_much_diff(method_1<span style="color:#f92672">=</span>delta_loc, method_2<span style="color:#f92672">=</span>delta_iloc)
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#e6db74">&#39;Método 2 é 219.69% vezes mais rápido que o Método 1&#39;</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># loc time</span>
+start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+medals_reshaped_df<span style="color:#f92672">.</span>loc[<span style="color:#ae81ff">1</span>:<span style="color:#ae81ff">30</span>, :]
+delta_loc <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
+
+<span style="color:#75715e"># iloc time</span>
+start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+medals_reshaped_df<span style="color:#f92672">.</span>iloc[<span style="color:#ae81ff">1</span>:<span style="color:#ae81ff">30</span>, :]
+delta_iloc <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
+
+<span style="color:#75715e"># who is faster?</span>
+calculate_how_much_diff(method_1<span style="color:#f92672">=</span>delta_loc, method_2<span style="color:#f92672">=</span>delta_iloc)
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#e6db74">&#39;Método 2 é 169.56% vezes mais rápido que o Método 1&#39;</span>
+</code></pre></div><p>Pelos resultados acima, conseguimos ver que em ambos os casos, utilizar o <code>.iloc</code> é muito mais eficiente para selecionar tanto linhas quanto colunas de um <code>DataFrame</code> do <code>Pandas</code>. Porém, é muito comum também autilizarmos apenas uma lista com o nome das colunas desejadas do dataset, vamos verificar então se o <code>.iloc</code> continua vitorioso nessa comparação:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># iloc time</span>
+start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+medals_reshaped_df<span style="color:#f92672">.</span>iloc[:, <span style="color:#ae81ff">1</span>:<span style="color:#ae81ff">4</span>]
+delta_iloc <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
+
+<span style="color:#75715e"># directly selecting columns</span>
+start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+medals_reshaped_df[[<span style="color:#e6db74">&#34;team_noc&#34;</span>, <span style="color:#e6db74">&#34;medals&#34;</span>, <span style="color:#e6db74">&#34;qtt&#34;</span>]]
+delta_direct <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
+
+<span style="color:#75715e"># who is faster?</span>
+calculate_how_much_diff(method_1<span style="color:#f92672">=</span>delta_iloc, method_2<span style="color:#f92672">=</span>delta_direct)
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#e6db74">&#39;Método 1 é 179.69% vezes mais rápido que o Método 2&#39;</span>
+</code></pre></div><p>Como vimos, o <code>.iloc</code> ainda se mostra vitorioso nesta comparação. Neste tópico nós vemos uma divergência entre o que está no material do DataCamp e o que observamos em nosso código, pois lá o método de selecionar as colunas diretamente é mais eficiente.</p>
+<p>Como toda biblioteca sofre atualizações e otimizações ao longo do tempo, é possível que o método <code>.iloc</code> tenha sido otimizado desde que o curso do DataCamp foi lançado.</p>
+<h2 id="amostragem-aleatória">Amostragem aleatória</h2>
+<p>Outra tarefa bem comum dentro do dia-a-dia de Cientistas e Analistas de dados é a amostragem aleatória do nosso dataset, tal tarefa pode ter diferentes objetivos:</p>
+<ul>
+<li>diminuir o tamanho do dataset original</li>
+<li>validação de alguma técnica</li>
+<li>separação entre dados de teste e treino</li>
+</ul>
+<p>Para isso, podemos prosseguir por duas formas diferentes com o Pandas:</p>
+<ul>
+<li>utilizar o módulo do numpy de geração de números randômicos e aplicar ao <code>DataFrame</code></li>
+<li>utilizar o método <code>.sample</code> do Pandas</li>
+</ul>
+<p>Vamos checar quem é mais eficiente:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># numpy random integers</span>
+start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+medals_reshaped_df<span style="color:#f92672">.</span>iloc[np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(low<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, high<span style="color:#f92672">=</span>medals_reshaped_df<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>], size<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>), :]
+delta_numpy <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
+
+<span style="color:#75715e"># using .sample</span>
+start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+medals_reshaped_df<span style="color:#f92672">.</span>sample(<span style="color:#ae81ff">50</span>, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+delta_sample <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
+
+<span style="color:#75715e"># who is faster?</span>
+calculate_how_much_diff(method_1<span style="color:#f92672">=</span>delta_numpy, method_2<span style="color:#f92672">=</span>delta_sample)
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#e6db74">&#39;Método 2 é 192.69% vezes mais rápido que o Método 1&#39;</span>
+</code></pre></div><p>Veja que o método do Pandas é muito mais efetivo, então, prefira utilizar o <code>.sample</code> caso precise de uma amostra aleatória a nível de linhas do seu dataset. Caso precise de selecionar amostras aleatórias a nível de colunas (menos comum), também podemos adaptar o que foi feito acima e verificar se o <code>.sample</code> continua vencendor.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># numpy random integers</span>
+start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+medals_reshaped_df<span style="color:#f92672">.</span>iloc[:, np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(low<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, high<span style="color:#f92672">=</span>medals_reshaped_df<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>], size<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)]
+delta_numpy <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
+
+<span style="color:#75715e"># using .sample</span>
+start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+medals_reshaped_df<span style="color:#f92672">.</span>sample(<span style="color:#ae81ff">3</span>, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)  <span style="color:#75715e"># adjusting the axis = 1 for columns</span>
+delta_sample <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
+
+<span style="color:#75715e"># who is faster?</span>
+calculate_how_much_diff(method_1<span style="color:#f92672">=</span>delta_numpy, method_2<span style="color:#f92672">=</span>delta_sample)
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#e6db74">&#39;Método 2 é 188.66% vezes mais rápido que o Método 1&#39;</span>
+</code></pre></div><p>Ainda assim, temos o .sample como vencedor!</p>
+<p>Com isso nós finalizamos a <strong>Parte I</strong> dessa série de tutoriais, e em resumo temos o seguinte:</p>
+<ul>
+<li>iloc é mais rápido que loc</li>
+<li>iloc é mais rápido que selecionar diretamente as colunas</li>
+<li>sample é mais rápido utilizar <code>numpy</code> para gerar um array de números aleatórios</li>
+</ul>
+<p>Vamos à segunda parte!!</p>
+<h1 id="parte-ii-substituindo-valores-em-colunas-do-dataframe">Parte II: Substituindo valores em colunas do <code>DataFrame</code></h1>
+<h2 id="substituindo-valores-únicos-utilizando-o-replace">Substituindo valores únicos utilizando o <code>.replace</code></h2>
+<p>Você provavelmente deve ter cruzado com situações onde precisou substituir valores de algumas colunas baseando-se em algum condicional, algumas linguagens de programação chamam esse padrão de <em>switch case</em>, em python não possuíamos essa feature anterior a versão 3.10 (recém lançada). No Pandas, esse padrão já existia no método <code>.replace</code>, sendo assim, vamos analisar qual forma mais efetiva de realizar tal tarefa.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># pure Pandas</span>
+medals_reshaped_replace_pd_df <span style="color:#f92672">=</span> medals_reshaped_df<span style="color:#f92672">.</span>copy()
+start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+medals_reshaped_replace_pd_df<span style="color:#f92672">.</span>medals<span style="color:#f92672">.</span>loc[medals_reshaped_replace_pd_df<span style="color:#f92672">.</span>medals<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;gold&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Gold&#39;</span>
+delta_numpy <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
+
+<span style="color:#75715e"># using .replace</span>
+medals_reshaped_replace_df <span style="color:#f92672">=</span> medals_reshaped_df<span style="color:#f92672">.</span>copy()
+start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+medals_reshaped_replace_df[<span style="color:#e6db74">&#34;medals&#34;</span>]<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;gold&#34;</span>, <span style="color:#e6db74">&#34;Gold&#34;</span>)  <span style="color:#75715e"># adjusting the axis = 1 for columns</span>
+delta_sample <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
+
+<span style="color:#75715e"># who is faster?</span>
+calculate_how_much_diff(method_1<span style="color:#f92672">=</span>delta_numpy, method_2<span style="color:#f92672">=</span>delta_sample)
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#e6db74">&#39;Método 2 é 204.11% vezes mais rápido que o Método 1&#39;</span>
+</code></pre></div><p>Como podemos ver, utilizar o <code>.replace</code> é incrivelmente mais rápido e pythônico que apenas fazer isso com o Pandas básico.</p>
+<h2 id="substituindo-múltiplos-valores-com-listas-e-dicionários">Substituindo múltiplos valores com listas e dicionários</h2>
+<p>Uma outra comparação que podemos fazer é em relação a alteração de múltiplos valores numa columa de um <code>DataFrame</code>, e para isso o <code>.replace</code> nos oferece o recurso de utilizar listas e dicionários. Os quais veremos agora.</p>
+<p>Antes de realizar os comparativos, eu montei um esquema que nos permite visualizar como funciona a sintaxe para o <code>.replace</code> com listas e dicinários</p>
+<p><img src="/img/efficient-pandas/replace-lists.png" alt="Replace-lists"></p>
+<blockquote>
+<p>Utilizando listas</p>
+</blockquote>
+<p><img src="/img/efficient-pandas/replace-lists.png" alt="Replace-dict"></p>
+<blockquote>
+<p>Utilizando dicionários</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># pure Pandas</span>
+medals_reshaped_replace_pd_df <span style="color:#f92672">=</span> medals_reshaped_df<span style="color:#f92672">.</span>copy()
+start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+medals_reshaped_replace_pd_df[<span style="color:#e6db74">&#34;rank&#34;</span>]<span style="color:#f92672">.</span>loc[
+    (medals_reshaped_replace_pd_df[<span style="color:#e6db74">&#34;rank&#34;</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>)
+    <span style="color:#f92672">|</span> (medals_reshaped_replace_pd_df[<span style="color:#e6db74">&#34;rank&#34;</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>)
+    <span style="color:#f92672">|</span> (medals_reshaped_replace_pd_df[<span style="color:#e6db74">&#34;rank&#34;</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">3</span>)
+] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;TOP 3&#34;</span>
+
+medals_reshaped_replace_pd_df[<span style="color:#e6db74">&#34;rank&#34;</span>]<span style="color:#f92672">.</span>loc[
+    (medals_reshaped_replace_pd_df[<span style="color:#e6db74">&#34;rank&#34;</span>] <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;TOP 3&#34;</span>)
+] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;OUTRAS&#34;</span>
+delta_numpy <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
+
+<span style="color:#75715e"># using .replace</span>
+medals_reshaped_replace_df <span style="color:#f92672">=</span> medals_reshaped_df<span style="color:#f92672">.</span>copy()
+start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+max_rank <span style="color:#f92672">=</span> medals_reshaped_replace_df[<span style="color:#e6db74">&#34;rank&#34;</span>]<span style="color:#f92672">.</span>max()
+medals_reshaped_replace_df[<span style="color:#e6db74">&#34;rank&#34;</span>]<span style="color:#f92672">.</span>replace(
+    [[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>], [range(<span style="color:#ae81ff">4</span>, max_rank <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)]], [<span style="color:#e6db74">&#34;TOP 3&#34;</span>, <span style="color:#e6db74">&#34;OUTRAS&#34;</span>], inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>
+)
+delta_sample <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
+
+<span style="color:#75715e"># who is faster?</span>
+calculate_how_much_diff(method_1<span style="color:#f92672">=</span>delta_numpy, method_2<span style="color:#f92672">=</span>delta_sample)
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#e6db74">&#39;Método 2 é 136.03% vezes mais rápido que o Método 1&#39;</span>
+</code></pre></div><p>Novamente, obtemos o mesmo resultado e de forma muito mais eficiente ao utilizar o <code>.replace</code> do pandas, mesmo quando queremos substituir valores baseando-se em mais de uma condição ao dataset.</p>
+<p>Uma outra estrutura de dados que o Pandas nos permite usar é o dicionário, vamos realizar o comparativo:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># pure Pandas</span>
+medals_reshaped_replace_df <span style="color:#f92672">=</span> medals_reshaped_df<span style="color:#f92672">.</span>copy()
+start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+medals_reshaped_replace_df[<span style="color:#e6db74">&#34;medals&#34;</span>]<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;gold&#34;</span>, <span style="color:#e6db74">&#34;GOLD&#34;</span>, inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+medals_reshaped_replace_df[<span style="color:#e6db74">&#34;medals&#34;</span>]<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;silver&#34;</span>, <span style="color:#e6db74">&#34;Silver&#34;</span>, inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+medals_reshaped_replace_df[<span style="color:#e6db74">&#34;medals&#34;</span>]<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;bronze&#34;</span>, <span style="color:#e6db74">&#34;Bronze&#34;</span>, inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+delta_numpy <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
+
+<span style="color:#75715e"># using .replace</span>
+medals_reshaped_replace_df <span style="color:#f92672">=</span> medals_reshaped_df<span style="color:#f92672">.</span>copy()
+start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+medals_reshaped_replace_df[<span style="color:#e6db74">&#34;medals&#34;</span>]<span style="color:#f92672">.</span>replace(
+    {<span style="color:#e6db74">&#34;gold&#34;</span>: <span style="color:#e6db74">&#34;Gold&#34;</span>, <span style="color:#e6db74">&#34;silver&#34;</span>: <span style="color:#e6db74">&#34;Silver&#34;</span>, <span style="color:#e6db74">&#34;bronze&#34;</span>: <span style="color:#e6db74">&#34;Bronze&#34;</span>}, inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>
+)
+delta_sample <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time
+
+<span style="color:#75715e"># who is faster?</span>
+calculate_how_much_diff(method_1<span style="color:#f92672">=</span>delta_numpy, method_2<span style="color:#f92672">=</span>delta_sample)
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#e6db74">&#39;Método 2 é 171.75% vezes mais rápido que o Método 1&#39;</span>
+</code></pre></div><p>Aqui nós vemos então, que até mesmo dentro do próprio método <code>.replace</code> é possível encontrar formas mais performáticas de realizar uma terefa, que nesse caso é por meio dos dicionários.</p>
+<p>Com isso nós finalizamos a segunda parte do tutorial. Resumindo o que vimos até aqui, temos:</p>
+<ul>
+<li><code>.replace</code> é muito mais efetivo que operações &ldquo;<em>puras</em>&rdquo; do <code>Pandas</code></li>
+<li><code>.replace</code> utilizando dicionários é mais efetivo que utilizando listas.</li>
+</ul>
+<p>Fique ligado para o próximo post, onde será tratado das Parte III e Parte IV.</p>
+
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2021/08/01/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.5/" data-toggle="tooltip" data-placement="top" title="Criando uma API Pronta para Produção com FastAPI - PT.5">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        <a href="/tags/asynchronous" title="asynchronous">
+                            asynchronous
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/backend" title="backend">
+                            backend
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/data-science" title="data-science">
+                            data-science
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/data-visualization" title="data-visualization">
+                            data-visualization
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/docker" title="docker">
+                            docker
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/fastapi" title="fastapi">
+                            fastapi
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/ggplot2" title="ggplot2">
+                            ggplot2
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/machine-learning" title="machine-learning">
+                            machine-learning
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/project" title="project">
+                            project
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/r" title="r">
+                            r
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/restfull-api" title="restfull-api">
+                            restfull-api
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/sqlalchemy" title="sqlalchemy">
+                            sqlalchemy
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/time-series" title="time-series">
+                            time-series
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/web-development" title="web-development">
+                            web-development
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <li>
+                       <a href="" rel="alternate" type="application/rss+xml" title="LOB.DATA" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fa fa-circle fa-stack-2x"></i>
+                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/LucianoBatista">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		                
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/lucianobatistads/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		                
+                    
+                </ul>
+		<p class="copyright text-muted">
+                    A <a href="https://gohugo.io/">HUGO</a> <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite</a> page build with ♥ and powered by <a href="https://www.netlify.com/">Netlify</a>&nbsp;&nbsp;&bull;&nbsp;&nbsp;Header images by <a href="https://www.pexels.com/photo/climate-sea-landscape-nature-35626/">Pexels</a>
+    </p>
+    <p class="copyright text-muted" style='font-size:8pt;'>
+                    &copy; LOB.DATA 2019–2021. All rights reserved.&nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="https://lobdata.com.br/top/conduct/">Code of Conduct</a>
+                    <br>
+                    Content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>.
+                    <br>
+                    <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#28a87d'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-5NWJ42KMKC', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>

@@ -405,7 +405,7 @@ $(function() {
 <p>Just to simplify the example, I&rsquo;ll show just the data for one particular tier of users, diamond players.</p>
 <p>I choose this dataset because we have a lot of variables, high dimensionality, and look for linear correlations can be useful to build our model in the next stage of the project.</p>
 <p>Let&rsquo;s begin!</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># libraries used in this tutorial</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># libraries used in this tutorial</span>
 <span style="color:#a6e22e">library</span>(tidyverse)
 <span style="color:#a6e22e">library</span>(corrr)
 <span style="color:#a6e22e">library</span>(corrplot)
@@ -418,7 +418,7 @@ lol_diamond_tbl <span style="color:#f92672">&lt;-</span> <span style="color:#a6e
 
 
 lol_diamond_tbl <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">glimpse</span>()
-</code></pre></div><pre><code>
+</code></pre></div><pre tabindex="0"><code>
     Rows: 99,727
     Columns: 68
     $ totalDamageDealt                 &lt;dbl&gt; -0.2930711279, 2.5773485960, 0.2419916679, 0.7503652702, 0.9952605522, -0.04…
@@ -444,7 +444,7 @@ lol_diamond_tbl <span style="color:#f92672">%&gt;%</span> <span style="color:#a6
 <li>customize</li>
 </ol>
 <p>Although the simplicity of this process, the final result it&rsquo;s not so beautiful and it&rsquo;s not the best chart to put in your report.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># basic procedure</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># basic procedure</span>
 corr_matrix_train_mtx <span style="color:#f92672">&lt;-</span> lol_diamond_tbl <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">cor</span>()
 <span style="color:#a6e22e">corrplot</span>(corr_matrix_train_mtx)
 </code></pre></div><p><img src="/img/correlation/corr_01.png" alt="lol"></p>
@@ -467,7 +467,7 @@ corr_matrix_train_mtx <span style="color:#f92672">&lt;-</span> lol_diamond_tbl <
 <p>And the most important, we can rearrange the variables using clustering methods, the corrplot function accept 5 different ways: AOE, FPC, hclust and alphabet (look the documentation to see more).</p>
 </li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># first plot</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># first plot</span>
 <span style="color:#a6e22e">corrplot</span>(corr_matrix_train_mtx, method <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;square&#34;</span>)
 
 <span style="color:#75715e"># second plot</span>
@@ -490,7 +490,7 @@ corr_matrix_train_mtx <span style="color:#f92672">&lt;-</span> lol_diamond_tbl <
 <h3 id="using-corrr-package">Using corrr package</h3>
 <p>This second approach is the most tidy way to perform a correlation analysis. To facilitate the readability of this workflow, I drew this flowchart below:</p>
 <p><img src="/img/correlation/correlation_07.png" alt="flowchart"></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># plot 1</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># plot 1</span>
 lol_diamond_tbl <span style="color:#f92672">%&gt;%</span> 
     <span style="color:#a6e22e">correlate</span>() <span style="color:#f92672">%&gt;%</span> 
     <span style="color:#a6e22e">rearrange</span>() <span style="color:#f92672">%&gt;%</span> 
@@ -511,7 +511,7 @@ lol_diamond_tbl <span style="color:#f92672">%&gt;%</span>
 <p>I&rsquo;ll choose better colors. And at the end, I will set the x-axis label angle to 45 and <code>hjust = 1</code>, to put the axis text in right place.</p>
 </li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lol_diamond_tbl <span style="color:#f92672">%&gt;%</span> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lol_diamond_tbl <span style="color:#f92672">%&gt;%</span> 
     <span style="color:#a6e22e">correlate</span>(use <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;pairwise.complete.obs&#34;</span>) <span style="color:#f92672">%&gt;%</span> 
     <span style="color:#a6e22e">rearrange</span>(method <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;PCA&#34;</span>) <span style="color:#f92672">%&gt;%</span> 
     <span style="color:#a6e22e">shave</span>() <span style="color:#f92672">%&gt;%</span>
@@ -525,7 +525,7 @@ lol_diamond_tbl <span style="color:#f92672">%&gt;%</span>
 <p><img src="/img/correlation/correlation_09.png" alt="flowchart"></p>
 <p>The <code>corrr</code> library can also use a lot of different clustering methods for rearranging the variables, and you can get the full list from the <a href="https://www.rdocumentation.org/packages/seriation/versions/1.2-8/topics/seriate">seriate package documentation</a>.</p>
 <p>One more convenience in use <code>corrr</code> is that you can create <code>plotly</code> interactive plots and hover through specific squares to investigate the values of correlation coefficients and the variable in x and y axis <a href="https://www.youtube.com/watch?v=4Xv4x7wklSM">play the video</a>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">g <span style="color:#f92672">&lt;-</span> lol_diamond_tbl <span style="color:#f92672">%&gt;%</span> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">g <span style="color:#f92672">&lt;-</span> lol_diamond_tbl <span style="color:#f92672">%&gt;%</span> 
     <span style="color:#a6e22e">correlate</span>(use <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;pairwise.complete.obs&#34;</span>) <span style="color:#f92672">%&gt;%</span> 
     <span style="color:#a6e22e">rearrange</span>(method <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;PCA&#34;</span>) <span style="color:#f92672">%&gt;%</span> 
     corrr<span style="color:#f92672">::</span><span style="color:#a6e22e">shave</span>() <span style="color:#f92672">%&gt;%</span>
@@ -544,7 +544,7 @@ plotly<span style="color:#f92672">::</span><span style="color:#a6e22e">ggplotly<
 <h3 id="creating-the-plot_cor-function">Creating the plot_cor() function</h3>
 <p>In this last section, I&rsquo;ll show you two functions you can use to create beautiful plots and see which variable can contribute more to your correlation analysis.</p>
 <p>First, we need the <code>get_cor()</code> function, that will return the correlation matrix. After, we plug into <code>plot_cor()</code> function and get our awesome chart.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">
 <span style="color:#75715e"># getting the correlation matrix</span>
 get_cor <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(data, target, use <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;pairwise.complete.obs&#34;</span>,
          fct_reorder <span style="color:#f92672">=</span> <span style="color:#66d9ef">FALSE</span>, fct_rev <span style="color:#f92672">=</span> <span style="color:#66d9ef">FALSE</span>) {
@@ -586,7 +586,7 @@ get_cor <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">fun
 }
 
 </code></pre></div><p>Second, we need the plot function.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># this function plot the correlation scores in order of values</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># this function plot the correlation scores in order of values</span>
 <span style="color:#75715e"># and have a lot of parameters that can be used to </span>
 <span style="color:#75715e"># fully customize your plot as you want</span>
 plot_cor <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(data, target, fct_reorder <span style="color:#f92672">=</span> <span style="color:#66d9ef">FALSE</span>, fct_rev <span style="color:#f92672">=</span> <span style="color:#66d9ef">FALSE</span>,
@@ -745,6 +745,8 @@ plot_cor <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">fu
                         
                         
                         
+                        
+                        
                         <a href="/tags/project" title="project">
                             project
                         </a>
@@ -776,6 +778,8 @@ plot_cor <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">fu
                         <a href="/tags/time-series" title="time-series">
                             time-series
                         </a>
+                        
+                        
                         
                         
                         
