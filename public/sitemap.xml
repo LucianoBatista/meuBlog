@@ -3,30 +3,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.lobdata.com.br/categories/</loc>
-    <lastmod>2021-10-24T00:00:00+00:00</lastmod>
+    <lastmod>2022-01-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lobdata.com.br/2022/01/26/computer-vision/</loc>
+    <lastmod>2022-01-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lobdata.com.br/tags/data-science/</loc>
-    <lastmod>2021-10-24T00:00:00+00:00</lastmod>
+    <lastmod>2022-01-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lobdata.com.br/</loc>
+    <lastmod>2022-01-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lobdata.com.br/post/</loc>
+    <lastmod>2022-01-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lobdata.com.br/tags/</loc>
+    <lastmod>2022-01-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lobdata.com.br/tags/tutorial/</loc>
+    <lastmod>2022-01-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lobdata.com.br/categories/tutorials/</loc>
+    <lastmod>2022-01-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lobdata.com.br/tags/vis%C3%A3o-computacional/</loc>
+    <lastmod>2022-01-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lobdata.com.br/2021/10/24/efficient-pandas/</loc>
     <lastmod>2021-10-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lobdata.com.br/</loc>
-    <lastmod>2021-10-24T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.lobdata.com.br/tags/pandas/</loc>
-    <lastmod>2021-10-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lobdata.com.br/post/</loc>
-    <lastmod>2021-10-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lobdata.com.br/tags/</loc>
-    <lastmod>2021-10-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lobdata.com.br/tags/tutorial/</loc>
-    <lastmod>2021-10-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lobdata.com.br/categories/tutorials/</loc>
     <lastmod>2021-10-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lobdata.com.br/tags/asynchronous/</loc>

@@ -6,13 +6,31 @@
     <description>Recent content in Tags on LOB.DATA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 24 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 26 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Data Science</title>
       <link>https://www.lobdata.com.br/tags/data-science/</link>
-      <pubDate>Sun, 24 Oct 2021 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 26 Jan 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lobdata.com.br/tags/data-science/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tutorial</title>
+      <link>https://www.lobdata.com.br/tags/tutorial/</link>
+      <pubDate>Wed, 26 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/tags/tutorial/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Visão Computacional</title>
+      <link>https://www.lobdata.com.br/tags/vis%C3%A3o-computacional/</link>
+      <pubDate>Wed, 26 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/tags/vis%C3%A3o-computacional/</guid>
       <description></description>
     </item>
     
@@ -22,15 +40,6 @@
       <pubDate>Sun, 24 Oct 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lobdata.com.br/tags/pandas/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tutorial</title>
-      <link>https://www.lobdata.com.br/tags/tutorial/</link>
-      <pubDate>Sun, 24 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lobdata.com.br/tags/tutorial/</guid>
       <description></description>
     </item>
     

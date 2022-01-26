@@ -6,7 +6,17 @@
     <description>Recent content in Tutorial on LOB.DATA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 24 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/tutorial/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 26 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/tutorial/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Computer Vision</title>
+      <link>https://www.lobdata.com.br/2022/01/26/computer-vision/</link>
+      <pubDate>Wed, 26 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/2022/01/26/computer-vision/</guid>
+      <description>O intuito desse post é compartilhar uma solução simples que resolvou um problema complexo que estávamos enfrentando em de nossos produtos aqui na Studos, a Leitora de Gabaritos. Dessa forma, outros que estejam com problemas similares possam talvez ter um ponto de vista diferente na resolução do problema.
+O que é a leitora de gabaritos? Dando um pouco de contexto sobre o produto, a Leitora de Gabaritos é uma API desenvolvida utilizando (principalmente) a seguinte stack:</description>
+    </item>
+    
     <item>
       <title>Efficient Pandas</title>
       <link>https://www.lobdata.com.br/2021/10/24/efficient-pandas/</link>
