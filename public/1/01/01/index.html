@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="LOB.DATA">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://www.lobdata.com.br/img/banner/beach_more_sea.jpg">
+
+    
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:image" content="https://www.cedricscherer.com/img/banner/banner.png" >
+    
+
+    
+
+    
+      <meta name="title" content="Luba" />
+      <meta property="og:title" content="Luba" />
+      <meta property="twitter:title" content="Luba" />
+      <meta property="twitter:text:title" content="Luba" />
+    
+
+    
+      <meta name="description" content="Blog by LuBa">
+      <meta property="og:description" content="Blog by LuBa" />
+      <meta property="twitter:description" content="Blog by LuBa" />
+    
+
+    
+
+    <meta name="keyword"  content="Data Visualization, Data Science, Programming, Web Development">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Luba</title>
+
+    <link rel="canonical" href="/1/01/01/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/styles/foundation.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">LOB.DATA</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Blog</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/aplica%C3%A7%C3%B5es">aplicações</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/projetos">projetos</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/tutorials">tutorials</a>
+                    </li>
+                    
+
+		    
+                        <li><a href="/top/about/">About Me</a></li>
+                    
+
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/banner/beach_more_sea.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                    </div>
+                    <h1></h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+			Posted by
+			
+		            LOB.DATA
+			
+			on
+			Monday, January 1, 0001
+                        
+                            <span id="/1/01/01/" class="leancloud_visitors meta_data_item" data-flag-title="">
+    <span class="post-meta-item-icon">
+      <span class="octicon octicon-eye"></span> 
+    </span>
+    <i class="fa fa-eye"></i>
+    <span class="old-visitors-count" style="display: none;"></span>
+    <span class="leancloud-visitors-count"></span>
+</span>
+
+
+
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+
+<script>
+	AV.initialize("", "");
+</script>
+
+<script type="text/javascript">
+function showTime(Counter) {
+    var query = new AV.Query(Counter);
+    var entries = [];
+    var $visitors = $(".leancloud_visitors");
+
+    $visitors.each(function() {
+        entries.push($(this).attr("id").trim());
+    });
+
+    query.containedIn('url', entries);
+    query.find()
+        .done(function(results) {
+            var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+            var OLD_COUNT_CONTAINER_REF = '.old-visitors-count';
+
+            
+            
+            
+            
+
+            for (var i = 0; i < results.length; i++) {
+                var item = results[i];
+                var url = item.get('url');
+                var time = item.get('time');
+                var element = document.getElementById(url);
+
+                $(element).find(COUNT_CONTAINER_REF).text(time);
+            }
+            for (var i = 0; i < entries.length; i++) {
+                var url = entries[i];
+                var element = document.getElementById(url);
+                var countSpan = $(element).find(COUNT_CONTAINER_REF);
+                if (countSpan.text() == '') {
+                    var oldCountSpan = $(element).find(OLD_COUNT_CONTAINER_REF).text();
+                    if(oldCountSpan!=''){
+                        countSpan.text(0+parseInt(oldCountSpan));
+                    }else{
+                        countSpan.text(0);          
+                    }
+                }
+            }
+        })
+        .fail(function(object, error) {
+            console.log("Error: " + error.code + " " + error.message);
+        });
+}
+
+function addCount(Counter) {
+    var $visitors = $(".leancloud_visitors");
+    var url = $visitors.attr('id').trim();
+    var title = $visitors.attr('data-flag-title').trim();
+    var query = new AV.Query(Counter);
+
+    query.equalTo("url", url);
+    query.find({
+        success: function(results) {
+            if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment("time");
+                counter.save(null, {
+                    success: function(counter) {
+                        var $element = $(document.getElementById(url));
+                        $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                    },
+                    error: function(counter, error) {
+                        console.log('Failed to save Visitor num, with error message: ' + error.message);
+                    }
+                });
+            } else {
+                var newcounter = new Counter();
+                 
+                var acl = new AV.ACL();
+                acl.setPublicReadAccess(true);
+                acl.setPublicWriteAccess(true);
+                newcounter.setACL(acl);
+                 
+                newcounter.set("title", title);
+                newcounter.set("url", url);
+                var OLD_COUNT_CONTAINER_REF = '.old-visitors-count';
+                var $element = $(document.getElementById(url));
+                var oldCountSpan = $element.find(OLD_COUNT_CONTAINER_REF).text();
+                if(oldCountSpan!=''){
+                    newcounter.set("time", parseInt(oldCountSpan)+1);
+                }else{
+ 	                    newcounter.set("time",  1);
+                }
+                newcounter.save(null, {
+                    success: function(newcounter) {
+                        var $element = $(document.getElementById(url));
+                        $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                    },
+                    error: function(newcounter, error) {
+                        console.log('Failed to create');
+                    }
+                });
+            }
+        },
+        error: function(error) {
+            console.log('Error:' + error.code + " " + error.message);
+        }
+    });
+}
+$(function() {
+    var Counter = AV.Object.extend("Counter");
+    
+    
+    if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+    } else {
+        showTime(Counter);
+    }
+});
+</script>
+
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h3>Table of Contents</h3>
+                </header>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#contexto">Contexto</a></li>
+    <li><a href="#problema-de-negócio">Problema de negócio</a></li>
+    <li><a href="#impacto">Impacto</a>
+      <ul>
+        <li><a href="#porque-nosso-projeto-importa">Porque nosso projeto importa?</a></li>
+      </ul>
+    </li>
+    <li><a href="#desenho-da-solução">Desenho da solução</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#dados">Dados</a>
+      <ul>
+        <li><a href="#data-tracking-sheet">Data Tracking Sheet</a></li>
+        <li><a href="#fonte">Fonte</a></li>
+        <li><a href="#datasets">Datasets</a></li>
+      </ul>
+    </li>
+    <li><a href="#eda-análise-exploratória-de-dados">EDA (Análise Exploratória de dados)</a>
+      <ul>
+        <li><a href="#targets">Targets</a></li>
+      </ul>
+    </li>
+    <li><a href="#abordagem">Abordagem</a>
+      <ul>
+        <li><a href="#mlops-e-configuração-de-ambiente">MLOps e Configuração de Ambiente</a></li>
+        <li><a href="#fluxo-para-o-treinamento">Fluxo para o treinamento</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#interface">Interface</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#instruções">Instruções</a></li>
+    <li><a href="#implicações">Implicações</a></li>
+  </ul>
+</nav>
+                
+                <h1 id="classificador-bncc-classificador-de-questões-do-ensino-médio-e-fundamental">Classificador BNCC: Classificador de questões do Ensino médio e Fundamental</h1>
+<p>Projeto desenvolvido pelos alunos Brisa Rosatti, Luciano Batista, Pedro Moreau, Wilson França do Curso de Data Science &amp; Machine Learning da Tera em colaboração com a Studos e ArcoTech.</p>
+<h1 id="parte-i-estrutura-do-projeto">PARTE I: Estrutura do projeto</h1>
+<h2 id="contexto">Contexto</h2>
+<p>Segundo o IBGE, no Brasil, existem registradas 124840 escolas de ensino fundamental e 28933 escolas do ensino médio. Em termos de número de matrículas, isso representa 26718830 matrículas para o ensino fundamental e 7550753 para o ensino médio (<a href="https://cidades.ibge.gov.br/brasil/pesquisa/13/5908)">https://cidades.ibge.gov.br/brasil/pesquisa/13/5908)</a>. Com o intuito de harmonizar a base curricular desse grande número escolas e estudantes, oferecendo assim um modelo de ensino de qualidade e que vise capacitar os alunos para as consecutivas fases da sua vida, o Ministério da Educação publicou, em 16 de setembro de 2015 a primeira versão da Base Nacional Comum Curricular (BNCC) (<a href="http://basenacionalcomum.mec.gov.br/)">http://basenacionalcomum.mec.gov.br/)</a>. Este documento normativo define o conjunto de aprendizagens que todos os alunos devem desenvolver ao longo da sua formação na Educação Básica.</p>
+<p>A BNCC está estruturada em códigos alfanuméricos, que contemplam as competências a serem desenvolvidas em cada etapa da formação do aluno na Educação Básica. O código é dividido em quatro partes, como o exemplo EF 09 AR 01. O primeiro par de letras indica a qual etapa do ensino básico essa competência está inserida, neste caso, Ensino Fundamental. O primeiro par de números indica o ano ou bloco de anos em que esta competência está incluída, neste caso 9° ano. O segundo par de letras indica qual a qual área do conhecimento a competência pertence, AR = Artes e o segundo par de números mostra a posição da habilidade na numeração sequencial do ano ou bloco de anos referente à competência. As imagens abaixo apresentam outros exemplos da descrição dos códigos da BNCC.</p>
+<p>A partir da homologação do relatório final da BNCC em 2018, pelo Ministério da Educação, as escolas devem alinhar seus currículos em consonância às diretrizes estabelecidas pela BNCC. E isso impacta em um replanejamento de estruturas curriculares, alinhamento da coordenação pedagógica, treinamento de professores para que apliquem de forma eficiente as normativas às suas aulas e avaliações, entre outras. Todo esse esforço demanda tempo, investimento e realinhamento de uma estrutura de ensino já estabelecida, para que o novo programa de currículos seja aplicado de forma eficiente. Os conselhos de educação de cada estado, juntamente com as secretarias de educação, são responsáveis pela fiscalização da aplicação das normativas da BNCC em cada escola, sejam elas públicas ou privadas, já que a aplicação desta normativa é obrigatória a todas as escolas.</p>
+<h2 id="problema-de-negócio">Problema de negócio</h2>
+<p>É percebido que apesar da obrigatoriedade de seguir a BNCC, as Escolas geralmente não têm o devido preparo e professores não são bem capacitados para relacionar os códigos às questões aplicadas em provas e simulados. Essa classificação se faz necessária para que as avaliações contemplem as etapas de aprendizado previstas para cada fase do ensino básico, fundamental e médio. Uma das razões para esses problemas é que além do documento da BNCC ser extenso, possui mais de mil códigos em sua totalidade, tornando todo processo de classificação moroso e ineficiente.
+Assim, vemos que três problemas de negócio emergem:</p>
+<ol>
+<li>
+<p>O primeiro está relacionado à própria escola do Ensino Básico, que, em função da necessidade de adequação curricular à BNCC, demanda uma ferramenta de acompanhamento das distintas disciplinas quanto ao cumprimento da base curricular reformulada, para que se cumpra a narrativa;</p>
+</li>
+<li>
+<p>Além disso, há a necessidade de treinamento de professores para a implementação das normativas da BNCC às disciplinas às quais são responsáveis, visto que, em sua formação acadêmica, as normativas da BNCC não foram contempladas;</p>
+</li>
+<li>
+<p>É sabido, ainda, que profissionais das Ciências da Natureza e Matemática apresentam dificuldade e resistência quanto à aplicação da BNCC em suas disciplinas, dado o caráter subjetivo de alguns códigos e habilidades, a falta de preparo em traduzir esses códigos em suas questões, durante a avaliação e a falta de experiência com esse tipo de abordagem curricular. Esta informação foi coletada a partir de entrevistas com profissionais da educação na cidade de Ilhéus - BA.</p>
+</li>
+</ol>
+<p>Diante desses problemas, foi proposta, neste trabalho de conclusão de curso, uma solução de dados que auxiliará as escolas e suas divisões pedagógicas quanto ao acompanhamento e cumprimento das normativas estabelecidas pela BNCC nas diferentes disciplinas e etapas dos ensinos fundamental e médio. Essa solução consiste em uma aplicação que irá classificar questões enviadas pelo usuário (profissional de educação) no formato texto, retornando para o mesmo os prováveis códigos correspondentes à BNCC. Dessa forma, o processo pedagógico poderá ser mediado por esta solução, trazendo celeridade à reorganização demandada pelo MEC. Além das escolas, EdTechs que tem como finalidade elaborar questões para compor serviços de bancos de questões também podem se valer desta solução de dados para fornecer as questões já classificadas de acordo à BNCC, agregando valor ao seu serviço.</p>
+<h2 id="impacto">Impacto</h2>
+<h3 id="porque-nosso-projeto-importa">Porque nosso projeto importa?</h3>
+<p>Acreditamos que o Projeto impactará duas áreas diferentes: o campo dos negócios e o pedagógico.
+No quesito de negócios presumimos à diminuição da necessidade de profissionais envolvidos no processo de classificação de questões, diminuindo assim o custo da empresa e possibilitando que esses profissionais possam atuar de forma mais eficiente em diferentes demandas, como na elaboração de questões para o banco de dados, por exemplo.</p>
+<p>No âmbito de vantagem competitiva, as empresas que incorporarem nossa tecnologia inovadora teriam um diferencial de mercado dentre outras EdTechs - startups focadas no desenvolvimento de soluções tecnológicas para a educação.</p>
+<p>No campo pedagógico, a implementação do Classificador tornaria a aplicação da BNCC mais acessível aos profissionais da educação, possibilitando assim que as avaliações e testes dos currículos escolares estejam melhor alinhados à normativa do MEC. Desse modo, alcançaremos o principal objetivo do Projeto, no qual teremos um ensino mais direcionado e eficiente, impactando diretamente e de forma positiva o aprendizado estudantil.</p>
+<p>Além disso, temos o intuito de tornar gratuito o acesso a essa tecnologia para profissionais de instituições públicas de ensino, sem que necessariamente haja investimento estatal ou necessidade de participação de licitações, contribuindo assim para a construção de um ensino básico de qualidade.</p>
+<h2 id="desenho-da-solução">Desenho da solução</h2>
+<p>Este projeto visa a implementação de um algoritmo de Machine Learning usando técnicas de Processamento de Linguagem Natural para classificação dos códigos da Base Nacional Comum Curricular (BNCC). Será utilizada uma abordagem de segmentação do problema em quatro partes, referentes às quatro partes do código BNCC. Dessa forma, será obtida, ao final de todas as etapas, a classe mais provável de cada parte do código da BNCC referente à questão que está sendo inserida no modelo para ser predita.</p>
+<p>Na presente data da publicação deste artigo, o grupo construiu os classificadores 1 e 3. Os classificadores 2 e 4 estão nos próximos passos para o trabalho, já que demandam uma base de dados maior e com o tageamento destas classes, que até o momento não foram disponibilizadas para o grupo.
+Assim, para os Classificadores 1 e 3 a solução foi desenhada da seguinte forma:</p>
+<ul>
+<li>Extração dos dados a partir da base de dados da Studos</li>
+<li>Limpeza e pré-processamento dos dados</li>
+<li>Criação de um modelo de classificação para Área do Conhecimento e para Componente Curricular</li>
+<li>Produtização do modelo no Heroku</li>
+<li>Criação de um frontend no Streamlit</li>
+<li>Integração do modelo produtizado com o frontend para fornecimento do serviço a usuários finais</li>
+</ul>
+<p>Como modelo de Machine Learning, foi adotada a Regressão Logística e, levando em conta a diferença de balanceamento entre as classes de cada target utilizada para os classificadores 1 e 3.</p>
+<h1 id="parte-ii-dados-e-solução">PARTE II: Dados e solução</h1>
+<h2 id="dados">Dados</h2>
+<p>Para uma melhor visibilidade da problemática envolvida neste classificador BNCC, o quadro abaixo apresenta algumas hipóteses levantadas para o desenvolvimento do produto, elucidando as fontes de dados, os dados utilizados e as demandas de negócios às quais se pretende atender.</p>
+<h3 id="data-tracking-sheet">Data Tracking Sheet</h3>
+<table>
+<thead>
+<tr>
+<th>Perguntas de Negócio</th>
+<th>Dados</th>
+<th>Base ou calculada</th>
+<th>Cálculo</th>
+<th>Fonte de dado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Como classificar questões de acordo com a BNCC?</td>
+<td>Questões previamente classificadas</td>
+<td>Calculada</td>
+<td>á definir</td>
+<td>Base dados da Studos</td>
+</tr>
+<tr>
+<td>Como desenvolver raciocínio lógico/matemático nas escolas?</td>
+<td>Questões Classificadas</td>
+<td>Calculada</td>
+<td>á definir</td>
+<td>Base dados da Studos</td>
+</tr>
+<tr>
+<td>Como melhorar a eficiência do ensino na sala de aula?</td>
+<td>App com Questões Classificadas</td>
+<td>Calculada</td>
+<td>á definir</td>
+<td>Base de dados Studos</td>
+</tr>
+<tr>
+<td>Como ajudar o professor na elaboração de avaliações e atividades nas escolas?</td>
+<td>App com Questões Classificadas</td>
+<td>Calculada</td>
+<td>á definir</td>
+<td>Base de dados Studos</td>
+</tr>
+</tbody>
+</table>
+<h3 id="fonte">Fonte</h3>
+<p>Como fonte de dados, iremos utilizar uma base disponibilizada pela Studos, uma EdTech onde o integrante do grupo Luciano trabalha. A base não contém informações sensíveis e conta com questões classificadas dentro dos códigos da BNCC, assim como informações necessárias para a criação dos quatro classificadores.</p>
+<h3 id="datasets">Datasets</h3>
+<p>Contamos com a liberação de +4M de questões classificadas com suas áreas de conhecimento e assuntos. Dessas, 8.4k possuem classificação das habilidades da BNCC.   Além disso, tem acesso público ao documento da (BNCC) contendo informações específicas dos códigos.
+Para o primeiro modelo de classificação foi utilizado a coluna ‘etapaEnsino’ como target, a qual designa cada questão como Ensino Médio, Fundamental I ou II. Para o segundo classificador será utilizado a coluna ‘matéria’ como target, na qual cada questão é classificada de acordo com o componente curricular.</p>
+<p>O dataset contém as seguintes variáveis:</p>
+<ul>
+<li>id (int): identificador único de cada questão</li>
+<li>questoes (str): texto contendo o conteúdo da questão</li>
+<li>tipoQuestoes (int): tipo da questão, se foi múltipla-escolha, certo ou errado, discursiva, etc.</li>
+<li>topico (str): assunto do componente curricular</li>
+<li>materia (str): componente curricular</li>
+<li>etapaEnsino (str): área de conhecimento (Fundamental I, Fundamental II ou Ensino Médio)</li>
+</ul>
+<p>A seguir tem-se uma visualiação do head do dataset utilizado.</p>
+<h2 id="eda-análise-exploratória-de-dados">EDA (Análise Exploratória de dados)</h2>
+<h3 id="targets">Targets</h3>
+<p>Nesse primeiro momento, nós estamos focados na criação dos classificadores 1 e 3. Foram coletados 100k de observações em que seguem a seguinte distribuição para a coluna Target ‘etapaEnsino’:</p>
+<p>E para o Target do segundo Classificador temos 76K observações distribuídas em 12 componentes curriculares distintos conforme pode ser visto abaixo:</p>
+<p>Sendo assim, nos resta analisar a variável principal do dataset, a coluna ‘questoes’. Apesar de ter uma série de análises que seria interessante realizar, observamos que a maior parte delas necessitaria de um texto o mais limpo possível.
+O texto das questões são exibidos no formato web, então temos uma quantidade bem grande de tags html para remover. Então esse se tornou nosso primeiro passo do data cleaning. Seguimos então com uma remoção de números, pois existem muitos números indicando alternativas das questões, assim como em questões somatórias existe a contagem das respostas (00, 11, 22 &hellip;), remoção de caracteres, de palavras raras e frequentes, entre outras técnicas descritas a seguir.</p>
+<h2 id="abordagem">Abordagem</h2>
+<h3 id="mlops-e-configuração-de-ambiente">MLOps e Configuração de Ambiente</h3>
+<p>O projeto de Ciência de Dados foi abordado pelo grupo com a intenção de utilizar conceitos de MLOps. Dessa forma, todo o projeto foi versionado utilizando GitHub neste link.
+O repositório foi organizado em pastas que separam as funções utilizadas para o pré processamento, as análises realizadas e notebooks contendo os modelos treinados.</p>
+<p>Todo este ambiente foi configurado utilizando pyenv, de forma que as bibliotecas pudessem ser reproduzidas localmente em outras máquinas sem correr risco de quebrar por diferença nas versões das bibliotecas e de Python utilizados.</p>
+<h3 id="fluxo-para-o-treinamento">Fluxo para o treinamento</h3>
+<p>Para implementação do algoritmo de classificação dos códigos na BNCC, seguem as seguintes etapas:</p>
+<ol>
+<li>
+<p>Coleta dos dados rotulados e não rotulados da Base de questões;</p>
+</li>
+<li>
+<p>Separação dos dados em dois (treino e teste), então decidir as métricas de avaliação;</p>
+</li>
+<li>
+<p>Pré-processamento: remoção de pontuação, lowercase das palavras, remoção de stopwords, stemming, lemmatization, remoção palavras raras, N-grams. O código do pipeline de pré processamento das questões pode ser visualizado nas imagens a seguir:</p>
+</li>
+<li>
+<p>Modelagem: Transformar o texto em feature vectors - Feature Extraction (representação matemática da linguagem). Nessa etapa foi utilizado o Bag of Words e o TF-IDF;</p>
+</li>
+</ol>
+<p>Após a limpeza dos dados utilizando as funções apresentadas acima, foi realizada a vetorização desse textos para que pudessem ser modelados.</p>
+<ol start="5">
+<li>Treinar o classificador usando os feature vectors e os dados rotulados correspondentes dos dados de treino;</li>
+</ol>
+<p>Com os vetores obtidos, foi possível treinar um modelo de regressão logística para a classificação das questões quanto à etapa de aprendizado (classificador 1) e quanto a área de conhecimento (classificador 3).</p>
+<ol start="6">
+<li>Usando as métricas de avaliação (passo 2), executar a performance do modelo nos dados de teste;</li>
+</ol>
+<p>As métricas para o Classificador 1 foram:</p>
+<p>E as métricas para o Classificador 2 foram:</p>
+<p>COLOCAR PRINT COM AS MÉTRICAS</p>
+<p>Foi observado que o valor do f1-score médio para o classificador 1 foi de 0,70 e para o classificador 2 foi de XX. Essa métrica foi adotada pelo grupo como fator decisivo para continuação do projeto. Levando em conta que o f1-score balanceia a precisão e recall, essa métrica foi utilizada para que seja levado em conta o desbalanceamento do dataset e não enviese nossa decisão. Já que as métricas foram satisfatórias para os dois modelos, foi escolhido seguir com a produtização dos mesmos sem que se investisse tempo, nesse momento, em otimização de hiperparâmetros dos mesmos.</p>
+<ol start="7">
+<li>Deploy do modelo</li>
+</ol>
+<p>A produtização do modelo foi feita da seguinte forma:
+Todas as etapas descritas anteriormente foram organizadas no repositório do github (<a href="https://github.com/LucianoBatista/bncc-classifier),">https://github.com/LucianoBatista/bncc-classifier),</a> sendo os códigos organizados em arquivos .py para que sejam separados o pipeline de pré-processamento, o pipeline de treinamento e predição do classificador 1 e também do classificador 3.
+Em seguida, após o treinamento, arquivos pickle contendo os transformes de pré-processamento e dos modelos foram gerados. Estes arquivos foram utilizados para a criação de uma API Rest utilizando o framework em Python do FastAPI <a href="https://bncc-classifier.herokuapp.com/docs)">https://bncc-classifier.herokuapp.com/docs)</a>. Esta API foi encapsulada em um Dockerfile, para que pudesse ser produtizada no Heroku e as rotas de inferência dos modelos fossem expostas para serem utilizadas em uma interface.
+Para deploy no Heroku utilizamos uma sequência recomendada pela própria documentação da plataforma (<a href="https://devcenter.heroku.com/articles/container-registry-and-runtime)">https://devcenter.heroku.com/articles/container-registry-and-runtime)</a>.</p>
+<p>O frontend foi feito no Streamlit, como será comentado a seguir. O link do código para o frontend está no repositório do github (<a href="https://github.com/LucianoBatista/bncc-classifier-front)">https://github.com/LucianoBatista/bncc-classifier-front)</a>.</p>
+<h1 id="parte-iii-colocando-a-solução-à-prova">PARTE III: Colocando a solução à prova</h1>
+<h2 id="interface">Interface</h2>
+<p>Para implementação da solução como um todo, construímos uma API (Application Programming Interface), que foi desenvolvida utilizando FastAPI, um framework em python. Essa API, funciona para servir o modelo de classificação para quem desejar utilizá-lo.</p>
+<p>Como inputs, a API vai inicialmente receber apenas texto, com possibilidade de aumento de complexidade para receber também imagens ou extração de texto de documentos words em etapas futuras deste trabalho. E como outputs, retornaremos ao usuário os mais prováveis códigos da BNCC para aquela questão.</p>
+<p>O usuário final, o profissional de educação, irá interagir com a API através de uma tela interativa criada a partir do framework Streamlit. A imagem a seguir demonstra esta interface.</p>
+<p>Este frontend tem o objetivo de ser prático para o usuário, consistindo em um campo onde o usuário pode inserir a questão que deseja analisar e teclar “Enter” para que esta questão seja carregada no modelo. Assim, aparecerá um botão Predict! que exporá as classes mais prováveis para o Componente Curricular e Etapa do Ensino, como apresentado na imagem anterior para a questão de exemplo, sendo o componente curricular Física e a etapa do ensino Ensino Mérico e Pré-Vestibular.</p>
+<h1 id="implicações-e-próximos-passos">Implicações e próximos passos</h1>
+<p>A solução de dados proposta foi desenhada para classificar questões de Ensino Fundamental I e II e Ensino Médio quanto às normas da BNCC. Para isso, uma base de dados previamente classificada foi utilizada no treinameto. Visto que essa classificação foi realizada utilizando questões escritas na Língua Portuguesa (com exceção das questões em inglês) e seguindo a norma culta, algumas instruções e premissas emergem destes fatos:</p>
+<h2 id="instruções">Instruções</h2>
+<p>Para a utilização eficiente desta solução de dados, é recomendada a utilização de questões estruturadas na Língua Portugesa, que contemplem conteúdos abordados nas etapas de ensino comentadas anteriormente e que estejam escritas seguindo a norma culta.
+A forma de utilização desta solução é pela inserção de questões, individualmente, no campo de texto da interface da solução. A solução não contempla, até o momento, a classificação de múltiplas questões ao mesmo tempo.</p>
+<p>O não cumprimento dessas instruções pode ocasionar em falhas de previsão além das relacionadas às métricas do modelo, mas devido à má utilização da solução, como por exemplo devido a questões que de assuntos que não são contemplados nos currículos escolares ou pela utilização de linguagem cotidiana, como gírias e expressões idiomáticas.</p>
+<h2 id="implicações">Implicações</h2>
+<p>Analisando criticamente os impactos dessa solução e externalidades que possam afetar as mesmas, principalmente devido a natureza dos dados coletados, os seguintes pontos estão associados ao classificador BNCC:</p>
+<p>Impacto positivo sobre ganho de eficiência no cumprimento da BNCC pelos profissionais da educação, sejam professores ou profissionais atrelados à gestão pedagógica de alguma instituição de ensino.
+Ganho de eficiência por parte de EdTechs que prestam serviço de oferecimento de questões a instituições financeiras, possibilitando uma classificação
+Comitê de Ética
+O Corpus utilizado pelo NLTK apresenta limitações intrínsecas. Se as questões fugirem do escopo abordado por este tipo de transformação de dados, a performance do modelo poderá ser afetada.</p>
+<p>Pensando no impacto gerado, quais são as externalidades (positivas ou
+negativas) da solução?
+A solução está sujeita a alguma distorção, viés ou interferência de usuários?
+Quais?
+Quais cuidados devem ser tomados a médio e longo prazo? (mudanças
+comportamentais em usuários e no contexto de negócio, possível descalibragem
+do modelo)
+Quais são os próximos passos do projeto?
+Comitê de Ética</p>
+<ol>
+<li>Detalhar de maneira explícita as instruções, premissas e objetivos do(s) algoritmos propostos</li>
+<li>Comentar a performance do algoritmo proposto</li>
+<li>Realizar testes e ajustar instruções de forma a compreender e dar visibilidade sobre como estas mudanças afetam o output dos algoritmos propostos</li>
+<li>realizar testes e dar visitibilidade sobre alguma eventual relação entre a precisão (accuracy), error rate e eventuais vieses</li>
+<li>realizar testes para encontrar eventuais problemas nos dados utilizados e informar sobre os resultados obtidos</li>
+<li>por que o modelo/algoritmo/tecnic são os mais adequados para resolver o desafio/problema</li>
+</ol>
+<p>Questões a serem pontuadas na escrita/apresentação</p>
+<p>O modelo de classificação das questões segundo as normativas da BNCC foi treinado a partir de um banco de questões escritas em Língua Portuguesa, seguindo a norma culta de escrita. Isso pode causar implicações do tipo perda de regionalidade na interpretação de questões escritas.
+O país é um país continental e com muitas peculiaridades, inclusive linguísticas. Já que o modelo proposto foi treinado com questões escritas em português segundo a norma culta, estas peculiaridades não foram abordadas na fase de desenvolvimento, dessa forma, a performance do modelo cai quando a escrita considerar tais regionalidades, como gírias, expressões, entre outras.
+Dessa forma, como sugestão, informamos que as questões que serão avaliadas sejam inseridas na solução de dados escritas na forma culta.</p>
+<p>Apesar de não serem identificados vieses nos inputs do modelo treinado, sua aplicação pode trazer consequências a outras pessoas. Caso pessoas utilizem sua expertise para fazer classificação de questões segundo a BNCC, sua ocupação pode ser impactada pela solução proposta. Porém, um outro tipo de aplicação a estes profissionais pode ser direcionada, como por exemplo a produção de questões para aumentar o banco de questões. Isso possibilitaria que escolas/edtechs pudessem ter acesso a um maior número de questões e, quando utilizado o modelo proposto, a classificação das mesmas segundo a BNCC seria mais eficiente em termos de tempo necessário para classificar.
+Conclusão</p>
+<p>Para finalizar escrevam quais foram os principais aprendizados sobre o problema
+e sobre o projeto em si, principais desafios, aprendizados e próximos passos.</p>
+
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    
+                    <li class="next">
+                        <a href="/2019/03/16/5-diferentes-aplica%C3%A7%C3%B5es-de-ci%C3%AAncia-de-dados/" data-toggle="tooltip" data-placement="top" title="5 Diferentes Aplicações de Ciência de Dados">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        <a href="/tags/asynchronous" title="asynchronous">
+                            asynchronous
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/backend" title="backend">
+                            backend
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/data-science" title="data-science">
+                            data-science
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/data-visualization" title="data-visualization">
+                            data-visualization
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/docker" title="docker">
+                            docker
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/fastapi" title="fastapi">
+                            fastapi
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/ggplot2" title="ggplot2">
+                            ggplot2
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/machine-learning" title="machine-learning">
+                            machine-learning
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/project" title="project">
+                            project
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/r" title="r">
+                            r
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/restfull-api" title="restfull-api">
+                            restfull-api
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/sqlalchemy" title="sqlalchemy">
+                            sqlalchemy
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/time-series" title="time-series">
+                            time-series
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/tutorial" title="tutorial">
+                            tutorial
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/web-development" title="web-development">
+                            web-development
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <li>
+                       <a href="" rel="alternate" type="application/rss+xml" title="LOB.DATA" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fa fa-circle fa-stack-2x"></i>
+                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/LucianoBatista">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		                
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/lucianobatistads/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		                
+                    
+                </ul>
+		<p class="copyright text-muted">
+                    A <a href="https://gohugo.io/">HUGO</a> <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite</a> page build with ♥ and powered by <a href="https://www.netlify.com/">Netlify</a>&nbsp;&nbsp;&bull;&nbsp;&nbsp;Header images by <a href="https://www.pexels.com/photo/climate-sea-landscape-nature-35626/">Pexels</a>
+    </p>
+    <p class="copyright text-muted" style='font-size:8pt;'>
+                    &copy; LOB.DATA 2019–2021. All rights reserved.&nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="https://lobdata.com.br/top/conduct/">Code of Conduct</a>
+                    <br>
+                    Content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>.
+                    <br>
+                    <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#28a87d'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-5NWJ42KMKC', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>

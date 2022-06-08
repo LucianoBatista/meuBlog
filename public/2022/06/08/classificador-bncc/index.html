@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="LOB.DATA">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://www.lobdata.com.br/img/banner/beach_more_sea.jpg">
+
+    
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:image" content="https://www.cedricscherer.com/img/banner/banner.png" >
+    
+
+    
+
+    
+      <meta name="title" content="Classificador BNCC" />
+      <meta property="og:title" content="Classificador BNCC - Luba" />
+      <meta property="twitter:title" content="Classificador BNCC - Luba" />
+      <meta property="twitter:text:title" content="Classificador BNCC - Luba" />
+    
+
+    
+      <meta name="description" content="Blog by LuBa">
+      <meta property="og:description" content="Blog by LuBa" />
+      <meta property="twitter:description" content="Blog by LuBa" />
+    
+
+    
+
+    <meta name="keyword"  content="Data Visualization, Data Science, Programming, Web Development">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Classificador BNCC - Luba</title>
+
+    <link rel="canonical" href="/2022/06/08/classificador-bncc/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/styles/foundation.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">LOB.DATA</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Blog</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/aplica%C3%A7%C3%B5es">aplicações</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/project">project</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/projetos">projetos</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/tutorials">tutorials</a>
+                    </li>
+                    
+
+		    
+                        <li><a href="/top/about/">About Me</a></li>
+                    
+
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/post_0_4.png')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/tutorial" title="Tutorial">
+                            Tutorial
+                        </a>
+                        
+                        <a class="tag" href="/tags/data-science" title="Data Science">
+                            Data Science
+                        </a>
+                        
+                        <a class="tag" href="/tags/nlp" title="NLP">
+                            NLP
+                        </a>
+                        
+                        <a class="tag" href="/tags/education" title="Education">
+                            Education
+                        </a>
+                        
+                    </div>
+                    <h1>Classificador BNCC</h1>
+                    <h2 class="subheading">Classificador de questões do Ensino Médio e Fundamental</h2>
+                    <span class="meta">
+			Posted by
+			
+			    Luciano, Pedro, Will e Brisa
+			
+			on
+			Wednesday, June 8, 2022
+                        
+                            <span id="/2022/06/08/classificador-bncc/" class="leancloud_visitors meta_data_item" data-flag-title="">
+    <span class="post-meta-item-icon">
+      <span class="octicon octicon-eye"></span> 
+    </span>
+    <i class="fa fa-eye"></i>
+    <span class="old-visitors-count" style="display: none;"></span>
+    <span class="leancloud-visitors-count"></span>
+</span>
+
+
+
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+
+<script>
+	AV.initialize("", "");
+</script>
+
+<script type="text/javascript">
+function showTime(Counter) {
+    var query = new AV.Query(Counter);
+    var entries = [];
+    var $visitors = $(".leancloud_visitors");
+
+    $visitors.each(function() {
+        entries.push($(this).attr("id").trim());
+    });
+
+    query.containedIn('url', entries);
+    query.find()
+        .done(function(results) {
+            var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+            var OLD_COUNT_CONTAINER_REF = '.old-visitors-count';
+
+            
+            
+            
+            
+
+            for (var i = 0; i < results.length; i++) {
+                var item = results[i];
+                var url = item.get('url');
+                var time = item.get('time');
+                var element = document.getElementById(url);
+
+                $(element).find(COUNT_CONTAINER_REF).text(time);
+            }
+            for (var i = 0; i < entries.length; i++) {
+                var url = entries[i];
+                var element = document.getElementById(url);
+                var countSpan = $(element).find(COUNT_CONTAINER_REF);
+                if (countSpan.text() == '') {
+                    var oldCountSpan = $(element).find(OLD_COUNT_CONTAINER_REF).text();
+                    if(oldCountSpan!=''){
+                        countSpan.text(0+parseInt(oldCountSpan));
+                    }else{
+                        countSpan.text(0);          
+                    }
+                }
+            }
+        })
+        .fail(function(object, error) {
+            console.log("Error: " + error.code + " " + error.message);
+        });
+}
+
+function addCount(Counter) {
+    var $visitors = $(".leancloud_visitors");
+    var url = $visitors.attr('id').trim();
+    var title = $visitors.attr('data-flag-title').trim();
+    var query = new AV.Query(Counter);
+
+    query.equalTo("url", url);
+    query.find({
+        success: function(results) {
+            if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment("time");
+                counter.save(null, {
+                    success: function(counter) {
+                        var $element = $(document.getElementById(url));
+                        $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                    },
+                    error: function(counter, error) {
+                        console.log('Failed to save Visitor num, with error message: ' + error.message);
+                    }
+                });
+            } else {
+                var newcounter = new Counter();
+                 
+                var acl = new AV.ACL();
+                acl.setPublicReadAccess(true);
+                acl.setPublicWriteAccess(true);
+                newcounter.setACL(acl);
+                 
+                newcounter.set("title", title);
+                newcounter.set("url", url);
+                var OLD_COUNT_CONTAINER_REF = '.old-visitors-count';
+                var $element = $(document.getElementById(url));
+                var oldCountSpan = $element.find(OLD_COUNT_CONTAINER_REF).text();
+                if(oldCountSpan!=''){
+                    newcounter.set("time", parseInt(oldCountSpan)+1);
+                }else{
+ 	                    newcounter.set("time",  1);
+                }
+                newcounter.save(null, {
+                    success: function(newcounter) {
+                        var $element = $(document.getElementById(url));
+                        $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                    },
+                    error: function(newcounter, error) {
+                        console.log('Failed to create');
+                    }
+                });
+            }
+        },
+        error: function(error) {
+            console.log('Error:' + error.code + " " + error.message);
+        }
+    });
+}
+$(function() {
+    var Counter = AV.Object.extend("Counter");
+    
+    
+    if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+    } else {
+        showTime(Counter);
+    }
+});
+</script>
+
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h3>Table of Contents</h3>
+                </header>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#parte-i-estrutura-do-projeto">PARTE I: Estrutura do projeto</a>
+      <ul>
+        <li><a href="#contexto">Contexto</a></li>
+        <li><a href="#problema-de-negócio">Problema de negócio</a></li>
+        <li><a href="#impacto">Impacto</a></li>
+        <li><a href="#desenho-da-solução">Desenho da solução</a></li>
+      </ul>
+    </li>
+    <li><a href="#parte-ii-dados-e-solução">PARTE II: Dados e solução</a>
+      <ul>
+        <li><a href="#dados">Dados</a></li>
+        <li><a href="#eda-análise-exploratória-de-dados">EDA (Análise Exploratória de dados)</a></li>
+        <li><a href="#abordagem">Abordagem</a></li>
+      </ul>
+    </li>
+    <li><a href="#parte-iii-colocando-a-solução-à-prova">PARTE III: Colocando a solução à prova</a>
+      <ul>
+        <li><a href="#interface">Interface</a></li>
+      </ul>
+    </li>
+    <li><a href="#implicações-e-próximos-passos">Implicações e próximos passos</a>
+      <ul>
+        <li><a href="#instruções">Instruções</a></li>
+        <li><a href="#implicações">Implicações</a></li>
+        <li><a href="#possíveis-fontes-de-viés">Possíveis fontes de viés</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusão">Conclusão</a></li>
+  </ul>
+</nav>
+                
+                <p>Projeto desenvolvido pelos alunos Brisa Rosatti, Luciano Batista, Pedro Moreau, Wilson França do Curso de Data Science &amp; Machine Learning da Tera em colaboração com a Studos e ArcoTech.</p>
+<h2 id="parte-i-estrutura-do-projeto">PARTE I: Estrutura do projeto</h2>
+<h3 id="contexto">Contexto</h3>
+<p>Segundo o IBGE, no Brasil, existem registradas 124840 escolas de ensino fundamental e 28933 escolas do ensino médio. Em termos de número de matrículas, isso representa 26718830 matrículas para o ensino fundamental e 7550753 para o ensino médio <a href="https://cidades.ibge.gov.br/brasil/pesquisa/13/5908">https://cidades.ibge.gov.br/brasil/pesquisa/13/5908</a>. Com o intuito de harmonizar a base curricular desse grande número escolas e estudantes, oferecendo assim um modelo de ensino de qualidade e que vise capacitar os alunos para as consecutivas fases da sua vida, o Ministério da Educação publicou, em 16 de setembro de 2015 a primeira versão da <a href="http://basenacionalcomum.mec.gov.br/">Base Nacional Comum Curricular (BNCC)</a>. Este documento normativo define o conjunto de aprendizagens que todos os alunos devem desenvolver ao longo da sua formação na Educação Básica.</p>
+<p>A BNCC está estruturada em códigos alfanuméricos, que contemplam as competências a serem desenvolvidas em cada etapa da formação do aluno na Educação Básica. O código é dividido em quatro partes, como o exemplo EF 09 AR 01. O primeiro par de letras indica a qual etapa do ensino básico essa competência está inserida, neste caso, Ensino Fundamental. O primeiro par de números indica o ano ou bloco de anos em que esta competência está incluída, neste caso 9° ano. O segundo par de letras indica qual a qual área do conhecimento a competência pertence, AR = Artes e o segundo par de números mostra a posição da habilidade na numeração sequencial do ano ou bloco de anos referente à competência. As imagens abaixo apresentam outros exemplos da descrição dos códigos da BNCC.</p>
+<p><img src="/img/bncc/codes-demo.png" alt="bncc-code"></p>
+<p>A partir da homologação do relatório final da BNCC em 2018, pelo Ministério da Educação, as escolas devem alinhar seus currículos em consonância às diretrizes estabelecidas pela BNCC. E isso impacta em um replanejamento de estruturas curriculares, alinhamento da coordenação pedagógica, treinamento de professores para que apliquem de forma eficiente as normativas às suas aulas e avaliações, entre outras. Todo esse esforço demanda tempo, investimento e realinhamento de uma estrutura de ensino já estabelecida, para que o novo programa de currículos seja aplicado de forma eficiente. Os conselhos de educação de cada estado, juntamente com as secretarias de educação, são responsáveis pela fiscalização da aplicação das normativas da BNCC em cada escola, sejam elas públicas ou privadas, já que a aplicação desta normativa é obrigatória a todas as escolas.</p>
+<h3 id="problema-de-negócio">Problema de negócio</h3>
+<p>É percebido que apesar da obrigatoriedade de seguir a BNCC, as Escolas geralmente não têm o devido preparo e professores não são bem capacitados para relacionar os códigos às questões aplicadas em provas e simulados. Essa classificação se faz necessária para que as avaliações contemplem as etapas de aprendizado previstas para cada fase do ensino básico, fundamental e médio. Uma das razões para esses problemas é que além do documento da BNCC ser extenso, possui mais de mil códigos em sua totalidade, tornando todo processo de classificação moroso e ineficiente.
+Assim, vemos que três problemas de negócio emergem:</p>
+<ol>
+<li>
+<p>O primeiro está relacionado à própria escola do Ensino Básico, que, em função da necessidade de adequação curricular à BNCC, demanda uma ferramenta de acompanhamento das distintas disciplinas quanto ao cumprimento da base curricular reformulada, para que se cumpra a narrativa;</p>
+</li>
+<li>
+<p>Além disso, há a necessidade de treinamento de professores para a implementação das normativas da BNCC às disciplinas às quais são responsáveis, visto que, em sua formação acadêmica, as normativas da BNCC não foram contempladas;</p>
+</li>
+<li>
+<p>É sabido, ainda, que profissionais das Ciências da Natureza e Matemática apresentam dificuldade e resistência quanto à aplicação da BNCC em suas disciplinas, dado o caráter subjetivo de alguns códigos e habilidades, a falta de preparo em traduzir esses códigos em suas questões, durante a avaliação e a falta de experiência com esse tipo de abordagem curricular. Esta informação foi coletada a partir de entrevistas com profissionais da educação na cidade de Ilhéus - BA.</p>
+</li>
+</ol>
+<p>Diante desses problemas, foi proposta, neste trabalho de conclusão de curso, uma solução de dados que auxiliará as escolas e suas divisões pedagógicas quanto ao acompanhamento e cumprimento das normativas estabelecidas pela BNCC nas diferentes disciplinas e etapas dos ensinos fundamental e médio. Essa solução consiste em uma aplicação que irá classificar questões enviadas pelo usuário (profissional de educação) no formato texto, retornando para o mesmo os prováveis códigos correspondentes à BNCC. Dessa forma, o processo pedagógico poderá ser mediado por esta solução, trazendo celeridade à reorganização demandada pelo MEC. Além das escolas, EdTechs que tem como finalidade elaborar questões para compor serviços de bancos de questões também podem se valer desta solução de dados para fornecer as questões já classificadas de acordo à BNCC, agregando valor ao seu serviço.</p>
+<h3 id="impacto">Impacto</h3>
+<h4 id="porque-nosso-projeto-importa">Porque nosso projeto importa?</h4>
+<p>Acreditamos que o Projeto impactará duas áreas diferentes: o campo dos negócios e o pedagógico.
+No quesito de negócios presumimos à diminuição da necessidade de profissionais envolvidos no processo de classificação de questões, diminuindo assim o custo da empresa e possibilitando que esses profissionais possam atuar de forma mais eficiente em diferentes demandas, como na elaboração de questões para o banco de dados, por exemplo.</p>
+<p>No âmbito de vantagem competitiva, as empresas que incorporarem nossa tecnologia inovadora teriam um diferencial de mercado dentre outras EdTechs - startups focadas no desenvolvimento de soluções tecnológicas para a educação.</p>
+<p>No campo pedagógico, a implementação do Classificador tornaria a aplicação da BNCC mais acessível aos profissionais da educação, possibilitando assim que as avaliações e testes dos currículos escolares estejam melhor alinhados à normativa do MEC. Desse modo, alcançaremos o principal objetivo do Projeto, no qual teremos um ensino mais direcionado e eficiente, impactando diretamente e de forma positiva o aprendizado estudantil.</p>
+<p>Além disso, temos o intuito de tornar gratuito o acesso a essa tecnologia para profissionais de instituições públicas de ensino, sem que necessariamente haja investimento estatal ou necessidade de participação de licitações, contribuindo assim para a construção de um ensino básico de qualidade.</p>
+<h3 id="desenho-da-solução">Desenho da solução</h3>
+<p>Este projeto visa a implementação de um algoritmo de Machine Learning usando técnicas de Processamento de Linguagem Natural para classificação dos códigos da Base Nacional Comum Curricular (BNCC). Será utilizada uma abordagem de segmentação do problema em quatro partes, referentes às quatro partes do código BNCC. Dessa forma, será obtida, ao final de todas as etapas, a classe mais provável de cada parte do código da BNCC referente à questão que está sendo inserida no modelo para ser predita.</p>
+<p><img src="/img/bncc/classifyers.png" alt="classificadores"></p>
+<p>Na presente data da publicação deste artigo, o grupo construiu os classificadores 1 e 3. Os classificadores 2 e 4 estão nos próximos passos para o trabalho, já que demandam uma base de dados maior e com o tageamento destas classes, que até o momento não foram disponibilizadas para o grupo.
+Assim, para os Classificadores 1 e 3 a solução foi desenhada da seguinte forma:</p>
+<ul>
+<li>Extração dos dados a partir da base de dados da Studos</li>
+<li>Limpeza e pré-processamento dos dados</li>
+<li>Criação de um modelo de classificação para Área do Conhecimento e para Componente Curricular</li>
+<li>Produtização do modelo no Heroku</li>
+<li>Criação de um frontend no Streamlit</li>
+<li>Integração do modelo produtizado com o frontend para fornecimento do serviço a usuários finais</li>
+</ul>
+<p>Como modelo de Machine Learning, foi adotada a Regressão Logística e, levando em conta a diferença de balanceamento entre as classes de cada target utilizada para os classificadores 1 e 3.</p>
+<h2 id="parte-ii-dados-e-solução">PARTE II: Dados e solução</h2>
+<h3 id="dados">Dados</h3>
+<p>Para uma melhor visibilidade da problemática envolvida neste classificador BNCC, o quadro abaixo apresenta algumas hipóteses levantadas para o desenvolvimento do produto, elucidando as fontes de dados, os dados utilizados e as demandas de negócios às quais se pretende atender.</p>
+<h4 id="data-tracking-sheet">Data Tracking Sheet</h4>
+<table>
+<thead>
+<tr>
+<th>Perguntas de Negócio</th>
+<th>Dados</th>
+<th>Base ou calculada</th>
+<th>Cálculo</th>
+<th>Fonte de dado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Como classificar questões de acordo com a BNCC?</td>
+<td>Questões previamente classificadas</td>
+<td>Calculada</td>
+<td>á definir</td>
+<td>Base dados da Studos</td>
+</tr>
+<tr>
+<td>Como desenvolver raciocínio lógico/matemático nas escolas?</td>
+<td>Questões Classificadas</td>
+<td>Calculada</td>
+<td>á definir</td>
+<td>Base dados da Studos</td>
+</tr>
+<tr>
+<td>Como melhorar a eficiência do ensino na sala de aula?</td>
+<td>App com Questões Classificadas</td>
+<td>Calculada</td>
+<td>á definir</td>
+<td>Base de dados Studos</td>
+</tr>
+<tr>
+<td>Como ajudar o professor na elaboração de avaliações e atividades nas escolas?</td>
+<td>App com Questões Classificadas</td>
+<td>Calculada</td>
+<td>á definir</td>
+<td>Base de dados Studos</td>
+</tr>
+</tbody>
+</table>
+<h4 id="fonte">Fonte</h4>
+<p>Como fonte de dados, iremos utilizar uma base disponibilizada pela Studos, uma EdTech onde o integrante do grupo Luciano trabalha. A base não contém informações sensíveis e conta com questões classificadas dentro dos códigos da BNCC, assim como informações necessárias para a criação dos quatro classificadores.</p>
+<h4 id="datasets">Datasets</h4>
+<p>Contamos com a liberação de +4M de questões classificadas com suas áreas de conhecimento e assuntos. Dessas, 8.4k possuem classificação das habilidades da BNCC.   Além disso, tem acesso público ao documento da (BNCC) contendo informações específicas dos códigos.
+Para o primeiro modelo de classificação foi utilizado a coluna ‘etapaEnsino’ como target, a qual designa cada questão como Ensino Médio, Fundamental I ou II. Para o segundo classificador será utilizado a coluna ‘matéria’ como target, na qual cada questão é classificada de acordo com o componente curricular.</p>
+<p>O dataset contém as seguintes variáveis:</p>
+<ul>
+<li>id (int): identificador único de cada questão</li>
+<li>questoes (str): texto contendo o conteúdo da questão</li>
+<li>tipoQuestoes (int): tipo da questão, se foi múltipla-escolha, certo ou errado, discursiva, etc.</li>
+<li>topico (str): assunto do componente curricular</li>
+<li>materia (str): componente curricular</li>
+<li>etapaEnsino (str): área de conhecimento (Fundamental I, Fundamental II ou Ensino Médio)</li>
+</ul>
+<p>A seguir tem-se uma visualiação do head do dataset utilizado.</p>
+<p><img src="/img/bncc/table_head.png" alt="head"></p>
+<h3 id="eda-análise-exploratória-de-dados">EDA (Análise Exploratória de dados)</h3>
+<h4 id="targets">Targets</h4>
+<p>Nesse primeiro momento, nós estamos focados na criação dos classificadores 1 e 3. Foram coletados 100k de observações em que seguem a seguinte distribuição para a coluna Target ‘etapaEnsino’:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">data_pre_process[<span style="color:#e6db74">&#39;etapaEnsino&#39;</span>]<span style="color:#f92672">.</span>value_counts()
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Médio &amp; Pré-Vestibular    <span style="color:#ae81ff">35676</span>
+Fundamental II            <span style="color:#ae81ff">33790</span>
+Fundamental I             <span style="color:#ae81ff">18379</span>
+Name: etapaEnsino, dtype: int64
+</code></pre></div><p>E para o Target do segundo Classificador temos 76K observações distribuídas em 12 componentes curriculares distintos conforme pode ser visto abaixo:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Observing if the filtering was correctly applied by visualizing the clases</span>
+df_bncc_copy_targets_bncc[<span style="color:#e6db74">&#34;target&#34;</span>]<span style="color:#f92672">.</span>value_counts()
+</code></pre></div><pre tabindex="0"><code>Matemática           12539
+Língua Portuguesa    11887
+Geografia             9266
+História              9072
+Inglês                8103
+Ciências              7099
+Física                5537
+Arte                  3681
+Química               3276
+Biologia              3133
+Educação Física       2386
+Ensino Religioso       468
+Name: target, dtype: int64
+</code></pre><p>Sendo assim, nos resta analisar a variável principal do dataset, a coluna ‘questoes’. Apesar de ter uma série de análises que seria interessante realizar, observamos que a maior parte delas necessitaria de um texto o mais limpo possível.
+O texto das questões são exibidos no formato web, então temos uma quantidade bem grande de tags html para remover. Então esse se tornou nosso primeiro passo do data cleaning. Seguimos então com uma remoção de números, pois existem muitos números indicando alternativas das questões, assim como em questões somatórias existe a contagem das respostas (00, 11, 22 &hellip;), remoção de caracteres, de palavras raras e frequentes, entre outras técnicas descritas a seguir.</p>
+<h3 id="abordagem">Abordagem</h3>
+<h4 id="mlops-e-configuração-de-ambiente">MLOps e Configuração de Ambiente</h4>
+<p>O projeto de Ciência de Dados foi abordado pelo grupo com a intenção de utilizar conceitos de MLOps. Dessa forma, todo o projeto foi versionado utilizando GitHub neste link.
+O repositório foi organizado em pastas que separam as funções utilizadas para o pré processamento, as análises realizadas e notebooks contendo os modelos treinados.</p>
+<p>Todo este ambiente foi configurado utilizando pyenv, de forma que as bibliotecas pudessem ser reproduzidas localmente em outras máquinas sem correr risco de quebrar por diferença nas versões das bibliotecas e de Python utilizados.</p>
+<h4 id="fluxo-para-o-treinamento">Fluxo para o treinamento</h4>
+<p>Para implementação do algoritmo de classificação dos códigos na BNCC, seguem as seguintes etapas:</p>
+<ol>
+<li>Coleta dos dados rotulados e não rotulados da Base de questões;</li>
+<li>Separação dos dados em dois (treino e teste), então decidir as métricas de avaliação;</li>
+<li>Pré-processamento: remoção de pontuação, lowercase das palavras, remoção de stopwords, stemming, lemmatization, remoção palavras raras, N-grams. O código do pipeline de pré processamento das questões pode ser visualizado nas imagens a seguir:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> re
+<span style="color:#f92672">import</span> string
+<span style="color:#f92672">from</span> collections <span style="color:#f92672">import</span> Counter
+
+<span style="color:#f92672">import</span> nltk
+<span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+<span style="color:#f92672">from</span> nltk.corpus <span style="color:#f92672">import</span> stopwords
+<span style="color:#f92672">from</span> nltk.tokenize <span style="color:#f92672">import</span> word_tokenize
+
+nltk<span style="color:#f92672">.</span>download(<span style="color:#e6db74">&#34;stopwords&#34;</span>)
+nltk<span style="color:#f92672">.</span>download(<span style="color:#e6db74">&#34;punkt&#34;</span>)
+
+PUNCT_TO_REMOVE <span style="color:#f92672">=</span> string<span style="color:#f92672">.</span>punctuation
+pt_stopwords <span style="color:#f92672">=</span> set(stopwords<span style="color:#f92672">.</span>words(<span style="color:#e6db74">&#34;portuguese&#34;</span>))
+en_stopwords <span style="color:#f92672">=</span> set(stopwords<span style="color:#f92672">.</span>words(<span style="color:#e6db74">&#34;english&#34;</span>))
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">to_lower</span>(text: str) <span style="color:#f92672">-&gt;</span> str:
+    <span style="color:#66d9ef">return</span> text<span style="color:#f92672">.</span>lower()
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">remove_tags</span>(text: str) <span style="color:#f92672">-&gt;</span> str:
+    pattern <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>compile(<span style="color:#e6db74">&#34;&lt;.*?&gt;&#34;</span>)
+    cleantext <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>sub(pattern, <span style="color:#e6db74">&#34; &#34;</span>, text)<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\xa0</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34; &#34;</span>)
+    <span style="color:#66d9ef">return</span> cleantext
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">remove_punctuation</span>(text: str) <span style="color:#f92672">-&gt;</span> str:
+    <span style="color:#66d9ef">return</span> re<span style="color:#f92672">.</span>sub(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;[^\w\s]&#34;</span>, <span style="color:#e6db74">&#34; &#34;</span>, text)
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">remove_numbers</span>(text: str) <span style="color:#f92672">-&gt;</span> str:
+    pattern <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>compile(<span style="color:#e6db74">&#34;[0-9]+&#34;</span>)
+    clean_text <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>sub(pattern, <span style="color:#e6db74">&#34; &#34;</span>, text)
+    <span style="color:#66d9ef">return</span> clean_text
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">remove_standard_stopwords</span>(text: str) <span style="color:#f92672">-&gt;</span> str:
+    stop_words <span style="color:#f92672">=</span> set(stopwords<span style="color:#f92672">.</span>words(<span style="color:#e6db74">&#34;portuguese&#34;</span>))
+    word_tokens <span style="color:#f92672">=</span> word_tokenize(text)
+    filtered_sentence <span style="color:#f92672">=</span> [w <span style="color:#66d9ef">for</span> w <span style="color:#f92672">in</span> word_tokens <span style="color:#66d9ef">if</span> w <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> stop_words]
+    final_sentence <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">.</span>join(filtered_sentence)
+    <span style="color:#66d9ef">return</span> final_sentence
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">remove_html</span>(text):
+    html_pattern <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>compile(<span style="color:#e6db74">&#34;&lt;.*?&gt;&#34;</span>)
+    <span style="color:#66d9ef">return</span> html_pattern<span style="color:#f92672">.</span>sub(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;&#34;</span>, text)
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">remove_punctuation_2</span>(text):
+    <span style="color:#66d9ef">return</span> text<span style="color:#f92672">.</span>translate(str<span style="color:#f92672">.</span>maketrans(<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>, PUNCT_TO_REMOVE))
+
+
+<span style="color:#75715e"># Função para remover aspas em itálico</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">remove_italic_dquotes</span>(text: str) <span style="color:#f92672">-&gt;</span> str:
+    pattern <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>compile(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;&#34;&#39;</span>)
+    clean_text <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>sub(pattern, <span style="color:#e6db74">&#34; &#34;</span>, text)
+    <span style="color:#66d9ef">return</span> clean_text
+
+
+<span style="color:#75715e"># Função para remover aspas de abertura</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">remove_open_dquotes</span>(text: str) <span style="color:#f92672">-&gt;</span> str:
+    pattern <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>compile(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;“&#34;</span>)
+    clean_text <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>sub(pattern, <span style="color:#e6db74">&#34; &#34;</span>, text)
+    <span style="color:#66d9ef">return</span> clean_text
+
+
+<span style="color:#75715e"># Função para remover aspas de fechamento</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">remove_end_dquotes</span>(text: str) <span style="color:#f92672">-&gt;</span> str:
+    pattern <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>compile(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;”&#34;</span>)
+    clean_text <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>sub(pattern, <span style="color:#e6db74">&#34; &#34;</span>, text)
+    <span style="color:#66d9ef">return</span> clean_text
+
+
+<span style="color:#75715e"># Função para remover single quotes normal</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">remove_italic_quotes</span>(text: str) <span style="color:#f92672">-&gt;</span> str:
+    pattern <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>compile(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;&#39;&#34;</span>)
+    clean_text <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>sub(pattern, <span style="color:#e6db74">&#34; &#34;</span>, text)
+    <span style="color:#66d9ef">return</span> clean_text
+
+
+<span style="color:#75715e"># Função para remover single quotes abertura</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">remove_open_quotes</span>(text: str) <span style="color:#f92672">-&gt;</span> str:
+    pattern <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>compile(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;‘&#34;</span>)
+    clean_text <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>sub(pattern, <span style="color:#e6db74">&#34; &#34;</span>, text)
+    <span style="color:#66d9ef">return</span> clean_text
+
+
+<span style="color:#75715e"># Função para remover single quotes fechamento</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">remove_end_quotes</span>(text: str) <span style="color:#f92672">-&gt;</span> str:
+    pattern <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>compile(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;’&#34;</span>)
+    clean_text <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>sub(pattern, <span style="color:#e6db74">&#34; &#34;</span>, text)
+    <span style="color:#66d9ef">return</span> clean_text
+
+
+<span style="color:#75715e"># Função para remover aspas de abertura</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">remove_quote</span>(text: str) <span style="color:#f92672">-&gt;</span> str:
+    pattern <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>compile(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;‛&#34;</span>)
+    clean_text <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>sub(pattern, <span style="color:#e6db74">&#34; &#34;</span>, text)
+    <span style="color:#66d9ef">return</span> clean_text
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">remove_pt_stopwords</span>(text):
+    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">.</span>join([word <span style="color:#66d9ef">for</span> word <span style="color:#f92672">in</span> str(text)<span style="color:#f92672">.</span>split() <span style="color:#66d9ef">if</span> word <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> pt_stopwords])
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">remove_en_stopwords</span>(text):
+    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">.</span>join([word <span style="color:#66d9ef">for</span> word <span style="color:#f92672">in</span> str(text)<span style="color:#f92672">.</span>split() <span style="color:#66d9ef">if</span> word <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> en_stopwords])
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RemoveFrqRare</span>:
+    <span style="color:#66d9ef">def</span> __init__(self, df: pd<span style="color:#f92672">.</span>DataFrame, n_frq_words: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>, n_rare_words: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>):
+        self<span style="color:#f92672">.</span>df <span style="color:#f92672">=</span> df
+        self<span style="color:#f92672">.</span>n_frq_words <span style="color:#f92672">=</span> n_frq_words
+        self<span style="color:#f92672">.</span>n_rare_words <span style="color:#f92672">=</span> n_rare_words
+        self<span style="color:#f92672">.</span>frq_words <span style="color:#f92672">=</span> []
+        self<span style="color:#f92672">.</span>rare_words <span style="color:#f92672">=</span> []
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calc_frq_words</span>(self):
+        final_list <span style="color:#f92672">=</span> [
+            subitem <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>df[<span style="color:#e6db74">&#34;questions_clean&#34;</span>] <span style="color:#66d9ef">for</span> subitem <span style="color:#f92672">in</span> item
+        ]
+        cnt <span style="color:#f92672">=</span> Counter(final_list)
+        self<span style="color:#f92672">.</span>frq_words <span style="color:#f92672">=</span> set([w <span style="color:#66d9ef">for</span> (w, wc) <span style="color:#f92672">in</span> cnt<span style="color:#f92672">.</span>most_common(self<span style="color:#f92672">.</span>n_frq_words)])
+        <span style="color:#75715e"># print(self.frq_words)</span>
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calc_rare_words</span>(self):
+        <span style="color:#75715e"># joining all words</span>
+        final_list <span style="color:#f92672">=</span> [
+            subitem <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>df[<span style="color:#e6db74">&#34;questions_clean&#34;</span>] <span style="color:#66d9ef">for</span> subitem <span style="color:#f92672">in</span> item
+        ]
+        cnt <span style="color:#f92672">=</span> Counter(final_list)
+        self<span style="color:#f92672">.</span>rare_words <span style="color:#f92672">=</span> set(
+            [w <span style="color:#66d9ef">for</span> (w, wc) <span style="color:#f92672">in</span> cnt<span style="color:#f92672">.</span>most_common()[: <span style="color:#f92672">-</span>self<span style="color:#f92672">.</span>n_rare_words <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> : <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]]  <span style="color:#75715e"># noqa</span>
+        )
+        <span style="color:#75715e"># print(self.rare_words)</span>
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">remove_frq_words</span>(self, text: str):
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">.</span>join(
+            [word <span style="color:#66d9ef">for</span> word <span style="color:#f92672">in</span> str(text)<span style="color:#f92672">.</span>split() <span style="color:#66d9ef">if</span> word <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>frq_words]
+        )
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">remove_rare_words</span>(self, text: str):
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">.</span>join(
+            [word <span style="color:#66d9ef">for</span> word <span style="color:#f92672">in</span> str(text)<span style="color:#f92672">.</span>split() <span style="color:#66d9ef">if</span> word <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>rare_words]
+        )
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">remove_frq_and_rare</span>(self):
+        df_to_return <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>df<span style="color:#f92672">.</span>copy()
+        df_to_return[<span style="color:#e6db74">&#34;questions_clean&#34;</span>] <span style="color:#f92672">=</span> (
+            self<span style="color:#f92672">.</span>df[<span style="color:#e6db74">&#34;questions_clean&#34;</span>]
+            <span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x: self<span style="color:#f92672">.</span>remove_frq_words(x))
+            <span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x: self<span style="color:#f92672">.</span>remove_rare_words(x))
+        )
+        <span style="color:#66d9ef">return</span> df_to_return
+
+</code></pre></div><ol start="4">
+<li>Modelagem: Transformar o texto em feature vectors - Feature Extraction (representação matemática da linguagem). Nessa etapa foi utilizado o Bag of Words;</li>
+</ol>
+<p>Após a limpeza dos dados utilizando as funções apresentadas acima, foi realizada a vetorização desse textos para que pudessem ser modelados.</p>
+<p>Criamos uma classe para contemplar todas as etapas de modelagem, incluindo o save do pipeline. Isso nos ajudou no futuro quando entramos na produtização.</p>
+<p>Com os vetores obtidos, foi possível treinar um modelo de regressão logística para a classificação das questões quanto à etapa de aprendizado (classificador 1) e quanto a área de conhecimento (classificador 3).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Modeling</span>:
+    <span style="color:#66d9ef">def</span> __init__(self, data: pd<span style="color:#f92672">.</span>DataFrame) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">None</span>:
+        self<span style="color:#f92672">.</span>data <span style="color:#f92672">=</span> data
+        self<span style="color:#f92672">.</span>X_train <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+        self<span style="color:#f92672">.</span>X_test <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+        self<span style="color:#f92672">.</span>y_train <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+        self<span style="color:#f92672">.</span>y_test <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">tokenization</span>(self):
+        df <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>copy()
+        df[<span style="color:#e6db74">&#34;question_tokens&#34;</span>] <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#34;questions_clean&#34;</span>]<span style="color:#f92672">.</span>apply(word_tokenize)
+        self<span style="color:#f92672">.</span>data <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>copy()
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">split_data</span>(self):
+        X <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>drop([<span style="color:#e6db74">&#34;id&#34;</span>, <span style="color:#e6db74">&#34;words_counts&#34;</span>, <span style="color:#e6db74">&#34;target_enc&#34;</span>], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+        y <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>data[<span style="color:#e6db74">&#34;target_enc&#34;</span>]
+        (
+            self<span style="color:#f92672">.</span>X_train,
+            self<span style="color:#f92672">.</span>X_test,
+            self<span style="color:#f92672">.</span>y_train,
+            self<span style="color:#f92672">.</span>y_test,
+        ) <span style="color:#f92672">=</span> model_selection<span style="color:#f92672">.</span>train_test_split(X, y, random_state<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">saving_pipeline</span>(self):
+
+        pipe <span style="color:#f92672">=</span> Pipeline(
+            [
+                (<span style="color:#e6db74">&#34;count_vect&#34;</span>, feature_extraction<span style="color:#f92672">.</span>text<span style="color:#f92672">.</span>CountVectorizer()),
+                (
+                    <span style="color:#e6db74">&#34;logistic_regression&#34;</span>,
+                    linear_model<span style="color:#f92672">.</span>LogisticRegression(class_weight<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;balanced&#34;</span>),
+                ),
+            ]
+        )
+        pipe<span style="color:#f92672">.</span>fit(self<span style="color:#f92672">.</span>X_train[<span style="color:#e6db74">&#34;questions_clean&#34;</span>], self<span style="color:#f92672">.</span>y_train)
+
+        <span style="color:#75715e"># saving</span>
+        <span style="color:#66d9ef">with</span> open(
+            <span style="color:#e6db74">&#34;/models/lr_second_model.bin&#34;</span>,
+            <span style="color:#e6db74">&#34;wb&#34;</span>,
+        ) <span style="color:#66d9ef">as</span> lr_out:
+            pickle<span style="color:#f92672">.</span>dump(pipe, lr_out)
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">make_bag_of_words</span>(self):
+        vect_bow <span style="color:#f92672">=</span> feature_extraction<span style="color:#f92672">.</span>text<span style="color:#f92672">.</span>CountVectorizer()
+        X_train_trans <span style="color:#f92672">=</span> vect_bow<span style="color:#f92672">.</span>fit_transform(self<span style="color:#f92672">.</span>X_train[<span style="color:#e6db74">&#34;questions_clean&#34;</span>])
+        X_test_trans <span style="color:#f92672">=</span> vect_bow<span style="color:#f92672">.</span>transform(self<span style="color:#f92672">.</span>X_test[<span style="color:#e6db74">&#34;questions_clean&#34;</span>])
+
+        <span style="color:#66d9ef">return</span> X_train_trans, X_test_trans
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">train_evaluate_log_reg</span>(self, X_train_trans, X_test_trans):
+        log_reg <span style="color:#f92672">=</span> linear_model<span style="color:#f92672">.</span>LogisticRegression(class_weight<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;balanced&#34;</span>)
+        log_reg<span style="color:#f92672">.</span>fit(X_train_trans, self<span style="color:#f92672">.</span>y_train)
+        y_pred_class <span style="color:#f92672">=</span> log_reg<span style="color:#f92672">.</span>predict(X_test_trans)
+        print(metrics<span style="color:#f92672">.</span>classification_report(self<span style="color:#f92672">.</span>y_test, y_pred_class))
+</code></pre></div><ol start="6">
+<li>A performance dos modelos pode ser vista a seguir.</li>
+</ol>
+<p>As métricas para o Classificador 1 foram:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">              precision    recall  f1-score   support
+
+           <span style="color:#ae81ff">0</span>       0.63      0.80      0.70      <span style="color:#ae81ff">4575</span>
+           <span style="color:#ae81ff">1</span>       0.65      0.62      0.64      <span style="color:#ae81ff">8497</span>
+           <span style="color:#ae81ff">2</span>       0.76      0.70      0.73      <span style="color:#ae81ff">8890</span>
+
+    accuracy                           0.69     <span style="color:#ae81ff">21962</span>
+   macro avg       0.68      0.71      0.69     <span style="color:#ae81ff">21962</span>
+weighted avg       0.69      0.69      0.69     <span style="color:#ae81ff">21962</span>
+</code></pre></div><p>E as métricas para o Classificador 2 foram:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">              precision    recall  f1-score   support
+
+           <span style="color:#ae81ff">0</span>       0.72      0.75      0.74       <span style="color:#ae81ff">991</span>
+           <span style="color:#ae81ff">1</span>       0.64      0.66      0.65       <span style="color:#ae81ff">760</span>
+           <span style="color:#ae81ff">2</span>       0.62      0.62      0.62      <span style="color:#ae81ff">1816</span>
+           <span style="color:#ae81ff">3</span>       0.66      0.76      0.71       <span style="color:#ae81ff">586</span>
+           <span style="color:#ae81ff">4</span>       0.28      0.49      0.36       <span style="color:#ae81ff">104</span>
+           <span style="color:#ae81ff">5</span>       0.86      0.84      0.85      <span style="color:#ae81ff">1285</span>
+           <span style="color:#ae81ff">6</span>       0.78      0.73      0.75      <span style="color:#ae81ff">2385</span>
+           <span style="color:#ae81ff">7</span>       0.80      0.76      0.78      <span style="color:#ae81ff">2263</span>
+           <span style="color:#ae81ff">8</span>       0.80      0.90      0.84      <span style="color:#ae81ff">1990</span>
+           <span style="color:#ae81ff">9</span>       0.85      0.83      0.84      <span style="color:#ae81ff">2896</span>
+          <span style="color:#ae81ff">10</span>       0.89      0.86      0.88      <span style="color:#ae81ff">3194</span>
+          <span style="color:#ae81ff">11</span>       0.78      0.76      0.77       <span style="color:#ae81ff">842</span>
+
+    accuracy                           0.78     <span style="color:#ae81ff">19112</span>
+   macro avg       0.72      0.75      0.73     <span style="color:#ae81ff">19112</span>
+weighted avg       0.79      0.78      0.79     <span style="color:#ae81ff">19112</span>
+</code></pre></div><p>Foi observado que o valor do F1-Score médio para o classificador 1 foi de 0,69 e para o classificador 2 foi de 0.78. Essa métrica foi adotada pelo grupo como fator decisivo para continuação do projeto. Levando em conta que o F1-score balanceia a precisão e recall, essa métrica foi utilizada para que seja levado em conta o desbalanceamento do dataset. <strong>Já que as métricas foram satisfatórias para os dois modelos, foi escolhido seguir com a produtização dos mesmos sem que se investisse tempo, nesse momento, em otimização de hiperparâmetros dos mesmos</strong>.</p>
+<ol start="7">
+<li>Deploy do modelo</li>
+</ol>
+<p>A produtização do modelo foi feita da seguinte forma:</p>
+<ul>
+<li>
+<p>Todas as etapas descritas anteriormente foram organizadas no repositório do <a href="https://github.com/LucianoBatista/bncc-classifier">github</a>, sendo os códigos organizados em arquivos .py para que sejam separados o pipeline de pré-processamento, o pipeline de treinamento e predição do classificador 1 e também do classificador 3.</p>
+</li>
+<li>
+<p>Em seguida, após o treinamento, arquivos pickle contendo os transformes de pré-processamento e dos modelos foram gerados. Estes arquivos foram utilizados para a criação de uma API Rest utilizando o <a href="https://bncc-classifier.herokuapp.com/docs">framework em Python do FastAPI</a>. Esta API foi encapsulada em um Dockerfile, para que pudesse ser produtizada no Heroku e as rotas de inferência dos modelos fossem expostas para serem utilizadas em uma interface.</p>
+</li>
+<li>
+<p>Para deploy no Heroku utilizamos uma sequência recomendada pela própria <a href="https://devcenter.heroku.com/articles/container-registry-and-runtime">documentação da plataforma</a>.</p>
+</li>
+<li>
+<p>O frontend foi feito no Streamlit, como será comentado a seguir. O link do código para o frontend está no <a href="https://github.com/LucianoBatista/bncc-classifier-front">repositório do github</a>.</p>
+</li>
+</ul>
+<h2 id="parte-iii-colocando-a-solução-à-prova">PARTE III: Colocando a solução à prova</h2>
+<h3 id="interface">Interface</h3>
+<p>Para implementação da solução como um todo, construímos uma API (Application Programming Interface), que foi desenvolvida utilizando FastAPI, um framework em python. Essa API, funciona para servir o modelo de classificação para quem desejar utilizá-lo.</p>
+<p>Como inputs, a API vai inicialmente receber apenas texto, com possibilidade de aumento de complexidade para receber também imagens ou extração de texto de documentos words em etapas futuras deste trabalho. E como outputs, retornaremos ao usuário os mais prováveis códigos da BNCC para aquela questão.</p>
+<p>O usuário final, o profissional de educação, irá interagir com a API através de uma tela interativa criada a partir do framework Streamlit. A imagem a seguir demonstra esta interface.</p>
+<p><img src="/img/bncc/app.png" alt="app"></p>
+<p>Este frontend tem o objetivo de ser prático para o usuário, consistindo em um campo onde o usuário pode inserir a questão que deseja analisar e teclar “Enter” para que esta questão seja carregada no modelo. Assim, aparecerá um botão Predict! que exporá as classes mais prováveis para o Componente Curricular e Etapa do Ensino, como apresentado na imagem anterior para a questão de exemplo, sendo o componente curricular Física e a etapa do ensino Ensino Mérico e Pré-Vestibular.</p>
+<p><img src="/img/bncc/predict.png" alt="app"></p>
+<h2 id="implicações-e-próximos-passos">Implicações e próximos passos</h2>
+<p>A solução de dados proposta foi desenhada para classificar questões de Ensino Fundamental I e II e Ensino Médio quanto às normas da BNCC. Para isso, uma base de dados previamente classificada foi utilizada no treinameto. Visto que essa classificação foi realizada utilizando questões escritas na Língua Portuguesa (com exceção das questões em inglês) e seguindo a norma culta, algumas instruções e premissas emergem destes fatos:</p>
+<h3 id="instruções">Instruções</h3>
+<p>Para a utilização eficiente desta solução de dados, é recomendada a utilização de questões estruturadas na Língua Portugesa, que contemplem conteúdos abordados nas etapas de ensino comentadas anteriormente e que estejam escritas seguindo a norma culta.
+A forma de utilização desta solução é pela inserção de questões, individualmente, no campo de texto da interface da solução. A solução não contempla, até o momento, a classificação de múltiplas questões ao mesmo tempo.</p>
+<p>O não cumprimento dessas instruções pode ocasionar em falhas de previsão além das relacionadas às métricas do modelo, mas devido à má utilização da solução, como por exemplo devido a questões que de assuntos que não são contemplados nos currículos escolares ou pela utilização de linguagem cotidiana, como gírias e expressões idiomáticas.</p>
+<h3 id="implicações">Implicações</h3>
+<p>Analisando criticamente os impactos dessa solução e externalidades que possam afetar as mesmas, principalmente devido a natureza dos dados coletados, os seguintes pontos estão associados ao classificador BNCC:</p>
+<ul>
+<li>
+<p>Impacto positivo sobre ganho de eficiência no cumprimento da BNCC pelos profissionais da educação, sejam professores ou profissionais atrelados à gestão pedagógica de alguma instituição de ensino.</p>
+</li>
+<li>
+<p>Ganho de eficiência por parte de EdTechs que prestam serviço de oferecimento de questões a instituições de ensino, possibilitando uma classificação prévia desse banco de questões quanto aos códigos da BNCC.</p>
+</li>
+<li>
+<p>Um possível impacto negativo seria a desalocação de profissionais que antes eram responsáveis pela classificação de questões caso a solução de dados seja empregada para este propósito. Porém, como uma alternativa para remediar este problema é recomendado que estes profissionais sejam direcionados para a criação de novas questões para alimentação do banco de questões e supervisão da classificação gerada pela solução de dados.</p>
+</li>
+</ul>
+<h3 id="possíveis-fontes-de-viés">Possíveis fontes de viés</h3>
+<p>Dado que a solução foi desenvolvida utilizando uma base de questões previamente classificadas por professores que compõem um fórum específico (forum da empresa Studos), os dados possuem o viés de que a classificação depende da habilidade destes professores em classificar as questões e, no caso de uma futura classificação da competência específica (classificador 4) que esta questão aborda, há um viés da subjetividade do tema.</p>
+<p>Analisando este último fato criticamente, dada a provável subjetividade da competência abordada na questão e que essa classificação por parte dos professores pode ter influência de variáveis que descrevem os professores que o modelo não controla, como por exemplo variáveis demográficas, nível de formação, etnia, fonte de renda, quantidade de bens, nível de formação dos seus pais, entre outras.</p>
+<p>Diante disso, levanta-se o seguinte questionamento: será que a classificação de questões, por parte de professores, será sempre igual? Será que professores com diferentes condições de vida e de diferentes contextos classificarão as questões da mesma forma, ou existe uma margem de erro atrelada a estas variáveis não controladas, que explicam o contexto dos professores?</p>
+<p>Além disso, dada essa provável diferença de classificação, será que a BNCC é a melhor forma de se abordar uma estruturação curricular a nível de ensino básico? Ou a fonte do problema da educação no país é outra, que não o currículo em si, como por exemplo o incentivo salarial aos professores?</p>
+<h2 id="conclusão">Conclusão</h2>
+<p>Como conclusões, o grupo entende que é possível utilizar soluções de Machine Learning com fins de aplicação na educação. E mais especificamente voltado a emprego de Processamento de Linguagem Natural na classificação de textos segundo um target que se deseja estudar, no nosso caso os códigos da BNCC.</p>
+<p>Durante o desenvolvimento da solução, percebemos o que existem diversas oportunidades de emprego de Machine Learning para educação. No contexto de questões e avaliações, além da classificação de questões nos códigos da BNCC, uma possível solução seria a partir de códigos ou de competências que se deseja trabalhar no ensino dos alunos, uma solução baseada em dados recomendaria uma lista de questões que contemple estes códigos ou competências desejadas. Isso tornaria possível os dois cenários, tanto classificar quanto recomendar questões segundo a BNCC.</p>
+<p>Como próximos passos para este projeto, o grupo visa continuar com a obtenção de dados que viabilize o desenvolvimento dos classificadores 2 e 4, complementando assim com as demais partes do código BNCC, trazendo a classificação completa. Diante disso, há a etapa de atualização da produtização desta solução de dados e atualização da interface no Streamlit.</p>
+<p>Um outro projeto de interesse da equipe é a recomendação de questões baseada no input do código BNCC ou competência/habilidade que se deseja trabalhar.</p>
+<p>O grupo agradece seu tempo e leitura!</p>
+
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2022/01/26/computer-vision/" data-toggle="tooltip" data-placement="top" title="Computer Vision">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        <a href="/tags/asynchronous" title="asynchronous">
+                            asynchronous
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/backend" title="backend">
+                            backend
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/data-science" title="data-science">
+                            data-science
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/data-visualization" title="data-visualization">
+                            data-visualization
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/docker" title="docker">
+                            docker
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/fastapi" title="fastapi">
+                            fastapi
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/ggplot2" title="ggplot2">
+                            ggplot2
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/machine-learning" title="machine-learning">
+                            machine-learning
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/project" title="project">
+                            project
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/r" title="r">
+                            r
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/restfull-api" title="restfull-api">
+                            restfull-api
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/sqlalchemy" title="sqlalchemy">
+                            sqlalchemy
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/time-series" title="time-series">
+                            time-series
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/tutorial" title="tutorial">
+                            tutorial
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/web-development" title="web-development">
+                            web-development
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <li>
+                       <a href="" rel="alternate" type="application/rss+xml" title="LOB.DATA" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fa fa-circle fa-stack-2x"></i>
+                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/LucianoBatista">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		                
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/lucianobatistads/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		                
+                    
+                </ul>
+		<p class="copyright text-muted">
+                    A <a href="https://gohugo.io/">HUGO</a> <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite</a> page build with ♥ and powered by <a href="https://www.netlify.com/">Netlify</a>&nbsp;&nbsp;&bull;&nbsp;&nbsp;Header images by <a href="https://www.pexels.com/photo/climate-sea-landscape-nature-35626/">Pexels</a>
+    </p>
+    <p class="copyright text-muted" style='font-size:8pt;'>
+                    &copy; LOB.DATA 2019–2021. All rights reserved.&nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="https://lobdata.com.br/top/conduct/">Code of Conduct</a>
+                    <br>
+                    Content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>.
+                    <br>
+                    <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#28a87d'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-5NWJ42KMKC', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>

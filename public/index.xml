@@ -6,7 +6,17 @@
     <description>Recent content on LOB.DATA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 26 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 08 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Classificador BNCC</title>
+      <link>https://www.lobdata.com.br/2022/06/08/classificador-bncc/</link>
+      <pubDate>Wed, 08 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/2022/06/08/classificador-bncc/</guid>
+      <description>Projeto desenvolvido pelos alunos Brisa Rosatti, Luciano Batista, Pedro Moreau, Wilson França do Curso de Data Science &amp;amp; Machine Learning da Tera em colaboração com a Studos e ArcoTech.
+PARTE I: Estrutura do projeto Contexto Segundo o IBGE, no Brasil, existem registradas 124840 escolas de ensino fundamental e 28933 escolas do ensino médio. Em termos de número de matrículas, isso representa 26718830 matrículas para o ensino fundamental e 7550753 para o ensino médio https://cidades.</description>
+    </item>
+    
     <item>
       <title>Computer Vision</title>
       <link>https://www.lobdata.com.br/2022/01/26/computer-vision/</link>
