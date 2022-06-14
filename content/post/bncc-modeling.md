@@ -136,19 +136,6 @@ Resultados abaixo:
 | LightGBM            | 0.745 +/- 0.002             |
 
 
-### TFIDF
-
-![tfidf](https://miro.medium.com/max/1200/1*qQgnyPLDIkUmeZKN2_ZWbQ.png)
-
-Como pode ser visto na imagem acima, aqui nós conseguimos identificar o quão importante cada palavra é, em relação ao todo que estamos tentando prever. Por exemplo: *quantas vezes a palavra soma aparece no texto de uma questão de matemática, frente a quantidade de vezes que ela aparece em todas as questões de matemática que temos na base?*
-
-Utilizamos para isso, o código abaixo:
-
-```python
-
-code
-```
-
 ### N-Grams
 
 Esta técnica visa realizar o agrupamento de tokens. O tamanho desse agrupamento é escolhido pelo valor do *N*:
@@ -215,6 +202,57 @@ Resultados apenas para o uni-gram + bi-gram:
 | Random Forest       | 0.652 +/- 0.05             |
 | LightGBM            | 0.729 +/- 0.003             |
 
+### TFIDF
+
+![tfidf](https://miro.medium.com/max/1200/1*qQgnyPLDIkUmeZKN2_ZWbQ.png)
+
+Como pode ser visto na imagem acima, aqui nós conseguimos identificar o quão importante cada palavra é, em relação ao todo que estamos tentando prever. Por exemplo: *quantas vezes a palavra soma aparece no texto de uma questão de matemática, frente a quantidade de vezes que ela aparece em todas as questões de matemática que temos na base?*
+
+Utilizamos para isso, o código abaixo:
+
+```python
+kfold = StratifiedKFold(n_splits=5, shuffle=True, random_state=2020)
+for train_idx, val_idx in kfold.split(
+    modeling.X_train["questions_clean"], modeling.y_train
+):
+    for name, model in models.items():
+        x_train, y_train = (
+            modeling.X_train["questions_clean"].iloc[train_idx],
+            modeling.y_train.iloc[train_idx],
+        )
+        x_val, y_val = (
+            modeling.X_train["questions_clean"].iloc[val_idx],
+            modeling.y_train.iloc[val_idx],
+        )
+        
+        # here we are performing tfidf on training data
+        # and choosing n-grams of 1 and 2
+        tfidf = TfidfVectorizer(ngram_range=(1, 2))
+        tfidf.fit(x_train)
+        X_train_cv = tfidf.transform(x_train)
+        X_val_cv = tfidf.transform(x_val)
+
+        if name == "lgbm":
+            X_train_cv = X_train_cv.astype("float32")
+            X_val_cv = X_val_cv.astype("float32")
+            y_train = y_train.astype("float32")
+            y_val = y_val.astype("float32")
+
+        cv_classifier = model
+        cv_classifier.fit(X_train_cv, y_train)
+        y_pred = cv_classifier.predict(X_val_cv)
+        f1 = f1_score(y_val, y_pred, average="macro")
+
+        print("Model: {}. Macro avg F1: {}".format(name, f1))
+```
+
+Resultados apenas para o uni-gram + bi-gram::
+
+| Modelos             | Macro Avg F1 |
+|---------------------|--------------|
+| Regressão Logística | 0.7151 +/- 0.006            |
+| Random Forest       | 0.6609 +/- 0.010           |
+| LightGBM            | 0.7230 +/- 0.007   |
 
 
 ### Word2Vec
@@ -282,7 +320,7 @@ for nome, modelo in modelos_teste.items():
 
 Após toda experimentação, vimos que o modelo mais promissor, em termos de métrica, tempo de processamento e simplicidade, foi a regressão logística em conjunto com o Bag of Words.
 
-Dae em diante, realizamos o tuning do *parâmetro C* da regressão logística, e conseguimos subir a acurácia para 0.8 em média dentre as classes, para o modelo que realiza a classificação do [**segundo classificador**](https://www.lobdata.com.br/2022/06/08/classificador-bncc/).
+Daí em diante, realizamos o tuning do *parâmetro C* da regressão logística, e conseguimos subir a acurácia para 0.8 em média dentre as classes, para o modelo que realiza a classificação do [**segundo classificador**](https://www.lobdata.com.br/2022/06/08/classificador-bncc/).
 
 > Além de ajustar o C, nós também retiramos o `class_balanced`, pois o mesmo estava prejudicando a performance.
 

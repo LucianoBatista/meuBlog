@@ -371,8 +371,8 @@ $(function() {
     <li><a href="#pipelines">Pipelines</a>
       <ul>
         <li><a href="#bag-of-words">Bag Of Words</a></li>
-        <li><a href="#tfidf">TFIDF</a></li>
         <li><a href="#n-grams">N-Grams</a></li>
+        <li><a href="#tfidf">TFIDF</a></li>
         <li><a href="#word2vec">Word2Vec</a></li>
       </ul>
     </li>
@@ -492,13 +492,7 @@ models <span style="color:#f92672">=</span> {
 </tr>
 </tbody>
 </table>
-<h3 id="tfidf">TFIDF</h3>
-<p><img src="https://miro.medium.com/max/1200/1*qQgnyPLDIkUmeZKN2_ZWbQ.png" alt="tfidf"></p>
-<p>Como pode ser visto na imagem acima, aqui nós conseguimos identificar o quão importante cada palavra é, em relação ao todo que estamos tentando prever. Por exemplo: <em>quantas vezes a palavra soma aparece no texto de uma questão de matemática, frente a quantidade de vezes que ela aparece em todas as questões de matemática que temos na base?</em></p>
-<p>Utilizamos para isso, o código abaixo:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
-code
-</code></pre></div><h3 id="n-grams">N-Grams</h3>
+<h3 id="n-grams">N-Grams</h3>
 <p>Esta técnica visa realizar o agrupamento de tokens. O tamanho desse agrupamento é escolhido pelo valor do <em>N</em>:</p>
 <ul>
 <li>Uni: agrupamento um a um</li>
@@ -568,6 +562,66 @@ code
 <tr>
 <td>LightGBM</td>
 <td>0.729 +/- 0.003</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tfidf">TFIDF</h3>
+<p><img src="https://miro.medium.com/max/1200/1*qQgnyPLDIkUmeZKN2_ZWbQ.png" alt="tfidf"></p>
+<p>Como pode ser visto na imagem acima, aqui nós conseguimos identificar o quão importante cada palavra é, em relação ao todo que estamos tentando prever. Por exemplo: <em>quantas vezes a palavra soma aparece no texto de uma questão de matemática, frente a quantidade de vezes que ela aparece em todas as questões de matemática que temos na base?</em></p>
+<p>Utilizamos para isso, o código abaixo:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">kfold <span style="color:#f92672">=</span> StratifiedKFold(n_splits<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>, shuffle<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, random_state<span style="color:#f92672">=</span><span style="color:#ae81ff">2020</span>)
+<span style="color:#66d9ef">for</span> train_idx, val_idx <span style="color:#f92672">in</span> kfold<span style="color:#f92672">.</span>split(
+    modeling<span style="color:#f92672">.</span>X_train[<span style="color:#e6db74">&#34;questions_clean&#34;</span>], modeling<span style="color:#f92672">.</span>y_train
+):
+    <span style="color:#66d9ef">for</span> name, model <span style="color:#f92672">in</span> models<span style="color:#f92672">.</span>items():
+        x_train, y_train <span style="color:#f92672">=</span> (
+            modeling<span style="color:#f92672">.</span>X_train[<span style="color:#e6db74">&#34;questions_clean&#34;</span>]<span style="color:#f92672">.</span>iloc[train_idx],
+            modeling<span style="color:#f92672">.</span>y_train<span style="color:#f92672">.</span>iloc[train_idx],
+        )
+        x_val, y_val <span style="color:#f92672">=</span> (
+            modeling<span style="color:#f92672">.</span>X_train[<span style="color:#e6db74">&#34;questions_clean&#34;</span>]<span style="color:#f92672">.</span>iloc[val_idx],
+            modeling<span style="color:#f92672">.</span>y_train<span style="color:#f92672">.</span>iloc[val_idx],
+        )
+        
+        <span style="color:#75715e"># here we are performing tfidf on training data</span>
+        <span style="color:#75715e"># and choosing n-grams of 1 and 2</span>
+        tfidf <span style="color:#f92672">=</span> TfidfVectorizer(ngram_range<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>))
+        tfidf<span style="color:#f92672">.</span>fit(x_train)
+        X_train_cv <span style="color:#f92672">=</span> tfidf<span style="color:#f92672">.</span>transform(x_train)
+        X_val_cv <span style="color:#f92672">=</span> tfidf<span style="color:#f92672">.</span>transform(x_val)
+
+        <span style="color:#66d9ef">if</span> name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;lgbm&#34;</span>:
+            X_train_cv <span style="color:#f92672">=</span> X_train_cv<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#34;float32&#34;</span>)
+            X_val_cv <span style="color:#f92672">=</span> X_val_cv<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#34;float32&#34;</span>)
+            y_train <span style="color:#f92672">=</span> y_train<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#34;float32&#34;</span>)
+            y_val <span style="color:#f92672">=</span> y_val<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#34;float32&#34;</span>)
+
+        cv_classifier <span style="color:#f92672">=</span> model
+        cv_classifier<span style="color:#f92672">.</span>fit(X_train_cv, y_train)
+        y_pred <span style="color:#f92672">=</span> cv_classifier<span style="color:#f92672">.</span>predict(X_val_cv)
+        f1 <span style="color:#f92672">=</span> f1_score(y_val, y_pred, average<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;macro&#34;</span>)
+
+        print(<span style="color:#e6db74">&#34;Model: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">. Macro avg F1: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(name, f1))
+</code></pre></div><p>Resultados apenas para o uni-gram + bi-gram::</p>
+<table>
+<thead>
+<tr>
+<th>Modelos</th>
+<th>Macro Avg F1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Regressão Logística</td>
+<td>0.7151 +/- 0.006</td>
+</tr>
+<tr>
+<td>Random Forest</td>
+<td>0.6609 +/- 0.010</td>
+</tr>
+<tr>
+<td>LightGBM</td>
+<td>0.7230 +/- 0.007</td>
 </tr>
 </tbody>
 </table>
@@ -641,7 +695,7 @@ X_train_emb, X_test_emb, y_train_emb, y_test_emb <span style="color:#f92672">=</
 </table>
 <h2 id="tuning">Tuning</h2>
 <p>Após toda experimentação, vimos que o modelo mais promissor, em termos de métrica, tempo de processamento e simplicidade, foi a regressão logística em conjunto com o Bag of Words.</p>
-<p>Dae em diante, realizamos o tuning do <em>parâmetro C</em> da regressão logística, e conseguimos subir a acurácia para 0.8 em média dentre as classes, para o modelo que realiza a classificação do <a href="https://www.lobdata.com.br/2022/06/08/classificador-bncc/"><strong>segundo classificador</strong></a>.</p>
+<p>Daí em diante, realizamos o tuning do <em>parâmetro C</em> da regressão logística, e conseguimos subir a acurácia para 0.8 em média dentre as classes, para o modelo que realiza a classificação do <a href="https://www.lobdata.com.br/2022/06/08/classificador-bncc/"><strong>segundo classificador</strong></a>.</p>
 <blockquote>
 <p>Além de ajustar o C, nós também retiramos o <code>class_balanced</code>, pois o mesmo estava prejudicando a performance.</p>
 </blockquote>
