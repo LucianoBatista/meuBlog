@@ -6,11 +6,20 @@
     <description>Recent content in Tags on LOB.DATA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 08 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 14 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bag of words</title>
+      <link>https://www.lobdata.com.br/tags/bag-of-words/</link>
+      <pubDate>Tue, 14 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/tags/bag-of-words/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Data Science</title>
       <link>https://www.lobdata.com.br/tags/data-science/</link>
-      <pubDate>Wed, 08 Jun 2022 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 14 Jun 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lobdata.com.br/tags/data-science/</guid>
       <description></description>
@@ -19,18 +28,45 @@
     <item>
       <title>Education</title>
       <link>https://www.lobdata.com.br/tags/education/</link>
-      <pubDate>Wed, 08 Jun 2022 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 14 Jun 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lobdata.com.br/tags/education/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>N-Grams</title>
+      <link>https://www.lobdata.com.br/tags/n-grams/</link>
+      <pubDate>Tue, 14 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/tags/n-grams/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>NLP</title>
       <link>https://www.lobdata.com.br/tags/nlp/</link>
-      <pubDate>Wed, 08 Jun 2022 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 14 Jun 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lobdata.com.br/tags/nlp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>TFIDF</title>
+      <link>https://www.lobdata.com.br/tags/tfidf/</link>
+      <pubDate>Tue, 14 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/tags/tfidf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Word2Vec</title>
+      <link>https://www.lobdata.com.br/tags/word2vec/</link>
+      <pubDate>Tue, 14 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/tags/word2vec/</guid>
       <description></description>
     </item>
     

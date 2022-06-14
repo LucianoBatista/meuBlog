@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>N-Grams on LOB.DATA</title>
+    <link>https://www.lobdata.com.br/tags/n-grams/</link>
+    <description>Recent content in N-Grams on LOB.DATA</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 14 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/n-grams/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Classificador BNCC Pt.2</title>
+      <link>https://www.lobdata.com.br/2022/06/14/classificador-bncc-pt.2/</link>
+      <pubDate>Tue, 14 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/2022/06/14/classificador-bncc-pt.2/</guid>
+      <description>Resolvemos criar um novo artigo para detalhar melhor o que foi feito na etapa de modelagem do projeto do Classificador BNCC. Assim conseguimos dar mais atenção e justificar algumas escolhas.
+Cronograma de modelagem Nosso intuito foi buscar o melhor baseline para nosso problema, mapeando alguns universos de possibilidades, dentre modelos de machine learning e estratégias de transformação de texto em dado numérico.
+Válido lembrar que o dado que está entrando nessa etapa do pipeline está &amp;ldquo;limpo&amp;rdquo;, ou seja, passou pelas etapas de pré-processamentos que julgamos necessárias.</description>
+    </item>
+    
+  </channel>
+</rss>
