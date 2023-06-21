@@ -15,7 +15,7 @@
       <guid>https://www.lobdata.com.br/2020/10/13/effective-approach-to-analyze-correlation-coefficients/</guid>
       <description>Correlation analysis is a key task when you&amp;rsquo;re exploring any dataset. The principal objective is to find linear relationships between features that can help to understanding the big picture.
 Probably, the best way to see correlations between variables is to use scatterplots, but in most of time you&amp;rsquo;re working with a high dimensional dataset with a high number of variables, in these situations you have two major problems:
- It&amp;rsquo;s a high computational task to plot lots of scatterplot, specially if you have a big dataset.</description>
+It&amp;rsquo;s a high computational task to plot lots of scatterplot, specially if you have a big dataset.</description>
     </item>
     
   </channel>

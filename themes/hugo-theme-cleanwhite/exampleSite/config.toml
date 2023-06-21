@@ -21,6 +21,7 @@ home = ["HTML", "RSS", "Algolia"]
 
   image_404 = "img/404-bg.jpg"
   title_404 = "你来到了没有知识的荒原 :("
+  omit_categories = false
 
   # leancloud storage for page view counter
   page_view_conter = false 
@@ -49,6 +50,10 @@ home = ["HTML", "RSS", "Algolia"]
   disqus_proxy = ""
   disqus_site = ""
 
+  # Twikoo comments
+  # Follow https://twikoo.js.org/ to set up your own env_id
+  twikoo_env_id = ""
+
   #Enable wechat pay & alipay to allow readers send reward money if they like the articles 
   reward = true 
   # reward_guide = "如果这篇文章对你有用,请随意打赏" 
@@ -56,6 +61,10 @@ home = ["HTML", "RSS", "Algolia"]
   friends = true
   bookmarks = false
   about_me = true
+
+  # Include any custom CSS and/or JS files, url or relative to /static folder
+  #custom_css = ["css/lightbox.css", "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css", "css/main.css"]
+  #custom_js = ["js/lightbox.js", "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js", "js/main.js"]
 
   [params.social]
   rss            = true 
@@ -68,8 +77,15 @@ home = ["HTML", "RSS", "Algolia"]
   #instagram     = "full profile url in instagram"
   github         = "https://github.com/yourgithub"
   wechat         = "your wechat qr code image"
-#  medium         = "full profile url in medium"
+  #medium        = "full profile url in medium"
+  #slack         = "full workspace url in slack"
   #pinterest     = "full profile url in pinterest"
+  #reddit        = "full profile url in reddit"
+  #gitlab        = "full profile url in gitlab"
+  #mastodon      = "full profile url in mastodon"
+  #keybase       = "full profile url in keybase"
+  #xing          = "https://www.xing.com/profile/yourxingid"
+  #git           = "full profile url for git user"
   
   [[params.friend_link]]
   title = "Linda的博客"
@@ -89,11 +105,14 @@ home = ["HTML", "RSS", "Algolia"]
   href = "https://unsplash.com"
   
   [[params.addtional_menus]]
-  title =  "BOOKS"
-  href =  "/top/books/"
+  title =  "ARCHIVE"
+  href =  "/archive/"
+  [[params.addtional_menus]]
+  title =  "NOTES"
+  href =  "/notes/"
   [[params.addtional_menus]]
   title =  "ABOUT"
-  href =  "/top/about/"
+  href =  "/about/"
 
 [outputFormats.Algolia]
 baseName = "algolia"
@@ -104,3 +123,10 @@ notAlternative = true
 [params.algolia]
 vars = ["title", "summary", "date", "publishdate", "expirydate", "permalink"]
 params = ["categories", "tags"] 
+
+[markup]
+  [markup.tableOfContents]
+    endLevel = 2
+    startLevel = 1
+  [markup.highlight]
+    style = "dracula"

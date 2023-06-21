@@ -6,7 +6,34 @@
     <description>Recent content in Tags on LOB.DATA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 14 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 21 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI</title>
+      <link>https://www.lobdata.com.br/tags/ai/</link>
+      <pubDate>Wed, 21 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/tags/ai/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Generative</title>
+      <link>https://www.lobdata.com.br/tags/generative/</link>
+      <pubDate>Wed, 21 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/tags/generative/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>IA Generativa</title>
+      <link>https://www.lobdata.com.br/tags/ia-generativa/</link>
+      <pubDate>Wed, 21 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/tags/ia-generativa/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Bag of words</title>
       <link>https://www.lobdata.com.br/tags/bag-of-words/</link>
@@ -238,15 +265,6 @@
       <pubDate>Tue, 13 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>https://www.lobdata.com.br/tags/r/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>purrr</title>
-      <link>https://www.lobdata.com.br/tags/purrr/</link>
-      <pubDate>Fri, 02 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lobdata.com.br/tags/purrr/</guid>
       <description></description>
     </item>
     

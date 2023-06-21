@@ -8,54 +8,53 @@
     
     <meta property="og:site_name" content="LOB.DATA">
     <meta property="og:type" content="article">
-    <meta property="og:image" content="https://www.lobdata.com.br/img/banner/beach_more_sea.jpg">
 
     
-      <meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:image" content="https://www.cedricscherer.com/img/banner/banner.png" >
-    
-
+    <meta property="og:image" content="img/post_0_4.png">
+    <meta property="twitter:image" content="img/post_0_4.png" />
     
 
     
-      <meta name="title" content="Criando uma API Pronta para Produção com FastAPI - PT.2" />
-      <meta property="og:title" content="Criando uma API Pronta para Produção com FastAPI - PT.2 - Luba" />
-      <meta property="twitter:title" content="Criando uma API Pronta para Produção com FastAPI - PT.2 - Luba" />
-      <meta property="twitter:text:title" content="Criando uma API Pronta para Produção com FastAPI - PT.2 - Luba" />
+    <meta name="title" content="Criando uma API Pronta para Produção com FastAPI - PT.2" />
+    <meta property="og:title" content="Criando uma API Pronta para Produção com FastAPI - PT.2" />
+    <meta property="twitter:title" content="Criando uma API Pronta para Produção com FastAPI - PT.2" />
     
 
     
-      <meta name="description" content="Blog by LuBa">
-      <meta property="og:description" content="Blog by LuBa" />
-      <meta property="twitter:description" content="Blog by LuBa" />
+    <meta name="description" content="Blog by LuBa">
+    <meta property="og:description" content="Blog by LuBa" />
+    <meta property="twitter:description" content="Blog by LuBa" />
     
 
+    
+    <meta property="twitter:card" content="summary" />
+    
     
 
     <meta name="keyword"  content="Data Visualization, Data Science, Programming, Web Development">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Criando uma API Pronta para Produção com FastAPI - PT.2 - Luba</title>
+    <title>Criando uma API Pronta para Produção com FastAPI - PT.2 | Luba</title>
 
     <link rel="canonical" href="/2021/04/03/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.2/">
 
-    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
-
+    
+    
     
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 
     
-    <link rel="stylesheet" href="/css/hux-blog.min.css">
-
-    
-    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
 
     
     <link rel="stylesheet" href="/css/zanshang.css">
 
     
-    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/css/font-awesome.all.min.css">
+
     
+    
+
     
     <script src="/js/jquery.min.js"></script>
 
@@ -66,13 +65,33 @@
     <script src="/js/hux-blog.min.js"></script>
 
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/styles/foundation.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
 </head>
 
 
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5NWJ42KMKC"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-5NWJ42KMKC', { 'anonymize_ip': false });
+}
+</script>
+
+
+
+
+
+
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
     <div class="container-fluid">
         
         <div class="navbar-header page-scroll">
@@ -91,31 +110,34 @@
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="/">Blog</a>
+                        <a href="/">All Posts</a>
                     </li>
                     
-                    <li>
-                        <a href="/categories/aplica%C3%A7%C3%B5es">aplicações</a>
-                    </li>
+                        
+                        <li>
+                            <a href="/categories/aplica%C3%A7%C3%B5es/">aplicações</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/project/">project</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/projetos/">projetos</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/tutorials/">tutorials</a>
+                        </li>
+                        
                     
-                    <li>
-                        <a href="/categories/project">project</a>
-                    </li>
                     
-                    <li>
-                        <a href="/categories/projetos">projetos</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/tutorials">tutorials</a>
-                    </li>
-                    
-
 		    
-                        <li><a href="/top/about/">About Me</a></li>
+                        <li><a href="/top/about//">About Me</a></li>
                     
-
-                    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
                 </ul>
             </div>
         </div>
@@ -160,7 +182,9 @@
         background-image: url('/img/post_0_4.png')
     }
 </style>
-<header class="intro-header">
+
+<header class="intro-header" >
+
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -199,14 +223,15 @@
                     <h1>Criando uma API Pronta para Produção com FastAPI - PT.2</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
-			Posted by
-			
-			    Luciano
-			
-			on
-			Saturday, April 3, 2021
                         
-                            <span id="/2021/04/03/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.2/" class="leancloud_visitors meta_data_item" data-flag-title="">
+                            Posted by 
+                            
+                                Luciano
+                             
+                            on 
+                            Saturday, April 3, 2021
+                            
+                                <span id="/2021/04/03/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.2/" class="leancloud_visitors meta_data_item" data-flag-title="">
     <span class="post-meta-item-icon">
       <span class="octicon octicon-eye"></span> 
     </span>
@@ -339,7 +364,10 @@ $(function() {
 });
 </script>
 
-                        
+                            
+                            
+                            
+                            
                     </span>
                 </div>
             </div>
@@ -361,18 +389,10 @@ $(function() {
                 post-container">
 
                 
-                <header>
-                    <h3>Table of Contents</h3>
-                </header>
-                <nav id="TableOfContents">
-  <ul>
-    <li><a href="#main">Main</a></li>
-    <li><a href="#config">Config</a></li>
-    <li><a href="#rotas-async">Rotas Async</a></li>
-  </ul>
-</nav>
-                
-                <p><img src="/img/finance_app_tutorial/pt2/fast_api.png" alt="Personal Finance"></p>
+                <p>
+  <img src="/img/finance_app_tutorial/pt2/fast_api.png" alt="Personal Finance">
+
+</p>
 <p>Neste tutorial iremos iniciar o <strong>Econowallet</strong>, essa aplicação que vai contar com uma API para controle financeiro de suas despesas e investimentos, se você não viu o post passado (onde explico mais sobre meu objetivo com esse projeto) <a href="https://www.lobdata.com.br/post/finance_control_app/">clique aqui</a>.</p>
 <p>Tópicos que serão abordados nesse post:</p>
 <ul>
@@ -389,97 +409,108 @@ $(function() {
 </ul>
 <p>Estarei utilizando aqui o Pipenv, sinta-se a vontade para usar o que tenha mais familiaridade.</p>
 <p>Como IDE estarei usando o Pycharm 2020.3.5 (minha preferida no momento para desenvolver em python) e utilizaremos python 3.9.0. Ao clicar em &ldquo;New Project&rdquo; temos a seguinte imagem:</p>
-<p><img src="/img/finance_app_tutorial/pt2/create_project.png" alt="Creating Project"></p>
+<p>
+  <img src="/img/finance_app_tutorial/pt2/create_project.png" alt="Creating Project">
+
+</p>
 <p>Veja na lateral esquerda como o Pycharm já traz um template para diversos tipos de projeto, porém no momento ainda não temos a opção para o FastAPI. Após iniciado o projeto, você deve encontrar um arquivo chamado Pipfile (se está usando o Pipenv) ou apenas uma pasta vazia. Então iremos executar os seguintes comandos no terminal:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mkdir project
-$ mkdir project/app
-$ touch project/app/main.py
-$ touch project/app/__init__.py
-$ mv Pipfile project/
-$ cd project
-$ pipenv install fastapi<span style="color:#f92672">==</span>0.63.0
-$ pipenv install uvicorn<span style="color:#f92672">==</span>0.13.4
-</code></pre></div><p>Aqui vale uma ressalva, não sou nenhum expert em arquitetura de software e talvez a estrutura de projeto utilizada aqui não seja a melhor possível, mas busco sempre dividir o código em blocos que contenham uma lógica ou função semelhante. Isso permite que tenhámos um código bom para manter, bom para ser entendido por outros desenvolvedores e também para colaborar.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ mkdir project
+</span></span><span style="display:flex;"><span>$ mkdir project/app
+</span></span><span style="display:flex;"><span>$ touch project/app/main.py
+</span></span><span style="display:flex;"><span>$ touch project/app/__init__.py
+</span></span><span style="display:flex;"><span>$ mv Pipfile project/
+</span></span><span style="display:flex;"><span>$ cd project
+</span></span><span style="display:flex;"><span>$ pipenv install fastapi<span style="color:#f92672">==</span>0.63.0
+</span></span><span style="display:flex;"><span>$ pipenv install uvicorn<span style="color:#f92672">==</span>0.13.4
+</span></span></code></pre></div><p>Aqui vale uma ressalva, não sou nenhum expert em arquitetura de software e talvez a estrutura de projeto utilizada aqui não seja a melhor possível, mas busco sempre dividir o código em blocos que contenham uma lógica ou função semelhante. Isso permite que tenhámos um código bom para manter, bom para ser entendido por outros desenvolvedores e também para colaborar.</p>
 <p>Após os comandos anteriores você deveria ter uma estrutura de diretórios semelhante à mostrada abaixo:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">.
-└── project
-    ├── app
-    │   ├── __init__.py
-    │   └── main.py
-    ├── Pipfile
-    └── Pipfile.lock
-</code></pre></div><p>Veja que além do <strong>FastAPI</strong>, instalamos o <strong>Uvicorn</strong>. O papel dessa lib é permitir que consigamos interagir com o serviço que estamos contruíndo (será nosso web server), além disso, ela utiliza o protocolo ASGI que permite assincronosidade com suporte aos verbos <code>async</code> e <code>await</code> do python. Outros frames como o Django e Flask já possuem um server built-in que é muito útil para fases de desenvolvimento mas que pode gerar confusão nas etapas de deploy pois o mesmo precisa ser substituído. Aqui, iremos ficar desde o início com o Uvicorn, saiba mais na documentação clicando no <a href="https://www.uvicorn.org">link</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.
+</span></span><span style="display:flex;"><span>└── project
+</span></span><span style="display:flex;"><span>    ├── app
+</span></span><span style="display:flex;"><span>    │   ├── __init__.py
+</span></span><span style="display:flex;"><span>    │   └── main.py
+</span></span><span style="display:flex;"><span>    ├── Pipfile
+</span></span><span style="display:flex;"><span>    └── Pipfile.lock
+</span></span></code></pre></div><p>Veja que além do <strong>FastAPI</strong>, instalamos o <strong>Uvicorn</strong>. O papel dessa lib é permitir que consigamos interagir com o serviço que estamos contruíndo (será nosso web server), além disso, ela utiliza o protocolo ASGI que permite assincronosidade com suporte aos verbos <code>async</code> e <code>await</code> do python. Outros frames como o Django e Flask já possuem um server built-in que é muito útil para fases de desenvolvimento mas que pode gerar confusão nas etapas de deploy pois o mesmo precisa ser substituído. Aqui, iremos ficar desde o início com o Uvicorn, saiba mais na documentação clicando no <a href="https://www.uvicorn.org">link</a>.</p>
 <h2 id="main">Main</h2>
 <p>Vamos configurar apenas uma rota inicial com o mínimo de código possível para ver se nosso web server está funcionando.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># project/app/main.py</span>
-
-<span style="color:#f92672">from</span> fastapi <span style="color:#f92672">import</span> FastAPI
-
-app <span style="color:#f92672">=</span> FastAPI()
-
-
-<span style="color:#a6e22e">@app</span><span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;/ping&#34;</span>)
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ping</span>():
-    <span style="color:#66d9ef">return</span> {
-        <span style="color:#e6db74">&#34;ping&#34;</span>: <span style="color:#e6db74">&#34;pong!&#34;</span>
-    }
-</code></pre></div><p>E então iremos rodar o uvicorn buscando a instância que acabamos de criar do FastAPI (linha 5). Observe que o comando depende de qual diretório estiver:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># project/app/main.py</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> fastapi <span style="color:#f92672">import</span> FastAPI
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app <span style="color:#f92672">=</span> FastAPI()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.get</span>(<span style="color:#e6db74">&#34;/ping&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ping</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;ping&#34;</span>: <span style="color:#e6db74">&#34;pong!&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>E então iremos rodar o uvicorn buscando a instância que acabamos de criar do FastAPI (linha 5). Observe que o comando depende de qual diretório estiver:</p>
 <ul>
 <li>uvicorn project.app.main:app (do diretório root)</li>
 <li>uvicorn app.main:app (do diretório de projeto)</li>
 </ul>
 <p>e assim em diante&hellip;</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ uvicorn project.app.main:app
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ uvicorn project.app.main:app
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>INFO:     Started server process <span style="color:#f92672">[</span>654351<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>INFO:     Waiting <span style="color:#66d9ef">for</span> application startup.
+</span></span><span style="display:flex;"><span>INFO:     Application startup complete.
+</span></span><span style="display:flex;"><span>INFO:     Uvicorn running on http://127.0.0.1:8000 <span style="color:#f92672">(</span>Press CTRL+C to quit<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p>Agora, se navegarmos até <a href="http://127.0.0.1:8000/ping">http://127.0.0.1:8000/ping</a> iremos ver a seguinte resposta:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;ping&#34;</span>: <span style="color:#e6db74">&#34;pong!&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Além disso o FastAPI <em>automágicamente</em> gerou um esquema baseado no padrão OpenAPI e juntamente com o Swagger UI criou uma documentação inicial (bem crua) para sua API. Podendo ser acessada em <a href="http://localhost:8000/docs">http://localhost:8000/docs</a> ou ainda se não gostou dessa interface do Swager você pode acessar <a href="http://localhost:8000/redoc">http://localhost:8000/redoc</a> para uma interface diferente.</p>
+<p>
+  <img src="/img/finance_app_tutorial/pt2/ping_pong_swager.png" alt="Ping Pong Swager">
 
-INFO:     Started server process <span style="color:#f92672">[</span>654351<span style="color:#f92672">]</span>
-INFO:     Waiting <span style="color:#66d9ef">for</span> application startup.
-INFO:     Application startup complete.
-INFO:     Uvicorn running on http://127.0.0.1:8000 <span style="color:#f92672">(</span>Press CTRL+C to quit<span style="color:#f92672">)</span>
-</code></pre></div><p>Agora, se navegarmos até <a href="http://127.0.0.1:8000/ping">http://127.0.0.1:8000/ping</a> iremos ver a seguinte resposta:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
-  <span style="color:#f92672">&#34;ping&#34;</span>: <span style="color:#e6db74">&#34;pong!&#34;</span>
-}
-</code></pre></div><p>Além disso o FastAPI <em>automágicamente</em> gerou um esquema baseado no padrão OpenAPI e juntamente com o Swagger UI criou uma documentação inicial (bem crua) para sua API. Podendo ser acessada em <a href="http://localhost:8000/docs">http://localhost:8000/docs</a> ou ainda se não gostou dessa interface do Swager você pode acessar <a href="http://localhost:8000/redoc">http://localhost:8000/redoc</a> para uma interface diferente.</p>
-<p><img src="/img/finance_app_tutorial/pt2/ping_pong_swager.png" alt="Ping Pong Swager"></p>
+</p>
 <blockquote>
 <p>Swagger UI</p>
 </blockquote>
-<p><img src="/img/finance_app_tutorial/pt2/ping_pong_redoc.png" alt="Ping Pong Redocs"></p>
+<p>
+  <img src="/img/finance_app_tutorial/pt2/ping_pong_redoc.png" alt="Ping Pong Redocs">
+
+</p>
 <blockquote>
 <p>redoc</p>
 </blockquote>
 <p>&hellip;além disso, essa interface pode ser personalizada de acordo com seu projeto e necessidades, você pode encontrar detalhes na documentação <a href="https://fastapi.tiangolo.com/advanced/extending-openapi/">clicando aqui</a>.</p>
 <p>Agora iremos reiniciar nosso web server e adicionar um comando bem útil que iremos utilizar daqui em diante com o uvicorn, o <code>--reload</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ uvicorn project.app.main:app --reload
-
-INFO:     Uvicorn running on http://127.0.0.1:8000 <span style="color:#f92672">(</span>Press CTRL+C to quit<span style="color:#f92672">)</span>
-INFO:     Started reloader process <span style="color:#f92672">[</span>663530<span style="color:#f92672">]</span> using statreload
-INFO:     Started server process <span style="color:#f92672">[</span>663532<span style="color:#f92672">]</span>
-INFO:     Waiting <span style="color:#66d9ef">for</span> application startup.
-INFO:     Application startup complete.
-</code></pre></div><p>Dessa forma, sempre que fizermos alguma alteração no código, o Uvicorn vai reiniciar o server para nós. Experimente remover a exclamação do &ldquo;pong!&rdquo; e veja o que acontece.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ uvicorn project.app.main:app --reload
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>INFO:     Uvicorn running on http://127.0.0.1:8000 <span style="color:#f92672">(</span>Press CTRL+C to quit<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>INFO:     Started reloader process <span style="color:#f92672">[</span>663530<span style="color:#f92672">]</span> using statreload
+</span></span><span style="display:flex;"><span>INFO:     Started server process <span style="color:#f92672">[</span>663532<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>INFO:     Waiting <span style="color:#66d9ef">for</span> application startup.
+</span></span><span style="display:flex;"><span>INFO:     Application startup complete.
+</span></span></code></pre></div><p>Dessa forma, sempre que fizermos alguma alteração no código, o Uvicorn vai reiniciar o server para nós. Experimente remover a exclamação do &ldquo;pong!&rdquo; e veja o que acontece.</p>
 <h2 id="config">Config</h2>
 <p>Agora iremos adicionar um arquivo muito importante para nossa aplicação e que vai lidar com nossas variáveis de ambiente tanto localmente quanto quando estivermos no ambiente do Docker.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># project/app/config.py</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># project/app/config.py</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> logging
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> pydantic <span style="color:#f92672">import</span> BaseSettings
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>log <span style="color:#f92672">=</span> logging<span style="color:#f92672">.</span>getLogger(<span style="color:#e6db74">&#34;uvicorn&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Settings</span>(BaseSettings):
+</span></span><span style="display:flex;"><span>    environment: str <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>getenv(<span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>, <span style="color:#e6db74">&#34;dev&#34;</span>)
+</span></span><span style="display:flex;"><span>    testing: bool <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>getenv(<span style="color:#e6db74">&#34;TESTING&#34;</span>, <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_settings</span>() <span style="color:#f92672">-&gt;</span> BaseSettings:
+</span></span><span style="display:flex;"><span>    log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;Loading config settings from the environment...&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> Settings()
+</span></span></code></pre></div><p>
+  <img src="/img/finance_app_tutorial/pt2/what.gif" alt="WHAT?!">
 
-<span style="color:#f92672">import</span> logging
-<span style="color:#f92672">import</span> os
-
-<span style="color:#f92672">from</span> pydantic <span style="color:#f92672">import</span> BaseSettings
-
-log <span style="color:#f92672">=</span> logging<span style="color:#f92672">.</span>getLogger(<span style="color:#e6db74">&#34;uvicorn&#34;</span>)
-
-
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Settings</span>(BaseSettings):
-    environment: str <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>getenv(<span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>, <span style="color:#e6db74">&#34;dev&#34;</span>)
-    testing: bool <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>getenv(<span style="color:#e6db74">&#34;TESTING&#34;</span>, <span style="color:#ae81ff">0</span>)
-
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_settings</span>() <span style="color:#f92672">-&gt;</span> BaseSettings:
-    log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;Loading config settings from the environment...&#34;</span>)
-    <span style="color:#66d9ef">return</span> Settings()
-
-</code></pre></div><p><img src="/img/finance_app_tutorial/pt2/what.gif" alt="WHAT?!"></p>
+</p>
 <blockquote>
 <p>O que está acontecendo aqui?</p>
 </blockquote>
@@ -495,76 +526,77 @@ log <span style="color:#f92672">=</span> logging<span style="color:#f92672">.</s
 <li>previne alguns bugs, pois a IDE tem maior entendimento do que acontece com as funções, classes&hellip;</li>
 </ul>
 <p>Agora iremos atualizar nosso arquivo main.py:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># project/app/main.py</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># project/app/main.py</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> fastapi <span style="color:#f92672">import</span> FastAPI, Depends
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> project.app.config <span style="color:#f92672">import</span> Settings, get_settings
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app <span style="color:#f92672">=</span> FastAPI()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.get</span>(<span style="color:#e6db74">&#34;/ping&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ping</span>(settings: Settings <span style="color:#f92672">=</span> Depends(get_settings)):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;ping&#34;</span>: <span style="color:#e6db74">&#34;pong!&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;environment&#34;</span>: settings<span style="color:#f92672">.</span>environment,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;testing&#34;</span>: settings<span style="color:#f92672">.</span>testing
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>Com essa alteração no código estamos setando dependências à aplicação sempre que acessamos a rota <a href="http://127.0.0.1:8000/ping">http://127.0.0.1:8000/ping</a>. De uma forma mais intuitiva, o que estamos dizendo é o seguinte:</p>
+<p>
+  <img src="/img/finance_app_tutorial/pt2/flow_dependencies.png" alt="Flow Dependencies">
 
-<span style="color:#f92672">from</span> fastapi <span style="color:#f92672">import</span> FastAPI, Depends
-
-<span style="color:#f92672">from</span> project.app.config <span style="color:#f92672">import</span> Settings, get_settings
-
-app <span style="color:#f92672">=</span> FastAPI()
-
-
-<span style="color:#a6e22e">@app</span><span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;/ping&#34;</span>)
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ping</span>(settings: Settings <span style="color:#f92672">=</span> Depends(get_settings)):
-    <span style="color:#66d9ef">return</span> {
-        <span style="color:#e6db74">&#34;ping&#34;</span>: <span style="color:#e6db74">&#34;pong!&#34;</span>,
-        <span style="color:#e6db74">&#34;environment&#34;</span>: settings<span style="color:#f92672">.</span>environment,
-        <span style="color:#e6db74">&#34;testing&#34;</span>: settings<span style="color:#f92672">.</span>testing
-    }
-
-</code></pre></div><p>Com essa alteração no código estamos setando dependências à aplicação sempre que acessamos a rota <a href="http://127.0.0.1:8000/ping">http://127.0.0.1:8000/ping</a>. De uma forma mais intuitiva, o que estamos dizendo é o seguinte:</p>
-<p><img src="/img/finance_app_tutorial/pt2/flow_dependencies.png" alt="Flow Dependencies"></p>
+</p>
 <p>Agora, se rodarmos novamente nosso server, iremos ver uma resposta da seguinte forma:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
-  <span style="color:#f92672">&#34;ping&#34;</span>: <span style="color:#e6db74">&#34;pong!&#34;</span>,
-  <span style="color:#f92672">&#34;environment&#34;</span>: <span style="color:#e6db74">&#34;dev&#34;</span>,
-  <span style="color:#f92672">&#34;testing&#34;</span>: <span style="color:#66d9ef">false</span>
-}
-</code></pre></div><p>Legal, agora sabemos, por exemplo, que estamos no ambiente de desenvolvimento e não de teste. Outro ponto importante é que da forma como nosso config.py está, sempre que <em>batemos</em> na rota <a href="http://127.0.0.1:8000/ping">http://127.0.0.1:8000/ping</a> ele reconfigura as settings.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;ping&#34;</span>: <span style="color:#e6db74">&#34;pong!&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;environment&#34;</span>: <span style="color:#e6db74">&#34;dev&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;testing&#34;</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Legal, agora sabemos, por exemplo, que estamos no ambiente de desenvolvimento e não de teste. Outro ponto importante é que da forma como nosso config.py está, sempre que <em>batemos</em> na rota <a href="http://127.0.0.1:8000/ping">http://127.0.0.1:8000/ping</a> ele reconfigura as settings.</p>
 <p>Esse comportamento de reconfigurar as settings não é muito atrativo, pois futuramente ao migrarmos o carregamento das variáveis de ambiente a partir de um arquivo (<code>.env</code> por exemplo) esse comportamento irá diminuir a velocidade com que nosso app responde aos requests.</p>
 <p>Usaremos então o decorator <code>@lru_cache</code> para cachiar as settings, de forma que get_settings é chamada apenas uma vez e reusará valores de chamadas recentes para atribuir às variáveis.</p>
 <blockquote>
 <p>Tenha em mente que isso é indicado apenas para casos onde você não tem a necessidade de recomputar esses valores várias vezes.</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># project/app/config.py</span>
-
-<span style="color:#f92672">import</span> logging
-<span style="color:#f92672">import</span> os
-<span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> lru_cache
-
-<span style="color:#f92672">from</span> pydantic <span style="color:#f92672">import</span> BaseSettings
-
-log <span style="color:#f92672">=</span> logging<span style="color:#f92672">.</span>getLogger(<span style="color:#e6db74">&#34;uvicorn&#34;</span>)
-
-
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Settings</span>(BaseSettings):
-    environment: str <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>getenv(<span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>, <span style="color:#e6db74">&#34;dev&#34;</span>)
-    testing: bool <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>getenv(<span style="color:#e6db74">&#34;TESTING&#34;</span>, <span style="color:#ae81ff">0</span>)
-
-
-<span style="color:#a6e22e">@lru_cache</span>()
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_settings</span>() <span style="color:#f92672">-&gt;</span> BaseSettings:
-    log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;Loading config settings from the environment...&#34;</span>)
-    <span style="color:#66d9ef">return</span> Settings()
-</code></pre></div><p>Agora se atualizarmos várias vezes o <a href="http://127.0.0.1:8000/ping">http://127.0.0.1:8000/ping</a> não veremos o recarregamento do &ldquo;Loading config settings from the environment&hellip;&rdquo;, indicando que nosso cache funcionou 🎉.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># project/app/config.py</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> logging
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> lru_cache
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> pydantic <span style="color:#f92672">import</span> BaseSettings
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>log <span style="color:#f92672">=</span> logging<span style="color:#f92672">.</span>getLogger(<span style="color:#e6db74">&#34;uvicorn&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Settings</span>(BaseSettings):
+</span></span><span style="display:flex;"><span>    environment: str <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>getenv(<span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>, <span style="color:#e6db74">&#34;dev&#34;</span>)
+</span></span><span style="display:flex;"><span>    testing: bool <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>getenv(<span style="color:#e6db74">&#34;TESTING&#34;</span>, <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@lru_cache</span>()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_settings</span>() <span style="color:#f92672">-&gt;</span> BaseSettings:
+</span></span><span style="display:flex;"><span>    log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;Loading config settings from the environment...&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> Settings()
+</span></span></code></pre></div><p>Agora se atualizarmos várias vezes o <a href="http://127.0.0.1:8000/ping">http://127.0.0.1:8000/ping</a> não veremos o recarregamento do &ldquo;Loading config settings from the environment&hellip;&rdquo;, indicando que nosso cache funcionou 🎉.</p>
 <h2 id="rotas-async">Rotas Async</h2>
 <p>Como dito no início do post, estamos usando um web server ASGI e além disso um frame com suporte ao <code>async</code> e <code>await</code> (FastAPI). Portanto, podemos facilmente converter nosso endpoint para uma rota assíncrona simplesmente adicionando o verbo <code>async</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> fastapi <span style="color:#f92672">import</span> FastAPI, Depends
-
-<span style="color:#f92672">from</span> project.app.config <span style="color:#f92672">import</span> Settings, get_settings
-
-app <span style="color:#f92672">=</span> FastAPI()
-
-
-<span style="color:#a6e22e">@app</span><span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;/ping&#34;</span>)
-<span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ping</span>(settings: Settings <span style="color:#f92672">=</span> Depends(get_settings)):
-    <span style="color:#66d9ef">return</span> {
-        <span style="color:#e6db74">&#34;ping&#34;</span>: <span style="color:#e6db74">&#34;pong!&#34;</span>,
-        <span style="color:#e6db74">&#34;environment&#34;</span>: settings<span style="color:#f92672">.</span>environment,
-        <span style="color:#e6db74">&#34;testing&#34;</span>: settings<span style="color:#f92672">.</span>testing
-    }
-
-</code></pre></div><p>Teste novamente a rota <a href="http://127.0.0.1:8000/ping">http://127.0.0.1:8000/ping</a> para ver se tudo continua functionando.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> fastapi <span style="color:#f92672">import</span> FastAPI, Depends
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> project.app.config <span style="color:#f92672">import</span> Settings, get_settings
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app <span style="color:#f92672">=</span> FastAPI()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.get</span>(<span style="color:#e6db74">&#34;/ping&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ping</span>(settings: Settings <span style="color:#f92672">=</span> Depends(get_settings)):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;ping&#34;</span>: <span style="color:#e6db74">&#34;pong!&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;environment&#34;</span>: settings<span style="color:#f92672">.</span>environment,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;testing&#34;</span>: settings<span style="color:#f92672">.</span>testing
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>Teste novamente a rota <a href="http://127.0.0.1:8000/ping">http://127.0.0.1:8000/ping</a> para ver se tudo continua functionando.</p>
 <blockquote>
 <p><strong>ATENÇÃO!</strong>: O async e await do python não está relacionado ao uso de mais threads ou de processamento paralelo. O conceito aqui é permitir que o código execute outras funcionalidades enquanto aguarda resposta de um outro serviço.</p>
 </blockquote>
@@ -579,6 +611,7 @@ env
 
                 
 
+                
                 <hr>
                 <ul class="pager">
                     
@@ -594,13 +627,31 @@ env
                     </li>
                     
                 </ul>
+                
 
                 
-<div id="disqus-comment"></div>
 
 
 
             </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
             
             <div class="
                 col-lg-8 col-lg-offset-2
@@ -613,6 +664,8 @@ env
                     <hr class="hidden-sm hidden-xs">
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
+                        
+                        
                         
                         
                         
@@ -646,10 +699,6 @@ env
                         
                         
                         
-                        <a href="/tags/data-visualization" title="data-visualization">
-                            data-visualization
-                        </a>
-                        
                         
                         
                         <a href="/tags/docker" title="docker">
@@ -670,9 +719,9 @@ env
                         
                         
                         
-                        <a href="/tags/ggplot2" title="ggplot2">
-                            ggplot2
-                        </a>
+                        
+                        
+                        
                         
                         
                         
@@ -705,8 +754,6 @@ env
                         <a href="/tags/project" title="project">
                             project
                         </a>
-                        
-                        
                         
                         
                         
@@ -771,52 +818,66 @@ env
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <ul class="list-inline text-center">
-                    
-                    <li>
-                       <a href="" rel="alternate" type="application/rss+xml" title="LOB.DATA" >
-                           <span class="fa-stack fa-lg">
-                               <i class="fa fa-circle fa-stack-2x"></i>
-                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
-                           </span>
-                       </a>
-                    </li>
+                <ul class="list-inline text-center">                  
                     
                     
                     
+                    
+                    
+
+		            
                     
                     
                     <li>
                         <a target="_blank" href="https://github.com/LucianoBatista">
                             <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
                     </li>
-		                
+		            
+                    
                     
                     
                     <li>
                         <a target="_blank" href="https://www.linkedin.com/in/lucianobatistads/">
                             <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
                     </li>
-		                
+		           
                     
-                </ul>
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="LOB.DATA" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fas fa-circle fa-stack-2x"></i>
+                               <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+            
+             </ul>
 		<p class="copyright text-muted">
-                    A <a href="https://gohugo.io/">HUGO</a> <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite</a> page build with ♥ and powered by <a href="https://www.netlify.com/">Netlify</a>&nbsp;&nbsp;&bull;&nbsp;&nbsp;Header images by <a href="https://www.pexels.com/photo/climate-sea-landscape-nature-35626/">Pexels</a>
-    </p>
-    <p class="copyright text-muted" style='font-size:8pt;'>
-                    &copy; LOB.DATA 2019–2021. All rights reserved.&nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="https://lobdata.com.br/top/conduct/">Code of Conduct</a>
+                    Copyright &copy; LOB.DATA 2023
                     <br>
-                    Content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>.
-                    <br>
-                    <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
                 </p>
             </div>
         </div>
@@ -827,7 +888,7 @@ env
 
 
 <script>
-    function async(u, c) {
+    function loadAsync(u, c) {
       var d = document, t = 'script',
           o = d.createElement(t),
           s = d.getElementsByTagName(t)[0];
@@ -845,10 +906,10 @@ env
 <script>
     
     if($('#tag_cloud').length !== 0){
-        async("/js/jquery.tagcloud.js",function(){
+        loadAsync("/js/jquery.tagcloud.js",function(){
             $.fn.tagcloud.defaults = {
                 
-                color: {start: '#bbbbee', end: '#28a87d'},
+                color: {start: '#bbbbee', end: '#0085a1'},
             };
             $('#tag_cloud a').tagcloud();
         })
@@ -857,7 +918,7 @@ env
 
 
 <script>
-    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
         var $nav = document.querySelector("nav");
         if($nav) FastClick.attach($nav);
     })
@@ -868,16 +929,65 @@ env
 
 
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'G-5NWJ42KMKC', 'auto');
-	
-	ga('send', 'pageview');
-}
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
 
 
 

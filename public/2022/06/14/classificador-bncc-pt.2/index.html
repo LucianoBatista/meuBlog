@@ -8,54 +8,53 @@
     
     <meta property="og:site_name" content="LOB.DATA">
     <meta property="og:type" content="article">
-    <meta property="og:image" content="https://www.lobdata.com.br/img/banner/beach_more_sea.jpg">
 
     
-      <meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:image" content="https://www.cedricscherer.com/img/banner/banner.png" >
-    
-
+    <meta property="og:image" content="img/post_0_4.png">
+    <meta property="twitter:image" content="img/post_0_4.png" />
     
 
     
-      <meta name="title" content="Classificador BNCC Pt.2" />
-      <meta property="og:title" content="Classificador BNCC Pt.2 - Luba" />
-      <meta property="twitter:title" content="Classificador BNCC Pt.2 - Luba" />
-      <meta property="twitter:text:title" content="Classificador BNCC Pt.2 - Luba" />
+    <meta name="title" content="Classificador BNCC Pt.2" />
+    <meta property="og:title" content="Classificador BNCC Pt.2" />
+    <meta property="twitter:title" content="Classificador BNCC Pt.2" />
     
 
     
-      <meta name="description" content="Blog by LuBa">
-      <meta property="og:description" content="Blog by LuBa" />
-      <meta property="twitter:description" content="Blog by LuBa" />
+    <meta name="description" content="Blog by LuBa">
+    <meta property="og:description" content="Blog by LuBa" />
+    <meta property="twitter:description" content="Blog by LuBa" />
     
 
+    
+    <meta property="twitter:card" content="summary" />
+    
     
 
     <meta name="keyword"  content="Data Visualization, Data Science, Programming, Web Development">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Classificador BNCC Pt.2 - Luba</title>
+    <title>Classificador BNCC Pt.2 | Luba</title>
 
     <link rel="canonical" href="/2022/06/14/classificador-bncc-pt.2/">
 
-    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
-
+    
+    
     
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 
     
-    <link rel="stylesheet" href="/css/hux-blog.min.css">
-
-    
-    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
 
     
     <link rel="stylesheet" href="/css/zanshang.css">
 
     
-    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/css/font-awesome.all.min.css">
+
     
+    
+
     
     <script src="/js/jquery.min.js"></script>
 
@@ -66,13 +65,33 @@
     <script src="/js/hux-blog.min.js"></script>
 
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/styles/foundation.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
 </head>
 
 
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5NWJ42KMKC"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-5NWJ42KMKC', { 'anonymize_ip': false });
+}
+</script>
+
+
+
+
+
+
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
     <div class="container-fluid">
         
         <div class="navbar-header page-scroll">
@@ -91,31 +110,34 @@
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="/">Blog</a>
+                        <a href="/">All Posts</a>
                     </li>
                     
-                    <li>
-                        <a href="/categories/aplica%C3%A7%C3%B5es">aplicações</a>
-                    </li>
+                        
+                        <li>
+                            <a href="/categories/aplica%C3%A7%C3%B5es/">aplicações</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/project/">project</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/projetos/">projetos</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/tutorials/">tutorials</a>
+                        </li>
+                        
                     
-                    <li>
-                        <a href="/categories/project">project</a>
-                    </li>
                     
-                    <li>
-                        <a href="/categories/projetos">projetos</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/tutorials">tutorials</a>
-                    </li>
-                    
-
 		    
-                        <li><a href="/top/about/">About Me</a></li>
+                        <li><a href="/top/about//">About Me</a></li>
                     
-
-                    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
                 </ul>
             </div>
         </div>
@@ -160,7 +182,9 @@
         background-image: url('/img/post_0_4.png')
     }
 </style>
-<header class="intro-header">
+
+<header class="intro-header" >
+
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -199,14 +223,15 @@
                     <h1>Classificador BNCC Pt.2</h1>
                     <h2 class="subheading">Modelagem</h2>
                     <span class="meta">
-			Posted by
-			
-			    Luciano, Pedro, Will e Brisa
-			
-			on
-			Tuesday, June 14, 2022
                         
-                            <span id="/2022/06/14/classificador-bncc-pt.2/" class="leancloud_visitors meta_data_item" data-flag-title="">
+                            Posted by 
+                            
+                                Luciano, Pedro, Will e Brisa
+                             
+                            on 
+                            Tuesday, June 14, 2022
+                            
+                                <span id="/2022/06/14/classificador-bncc-pt.2/" class="leancloud_visitors meta_data_item" data-flag-title="">
     <span class="post-meta-item-icon">
       <span class="octicon octicon-eye"></span> 
     </span>
@@ -339,7 +364,10 @@ $(function() {
 });
 </script>
 
-                        
+                            
+                            
+                            
+                            
                     </span>
                 </div>
             </div>
@@ -361,49 +389,29 @@ $(function() {
                 post-container">
 
                 
-                <header>
-                    <h3>Table of Contents</h3>
-                </header>
-                <nav id="TableOfContents">
-  <ul>
-    <li><a href="#cronograma-de-modelagem">Cronograma de modelagem</a></li>
-    <li><a href="#importância-da-validação">Importância da validação</a></li>
-    <li><a href="#pipelines">Pipelines</a>
-      <ul>
-        <li><a href="#bag-of-words">Bag Of Words</a></li>
-        <li><a href="#n-grams">N-Grams</a></li>
-        <li><a href="#tfidf">TFIDF</a></li>
-        <li><a href="#word2vec">Word2Vec</a></li>
-      </ul>
-    </li>
-    <li><a href="#tuning">Tuning</a></li>
-    <li><a href="#conclusão">Conclusão</a></li>
-  </ul>
-</nav>
-                
                 <p>Resolvemos criar um novo artigo para detalhar melhor o que foi feito na etapa de modelagem do projeto do <a href="https://www.lobdata.com.br/2022/06/08/classificador-bncc/">Classificador BNCC</a>. Assim conseguimos dar mais atenção e justificar algumas escolhas.</p>
 <h2 id="cronograma-de-modelagem">Cronograma de modelagem</h2>
 <p>Nosso intuito foi buscar o <strong>melhor baseline</strong> para nosso problema, mapeando alguns universos de possibilidades, dentre modelos de machine learning e estratégias de transformação de texto em dado numérico.</p>
 <p>Válido lembrar que o dado que está entrando nessa etapa do pipeline está <em>&ldquo;limpo&rdquo;</em>, ou seja, passou pelas etapas de pré-processamentos que julgamos necessárias. Resumido abaixo:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df[<span style="color:#e6db74">&#34;questions_clean&#34;</span>] <span style="color:#f92672">=</span> (
-      df[<span style="color:#e6db74">&#34;questions&#34;</span>]
-      <span style="color:#f92672">.</span>astype(str)
-      <span style="color:#f92672">.</span>apply(html<span style="color:#f92672">.</span>unescape)
-      <span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x: cleaning<span style="color:#f92672">.</span>remove_html(x))
-      <span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x: x<span style="color:#f92672">.</span>lower())
-      <span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x: cleaning<span style="color:#f92672">.</span>remove_punctuation_2(x))
-      <span style="color:#f92672">.</span>apply(cleaning<span style="color:#f92672">.</span>remove_italic_quotes)
-      <span style="color:#f92672">.</span>apply(cleaning<span style="color:#f92672">.</span>remove_open_quotes)
-      <span style="color:#f92672">.</span>apply(cleaning<span style="color:#f92672">.</span>remove_end_quotes)
-      <span style="color:#f92672">.</span>apply(cleaning<span style="color:#f92672">.</span>remove_italic_dquotes)
-      <span style="color:#f92672">.</span>apply(cleaning<span style="color:#f92672">.</span>remove_open_dquotes)
-      <span style="color:#f92672">.</span>apply(cleaning<span style="color:#f92672">.</span>remove_quote)
-      <span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x: cleaning<span style="color:#f92672">.</span>remove_pt_stopwords(x))
-      <span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x: cleaning<span style="color:#f92672">.</span>remove_en_stopwords(x))
-      <span style="color:#f92672">.</span>apply(word_tokenize)
-      <span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x: cleaning<span style="color:#f92672">.</span>remove_punctuation_2(x))
-      )
-</code></pre></div><p>Em questão de modelos, utilizamos:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df[<span style="color:#e6db74">&#34;questions_clean&#34;</span>] <span style="color:#f92672">=</span> (
+</span></span><span style="display:flex;"><span>      df[<span style="color:#e6db74">&#34;questions&#34;</span>]
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">.</span>astype(str)
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">.</span>apply(html<span style="color:#f92672">.</span>unescape)
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x: cleaning<span style="color:#f92672">.</span>remove_html(x))
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x: x<span style="color:#f92672">.</span>lower())
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x: cleaning<span style="color:#f92672">.</span>remove_punctuation_2(x))
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">.</span>apply(cleaning<span style="color:#f92672">.</span>remove_italic_quotes)
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">.</span>apply(cleaning<span style="color:#f92672">.</span>remove_open_quotes)
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">.</span>apply(cleaning<span style="color:#f92672">.</span>remove_end_quotes)
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">.</span>apply(cleaning<span style="color:#f92672">.</span>remove_italic_dquotes)
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">.</span>apply(cleaning<span style="color:#f92672">.</span>remove_open_dquotes)
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">.</span>apply(cleaning<span style="color:#f92672">.</span>remove_quote)
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x: cleaning<span style="color:#f92672">.</span>remove_pt_stopwords(x))
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x: cleaning<span style="color:#f92672">.</span>remove_en_stopwords(x))
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">.</span>apply(word_tokenize)
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x: cleaning<span style="color:#f92672">.</span>remove_punctuation_2(x))
+</span></span><span style="display:flex;"><span>      )
+</span></span></code></pre></div><p>Em questão de modelos, utilizamos:</p>
 <ul>
 <li>Regressão Logística</li>
 <li>Random Forest</li>
@@ -425,51 +433,53 @@ $(function() {
 <p>Esse método de validação preserva a proporção inicial de cada uma das classes envolvidas no target.</p>
 <h2 id="pipelines">Pipelines</h2>
 <p>Os baselines que irão ser utilizados abaixo foram configurados como o seguinte dicionário:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># baselines</span>
-models <span style="color:#f92672">=</span> {
-    <span style="color:#e6db74">&#34;rg_lg&#34;</span>: LogisticRegression(max_iter<span style="color:#f92672">=</span><span style="color:#ae81ff">500</span>, n_jobs<span style="color:#f92672">=</span><span style="color:#ae81ff">8</span>),
-    <span style="color:#e6db74">&#34;r_forest&#34;</span>: RandomForestClassifier(max_depth<span style="color:#f92672">=</span><span style="color:#ae81ff">500</span>, n_jobs<span style="color:#f92672">=</span><span style="color:#ae81ff">8</span>),
-    <span style="color:#e6db74">&#34;lgbm&#34;</span>: LGBMClassifier(n_jobs<span style="color:#f92672">=</span><span style="color:#ae81ff">8</span>),
-}
-
-</code></pre></div><p>Dessa forma, conseguimos iterar em cada um dos modelos e automatizar nossas avaliações.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># baselines</span>
+</span></span><span style="display:flex;"><span>models <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;rg_lg&#34;</span>: LogisticRegression(max_iter<span style="color:#f92672">=</span><span style="color:#ae81ff">500</span>, n_jobs<span style="color:#f92672">=</span><span style="color:#ae81ff">8</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;r_forest&#34;</span>: RandomForestClassifier(max_depth<span style="color:#f92672">=</span><span style="color:#ae81ff">500</span>, n_jobs<span style="color:#f92672">=</span><span style="color:#ae81ff">8</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;lgbm&#34;</span>: LGBMClassifier(n_jobs<span style="color:#f92672">=</span><span style="color:#ae81ff">8</span>),
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Dessa forma, conseguimos iterar em cada um dos modelos e automatizar nossas avaliações.</p>
 <h3 id="bag-of-words">Bag Of Words</h3>
 <p>O BoW (Bag of Words), ou saco de palavras, é uma técnica onde criamos um dicionário de palavras que contemplam nosso dataset, e contamos onde cada uma delas está presente ou não.</p>
-<p><img src="https://ichi.pro/assets/images/max/724/1*hLvya7MXjsSc3NS2SoLMEg.png" alt="bow"></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">kfold <span style="color:#f92672">=</span> StratifiedKFold(n_splits<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>, shuffle<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, random_state<span style="color:#f92672">=</span><span style="color:#ae81ff">2020</span>)
-<span style="color:#66d9ef">for</span> train_idx, val_idx <span style="color:#f92672">in</span> kfold<span style="color:#f92672">.</span>split(
-    modeling<span style="color:#f92672">.</span>X_train[<span style="color:#e6db74">&#34;questions_clean&#34;</span>], modeling<span style="color:#f92672">.</span>y_train
-):
-    <span style="color:#66d9ef">for</span> name, model <span style="color:#f92672">in</span> models<span style="color:#f92672">.</span>items():
-        x_train, y_train <span style="color:#f92672">=</span> (
-            modeling<span style="color:#f92672">.</span>X_train[<span style="color:#e6db74">&#34;questions_clean&#34;</span>]<span style="color:#f92672">.</span>iloc[train_idx],
-            modeling<span style="color:#f92672">.</span>y_train<span style="color:#f92672">.</span>iloc[train_idx],
-        )
-        x_val, y_val <span style="color:#f92672">=</span> (
-            modeling<span style="color:#f92672">.</span>X_train[<span style="color:#e6db74">&#34;questions_clean&#34;</span>]<span style="color:#f92672">.</span>iloc[val_idx],
-            modeling<span style="color:#f92672">.</span>y_train<span style="color:#f92672">.</span>iloc[val_idx],
-        )
-      
-        <span style="color:#75715e"># this will make our bag of words strategy</span>
-        count_vectorizer <span style="color:#f92672">=</span> CountVectorizer()
-        count_vectorizer<span style="color:#f92672">.</span>fit(x_train)
-        X_train_cv <span style="color:#f92672">=</span> count_vectorizer<span style="color:#f92672">.</span>transform(x_train)
-        X_val_cv <span style="color:#f92672">=</span> count_vectorizer<span style="color:#f92672">.</span>transform(x_val)
-        
-        <span style="color:#75715e"># lgbm does not work with int type of data, so </span>
-        <span style="color:#75715e"># we need to convert to float to use</span>
-        <span style="color:#66d9ef">if</span> name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;lgbm&#34;</span>:
-            X_train_cv <span style="color:#f92672">=</span> X_train_cv<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#34;float32&#34;</span>)
-            X_val_cv <span style="color:#f92672">=</span> X_val_cv<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#34;float32&#34;</span>)
-            y_train <span style="color:#f92672">=</span> y_train<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#34;float32&#34;</span>)
-            y_val <span style="color:#f92672">=</span> y_val<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#34;float32&#34;</span>)
+<p>
+  <img src="https://ichi.pro/assets/images/max/724/1*hLvya7MXjsSc3NS2SoLMEg.png" alt="bow">
 
-        cv_classifier <span style="color:#f92672">=</span> model
-        cv_classifier<span style="color:#f92672">.</span>fit(X_train_cv, y_train)
-        y_pred <span style="color:#f92672">=</span> cv_classifier<span style="color:#f92672">.</span>predict(X_val_cv)
-        f1 <span style="color:#f92672">=</span> f1_score(y_val, y_pred, average<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;macro&#34;</span>)
-        print(<span style="color:#e6db74">&#34;Model: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">. Macro avg F1: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(name, f1))
-</code></pre></div><p>Resultados abaixo:</p>
+</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>kfold <span style="color:#f92672">=</span> StratifiedKFold(n_splits<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>, shuffle<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, random_state<span style="color:#f92672">=</span><span style="color:#ae81ff">2020</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> train_idx, val_idx <span style="color:#f92672">in</span> kfold<span style="color:#f92672">.</span>split(
+</span></span><span style="display:flex;"><span>    modeling<span style="color:#f92672">.</span>X_train[<span style="color:#e6db74">&#34;questions_clean&#34;</span>], modeling<span style="color:#f92672">.</span>y_train
+</span></span><span style="display:flex;"><span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> name, model <span style="color:#f92672">in</span> models<span style="color:#f92672">.</span>items():
+</span></span><span style="display:flex;"><span>        x_train, y_train <span style="color:#f92672">=</span> (
+</span></span><span style="display:flex;"><span>            modeling<span style="color:#f92672">.</span>X_train[<span style="color:#e6db74">&#34;questions_clean&#34;</span>]<span style="color:#f92672">.</span>iloc[train_idx],
+</span></span><span style="display:flex;"><span>            modeling<span style="color:#f92672">.</span>y_train<span style="color:#f92672">.</span>iloc[train_idx],
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>        x_val, y_val <span style="color:#f92672">=</span> (
+</span></span><span style="display:flex;"><span>            modeling<span style="color:#f92672">.</span>X_train[<span style="color:#e6db74">&#34;questions_clean&#34;</span>]<span style="color:#f92672">.</span>iloc[val_idx],
+</span></span><span style="display:flex;"><span>            modeling<span style="color:#f92672">.</span>y_train<span style="color:#f92672">.</span>iloc[val_idx],
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># this will make our bag of words strategy</span>
+</span></span><span style="display:flex;"><span>        count_vectorizer <span style="color:#f92672">=</span> CountVectorizer()
+</span></span><span style="display:flex;"><span>        count_vectorizer<span style="color:#f92672">.</span>fit(x_train)
+</span></span><span style="display:flex;"><span>        X_train_cv <span style="color:#f92672">=</span> count_vectorizer<span style="color:#f92672">.</span>transform(x_train)
+</span></span><span style="display:flex;"><span>        X_val_cv <span style="color:#f92672">=</span> count_vectorizer<span style="color:#f92672">.</span>transform(x_val)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># lgbm does not work with int type of data, so </span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># we need to convert to float to use</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;lgbm&#34;</span>:
+</span></span><span style="display:flex;"><span>            X_train_cv <span style="color:#f92672">=</span> X_train_cv<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#34;float32&#34;</span>)
+</span></span><span style="display:flex;"><span>            X_val_cv <span style="color:#f92672">=</span> X_val_cv<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#34;float32&#34;</span>)
+</span></span><span style="display:flex;"><span>            y_train <span style="color:#f92672">=</span> y_train<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#34;float32&#34;</span>)
+</span></span><span style="display:flex;"><span>            y_val <span style="color:#f92672">=</span> y_val<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#34;float32&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        cv_classifier <span style="color:#f92672">=</span> model
+</span></span><span style="display:flex;"><span>        cv_classifier<span style="color:#f92672">.</span>fit(X_train_cv, y_train)
+</span></span><span style="display:flex;"><span>        y_pred <span style="color:#f92672">=</span> cv_classifier<span style="color:#f92672">.</span>predict(X_val_cv)
+</span></span><span style="display:flex;"><span>        f1 <span style="color:#f92672">=</span> f1_score(y_val, y_pred, average<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;macro&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;Model: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">. Macro avg F1: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(name, f1))
+</span></span></code></pre></div><p>Resultados abaixo:</p>
 <table>
 <thead>
 <tr>
@@ -500,7 +510,10 @@ models <span style="color:#f92672">=</span> {
 <li>Tri: agrupamento três a três</li>
 <li>&hellip;</li>
 </ul>
-<p><img src="https://images.deepai.org/glossary-terms/867de904ba9b46869af29cead3194b6c/8ARA1.png" alt="n-grams"></p>
+<p>
+  <img src="https://images.deepai.org/glossary-terms/867de904ba9b46869af29cead3194b6c/8ARA1.png" alt="n-grams">
+
+</p>
 <p>O interessante aqui é que conseguimos pegar um pouco de contexto, já que algumas palavras normalmente aparecem acompanhdas de outras. Por exemplo: <em>Pedro Álvares Cabral</em>, <em>Papai Noel</em>, <em>bom dia</em>&hellip;</p>
 <p>Aqui nós utilizamos duas abordagens:</p>
 <ul>
@@ -508,41 +521,41 @@ models <span style="color:#f92672">=</span> {
 <li>uni-gram + bi-gram</li>
 </ul>
 <p>Como podemos ver no código abaixo:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">kfold <span style="color:#f92672">=</span> StratifiedKFold(n_splits<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>, shuffle<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, random_state<span style="color:#f92672">=</span><span style="color:#ae81ff">2020</span>)
-<span style="color:#66d9ef">for</span> train_idx, val_idx <span style="color:#f92672">in</span> kfold<span style="color:#f92672">.</span>split(
-    modeling<span style="color:#f92672">.</span>X_train[<span style="color:#e6db74">&#34;questions_clean&#34;</span>], modeling<span style="color:#f92672">.</span>y_train
-):
-    <span style="color:#66d9ef">for</span> name, model <span style="color:#f92672">in</span> models<span style="color:#f92672">.</span>items():
-        x_train, y_train <span style="color:#f92672">=</span> (
-            modeling<span style="color:#f92672">.</span>X_train[<span style="color:#e6db74">&#34;questions_clean&#34;</span>]<span style="color:#f92672">.</span>iloc[train_idx],
-            modeling<span style="color:#f92672">.</span>y_train<span style="color:#f92672">.</span>iloc[train_idx],
-        )
-        x_val, y_val <span style="color:#f92672">=</span> (
-            modeling<span style="color:#f92672">.</span>X_train[<span style="color:#e6db74">&#34;questions_clean&#34;</span>]<span style="color:#f92672">.</span>iloc[val_idx],
-            modeling<span style="color:#f92672">.</span>y_train<span style="color:#f92672">.</span>iloc[val_idx],
-        )
-        
-        <span style="color:#75715e"># the param ngram_range is responsible to set</span>
-        <span style="color:#75715e"># how we&#39;ll want the n-grams. (1, 2) is setting</span>
-        <span style="color:#75715e"># to bring uni and bi-gram combination.</span>
-        count_vectorizer <span style="color:#f92672">=</span> CountVectorizer(ngram_range<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>))
-        count_vectorizer<span style="color:#f92672">.</span>fit(x_train)
-        X_train_cv <span style="color:#f92672">=</span> count_vectorizer<span style="color:#f92672">.</span>transform(x_train)
-        X_val_cv <span style="color:#f92672">=</span> count_vectorizer<span style="color:#f92672">.</span>transform(x_val)
-
-        <span style="color:#66d9ef">if</span> name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;lgbm&#34;</span>:
-            X_train_cv <span style="color:#f92672">=</span> X_train_cv<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#34;float32&#34;</span>)
-            X_val_cv <span style="color:#f92672">=</span> X_val_cv<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#34;float32&#34;</span>)
-            y_train <span style="color:#f92672">=</span> y_train<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#34;float32&#34;</span>)
-            y_val <span style="color:#f92672">=</span> y_val<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#34;float32&#34;</span>)
-
-        cv_classifier <span style="color:#f92672">=</span> model
-        cv_classifier<span style="color:#f92672">.</span>fit(X_train_cv, y_train)
-        y_pred <span style="color:#f92672">=</span> cv_classifier<span style="color:#f92672">.</span>predict(X_val_cv)
-        f1 <span style="color:#f92672">=</span> f1_score(y_val, y_pred, average<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;macro&#34;</span>)
-        <span style="color:#75715e"># print(&#39;ROC AUC - {}: {}&#39;.format(name, mean))</span>
-        print(<span style="color:#e6db74">&#34;Model: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">. Macro avg F1: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(name, f1))
-</code></pre></div><p>Resultados apenas para o uni-gram + bi-gram:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>kfold <span style="color:#f92672">=</span> StratifiedKFold(n_splits<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>, shuffle<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, random_state<span style="color:#f92672">=</span><span style="color:#ae81ff">2020</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> train_idx, val_idx <span style="color:#f92672">in</span> kfold<span style="color:#f92672">.</span>split(
+</span></span><span style="display:flex;"><span>    modeling<span style="color:#f92672">.</span>X_train[<span style="color:#e6db74">&#34;questions_clean&#34;</span>], modeling<span style="color:#f92672">.</span>y_train
+</span></span><span style="display:flex;"><span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> name, model <span style="color:#f92672">in</span> models<span style="color:#f92672">.</span>items():
+</span></span><span style="display:flex;"><span>        x_train, y_train <span style="color:#f92672">=</span> (
+</span></span><span style="display:flex;"><span>            modeling<span style="color:#f92672">.</span>X_train[<span style="color:#e6db74">&#34;questions_clean&#34;</span>]<span style="color:#f92672">.</span>iloc[train_idx],
+</span></span><span style="display:flex;"><span>            modeling<span style="color:#f92672">.</span>y_train<span style="color:#f92672">.</span>iloc[train_idx],
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>        x_val, y_val <span style="color:#f92672">=</span> (
+</span></span><span style="display:flex;"><span>            modeling<span style="color:#f92672">.</span>X_train[<span style="color:#e6db74">&#34;questions_clean&#34;</span>]<span style="color:#f92672">.</span>iloc[val_idx],
+</span></span><span style="display:flex;"><span>            modeling<span style="color:#f92672">.</span>y_train<span style="color:#f92672">.</span>iloc[val_idx],
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># the param ngram_range is responsible to set</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># how we&#39;ll want the n-grams. (1, 2) is setting</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># to bring uni and bi-gram combination.</span>
+</span></span><span style="display:flex;"><span>        count_vectorizer <span style="color:#f92672">=</span> CountVectorizer(ngram_range<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>))
+</span></span><span style="display:flex;"><span>        count_vectorizer<span style="color:#f92672">.</span>fit(x_train)
+</span></span><span style="display:flex;"><span>        X_train_cv <span style="color:#f92672">=</span> count_vectorizer<span style="color:#f92672">.</span>transform(x_train)
+</span></span><span style="display:flex;"><span>        X_val_cv <span style="color:#f92672">=</span> count_vectorizer<span style="color:#f92672">.</span>transform(x_val)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;lgbm&#34;</span>:
+</span></span><span style="display:flex;"><span>            X_train_cv <span style="color:#f92672">=</span> X_train_cv<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#34;float32&#34;</span>)
+</span></span><span style="display:flex;"><span>            X_val_cv <span style="color:#f92672">=</span> X_val_cv<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#34;float32&#34;</span>)
+</span></span><span style="display:flex;"><span>            y_train <span style="color:#f92672">=</span> y_train<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#34;float32&#34;</span>)
+</span></span><span style="display:flex;"><span>            y_val <span style="color:#f92672">=</span> y_val<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#34;float32&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        cv_classifier <span style="color:#f92672">=</span> model
+</span></span><span style="display:flex;"><span>        cv_classifier<span style="color:#f92672">.</span>fit(X_train_cv, y_train)
+</span></span><span style="display:flex;"><span>        y_pred <span style="color:#f92672">=</span> cv_classifier<span style="color:#f92672">.</span>predict(X_val_cv)
+</span></span><span style="display:flex;"><span>        f1 <span style="color:#f92672">=</span> f1_score(y_val, y_pred, average<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;macro&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># print(&#39;ROC AUC - {}: {}&#39;.format(name, mean))</span>
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;Model: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">. Macro avg F1: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(name, f1))
+</span></span></code></pre></div><p>Resultados apenas para o uni-gram + bi-gram:</p>
 <table>
 <thead>
 <tr>
@@ -566,43 +579,46 @@ models <span style="color:#f92672">=</span> {
 </tbody>
 </table>
 <h3 id="tfidf">TFIDF</h3>
-<p><img src="https://miro.medium.com/max/1200/1*qQgnyPLDIkUmeZKN2_ZWbQ.png" alt="tfidf"></p>
+<p>
+  <img src="https://miro.medium.com/max/1200/1*qQgnyPLDIkUmeZKN2_ZWbQ.png" alt="tfidf">
+
+</p>
 <p>Como pode ser visto na imagem acima, aqui nós conseguimos identificar o quão importante cada palavra é, em relação ao todo que estamos tentando prever. Por exemplo: <em>quantas vezes a palavra soma aparece no texto de uma questão de matemática, frente a quantidade de vezes que ela aparece em todas as questões de matemática que temos na base?</em></p>
 <p>Utilizamos para isso, o código abaixo:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">kfold <span style="color:#f92672">=</span> StratifiedKFold(n_splits<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>, shuffle<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, random_state<span style="color:#f92672">=</span><span style="color:#ae81ff">2020</span>)
-<span style="color:#66d9ef">for</span> train_idx, val_idx <span style="color:#f92672">in</span> kfold<span style="color:#f92672">.</span>split(
-    modeling<span style="color:#f92672">.</span>X_train[<span style="color:#e6db74">&#34;questions_clean&#34;</span>], modeling<span style="color:#f92672">.</span>y_train
-):
-    <span style="color:#66d9ef">for</span> name, model <span style="color:#f92672">in</span> models<span style="color:#f92672">.</span>items():
-        x_train, y_train <span style="color:#f92672">=</span> (
-            modeling<span style="color:#f92672">.</span>X_train[<span style="color:#e6db74">&#34;questions_clean&#34;</span>]<span style="color:#f92672">.</span>iloc[train_idx],
-            modeling<span style="color:#f92672">.</span>y_train<span style="color:#f92672">.</span>iloc[train_idx],
-        )
-        x_val, y_val <span style="color:#f92672">=</span> (
-            modeling<span style="color:#f92672">.</span>X_train[<span style="color:#e6db74">&#34;questions_clean&#34;</span>]<span style="color:#f92672">.</span>iloc[val_idx],
-            modeling<span style="color:#f92672">.</span>y_train<span style="color:#f92672">.</span>iloc[val_idx],
-        )
-        
-        <span style="color:#75715e"># here we are performing tfidf on training data</span>
-        <span style="color:#75715e"># and choosing n-grams of 1 and 2</span>
-        tfidf <span style="color:#f92672">=</span> TfidfVectorizer(ngram_range<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>))
-        tfidf<span style="color:#f92672">.</span>fit(x_train)
-        X_train_cv <span style="color:#f92672">=</span> tfidf<span style="color:#f92672">.</span>transform(x_train)
-        X_val_cv <span style="color:#f92672">=</span> tfidf<span style="color:#f92672">.</span>transform(x_val)
-
-        <span style="color:#66d9ef">if</span> name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;lgbm&#34;</span>:
-            X_train_cv <span style="color:#f92672">=</span> X_train_cv<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#34;float32&#34;</span>)
-            X_val_cv <span style="color:#f92672">=</span> X_val_cv<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#34;float32&#34;</span>)
-            y_train <span style="color:#f92672">=</span> y_train<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#34;float32&#34;</span>)
-            y_val <span style="color:#f92672">=</span> y_val<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#34;float32&#34;</span>)
-
-        cv_classifier <span style="color:#f92672">=</span> model
-        cv_classifier<span style="color:#f92672">.</span>fit(X_train_cv, y_train)
-        y_pred <span style="color:#f92672">=</span> cv_classifier<span style="color:#f92672">.</span>predict(X_val_cv)
-        f1 <span style="color:#f92672">=</span> f1_score(y_val, y_pred, average<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;macro&#34;</span>)
-
-        print(<span style="color:#e6db74">&#34;Model: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">. Macro avg F1: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(name, f1))
-</code></pre></div><p>Resultados apenas para o uni-gram + bi-gram::</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>kfold <span style="color:#f92672">=</span> StratifiedKFold(n_splits<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>, shuffle<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, random_state<span style="color:#f92672">=</span><span style="color:#ae81ff">2020</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> train_idx, val_idx <span style="color:#f92672">in</span> kfold<span style="color:#f92672">.</span>split(
+</span></span><span style="display:flex;"><span>    modeling<span style="color:#f92672">.</span>X_train[<span style="color:#e6db74">&#34;questions_clean&#34;</span>], modeling<span style="color:#f92672">.</span>y_train
+</span></span><span style="display:flex;"><span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> name, model <span style="color:#f92672">in</span> models<span style="color:#f92672">.</span>items():
+</span></span><span style="display:flex;"><span>        x_train, y_train <span style="color:#f92672">=</span> (
+</span></span><span style="display:flex;"><span>            modeling<span style="color:#f92672">.</span>X_train[<span style="color:#e6db74">&#34;questions_clean&#34;</span>]<span style="color:#f92672">.</span>iloc[train_idx],
+</span></span><span style="display:flex;"><span>            modeling<span style="color:#f92672">.</span>y_train<span style="color:#f92672">.</span>iloc[train_idx],
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>        x_val, y_val <span style="color:#f92672">=</span> (
+</span></span><span style="display:flex;"><span>            modeling<span style="color:#f92672">.</span>X_train[<span style="color:#e6db74">&#34;questions_clean&#34;</span>]<span style="color:#f92672">.</span>iloc[val_idx],
+</span></span><span style="display:flex;"><span>            modeling<span style="color:#f92672">.</span>y_train<span style="color:#f92672">.</span>iloc[val_idx],
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># here we are performing tfidf on training data</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># and choosing n-grams of 1 and 2</span>
+</span></span><span style="display:flex;"><span>        tfidf <span style="color:#f92672">=</span> TfidfVectorizer(ngram_range<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>))
+</span></span><span style="display:flex;"><span>        tfidf<span style="color:#f92672">.</span>fit(x_train)
+</span></span><span style="display:flex;"><span>        X_train_cv <span style="color:#f92672">=</span> tfidf<span style="color:#f92672">.</span>transform(x_train)
+</span></span><span style="display:flex;"><span>        X_val_cv <span style="color:#f92672">=</span> tfidf<span style="color:#f92672">.</span>transform(x_val)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;lgbm&#34;</span>:
+</span></span><span style="display:flex;"><span>            X_train_cv <span style="color:#f92672">=</span> X_train_cv<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#34;float32&#34;</span>)
+</span></span><span style="display:flex;"><span>            X_val_cv <span style="color:#f92672">=</span> X_val_cv<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#34;float32&#34;</span>)
+</span></span><span style="display:flex;"><span>            y_train <span style="color:#f92672">=</span> y_train<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#34;float32&#34;</span>)
+</span></span><span style="display:flex;"><span>            y_val <span style="color:#f92672">=</span> y_val<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#34;float32&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        cv_classifier <span style="color:#f92672">=</span> model
+</span></span><span style="display:flex;"><span>        cv_classifier<span style="color:#f92672">.</span>fit(X_train_cv, y_train)
+</span></span><span style="display:flex;"><span>        y_pred <span style="color:#f92672">=</span> cv_classifier<span style="color:#f92672">.</span>predict(X_val_cv)
+</span></span><span style="display:flex;"><span>        f1 <span style="color:#f92672">=</span> f1_score(y_val, y_pred, average<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;macro&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;Model: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">. Macro avg F1: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(name, f1))
+</span></span></code></pre></div><p>Resultados apenas para o uni-gram + bi-gram::</p>
 <table>
 <thead>
 <tr>
@@ -630,48 +646,48 @@ models <span style="color:#f92672">=</span> {
 <p>Com o Word2vec, foi possível, por exemplo, realizar a interpretação abaixo:</p>
 <p><em>King - Man + Woman = Queen</em></p>
 <p>Com o Word2vec nós podemos contornar o problema de dimensionalidade, e representar um texto qualquer em um número de features pre-determinado que melhor capte o contexto analisado. Abaixo você pode ver como fizemos.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># creating the wv object</span>
-wv <span style="color:#f92672">=</span> Word2Vec(
-    sentences<span style="color:#f92672">=</span>modeling<span style="color:#f92672">.</span>X_train[<span style="color:#e6db74">&#34;questions_clean&#34;</span>]<span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x: x<span style="color:#f92672">.</span>split()),
-    vector_size<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>,
-    window<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>,
-    min_count<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>,
-    workers<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>
-)
-
-<span style="color:#75715e"># function to transform those words</span>
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">transforma_palavra</span>(question):
-    lista_vetores <span style="color:#f92672">=</span> [wv<span style="color:#f92672">.</span>wv<span style="color:#f92672">.</span>get_vector(x) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> question<span style="color:#f92672">.</span>split()]
-    <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>sum(lista_vetores, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
-
-<span style="color:#75715e"># applying to those questions</span>
-vetores_embeddings <span style="color:#f92672">=</span> modeling<span style="color:#f92672">.</span>X_train[<span style="color:#e6db74">&#34;questions_clean&#34;</span>]<span style="color:#f92672">.</span>apply(transforma_palavra)
-
-<span style="color:#75715e"># Criando um Dataframe com os resultados</span>
-df_embeddings <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame<span style="color:#f92672">.</span>from_dict(
-    dict(zip(vetores_embeddings<span style="color:#f92672">.</span>index, vetores_embeddings<span style="color:#f92672">.</span>values))
-)<span style="color:#f92672">.</span>T
-<span style="color:#75715e"># Definindo os nomes das colunas</span>
-df_embeddings<span style="color:#f92672">.</span>columns <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;embedding_&#34;</span> <span style="color:#f92672">+</span> str(i) <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">101</span>)]
-
-<span style="color:#75715e"># Vamos também trazer o tweet original e o sentimento</span>
-df_embeddings[<span style="color:#e6db74">&#34;question&#34;</span>] <span style="color:#f92672">=</span> modeling<span style="color:#f92672">.</span>X_train[<span style="color:#e6db74">&#34;questions_clean&#34;</span>]
-df_embeddings[<span style="color:#e6db74">&#34;question_target&#34;</span>] <span style="color:#f92672">=</span> modeling<span style="color:#f92672">.</span>X_train[<span style="color:#e6db74">&#34;target&#34;</span>]<span style="color:#f92672">.</span>values
-
-<span style="color:#75715e"># splitting those embeddings</span>
-X_emb <span style="color:#f92672">=</span> df_embeddings[df_embeddings<span style="color:#f92672">.</span>columns[:<span style="color:#ae81ff">100</span>]]
-y_emb <span style="color:#f92672">=</span> df_embeddings<span style="color:#f92672">.</span>question_target
-
-X_train_emb, X_test_emb, y_train_emb, y_test_emb <span style="color:#f92672">=</span> train_test_split(
-    X_emb, y_emb, test_size<span style="color:#f92672">=</span><span style="color:#ae81ff">0.2</span>, stratify<span style="color:#f92672">=</span>y_emb
-)
-
-
-<span style="color:#66d9ef">for</span> nome, modelo <span style="color:#f92672">in</span> modelos_teste<span style="color:#f92672">.</span>items():
-    metrica <span style="color:#f92672">=</span> cross_val_score(
-        modelo, X_train_emb, y_train_emb, cv<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>, scoring<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;f1_macro&#34;</span>
-    )<span style="color:#f92672">.</span>mean()
-</code></pre></div><table>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># creating the wv object</span>
+</span></span><span style="display:flex;"><span>wv <span style="color:#f92672">=</span> Word2Vec(
+</span></span><span style="display:flex;"><span>    sentences<span style="color:#f92672">=</span>modeling<span style="color:#f92672">.</span>X_train[<span style="color:#e6db74">&#34;questions_clean&#34;</span>]<span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x: x<span style="color:#f92672">.</span>split()),
+</span></span><span style="display:flex;"><span>    vector_size<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>,
+</span></span><span style="display:flex;"><span>    window<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>,
+</span></span><span style="display:flex;"><span>    min_count<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>    workers<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># function to transform those words</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">transforma_palavra</span>(question):
+</span></span><span style="display:flex;"><span>    lista_vetores <span style="color:#f92672">=</span> [wv<span style="color:#f92672">.</span>wv<span style="color:#f92672">.</span>get_vector(x) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> question<span style="color:#f92672">.</span>split()]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>sum(lista_vetores, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># applying to those questions</span>
+</span></span><span style="display:flex;"><span>vetores_embeddings <span style="color:#f92672">=</span> modeling<span style="color:#f92672">.</span>X_train[<span style="color:#e6db74">&#34;questions_clean&#34;</span>]<span style="color:#f92672">.</span>apply(transforma_palavra)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Criando um Dataframe com os resultados</span>
+</span></span><span style="display:flex;"><span>df_embeddings <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame<span style="color:#f92672">.</span>from_dict(
+</span></span><span style="display:flex;"><span>    dict(zip(vetores_embeddings<span style="color:#f92672">.</span>index, vetores_embeddings<span style="color:#f92672">.</span>values))
+</span></span><span style="display:flex;"><span>)<span style="color:#f92672">.</span>T
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Definindo os nomes das colunas</span>
+</span></span><span style="display:flex;"><span>df_embeddings<span style="color:#f92672">.</span>columns <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;embedding_&#34;</span> <span style="color:#f92672">+</span> str(i) <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">101</span>)]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Vamos também trazer o tweet original e o sentimento</span>
+</span></span><span style="display:flex;"><span>df_embeddings[<span style="color:#e6db74">&#34;question&#34;</span>] <span style="color:#f92672">=</span> modeling<span style="color:#f92672">.</span>X_train[<span style="color:#e6db74">&#34;questions_clean&#34;</span>]
+</span></span><span style="display:flex;"><span>df_embeddings[<span style="color:#e6db74">&#34;question_target&#34;</span>] <span style="color:#f92672">=</span> modeling<span style="color:#f92672">.</span>X_train[<span style="color:#e6db74">&#34;target&#34;</span>]<span style="color:#f92672">.</span>values
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># splitting those embeddings</span>
+</span></span><span style="display:flex;"><span>X_emb <span style="color:#f92672">=</span> df_embeddings[df_embeddings<span style="color:#f92672">.</span>columns[:<span style="color:#ae81ff">100</span>]]
+</span></span><span style="display:flex;"><span>y_emb <span style="color:#f92672">=</span> df_embeddings<span style="color:#f92672">.</span>question_target
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>X_train_emb, X_test_emb, y_train_emb, y_test_emb <span style="color:#f92672">=</span> train_test_split(
+</span></span><span style="display:flex;"><span>    X_emb, y_emb, test_size<span style="color:#f92672">=</span><span style="color:#ae81ff">0.2</span>, stratify<span style="color:#f92672">=</span>y_emb
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> nome, modelo <span style="color:#f92672">in</span> modelos_teste<span style="color:#f92672">.</span>items():
+</span></span><span style="display:flex;"><span>    metrica <span style="color:#f92672">=</span> cross_val_score(
+</span></span><span style="display:flex;"><span>        modelo, X_train_emb, y_train_emb, cv<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>, scoring<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;f1_macro&#34;</span>
+</span></span><span style="display:flex;"><span>    )<span style="color:#f92672">.</span>mean()
+</span></span></code></pre></div><table>
 <thead>
 <tr>
 <th>Modelos</th>
@@ -705,6 +721,7 @@ X_train_emb, X_test_emb, y_train_emb, y_test_emb <span style="color:#f92672">=</
 
                 
 
+                
                 <hr>
                 <ul class="pager">
                     
@@ -714,14 +731,37 @@ X_train_emb, X_test_emb, y_train_emb, y_test_emb <span style="color:#f92672">=</
                     </li>
                     
                     
+                    <li class="next">
+                        <a href="/2023/06/21/mynotes-01/" data-toggle="tooltip" data-placement="top" title="mynotes 01">Next
+                            Post &rarr;</a>
+                    </li>
+                    
                 </ul>
+                
 
                 
-<div id="disqus-comment"></div>
 
 
 
             </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
             
             <div class="
                 col-lg-8 col-lg-offset-2
@@ -734,6 +774,8 @@ X_train_emb, X_test_emb, y_train_emb, y_test_emb <span style="color:#f92672">=</
                     <hr class="hidden-sm hidden-xs">
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
+                        
+                        
                         
                         
                         
@@ -767,10 +809,6 @@ X_train_emb, X_test_emb, y_train_emb, y_test_emb <span style="color:#f92672">=</
                         
                         
                         
-                        <a href="/tags/data-visualization" title="data-visualization">
-                            data-visualization
-                        </a>
-                        
                         
                         
                         <a href="/tags/docker" title="docker">
@@ -791,9 +829,9 @@ X_train_emb, X_test_emb, y_train_emb, y_test_emb <span style="color:#f92672">=</
                         
                         
                         
-                        <a href="/tags/ggplot2" title="ggplot2">
-                            ggplot2
-                        </a>
+                        
+                        
+                        
                         
                         
                         
@@ -826,8 +864,6 @@ X_train_emb, X_test_emb, y_train_emb, y_test_emb <span style="color:#f92672">=</
                         <a href="/tags/project" title="project">
                             project
                         </a>
-                        
-                        
                         
                         
                         
@@ -892,52 +928,66 @@ X_train_emb, X_test_emb, y_train_emb, y_test_emb <span style="color:#f92672">=</
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <ul class="list-inline text-center">
-                    
-                    <li>
-                       <a href="" rel="alternate" type="application/rss+xml" title="LOB.DATA" >
-                           <span class="fa-stack fa-lg">
-                               <i class="fa fa-circle fa-stack-2x"></i>
-                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
-                           </span>
-                       </a>
-                    </li>
+                <ul class="list-inline text-center">                  
                     
                     
                     
+                    
+                    
+
+		            
                     
                     
                     <li>
                         <a target="_blank" href="https://github.com/LucianoBatista">
                             <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
                     </li>
-		                
+		            
+                    
                     
                     
                     <li>
                         <a target="_blank" href="https://www.linkedin.com/in/lucianobatistads/">
                             <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
                     </li>
-		                
+		           
                     
-                </ul>
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="LOB.DATA" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fas fa-circle fa-stack-2x"></i>
+                               <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+            
+             </ul>
 		<p class="copyright text-muted">
-                    A <a href="https://gohugo.io/">HUGO</a> <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite</a> page build with ♥ and powered by <a href="https://www.netlify.com/">Netlify</a>&nbsp;&nbsp;&bull;&nbsp;&nbsp;Header images by <a href="https://www.pexels.com/photo/climate-sea-landscape-nature-35626/">Pexels</a>
-    </p>
-    <p class="copyright text-muted" style='font-size:8pt;'>
-                    &copy; LOB.DATA 2019–2021. All rights reserved.&nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="https://lobdata.com.br/top/conduct/">Code of Conduct</a>
+                    Copyright &copy; LOB.DATA 2023
                     <br>
-                    Content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>.
-                    <br>
-                    <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
                 </p>
             </div>
         </div>
@@ -948,7 +998,7 @@ X_train_emb, X_test_emb, y_train_emb, y_test_emb <span style="color:#f92672">=</
 
 
 <script>
-    function async(u, c) {
+    function loadAsync(u, c) {
       var d = document, t = 'script',
           o = d.createElement(t),
           s = d.getElementsByTagName(t)[0];
@@ -966,10 +1016,10 @@ X_train_emb, X_test_emb, y_train_emb, y_test_emb <span style="color:#f92672">=</
 <script>
     
     if($('#tag_cloud').length !== 0){
-        async("/js/jquery.tagcloud.js",function(){
+        loadAsync("/js/jquery.tagcloud.js",function(){
             $.fn.tagcloud.defaults = {
                 
-                color: {start: '#bbbbee', end: '#28a87d'},
+                color: {start: '#bbbbee', end: '#0085a1'},
             };
             $('#tag_cloud a').tagcloud();
         })
@@ -978,7 +1028,7 @@ X_train_emb, X_test_emb, y_train_emb, y_test_emb <span style="color:#f92672">=</
 
 
 <script>
-    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
         var $nav = document.querySelector("nav");
         if($nav) FastClick.attach($nav);
     })
@@ -989,16 +1039,65 @@ X_train_emb, X_test_emb, y_train_emb, y_test_emb <span style="color:#f92672">=</
 
 
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'G-5NWJ42KMKC', 'auto');
-	
-	ga('send', 'pageview');
-}
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
 
 
 

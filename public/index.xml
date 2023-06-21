@@ -6,7 +6,17 @@
     <description>Recent content on LOB.DATA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 14 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 21 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>mynotes 01</title>
+      <link>https://www.lobdata.com.br/2023/06/21/mynotes-01/</link>
+      <pubDate>Wed, 21 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/2023/06/21/mynotes-01/</guid>
+      <description>Estou iniciando um série de posts aqui no blog sobre IA Generativa. O conteúdo é como se fossem minhas anotações sobre um livro que estou lendo, e a intenção é que a cada capítulo eu traga um compilado aqui do que aprendi, por isso estarei chamando de mynotes.
+Teremos teoria e código, e além disso vou tentar dar meus 2 centavos de contribuição relacionando com fontes externas que talvez faça sentido relacionar.</description>
+    </item>
+    
     <item>
       <title>Classificador BNCC Pt.2</title>
       <link>https://www.lobdata.com.br/2022/06/14/classificador-bncc-pt.2/</link>
@@ -56,8 +66,8 @@ Nesse tutorial estou me baseando em um minicurso do DataCamp Writing Efficient C
       <guid>https://www.lobdata.com.br/2021/08/01/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.5/</guid>
       <description>Nos Capítulos Anteriores &amp;hellip; Como dito anteriormente, hoje vamos configurar o SQLAlchemy!!
 Essa é a parte 5 do nosso projeto do EconoWallet e se você quiser verificar o que já fizemos até o momento, acesse os links abaixo:
- Parte 1 Parte 2 Parte 3 Parte 4 Parte 5  Sem enrolação, vamos logo ao que interessa!!!
-Reorganizando o projeto Antes de configurar o ORM, vamos ajustar algumas coisas no nosso diretório.</description>
+Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Sem enrolação, vamos logo ao que interessa!!!
+Reorganizando o projeto Antes de configurar o ORM, vamos ajustar algumas coisas no nosso diretório. Como estamos seguindo para um estágio mais maduro da aplicação e que você já compreende o básico de configuração do FastAPI, precisaremos agora separar melhor as competências dentro do projeto.</description>
     </item>
     
     <item>
@@ -68,7 +78,7 @@ Reorganizando o projeto Antes de configurar o ORM, vamos ajustar algumas coisas 
       <guid>https://www.lobdata.com.br/2021/07/31/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.4/</guid>
       <description>Nos Capítulos Anteriores &amp;hellip; Após um tempinho sem postar nada, vamos dar continuidade a essa série sobre como desenvolver uma API pronta pro Deploy! 🚀 🚀
 Essa é a parte 4 do nosso projeto do EconoWallet e se você quiser verificar o que já fizemos até o momento, acesse os links abaixo:
- Parte 1 Parte 2 Parte 3 Parte 4 Parte 5  Dando continuidade a nossa aplicação, hoje vamos configurar qual será nosso banco de dados.</description>
+Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Dando continuidade a nossa aplicação, hoje vamos configurar qual será nosso banco de dados.</description>
     </item>
     
     <item>
@@ -78,7 +88,8 @@ Essa é a parte 4 do nosso projeto do EconoWallet e se você quiser verificar o 
       
       <guid>https://www.lobdata.com.br/2021/04/08/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.3/</guid>
       <description>Nos Capítulos Anteriores &amp;hellip; Essa é a parte 3 do nosso projeto do EconoWallet, se quiser verificar o que já fizemos até o momento, verifique os links abaixo:
- Parte 1 Parte 2 Parte 3 Parte 4 Parte 5  Dando continuidade a nossa aplicação, hoje vamos iniciar a configuração do Docker em nosso ambiente. E antes de mais nada, precisaremos instalar o Docker e o Docker Compose na nossa máquina.</description>
+Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Dando continuidade a nossa aplicação, hoje vamos iniciar a configuração do Docker em nosso ambiente. E antes de mais nada, precisaremos instalar o Docker e o Docker Compose na nossa máquina.
+A documentação do Docker para instalação é muito bem explicada.</description>
     </item>
     
     <item>
@@ -89,7 +100,7 @@ Essa é a parte 4 do nosso projeto do EconoWallet e se você quiser verificar o 
       <guid>https://www.lobdata.com.br/2021/04/03/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.2/</guid>
       <description>Neste tutorial iremos iniciar o Econowallet, essa aplicação que vai contar com uma API para controle financeiro de suas despesas e investimentos, se você não viu o post passado (onde explico mais sobre meu objetivo com esse projeto) clique aqui.
 Tópicos que serão abordados nesse post:
- Setup Inicial: main.py e config.py Rotas async  Setup Como todo projeto python, é uma boa prática que você crie um ambiente virtual isolando as dependências do projeto, isso evita que você possa ter conflito entre diferentes libs de outros projetos que esteja trabalhando.</description>
+Setup Inicial: main.py e config.py Rotas async Setup Como todo projeto python, é uma boa prática que você crie um ambiente virtual isolando as dependências do projeto, isso evita que você possa ter conflito entre diferentes libs de outros projetos que esteja trabalhando.</description>
     </item>
     
     <item>
@@ -107,8 +118,8 @@ Tópicos que serão abordados nesse post:
       <pubDate>Sun, 25 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>https://www.lobdata.com.br/2020/10/25/demand-forecasting-of-brazilian-commodities/</guid>
-      <description>Demand Forecasting of Brazilian Commodities  Soybean, Corn, Sugar, Soybean Meal, Soybean Oil and Wheat (left to right).
- Demand Forecasting is a technique for estimation of probable demand for a product or services. It is based on the analysis of past demand for that product or service in the present market condition. Demand forecasting should be done on a scientific basis and facts and events related to forecasting should be considered.</description>
+      <description>Demand Forecasting of Brazilian Commodities Soybean, Corn, Sugar, Soybean Meal, Soybean Oil and Wheat (left to right).
+Demand Forecasting is a technique for estimation of probable demand for a product or services. It is based on the analysis of past demand for that product or service in the present market condition. Demand forecasting should be done on a scientific basis and facts and events related to forecasting should be considered.</description>
     </item>
     
     <item>
@@ -119,17 +130,7 @@ Tópicos que serão abordados nesse post:
       <guid>https://www.lobdata.com.br/2020/10/13/effective-approach-to-analyze-correlation-coefficients/</guid>
       <description>Correlation analysis is a key task when you&amp;rsquo;re exploring any dataset. The principal objective is to find linear relationships between features that can help to understanding the big picture.
 Probably, the best way to see correlations between variables is to use scatterplots, but in most of time you&amp;rsquo;re working with a high dimensional dataset with a high number of variables, in these situations you have two major problems:
- It&amp;rsquo;s a high computational task to plot lots of scatterplot, specially if you have a big dataset.</description>
-    </item>
-    
-    <item>
-      <title>How to automate exploratory plots?</title>
-      <link>https://www.lobdata.com.br/2020/10/02/how-to-automate-exploratory-plots/</link>
-      <pubDate>Fri, 02 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lobdata.com.br/2020/10/02/how-to-automate-exploratory-plots/</guid>
-      <description>When you are plotting different charts during your exploratory data analysis, you sometimes end up doing a lot of repeated coding. That&amp;rsquo;s moments you feel like would faster if you go back to excel or other tools you feel more comfortable, and that&amp;rsquo;s great if you have no time to learn some new technique or adjust some parameters by coding.
-What I want to show here is a batter way to do your EDA, and with less unnecessary coding and more flexibility.</description>
+It&amp;rsquo;s a high computational task to plot lots of scatterplot, specially if you have a big dataset.</description>
     </item>
     
     <item>
@@ -161,7 +162,7 @@ Measuring and analyzing the correlation between two variables, in the context of
       <description>Segmentação de clientes de Food Delivery Neste projeto o objetivo é segmentar clientes de um food delivery. A segmentação permite que profissionais de marketing e product managers possam identificar subconjuntos de público-alvo para melhor adaptar suas estratégias.
 O dataset utilizado foi cedido pela Data Science Academy, e pode ser encontrado no meu github juntamente com todo o código apresentado aqui.
 Um breve overview do que será abordado no projeto:
- Preparação de dados Visualização de dados Padronização de variáveis Clusterização com K-Means Avaliação do melhor número de cluster com o índice de Calinski-Harabasz Bootstrap para avaliar consistência do cluster Visualização dos clusters  Sem mais delongas, vamos ao código!</description>
+Preparação de dados Visualização de dados Padronização de variáveis Clusterização com K-Means Avaliação do melhor número de cluster com o índice de Calinski-Harabasz Bootstrap para avaliar consistência do cluster Visualização dos clusters Sem mais delongas, vamos ao código!</description>
     </item>
     
     <item>

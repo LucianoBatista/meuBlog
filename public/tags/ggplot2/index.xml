@@ -15,17 +15,7 @@
       <guid>https://www.lobdata.com.br/2020/10/13/effective-approach-to-analyze-correlation-coefficients/</guid>
       <description>Correlation analysis is a key task when you&amp;rsquo;re exploring any dataset. The principal objective is to find linear relationships between features that can help to understanding the big picture.
 Probably, the best way to see correlations between variables is to use scatterplots, but in most of time you&amp;rsquo;re working with a high dimensional dataset with a high number of variables, in these situations you have two major problems:
- It&amp;rsquo;s a high computational task to plot lots of scatterplot, specially if you have a big dataset.</description>
-    </item>
-    
-    <item>
-      <title>How to automate exploratory plots?</title>
-      <link>https://www.lobdata.com.br/2020/10/02/how-to-automate-exploratory-plots/</link>
-      <pubDate>Fri, 02 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lobdata.com.br/2020/10/02/how-to-automate-exploratory-plots/</guid>
-      <description>When you are plotting different charts during your exploratory data analysis, you sometimes end up doing a lot of repeated coding. That&amp;rsquo;s moments you feel like would faster if you go back to excel or other tools you feel more comfortable, and that&amp;rsquo;s great if you have no time to learn some new technique or adjust some parameters by coding.
-What I want to show here is a batter way to do your EDA, and with less unnecessary coding and more flexibility.</description>
+It&amp;rsquo;s a high computational task to plot lots of scatterplot, specially if you have a big dataset.</description>
     </item>
     
   </channel>

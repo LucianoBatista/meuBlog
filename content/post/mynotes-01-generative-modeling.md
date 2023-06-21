@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "#mynotes 01"
+title: "mynotes 01"
 subtitle: "Generative Modeling"
 date: 2023-06-21
 author: "Luciano"
