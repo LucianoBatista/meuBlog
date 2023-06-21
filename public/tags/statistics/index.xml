@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Statistics - Tag - My New Hugo Site</title>
+        <link>https://www.lobdata.com.br/tags/statistics/</link>
+        <description>Statistics - Tag - My New Hugo Site</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 20 Sep 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/statistics/" rel="self" type="application/rss+xml" /><item>
+    <title>Hypothesis Testing by Computational Methodology - Part 1</title>
+    <link>https://www.lobdata.com.br/posts/hype_test/</link>
+    <pubDate>Sun, 20 Sep 2020 00:00:00 &#43;0000</pubDate>
+    <author>Luciano</author>
+    <guid>https://www.lobdata.com.br/posts/hype_test/</guid>
+    <description><![CDATA[Introduction This is the first of two articles that we&rsquo;ll talk about two different approaches to perform hypotheses tests, covering the classical and computational methodologies. In the end I&rsquo;ll show you one R package (Infer) capable to execute any of these methods in an easy, flexible, and less error-prone way.
+In the second article, we&rsquo;ll go deeper in a hands-on experiment using the Infer package, if you already know the package and want to see more code than text, click here.]]></description>
+</item>
+</channel>
+</rss>

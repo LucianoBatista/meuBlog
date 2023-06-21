@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Effective approach to analyze correlation coefficients - My New Hugo Site</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Effective approach to analyze correlation coefficients" />
+<meta property="og:description" content="Correlation analysis is a key task when you&rsquo;re exploring any dataset. The principal objective is to find linear relationships between features that can help to understanding the big picture.
+Probably, the best way to see correlations between variables is to use scatterplots, but in most of time you&rsquo;re working with a high dimensional dataset with a high number of variables, in these situations you have two major problems:
+It&rsquo;s a high computational task to plot lots of scatterplot, specially if you have a big dataset." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.lobdata.com.br/posts/correlation_analysis_in_r/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-10-13T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-10-13T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Effective approach to analyze correlation coefficients"/>
+<meta name="twitter:description" content="Correlation analysis is a key task when you&rsquo;re exploring any dataset. The principal objective is to find linear relationships between features that can help to understanding the big picture.
+Probably, the best way to see correlations between variables is to use scatterplots, but in most of time you&rsquo;re working with a high dimensional dataset with a high number of variables, in these situations you have two major problems:
+It&rsquo;s a high computational task to plot lots of scatterplot, specially if you have a big dataset."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/correlation_analysis_in_r/" /><link rel="prev" href="https://www.lobdata.com.br/posts/hype_test/" /><link rel="next" href="https://www.lobdata.com.br/posts/demand_forecasting_brazilian_commodities/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Effective approach to analyze correlation coefficients",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/www.lobdata.com.br\/posts\/correlation_analysis_in_r\/"
+        },"genre": "posts","keywords": "Data exploration, Data visualization, ggplot2, corrr, corplot, R","wordcount":  2220 ,
+        "url": "https:\/\/www.lobdata.com.br\/posts\/correlation_analysis_in_r\/","datePublished": "2020-10-13T00:00:00+00:00","dateModified": "2020-10-13T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Luciano"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My New Hugo Site">My cool site</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My New Hugo Site">My cool site</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Effective approach to analyze correlation coefficients</h1><h2 class="single-subtitle">Learn how to use corrplot and corrr packages</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Luciano</a></span>&nbsp;<span class="post-category">included in <a href="/categories/tutorials/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Tutorials</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-10-13">2020-10-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2220 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;11 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#misinterpretation-of-the-coefficient-of-correlation">Misinterpretation of the coefficient of correlation</a></li>
+        <li><a href="#how-to-do-a-correlation-analysis-in-r">How to do a correlation analysis in R?</a></li>
+        <li><a href="#data">Data</a></li>
+        <li><a href="#using-corplot-package">Using corplot package</a></li>
+        <li><a href="#using-corrr-package">Using corrr package</a></li>
+        <li><a href="#creating-the-plot_cor-function">Creating the plot_cor() function</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/correlation/correlation_post.png"
+        data-srcset="/img/correlation/correlation_post.png, /img/correlation/correlation_post.png 1.5x, /img/correlation/correlation_post.png 2x"
+        data-sizes="auto"
+        alt="/img/correlation/correlation_post.png"
+        title="Plot" /></p>
+<p><strong>Correlation analysis</strong> is a key task when you&rsquo;re exploring any dataset. The principal objective is to find linear relationships between features that can help to understanding the big picture.</p>
+<p>Probably, the best way to see correlations between variables is to use scatterplots, but in most of time you&rsquo;re working with a high dimensional dataset with a high number of variables, in these situations you have two major problems:</p>
+<ul>
+<li>It&rsquo;s a high computational task to plot lots of scatterplot, specially if you have a big dataset.</li>
+<li>Even if you can plot all scatterplots at once, the readability of the charts will be horrible, and you&rsquo;ll not see nothing useful.</li>
+</ul>
+<p>One great approach to solve this problem is calculating the coefficient of correlation and instead of having lots of scatterplots, you&rsquo;ll have a matrix showing how much it correlates your variables, assuming a range from -1 to 1, high negatively correlated to high positively correlated, respectively. This is definitely much faster to plot and easy to interpret.</p>
+<h3 id="misinterpretation-of-the-coefficient-of-correlation">Misinterpretation of the coefficient of correlation</h3>
+<p>Before starting to code, it&rsquo;s important to understand two topics about correlation analysis to drift reliable conclusions.</p>
+<h4 id="first">First</h4>
+<p>Sometimes, we misinterpret the value of coefficient of correlation and establish the cause-and-effect relationship, i.e. one variable causing the variation in the other variable. Actually, we cannot interpret in this way unless we have a powerful motive beside just the coefficient value.</p>
+<p>Correlation coefficient gives us a quantitative determination of a relationship between two variables X and Y, not information about the association between the two variables. Causation implies an invariable sequence &mdash; A always leads to B &mdash; whereas correlation is a measure of mutual association between two variables.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/correlation/correlation_causation.png"
+        data-srcset="/img/correlation/correlation_causation.png, /img/correlation/correlation_causation.png 1.5x, /img/correlation/correlation_causation.png 2x"
+        data-sizes="auto"
+        alt="/img/correlation/correlation_causation.png"
+        title="Plot" /></p>
+<h4 id="second">Second</h4>
+<p>Another aspect that we need to be aware of is the factors that influencing the size of the correlation coefficient and can also lead to misinterpretation, like:</p>
+<ul>
+<li>The size of the coefficient is very much dependent upon the variability of measured values in the correlated sample. The greater the variability, the higher will be the correlation, everything else being equal.</li>
+<li>The size of the coefficient is altered when an investigator selects an extreme group of subjects to compare these groups regarding certain behavior. The coefficient got from the combined data of extreme groups would be larger than the coefficient got from a random sample of the same group.</li>
+<li>Addition or dropping the extreme cases from the group can lead to a change in the coefficient&rsquo;s size. Addition of the extreme case may increase the size of correlation, while dropping the extreme cases will lower the value of the coefficient.</li>
+</ul>
+<p>With that in mind, it&rsquo;s a good idea to do a standardized step before looking for correlations, to minimize variability and extreme values.</p>
+<h3 id="how-to-do-a-correlation-analysis-in-r">How to do a correlation analysis in R?</h3>
+<p>As everything in R, here there are also plenty packages to calculate and plot coefficients of correlation. It&rsquo;s up to you to choose which package is better for your analysis.</p>
+<p>The aim of this article is to help you structure a optimized workflow for correlation analysis, creating great charts and consistent functions. For that will be necessary, especially two specific packages, <code>corrplot</code> and <code>corrr</code>.</p>
+<h3 id="data">Data</h3>
+<p>As a dataset for this tutorial, I&rsquo;ll use some data from a personal project in development. I collected the data from a public API and from an electronic game called <strong>League of Legends</strong>.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/correlation/lol.jpg"
+        data-srcset="/img/correlation/lol.jpg, /img/correlation/lol.jpg 1.5x, /img/correlation/lol.jpg 2x"
+        data-sizes="auto"
+        alt="/img/correlation/lol.jpg"
+        title="lol" /></p>
+<p><em>League of Legends</em> is one of the most popular video games in the world. It is played by over 100 million active users every single month. Each team has a base they must guard from their opponents while simultaneously attacking their opponent&rsquo;s base, there is the Blue team, whose base is in the lower left part of the map, and the Red team, whose base is in the upper right part of the map, at the back of each team&rsquo;s base there is a building called The Nexus. You win the game by destroying the enemy team&rsquo;s Nexus.</p>
+<p>During the match, there are a lot of statistics about performing each player (5 in each team) and also from the match itself, so, I created a script to collect all this information.</p>
+<p>The game also has a ranking by country and according to your performance you get a specific tier, that can be: iron, bronze, silver, gold, platinum, diamond, master, grandmaster and challenger, following the batter to worse order, respectively.</p>
+<p>Just to simplify the example, I&rsquo;ll show just the data for one particular tier of users, diamond players.</p>
+<p>I choose this dataset because we have a lot of variables, high dimensionality, and look for linear correlations can be useful to build our model in the next stage of the project.</p>
+<p>Let&rsquo;s begin!</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># libraries used in this tutorial</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">corrr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">corrplot</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tidyquant</span><span class="p">)</span> <span class="c1"># color pallete</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">plotly</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># dataset cleaned</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># download from kaggle: https://www.kaggle.com/dsluciano/league-of-legends-match-statistics/download</span>
+</span></span><span class="line"><span class="cl"><span class="n">lol_diamond_tbl</span> <span class="o">&lt;-</span> <span class="nf">read_csv</span><span class="p">(</span><span class="s">&#34;data/lol_diamond_numeric_final.csv&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">lol_diamond_tbl</span> <span class="o">%&gt;%</span> <span class="nf">glimpse</span><span class="p">()</span>
+</span></span></code></pre></div><pre tabindex="0"><code>
+    Rows: 99,727
+    Columns: 68
+    $ totalDamageDealt                 &lt;dbl&gt; -0.2930711279, 2.5773485960, 0.2419916679, 0.7503652702, 0.9952605522, -0.04…
+    $ kills                            &lt;dbl&gt; 0.0153183, -0.2410509, 1.9523597, 0.9610752, 0.6312293, -0.5386355, 0.961075…
+    $ deaths                           &lt;dbl&gt; -0.1644351, -0.5187119, -1.8349225, -0.9050923, -0.1644351, -0.9050923, -1.3…
+    $ assists                          &lt;dbl&gt; -1.81311786, -0.06615988, -0.49817594, 0.46319384, 0.12308021, 0.61792164, 0…
+    $ largestKillingSpree              &lt;dbl&gt; 0.32609942, -0.07849633, 2.84784752, 0.94628600, 0.32609942, -0.07849633, 0.…
+    $ largestMultiKill                 &lt;dbl&gt; -0.472330, -0.472330, 0.865404, 0.865404, -0.472330, -0.472330, 0.865404, 0.…
+    $ killingSprees                    &lt;dbl&gt; 0.68996109, -0.08011612, 0.68996109, 1.24585393, 0.68996109, -0.08011612, 1.…
+    $ longestTimeSpentLiving           &lt;dbl&gt; 0.04987467, 1.71337317, -0.42769388, 1.73915199, 0.89870412, 1.01482638, 1.2…
+    $ doubleKills                      &lt;dbl&gt; -0.7575416, -0.7575416, 1.6941396, 1.1340473, -0.7575416, -0.7575416, 1.5003…
+    $ tripleKills                      &lt;dbl&gt; -0.2604183, -0.2604183, -0.2604183, -0.2604183, -0.2604183, -0.2604183, -0.2…
+    $ quadraKills                      &lt;dbl&gt; -0.1065788, -0.1065788, -0.1065788, -0.1065788, -0.1065788, -0.1065788, -0.1…
+    $ pentaKills                       &lt;dbl&gt; -0.04710454, -0.04710454, -0.04710454, -0.04710454, -0.04710454, -0.04710454…
+    (...)
+</code></pre><p>I cleaned the dataset before, and the script used for that is in my <a href="https://github.com/LucianoBatista/articles" target="_blank" rel="noopener noreffer ">GitHub repo</a>. Besides that, you can find the description of the variables used here on this <a href="https://www.kaggle.com/dsluciano/league-of-legends-match-statistics/" target="_blank" rel="noopener noreffer ">kaggle kernel</a> created by me. If you have any questions, please let me know.</p>
+<h3 id="using-corplot-package">Using corplot package</h3>
+<p>This is a well-known library, that R users normally choose. The downside from <code>corrplot</code> package is we don&rsquo;t have a ggplot object at the output, and because of that is difficult to customize the plot with something that you want.</p>
+<p>But the procedure to plot the correlation coefficients using <code>corrplot</code> is fairly simple:</p>
+<ol>
+<li>calculate the correlation matrix</li>
+<li>apply the <code>corrplot()</code> function</li>
+<li>customize</li>
+</ol>
+<p>Although the simplicity of this process, the final result it&rsquo;s not so beautiful and it&rsquo;s not the best chart to put in your report.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># basic procedure</span>
+</span></span><span class="line"><span class="cl"><span class="n">corr_matrix_train_mtx</span> <span class="o">&lt;-</span> <span class="n">lol_diamond_tbl</span> <span class="o">%&gt;%</span> <span class="nf">cor</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="nf">corrplot</span><span class="p">(</span><span class="n">corr_matrix_train_mtx</span><span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/correlation/corr_01.png"
+        data-srcset="/img/correlation/corr_01.png, /img/correlation/corr_01.png 1.5x, /img/correlation/corr_01.png 2x"
+        data-sizes="auto"
+        alt="/img/correlation/corr_01.png"
+        title="lol" /></p>
+<p>One feature that most people don&rsquo;t know is the possibility to group variables, creating clusters regarding the correlation coefficient. Definitely this can improve the visualization and interpretability of the result.</p>
+<p>In the following sequence of steps I&rsquo;ll show you how to improve the final result:</p>
+<ol>
+<li>
+<p>Change the method parameter to put a square shape in the circle place (more easy to read). This way we can get the first plot.</p>
+</li>
+<li>
+<p>But as a personal taste I don&rsquo;t like the grid, and so I change from square to color (second plot).</p>
+</li>
+<li>
+<p>Here we have a problem, as a correlation matrix is mirrored, you end up with too much information to analyze. To solve that, we take just the inferior triangle and get the plot 3.</p>
+</li>
+<li>
+<p>We can agree that red text is not the better color to put in your chart, for that we can change tl.col to black and also decrease the font size with tl.cex (plot 4).</p>
+</li>
+<li>
+<p>And the most important, we can rearrange the variables using clustering methods, the corrplot function accept 5 different ways: AOE, FPC, hclust and alphabet (look the documentation to see more).</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># first plot</span>
+</span></span><span class="line"><span class="cl"><span class="nf">corrplot</span><span class="p">(</span><span class="n">corr_matrix_train_mtx</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s">&#34;square&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># second plot</span>
+</span></span><span class="line"><span class="cl"><span class="nf">corrplot</span><span class="p">(</span><span class="n">corr_matrix_train_mtx</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s">&#34;color&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># third plot</span>
+</span></span><span class="line"><span class="cl"><span class="nf">corrplot</span><span class="p">(</span><span class="n">corr_matrix_train_mtx</span><span class="p">,</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&#34;lower&#34;</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s">&#34;color&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># fourth plot</span>
+</span></span><span class="line"><span class="cl"><span class="nf">corrplot</span><span class="p">(</span><span class="n">corr_matrix_train_mtx</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s">&#34;color&#34;</span><span class="p">,</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&#34;lower&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="n">tl.col</span> <span class="o">=</span> <span class="s">&#34;black&#34;</span><span class="p">,</span> <span class="n">tl.cex</span> <span class="o">=</span> <span class="m">0.5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># final plot</span>
+</span></span><span class="line"><span class="cl"><span class="nf">corrplot</span><span class="p">(</span><span class="n">corr_matrix_train_mtx</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s">&#34;color&#34;</span><span class="p">,</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&#34;lower&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="n">tl.col</span> <span class="o">=</span> <span class="s">&#34;black&#34;</span><span class="p">,</span> <span class="n">tl.cex</span> <span class="o">=</span> <span class="m">0.5</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="n">order</span> <span class="o">=</span> <span class="s">&#34;hclust&#34;</span><span class="p">,)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/correlation/corr_01_02.png"
+        data-srcset="/img/correlation/corr_01_02.png, /img/correlation/corr_01_02.png 1.5x, /img/correlation/corr_01_02.png 2x"
+        data-sizes="auto"
+        alt="/img/correlation/corr_01_02.png"
+        title="lol" /> <img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/correlation/corr_03_04.png"
+        data-srcset="/img/correlation/corr_03_04.png, /img/correlation/corr_03_04.png 1.5x, /img/correlation/corr_03_04.png 2x"
+        data-sizes="auto"
+        alt="/img/correlation/corr_03_04.png"
+        title="lol" /></p>
+<p>Look that the final result (figure below) really helps you see distinct groups of variables that have similar correlations, and can be a start point to investigate specific groups later.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/correlation/correlation_06.png"
+        data-srcset="/img/correlation/correlation_06.png, /img/correlation/correlation_06.png 1.5x, /img/correlation/correlation_06.png 2x"
+        data-sizes="auto"
+        alt="/img/correlation/correlation_06.png"
+        title="lol" /></p>
+<h3 id="using-corrr-package">Using corrr package</h3>
+<p>This second approach is the most tidy way to perform a correlation analysis. To facilitate the readability of this workflow, I drew this flowchart below:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/correlation/correlation_07.png"
+        data-srcset="/img/correlation/correlation_07.png, /img/correlation/correlation_07.png 1.5x, /img/correlation/correlation_07.png 2x"
+        data-sizes="auto"
+        alt="/img/correlation/correlation_07.png"
+        title="flowchart" /></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># plot 1</span>
+</span></span><span class="line"><span class="cl"><span class="n">lol_diamond_tbl</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">    <span class="nf">correlate</span><span class="p">()</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">    <span class="nf">rearrange</span><span class="p">()</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">    <span class="nf">shave</span><span class="p">()</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># rplot need to receive a correlation matrix</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">rplot</span><span class="p">()</span>
+</span></span></code></pre></div><p>It&rsquo;s incredibly straightforward, and you just need to tune specific parameters to achieve a astonish chart. The standard configuration is shown in the next figure:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/correlation/correlation_08.png"
+        data-srcset="/img/correlation/correlation_08.png, /img/correlation/correlation_08.png 1.5x, /img/correlation/correlation_08.png 2x"
+        data-sizes="auto"
+        alt="/img/correlation/correlation_08.png"
+        title="flowchart" /></p>
+<p>Yes, it&rsquo;s a mess and difficult to read. Let&rsquo;s improve this plot following some customizations:</p>
+<ol>
+<li>
+<p>Set the PCA method for rearrange the variables.</p>
+</li>
+<li>
+<p>Setting <code>shape = 15</code>, will put squares shape in circle places. You can also try different number to different shapes.</p>
+</li>
+<li>
+<p>I&rsquo;ll choose better colors. And at the end, I will set the x-axis label angle to 45 and <code>hjust = 1</code>, to put the axis text in right place.</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">lol_diamond_tbl</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">    <span class="nf">correlate</span><span class="p">(</span><span class="n">use</span> <span class="o">=</span> <span class="s">&#34;pairwise.complete.obs&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">    <span class="nf">rearrange</span><span class="p">(</span><span class="n">method</span> <span class="o">=</span> <span class="s">&#34;PCA&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">    <span class="nf">shave</span><span class="p">()</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># rplot need to receive a correlation matrix</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">rplot</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="m">15</span><span class="p">,</span> <span class="n">colours</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;darkorange&#34;</span><span class="p">,</span> <span class="s">&#34;white&#34;</span><span class="p">,</span> <span class="s">&#34;darkcyan&#34;</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">theme_minimal</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">theme</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">axis.text.x</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">angle</span> <span class="o">=</span> <span class="m">45</span><span class="p">,</span> <span class="n">hjust</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span></code></pre></div><p>This is a much better chart! =)</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/correlation/correlation_09.png"
+        data-srcset="/img/correlation/correlation_09.png, /img/correlation/correlation_09.png 1.5x, /img/correlation/correlation_09.png 2x"
+        data-sizes="auto"
+        alt="/img/correlation/correlation_09.png"
+        title="flowchart" /></p>
+<p>The <code>corrr</code> library can also use a lot of different clustering methods for rearranging the variables, and you can get the full list from the <a href="https://www.rdocumentation.org/packages/seriation/versions/1.2-8/topics/seriate" target="_blank" rel="noopener noreffer ">seriate package documentation</a>.</p>
+<p>One more convenience in use <code>corrr</code> is that you can create <code>plotly</code> interactive plots and hover through specific squares to investigate the values of correlation coefficients and the variable in x and y axis <a href="https://www.youtube.com/watch?v=4Xv4x7wklSM" target="_blank" rel="noopener noreffer ">play the video</a>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">g</span> <span class="o">&lt;-</span> <span class="n">lol_diamond_tbl</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">    <span class="nf">correlate</span><span class="p">(</span><span class="n">use</span> <span class="o">=</span> <span class="s">&#34;pairwise.complete.obs&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">    <span class="nf">rearrange</span><span class="p">(</span><span class="n">method</span> <span class="o">=</span> <span class="s">&#34;PCA&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">corrr</span><span class="o">::</span><span class="nf">shave</span><span class="p">()</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># rplot need to receive a correlation matrix</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">rplot</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="m">15</span><span class="p">,</span> <span class="n">colours</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;darkorange&#34;</span><span class="p">,</span> <span class="s">&#34;white&#34;</span><span class="p">,</span> <span class="s">&#34;darkcyan&#34;</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">theme_minimal</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">theme</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">axis.text.x</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">angle</span> <span class="o">=</span> <span class="m">45</span><span class="p">,</span> <span class="n">hjust</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">plotly</span><span class="o">::</span><span class="nf">ggplotly</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+</span></span></code></pre></div><p>Now that you already have a fully understanding in how to plot a good chart to investigate the correlation between your variables, I&rsquo;ll show you one specific approach to a more applicable task in your modeling workflow.</p>
+<p>See, the correlation between all variables is useful, but as we are investigating a correlation against one specific variable (target), a better way is to extract the correlation coefficients to that specific variable and plot it.</p>
+<h3 id="creating-the-plot_cor-function">Creating the plot_cor() function</h3>
+<p>In this last section, I&rsquo;ll show you two functions you can use to create beautiful plots and see which variable can contribute more to your correlation analysis.</p>
+<p>First, we need the <code>get_cor()</code> function, that will return the correlation matrix. After, we plug into <code>plot_cor()</code> function and get our awesome chart.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># getting the correlation matrix</span>
+</span></span><span class="line"><span class="cl"><span class="n">get_cor</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">use</span> <span class="o">=</span> <span class="s">&#34;pairwise.complete.obs&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="n">fct_reorder</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">fct_rev</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># meta programming to capture the variables</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># like tidy functions</span>
+</span></span><span class="line"><span class="cl">    <span class="n">feature_expr</span> <span class="o">&lt;-</span> <span class="nf">enquo</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">feature_name</span> <span class="o">&lt;-</span> <span class="nf">quo_name</span><span class="p">(</span><span class="n">feature_expr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># get the corralating matrix</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># and also ensuring that the data is in the</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># right format</span>
+</span></span><span class="line"><span class="cl">    <span class="n">data_cor</span> <span class="o">&lt;-</span> <span class="n">data</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">        <span class="nf">mutate</span><span class="p">(</span><span class="nf">across</span><span class="p">(</span><span class="nf">where</span><span class="p">(</span><span class="n">is.character</span><span class="p">),</span> <span class="n">as_factor</span><span class="p">))</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">        <span class="nf">mutate</span><span class="p">(</span><span class="nf">across</span><span class="p">(</span><span class="nf">where</span><span class="p">(</span><span class="n">is.factor</span><span class="p">),</span> <span class="n">as.numeric</span><span class="p">))</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">        <span class="nf">cor</span><span class="p">(</span><span class="n">use</span> <span class="o">=</span> <span class="n">use</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">        <span class="nf">as_tibble</span><span class="p">()</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">        <span class="nf">mutate</span><span class="p">(</span><span class="n">feature</span> <span class="o">=</span> <span class="nf">names</span><span class="p">(</span><span class="n">.)</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">        <span class="nf">select</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="o">!!</span> <span class="n">feature_expr</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">        <span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">feature</span> <span class="o">==</span> <span class="n">feature_name</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># conditionals to sort the variables</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># very usefull to plot</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">if </span><span class="p">(</span><span class="n">fct_reorder</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">data_cor</span> <span class="o">&lt;-</span> <span class="n">data_cor</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">            <span class="nf">mutate</span><span class="p">(</span><span class="n">feature</span> <span class="o">=</span> <span class="nf">fct_reorder</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="o">!!</span> <span class="n">feature_expr</span><span class="p">))</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">            <span class="nf">arrange</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nf">if </span><span class="p">(</span><span class="n">fct_rev</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">data_cor</span> <span class="o">&lt;-</span> <span class="n">data_cor</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">            <span class="nf">mutate</span><span class="p">(</span><span class="n">feature</span> <span class="o">=</span> <span class="nf">fct_rev</span><span class="p">(</span><span class="n">feature</span><span class="p">))</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">            <span class="nf">arrange</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nf">return</span><span class="p">(</span><span class="n">data_cor</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Second, we need the plot function.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># this function plot the correlation scores in order of values</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># and have a lot of parameters that can be used to </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># fully customize your plot as you want</span>
+</span></span><span class="line"><span class="cl"><span class="n">plot_cor</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">fct_reorder</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">fct_rev</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                     <span class="n">include_lbl</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">lbl_precision</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">lbl_position</span> <span class="o">=</span> <span class="s">&#34;outward&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                     <span class="n">size</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">line_size</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span> <span class="n">vert_size</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                     <span class="n">color_pos</span> <span class="o">=</span> <span class="nf">palette_light</span><span class="p">()</span><span class="n">[[1]]</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                     <span class="n">color_neg</span> <span class="o">=</span> <span class="nf">palette_light</span><span class="p">()</span><span class="n">[[2]]</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># meta programming to capture the variables</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># like tidy functions</span>
+</span></span><span class="line"><span class="cl">    <span class="n">feature_expr</span> <span class="o">&lt;-</span> <span class="nf">enquo</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">feature_name</span> <span class="o">&lt;-</span> <span class="nf">quo_name</span><span class="p">(</span><span class="n">feature_expr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">data_cor</span> <span class="o">&lt;-</span> <span class="n">data</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">        <span class="nf">get_cor</span><span class="p">(</span><span class="o">!!</span> <span class="n">feature_expr</span><span class="p">,</span> <span class="n">fct_reorder</span> <span class="o">=</span> <span class="n">fct_reorder</span><span class="p">,</span> <span class="n">fct_rev</span> <span class="o">=</span> <span class="n">fct_rev</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1"># used as label, and also putting the precision of the numbers</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">mutate</span><span class="p">(</span><span class="n">feature_name_text</span> <span class="o">=</span> <span class="nf">round</span><span class="p">(</span><span class="o">!!</span> <span class="n">feature_expr</span><span class="p">,</span> <span class="n">lbl_precision</span><span class="p">))</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1"># labeling the correlation as negative and positive</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">mutate</span><span class="p">(</span><span class="n">Correlation</span> <span class="o">=</span> <span class="nf">case_when</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="p">(</span><span class="o">!!</span> <span class="n">feature_expr</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="m">0</span> <span class="o">~</span> <span class="s">&#34;Positive&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Negative&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">as.factor</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">g</span> <span class="o">&lt;-</span> <span class="n">data_cor</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">        <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes_string</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">feature_name</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;feature&#34;</span><span class="p">,</span> <span class="n">group</span> <span class="o">=</span> <span class="s">&#34;feature&#34;</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">geom_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="n">Correlation</span><span class="p">),</span> <span class="n">size</span> <span class="o">=</span> <span class="n">size</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">geom_segment</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">xend</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span> <span class="n">yend</span> <span class="o">=</span> <span class="n">feature</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">Correlation</span><span class="p">),</span> <span class="n">size</span> <span class="o">=</span> <span class="n">line_size</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">geom_vline</span><span class="p">(</span><span class="n">xintercept</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="nf">palette_light</span><span class="p">()</span><span class="n">[[1]]</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="n">vert_size</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">expand_limits</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">-1</span><span class="p">,</span> <span class="m">1</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">theme_tq</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">scale_color_manual</span><span class="p">(</span><span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="n">color_neg</span><span class="p">,</span> <span class="n">color_pos</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nf">if </span><span class="p">(</span><span class="n">include_lbl</span><span class="p">)</span> <span class="n">g</span> <span class="o">&lt;-</span> <span class="n">g</span> <span class="o">+</span> <span class="nf">geom_label</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="n">feature_name_text</span><span class="p">),</span> <span class="n">hjust</span> <span class="o">=</span> <span class="n">lbl_position</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nf">return</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">plot_cor</span><span class="p">(</span><span class="n">lol_diamond_tbl</span><span class="p">,</span> <span class="n">totalDamageDealt</span><span class="p">,</span> <span class="n">fct_reorder</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/correlation/correlation_10.png"
+        data-srcset="/img/correlation/correlation_10.png, /img/correlation/correlation_10.png 1.5x, /img/correlation/correlation_10.png 2x"
+        data-sizes="auto"
+        alt="/img/correlation/correlation_10.png"
+        title="final_result" /></p>
+<p>And that is the final result. As we can see, goldEarned and goldSpent is more related to totalDamageDealt (target variable), and make sense because you earn gold when you kill/destroy players/minions/objectives in the game, hence, with more gold you spent more gold.</p>
+<p>Look, you can change the target variable and see the correlation between other variables too, just need to change the target parameter. I encourage you to explore different customization and change the default values for this function, and if you find any question, please let me know.</p>
+<p>I hope you enjoyed this tutorial, bye! ^^</p>
+<p>LinkedIn: <a href="https://www.linkedin.com/in/lucianobatistads/" target="_blank" rel="noopener noreffer ">https://www.linkedin.com/in/lucianobatistads/</a></p>
+<p>GitHub: <a href="https://github.com/LucianoBatista" target="_blank" rel="noopener noreffer ">https://github.com/LucianoBatista</a></p>
+<p>source: <a href="https://www.yourarticlelibrary.com/statistics-2/correlation-meaning-types-and-its-computation-statistics/92001" target="_blank" rel="noopener noreffer ">https://www.yourarticlelibrary.com/statistics-2/correlation-meaning-types-and-its-computation-statistics/92001</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-10-13</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://www.lobdata.com.br/posts/correlation_analysis_in_r/" data-title="Effective approach to analyze correlation coefficients" data-hashtags="Data exploration,Data visualization,ggplot2,corrr,corplot,R"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://www.lobdata.com.br/posts/correlation_analysis_in_r/" data-hashtag="Data exploration"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://www.lobdata.com.br/posts/correlation_analysis_in_r/" data-title="Effective approach to analyze correlation coefficients"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://www.lobdata.com.br/posts/correlation_analysis_in_r/" data-title="Effective approach to analyze correlation coefficients"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://www.lobdata.com.br/posts/correlation_analysis_in_r/" data-title="Effective approach to analyze correlation coefficients"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/data-exploration/">Data exploration</a>,&nbsp;<a href="/tags/data-visualization/">Data visualization</a>,&nbsp;<a href="/tags/ggplot2/">ggplot2</a>,&nbsp;<a href="/tags/corrr/">corrr</a>,&nbsp;<a href="/tags/corplot/">corplot</a>,&nbsp;<a href="/tags/r/">R</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/hype_test/" class="prev" rel="prev" title="Hypothesis Testing by Computational Methodology - Part 1"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Hypothesis Testing by Computational Methodology - Part 1</a>
+            <a href="/posts/demand_forecasting_brazilian_commodities/" class="next" rel="next" title="Demand Forecasting of Brazilian Commodities">Demand Forecasting of Brazilian Commodities<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.114.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Luba</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

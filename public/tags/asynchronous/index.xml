@@ -1,0 +1,46 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Asynchronous - Tag - My New Hugo Site</title>
+        <link>https://www.lobdata.com.br/tags/asynchronous/</link>
+        <description>Asynchronous - Tag - My New Hugo Site</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 01 Aug 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/asynchronous/" rel="self" type="application/rss+xml" /><item>
+    <title>Criando uma API Pronta para Produção com FastAPI - PT.5</title>
+    <link>https://www.lobdata.com.br/posts/econowallet-fastapi-pt5/</link>
+    <pubDate>Sun, 01 Aug 2021 00:00:00 &#43;0000</pubDate>
+    <author>Luciano</author>
+    <guid>https://www.lobdata.com.br/posts/econowallet-fastapi-pt5/</guid>
+    <description><![CDATA[Nos Capítulos Anteriores &hellip; Como dito anteriormente, hoje vamos configurar o SQLAlchemy!!
+Essa é a parte 5 do nosso projeto do EconoWallet e se você quiser verificar o que já fizemos até o momento, acesse os links abaixo:
+Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Sem enrolação, vamos logo ao que interessa!!!
+Reorganizando o projeto Antes de configurar o ORM, vamos ajustar algumas coisas no nosso diretório. Como estamos seguindo para um estágio mais maduro da aplicação e que você já compreende o básico de configuração do FastAPI, precisaremos agora separar melhor as competências dentro do projeto.]]></description>
+</item>
+<item>
+    <title>Criando uma API Pronta para Produção com FastAPI - PT.4</title>
+    <link>https://www.lobdata.com.br/posts/econowallet-fastapi-pt4/</link>
+    <pubDate>Sat, 31 Jul 2021 00:00:00 &#43;0000</pubDate>
+    <author>Luciano</author>
+    <guid>https://www.lobdata.com.br/posts/econowallet-fastapi-pt4/</guid>
+    <description><![CDATA[Nos Capítulos Anteriores &hellip; Após um tempinho sem postar nada, vamos dar continuidade a essa série sobre como desenvolver uma API pronta pro Deploy! 🚀 🚀
+Essa é a parte 4 do nosso projeto do EconoWallet e se você quiser verificar o que já fizemos até o momento, acesse os links abaixo:
+Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Dando continuidade a nossa aplicação, hoje vamos configurar qual será nosso banco de dados.]]></description>
+</item>
+<item>
+    <title>Criando uma API Pronta para Produção com FastAPI - PT.3</title>
+    <link>https://www.lobdata.com.br/posts/econowallet-fastapi-pt3/</link>
+    <pubDate>Thu, 08 Apr 2021 00:00:00 &#43;0000</pubDate>
+    <author>Luciano</author>
+    <guid>https://www.lobdata.com.br/posts/econowallet-fastapi-pt3/</guid>
+    <description><![CDATA[Nos Capítulos Anteriores &hellip; Essa é a parte 3 do nosso projeto do EconoWallet, se quiser verificar o que já fizemos até o momento, verifique os links abaixo:
+Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Dando continuidade a nossa aplicação, hoje vamos iniciar a configuração do Docker em nosso ambiente. E antes de mais nada, precisaremos instalar o Docker e o Docker Compose na nossa máquina.
+A documentação do Docker para instalação é muito bem explicada.]]></description>
+</item>
+<item>
+    <title>Criando uma API Pronta para Produção com FastAPI - PT.1</title>
+    <link>https://www.lobdata.com.br/posts/finance_control_app/</link>
+    <pubDate>Tue, 30 Mar 2021 00:00:00 &#43;0000</pubDate>
+    <author>Luciano</author>
+    <guid>https://www.lobdata.com.br/posts/finance_control_app/</guid>
+    <description><![CDATA[Motivação Atualmente tenho tido bastante dor de cabeça em voltar a utilizar o Excel para fazer uma planilha de controle de gastos, apesar da simplicidade do software, constantemente meus registros de compras feitas ou alguma outra movimentação financeira ficam uma completa bagunça. O que pode ser justificado pela minha falta de destreza com a ferramenta, mas fato é que a experiência estava deixando a desejar e consequentemente acabei perdendo a disciplina de organizar meus gastos, o que não recomendo a ninguém.]]></description>
+</item>
+</channel>
+</rss>

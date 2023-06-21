@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Efficient Pandas - My New Hugo Site</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Efficient Pandas" />
+<meta property="og:description" content="Fala galera, tudo certo com vocês? Se você é um Cientista/Analista de dados, ou curte utilizar python para realizar diferentes análises em seu dataset, certamente já utilizou a biblioteca Pandas. Pandas é uma biblioteca open-source para estruturação e análise de dados, seus comandos se assemelham muitas vezes ao SQL, porém sua API traz um conjunto maior operações, maior robustez e se executado de forma correta, mais parformance.
+Nesse tutorial estou me baseando em um minicurso do DataCamp Writing Efficient Code with pandas." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.lobdata.com.br/posts/efficient-pandas/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-10-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-10-24T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Efficient Pandas"/>
+<meta name="twitter:description" content="Fala galera, tudo certo com vocês? Se você é um Cientista/Analista de dados, ou curte utilizar python para realizar diferentes análises em seu dataset, certamente já utilizou a biblioteca Pandas. Pandas é uma biblioteca open-source para estruturação e análise de dados, seus comandos se assemelham muitas vezes ao SQL, porém sua API traz um conjunto maior operações, maior robustez e se executado de forma correta, mais parformance.
+Nesse tutorial estou me baseando em um minicurso do DataCamp Writing Efficient Code with pandas."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/efficient-pandas/" /><link rel="prev" href="https://www.lobdata.com.br/posts/econowallet-fastapi-pt5/" /><link rel="next" href="https://www.lobdata.com.br/posts/image-cleaning/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Efficient Pandas",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/www.lobdata.com.br\/posts\/efficient-pandas\/"
+        },"genre": "posts","keywords": "Tutorial, Data Science, Pandas","wordcount":  1550 ,
+        "url": "https:\/\/www.lobdata.com.br\/posts\/efficient-pandas\/","datePublished": "2021-10-24T00:00:00+00:00","dateModified": "2021-10-24T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Luciano"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My New Hugo Site">My cool site</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My New Hugo Site">My cool site</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Efficient Pandas</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Luciano</a></span>&nbsp;<span class="post-category">included in <a href="/categories/tutorials/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Tutorials</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2021-10-24">2021-10-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1550 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;8 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#parte-i-selecionando-colunas-e-linhas-de-forma-eficiente">Parte I: Selecionando colunas e linhas de forma eficiente</a>
+      <ul>
+        <li><a href="#iloc-e-loc">.iloc e .loc</a></li>
+        <li><a href="#amostragem-aleatória">Amostragem aleatória</a></li>
+      </ul>
+    </li>
+    <li><a href="#parte-ii-substituindo-valores-em-colunas-do-dataset">Parte II: Substituindo valores em colunas do dataset</a>
+      <ul>
+        <li><a href="#substituindo-valores-únicos-utilizando-o-replace">Substituindo valores únicos utilizando o <code>.replace</code></a></li>
+        <li><a href="#substituindo-múltiplos-valores-com-listas-e-dicionários">Substituindo múltiplos valores com listas e dicionários</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/efficient-pandas/part1-2.gif"
+        data-srcset="/img/efficient-pandas/part1-2.gif, /img/efficient-pandas/part1-2.gif 1.5x, /img/efficient-pandas/part1-2.gif 2x"
+        data-sizes="auto"
+        alt="/img/efficient-pandas/part1-2.gif"
+        title="efficient-pandas" /></p>
+<p>Fala galera, tudo certo com vocês? Se você é um Cientista/Analista de dados, ou curte utilizar python para realizar diferentes análises em seu dataset, certamente já utilizou a biblioteca <code>Pandas</code>. Pandas é uma biblioteca open-source para estruturação e análise de dados, seus comandos se assemelham muitas vezes ao SQL, porém sua API traz um conjunto maior operações, maior robustez e se executado de forma correta, mais parformance.</p>
+<p>Nesse tutorial estou me baseando em um minicurso do DataCamp <a href="https://app.datacamp.com/learn/courses/writing-efficient-code-with-pandas" target="_blank" rel="noopener noreffer ">Writing Efficient Code with pandas</a>. Como nem todos tem acesso a esse material, pode ser de grande valia compartilhar esse conhecimento com a comunidade.</p>
+<p>Bom, mas sem enrolação, vamos tratar aqui de 4 principais tópicos:</p>
+<ul>
+<li>Parte 1: Selecionando colunas e linhas de forma eficiente.</li>
+<li>Parte 2: Substituindo valores em colunas do <code>DataFrame</code>.</li>
+<li>Parte 3: Iterando no dataset de forma eficiente.</li>
+<li>Parte 4: Manipulação de dados com o <code>.groupby</code>, <code>.transform</code> e <code>.filter</code>.</li>
+</ul>
+<p>Todos os tópicos serão abordados utilizando tarefas cotidianas de manipulação de dados. Estaremos utilizando uma base de dados pública oriunda do kaggle, que são os dados das Olimpíadas de Tokyo 2021. Você pode realizar o download dos arquivos pelo site no link abaixo:</p>
+<ul>
+<li>Kaggle: <a href="https://www.kaggle.com/arjunprasadsarkhel/2021-olympics-in-tokyo" target="_blank" rel="noopener noreffer ">https://www.kaggle.com/arjunprasadsarkhel/2021-olympics-in-tokyo</a></li>
+</ul>
+<p>Como bibliotecas estarei utilizando: <code>numpy</code>, <code>pandas</code>, <code>pyjanitor</code> e <code>time</code>. Certifique-se de ter todas elas instaladas no seu ambiente.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">time</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">janitor</span> <span class="kn">import</span> <span class="n">clean_names</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># importing and cleaning the data</span>
+</span></span><span class="line"><span class="cl"><span class="n">medals_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&#34;Data/Medals.xlsx&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">clean_names</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># tidying the data</span>
+</span></span><span class="line"><span class="cl"><span class="n">medals_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&#34;total&#34;</span><span class="p">,</span> <span class="s2">&#34;rank_by_total&#34;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">medals_reshaped_df</span> <span class="o">=</span> <span class="n">medals_df</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&#34;rank&#34;</span><span class="p">,</span> <span class="s2">&#34;team_noc&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="n">value_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&#34;gold&#34;</span><span class="p">,</span> <span class="s2">&#34;silver&#34;</span><span class="p">,</span> <span class="s2">&#34;bronze&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="n">var_name</span><span class="o">=</span><span class="s2">&#34;medals&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">value_name</span><span class="o">=</span><span class="s2">&#34;qtt&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></div><p>Após importar os dados eu realizei algumas transformações:</p>
+<ul>
+<li><code>.clean_names</code>: é um método do pyjanitor, que limpa o nome das colunas automaticamente.</li>
+<li><code>.melt</code>: é um pivoteamento nos dados para o formato longer, melhor para análise.</li>
+<li><code>.drop</code>: removi algumas colunas que não são necessárias nesse momento.</li>
+</ul>
+<p>Como iremos calcular um comparativo várias vezes durante o tutorial, eu criei uma função para nos ajudar a calcular o quanto um método é mais rápido que o outro. Aqui entramos como input, com os valores do tempos gastos por cada método e depois calculamos o quanto um é maior que o outro.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># helper function to calculate pct diff between the times</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">calculate_how_much_diff</span><span class="p">(</span><span class="n">method_1</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">method_2</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">diff</span> <span class="o">=</span> <span class="n">method_2</span> <span class="o">/</span> <span class="n">method_1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">diff</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ans</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;Método 1 é </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">diff</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">% vezes mais rápido que o Método 2&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">elif</span> <span class="n">diff</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">new_diff</span> <span class="o">=</span> <span class="n">method_1</span> <span class="o">/</span> <span class="n">method_2</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ans</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;Método 2 é </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">new_diff</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">% vezes mais rápido que o Método 1&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">ans</span>
+</span></span></code></pre></div><p>Agora estamos prontos para começar!!</p>
+<h2 id="parte-i-selecionando-colunas-e-linhas-de-forma-eficiente">Parte I: Selecionando colunas e linhas de forma eficiente</h2>
+<h3 id="iloc-e-loc">.iloc e .loc</h3>
+<p>Essa é uma tarefa bem comum utilizada com <code>DataFrames</code> do Pandas, muitas vezes precisamos selecionar apenas uma porção dos dados, seja por colunas, seja por linhas. É ae que entra a utilização dos métodos <code>.iloc</code> e <code>.loc</code>.</p>
+<ul>
+<li><code>.iloc</code>: Localizador numérico</li>
+<li><code>.loc</code>: Localizador nominal</li>
+</ul>
+<p>Existe diferença em utilizar um ou outro? Vamos decobrir:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># timing how long will run each of those: .iloc and .loc</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># loc time</span>
+</span></span><span class="line"><span class="cl"><span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">medals_reshaped_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&#34;team_noc&#34;</span><span class="p">,</span> <span class="s2">&#34;medals&#34;</span><span class="p">,</span> <span class="s2">&#34;qtt&#34;</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl"><span class="n">delta_loc</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># iloc time</span>
+</span></span><span class="line"><span class="cl"><span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">medals_reshaped_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl"><span class="n">delta_iloc</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># who is faster?</span>
+</span></span><span class="line"><span class="cl"><span class="n">calculate_how_much_diff</span><span class="p">(</span><span class="n">method_1</span><span class="o">=</span><span class="n">delta_loc</span><span class="p">,</span> <span class="n">method_2</span><span class="o">=</span><span class="n">delta_iloc</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="s1">&#39;Método 2 é 219.69% vezes mais rápido que o Método 1&#39;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># loc time</span>
+</span></span><span class="line"><span class="cl"><span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">medals_reshaped_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span> <span class="p">:]</span>
+</span></span><span class="line"><span class="cl"><span class="n">delta_loc</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># iloc time</span>
+</span></span><span class="line"><span class="cl"><span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">medals_reshaped_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span> <span class="p">:]</span>
+</span></span><span class="line"><span class="cl"><span class="n">delta_iloc</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># who is faster?</span>
+</span></span><span class="line"><span class="cl"><span class="n">calculate_how_much_diff</span><span class="p">(</span><span class="n">method_1</span><span class="o">=</span><span class="n">delta_loc</span><span class="p">,</span> <span class="n">method_2</span><span class="o">=</span><span class="n">delta_iloc</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="s1">&#39;Método 2 é 169.56% vezes mais rápido que o Método 1&#39;</span>
+</span></span></code></pre></div><p>Pelos resultados acima, conseguimos ver que em ambos os casos, utilizar o <code>.iloc</code> é muito mais eficiente para selecionar tanto linhas quanto colunas de um <code>DataFrame</code> do <code>Pandas</code>. Porém, é muito comum também utilizarmos apenas uma lista com o nome das colunas desejadas do dataset, vamos verificar então se o <code>.iloc</code> continua vitorioso nessa comparação:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># iloc time</span>
+</span></span><span class="line"><span class="cl"><span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">medals_reshaped_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">delta_iloc</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># directly selecting columns</span>
+</span></span><span class="line"><span class="cl"><span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">medals_reshaped_df</span><span class="p">[[</span><span class="s2">&#34;team_noc&#34;</span><span class="p">,</span> <span class="s2">&#34;medals&#34;</span><span class="p">,</span> <span class="s2">&#34;qtt&#34;</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl"><span class="n">delta_direct</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># who is faster?</span>
+</span></span><span class="line"><span class="cl"><span class="n">calculate_how_much_diff</span><span class="p">(</span><span class="n">method_1</span><span class="o">=</span><span class="n">delta_iloc</span><span class="p">,</span> <span class="n">method_2</span><span class="o">=</span><span class="n">delta_direct</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="s1">&#39;Método 1 é 179.69% vezes mais rápido que o Método 2&#39;</span>
+</span></span></code></pre></div><p>Como vimos, o <code>.iloc</code> ainda se mostra vitorioso nesta comparação. Neste tópico nós vemos uma <strong>divergência entre o que está no material do DataCamp</strong> e o que observamos em nosso código, pois lá o método de selecionar as colunas diretamente é mais eficiente.</p>
+<p>Como toda biblioteca sofre atualizações e otimizações ao longo do tempo, é possível que o método <code>.iloc</code> tenha sido otimizado desde que o curso do DataCamp foi lançado.</p>
+<h3 id="amostragem-aleatória">Amostragem aleatória</h3>
+<p>Outra tarefa bem comum dentro do dia-a-dia de Cientistas e Analistas de dados é a amostragem aleatória do nosso dataset, tal tarefa pode ter diferentes objetivos:</p>
+<ul>
+<li>diminuir o tamanho do dataset original</li>
+<li>validação de alguma técnica</li>
+<li>separação entre dados de teste e treino</li>
+</ul>
+<p>Para isso, podemos prosseguir por duas formas diferentes com o Pandas:</p>
+<ul>
+<li>utilizar o módulo do numpy de geração de números randômicos e aplicar ao <code>DataFrame</code></li>
+<li>utilizar o método <code>.sample</code> do Pandas</li>
+</ul>
+<p>Vamos checar quem é mais eficiente:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># numpy random integers</span>
+</span></span><span class="line"><span class="cl"><span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">medals_reshaped_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">medals_reshaped_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">50</span><span class="p">),</span> <span class="p">:]</span>
+</span></span><span class="line"><span class="cl"><span class="n">delta_numpy</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># using .sample</span>
+</span></span><span class="line"><span class="cl"><span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">medals_reshaped_df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">delta_sample</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># who is faster?</span>
+</span></span><span class="line"><span class="cl"><span class="n">calculate_how_much_diff</span><span class="p">(</span><span class="n">method_1</span><span class="o">=</span><span class="n">delta_numpy</span><span class="p">,</span> <span class="n">method_2</span><span class="o">=</span><span class="n">delta_sample</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="s1">&#39;Método 2 é 192.69% vezes mais rápido que o Método 1&#39;</span>
+</span></span></code></pre></div><p>Veja que o método do Pandas é muito mais efetivo, então, prefira utilizar o <code>.sample</code> caso precise de uma amostra aleatória a nível de linhas do seu dataset. Caso precise de selecionar amostras aleatórias a nível de colunas (<em>menos comum</em>), também podemos adaptar o que foi feito acima e verificar se o <code>.sample</code> continua vencendor.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># numpy random integers</span>
+</span></span><span class="line"><span class="cl"><span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">medals_reshaped_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">medals_reshaped_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl"><span class="n">delta_numpy</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># using .sample</span>
+</span></span><span class="line"><span class="cl"><span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">medals_reshaped_df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># adjusting the axis = 1 for columns</span>
+</span></span><span class="line"><span class="cl"><span class="n">delta_sample</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># who is faster?</span>
+</span></span><span class="line"><span class="cl"><span class="n">calculate_how_much_diff</span><span class="p">(</span><span class="n">method_1</span><span class="o">=</span><span class="n">delta_numpy</span><span class="p">,</span> <span class="n">method_2</span><span class="o">=</span><span class="n">delta_sample</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="s1">&#39;Método 2 é 188.66% vezes mais rápido que o Método 1&#39;</span>
+</span></span></code></pre></div><p>Ainda assim, temos o .sample como vencedor!</p>
+<p>Com isso nós finalizamos a <strong>Parte I</strong> dessa série de tutoriais, e em resumo temos o seguinte:</p>
+<ul>
+<li><code>.iloc</code> é mais rápido que <code>.loc</code></li>
+<li><code>.iloc</code> é mais rápido que selecionar diretamente as colunas</li>
+<li><code>.sample</code> é mais rápido utilizar <code>numpy</code> para gerar um array de números aleatórios</li>
+</ul>
+<p>Vamos à segunda parte!!</p>
+<h2 id="parte-ii-substituindo-valores-em-colunas-do-dataset">Parte II: Substituindo valores em colunas do dataset</h2>
+<h3 id="substituindo-valores-únicos-utilizando-o-replace">Substituindo valores únicos utilizando o <code>.replace</code></h3>
+<p>Você provavelmente deve ter cruzado com situações onde precisou substituir valores de algumas colunas baseando-se em algum condicional, algumas linguagens de programação chamam esse padrão de <em>switch case</em>, em python não possuíamos essa feature anterior a versão 3.10 (recém lançada). No Pandas, esse padrão já existia no método <code>.replace</code>, sendo assim, vamos analisar qual é forma mais efetiva de realizar tal tarefa.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># pure Pandas</span>
+</span></span><span class="line"><span class="cl"><span class="n">medals_reshaped_replace_pd_df</span> <span class="o">=</span> <span class="n">medals_reshaped_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">medals_reshaped_replace_pd_df</span><span class="o">.</span><span class="n">medals</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">medals_reshaped_replace_pd_df</span><span class="o">.</span><span class="n">medals</span><span class="o">==</span><span class="s2">&#34;gold&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Gold&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">delta_pure_pandas</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># using .replace</span>
+</span></span><span class="line"><span class="cl"><span class="n">medals_reshaped_replace_df</span> <span class="o">=</span> <span class="n">medals_reshaped_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">medals_reshaped_replace_df</span><span class="p">[</span><span class="s2">&#34;medals&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&#34;gold&#34;</span><span class="p">,</span> <span class="s2">&#34;Gold&#34;</span><span class="p">)</span>  <span class="c1"># adjusting the axis = 1 for columns</span>
+</span></span><span class="line"><span class="cl"><span class="n">delta_replace</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># who is faster?</span>
+</span></span><span class="line"><span class="cl"><span class="n">calculate_how_much_diff</span><span class="p">(</span><span class="n">method_1</span><span class="o">=</span><span class="n">delta_pure_pandas</span><span class="p">,</span> <span class="n">method_2</span><span class="o">=</span><span class="n">delta_replace</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="s1">&#39;Método 2 é 204.11% vezes mais rápido que o Método 1&#39;</span>
+</span></span></code></pre></div><p>Como podemos ver, utilizar o <code>.replace</code> é incrivelmente mais rápido e pythônico que apenas fazer isso com o Pandas básico.</p>
+<h3 id="substituindo-múltiplos-valores-com-listas-e-dicionários">Substituindo múltiplos valores com listas e dicionários</h3>
+<p>Uma outra comparação que podemos fazer é em relação a alteração de múltiplos valores numa columa de um <code>DataFrame</code>, e para isso o <code>.replace</code> nos oferece o recurso de utilizar listas e dicionários. Os quais veremos agora.</p>
+<p>Antes de realizar os comparativos, eu montei um esquema que nos permite visualizar como funciona a sintaxe para o <code>.replace</code> com listas e dicinários</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/efficient-pandas/replace-lists.png"
+        data-srcset="/img/efficient-pandas/replace-lists.png, /img/efficient-pandas/replace-lists.png 1.5x, /img/efficient-pandas/replace-lists.png 2x"
+        data-sizes="auto"
+        alt="/img/efficient-pandas/replace-lists.png"
+        title="Replace-lists" /></p>
+<blockquote>
+<p>Utilizando listas</p>
+</blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/efficient-pandas/replace-dict.png"
+        data-srcset="/img/efficient-pandas/replace-dict.png, /img/efficient-pandas/replace-dict.png 1.5x, /img/efficient-pandas/replace-dict.png 2x"
+        data-sizes="auto"
+        alt="/img/efficient-pandas/replace-dict.png"
+        title="Replace-dict" /></p>
+<blockquote>
+<p>Utilizando dicionários</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># pure Pandas</span>
+</span></span><span class="line"><span class="cl"><span class="n">medals_reshaped_replace_pd_df</span> <span class="o">=</span> <span class="n">medals_reshaped_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">medals_reshaped_replace_pd_df</span><span class="p">[</span><span class="s2">&#34;rank&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="n">medals_reshaped_replace_pd_df</span><span class="p">[</span><span class="s2">&#34;rank&#34;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">|</span> <span class="p">(</span><span class="n">medals_reshaped_replace_pd_df</span><span class="p">[</span><span class="s2">&#34;rank&#34;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">|</span> <span class="p">(</span><span class="n">medals_reshaped_replace_pd_df</span><span class="p">[</span><span class="s2">&#34;rank&#34;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span> <span class="o">=</span> <span class="s2">&#34;TOP 3&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">medals_reshaped_replace_pd_df</span><span class="p">[</span><span class="s2">&#34;rank&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="n">medals_reshaped_replace_pd_df</span><span class="p">[</span><span class="s2">&#34;rank&#34;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&#34;TOP 3&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span> <span class="o">=</span> <span class="s2">&#34;OUTRAS&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">delta_pure_pandas</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># using .replace</span>
+</span></span><span class="line"><span class="cl"><span class="n">medals_reshaped_replace_df</span> <span class="o">=</span> <span class="n">medals_reshaped_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">max_rank</span> <span class="o">=</span> <span class="n">medals_reshaped_replace_df</span><span class="p">[</span><span class="s2">&#34;rank&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">medals_reshaped_replace_df</span><span class="p">[</span><span class="s2">&#34;rank&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">max_rank</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]],</span> <span class="p">[</span><span class="s2">&#34;TOP 3&#34;</span><span class="p">,</span> <span class="s2">&#34;OUTRAS&#34;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">delta_replace</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># who is faster?</span>
+</span></span><span class="line"><span class="cl"><span class="n">calculate_how_much_diff</span><span class="p">(</span><span class="n">method_1</span><span class="o">=</span><span class="n">delta_pure_pandas</span><span class="p">,</span> <span class="n">method_2</span><span class="o">=</span><span class="n">delta_replace</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="s1">&#39;Método 2 é 136.03% vezes mais rápido que o Método 1&#39;</span>
+</span></span></code></pre></div><p>Novamente, obtemos o mesmo resultado e de forma muito mais eficiente ao utilizar o <code>.replace</code> do pandas, mesmo quando queremos substituir valores baseando-se em mais de uma condição ao dataset.</p>
+<p>Uma outra estrutura de dados que o Pandas nos permite usar é o dicionário, vamos realizar o comparativo:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># pure Pandas</span>
+</span></span><span class="line"><span class="cl"><span class="n">medals_reshaped_replace_df</span> <span class="o">=</span> <span class="n">medals_reshaped_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">medals_reshaped_replace_df</span><span class="p">[</span><span class="s2">&#34;medals&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&#34;gold&#34;</span><span class="p">,</span> <span class="s2">&#34;GOLD&#34;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">medals_reshaped_replace_df</span><span class="p">[</span><span class="s2">&#34;medals&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&#34;silver&#34;</span><span class="p">,</span> <span class="s2">&#34;Silver&#34;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">medals_reshaped_replace_df</span><span class="p">[</span><span class="s2">&#34;medals&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&#34;bronze&#34;</span><span class="p">,</span> <span class="s2">&#34;Bronze&#34;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">delta_pure_pandas</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># using .replace</span>
+</span></span><span class="line"><span class="cl"><span class="n">medals_reshaped_replace_df</span> <span class="o">=</span> <span class="n">medals_reshaped_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">medals_reshaped_replace_df</span><span class="p">[</span><span class="s2">&#34;medals&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s2">&#34;gold&#34;</span><span class="p">:</span> <span class="s2">&#34;Gold&#34;</span><span class="p">,</span> <span class="s2">&#34;silver&#34;</span><span class="p">:</span> <span class="s2">&#34;Silver&#34;</span><span class="p">,</span> <span class="s2">&#34;bronze&#34;</span><span class="p">:</span> <span class="s2">&#34;Bronze&#34;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">delta_replace</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># who is faster?</span>
+</span></span><span class="line"><span class="cl"><span class="n">calculate_how_much_diff</span><span class="p">(</span><span class="n">method_1</span><span class="o">=</span><span class="n">delta_pure_pandas</span><span class="p">,</span> <span class="n">method_2</span><span class="o">=</span><span class="n">delta_replace</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="s1">&#39;Método 2 é 171.75% vezes mais rápido que o Método 1&#39;</span>
+</span></span></code></pre></div><p>Aqui vemos que até mesmo dentro do próprio método <code>.replace</code> é possível encontrar formas mais performáticas de realizar uma terefa, que nesse caso é por meio dos dicionários.</p>
+<p>Com isso, finalizamos a segunda parte do tutorial. Resumindo o que vimos até aqui, temos:</p>
+<ul>
+<li><code>.replace</code> é muito mais efetivo que operações &ldquo;<em>puras</em>&rdquo; do <code>Pandas</code></li>
+<li><code>.replace</code> utilizando dicionários é mais efetivo que utilizando listas.</li>
+</ul>
+<p>Fique ligado para o próximo post, onde será abordado a Parte III e a Parte IV.</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-10-24</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://www.lobdata.com.br/posts/efficient-pandas/" data-title="Efficient Pandas" data-hashtags="Tutorial,Data Science,Pandas"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://www.lobdata.com.br/posts/efficient-pandas/" data-hashtag="Tutorial"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://www.lobdata.com.br/posts/efficient-pandas/" data-title="Efficient Pandas"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://www.lobdata.com.br/posts/efficient-pandas/" data-title="Efficient Pandas"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://www.lobdata.com.br/posts/efficient-pandas/" data-title="Efficient Pandas"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/tutorial/">Tutorial</a>,&nbsp;<a href="/tags/data-science/">Data Science</a>,&nbsp;<a href="/tags/pandas/">Pandas</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/econowallet-fastapi-pt5/" class="prev" rel="prev" title="Criando uma API Pronta para Produção com FastAPI - PT.5"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Criando uma API Pronta para Produção com FastAPI - PT.5</a>
+            <a href="/posts/image-cleaning/" class="next" rel="next" title="Computer Vision">Computer Vision<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.114.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Luba</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

@@ -1,0 +1,31 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Categories - Category - My New Hugo Site</title>
+        <link>https://www.lobdata.com.br/categories/</link>
+        <description>Categories - Category - My New Hugo Site</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 21 Jun 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>Tutorials</title>
+    <link>https://www.lobdata.com.br/categories/tutorials/</link>
+    <pubDate>Wed, 21 Jun 2023 00:00:00 &#43;0000</pubDate>
+    <author>Luba</author>
+    <guid>https://www.lobdata.com.br/categories/tutorials/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Projetos</title>
+    <link>https://www.lobdata.com.br/categories/projetos/</link>
+    <pubDate>Tue, 14 Jun 2022 00:00:00 &#43;0000</pubDate>
+    <author>Luba</author>
+    <guid>https://www.lobdata.com.br/categories/projetos/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Aplicações</title>
+    <link>https://www.lobdata.com.br/categories/aplica%C3%A7%C3%B5es/</link>
+    <pubDate>Sat, 16 Mar 2019 00:00:00 &#43;0000</pubDate>
+    <author>Luba</author>
+    <guid>https://www.lobdata.com.br/categories/aplica%C3%A7%C3%B5es/</guid>
+    <description><![CDATA[]]></description>
+</item>
+</channel>
+</rss>

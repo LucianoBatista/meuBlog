@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Criando uma API Pronta para Produção com FastAPI - PT.4 - My New Hugo Site</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Criando uma API Pronta para Produção com FastAPI - PT.4" />
+<meta property="og:description" content="Nos Capítulos Anteriores &hellip; Após um tempinho sem postar nada, vamos dar continuidade a essa série sobre como desenvolver uma API pronta pro Deploy! 🚀 🚀
+Essa é a parte 4 do nosso projeto do EconoWallet e se você quiser verificar o que já fizemos até o momento, acesse os links abaixo:
+Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Dando continuidade a nossa aplicação, hoje vamos configurar qual será nosso banco de dados." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.lobdata.com.br/posts/econowallet-fastapi-pt4/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-31T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-07-31T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Criando uma API Pronta para Produção com FastAPI - PT.4"/>
+<meta name="twitter:description" content="Nos Capítulos Anteriores &hellip; Após um tempinho sem postar nada, vamos dar continuidade a essa série sobre como desenvolver uma API pronta pro Deploy! 🚀 🚀
+Essa é a parte 4 do nosso projeto do EconoWallet e se você quiser verificar o que já fizemos até o momento, acesse os links abaixo:
+Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Dando continuidade a nossa aplicação, hoje vamos configurar qual será nosso banco de dados."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/econowallet-fastapi-pt4/" /><link rel="prev" href="https://www.lobdata.com.br/posts/econowallet-fastapi-pt3/" /><link rel="next" href="https://www.lobdata.com.br/posts/econowallet-fastapi-pt5/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Criando uma API Pronta para Produção com FastAPI - PT.4",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/www.lobdata.com.br\/posts\/econowallet-fastapi-pt4\/"
+        },"genre": "posts","keywords": "RESTFull API, Web Development, Backend, Asynchronous, FastAPI, Docker, SQLAlchemy","wordcount":  1192 ,
+        "url": "https:\/\/www.lobdata.com.br\/posts\/econowallet-fastapi-pt4\/","datePublished": "2021-07-31T00:00:00+00:00","dateModified": "2021-07-31T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Luciano"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My New Hugo Site">My cool site</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My New Hugo Site">My cool site</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Criando uma API Pronta para Produção com FastAPI - PT.4</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Luciano</a></span>&nbsp;<span class="post-category">included in <a href="/categories/tutorials/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Tutorials</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2021-07-31">2021-07-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1192 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#nos-capítulos-anteriores-">Nos Capítulos Anteriores &hellip;</a></li>
+    <li><a href="#modificações">Modificações</a></li>
+    <li><a href="#database">Database</a>
+      <ul>
+        <li><a href="#configurando-o-mysql">Configurando o MySQL</a></li>
+        <li><a href="#conectando-ao-mysql">Conectando ao MySQL</a></li>
+      </ul>
+    </li>
+    <li><a href="#sqlalchemy">SQLAlchemy</a>
+      <ul>
+        <li><a href="#como-funciona-o-sqlalchemy-omr">Como funciona o SQLAlchemy OMR?</a></li>
+      </ul>
+    </li>
+    <li><a href="#próximo-capítulo-">Próximo Capítulo&hellip; 🎉</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="nos-capítulos-anteriores-">Nos Capítulos Anteriores &hellip;</h2>
+<p>Após um tempinho sem postar nada, vamos dar continuidade a essa série sobre como desenvolver uma API pronta pro Deploy! 🚀 🚀</p>
+<p>Essa é a parte 4 do nosso projeto do <strong>EconoWallet</strong> e se você quiser verificar o que já fizemos até o momento, acesse os links abaixo:</p>
+<ul>
+<li><a href="https://www.lobdata.com.br/2021/03/30/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.1/" target="_blank" rel="noopener noreffer ">Parte 1</a></li>
+<li><a href="https://www.lobdata.com.br/2021/04/03/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.2/" target="_blank" rel="noopener noreffer ">Parte 2</a></li>
+<li><a href="https://www.lobdata.com.br/2021/04/08/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.3/" target="_blank" rel="noopener noreffer ">Parte 3</a></li>
+<li><a href="https://www.lobdata.com.br/2021/07/31/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.4/" target="_blank" rel="noopener noreffer ">Parte 4</a></li>
+<li><a href="https://www.lobdata.com.br/2021/08/01/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.5/" target="_blank" rel="noopener noreffer ">Parte 5</a></li>
+</ul>
+<p>Dando continuidade a nossa aplicação, hoje vamos configurar qual será nosso banco de dados. Apesar de ter tido que nesse post iríamos também configurar o <strong>SQLAlchemy</strong>, prefirir deixar para o próximo post, pois iria ficar muito conteúdo nesse artigo.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/finance_app_tutorial/pt4/areYouReady.gif"
+        data-srcset="/img/finance_app_tutorial/pt4/areYouReady.gif, /img/finance_app_tutorial/pt4/areYouReady.gif 1.5x, /img/finance_app_tutorial/pt4/areYouReady.gif 2x"
+        data-sizes="auto"
+        alt="/img/finance_app_tutorial/pt4/areYouReady.gif"
+        title="I&amp;rsquo;m ready when you are" /></p>
+<h2 id="modificações">Modificações</h2>
+<p>Eu fiz algumas modificações de localização de arquivos de uma forma que fica simples a separação de competências do nosso app. Basicamente agora temos tudo que diz respeito às configurações do Docker (<code>Dockerfile</code>, <code>docker-compose</code>, <code>.dockerignore</code>) fora do diretório do projeto. Veja o resultado:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">.
+</span></span><span class="line"><span class="cl">├── docker-compose.yml
+</span></span><span class="line"><span class="cl">├── Dockerfile
+</span></span><span class="line"><span class="cl">├── Pipfile
+</span></span><span class="line"><span class="cl">├── Pipfile.lock
+</span></span><span class="line"><span class="cl">├── project
+</span></span><span class="line"><span class="cl">│   └── app
+</span></span><span class="line"><span class="cl">│       ├── config.py
+</span></span><span class="line"><span class="cl">│       ├── __init__.py
+</span></span><span class="line"><span class="cl">│       └── main.py
+</span></span><span class="line"><span class="cl">└── README.md
+</span></span></code></pre></div><p>E além de alterar a localização dos arquivos, foi preciso fazer um pequeno ajuste no <code>docker-compose.yml</code> para referenciar o Dockerfile no root do projeto.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># modified</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;3.8&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">web</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l">uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 8000</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">./project:/usr/src/app</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="m">8004</span><span class="p">:</span><span class="m">8000</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">ENVIRONMENT=dev</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">TESTING=0</span><span class="w">
+</span></span></span></code></pre></div><p>Agora provavelmente tudo deve estar funcionando normalmente. Build novamente e tente acessar o <a href="http://127.0.0.1:8004/docs/" target="_blank" rel="noopener noreffer ">swager da API</a> (<code>docker-compose up --build -d</code>).</p>
+<h2 id="database">Database</h2>
+<p>Nossa intenção durante o desenvolvimento é buscar ao máximo que nosso ambiente se assemelhe ao ambiente de produção, onde nossa API vai estar sendo acessada por usuários reais. Nesse cenário, as informações trafegadas precisam ser persistidas em algum lugar, e normalmente é nesse ponto onde o banco de dados se encaixa.</p>
+<p>Saiba que existem diferentes banco de dados para diferentes tipos de problemas, para nossa aplicação iremos utilizar o <strong>MySQL</strong>.</p>
+<h3 id="configurando-o-mysql">Configurando o MySQL</h3>
+<p>É realmente muito simples configurar suporte à uma base de dados à sua aplicação utilizando o <strong>docker-compose</strong>. Tudo que você precisa fazer é adicionar mais um <em>service</em>, veja:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;3.8&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">web</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l">uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 8000</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">./project:/usr/src/app</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="m">8004</span><span class="p">:</span><span class="m">8000</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">ENVIRONMENT=dev</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">TESTING=0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># new</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">db</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># new</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">db</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">mysql:8.0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span>--<span class="l">default-authentication-plugin=mysql_native_password</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">always</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">mysql_data:/var/lib/mysql_data/data/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">MYSQL_DATABASE</span><span class="p">:</span><span class="w"> </span><span class="l">econowallet</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">MYSQL_USER</span><span class="p">:</span><span class="w"> </span><span class="l">user</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">MYSQL_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l">password</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">MYSQL_ROOT_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l">password</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="m">3320</span><span class="p">:</span><span class="m">3306</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">mysql_data</span><span class="p">:</span><span class="w">
+</span></span></span></code></pre></div><p>O que está acontecendo aqui é bem semelhante ao serviço <code>web</code>, com algumas ressalvas:</p>
+<ul>
+<li><code>depends_on</code>: aqui é utilizado pois agora o nosso serviço <code>web</code> depende que o <code>db</code> esteja pronto primeiro, antes de iniciar.</li>
+<li>estamos partindo de uma imagem base <a href="https://hub.docker.com/_/mysql" target="_blank" rel="noopener noreffer ">oficial</a> do MySQL.</li>
+<li><code>command</code> e <code>restart</code> são instruções oficiais da imagem do MySQL, doc acima 👆.</li>
+</ul>
+<p>Além disso, agora precisamos especificar algumas variáveis de ambiente que serão utilizadas para criar nossa base de dados para o <strong>EconoWallet</strong> e a porta que iremos nos conectar para acessar as informações. E, como para nosso banco de dados estamos especificando um volume que não é um diretório, o mesmo precisa ser indicado ao final do <code>docker-compose.yml</code>.</p>
+<h3 id="conectando-ao-mysql">Conectando ao MySQL</h3>
+<p>Agora que nosso <code>docker-compose.yml</code> está configurado, podemos rebuildar nossa aplicação, eu gosto de <em>derrubar</em> o serviço removendo os volumes sempre que tem uma modificação relativamente grande, e em seguida <em>subir</em> novamente.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose down -v
+</span></span><span class="line"><span class="cl">docker-compose up --build -d
+</span></span></code></pre></div><p>Você pode também consultar os logs para saber se tudo correu bem, basta rodar <code>docker-compose logs -f</code>. Se tudo correu bem você já está apto a conectar no nosso banco de dados.</p>
+<p>Se você tem uma versão premium do PyCharm é bem simples de fazer isso, mas aqui eu mostrarei como configurar pelo <strong>DBeaver</strong> um software gratuito e que todos tem acesso.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/finance_app_tutorial/pt4/dbeaver.png"
+        data-srcset="/img/finance_app_tutorial/pt4/dbeaver.png, /img/finance_app_tutorial/pt4/dbeaver.png 1.5x, /img/finance_app_tutorial/pt4/dbeaver.png 2x"
+        data-sizes="auto"
+        alt="/img/finance_app_tutorial/pt4/dbeaver.png"
+        title="DBeaver" /></p>
+<p>Aqui tem o <a href="https://dbeaver.io" target="_blank" rel="noopener noreffer ">link oficial</a> do site deles, a instalação é super direta para qualquer SO.</p>
+<h4 id="passo-a-passo">Passo a Passo</h4>
+<ol>
+<li>Com o software instalado, vá na lateral superior esquerda e clique no símbolo de uma tomada:</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/finance_app_tutorial/pt4/dbeaver-1.png"
+        data-srcset="/img/finance_app_tutorial/pt4/dbeaver-1.png, /img/finance_app_tutorial/pt4/dbeaver-1.png 1.5x, /img/finance_app_tutorial/pt4/dbeaver-1.png 2x"
+        data-sizes="auto"
+        alt="/img/finance_app_tutorial/pt4/dbeaver-1.png"
+        title="DBeaver" /></p>
+<ol start="2">
+<li>
+<p>Agora você vai precisar preencher os campos as informações que estão no <code>docker-compose.yml</code> e clicar em <strong>Test connection</strong>.
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/finance_app_tutorial/pt4/dbeaver-2.png"
+        data-srcset="/img/finance_app_tutorial/pt4/dbeaver-2.png, /img/finance_app_tutorial/pt4/dbeaver-2.png 1.5x, /img/finance_app_tutorial/pt4/dbeaver-2.png 2x"
+        data-sizes="auto"
+        alt="/img/finance_app_tutorial/pt4/dbeaver-2.png"
+        title="DBeaver" /></p>
+</li>
+<li>
+<p>Provavelmente ele vai solicitar instalar alguns drives e se tudo correr bem verá uma mensagem como no print.
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/finance_app_tutorial/pt4/dbeaver-3.png"
+        data-srcset="/img/finance_app_tutorial/pt4/dbeaver-3.png, /img/finance_app_tutorial/pt4/dbeaver-3.png 1.5x, /img/finance_app_tutorial/pt4/dbeaver-3.png 2x"
+        data-sizes="auto"
+        alt="/img/finance_app_tutorial/pt4/dbeaver-3.png"
+        title="DBeaver" /></p>
+</li>
+<li>
+<p>Clique em finish e na lateral agora você deve estar vendo nosso banco já configurado!! ✨
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/finance_app_tutorial/pt4/dbeaver-4.png"
+        data-srcset="/img/finance_app_tutorial/pt4/dbeaver-4.png, /img/finance_app_tutorial/pt4/dbeaver-4.png 1.5x, /img/finance_app_tutorial/pt4/dbeaver-4.png 2x"
+        data-sizes="auto"
+        alt="/img/finance_app_tutorial/pt4/dbeaver-4.png"
+        title="DBeaver" /></p>
+</li>
+</ol>
+<p>Apesar de estarmos com nosso banco configurado, ainda não temos nenhuma tabela para interagir e também não temos nenhuma interação entre a API e o banco. <strong>SQLAlchemy ao resgate!!</strong> 🩺</p>
+<h2 id="sqlalchemy">SQLAlchemy</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/finance_app_tutorial/pt4/sqlalchemy.png"
+        data-srcset="/img/finance_app_tutorial/pt4/sqlalchemy.png, /img/finance_app_tutorial/pt4/sqlalchemy.png 1.5x, /img/finance_app_tutorial/pt4/sqlalchemy.png 2x"
+        data-sizes="auto"
+        alt="/img/finance_app_tutorial/pt4/sqlalchemy.png"
+        title="SQLAlchemy" /></p>
+<p><strong>SQLAlchemy</strong> faz parte de um conjunto de frameworkers que são utilizados para abstrair a complexidade de lidar com o banco de dados diretamente. Desenvolver com um ORM não te prende à um banco de dados específico, onde posteriormente é possível plugar a aplicação ao Postgres, MySQL, Oracle, MariaDB ou outros (contanto que o framework tenha suporte). Escolhi o <strong>SQLAlchemy</strong> por alguns motivos:</p>
+<ul>
+<li>pela robustes: o SQLAlchemy possui diferentes módulos (Core e ORM) que te permite fazer muita coisa legal.</li>
+<li>muito tempo presente na comunidade: o que torna mais fácil lidar com problemas e bugs caso eles apareçam (e irão aparecer =D).</li>
+<li>ter sido bastante utilizado e testado em produção: isso atribui maior confiabilidade ao software.</li>
+</ul>
+<p>Saiba que os desenvolvedores do <code>SQLAlchemy</code> estão trabalhando numa nova versão da lib e parte da sintaxe de como realizar queries com o ORM irá mudar. Apesar dessa nova sintaxe estar disponível na versão atual da lib ela ainda não está oficialmente lançada, para mais detalhes acesse a <a href="https://www.sqlalchemy.org" target="_blank" rel="noopener noreffer ">documentação</a>. Aqui iremos manter a sintaxe mais tradicional.</p>
+<h3 id="como-funciona-o-sqlalchemy-omr">Como funciona o SQLAlchemy OMR?</h3>
+<p>É importante deixar claro que aqui nós estamos utilizando o componente <strong>ORM</strong> do SQLAlchemy e não o <strong>Core</strong>. A diferença é que o ORM adiciona uma camada de abstração que torna a interação com o banco mais <em>pythonica</em> e menos <em>SQL raiz</em>.</p>
+<p>Minha intenção não é explicar todos os detalhes do SQLAlchemy, mas sim o de ajudar a compreender os componentes que iremos utilizar aqui. Existe um livro muito bom com várias informações super relevantes chamado <a href="https://www.amazon.com.br/Essential-SQLAlchemy-Rick-Copeland/dp/0596516142" target="_blank" rel="noopener noreffer ">Essential SQLAlchemy</a>.</p>
+<p>Dito isso, eu costumo pensar o SQLAlchemy como duas sessões diferentes:</p>
+<ol>
+<li>A primeira onde especificamos quais os <strong>models</strong> (traduzidos em tabelas do banco) da nossa aplicação.</li>
+<li>E o segundo onde especificamos a <strong>session</strong> (conexão com o banco).</li>
+</ol>
+<p>No diagrama abaixo eu tento ilustrar esses dois cenários:</p>
+<ol>
+<li><strong>Cenário Um</strong></li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/finance_app_tutorial/pt4/sqlal-1.png"
+        data-srcset="/img/finance_app_tutorial/pt4/sqlal-1.png, /img/finance_app_tutorial/pt4/sqlal-1.png 1.5x, /img/finance_app_tutorial/pt4/sqlal-1.png 2x"
+        data-sizes="auto"
+        alt="/img/finance_app_tutorial/pt4/sqlal-1.png"
+        title="SQLAlchemy Explain" /></p>
+<p>Veja que partimos de uma classe mãe chamada de <code>declarative_base</code> pelo SQLAlchemy e que a mesma é utilizada na criação de cada um dos models. Além disso, após configurados os models, nós utilizamos o <code>.metadata.create_all(engine)</code> para de fato materializar esses models em tabelas no banco. Essa <strong>engine</strong> é justamente onde está a informação de qual banco de dados utilizar.</p>
+<ol>
+<li><strong>Cenário Dois</strong></li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/finance_app_tutorial/pt4/sqlal-2.png"
+        data-srcset="/img/finance_app_tutorial/pt4/sqlal-2.png, /img/finance_app_tutorial/pt4/sqlal-2.png 1.5x, /img/finance_app_tutorial/pt4/sqlal-2.png 2x"
+        data-sizes="auto"
+        alt="/img/finance_app_tutorial/pt4/sqlal-2.png"
+        title="SQLAlchemy Explain" /></p>
+<p>Aqui nós vemos como é feita a conexão com o banco e é por meio da session que faremos transações com as nossas tabelas criadas, o famoso <strong>C</strong>reate/<strong>R</strong>ead/<strong>U</strong>pdate/<strong>D</strong>elete. Um ponto para ficar atento é que ao configurar as sessions na nossa aplicação precisamos cuidar para que as sessions sejam sempre finalizadas, mesmo quando algum problema aconteça.</p>
+<h2 id="próximo-capítulo-">Próximo Capítulo&hellip; 🎉</h2>
+<p>Na próxima etapa, iremos configurar o <strong>SQLAlchemy</strong> e fazer com que nosso app comece a interagir com o banco!!</p>
+<p>Você pode acompanhar o repositório do projeto no link abaixo:</p>
+<ul>
+<li><a href="https://github.com/LucianoBatista/econowallet" target="_blank" rel="noopener noreffer ">GitHub - Econowallet</a> 🥂</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-07-31</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://www.lobdata.com.br/posts/econowallet-fastapi-pt4/" data-title="Criando uma API Pronta para Produção com FastAPI - PT.4" data-hashtags="RESTFull API,Web Development,Backend,Asynchronous,FastAPI,Docker,SQLAlchemy"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://www.lobdata.com.br/posts/econowallet-fastapi-pt4/" data-hashtag="RESTFull API"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://www.lobdata.com.br/posts/econowallet-fastapi-pt4/" data-title="Criando uma API Pronta para Produção com FastAPI - PT.4"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://www.lobdata.com.br/posts/econowallet-fastapi-pt4/" data-title="Criando uma API Pronta para Produção com FastAPI - PT.4"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://www.lobdata.com.br/posts/econowallet-fastapi-pt4/" data-title="Criando uma API Pronta para Produção com FastAPI - PT.4"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/restfull-api/">RESTFull API</a>,&nbsp;<a href="/tags/web-development/">Web Development</a>,&nbsp;<a href="/tags/backend/">Backend</a>,&nbsp;<a href="/tags/asynchronous/">Asynchronous</a>,&nbsp;<a href="/tags/fastapi/">FastAPI</a>,&nbsp;<a href="/tags/docker/">Docker</a>,&nbsp;<a href="/tags/sqlalchemy/">SQLAlchemy</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/econowallet-fastapi-pt3/" class="prev" rel="prev" title="Criando uma API Pronta para Produção com FastAPI - PT.3"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Criando uma API Pronta para Produção com FastAPI - PT.3</a>
+            <a href="/posts/econowallet-fastapi-pt5/" class="next" rel="next" title="Criando uma API Pronta para Produção com FastAPI - PT.5">Criando uma API Pronta para Produção com FastAPI - PT.5<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.114.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Luba</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

@@ -1,0 +1,87 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Tags - Tag - My New Hugo Site</title>
+        <link>https://www.lobdata.com.br/tags/</link>
+        <description>Tags - Tag - My New Hugo Site</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 21 Jun 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>AI</title>
+    <link>https://www.lobdata.com.br/tags/ai/</link>
+    <pubDate>Wed, 21 Jun 2023 00:00:00 &#43;0000</pubDate>
+    <author>Luba</author>
+    <guid>https://www.lobdata.com.br/tags/ai/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Generative</title>
+    <link>https://www.lobdata.com.br/tags/generative/</link>
+    <pubDate>Wed, 21 Jun 2023 00:00:00 &#43;0000</pubDate>
+    <author>Luba</author>
+    <guid>https://www.lobdata.com.br/tags/generative/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>IA Generativa</title>
+    <link>https://www.lobdata.com.br/tags/ia-generativa/</link>
+    <pubDate>Wed, 21 Jun 2023 00:00:00 &#43;0000</pubDate>
+    <author>Luba</author>
+    <guid>https://www.lobdata.com.br/tags/ia-generativa/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Bag of words</title>
+    <link>https://www.lobdata.com.br/tags/bag-of-words/</link>
+    <pubDate>Tue, 14 Jun 2022 00:00:00 &#43;0000</pubDate>
+    <author>Luba</author>
+    <guid>https://www.lobdata.com.br/tags/bag-of-words/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Data Science</title>
+    <link>https://www.lobdata.com.br/tags/data-science/</link>
+    <pubDate>Tue, 14 Jun 2022 00:00:00 &#43;0000</pubDate>
+    <author>Luba</author>
+    <guid>https://www.lobdata.com.br/tags/data-science/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Education</title>
+    <link>https://www.lobdata.com.br/tags/education/</link>
+    <pubDate>Tue, 14 Jun 2022 00:00:00 &#43;0000</pubDate>
+    <author>Luba</author>
+    <guid>https://www.lobdata.com.br/tags/education/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>N-Grams</title>
+    <link>https://www.lobdata.com.br/tags/n-grams/</link>
+    <pubDate>Tue, 14 Jun 2022 00:00:00 &#43;0000</pubDate>
+    <author>Luba</author>
+    <guid>https://www.lobdata.com.br/tags/n-grams/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>NLP</title>
+    <link>https://www.lobdata.com.br/tags/nlp/</link>
+    <pubDate>Tue, 14 Jun 2022 00:00:00 &#43;0000</pubDate>
+    <author>Luba</author>
+    <guid>https://www.lobdata.com.br/tags/nlp/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>TFIDF</title>
+    <link>https://www.lobdata.com.br/tags/tfidf/</link>
+    <pubDate>Tue, 14 Jun 2022 00:00:00 &#43;0000</pubDate>
+    <author>Luba</author>
+    <guid>https://www.lobdata.com.br/tags/tfidf/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Word2Vec</title>
+    <link>https://www.lobdata.com.br/tags/word2vec/</link>
+    <pubDate>Tue, 14 Jun 2022 00:00:00 &#43;0000</pubDate>
+    <author>Luba</author>
+    <guid>https://www.lobdata.com.br/tags/word2vec/</guid>
+    <description><![CDATA[]]></description>
+</item>
+</channel>
+</rss>

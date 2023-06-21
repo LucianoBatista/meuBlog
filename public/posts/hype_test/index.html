@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Hypothesis Testing by Computational Methodology - Part 1 - My New Hugo Site</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Hypothesis Testing by Computational Methodology - Part 1" />
+<meta property="og:description" content="Introduction This is the first of two articles that we&rsquo;ll talk about two different approaches to perform hypotheses tests, covering the classical and computational methodologies. In the end I&rsquo;ll show you one R package (Infer) capable to execute any of these methods in an easy, flexible, and less error-prone way.
+In the second article, we&rsquo;ll go deeper in a hands-on experiment using the Infer package, if you already know the package and want to see more code than text, click here." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.lobdata.com.br/posts/hype_test/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-09-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-09-20T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Hypothesis Testing by Computational Methodology - Part 1"/>
+<meta name="twitter:description" content="Introduction This is the first of two articles that we&rsquo;ll talk about two different approaches to perform hypotheses tests, covering the classical and computational methodologies. In the end I&rsquo;ll show you one R package (Infer) capable to execute any of these methods in an easy, flexible, and less error-prone way.
+In the second article, we&rsquo;ll go deeper in a hands-on experiment using the Infer package, if you already know the package and want to see more code than text, click here."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/hype_test/" /><link rel="prev" href="https://www.lobdata.com.br/posts/r_correlation/" /><link rel="next" href="https://www.lobdata.com.br/posts/correlation_analysis_in_r/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Hypothesis Testing by Computational Methodology - Part 1",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/www.lobdata.com.br\/posts\/hype_test\/"
+        },"genre": "posts","keywords": "Hypothesis Testing, Data Science, Statistics, R, Infer","wordcount":  1199 ,
+        "url": "https:\/\/www.lobdata.com.br\/posts\/hype_test\/","datePublished": "2020-09-20T00:00:00+00:00","dateModified": "2020-09-20T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Luciano"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My New Hugo Site">My cool site</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My New Hugo Site">My cool site</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Hypothesis Testing by Computational Methodology - Part 1</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Luciano</a></span>&nbsp;<span class="post-category">included in <a href="/categories/tutorials/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Tutorials</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-09-20">2020-09-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1199 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#framework">Framework</a></li>
+    <li><a href="#pros--cons">Pros &amp; Cons</a></li>
+    <li><a href="#infer-package">Infer Package</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="introduction">Introduction</h1>
+<p>This is the first of two articles that we&rsquo;ll talk about two different approaches to perform hypotheses tests, covering the <em>classical</em> and <em>computational</em> methodologies. In the end I&rsquo;ll show you one R package (<code>Infer</code>) capable to execute any of these methods in an easy, flexible, and less error-prone way.</p>
+<p>In the second article, we&rsquo;ll go deeper in a hands-on experiment using the Infer package, if you already know the package and want to see more code than text, click <strong>here</strong>.</p>
+<h1 id="what-is-hypothesis-test">What is Hypothesis Test?</h1>
+<p>Before start to talk about the hypothesis test I think that it&rsquo;s important to know where we are in the &lsquo;StatsVerse&rsquo;. One didactic way is to start looking for the two major areas of Statistics:</p>
+<ul>
+<li>
+<p><strong>Descriptive Statistics:</strong> correspond to methods for collecting, describing, and analyzing a set of data <em>without drawing any conclusions</em> about a large group.</p>
+</li>
+<li>
+<p><strong>Inferential Statistics:</strong> correspond to methods for the analysis of a subset of data leading to <em>predictions or inferences about the entire set of data.</em></p>
+</li>
+</ul>
+<p>That been said, hypothesis tests are part of Inferential Statistics and allow us to take a sample of data from a population and infer about the plausibility of competing hypotheses. Sadly, here we have a lot of terminologies, notations, and definitions, and all that is important to understand the following topics of the article, because of this I prepare the table bellow with some short explanations you can use, if needed, to remember some of these concepts.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/hp_04.jpeg"
+        data-srcset="/img/hp_04.jpeg, /img/hp_04.jpeg 1.5x, /img/hp_04.jpeg 2x"
+        data-sizes="auto"
+        alt="/img/hp_04.jpeg"
+        title="Plot" /></p>
+<p>Now you already refresh your mind about the hypothesis test, we can think about how to perform them. In that case, there is a classical methodology, based on very well known tests (t, Z, Chi-squared&hellip;), and there is the other one I didn&rsquo;t know until coming across with this incredible article <strong>&ldquo;There is Only one Test&rdquo;</strong>, based on a general framework and resampling techniques (permutation and bootstrap), called <em>computational methodology</em>.</p>
+<p>So, you may ask me <em>&ldquo;Why should I care about this computational approach?&rdquo;</em>. And that is the answer I intend to give you at the end of the article =D.</p>
+<p>Let&rsquo;s see now how we can proceed in order to perform a hypothesis test using these different tests.</p>
+<h1 id="classical-methodology">Classical Methodology</h1>
+<p>The way that you do a hypothesis test by the classical approach is based on these following steps:</p>
+<ol>
+<li>State the hypotheses.</li>
+<li><strong>Identify the test statistic and its probability distribution.</strong></li>
+<li>Specify the significance level.</li>
+<li>State the decision rule.</li>
+<li>Collect the data and perform the calculations.</li>
+<li>Make the statistical decision.</li>
+<li>Make the business decision.</li>
+</ol>
+<p>You probably noticed that the second step is bold, and that is because the most difficult part is identifying how the test should be used based on the data you have, it&rsquo;s not a trivial task, and you may probably end up googling and find images like this:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/hp_1.jpg"
+        data-srcset="/img/hp_1.jpg, /img/hp_1.jpg 1.5x, /img/hp_1.jpg 2x"
+        data-sizes="auto"
+        alt="/img/hp_1.jpg"
+        title="Plot" /></p>
+<p>or this:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/hp_2.jpg"
+        data-srcset="/img/hp_2.jpg, /img/hp_2.jpg 1.5x, /img/hp_2.jpg 2x"
+        data-sizes="auto"
+        alt="/img/hp_2.jpg"
+        title="Plot" /></p>
+<p>or even worse&hellip;</p>
+<p>All these tests are based on assumptions that you need to follow in order to get a significative response. Otherwise, your answer will be misleading, that is, you may find a relationship between variables that is not true and vice-versa.</p>
+<p>So, if existed one way to generalize this second step? Would be great, right? In fact, there is and we go see now!</p>
+<h1 id="computational-methodology">Computational Methodology</h1>
+<p>This computational methodology is based on a framework developed by Allen Downey, a computer scientist, author of Think Stats, and other books. Allen is a Professor of Computer Science at Olin College of Engineering. He has a Ph.D. in Computer Science from U.C. Berkeley and Master&rsquo;s and Bachelor&rsquo;s degrees from MIT.</p>
+<p>He observed a pattern in the way that hypotheses tests are applied and came up with one more generalized approach to perform these tests.</p>
+<p>The author believes that when computation was expensive, the shortcuts offered by all kinds of statistical tests were very important and necessary to calculate p-values, but now that computation is in a completely different level, they lost your weight.</p>
+<p>The solution brought by him is to use <strong>simulation</strong>. That is, if you can construct a model of the null hypothesis, you can estimate p-values just by counting!</p>
+<p><strong>Let&rsquo;s see how it works!!</strong></p>
+<h2 id="framework">Framework</h2>
+<p>The figure below it&rsquo;s showing the framework proposed by Allen Downey.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/hp_3.png"
+        data-srcset="/img/hp_3.png, /img/hp_3.png 1.5x, /img/hp_3.png 2x"
+        data-sizes="auto"
+        alt="/img/hp_3.png"
+        title="Plot" /></p>
+<p>In order to describe the elements of this framework, I&rsquo;ll put here what was wrote by the author:</p>
+<ol>
+<li>
+<p><em>Given a dataset, you compute a test statistic that measures the size of the apparent effect. For example, if you are describing a difference between the two groups, the test statistic might be the absolute difference in means. He calls the test statistic from the observed data δ</em>.*</p>
+</li>
+<li>
+<p><em>Next, you define a null hypothesis, which is a model of the world under the assumption that the effect is not real. For example, if you think there might be a difference between the two groups, the null hypothesis would assume that there is no difference.</em></p>
+</li>
+<li>
+<p><em>Your model of the null hypothesis should be stochastic. That is, capable of generating random datasets similar to the original dataset.</em></p>
+</li>
+<li>
+<p><em>Now, the <strong>goal of classical hypothesis testing is to compute a p-value</strong>, which is the probability of seeing an effect as big as δ under the null hypothesis. You can estimate the p-value by using your model of the null hypothesis to generate many simulated datasets. For each simulated dataset, compute the same test statistic you used on the actual data.</em></p>
+</li>
+<li>
+<p><em>Finally, <strong>count the fraction of times the test statistic from simulated data exceeds</strong> δ.  This fraction approximates the p-value.  If it&rsquo;s sufficiently small, you can conclude that the apparent effect is unlikely to be due to chance.</em></p>
+</li>
+</ol>
+<p>That&rsquo;s it, all hypothesis tests fit into this framework.</p>
+<h2 id="pros--cons">Pros &amp; Cons</h2>
+<p>Like everything we always have pros and cons, and here there is no difference.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Pros</th>
+<th style="text-align:left">Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Easy</td>
+<td style="text-align:left">Easy just for programmers</td>
+</tr>
+<tr>
+<td style="text-align:left">Less error-prone</td>
+<td style="text-align:left">Big data can take longer to run</td>
+</tr>
+<tr>
+<td style="text-align:left">Flexible</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">Fast enough</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<p>Look that these two <em>cons</em> can be easily managed if you want:</p>
+<ul>
+<li>if you are not comfortable with programming, the <code>Infer</code> package makes it easier to execute this framework.</li>
+<li>although be fast, if you are working with big data, tasks like permutation can be very computationally expensive. But, nothing stops you to get a sample from your big dataset to perform hypotheses tests.</li>
+</ul>
+<p>I&rsquo;m not saying that the classical methodology it&rsquo;s not necessary anymore, but just showing another way (less error-prone) we can take advantage of all computational power to optimize this task.</p>
+<h2 id="infer-package">Infer Package</h2>
+<p>This package was developed by Andrew Bray and collaborators, and the objective is exactly to perform statistical inference using an expressive statistical grammar that coheres with the design framework showed before. The package is centered around 4 main verbs, supplemented with many utilities to visualize and extract value from their outputs.</p>
+<ul>
+<li><code>specify()</code>: allows you to specify the variable or relationship between variables, that you’re interested in.</li>
+<li><code>hypothesize()</code>: allows you to declare the null hypothesis.</li>
+<li><code>generate()</code>: allows you to generate data reflecting the null hypothesis.</li>
+<li><code>calculate()</code>: allows you to calculate a distribution of statistics from the generated data to form the null distribution.</li>
+</ul>
+<p>The flow is straightforward, like the image below:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/hp_5.png"
+        data-srcset="/img/hp_5.png, /img/hp_5.png 1.5x, /img/hp_5.png 2x"
+        data-sizes="auto"
+        alt="/img/hp_5.png"
+        title="/img/hp_5.png" /></p>
+<p>To learn more about the principles underlying the package, stay tuning to the next article!</p>
+<p><strong>Sources</strong></p>
+<ul>
+<li><a href="http://allendowney.blogspot.com/2016/06/there-is-still-only-one-test.html" target="_blank" rel="noopener noreffer ">Allen Downey article</a></li>
+<li><a href="https://moderndive.com/9-hypothesis-testing.html#understanding-ht" target="_blank" rel="noopener noreffer ">Hypothesis testing theory</a></li>
+<li><a href="https://rstudio.com/resources/rstudioconf-2018/infer-a-package-for-tidy-statistical-inference/" target="_blank" rel="noopener noreffer ">Andrew Bray RStudio talk</a></li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-09-20</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://www.lobdata.com.br/posts/hype_test/" data-title="Hypothesis Testing by Computational Methodology - Part 1" data-hashtags="Hypothesis Testing,Data Science,Statistics,R,Infer"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://www.lobdata.com.br/posts/hype_test/" data-hashtag="Hypothesis Testing"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://www.lobdata.com.br/posts/hype_test/" data-title="Hypothesis Testing by Computational Methodology - Part 1"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://www.lobdata.com.br/posts/hype_test/" data-title="Hypothesis Testing by Computational Methodology - Part 1"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://www.lobdata.com.br/posts/hype_test/" data-title="Hypothesis Testing by Computational Methodology - Part 1"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/hypothesis-testing/">Hypothesis Testing</a>,&nbsp;<a href="/tags/data-science/">Data Science</a>,&nbsp;<a href="/tags/statistics/">Statistics</a>,&nbsp;<a href="/tags/r/">R</a>,&nbsp;<a href="/tags/infer/">Infer</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/r_correlation/" class="prev" rel="prev" title="How to Perform Correlation Analysis in Time Series data using R?"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>How to Perform Correlation Analysis in Time Series data using R?</a>
+            <a href="/posts/correlation_analysis_in_r/" class="next" rel="next" title="Effective approach to analyze correlation coefficients">Effective approach to analyze correlation coefficients<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.114.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Luba</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

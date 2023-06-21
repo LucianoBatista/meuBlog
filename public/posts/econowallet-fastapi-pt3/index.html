@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Criando uma API Pronta para Produção com FastAPI - PT.3 - My New Hugo Site</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Criando uma API Pronta para Produção com FastAPI - PT.3" />
+<meta property="og:description" content="Nos Capítulos Anteriores &hellip; Essa é a parte 3 do nosso projeto do EconoWallet, se quiser verificar o que já fizemos até o momento, verifique os links abaixo:
+Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Dando continuidade a nossa aplicação, hoje vamos iniciar a configuração do Docker em nosso ambiente. E antes de mais nada, precisaremos instalar o Docker e o Docker Compose na nossa máquina.
+A documentação do Docker para instalação é muito bem explicada." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.lobdata.com.br/posts/econowallet-fastapi-pt3/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-04-08T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-04-08T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Criando uma API Pronta para Produção com FastAPI - PT.3"/>
+<meta name="twitter:description" content="Nos Capítulos Anteriores &hellip; Essa é a parte 3 do nosso projeto do EconoWallet, se quiser verificar o que já fizemos até o momento, verifique os links abaixo:
+Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Dando continuidade a nossa aplicação, hoje vamos iniciar a configuração do Docker em nosso ambiente. E antes de mais nada, precisaremos instalar o Docker e o Docker Compose na nossa máquina.
+A documentação do Docker para instalação é muito bem explicada."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/econowallet-fastapi-pt3/" /><link rel="prev" href="https://www.lobdata.com.br/posts/econowallet-fastapi-pt2/" /><link rel="next" href="https://www.lobdata.com.br/posts/econowallet-fastapi-pt4/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Criando uma API Pronta para Produção com FastAPI - PT.3",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/www.lobdata.com.br\/posts\/econowallet-fastapi-pt3\/"
+        },"genre": "posts","keywords": "RESTFull API, Web Development, Backend, Asynchronous, FastAPI, Docker, SQLAlchemy","wordcount":  1161 ,
+        "url": "https:\/\/www.lobdata.com.br\/posts\/econowallet-fastapi-pt3\/","datePublished": "2021-04-08T00:00:00+00:00","dateModified": "2021-04-08T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Luciano"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My New Hugo Site">My cool site</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My New Hugo Site">My cool site</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Criando uma API Pronta para Produção com FastAPI - PT.3</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Luciano</a></span>&nbsp;<span class="post-category">included in <a href="/categories/tutorials/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Tutorials</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2021-04-08">2021-04-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1161 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><h1 id="nos-capítulos-anteriores-">Nos Capítulos Anteriores &hellip;</h1>
+<p>Essa é a parte 3 do nosso projeto do EconoWallet, se quiser verificar o que já fizemos até o momento, verifique os links abaixo:</p>
+<ul>
+<li><a href="https://www.lobdata.com.br/2021/03/30/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.1/" target="_blank" rel="noopener noreffer ">Parte 1</a></li>
+<li><a href="https://www.lobdata.com.br/2021/04/03/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.2/" target="_blank" rel="noopener noreffer ">Parte 2</a></li>
+<li><a href="https://www.lobdata.com.br/2021/04/08/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.3/" target="_blank" rel="noopener noreffer ">Parte 3</a></li>
+<li><a href="https://www.lobdata.com.br/2021/07/31/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.4/" target="_blank" rel="noopener noreffer ">Parte 4</a></li>
+<li><a href="https://www.lobdata.com.br/2021/08/01/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.5/" target="_blank" rel="noopener noreffer ">Parte 5</a></li>
+</ul>
+<p>Dando continuidade a nossa aplicação, hoje vamos iniciar a configuração do Docker em nosso ambiente. E antes de mais nada, precisaremos instalar o Docker e o Docker Compose na nossa máquina.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/finance_app_tutorial/pt3/lets_do_it.gif"
+        data-srcset="/img/finance_app_tutorial/pt3/lets_do_it.gif, /img/finance_app_tutorial/pt3/lets_do_it.gif 1.5x, /img/finance_app_tutorial/pt3/lets_do_it.gif 2x"
+        data-sizes="auto"
+        alt="/img/finance_app_tutorial/pt3/lets_do_it.gif"
+        title="Let&amp;rsquo;s Do This" /></p>
+<p>A <a href="https://docs.docker.com/get-docker/" target="_blank" rel="noopener noreffer ">documentação</a> do Docker para instalação é muito bem explicada. Ao acessar o link você encontrará um passo-a-passo para qualquer SO que esteja usando (macOS, Linux ou Windows). Ao final da instalação, o próprio tutorial indica como verificar se está tudo funcionando corretamente, a versão que estarei utilizando aqui é:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker -v
+</span></span><span class="line"><span class="cl">Docker version 20.10.5, build 55c4c88
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker-compose -v
+</span></span><span class="line"><span class="cl">docker-compose version 1.27.4, build <span class="m">40524192</span>
+</span></span></code></pre></div><p>O workflow que vamos seguir aqui é o de containerizar cada parte da aplicação e depois orquestrar isso de alguma forma, para que cada parte se comunique de forma harmônica e a aplicação final funcione através dos containers e imagens criadas. Nesse processo, cada &ldquo;bloco&rdquo; da aplicação vai ser construído utilizando um template de instruções, nossos Dockerfiles, e a orquestração aqui vai ser feita por um arquivo chamado docker-compose.yml.</p>
+<p>Ao final desse workflow você vai ter um <em>bundle</em> onde cada container contêm parte da aplicação, mas tudo funciona em conjunto. Veja na imagem (de forma simplificada) o que acontece.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/finance_app_tutorial/pt3/container_application.png"
+        data-srcset="/img/finance_app_tutorial/pt3/container_application.png, /img/finance_app_tutorial/pt3/container_application.png 1.5x, /img/finance_app_tutorial/pt3/container_application.png 2x"
+        data-sizes="auto"
+        alt="/img/finance_app_tutorial/pt3/container_application.png"
+        title="Containerized Application" /></p>
+<blockquote>
+<p>Imagem retirada do Google</p>
+</blockquote>
+<blockquote>
+<p>Uma ressalva que gostaria de fazer é que existem outras formas de orquestrar os containers que não seja utilizando um arquivo docker-compose.yml, como por exemplo utilizando Kubernetes (k8s).</p>
+</blockquote>
+<h1 id="criando-o-primeiro-dockerfile">Criando o primeiro Dockerfile</h1>
+<p>Uma regra básica na hora de criar seus Dockerfiles é considerar que suas instruções ao longo do arquivo representam camadas, e as camadas que exigem mais processamento e mais tempo para &ldquo;construir&rdquo; devem estar posicionadas no início. Dessa forma, você otimiza o tempo de processamento, e caso seja precise rebuildar a imagem com alguma modificação em camadas mais superiores, pois as que não sofrem modificação são recarregadas a partir de um cache.</p>
+<p>No caso de Dockerfiles para aplicações web em python eu costumo seguir um pipeline básico do que é preciso/interessante ter na imagem, e ao longo do projeto vou modificando de acordo a necessidade:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/finance_app_tutorial/pt3/diagrams.png"
+        data-srcset="/img/finance_app_tutorial/pt3/diagrams.png, /img/finance_app_tutorial/pt3/diagrams.png 1.5x, /img/finance_app_tutorial/pt3/diagrams.png 2x"
+        data-sizes="auto"
+        alt="/img/finance_app_tutorial/pt3/diagrams.png"
+        title="Diagram" /></p>
+<p>Ainda assim, é fácil encontrar modelos de Dockerfile para diversos tipos de aplicação no github, apenas busque entender o que de fato está acontecendo antes de copiar e colar.</p>
+<pre tabindex="0"><code>FROM python:3.9.0-slim-buster
+
+WORKDIR /usr/src/app
+
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+RUN apt-get update \
+  &amp;&amp; apt-get -y install netcat gcc \
+  &amp;&amp; apt-get clean
+
+RUN pip install --upgrade pip \
+  &amp;&amp; pip install pipenv
+COPY /Pipenv Pipfile.lock ./
+RUN pipenv install --deploy --system
+
+COPY . .
+</code></pre><p>Como visto no fluxograma, primeiramente vemos uma imagem base do python, que aqui estamos utilizando o <code>python:3.9.0-slim-buster</code>, uma espécie de imagem mínima apenas com o essencial para podermos rodar uma aplicação python, além da slim-buster temos outras variações que buscam aplicar o mesmo conceito de economia de espaço. Este artigo do <a href="https://medium.com/swlh/alpine-slim-stretch-buster-jessie-bullseye-bookworm-what-are-the-differences-in-docker-62171ed4531d" target="_blank" rel="noopener noreffer ">Medium</a> contém uma boa explicação sobre a diferença entre os tipos: Slim, Alpine, Strech, Buster, Jessie e Bullseye.</p>
+<blockquote>
+<p>Como são imagens mínimas e de tamanho reduzido, pode ser que a depender de sua aplicação, você precise completar a imagem com alguma dependência. É difícil saber de antemão qual a imagem que vai funcionar corretamente com seu projeto, mas graças a praticidade de trabalhar com Docker, podemos facilmente trocar e buscar a que melhor se adapte.</p>
+</blockquote>
+<p>Voltando ao código que escrevemos, nas variáveis de ambiente (<code>ENV</code>), é uma boa prática ao trabalhar com projetos em python que adicionemos as seguintes variáveis:</p>
+<ul>
+<li><code>PYTHONDONTWRITEBYTECODE</code>: Impede que o Python grave arquivos pyc no disco (equivalente a opção -B)</li>
+<li><code>PYTHONUNBUFFERED</code>: Evita que o Python armazene um buffer stdout e stderr (equivalente a opção -u)</li>
+</ul>
+<h1 id="criando-o-primeiro-docker-composeyml">Criando o primeiro docker-compose.yml</h1>
+<p>Antes de criarmos o docker-compose.yml, vamos adicionar um .dockerignore, uma boa prática para manter a segurança do nosso ambiente, já que estamos copiando arquivos locais para dentro das imagens, pode ser que em algum momento, por descuido, variáveis de ambiente vazem em produção gerando assim uma grande falha de segurança.</p>
+<blockquote>
+<p>Se quiser fazer um review de boas práticas de Docker para desenvolvedores python, <a href="https://mherman.org/presentations/dockercon-2018/" target="_blank" rel="noopener noreffer ">acesse</a>.</p>
+</blockquote>
+<p>Adicione à sua pasta <code>project/</code> o arquivo <code>docker-compose.yml</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;3.8&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">web</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l">./project</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l">uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 8000</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">./project:/usr/src/app</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="m">8004</span><span class="p">:</span><span class="m">8000</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">ENVIRONMENT=dev</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">TESTING=0</span><span class="w">
+</span></span></span></code></pre></div><p>Se você nunca trabalhou com esse tipo de arquivo, não se assuste, é apenas uma linguagem de marcação com um conceito de maps e listas muito semelhante ao chave-valor de dicionários em python, tanto que tem um pacote chamado <a href="https://pypi.org/project/PyYAML/" target="_blank" rel="noopener noreffer ">PyYAML</a> que mapeia o seu arquivo yml em um dicionário.</p>
+<p>Com essas instruções nós construímos nossos serviços. O primeiro será nosso serviço web, onde foi especificado um diretório para <code>build</code> onde basicamente o Docker vai buscar o seu template (Dockerfile), depois a gente inicia o container rodando o <code>uvicorn</code> na porta 8000.</p>
+<p>A marcação de <code>volumes</code> é extremamente interessante/importante para que tenhámos persistência de dados ao longo do desenvolvimento e em produção. Basicamente estou dizendo que o <code>./project</code> local vai ser mapeado no diretório <code>/usr/src/app</code>, e tudo que acontecer localmente também vai ser atualizado dentro do ambiente docker sem necessidade de rebuildar a imagem.</p>
+<p>Depois disso nós expomos uma porta 8004 que vai escutar a porta 8000 dentro da nossa image Docker. E por fim adicionamos duas variáveis de ambiente, que são as mesmas que estão na nossa classe Settings no arquivo <code>config.py</code>.</p>
+<p>Vamos buidar nossa imagem:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker-compose build
+</span></span></code></pre></div><blockquote>
+<p>Eu tive um problema ao buildar a imagem pois o diretório root da imagem é diferente do que está meu projeto no pyCharm. Para resolver isso eu tive que alterar o main.py e mudar o que o pyCharm considera como root.</p>
+</blockquote>
+<p>Modificando o <code>main.py</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># project/app/main.py</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span><span class="p">,</span> <span class="n">Depends</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># modified</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">app.config</span> <span class="kn">import</span> <span class="n">Settings</span><span class="p">,</span> <span class="n">get_settings</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@app.get</span><span class="p">(</span><span class="s2">&#34;/ping&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">async</span> <span class="k">def</span> <span class="nf">ping</span><span class="p">(</span><span class="n">settings</span><span class="p">:</span> <span class="n">Settings</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_settings</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;ping&#34;</span><span class="p">:</span> <span class="s2">&#34;pong!&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;environment&#34;</span><span class="p">:</span> <span class="n">settings</span><span class="o">.</span><span class="n">environment</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;testing&#34;</span><span class="p">:</span> <span class="n">settings</span><span class="o">.</span><span class="n">testing</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></div><p>Para configurar o pyCharm, clique com o botão direito em cima da pasta do project e vá em <strong>Mark Directory as</strong> &gt; <strong>Sources Root</strong>. Agora rode a build novamente e provavelmente deve funcionar.</p>
+<p>Assim que a build estiver pronta, vamos iniciar o container em background (detached <code>-d</code>):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker-compose up -d
+</span></span></code></pre></div><p>Vá até o link <a href="http://localhost:8004/ping" target="_blank" rel="noopener noreffer ">http://localhost:8004/ping</a> e você verá o seguinte output:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;ping&#34;</span><span class="p">:</span> <span class="s2">&#34;pong!&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;environment&#34;</span><span class="p">:</span> <span class="s2">&#34;dev&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;testing&#34;</span><span class="p">:</span> <span class="kc">false</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Em nosso diretório de projeto, você deverá ter uma estrutura semelhante a essa:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">.
+</span></span><span class="line"><span class="cl">├── docker-compose.yml
+</span></span><span class="line"><span class="cl">├── project
+</span></span><span class="line"><span class="cl">│   ├── app
+</span></span><span class="line"><span class="cl">│   │   ├── config.py
+</span></span><span class="line"><span class="cl">│   │   ├── __init__.py
+</span></span><span class="line"><span class="cl">│   │   ├── main.py
+</span></span><span class="line"><span class="cl">│   ├── Dockerfile
+</span></span><span class="line"><span class="cl">│   ├── Pipfile
+</span></span><span class="line"><span class="cl">│   └── Pipfile.lock
+</span></span><span class="line"><span class="cl">└── README.md
+</span></span></code></pre></div><h1 id="próximo-capítulo">Próximo Capítulo&hellip;</h1>
+<p>Na próxima etapa, iremos adicionar um banco de dados para nossa aplicação, onde irei containerizar o PostgreSQL e adicionar um ORM (SqlAlchemy) para abstrair parte da complexidade de trabalhar diretamente com o banco.</p>
+<p>Você pode acompanhar o repositório do projeto no link abaixo:</p>
+<ul>
+<li><a href="https://github.com/LucianoBatista/econowallet" target="_blank" rel="noopener noreffer ">GitHub - Econowallet</a></li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-04-08</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://www.lobdata.com.br/posts/econowallet-fastapi-pt3/" data-title="Criando uma API Pronta para Produção com FastAPI - PT.3" data-hashtags="RESTFull API,Web Development,Backend,Asynchronous,FastAPI,Docker,SQLAlchemy"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://www.lobdata.com.br/posts/econowallet-fastapi-pt3/" data-hashtag="RESTFull API"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://www.lobdata.com.br/posts/econowallet-fastapi-pt3/" data-title="Criando uma API Pronta para Produção com FastAPI - PT.3"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://www.lobdata.com.br/posts/econowallet-fastapi-pt3/" data-title="Criando uma API Pronta para Produção com FastAPI - PT.3"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://www.lobdata.com.br/posts/econowallet-fastapi-pt3/" data-title="Criando uma API Pronta para Produção com FastAPI - PT.3"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/restfull-api/">RESTFull API</a>,&nbsp;<a href="/tags/web-development/">Web Development</a>,&nbsp;<a href="/tags/backend/">Backend</a>,&nbsp;<a href="/tags/asynchronous/">Asynchronous</a>,&nbsp;<a href="/tags/fastapi/">FastAPI</a>,&nbsp;<a href="/tags/docker/">Docker</a>,&nbsp;<a href="/tags/sqlalchemy/">SQLAlchemy</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/econowallet-fastapi-pt2/" class="prev" rel="prev" title="Criando uma API Pronta para Produção com FastAPI - PT.2"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Criando uma API Pronta para Produção com FastAPI - PT.2</a>
+            <a href="/posts/econowallet-fastapi-pt4/" class="next" rel="next" title="Criando uma API Pronta para Produção com FastAPI - PT.4">Criando uma API Pronta para Produção com FastAPI - PT.4<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.114.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Luba</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

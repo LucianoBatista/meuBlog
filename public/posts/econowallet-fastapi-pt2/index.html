@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Criando uma API Pronta para Produção com FastAPI - PT.2 - My New Hugo Site</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Criando uma API Pronta para Produção com FastAPI - PT.2" />
+<meta property="og:description" content="Neste tutorial iremos iniciar o Econowallet, essa aplicação que vai contar com uma API para controle financeiro de suas despesas e investimentos, se você não viu o post passado (onde explico mais sobre meu objetivo com esse projeto) clique aqui.
+Tópicos que serão abordados nesse post:
+Setup Inicial: main.py e config.py Rotas async Setup Como todo projeto python, é uma boa prática que você crie um ambiente virtual isolando as dependências do projeto, isso evita que você possa ter conflito entre diferentes libs de outros projetos que esteja trabalhando." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.lobdata.com.br/posts/econowallet-fastapi-pt2/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-04-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-04-03T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Criando uma API Pronta para Produção com FastAPI - PT.2"/>
+<meta name="twitter:description" content="Neste tutorial iremos iniciar o Econowallet, essa aplicação que vai contar com uma API para controle financeiro de suas despesas e investimentos, se você não viu o post passado (onde explico mais sobre meu objetivo com esse projeto) clique aqui.
+Tópicos que serão abordados nesse post:
+Setup Inicial: main.py e config.py Rotas async Setup Como todo projeto python, é uma boa prática que você crie um ambiente virtual isolando as dependências do projeto, isso evita que você possa ter conflito entre diferentes libs de outros projetos que esteja trabalhando."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/econowallet-fastapi-pt2/" /><link rel="prev" href="https://www.lobdata.com.br/posts/finance_control_app/" /><link rel="next" href="https://www.lobdata.com.br/posts/econowallet-fastapi-pt3/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Criando uma API Pronta para Produção com FastAPI - PT.2",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/www.lobdata.com.br\/posts\/econowallet-fastapi-pt2\/"
+        },"genre": "posts","keywords": "RESTFull API, Backend, FastAPI, Docker, SQLAlchemy","wordcount":  1343 ,
+        "url": "https:\/\/www.lobdata.com.br\/posts\/econowallet-fastapi-pt2\/","datePublished": "2021-04-03T00:00:00+00:00","dateModified": "2021-04-03T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Luciano"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My New Hugo Site">My cool site</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My New Hugo Site">My cool site</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Criando uma API Pronta para Produção com FastAPI - PT.2</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Luciano</a></span>&nbsp;<span class="post-category">included in <a href="/categories/tutorials/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Tutorials</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2021-04-03">2021-04-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1343 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;7 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#main">Main</a></li>
+    <li><a href="#config">Config</a></li>
+    <li><a href="#rotas-async">Rotas Async</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/finance_app_tutorial/pt2/fast_api.png"
+        data-srcset="/img/finance_app_tutorial/pt2/fast_api.png, /img/finance_app_tutorial/pt2/fast_api.png 1.5x, /img/finance_app_tutorial/pt2/fast_api.png 2x"
+        data-sizes="auto"
+        alt="/img/finance_app_tutorial/pt2/fast_api.png"
+        title="Personal Finance" /></p>
+<p>Neste tutorial iremos iniciar o <strong>Econowallet</strong>, essa aplicação que vai contar com uma API para controle financeiro de suas despesas e investimentos, se você não viu o post passado (onde explico mais sobre meu objetivo com esse projeto) <a href="https://www.lobdata.com.br/post/finance_control_app/" target="_blank" rel="noopener noreffer ">clique aqui</a>.</p>
+<p>Tópicos que serão abordados nesse post:</p>
+<ul>
+<li>Setup Inicial: <code>main.py</code> e <code>config.py</code></li>
+<li>Rotas async</li>
+</ul>
+<h1 id="setup">Setup</h1>
+<p>Como todo projeto python, é uma boa prática que você crie um ambiente virtual isolando as dependências do projeto, isso evita que você possa ter conflito entre diferentes libs de outros projetos que esteja trabalhando. Para este fiom temos várias opções:</p>
+<ul>
+<li>Pip + virtualenv</li>
+<li>Poetry</li>
+<li>Pipenv</li>
+<li>Conda</li>
+</ul>
+<p>Estarei utilizando aqui o Pipenv, sinta-se a vontade para usar o que tenha mais familiaridade.</p>
+<p>Como IDE estarei usando o Pycharm 2020.3.5 (minha preferida no momento para desenvolver em python) e utilizaremos python 3.9.0. Ao clicar em &ldquo;New Project&rdquo; temos a seguinte imagem:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/finance_app_tutorial/pt2/create_project.png"
+        data-srcset="/img/finance_app_tutorial/pt2/create_project.png, /img/finance_app_tutorial/pt2/create_project.png 1.5x, /img/finance_app_tutorial/pt2/create_project.png 2x"
+        data-sizes="auto"
+        alt="/img/finance_app_tutorial/pt2/create_project.png"
+        title="Creating Project" /></p>
+<p>Veja na lateral esquerda como o Pycharm já traz um template para diversos tipos de projeto, porém no momento ainda não temos a opção para o FastAPI. Após iniciado o projeto, você deve encontrar um arquivo chamado Pipfile (se está usando o Pipenv) ou apenas uma pasta vazia. Então iremos executar os seguintes comandos no terminal:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ mkdir project
+</span></span><span class="line"><span class="cl">$ mkdir project/app
+</span></span><span class="line"><span class="cl">$ touch project/app/main.py
+</span></span><span class="line"><span class="cl">$ touch project/app/__init__.py
+</span></span><span class="line"><span class="cl">$ mv Pipfile project/
+</span></span><span class="line"><span class="cl">$ <span class="nb">cd</span> project
+</span></span><span class="line"><span class="cl">$ pipenv install <span class="nv">fastapi</span><span class="o">==</span>0.63.0
+</span></span><span class="line"><span class="cl">$ pipenv install <span class="nv">uvicorn</span><span class="o">==</span>0.13.4
+</span></span></code></pre></div><p>Aqui vale uma ressalva, não sou nenhum expert em arquitetura de software e talvez a estrutura de projeto utilizada aqui não seja a melhor possível, mas busco sempre dividir o código em blocos que contenham uma lógica ou função semelhante. Isso permite que tenhámos um código bom para manter, bom para ser entendido por outros desenvolvedores e também para colaborar.</p>
+<p>Após os comandos anteriores você deveria ter uma estrutura de diretórios semelhante à mostrada abaixo:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">.
+</span></span><span class="line"><span class="cl">└── project
+</span></span><span class="line"><span class="cl">    ├── app
+</span></span><span class="line"><span class="cl">    │   ├── __init__.py
+</span></span><span class="line"><span class="cl">    │   └── main.py
+</span></span><span class="line"><span class="cl">    ├── Pipfile
+</span></span><span class="line"><span class="cl">    └── Pipfile.lock
+</span></span></code></pre></div><p>Veja que além do <strong>FastAPI</strong>, instalamos o <strong>Uvicorn</strong>. O papel dessa lib é permitir que consigamos interagir com o serviço que estamos contruíndo (será nosso web server), além disso, ela utiliza o protocolo ASGI que permite assincronosidade com suporte aos verbos <code>async</code> e <code>await</code> do python. Outros frames como o Django e Flask já possuem um server built-in que é muito útil para fases de desenvolvimento mas que pode gerar confusão nas etapas de deploy pois o mesmo precisa ser substituído. Aqui, iremos ficar desde o início com o Uvicorn, saiba mais na documentação clicando no <a href="https://www.uvicorn.org" target="_blank" rel="noopener noreffer ">link</a>.</p>
+<h2 id="main">Main</h2>
+<p>Vamos configurar apenas uma rota inicial com o mínimo de código possível para ver se nosso web server está funcionando.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># project/app/main.py</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@app.get</span><span class="p">(</span><span class="s2">&#34;/ping&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">ping</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;ping&#34;</span><span class="p">:</span> <span class="s2">&#34;pong!&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></div><p>E então iremos rodar o uvicorn buscando a instância que acabamos de criar do FastAPI (linha 5). Observe que o comando depende de qual diretório estiver:</p>
+<ul>
+<li>uvicorn project.app.main:app (do diretório root)</li>
+<li>uvicorn app.main:app (do diretório de projeto)</li>
+</ul>
+<p>e assim em diante&hellip;</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ uvicorn project.app.main:app
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">INFO:     Started server process <span class="o">[</span>654351<span class="o">]</span>
+</span></span><span class="line"><span class="cl">INFO:     Waiting <span class="k">for</span> application startup.
+</span></span><span class="line"><span class="cl">INFO:     Application startup complete.
+</span></span><span class="line"><span class="cl">INFO:     Uvicorn running on http://127.0.0.1:8000 <span class="o">(</span>Press CTRL+C to quit<span class="o">)</span>
+</span></span></code></pre></div><p>Agora, se navegarmos até <a href="http://127.0.0.1:8000/ping" target="_blank" rel="noopener noreffer ">http://127.0.0.1:8000/ping</a> iremos ver a seguinte resposta:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;ping&#34;</span><span class="p">:</span> <span class="s2">&#34;pong!&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Além disso o FastAPI <em>automágicamente</em> gerou um esquema baseado no padrão OpenAPI e juntamente com o Swagger UI criou uma documentação inicial (bem crua) para sua API. Podendo ser acessada em <a href="http://localhost:8000/docs" target="_blank" rel="noopener noreffer ">http://localhost:8000/docs</a> ou ainda se não gostou dessa interface do Swager você pode acessar <a href="http://localhost:8000/redoc" target="_blank" rel="noopener noreffer ">http://localhost:8000/redoc</a> para uma interface diferente.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/finance_app_tutorial/pt2/ping_pong_swager.png"
+        data-srcset="/img/finance_app_tutorial/pt2/ping_pong_swager.png, /img/finance_app_tutorial/pt2/ping_pong_swager.png 1.5x, /img/finance_app_tutorial/pt2/ping_pong_swager.png 2x"
+        data-sizes="auto"
+        alt="/img/finance_app_tutorial/pt2/ping_pong_swager.png"
+        title="Ping Pong Swager" /></p>
+<blockquote>
+<p>Swagger UI</p>
+</blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/finance_app_tutorial/pt2/ping_pong_redoc.png"
+        data-srcset="/img/finance_app_tutorial/pt2/ping_pong_redoc.png, /img/finance_app_tutorial/pt2/ping_pong_redoc.png 1.5x, /img/finance_app_tutorial/pt2/ping_pong_redoc.png 2x"
+        data-sizes="auto"
+        alt="/img/finance_app_tutorial/pt2/ping_pong_redoc.png"
+        title="Ping Pong Redocs" /></p>
+<blockquote>
+<p>redoc</p>
+</blockquote>
+<p>&hellip;além disso, essa interface pode ser personalizada de acordo com seu projeto e necessidades, você pode encontrar detalhes na documentação <a href="https://fastapi.tiangolo.com/advanced/extending-openapi/" target="_blank" rel="noopener noreffer ">clicando aqui</a>.</p>
+<p>Agora iremos reiniciar nosso web server e adicionar um comando bem útil que iremos utilizar daqui em diante com o uvicorn, o <code>--reload</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ uvicorn project.app.main:app --reload
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">INFO:     Uvicorn running on http://127.0.0.1:8000 <span class="o">(</span>Press CTRL+C to quit<span class="o">)</span>
+</span></span><span class="line"><span class="cl">INFO:     Started reloader process <span class="o">[</span>663530<span class="o">]</span> using statreload
+</span></span><span class="line"><span class="cl">INFO:     Started server process <span class="o">[</span>663532<span class="o">]</span>
+</span></span><span class="line"><span class="cl">INFO:     Waiting <span class="k">for</span> application startup.
+</span></span><span class="line"><span class="cl">INFO:     Application startup complete.
+</span></span></code></pre></div><p>Dessa forma, sempre que fizermos alguma alteração no código, o Uvicorn vai reiniciar o server para nós. Experimente remover a exclamação do &ldquo;pong!&rdquo; e veja o que acontece.</p>
+<h2 id="config">Config</h2>
+<p>Agora iremos adicionar um arquivo muito importante para nossa aplicação e que vai lidar com nossas variáveis de ambiente tanto localmente quanto quando estivermos no ambiente do Docker.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># project/app/config.py</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">logging</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseSettings</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&#34;uvicorn&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Settings</span><span class="p">(</span><span class="n">BaseSettings</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">environment</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&#34;ENVIRONMENT&#34;</span><span class="p">,</span> <span class="s2">&#34;dev&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">testing</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&#34;TESTING&#34;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_settings</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">BaseSettings</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&#34;Loading config settings from the environment...&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">Settings</span><span class="p">()</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/finance_app_tutorial/pt2/what.gif"
+        data-srcset="/img/finance_app_tutorial/pt2/what.gif, /img/finance_app_tutorial/pt2/what.gif 1.5x, /img/finance_app_tutorial/pt2/what.gif 2x"
+        data-sizes="auto"
+        alt="/img/finance_app_tutorial/pt2/what.gif"
+        title="WHAT?!" /></p>
+<blockquote>
+<p>O que está acontecendo aqui?</p>
+</blockquote>
+<p>Primeiramente, declaramos uma classe <code>Settings</code> com dois atributos:</p>
+<ul>
+<li><code>environment</code>: que define nosso ambiente (prod, stage, dev).</li>
+<li><code>testing</code>: que define se estamos ou não em um modo de teste.</li>
+</ul>
+<p>Outro ponto importante a ressaltar é a sintaxe da classe <code>Settings</code> (<code>testing: bool</code>), essa é uma forma de explicitar o tipo da variável que a nossa imputação retornará, iremos utilizar muito ao longo do projeto. <strong>Pontos positivos</strong> de adotar essa sintaxe ao longo do projeto são:</p>
+<ul>
+<li>código mais legível.</li>
+<li>auxilia a IDE a fornecer melhores formas de auto-complete e sugestões de métodos.</li>
+<li>previne alguns bugs, pois a IDE tem maior entendimento do que acontece com as funções, classes&hellip;</li>
+</ul>
+<p>Agora iremos atualizar nosso arquivo main.py:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># project/app/main.py</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span><span class="p">,</span> <span class="n">Depends</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">project.app.config</span> <span class="kn">import</span> <span class="n">Settings</span><span class="p">,</span> <span class="n">get_settings</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@app.get</span><span class="p">(</span><span class="s2">&#34;/ping&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">ping</span><span class="p">(</span><span class="n">settings</span><span class="p">:</span> <span class="n">Settings</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_settings</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;ping&#34;</span><span class="p">:</span> <span class="s2">&#34;pong!&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;environment&#34;</span><span class="p">:</span> <span class="n">settings</span><span class="o">.</span><span class="n">environment</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;testing&#34;</span><span class="p">:</span> <span class="n">settings</span><span class="o">.</span><span class="n">testing</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></div><p>Com essa alteração no código estamos setando dependências à aplicação sempre que acessamos a rota <a href="http://127.0.0.1:8000/ping" target="_blank" rel="noopener noreffer ">http://127.0.0.1:8000/ping</a>. De uma forma mais intuitiva, o que estamos dizendo é o seguinte:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/finance_app_tutorial/pt2/flow_dependencies.png"
+        data-srcset="/img/finance_app_tutorial/pt2/flow_dependencies.png, /img/finance_app_tutorial/pt2/flow_dependencies.png 1.5x, /img/finance_app_tutorial/pt2/flow_dependencies.png 2x"
+        data-sizes="auto"
+        alt="/img/finance_app_tutorial/pt2/flow_dependencies.png"
+        title="Flow Dependencies" /></p>
+<p>Agora, se rodarmos novamente nosso server, iremos ver uma resposta da seguinte forma:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;ping&#34;</span><span class="p">:</span> <span class="s2">&#34;pong!&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;environment&#34;</span><span class="p">:</span> <span class="s2">&#34;dev&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;testing&#34;</span><span class="p">:</span> <span class="kc">false</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Legal, agora sabemos, por exemplo, que estamos no ambiente de desenvolvimento e não de teste. Outro ponto importante é que da forma como nosso config.py está, sempre que <em>batemos</em> na rota <a href="http://127.0.0.1:8000/ping" target="_blank" rel="noopener noreffer ">http://127.0.0.1:8000/ping</a> ele reconfigura as settings.</p>
+<p>Esse comportamento de reconfigurar as settings não é muito atrativo, pois futuramente ao migrarmos o carregamento das variáveis de ambiente a partir de um arquivo (<code>.env</code> por exemplo) esse comportamento irá diminuir a velocidade com que nosso app responde aos requests.</p>
+<p>Usaremos então o decorator <code>@lru_cache</code> para cachiar as settings, de forma que get_settings é chamada apenas uma vez e reusará valores de chamadas recentes para atribuir às variáveis.</p>
+<blockquote>
+<p>Tenha em mente que isso é indicado apenas para casos onde você não tem a necessidade de recomputar esses valores várias vezes.</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># project/app/config.py</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">logging</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">lru_cache</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseSettings</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&#34;uvicorn&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Settings</span><span class="p">(</span><span class="n">BaseSettings</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">environment</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&#34;ENVIRONMENT&#34;</span><span class="p">,</span> <span class="s2">&#34;dev&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">testing</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&#34;TESTING&#34;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@lru_cache</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_settings</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">BaseSettings</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&#34;Loading config settings from the environment...&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">Settings</span><span class="p">()</span>
+</span></span></code></pre></div><p>Agora se atualizarmos várias vezes o <a href="http://127.0.0.1:8000/ping" target="_blank" rel="noopener noreffer ">http://127.0.0.1:8000/ping</a> não veremos o recarregamento do &ldquo;Loading config settings from the environment&hellip;&rdquo;, indicando que nosso cache funcionou 🎉.</p>
+<h2 id="rotas-async">Rotas Async</h2>
+<p>Como dito no início do post, estamos usando um web server ASGI e além disso um frame com suporte ao <code>async</code> e <code>await</code> (FastAPI). Portanto, podemos facilmente converter nosso endpoint para uma rota assíncrona simplesmente adicionando o verbo <code>async</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span><span class="p">,</span> <span class="n">Depends</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">project.app.config</span> <span class="kn">import</span> <span class="n">Settings</span><span class="p">,</span> <span class="n">get_settings</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@app.get</span><span class="p">(</span><span class="s2">&#34;/ping&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">async</span> <span class="k">def</span> <span class="nf">ping</span><span class="p">(</span><span class="n">settings</span><span class="p">:</span> <span class="n">Settings</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_settings</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;ping&#34;</span><span class="p">:</span> <span class="s2">&#34;pong!&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;environment&#34;</span><span class="p">:</span> <span class="n">settings</span><span class="o">.</span><span class="n">environment</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;testing&#34;</span><span class="p">:</span> <span class="n">settings</span><span class="o">.</span><span class="n">testing</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></div><p>Teste novamente a rota <a href="http://127.0.0.1:8000/ping" target="_blank" rel="noopener noreffer ">http://127.0.0.1:8000/ping</a> para ver se tudo continua functionando.</p>
+<blockquote>
+<p><strong>ATENÇÃO!</strong>: O async e await do python não está relacionado ao uso de mais threads ou de processamento paralelo. O conceito aqui é permitir que o código execute outras funcionalidades enquanto aguarda resposta de um outro serviço.</p>
+</blockquote>
+<p>Irei adicionar um .gitignore ao projeto para irmos adicionando coisinhas que não queremos expor no repositório:</p>
+<pre tabindex="0"><code>__pycache__
+env
+</code></pre><p>É um bom momento para inicializar nosso repositório e comitarmos nosso código até o momento.</p>
+<p>Como irei atualizando o repo do projeto de acordo for postando aqui no blog, é possível que quando você esteja lendo esse conteúdo o repositório esteja com o projeto completo. Mas, qualquer coisa, segue o link do repositório:</p>
+<p><a href="https://github.com/LucianoBatista/econowallet" target="_blank" rel="noopener noreffer ">GitHub - Econowallet</a></p>
+<p>Até a próxima! 👋</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-04-03</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://www.lobdata.com.br/posts/econowallet-fastapi-pt2/" data-title="Criando uma API Pronta para Produção com FastAPI - PT.2" data-hashtags="RESTFull API,Backend,FastAPI,Docker,SQLAlchemy"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://www.lobdata.com.br/posts/econowallet-fastapi-pt2/" data-hashtag="RESTFull API"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://www.lobdata.com.br/posts/econowallet-fastapi-pt2/" data-title="Criando uma API Pronta para Produção com FastAPI - PT.2"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://www.lobdata.com.br/posts/econowallet-fastapi-pt2/" data-title="Criando uma API Pronta para Produção com FastAPI - PT.2"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://www.lobdata.com.br/posts/econowallet-fastapi-pt2/" data-title="Criando uma API Pronta para Produção com FastAPI - PT.2"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/restfull-api/">RESTFull API</a>,&nbsp;<a href="/tags/backend/">Backend</a>,&nbsp;<a href="/tags/fastapi/">FastAPI</a>,&nbsp;<a href="/tags/docker/">Docker</a>,&nbsp;<a href="/tags/sqlalchemy/">SQLAlchemy</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/finance_control_app/" class="prev" rel="prev" title="Criando uma API Pronta para Produção com FastAPI - PT.1"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Criando uma API Pronta para Produção com FastAPI - PT.1</a>
+            <a href="/posts/econowallet-fastapi-pt3/" class="next" rel="next" title="Criando uma API Pronta para Produção com FastAPI - PT.3">Criando uma API Pronta para Produção com FastAPI - PT.3<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.114.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Luba</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

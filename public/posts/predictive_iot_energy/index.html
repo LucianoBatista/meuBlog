@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Modelagem Preditiva em IoT - My New Hugo Site</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Modelagem Preditiva em IoT" />
+<meta property="og:description" content="Previsão de Uso de Energia Quando falamos de revolução tecnológica, a noção de Internet das Coisas, ou Internet of Things (IoT), é um dos assuntos principais. O seu desenvolvimento está mudando a forma como o ser humando tem se conectado com diversos dispositivos tecnlógicos.
+IoT vem gerando uma quantidade imensa de dados, um dos maiores responsáveis pelo Big Data. Diante da geração de tanta informação, o papel do Cientista de Dados se faz cada vez mais presente, pois torna-se possível a obteção de grandes insights sobre diferentes área até então não analisadas." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.lobdata.com.br/posts/predictive_iot_energy/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2019-04-04T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-04-04T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Modelagem Preditiva em IoT"/>
+<meta name="twitter:description" content="Previsão de Uso de Energia Quando falamos de revolução tecnológica, a noção de Internet das Coisas, ou Internet of Things (IoT), é um dos assuntos principais. O seu desenvolvimento está mudando a forma como o ser humando tem se conectado com diversos dispositivos tecnlógicos.
+IoT vem gerando uma quantidade imensa de dados, um dos maiores responsáveis pelo Big Data. Diante da geração de tanta informação, o papel do Cientista de Dados se faz cada vez mais presente, pois torna-se possível a obteção de grandes insights sobre diferentes área até então não analisadas."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/predictive_iot_energy/" /><link rel="prev" href="https://www.lobdata.com.br/posts/5_topics_data_science_application/" /><link rel="next" href="https://www.lobdata.com.br/posts/cat_in_the_dat/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Modelagem Preditiva em IoT",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/www.lobdata.com.br\/posts\/predictive_iot_energy\/"
+        },"genre": "posts","keywords": "Project, Data Science, Machine Learning","wordcount":  2359 ,
+        "url": "https:\/\/www.lobdata.com.br\/posts\/predictive_iot_energy\/","datePublished": "2019-04-04T00:00:00+00:00","dateModified": "2019-04-04T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Luciano"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My New Hugo Site">My cool site</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My New Hugo Site">My cool site</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Modelagem Preditiva em IoT</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Luciano</a></span>&nbsp;<span class="post-category">included in <a href="/categories/projetos/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Projetos</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2019-04-04">2019-04-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2359 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;12 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#o-que-representa-cada-variável-no-dataset">O que representa cada variável no dataset?</a></li>
+    <li><a href="#agora-vamos-observar-um-conjunto-de-plots-que-ajudaram-a-entender-melhor-os-dados">Agora vamos observar um conjunto de plots que ajudaram a entender melhor os dados.</a></li>
+    <li><a href="#pairplot">Pairplot</a></li>
+    <li><a href="#boxplot">Boxplot</a></li>
+    <li><a href="#plot-comparativo">Plot Comparativo</a></li>
+    <li><a href="#facetgrid">FacetGrid</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#tratamento-de-outliers">Tratamento de outliers</a></li>
+    <li><a href="#correlation">Correlation</a></li>
+    <li><a href="#normalização">Normalização</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#recursive-elimination">Recursive Elimination</a></li>
+    <li><a href="#embedded-method">Embedded Method</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="previsao-de-uso-de-energia">Previsão de Uso de Energia</h1>
+<p>Quando falamos de revolução tecnológica, a noção de Internet das Coisas, ou Internet of Things (IoT), é um dos assuntos principais. O seu desenvolvimento está mudando a forma como o ser humando tem se conectado com diversos dispositivos tecnlógicos.</p>
+<p>IoT vem gerando uma quantidade imensa de dados, um dos maiores responsáveis pelo Big Data. Diante da geração de tanta informação, o papel do Cientista de Dados se faz cada vez mais presente, pois torna-se possível a obteção de grandes insights sobre diferentes área até então não analisadas.</p>
+<p>Este projeto de IoT tem como objetivo a criação de modelos preditivos para a previsão de consumo de energia de eletrodomésticos. Os dados utilizados incluem medições de sensores de temperatura e umidade de uma rede sem fio, previsão do tempo de uma estação de um aeroporto e uso de energia utilizada por luminárias.</p>
+<p>A versão completa do projeto pode ser encontrada no repositório do meu <a href="https://github.com/LucianoBatista/iot_energy_consumption_prediction" target="_blank" rel="noopener noreffer ">GitHub</a>, assim como os dados que foram utilizados.</p>
+<h1 id="análise-exploratória-dos-dados">Análise Exploratória dos Dados</h1>
+<h2 id="o-que-representa-cada-variável-no-dataset">O que representa cada variável no dataset?</h2>
+<ul>
+<li><strong>date:</strong> Tempo de coleta dos dados pelos sensores</li>
+<li><strong>Appliances:</strong> Uso de energia (em W)</li>
+<li><strong>lights:</strong> Potência de energia de eletrodomésticos na casa (em W)</li>
+<li><strong>TX:</strong> Temperatura em um lugar da casa (em Celsius)</li>
+<li><strong>RH_X:</strong> Umidade relativa em algum ponto da casa (em %)</li>
+<li><strong>Windspeed:</strong> Velocidade do vento (em m/s)</li>
+<li><strong>Visibility:</strong> Visibilidade (em Km)</li>
+<li><strong>Tdewpoint:</strong> Não foi informado.</li>
+<li><strong>rv1:</strong> Variável randômica adicional</li>
+<li><strong>rv2:</strong> Variável randômica adicional</li>
+<li><strong>WeekStatus:</strong> Indica se é dia de semana ou final de semana</li>
+<li><strong>Day_of_week:</strong> Dia da semana</li>
+<li><strong>NSM:</strong> Medida de tempo (em s)</li>
+</ul>
+<p>Ao importar os dados foi visto que os dados possuem a mesma quantidade de colunas e que elas são iguais, sendo assim, os dados de teste e treino foram concatenados para realizar uma análise conjunta dos dados.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;O novo dataset possui </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> linhas e </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> variáveis&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;O dataset possui </span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="si">}</span><span class="s1"> valores nulos&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><pre><code>O novo dataset possui 19735 linhas e 32 variáveis
+O dataset possui 0 valores nulos
+</code></pre>
+<p>Optei por separar variáveis numéricas e categóricas para melhor observar algumas informações que são características de cada tipo.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">num_vars</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">df</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span> <span class="o">!=</span> <span class="s1">&#39;object&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">cat_vars</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">df</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="s1">&#39;object&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">df_num</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">num_vars</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">df_cat</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">cat_vars</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;O data set possui </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">num_vars</span><span class="p">)</span><span class="si">}</span><span class="s1"> variáveis numéricas e </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">cat_vars</span><span class="p">)</span><span class="si">}</span><span class="s1"> de tipo objeto, sendo todas relacionadas à data&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><pre><code>O data set possui 29 variáveis numéricas e 3 de tipo objeto, sendo todas relacionadas à data.
+</code></pre>
+<p>Uma observação interessante é que precisamos estar sempre atentos ao tipo de dado que está sendo manipulado, no atual conjunto de dados a variável <em>&lsquo;date&rsquo;</em> não foi importada como tipo de data. Logo, foi preciso realizar essa conversão, além disso, a data (agora convertida) foi adicionada ao index do DataFrame.</p>
+<p>A adição da variável de data ao index do objeto DataFrame do pacote Pandas permite uma manipulação mais intuitiva desse tipo de dado. Mais à frente tal funcionalidade será observada.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># converter a coluna &#39;date&#39; para tipo data</span>
+</span></span><span class="line"><span class="cl"><span class="n">df_cat</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_cat</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df_cat</span><span class="o">.</span><span class="n">dtypes</span>
+</span></span></code></pre></div><pre><code>date           datetime64[ns]
+WeekStatus             object
+Day_of_week            object
+dtype: object
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Transformando a coluna de data em index podemos realizar algumas análises</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># de forma mais simples.</span>
+</span></span><span class="line"><span class="cl"><span class="n">df_cat</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DatetimeIndex</span><span class="p">(</span><span class="n">df_cat</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">df_num</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DatetimeIndex</span><span class="p">(</span><span class="n">df_cat</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Também precisaremos de uma coluna com as datas (utilizada para alguns plots).</span>
+</span></span><span class="line"><span class="cl"><span class="n">df_num</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_cat</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df_num</span><span class="o">.</span><span class="n">columns</span>
+</span></span></code></pre></div><pre><code>Index(['Appliances', 'lights', 'T1', 'RH_1', 'T2', 'RH_2', 'T3', 'RH_3', 'T4',
+       'RH_4', 'T5', 'RH_5', 'T6', 'RH_6', 'T7', 'RH_7', 'T8', 'RH_8', 'T9',
+       'RH_9', 'T_out', 'Press_mm_hg', 'RH_out', 'Windspeed', 'Visibility',
+       'Tdewpoint', 'rv1', 'rv2', 'NSM', 'date'],
+      dtype='object')
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df_cat</span><span class="o">.</span><span class="n">columns</span>
+</span></span></code></pre></div><pre><code>Index(['date', 'WeekStatus', 'Day_of_week'], dtype='object')
+</code></pre>
+<hr>
+<h2 id="agora-vamos-observar-um-conjunto-de-plots-que-ajudaram-a-entender-melhor-os-dados">Agora vamos observar um conjunto de plots que ajudaram a entender melhor os dados.</h2>
+<h2 id="pairplot">Pairplot</h2>
+<p>O código abaixo permite a visualização de um pairplot filtrado por períodos. È possível visualizar os dados em diferentes intervalos de dias, semanas, meses e ano (caso nosso dataset tivesse dados de um ano diferente à 2016).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Precisa editar algumas linhas caso precise plotar um dia específico</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># ou intervalo específico.</span>
+</span></span><span class="line"><span class="cl"><span class="n">year_start</span> <span class="o">=</span> <span class="s1">&#39;2016&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">month_start</span> <span class="o">=</span> <span class="s1">&#39;05&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">day</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="s1">&#39;01&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># fim</span>
+</span></span><span class="line"><span class="cl"><span class="n">year_end</span> <span class="o">=</span> <span class="s1">&#39;2016&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">month_end</span> <span class="o">=</span> <span class="s1">&#39;05&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="n">day</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># date_start = year_start + &#39;-&#39; + month_start + &#39;-&#39; + &#39;0&#39; + str(day_range) + &#39; 00:00:00&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">date_start</span> <span class="o">=</span> <span class="n">year_start</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">month_start</span>
+</span></span><span class="line"><span class="cl">    <span class="n">date_end</span> <span class="o">=</span> <span class="n">year_end</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">month_end</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="s1">&#39;0&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">day</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; 23:00:00&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># date_start = year_start + &#39;-&#39; + month_start + &#39;-&#39; + str(day_range) + &#39; 00:00:00&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">date_start</span> <span class="o">=</span> <span class="n">year_start</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">month_start</span>
+</span></span><span class="line"><span class="cl">    <span class="n">date_end</span> <span class="o">=</span> <span class="n">year_end</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">month_end</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">day</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; 23:00:00&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">date_start</span><span class="si">}</span><span class="s1"> até </span><span class="si">{</span><span class="n">date_end</span><span class="si">}</span><span class="s1"> com </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df_num</span><span class="p">[</span><span class="n">date_start</span><span class="p">])</span><span class="si">}</span><span class="s1"> pontos&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&#34;ticks&#34;</span><span class="p">,</span> <span class="n">color_codes</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">df_filter</span> <span class="o">=</span> <span class="n">df_num</span><span class="p">[</span><span class="n">date_start</span><span class="p">]</span> <span class="c1"># date_start:date_end</span>
+</span></span><span class="line"><span class="cl"><span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df_filter</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></div><pre><code>2016-05 até 2016-05-01 23:00:00 com 3853 pontos
+</code></pre>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/output_21_1.png"
+        data-srcset="/img/output_21_1.png, /img/output_21_1.png 1.5x, /img/output_21_1.png 2x"
+        data-sizes="auto"
+        alt="/img/output_21_1.png"
+        title="png" /></p>
+<p>Podemos visualizar que a maioria das distribuição se assemelham à uma distribuição normal, sendo que algumas poucas possuem desvios. Vamos verificar agora se existe a presença de muitos outliers nos dados</p>
+<h2 id="boxplot">Boxplot</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Novamente, cada plot tem um código que permite o filtro por data.</span>
+</span></span><span class="line"><span class="cl"><span class="n">year_start</span> <span class="o">=</span> <span class="s1">&#39;2016&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">month_start</span> <span class="o">=</span> <span class="s1">&#39;04&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">day</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="s1">&#39;01&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># fim</span>
+</span></span><span class="line"><span class="cl"><span class="n">year_end</span> <span class="o">=</span> <span class="s1">&#39;2016&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">month_end</span> <span class="o">=</span> <span class="s1">&#39;05&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="n">day</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">date_start</span> <span class="o">=</span> <span class="n">year_start</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">month_start</span>
+</span></span><span class="line"><span class="cl">    <span class="n">date_end</span> <span class="o">=</span> <span class="n">year_end</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">month_end</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="s1">&#39;0&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">day</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; 23:00:00&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">date_start</span> <span class="o">=</span> <span class="n">year_start</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">month_start</span>
+</span></span><span class="line"><span class="cl">    <span class="n">date_end</span> <span class="o">=</span> <span class="n">year_end</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">month_end</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">day</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; 23:00:00&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">date_start</span><span class="si">}</span><span class="s1"> até </span><span class="si">{</span><span class="n">date_end</span><span class="si">}</span><span class="s1"> com </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df_num</span><span class="p">[</span><span class="n">date_start</span><span class="p">])</span><span class="si">}</span><span class="s1"> pontos&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&#34;ticks&#34;</span><span class="p">,</span> <span class="n">color_codes</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">df_filter</span> <span class="o">=</span> <span class="n">df_num</span><span class="p">[</span><span class="n">date_start</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">df_filter</span> <span class="o">=</span> <span class="n">df_filter</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;NSM&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">df_filter</span><span class="o">.</span><span class="n">boxplot</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></div><pre><code>2016-04 até 2016-05-01 23:00:00 com 4320 pontos
+</code></pre>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/output_24_1.png"
+        data-srcset="/img/output_24_1.png, /img/output_24_1.png 1.5x, /img/output_24_1.png 2x"
+        data-sizes="auto"
+        alt="/img/output_24_1.png"
+        title="png" /></p>
+<p>Os dados que mais possuem outliers é a variável target. Nesse caso é essencial que esse pontos sejam tratados, o que será feito mais a frente.</p>
+<h2 id="plot-comparativo">Plot Comparativo</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Gráficos comparativo de qualquer variável ao longo de um período</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Determine o período de início e fim que deseja visualizar</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># E determine a variável name com a variável a ser observada</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># início</span>
+</span></span><span class="line"><span class="cl"><span class="n">year_start</span> <span class="o">=</span> <span class="s1">&#39;2016&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">month_start</span> <span class="o">=</span> <span class="s1">&#39;04&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">day</span> <span class="o">=</span> <span class="s1">&#39;01&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># fim</span>
+</span></span><span class="line"><span class="cl"><span class="n">year_end</span> <span class="o">=</span> <span class="s1">&#39;2016&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">month_end</span> <span class="o">=</span> <span class="s1">&#39;04&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># plot automatizado</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># n = número de subplots (dias para visualizar)</span>
+</span></span><span class="line"><span class="cl"><span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl"><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Appliances&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">70</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">day_range</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">day</span><span class="p">)</span> <span class="o">+</span> <span class="n">i</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">day_range</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">date_start</span> <span class="o">=</span> <span class="n">year_start</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">month_start</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="s1">&#39;0&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">day_range</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; 00:00:00&#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">date_end</span> <span class="o">=</span> <span class="n">year_end</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">month_end</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="s1">&#39;0&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">day_range</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; 23:00:00&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">date_start</span> <span class="o">=</span> <span class="n">year_start</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">month_start</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">day_range</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; 00:00:00&#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">date_end</span> <span class="o">=</span> <span class="n">year_end</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">month_end</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">day_range</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; 23:00:00&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dates</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">df_num</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span><span class="n">df_num</span><span class="p">[</span><span class="n">date_start</span><span class="p">:</span> <span class="n">date_end</span><span class="p">][</span><span class="n">name</span><span class="p">])))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot_date</span><span class="p">(</span><span class="n">dates</span><span class="p">,</span><span class="n">values</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">date_start</span><span class="si">}</span><span class="s1"> até </span><span class="si">{</span><span class="n">date_end</span><span class="si">}</span><span class="s1"> com </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df_num</span><span class="p">[</span><span class="n">date_start</span><span class="p">:</span> <span class="n">date_end</span><span class="p">][</span><span class="n">name</span><span class="p">])</span><span class="si">}</span><span class="s1"> pontos&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/output_27_2.png"
+        data-srcset="/img/output_27_2.png, /img/output_27_2.png 1.5x, /img/output_27_2.png 2x"
+        data-sizes="auto"
+        alt="/img/output_27_2.png"
+        title="png" /></p>
+<p>Com o código acima é possível visualizar o comportamento de qualquer variável numérica em relação ao tempo. Por conta de ser um post no blog, eu optei em apenas mostrar uma das figuras criadas pelo código. Mas você pode acessar o <a href="https://github.com/LucianoBatista/iot_energy_consumption_prediction/blob/master/modelagem_preditiva_iot.ipynb" target="_blank" rel="noopener noreffer ">link</a> para visualizar a saída completa dessa célula.</p>
+<p>Podemos observar o seguinte:</p>
+<ul>
+<li><strong>temperatura interna:</strong> Possui valores de 20 a 25, acredito que graus Celsius, tendo picos durante a noite. Período em que provavelmente o aquecedor está ligado.</li>
+<li><strong>temperatura externa:</strong> Possui valores baixos, categorizando um país frio que é a Bélgica. Também apresenta variação de acordo o por e nascer do sol</li>
+<li><strong>RH e RH_out:</strong> Apresenta uma variabilidade interessante para explicar o comportament do Appliances.</li>
+<li><strong>Pressão:</strong> Apresenta um comportamento bem padrão.</li>
+<li><strong>rv_1, rv_2:</strong> Possuem um comportamento bem aleatório ao longo do tempo, já que se trata realmente de uma variável aleatória adicionada aos dados.</li>
+</ul>
+<h2 id="facetgrid">FacetGrid</h2>
+<p>Este é um tipo de gráfico que permite a visualização do comportamento de mais de duas variáveis ao mesmo tempo. Na figura, optei por visualizar a variável <em>&lsquo;Appliances&rsquo;</em> em relação à <em>&lsquo;rv1&rsquo;</em> e <em>&lsquo;T_out&rsquo;</em>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Aqui basta alterar o intervalo desejado e as variáveis desejadas</span>
+</span></span><span class="line"><span class="cl"><span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">FacetGrid</span><span class="p">(</span><span class="n">df_num</span><span class="p">[</span><span class="s1">&#39;2016-05&#39;</span><span class="p">],</span> <span class="n">col</span><span class="o">=</span><span class="s2">&#34;Appliances&#34;</span><span class="p">,</span> <span class="n">col_wrap</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">g</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">,</span> <span class="s2">&#34;rv1&#34;</span><span class="p">,</span> <span class="s2">&#34;T_out&#34;</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="kc">None</span><span class="p">);</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/output_31_0.png"
+        data-srcset="/img/output_31_0.png, /img/output_31_0.png 1.5x, /img/output_31_0.png 2x"
+        data-sizes="auto"
+        alt="/img/output_31_0.png"
+        title="png" /></p>
+<p>Vemos que a maior varialibilidade dos dados se dá entre 20 a 130 do Appliance. Logo a modelagem pode ser favorecida a partir da remoção de outliers.</p>
+<h1 id="feature-engineering">Feature Engineering</h1>
+<h2 id="tratamento-de-outliers">Tratamento de outliers</h2>
+<p>Como vimos que o &lsquo;Appliances&rsquo; possui muito valores outliers. Podemos iniciar o tratamento pela elimação desses valores.</p>
+<p>Para isso, identifiquei o Interquantile Range para remvover o whisker superior do boxplot. Como pode ser visto no código a seguir.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Primeiro e terceiro quartil e cálculo da distância IQR</span>
+</span></span><span class="line"><span class="cl"><span class="n">Q1</span> <span class="o">=</span> <span class="n">df_num</span><span class="p">[</span><span class="s1">&#39;Appliances&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">Q3</span> <span class="o">=</span> <span class="n">df_num</span><span class="p">[</span><span class="s1">&#39;Appliances&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">IQR</span> <span class="o">=</span> <span class="n">Q3</span> <span class="o">-</span> <span class="n">Q1</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">Q1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">Q3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">IQR</span><span class="p">)</span>
+</span></span></code></pre></div><pre><code>50.0
+100.0
+50.0
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Determinação dos ranges inferiores e superiores do boxplot</span>
+</span></span><span class="line"><span class="cl"><span class="n">Lower_Whisker</span> <span class="o">=</span> <span class="n">Q1</span> <span class="o">-</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">IQR</span>
+</span></span><span class="line"><span class="cl"><span class="n">Upper_Whisker</span> <span class="o">=</span> <span class="n">Q3</span> <span class="o">+</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">IQR</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">Lower_Whisker</span><span class="p">,</span> <span class="n">Upper_Whisker</span><span class="p">)</span>
+</span></span></code></pre></div><pre><code>-25.0 175.0
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Remoção dos dados outiliers</span>
+</span></span><span class="line"><span class="cl"><span class="n">new_df</span> <span class="o">=</span> <span class="n">df_num</span><span class="p">[</span><span class="n">df_num</span><span class="p">[</span><span class="s1">&#39;Appliances&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">175.0</span><span class="p">]</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">year_start</span> <span class="o">=</span> <span class="s1">&#39;2016&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">month_start</span> <span class="o">=</span> <span class="s1">&#39;04&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">day</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="s1">&#39;01&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># fim</span>
+</span></span><span class="line"><span class="cl"><span class="n">year_end</span> <span class="o">=</span> <span class="s1">&#39;2016&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">month_end</span> <span class="o">=</span> <span class="s1">&#39;05&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="n">day</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">date_start</span> <span class="o">=</span> <span class="n">year_start</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">month_start</span>
+</span></span><span class="line"><span class="cl">    <span class="n">date_end</span> <span class="o">=</span> <span class="n">year_end</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">month_end</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="s1">&#39;0&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">day</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; 23:00:00&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">date_start</span> <span class="o">=</span> <span class="n">year_start</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">month_start</span>
+</span></span><span class="line"><span class="cl">    <span class="n">date_end</span> <span class="o">=</span> <span class="n">year_end</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">month_end</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">day</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; 23:00:00&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">date_start</span><span class="si">}</span><span class="s1"> até </span><span class="si">{</span><span class="n">date_end</span><span class="si">}</span><span class="s1"> com </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">new_df</span><span class="p">[</span><span class="n">date_start</span><span class="p">])</span><span class="si">}</span><span class="s1"> pontos&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&#34;ticks&#34;</span><span class="p">,</span> <span class="n">color_codes</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">df_filter</span> <span class="o">=</span> <span class="n">new_df</span><span class="p">[</span><span class="n">date_start</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">df_filter</span> <span class="o">=</span> <span class="n">df_filter</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;NSM&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">df_filter</span><span class="o">.</span><span class="n">boxplot</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></div><pre><code>2016-04 até 2016-05-01 23:00:00 com 3870 pontos
+</code></pre>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/output_39_1.png"
+        data-srcset="/img/output_39_1.png, /img/output_39_1.png 1.5x, /img/output_39_1.png 2x"
+        data-sizes="auto"
+        alt="/img/output_39_1.png"
+        title="png" /></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Removendo variável de data, adicionada para ajudar na construção dos gráficos</span>
+</span></span><span class="line"><span class="cl"><span class="n">new_df_num</span> <span class="o">=</span> <span class="n">new_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Resetando o index</span>
+</span></span><span class="line"><span class="cl"><span class="n">new_df_num</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">new_df_num</span><span class="o">.</span><span class="n">index</span>
+</span></span></code></pre></div><pre><code>RangeIndex(start=0, stop=17597, step=1)
+</code></pre>
+<h2 id="correlation">Correlation</h2>
+<p>Aqui foi observado como se dá a relação entre as variáveis. Particularmente se existe uma correlação linear entre as variáveis. A correlação é uma medida que varia de 0 a 1, onde valores próximos a 0 possuem uma correlação negativa e próximos a 1 uma correlação positiva.</p>
+<p>A correlação negativa entre duas variáveis representa que a cada vez que eu aumento uma a outra diminui e virse-versa. O contrário também acontece quando temos uma correlação positiva, a medida que uma variável aumenta a outra também aumenta.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Using Pearson Correlation</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># General correlation</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="mi">15</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">cor</span> <span class="o">=</span> <span class="n">new_df_num</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cor</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Reds</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/output_43_0.png"
+        data-srcset="/img/output_43_0.png, /img/output_43_0.png 1.5x, /img/output_43_0.png 2x"
+        data-sizes="auto"
+        alt="/img/output_43_0.png"
+        title="png" /></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1">#Correlation with output variable</span>
+</span></span><span class="line"><span class="cl"><span class="n">cor_target</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">cor</span><span class="p">[</span><span class="s2">&#34;Appliances&#34;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#Selecting highly correlated features</span>
+</span></span><span class="line"><span class="cl"><span class="n">relevant_features</span> <span class="o">=</span> <span class="n">cor_target</span><span class="p">[</span><span class="n">cor_target</span><span class="o">&lt;</span><span class="mf">0.2</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">relevant_features</span>
+</span></span></code></pre></div><pre><code>RH_1           0.045596
+RH_2           0.109746
+T3             0.180061
+RH_3           0.088410
+T4             0.195689
+RH_4           0.036932
+T5             0.191782
+RH_5           0.072040
+T7             0.175519
+RH_7           0.128740
+T9             0.154471
+Press_mm_hg    0.089829
+Windspeed      0.055363
+Visibility     0.024974
+Tdewpoint      0.081550
+rv1            0.009986
+rv2            0.009986
+Name: Appliances, dtype: float64
+</code></pre>
+<p>Uma observação interessante é que maioria das variáveis possuem uma correlação negativa com a variável target, ou seja, o &lsquo;Appliances&rsquo; aumenta a medida que uma variável específica diminui.</p>
+<h2 id="normalização">Normalização</h2>
+<p>Como estamos trabalhando com dados numéricos e que possuem uma distribuição com intervalos diferentes, pode ser que o algoritmo de machine learning escolhido seja sensível a este tipo de comportamento. Outro ajuste que se faz necessário é a normalização dos dados.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># lembrando que a variável target não tem necessidade de ser normalizada</span>
+</span></span><span class="line"><span class="cl"><span class="n">new_df_num_Y</span> <span class="o">=</span> <span class="n">new_df_num</span><span class="p">[</span><span class="s1">&#39;Appliances&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">new_df_num</span> <span class="o">=</span> <span class="n">new_df_num</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Appliances&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># normalização</span>
+</span></span><span class="line"><span class="cl"><span class="n">min_max_scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">columns</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">new_df_num</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">columns</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># convertemos para np array pois é a forma que o min_max_scaler</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># recebe os dados</span>
+</span></span><span class="line"><span class="cl">    <span class="n">new_df_num</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">min_max_scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">new_df_num</span><span class="p">[</span><span class="n">name</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</span></span></code></pre></div><pre><code>['lights', 'T1', 'RH_1', 'T2', 'RH_2', 'T3', 'RH_3', 'T4', 'RH_4', 'T5', 'RH_5', 'T6', 'RH_6', 'T7', 'RH_7', 'T8', 'RH_8', 'T9', 'RH_9', 'T_out', 'Press_mm_hg', 'RH_out', 'Windspeed', 'Visibility', 'Tdewpoint', 'rv1', 'rv2', 'NSM']
+</code></pre>
+<p>Algumas variáveis ainda possuem muitos outliers, mas serão mantidas.</p>
+<h1 id="feature-selection">Feature Selection</h1>
+<p>Aqui apliquei 2 diferentes métodos de seleção de variáveis.</p>
+<h2 id="recursive-elimination">Recursive Elimination</h2>
+<p>Neste método, precisamos definir quantas variáveis queremos para rodar o modelo, e depois, quando obtido o número ótimo aplicamos a seleção de variáveis. O método identifica, recursivamente, qual conjunto de variáveis possuem maior score.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">new_df_num</span><span class="o">.</span><span class="n">shape</span>
+</span></span></code></pre></div><pre><code>(17597, 28)
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1">#no of features</span>
+</span></span><span class="line"><span class="cl"><span class="n">nof_list</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">28</span><span class="p">)</span>            
+</span></span><span class="line"><span class="cl"><span class="n">high_score</span><span class="o">=</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#Variable to store the optimum features</span>
+</span></span><span class="line"><span class="cl"><span class="n">nof</span><span class="o">=</span><span class="mi">0</span>           
+</span></span><span class="line"><span class="cl"><span class="n">score_list</span> <span class="o">=</span><span class="p">[]</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nof_list</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">new_df_num</span><span class="p">,</span> <span class="n">new_df_num_Y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">rfe</span> <span class="o">=</span> <span class="n">RFE</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="n">nof_list</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="n">X_train_rfe</span> <span class="o">=</span> <span class="n">rfe</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">X_test_rfe</span> <span class="o">=</span> <span class="n">rfe</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_rfe</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">score</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test_rfe</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">score_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">score</span><span class="o">&gt;</span><span class="n">high_score</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">high_score</span> <span class="o">=</span> <span class="n">score</span>
+</span></span><span class="line"><span class="cl">        <span class="n">nof</span> <span class="o">=</span> <span class="n">nof_list</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Optimum number of features: </span><span class="si">%d</span><span class="s2">&#34;</span> <span class="o">%</span><span class="n">nof</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Score with </span><span class="si">%d</span><span class="s2"> features: </span><span class="si">%f</span><span class="s2">&#34;</span> <span class="o">%</span> <span class="p">(</span><span class="n">nof</span><span class="p">,</span> <span class="n">high_score</span><span class="p">))</span>
+</span></span></code></pre></div><pre><code>Optimum number of features: 21
+Score with 21 features: 0.353213
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">cols</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">new_df_num</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#Initializing RFE model</span>
+</span></span><span class="line"><span class="cl"><span class="n">rfe</span> <span class="o">=</span> <span class="n">RFE</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#Transforming data using RFE</span>
+</span></span><span class="line"><span class="cl"><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">new_df_num</span><span class="p">,</span> <span class="n">new_df_num_Y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">X_rfe</span> <span class="o">=</span> <span class="n">rfe</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl"><span class="c1">#Fitting the data to model</span>
+</span></span><span class="line"><span class="cl"><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_rfe</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>             
+</span></span><span class="line"><span class="cl"><span class="n">temp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">rfe</span><span class="o">.</span><span class="n">support_</span><span class="p">,</span><span class="n">index</span> <span class="o">=</span> <span class="n">cols</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">selected_features_rfe</span> <span class="o">=</span> <span class="n">temp</span><span class="p">[</span><span class="n">temp</span><span class="o">==</span><span class="kc">True</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">selected_features_rfe</span><span class="p">)</span>
+</span></span></code></pre></div><pre><code>Index(['lights', 'T1', 'RH_1', 'T2', 'RH_2', 'T3', 'RH_3', 'T4', 'RH_4', 'T5',
+       'RH_5', 'T6', 'T7', 'RH_7', 'T8', 'RH_8', 'T9', 'RH_9', 'T_out',
+       'Windspeed', 'NSM'],
+      dtype='object')
+</code></pre>
+<h2 id="embedded-method">Embedded Method</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">reg</span> <span class="o">=</span> <span class="n">LassoCV</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Best alpha using built-in LassoCV: </span><span class="si">%f</span><span class="s2">&#34;</span> <span class="o">%</span> <span class="n">reg</span><span class="o">.</span><span class="n">alpha_</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Best score using built-in LassoCV: </span><span class="si">%f</span><span class="s2">&#34;</span> <span class="o">%</span><span class="n">reg</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">coef</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">coef_</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">new_df_num</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">imp_coef</span> <span class="o">=</span> <span class="n">coef</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">matplotlib</span>
+</span></span><span class="line"><span class="cl"><span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">8.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">imp_coef</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span> <span class="o">=</span> <span class="s2">&#34;barh&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&#34;Feature importance using Lasso Model&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><pre><code>Best alpha using built-in LassoCV: 0.003504
+Best score using built-in LassoCV: 0.356319
+
+
+
+
+
+Text(0.5, 1.0, 'Feature importance using Lasso Model')
+</code></pre>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/output_57_2.png"
+        data-srcset="/img/output_57_2.png, /img/output_57_2.png 1.5x, /img/output_57_2.png 2x"
+        data-sizes="auto"
+        alt="/img/output_57_2.png"
+        title="png" /></p>
+<h1 id="machine-learning">Machine Learning</h1>
+<p>Na etapa de escolha do modelo, selecionei 3 métodos para problemas de regressão, problema que está sendo modelado, e avaliei a métria de R².</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># removendo variáveis aletórias antes de aplicar o modelo</span>
+</span></span><span class="line"><span class="cl"><span class="n">new_df_v</span> <span class="o">=</span> <span class="n">new_df_num</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;rv1&#39;</span><span class="p">,</span> <span class="s1">&#39;rv2&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">new_df_v</span><span class="p">,</span> <span class="n">new_df_num_Y</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Regressão Linear Múltipla</span>
+</span></span><span class="line"><span class="cl"><span class="n">modelo</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">modelo</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">y_pred</span> <span class="o">=</span> <span class="n">modelo</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">score</span> <span class="o">=</span>  <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+</span></span></code></pre></div><pre><code>0.34058856776814994
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Support Vector Regression</span>
+</span></span><span class="line"><span class="cl"><span class="n">modelo</span> <span class="o">=</span> <span class="n">SVR</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">modelo</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">y_pred</span> <span class="o">=</span> <span class="n">modelo</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">score</span> <span class="o">=</span>  <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+</span></span></code></pre></div><pre><code>0.3594652532873541
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Gradient Boosting Regressor</span>
+</span></span><span class="line"><span class="cl"><span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span> <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;min_samples_split&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="s1">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span> <span class="s1">&#39;loss&#39;</span><span class="p">:</span> <span class="s1">&#39;ls&#39;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">clf</span> <span class="o">=</span> <span class="n">ensemble</span><span class="o">.</span><span class="n">GradientBoostingRegressor</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">r2score</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;R2 SCORE: </span><span class="si">{</span><span class="n">r2score</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><pre><code>R2 SCORE: 0.6598
+</code></pre>
+<p>Vemos então que o modelo que apresentou melhor resultado foi o Gradient Boosting Regressor, com 65,98% na métrica de R². Tal resultado pode ser tido como um resultado preliminar, e etapas de otimização podem ser realizadas daqui em diante para melhorar o score do modelo.</p>
+<p>Como formas de otimização que ainda não foram testadas, temos:</p>
+<ul>
+<li>Utilização da técnica de Análise por Componentes Principais para diminuição da dimensionalidade do modelo.</li>
+<li>Criação de novas variáveis.</li>
+<li>Utilização das variáveis categóricas de data como; dia da semana, mês, feriado etc.</li>
+<li>Utilização do gridsearch para buscar um refinamento do modelo de maior score.</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2019-04-04</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://www.lobdata.com.br/posts/predictive_iot_energy/" data-title="Modelagem Preditiva em IoT" data-hashtags="Project,Data Science,Machine Learning"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://www.lobdata.com.br/posts/predictive_iot_energy/" data-hashtag="Project"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://www.lobdata.com.br/posts/predictive_iot_energy/" data-title="Modelagem Preditiva em IoT"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://www.lobdata.com.br/posts/predictive_iot_energy/" data-title="Modelagem Preditiva em IoT"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://www.lobdata.com.br/posts/predictive_iot_energy/" data-title="Modelagem Preditiva em IoT"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/project/">Project</a>,&nbsp;<a href="/tags/data-science/">Data Science</a>,&nbsp;<a href="/tags/machine-learning/">Machine Learning</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/5_topics_data_science_application/" class="prev" rel="prev" title="5 Diferentes Aplicações de Ciência de Dados"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>5 Diferentes Aplicações de Ciência de Dados</a>
+            <a href="/posts/cat_in_the_dat/" class="next" rel="next" title="Categorical Feature Encoding Challenge">Categorical Feature Encoding Challenge<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.114.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Luba</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

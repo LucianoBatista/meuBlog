@@ -1,0 +1,25 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Time Series - Tag - My New Hugo Site</title>
+        <link>https://www.lobdata.com.br/tags/time-series/</link>
+        <description>Time Series - Tag - My New Hugo Site</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 25 Oct 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/time-series/" rel="self" type="application/rss+xml" /><item>
+    <title>Demand Forecasting of Brazilian Commodities</title>
+    <link>https://www.lobdata.com.br/posts/demand_forecasting_brazilian_commodities/</link>
+    <pubDate>Sun, 25 Oct 2020 00:00:00 &#43;0000</pubDate>
+    <author>Luciano</author>
+    <guid>https://www.lobdata.com.br/posts/demand_forecasting_brazilian_commodities/</guid>
+    <description><![CDATA[Demand Forecasting of Brazilian Commodities Soybean, Corn, Sugar, Soybean Meal, Soybean Oil and Wheat (left to right).
+Demand Forecasting is a technique for estimation of probable demand for a product or services. It is based on the analysis of past demand for that product or service in the present market condition. Demand forecasting should be done on a scientific basis and facts and events related to forecasting should be considered.]]></description>
+</item>
+<item>
+    <title>How to Perform Correlation Analysis in Time Series data using R?</title>
+    <link>https://www.lobdata.com.br/posts/r_correlation/</link>
+    <pubDate>Tue, 15 Sep 2020 00:00:00 &#43;0000</pubDate>
+    <author>Luciano</author>
+    <guid>https://www.lobdata.com.br/posts/r_correlation/</guid>
+    <description><![CDATA[What is it correlation analysis? The concept of correlation is the same used in non-time series data: identify and quantify the relationship between two variables. Due to the continuous and chronologically ordered nature of time series data, there is a likelihood that there will be some degree of correlation between the series observations.
+Measuring and analyzing the correlation between two variables, in the context of time series analysis, can be understood by two different aspects:]]></description>
+</item>
+</channel>
+</rss>

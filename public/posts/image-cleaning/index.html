@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Computer Vision - My New Hugo Site</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Computer Vision" />
+<meta property="og:description" content="O intuito desse post é compartilhar uma solução simples que resolvou um problema complexo que estávamos enfrentando em de nossos produtos aqui na Studos, a Leitora de Gabaritos. Dessa forma, outros que estejam com problemas similares possam talvez ter um ponto de vista diferente na resolução do problema.
+O que é a leitora de gabaritos? Dando um pouco de contexto sobre o produto, a Leitora de Gabaritos é uma API desenvolvida utilizando (principalmente) a seguinte stack:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.lobdata.com.br/posts/image-cleaning/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-01-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-01-26T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Computer Vision"/>
+<meta name="twitter:description" content="O intuito desse post é compartilhar uma solução simples que resolvou um problema complexo que estávamos enfrentando em de nossos produtos aqui na Studos, a Leitora de Gabaritos. Dessa forma, outros que estejam com problemas similares possam talvez ter um ponto de vista diferente na resolução do problema.
+O que é a leitora de gabaritos? Dando um pouco de contexto sobre o produto, a Leitora de Gabaritos é uma API desenvolvida utilizando (principalmente) a seguinte stack:"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/image-cleaning/" /><link rel="prev" href="https://www.lobdata.com.br/posts/efficient-pandas/" /><link rel="next" href="https://www.lobdata.com.br/posts/bncc-classifier/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Computer Vision",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/www.lobdata.com.br\/posts\/image-cleaning\/"
+        },"genre": "posts","keywords": "Tutorial, Data Science, Visão Computacional","wordcount":  1025 ,
+        "url": "https:\/\/www.lobdata.com.br\/posts\/image-cleaning\/","datePublished": "2022-01-26T00:00:00+00:00","dateModified": "2022-01-26T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Luciano"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My New Hugo Site">My cool site</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My New Hugo Site">My cool site</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Computer Vision</h1><h2 class="single-subtitle">Como excluir artefatos indesejados numa imagem?</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Luciano</a></span>&nbsp;<span class="post-category">included in <a href="/categories/tutorials/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Tutorials</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-01-26">2022-01-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1025 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#o-que-é-a-leitora-de-gabaritos">O que é a leitora de gabaritos?</a>
+      <ul>
+        <li><a href="#problema">Problema</a></li>
+      </ul>
+    </li>
+    <li><a href="#solução">Solução</a>
+      <ul>
+        <li><a href="#distribuição-de-pixels">Distribuição de pixels</a></li>
+        <li><a href="#método-utilizado">Método utilizado</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>O intuito desse post é compartilhar uma solução simples que resolvou um problema complexo que estávamos enfrentando em de nossos produtos aqui na <a href="https://www.studos.com.br" target="_blank" rel="noopener noreffer "><strong>Studos</strong></a>, a <em>Leitora de Gabaritos</em>. Dessa forma, outros que estejam com problemas similares possam talvez ter um ponto de vista diferente na resolução do problema.</p>
+<h2 id="o-que-é-a-leitora-de-gabaritos">O que é a leitora de gabaritos?</h2>
+<p>Dando um pouco de contexto sobre o produto, a Leitora de Gabaritos é uma API desenvolvida utilizando (principalmente) a seguinte stack:</p>
+<ul>
+<li>FastAPI</li>
+<li>Celery</li>
+<li>ReportLab</li>
+<li>OpenCV</li>
+<li>RabbitMQ</li>
+<li>Redis</li>
+<li>Docker</li>
+<li>Kubernets</li>
+</ul>
+<p>Essa API é responsável por automatizar a criação e a leitura de cartões respostas. Utilizando ativamente o OpenCV nas etapas de leitura.</p>
+<p>Algumas features do ponto de vista técnico da leitora, envolvem:</p>
+<ul>
+<li>Extração do qrcode da imagem</li>
+<li>Rotação de imagens em diversas orientações</li>
+<li>Identificação de shapes</li>
+<li>Recorte</li>
+<li>Extração de segmentos de leitura</li>
+<li>Extração das marcações</li>
+</ul>
+<p>Esses segmentos, no nosso caso, são as regiões: das marcações dos itens, do código de matrícula, das questões optativas e do modelo de prova. As regiões amarelas da imagem abaixo representa melhor os <em>segmentos</em>.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/leitora_gabarito/areas-of-reading.png"
+        data-srcset="/img/leitora_gabarito/areas-of-reading.png, /img/leitora_gabarito/areas-of-reading.png 1.5x, /img/leitora_gabarito/areas-of-reading.png 2x"
+        data-sizes="auto"
+        alt="/img/leitora_gabarito/areas-of-reading.png"
+        title="leitora_gabarito" /></p>
+<h3 id="problema">Problema</h3>
+<p>O problema que estávamos enfrentando era justamente na leitura desses segmentos. Mais especificamente, na etapa <em>extração das marcações</em>, onde é necessário que todas as marcações sejam extraídas sem trazer nenhum resíduo do gabarito.</p>
+<p>É nesse ponto que nos deparamos com a complexidade do problema, pois a quantidade de variáveis envolvidas no processo é absurda, e nem sempre conseguíamos fazer a melhor separação possível, impactando na ponta e gerando insatisfação do usuário. Essa <strong>variabilidade de imagens</strong>, conta com:</p>
+<blockquote>
+<p>&hellip;imagens de qualquer faixa de DPI, imagens coloridas, escala de cinza e preto e branco, canetas pretas e azuis, pouca luz, sombra e ruídos ao longo da imagem, imagens tiradas com foto, imagens digitalizadas com diferentes scanners&hellip;</p>
+</blockquote>
+<p>O ponto específico onde o OpenCV entra para realizar a transformação que precisamos é, mostrado abaixo no código:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">img_black_and_white</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">threshold</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">img_warp_gray</span><span class="p">,</span> <span class="n">thresh_param</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="n">cv</span><span class="o">.</span><span class="n">THRESH_BINARY</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">img_threshold</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">threshold</span><span class="p">(</span><span class="n">img_black_and_white</span><span class="p">,</span> <span class="mi">215</span><span class="p">,</span> <span class="mi">350</span><span class="p">,</span> <span class="n">cv</span><span class="o">.</span><span class="n">THRESH_BINARY_INV</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+</span></span></code></pre></div><p>Veja que, como input para a função <code>cv.threshold</code>, precisamos fornecer uma <strong>imagem em escala de cinza</strong> e um <strong>parâmetro de threshold</strong> que será utilizado como um ponto de corte. É justamente esse threshold que precisava ser otimizado.</p>
+<p>Antes dessa solução, realizávamos dois checks: <em>a imagem é colorida, ou escala de cinza?</em> e <em>a imagem tem caneta azul ou preta?</em>. Com base nos outputs, ajustávamos o threshold de acordo.</p>
+<p>Porém, tal ajuste não funcionava 100% das vezes, e algumas imagens estavam com a leitura impossibilitada justamente por não conseguir ajustar o threshold. Veja abaixo um caso onde o ajuste errado do threshold leva a uma leitura incorreta.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/leitora_gabarito/old-transformation.png"
+        data-srcset="/img/leitora_gabarito/old-transformation.png, /img/leitora_gabarito/old-transformation.png 1.5x, /img/leitora_gabarito/old-transformation.png 2x"
+        data-sizes="auto"
+        alt="/img/leitora_gabarito/old-transformation.png"
+        title="old-technique" /></p>
+<p>Com a aplicação desse threshold, poucas marcações seriam de fato lidas pela aplicação.</p>
+<h2 id="solução">Solução</h2>
+<p>Sendo assim, tivemos a ideia de buscar por um padrão entre as diferentes imagens que populavam nosso banco. Coletamos 200 imagens das mais diversas possível e começamos olhando para a distribuição de pixels. Nosso objetivo nesse primeiro momento era conseguir definir uma hipótese mais acertiva de como abordar o problema de forma mais generalizável possível.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/leitora_gabarito/pixels-distributions.png"
+        data-srcset="/img/leitora_gabarito/pixels-distributions.png, /img/leitora_gabarito/pixels-distributions.png 1.5x, /img/leitora_gabarito/pixels-distributions.png 2x"
+        data-sizes="auto"
+        alt="/img/leitora_gabarito/pixels-distributions.png"
+        title="pixels" /></p>
+<blockquote>
+<p>Essa é a distribuição dos pixels para o segmento do cartão apresentado acima. Quanto mais valores em direção ao 255, mais marcado está esse cartão. Valores tendendo ao 0, estão relacionados ao preto.</p>
+</blockquote>
+<h3 id="distribuição-de-pixels">Distribuição de pixels</h3>
+<p>Ao analisar a distribuição de pixels, vimos que as imagens similares possuem distribuições de pixels bem características. E que todas possuem uma calda longa a esquerda com um ponto onde a distribuição começa a &ldquo;subir&rdquo; (aumento no valor de pixel).</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/leitora_gabarito/distributions.png"
+        data-srcset="/img/leitora_gabarito/distributions.png, /img/leitora_gabarito/distributions.png 1.5x, /img/leitora_gabarito/distributions.png 2x"
+        data-sizes="auto"
+        alt="/img/leitora_gabarito/distributions.png"
+        title="pixels" /></p>
+<ol>
+<li>Imagem digitalizada em preto e branco</li>
+<li>Imagem em escala de cinza</li>
+<li>Imagem colorida de alto dpi</li>
+<li>Imagem colorida de baixo dpi</li>
+</ol>
+<p>Esse ponto de inflexão da curva nos chamou a atenção, por ser uma região que estava próxima do threshold que já vínhamos utilizando. Verificamos visualmente para todas as imagens e o padrão se repetiu.</p>
+<p>Dae em diante conseguimos definir melhor nossa abordagem e o que de fato gostaríamos de coletar das distribuições: <strong>&ldquo;Como identificar automaticamente esse ponto de inflexão da distribuição de pixel, para qualquer distribuição?&rdquo;</strong></p>
+<h3 id="método-utilizado">Método utilizado</h3>
+<p>Antes de chegar na técnica que resolveu o problema, algumas outras foram testadas, algumas mais complexas e outras mais simples, mas nenhuma generalizou do jeito que precisávamos.</p>
+<p>Nossa hipótese aqui foi a seguinte:</p>
+<blockquote>
+<p>Considerando que a maior parte da distribuição, com pixels maiores, correspondem as marcações, a zona mais escura (região da calda longa da distribuição) corresponde ao gabarito. Dessa forma, se considerarmos uma porcentagem e eliminarmos parte da calda, seria possível saber onde está o ponto ótimo de corte.</p>
+</blockquote>
+<p>Para melhor visualizar essa abordagem, criamos um <a href="https://en.wikipedia.org/wiki/Empirical_distribution_function" target="_blank" rel="noopener noreffer "><strong>ECDF</strong></a> das distribuições dos pixels e traçamos uma linha horizontal na porcentagem de pontos que gostaríamos de remover da distribuição.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/leitora_gabarito/ecdf.png"
+        data-srcset="/img/leitora_gabarito/ecdf.png, /img/leitora_gabarito/ecdf.png 1.5x, /img/leitora_gabarito/ecdf.png 2x"
+        data-sizes="auto"
+        alt="/img/leitora_gabarito/ecdf.png"
+        title="ecdf" /></p>
+<p>Dae em diante, para testar se realmente esse método funcionava, o que precisávamos fazer era encontrar os pontos de intersercção da reta na horizontal com a distribuição, coletar o máximo e retornar como ponto de corte. A implementação está no código abaixo.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_param</span><span class="p">(</span><span class="n">img_warp_gray</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># x and y for the ecdf plot</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">img_warp_gray</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># ecdf dataframe</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ecdf_plot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&#34;img&#34;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&#34;prop&#34;</span><span class="p">:</span> <span class="n">y</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># get intersection values on 5% of the distribution</span>
+</span></span><span class="line"><span class="cl">    <span class="n">thresh_params</span> <span class="o">=</span> <span class="n">ecdf_plot</span><span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">ecdf_plot</span><span class="p">[</span><span class="s2">&#34;prop&#34;</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.05</span><span class="p">][</span><span class="s2">&#34;img&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+</span></span><span class="line"><span class="cl">    <span class="n">thresh_params_max</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">thresh_params</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">thresh_params_max</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># running</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">img</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;src/files/snippets/pic_7.png&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">img_warp_gray</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cv</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">thresh_param</span> <span class="o">=</span> <span class="n">get_param</span><span class="p">(</span><span class="n">img_warp_gray</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">img_threshold</span> <span class="o">=</span> <span class="n">image_transformation</span><span class="p">(</span><span class="n">thresh_param</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">thresh_param</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">        <span class="n">img_threshold</span> <span class="o">=</span> <span class="n">image_transformation</span><span class="p">(</span><span class="n">thresh_param</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># plotting the ecdf, 0.05 horizontal line, image before and image after the</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># transformation</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">ecdfplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">img_warp_gray</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_warp_gray</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&#34;gray&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_threshold</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&#34;gray&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">main</span><span class="p">()</span>
+</span></span></code></pre></div><p>Espantosamente, nessa linha de 5%, foi justamente a região de inflexão da distribuição. E aplicando o parâmetro que a função <code>get_param()</code> retornou, o resultado da transformação foi o seguinte:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/leitora_gabarito/best-transformation.png"
+        data-srcset="/img/leitora_gabarito/best-transformation.png, /img/leitora_gabarito/best-transformation.png 1.5x, /img/leitora_gabarito/best-transformation.png 2x"
+        data-sizes="auto"
+        alt="/img/leitora_gabarito/best-transformation.png"
+        title="best-transform" /></p>
+<p>Após encontrar esse pontos, rodamos o script para as 200 imagens que estávamos utilizando como teste e o resulado foi <strong>100% de remoção do gabarito das marcações.</strong></p>
+<p>Dessa forma, agora conseguimos identificar as marcações, em qualquer tipo de imagem, qualidade e cor de caneta marcada, sem propagar para as próximas etapas de leitura os ruídos do cartão.</p>
+<p>Caso queira conferir o código e as imagens testes, elas estão nesse <a href="https://github.com/LucianoBatista/auto-threshold-adjustment" target="_blank" rel="noopener noreffer ">repositório</a>.</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-01-26</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://www.lobdata.com.br/posts/image-cleaning/" data-title="Computer Vision" data-hashtags="Tutorial,Data Science,Visão Computacional"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://www.lobdata.com.br/posts/image-cleaning/" data-hashtag="Tutorial"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://www.lobdata.com.br/posts/image-cleaning/" data-title="Computer Vision"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://www.lobdata.com.br/posts/image-cleaning/" data-title="Computer Vision"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://www.lobdata.com.br/posts/image-cleaning/" data-title="Computer Vision"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/tutorial/">Tutorial</a>,&nbsp;<a href="/tags/data-science/">Data Science</a>,&nbsp;<a href="/tags/vis%C3%A3o-computacional/">Visão Computacional</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/efficient-pandas/" class="prev" rel="prev" title="Efficient Pandas"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Efficient Pandas</a>
+            <a href="/posts/bncc-classifier/" class="next" rel="next" title="Classificador BNCC">Classificador BNCC<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.114.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Luba</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

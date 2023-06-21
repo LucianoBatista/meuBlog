@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Segmentação de clientes de Food Delivery - My New Hugo Site</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Segmentação de clientes de Food Delivery" />
+<meta property="og:description" content="Segmentação de clientes de Food Delivery Neste projeto o objetivo é segmentar clientes de um food delivery. A segmentação permite que profissionais de marketing e product managers possam identificar subconjuntos de público-alvo para melhor adaptar suas estratégias.
+O dataset utilizado foi cedido pela Data Science Academy, e pode ser encontrado no meu github juntamente com todo o código apresentado aqui.
+Um breve overview do que será abordado no projeto:
+Preparação de dados Visualização de dados Padronização de variáveis Clusterização com K-Means Avaliação do melhor número de cluster com o índice de Calinski-Harabasz Bootstrap para avaliar consistência do cluster Visualização dos clusters Sem mais delongas, vamos ao código!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.lobdata.com.br/posts/segment-client/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-06-19T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-06-19T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Segmentação de clientes de Food Delivery"/>
+<meta name="twitter:description" content="Segmentação de clientes de Food Delivery Neste projeto o objetivo é segmentar clientes de um food delivery. A segmentação permite que profissionais de marketing e product managers possam identificar subconjuntos de público-alvo para melhor adaptar suas estratégias.
+O dataset utilizado foi cedido pela Data Science Academy, e pode ser encontrado no meu github juntamente com todo o código apresentado aqui.
+Um breve overview do que será abordado no projeto:
+Preparação de dados Visualização de dados Padronização de variáveis Clusterização com K-Means Avaliação do melhor número de cluster com o índice de Calinski-Harabasz Bootstrap para avaliar consistência do cluster Visualização dos clusters Sem mais delongas, vamos ao código!"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/segment-client/" /><link rel="prev" href="https://www.lobdata.com.br/posts/cat_in_the_dat/" /><link rel="next" href="https://www.lobdata.com.br/posts/r_correlation/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Segmentação de clientes de Food Delivery",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/www.lobdata.com.br\/posts\/segment-client\/"
+        },"genre": "posts","keywords": "Project, Data Science, Machine Learning, K-Means","wordcount":  3932 ,
+        "url": "https:\/\/www.lobdata.com.br\/posts\/segment-client\/","datePublished": "2020-06-19T00:00:00+00:00","dateModified": "2020-06-19T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Luciano"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My New Hugo Site">My cool site</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My New Hugo Site">My cool site</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Segmentação de clientes de Food Delivery</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Luciano</a></span>&nbsp;<span class="post-category">included in <a href="/categories/projetos/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Projetos</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-06-19">2020-06-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3932 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;19 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#libs">Libs</a></li>
+    <li><a href="#análise-exploratória-dos-dados">Análise Exploratória dos Dados</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#pivotando">Pivotando</a></li>
+    <li><a href="#padronização">Padronização</a></li>
+    <li><a href="#k-means">K-means</a></li>
+    <li><a href="#clusters-visualization">Clusters Visualization</a>
+      <ul>
+        <li><a href="#cluster-1">Cluster 1</a></li>
+        <li><a href="#cluster-2">Cluster 2</a></li>
+        <li><a href="#cluster-3">Cluster 3</a></li>
+        <li><a href="#cluster-4">Cluster 4</a></li>
+        <li><a href="#cluster-5">Cluster 5</a></li>
+        <li><a href="#cluster-6">Cluster 6</a></li>
+        <li><a href="#cluster-7">Cluster 7</a></li>
+        <li><a href="#cluster-8">Cluster 8</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="segmentação-de-clientes-de-food-delivery">Segmentação de clientes de Food Delivery</h1>
+<p>Neste projeto o objetivo é segmentar clientes de um food delivery. A segmentação permite que profissionais de marketing e product managers possam identificar subconjuntos de público-alvo para melhor adaptar suas estratégias.</p>
+<p>O dataset utilizado foi cedido pela Data Science Academy, e pode ser encontrado no meu <a href="https://github.com/LucianoBatista/food-deliver" target="_blank" rel="noopener noreffer ">github</a> juntamente com todo o código apresentado aqui.</p>
+<p>Um breve overview do que será abordado no projeto:</p>
+<ul>
+<li>Preparação de dados</li>
+<li>Visualização de dados</li>
+<li>Padronização de variáveis</li>
+<li>Clusterização com K-Means</li>
+<li>Avaliação do melhor número de cluster com o índice de Calinski-Harabasz</li>
+<li>Bootstrap para avaliar consistência do cluster</li>
+<li>Visualização dos clusters</li>
+</ul>
+<p>Sem mais delongas, vamos ao código!</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/food_delivery.png"
+        data-srcset="/img/food_delivery.png, /img/food_delivery.png 1.5x, /img/food_delivery.png 2x"
+        data-sizes="auto"
+        alt="/img/food_delivery.png"
+        title="food_delivery" /></p>
+<h2 id="libs">Libs</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">scales</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">lubridate</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">ggridges</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">gghalves</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tidytext</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tidymodels</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">wrapr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">fpc</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">wesanderson</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">skimr</span><span class="p">)</span>
+</span></span></code></pre></div><h2 id="análise-exploratória-dos-dados">Análise Exploratória dos Dados</h2>
+<p>Vamos importar os dados e visualizar quais são as variáveis que iremos trabalhar ao longo desse projeto.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">orders_client_raw</span> <span class="o">&lt;-</span> <span class="nf">read_csv</span><span class="p">(</span><span class="s">&#34;data/dataset.csv&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">glimpse</span><span class="p">(</span><span class="n">orders_client_raw</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">Rows</span><span class="o">:</span> <span class="m">260</span><span class="p">,</span><span class="m">645</span>
+</span></span><span class="line"><span class="cl"><span class="n">Columns</span><span class="o">:</span> <span class="m">8</span>
+</span></span><span class="line"><span class="cl"><span class="o">$</span> <span class="n">id_transacao</span>    <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span> <span class="s">&#34;0x7901ee&#34;</span><span class="p">,</span> <span class="s">&#34;0x7901ee&#34;</span><span class="p">,</span> <span class="s">&#34;0x7901ee&#34;</span><span class="p">,</span> <span class="s">&#34;0x12b47f&#34;</span><span class="p">,</span> <span class="s">&#34;0x12b47f&#34;</span><span class="p">,</span> <span class="s">&#34;0x6d6979&#34;</span><span class="p">,</span> <span class="s">&#34;0x6d6979&#34;</span><span class="p">,</span> <span class="s">&#34;0x78dd1e&#34;</span><span class="p">,</span> <span class="s">&#34;0x78dd1e&#34;</span><span class="p">,</span> <span class="s">&#34;0x78dd1e&#34;</span><span class="p">,</span> <span class="s">&#34;0x4df8ab&#34;</span><span class="p">,</span> <span class="s">&#34;…
+</span></span></span><span class="line"><span class="cl"><span class="s">$ horario_pedido  &lt;dttm&gt; 2019-01-16 18:33:00, 2019-01-16 18:33:00, 2019-01-16 18:33:00, 2019-09-04 12:36:00, 2019-09-04 12:36:00, 2019-03-18 00:27:00, 2019-0…
+</span></span></span><span class="line"><span class="cl"><span class="s">$ localidade      &lt;dbl&gt; 7, 7, 7, 3, 3, 6, 6, 2, 2, 2, 8, 8, 6, 6, 7, 7, 7, 7, 6, 6, 6, 2, 2, 2, 7, 7, 7, 7, 2, 2, 6, 6, 6, 6, 2, 2, 2, 9, 9, 9, 9, 9, 9, 5, 5…
+</span></span></span><span class="line"><span class="cl"><span class="s">$ nome_item       &lt;chr&gt; &#34;</span><span class="n">bebida</span><span class="s">&#34;, &#34;</span><span class="n">pizza</span><span class="s">&#34;, &#34;</span><span class="n">sobremesa</span><span class="s">&#34;, &#34;</span><span class="n">salada</span><span class="s">&#34;, &#34;</span><span class="n">sobremesa</span><span class="s">&#34;, &#34;</span><span class="n">pizza</span><span class="s">&#34;, &#34;</span><span class="n">sobremesa</span><span class="s">&#34;, &#34;</span><span class="n">bebida</span><span class="s">&#34;, &#34;</span><span class="n">pizza</span><span class="s">&#34;, &#34;</span><span class="n">sobremesa</span><span class="s">&#34;, &#34;</span><span class="n">salada</span><span class="s">&#34;, &#34;</span><span class="n">sobremesa</span><span class="s">&#34;, &#34;</span>…
+</span></span><span class="line"><span class="cl"><span class="o">$</span> <span class="n">quantidade_item</span> <span class="o">&lt;</span><span class="n">dbl</span><span class="o">&gt;</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span>…
+</span></span><span class="line"><span class="cl"><span class="o">$</span> <span class="n">latitude</span>        <span class="o">&lt;</span><span class="n">dbl</span><span class="o">&gt;</span> <span class="m">41.79413</span><span class="p">,</span> <span class="m">41.79413</span><span class="p">,</span> <span class="m">41.79413</span><span class="p">,</span> <span class="m">41.88449</span><span class="p">,</span> <span class="m">41.88449</span><span class="p">,</span> <span class="m">41.78458</span><span class="p">,</span> <span class="m">41.78458</span><span class="p">,</span> <span class="m">42.04931</span><span class="p">,</span> <span class="m">42.04931</span><span class="p">,</span> <span class="m">42.04931</span><span class="p">,</span> <span class="m">41.89420</span><span class="p">,</span> <span class="m">41.89420</span><span class="p">,</span> <span class="m">41.78458</span><span class="p">,</span> <span class="m">41</span><span class="n">.…</span>
+</span></span><span class="line"><span class="cl"><span class="o">$</span> <span class="n">longitude</span>       <span class="o">&lt;</span><span class="n">dbl</span><span class="o">&gt;</span> <span class="m">-88.01014</span><span class="p">,</span> <span class="m">-88.01014</span><span class="p">,</span> <span class="m">-88.01014</span><span class="p">,</span> <span class="m">-87.62706</span><span class="p">,</span> <span class="m">-87.62706</span><span class="p">,</span> <span class="m">-87.60756</span><span class="p">,</span> <span class="m">-87.60756</span><span class="p">,</span> <span class="m">-87.67761</span><span class="p">,</span> <span class="m">-87.67761</span><span class="p">,</span> <span class="m">-87.67761</span><span class="p">,</span> <span class="m">-87.62096</span><span class="p">,</span> <span class="m">-87.62096</span><span class="p">,</span> <span class="o">-</span>…
+</span></span><span class="line"><span class="cl"><span class="o">$</span> <span class="n">nome_item_fac</span>   <span class="o">&lt;</span><span class="n">fct</span><span class="o">&gt;</span> <span class="n">bebida</span><span class="p">,</span> <span class="n">pizza</span><span class="p">,</span> <span class="n">sobremesa</span><span class="p">,</span> <span class="n">salada</span><span class="p">,</span> <span class="n">sobremesa</span><span class="p">,</span> <span class="n">pizza</span><span class="p">,</span> <span class="n">sobremesa</span><span class="p">,</span> <span class="n">bebida</span><span class="p">,</span> <span class="n">pizza</span><span class="p">,</span> <span class="n">sobremesa</span><span class="p">,</span> <span class="n">salada</span><span class="p">,</span> <span class="n">sobremesa</span><span class="p">,</span> <span class="n">pizza</span><span class="p">,</span> <span class="n">sobremesa</span><span class="p">,</span> <span class="n">bebida</span><span class="p">,</span>…
+</span></span></code></pre></div><p>A nível de melhor compreender os dados podemos estabelecer um dicionário com o que cada preditor representa:</p>
+<ul>
+<li><strong>id_transacao</strong>: ID da transação. Um mesmo ID pode ter vários itens de um pedido.</li>
+<li><strong>horario_pedido</strong>: Horário exato do pedido.</li>
+<li><strong>localidade</strong>: Localidade que processou o pedido (unidade do restaurante).</li>
+<li><strong>nome_item</strong>: Nome do item (pizza, salada, bebida, sobremesa).</li>
+<li><strong>quantidade_item</strong>: Quantidade de itens no pedido.</li>
+<li><strong>latitude</strong>: Latitude da localidade onde o pedido foi gerado.</li>
+<li><strong>longitude</strong>: Longitude da localidade onde o pedido foi gerado.</li>
+</ul>
+<p>Observamos que a variável nome_item possui um tipo de character, porém é mais indicado trabalhar com a mesma como fator.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">orders_client_raw</span><span class="o">$</span><span class="n">nome_item_fac</span> <span class="o">&lt;-</span> <span class="nf">as.factor</span><span class="p">(</span><span class="n">orders_client_raw</span><span class="o">$</span><span class="n">nome_item</span><span class="p">)</span>
+</span></span></code></pre></div><p>No R temos um pacote muito interessante que permite ter um panorama geral sobre os dados, com várias estatísticas mais básicas, chamado <code>skimr</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">skim</span><span class="p">(</span><span class="n">orders_client_raw</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl">── <span class="n">Data</span> <span class="n">Summary</span> ────────────────────────
+</span></span><span class="line"><span class="cl">                           <span class="n">Values</span>           
+</span></span><span class="line"><span class="cl"><span class="n">Name</span>                       <span class="n">orders_client_raw</span>
+</span></span><span class="line"><span class="cl"><span class="n">Number</span> <span class="n">of</span> <span class="n">rows</span>             <span class="m">260645</span>           
+</span></span><span class="line"><span class="cl"><span class="n">Number</span> <span class="n">of</span> <span class="n">columns</span>          <span class="m">8</span>                
+</span></span><span class="line"><span class="cl"><span class="n">_______________________</span>                     
+</span></span><span class="line"><span class="cl"><span class="n">Column</span> <span class="n">type</span> <span class="n">frequency</span><span class="o">:</span>                      
+</span></span><span class="line"><span class="cl">  <span class="n">character</span>                <span class="m">2</span>                
+</span></span><span class="line"><span class="cl">  <span class="n">factor</span>                   <span class="m">1</span>                
+</span></span><span class="line"><span class="cl">  <span class="n">numeric</span>                  <span class="m">4</span>                
+</span></span><span class="line"><span class="cl">  <span class="n">POSIXct</span>                  <span class="m">1</span>                
+</span></span><span class="line"><span class="cl"><span class="n">________________________</span>                    
+</span></span><span class="line"><span class="cl"><span class="n">Group</span> <span class="n">variables</span>            <span class="n">None</span>             
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">── <span class="n">Variable</span> <span class="n">type</span><span class="o">:</span> <span class="n">character</span> ───────────────────────────────────────────────────────────────────────────────────────
+</span></span><span class="line"><span class="cl">  <span class="n">skim_variable</span> <span class="n">n_missing</span> <span class="n">complete_rate</span>   <span class="n">min</span>   <span class="n">max</span> <span class="n">empty</span> <span class="n">n_unique</span> <span class="n">whitespace</span>
+</span></span><span class="line"><span class="cl"><span class="m">1</span> <span class="n">id_transacao</span>          <span class="m">0</span>             <span class="m">1</span>     <span class="m">7</span>     <span class="m">8</span>     <span class="m">0</span>   <span class="m">100000</span>          <span class="m">0</span>
+</span></span><span class="line"><span class="cl"><span class="m">2</span> <span class="n">nome_item</span>             <span class="m">0</span>             <span class="m">1</span>     <span class="m">5</span>     <span class="m">9</span>     <span class="m">0</span>        <span class="m">4</span>          <span class="m">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">── <span class="n">Variable</span> <span class="n">type</span><span class="o">:</span> <span class="n">factor</span> ──────────────────────────────────────────────────────────────────────────────────────────
+</span></span><span class="line"><span class="cl">  <span class="n">skim_variable</span> <span class="n">n_missing</span> <span class="n">complete_rate</span> <span class="n">ordered</span> <span class="n">n_unique</span> <span class="n">top_counts</span>                                     
+</span></span><span class="line"><span class="cl"><span class="m">1</span> <span class="n">nome_item_fac</span>         <span class="m">0</span>             <span class="m">1</span> <span class="kc">FALSE</span>          <span class="m">4</span> <span class="n">sob</span><span class="o">:</span> <span class="m">100000</span><span class="p">,</span> <span class="n">piz</span><span class="o">:</span> <span class="m">76122</span><span class="p">,</span> <span class="n">beb</span><span class="o">:</span> <span class="m">46156</span><span class="p">,</span> <span class="n">sal</span><span class="o">:</span> <span class="m">38367</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">── <span class="n">Variable</span> <span class="n">type</span><span class="o">:</span> <span class="n">numeric</span> ─────────────────────────────────────────────────────────────────────────────────────────
+</span></span><span class="line"><span class="cl">  <span class="n">skim_variable</span>   <span class="n">n_missing</span> <span class="n">complete_rate</span>   <span class="n">mean</span>    <span class="n">sd</span>    <span class="n">p0</span>   <span class="n">p25</span>   <span class="n">p50</span>   <span class="n">p75</span>  <span class="n">p100</span> <span class="n">hist</span> 
+</span></span><span class="line"><span class="cl"><span class="m">1</span> <span class="n">localidade</span>              <span class="m">0</span>             <span class="m">1</span>   <span class="m">5.13</span> <span class="m">2.55</span>    <span class="m">1</span>     <span class="m">3</span>     <span class="m">5</span>     <span class="m">7</span>     <span class="m">9</span>   ▆▆▂▇▆
+</span></span><span class="line"><span class="cl"><span class="m">2</span> <span class="n">quantidade_item</span>         <span class="m">0</span>             <span class="m">1</span>   <span class="m">2.45</span> <span class="m">1.33</span>    <span class="m">1</span>     <span class="m">1</span>     <span class="m">2</span>     <span class="m">4</span>     <span class="m">5</span>   ▇▆▅▅▂
+</span></span><span class="line"><span class="cl"><span class="m">3</span> <span class="n">latitude</span>                <span class="m">0</span>             <span class="m">1</span>  <span class="m">41.8</span>  <span class="m">0.144</span>  <span class="m">41.5</span>  <span class="m">41.8</span>  <span class="m">41.9</span>  <span class="m">41.9</span>  <span class="m">42.0</span> ▂▁▅▇▂
+</span></span><span class="line"><span class="cl"><span class="m">4</span> <span class="n">longitude</span>               <span class="m">0</span>             <span class="m">1</span> <span class="m">-87.7</span>  <span class="m">0.136</span> <span class="m">-88.0</span> <span class="m">-87.8</span> <span class="m">-87.7</span> <span class="m">-87.6</span> <span class="m">-87.6</span> ▂▂▂▁▇
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">── <span class="n">Variable</span> <span class="n">type</span><span class="o">:</span> <span class="n">POSIXct</span> ─────────────────────────────────────────────────────────────────────────────────────────
+</span></span><span class="line"><span class="cl">  <span class="n">skim_variable</span>  <span class="n">n_missing</span> <span class="n">complete_rate</span> <span class="n">min</span>                 <span class="n">max</span>                 <span class="n">median</span>              <span class="n">n_unique</span>
+</span></span><span class="line"><span class="cl"><span class="m">1</span> <span class="n">horario_pedido</span>         <span class="m">0</span>             <span class="m">1</span> <span class="m">2019-01-01</span> <span class="m">00</span><span class="o">:</span><span class="m">00</span><span class="o">:</span><span class="m">00</span> <span class="m">2019-12-30</span> <span class="m">23</span><span class="o">:</span><span class="m">59</span><span class="o">:</span><span class="m">00</span> <span class="m">2019-07-01</span> <span class="m">11</span><span class="o">:</span><span class="m">49</span><span class="o">:</span><span class="m">00</span>    <span class="m">76799</span>
+</span></span></code></pre></div><p>De mais importante no resumo acima, podemos ver que os dados não possuem valores missing (=D), temos 100.000 valores únicos no <code>id_transacao</code> e temos 4 produtos de diferentes categorias.</p>
+<p>Localidade possívelmente precisará ser convertida à fator, pois cada valor representa um local diferente de onde o pedido processado. Mas caso venhámos a fazer alguma análise com esta variável podemos converte-la mais a frente.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">orders_client_v1</span> <span class="o">&lt;-</span> <span class="n">orders_client_raw</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">month</span> <span class="o">=</span> <span class="nf">month</span><span class="p">(</span><span class="n">horario_pedido</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">abbr</span> <span class="o">=</span> <span class="bp">F</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">         <span class="n">year</span> <span class="o">=</span> <span class="nf">year</span><span class="p">(</span><span class="n">horario_pedido</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># visualizando o período referente aos dados</span>
+</span></span><span class="line"><span class="cl"><span class="n">orders_client_v1</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">select</span><span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">unique</span><span class="p">()</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># A tibble: 1 x 1</span>
+</span></span><span class="line"><span class="cl">   <span class="n">year</span>
+</span></span><span class="line"><span class="cl">  <span class="o">&lt;</span><span class="n">dbl</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="m">1</span>  <span class="m">2019</span>
+</span></span></code></pre></div><p>Vemos que os dados são referentes ao ano de 2019. Uma visualização interessante seria dos pedidos ao longo dos meses, podendo entender o que vende mais em determinado período.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># pedidos em cada mês</span>
+</span></span><span class="line"><span class="cl"><span class="n">order_by_month_name</span> <span class="o">&lt;-</span> <span class="n">orders_client_v1</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">select</span><span class="p">(</span><span class="n">month</span><span class="p">,</span> <span class="n">nome_item_fac</span><span class="p">,</span> <span class="n">quantidade_item</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">month</span><span class="p">,</span> <span class="n">nome_item_fac</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">summarise</span><span class="p">(</span><span class="n">tot</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">quantidade_item</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># visualização</span>
+</span></span><span class="line"><span class="cl"><span class="n">order_by_month_name</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">tot</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="nf">reorder</span><span class="p">(</span><span class="n">nome_item_fac</span><span class="p">,</span> <span class="n">tot</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">             <span class="n">color</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_pointrange</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">xmin</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="n">tot</span><span class="p">),</span> <span class="n">fatten</span> <span class="o">=</span> <span class="m">5</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_color_manual</span><span class="p">(</span><span class="n">values</span> <span class="o">=</span> <span class="nf">wes_palette</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="m">4</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&#34;BottleRocket2&#34;</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="n">month</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="nf">label_number</span><span class="p">(</span><span class="n">scale</span> <span class="o">=</span> <span class="m">1</span><span class="o">/</span><span class="m">1000</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">guides</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Quantidades de pedidos em milhar&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="n">y</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="n">color</span> <span class="o">=</span> <span class="s">&#34;Pedidos&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme_minimal</span><span class="p">()</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/graph1.png"
+        data-srcset="/img/graph1.png, /img/graph1.png 1.5x, /img/graph1.png 2x"
+        data-sizes="auto"
+        alt="/img/graph1.png"
+        title="graph1" /></p>
+<p>Vimos que ao longo dos meses essa loja recebeu praticamente a mesma quantidade de pedidos todos os meses. Sempre com a menor preferência por salada e a maior preferência por sobremesa.</p>
+<p>Como nós também temos os dados durante as horas do dia, vamos realizar mais uma preparação nos dados.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># incluindo a hora do dia para visualizar depois</span>
+</span></span><span class="line"><span class="cl"><span class="n">orders_client_v2</span> <span class="o">&lt;-</span> <span class="n">orders_client_raw</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">month</span> <span class="o">=</span> <span class="nf">month</span><span class="p">(</span><span class="n">horario_pedido</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">         <span class="n">year</span> <span class="o">=</span> <span class="nf">year</span><span class="p">(</span><span class="n">horario_pedido</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">         <span class="n">hour</span> <span class="o">=</span> <span class="nf">hour</span><span class="p">(</span><span class="n">horario_pedido</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">order_by_hour_name</span> <span class="o">&lt;-</span> <span class="n">orders_client_v2</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">select</span><span class="p">(</span><span class="n">month</span><span class="p">,</span> <span class="n">hour</span><span class="p">,</span> <span class="n">nome_item_fac</span><span class="p">,</span> <span class="n">quantidade_item</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">month</span><span class="p">,</span> <span class="n">hour</span><span class="p">,</span> <span class="n">nome_item_fac</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">summarise</span><span class="p">(</span><span class="n">tot</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">quantidade_item</span><span class="p">))</span>
+</span></span></code></pre></div><p>Agora que o dataset <code>order_by_hour_name</code> possui as informações necesssárias para fazer a visualização, vamos visualizar então como foram os pedidos para cada hora do dia ao longo dos meses e do ano de 2019.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_by_hour_name</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">tot</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="nf">reorder</span><span class="p">(</span><span class="n">nome_item_fac</span><span class="p">,</span> <span class="n">tot</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">             <span class="n">fill</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_col</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_fill_viridis_d</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">facet_grid</span><span class="p">(</span><span class="n">month</span><span class="o">~</span><span class="n">hour</span><span class="p">)</span> <span class="o">+</span> <span class="c1"># hora na vertical e mês na horizontal</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="nf">label_number</span><span class="p">(</span><span class="n">scale</span> <span class="o">=</span> <span class="m">1</span><span class="o">/</span><span class="m">1000</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">guides</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Quantidades de pedidos em milhar&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="n">y</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="n">color</span> <span class="o">=</span> <span class="s">&#34;Pedidos&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p><em>Para uma melhor visualização, rode o código acima na sua máquina e visualize o gráfico em um maior tamanho.</em></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/graph2.png"
+        data-srcset="/img/graph2.png, /img/graph2.png 1.5x, /img/graph2.png 2x"
+        data-sizes="auto"
+        alt="/img/graph2.png"
+        title="graph2" /></p>
+<p>Mas com esse preview já vemos que os dados seguem um comportamento bastate padrão em todas as horas dos dias de todos os messes do ano.</p>
+<p>Conclusões que podemos tirar dos dados até agora:</p>
+<ul>
+<li>entre o período de almoço existe um consumo muito grande de sobremesas e salada.</li>
+<li>das 17 até as 19 horas se consome muito bebida, pizza e sobremesa.</li>
+<li>na 0 hora existe um pico de pedidos de sobremesa e pizza.</li>
+</ul>
+<p>Bom, até agora nós visualizamos os pedidos durante o mês e durante as horas nos meses do ano. Mas seria interessante também observar o total da distribuição de pedidos no ano como um todo.</p>
+<p>Para isso eu gosto muito de utilizar o pacote <code>ggridgs</code>, com ele podemos observar as várias distribuições de uma forma mais compacta e ainda traçar linhas referentes aos diferentes quartis.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_by_hour_name</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl"><span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">tot</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">y</span> <span class="o">=</span> <span class="nf">reorder</span><span class="p">(</span><span class="n">nome_item_fac</span><span class="p">,</span> <span class="n">tot</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">           <span class="n">fill</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">))</span> <span class="o">+</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_density_ridges</span><span class="p">(</span><span class="n">scale</span> <span class="o">=</span> <span class="m">3</span><span class="p">,</span> <span class="n">quantile_lines</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">quantiles</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_fill_viridis_d</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="n">hour</span><span class="p">,</span> <span class="n">scales</span> <span class="o">=</span> <span class="s">&#34;free_x&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="nf">label_number</span><span class="p">(</span><span class="n">scale</span> <span class="o">=</span> <span class="m">1</span><span class="o">/</span><span class="m">1000</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">guides</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Quantidades de pedidos em milhar&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="n">y</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/graph3.png"
+        data-srcset="/img/graph3.png, /img/graph3.png 1.5x, /img/graph3.png 2x"
+        data-sizes="auto"
+        alt="/img/graph3.png"
+        title="graph3" /></p>
+<p>Legal, nesse gráfico nós vemos que em algumas distribuições nós temos caudas muito longas, e outras parecem ser bimodal. Pode ser interessante visualizar se esse comportamento está sendo provocado por outliers ou se é um comportamento &ldquo;real&rdquo; desses dados.</p>
+<p>Para isso chamaremos o bom e velho boxplot/violinoplot, porém adicionamos à ele uma camada de visualização dos pontos que o compões. Vamos lá!</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_by_hour_name</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="n">tot</span><span class="p">))</span> <span class="o">+</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_half_boxplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">),</span> <span class="n">side</span> <span class="o">=</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">.3</span><span class="p">)</span> <span class="o">+</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_half_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">),</span> <span class="n">side</span> <span class="o">=</span> <span class="s">&#39;l&#39;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">.6</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">coord_flip</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Quantidade total de pedidos&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="n">x</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">guides</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="bp">F</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">ggsave</span><span class="p">(</span><span class="s">&#34;graph5.png&#34;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="m">7</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="m">5</span><span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/graph5.png"
+        data-srcset="/img/graph5.png, /img/graph5.png 1.5x, /img/graph5.png 2x"
+        data-sizes="auto"
+        alt="/img/graph5.png"
+        title="graph5" /></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_by_hour_name</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="n">tot</span><span class="p">))</span> <span class="o">+</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_half_violin</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">),</span> <span class="n">side</span> <span class="o">=</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">.3</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="m">3</span><span class="p">)</span> <span class="o">+</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_half_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">),</span> <span class="n">side</span> <span class="o">=</span> <span class="s">&#39;l&#39;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">.6</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">coord_flip</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Quantidade total de pedidos&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="n">x</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">guides</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="bp">F</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/graph4.png"
+        data-srcset="/img/graph4.png, /img/graph4.png 1.5x, /img/graph4.png 2x"
+        data-sizes="auto"
+        alt="/img/graph4.png"
+        title="graph4" /></p>
+<p>Vamos colocar um highlight na região de outliers</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_by_hour_name</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="n">tot</span><span class="p">))</span> <span class="o">+</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_half_boxplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">),</span> <span class="n">side</span> <span class="o">=</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">.3</span><span class="p">)</span> <span class="o">+</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_half_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">),</span> <span class="n">side</span> <span class="o">=</span> <span class="s">&#39;l&#39;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">.6</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">coord_flip</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">annotate</span><span class="p">(</span><span class="n">geom</span> <span class="o">=</span> <span class="s">&#34;rect&#34;</span><span class="p">,</span> <span class="n">xmin</span> <span class="o">=</span> <span class="m">2.7</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="m">3.1</span><span class="p">,</span> <span class="n">ymin</span> <span class="o">=</span> <span class="m">1100</span> <span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="m">2300</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">           <span class="n">fill</span> <span class="o">=</span> <span class="s">&#34;grey40&#34;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">.2</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">annotate</span><span class="p">(</span><span class="n">geom</span> <span class="o">=</span> <span class="s">&#34;rect&#34;</span><span class="p">,</span> <span class="n">xmin</span> <span class="o">=</span> <span class="m">0.7</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="m">1.1</span><span class="p">,</span> <span class="n">ymin</span> <span class="o">=</span> <span class="m">1900</span> <span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="m">3700</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">           <span class="n">fill</span> <span class="o">=</span> <span class="s">&#34;grey40&#34;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">.2</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Quantidade total de pedidos&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="n">x</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">guides</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="bp">F</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme_minimal</span><span class="p">()</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/graph6.png"
+        data-srcset="/img/graph6.png, /img/graph6.png 1.5x, /img/graph6.png 2x"
+        data-sizes="auto"
+        alt="/img/graph6.png"
+        title="graph6" /></p>
+<p>Ótimo, na sequência acima nós podemos visualizar as regiões com outliers para cada classe de pedido. Como nós estamos tentando entender melhor os dados, não faremos nenhum tratamento neles e levaremos para o modelo final (k-means).</p>
+<p>Uma observação interessante é que, realizando essa segmentação, poderemos entender melhor qual grupo de clientes que consomem mais saladas e que também bebem mais que outros consumidores (outliers do nossos dados).</p>
+<p>Vamos visualizar como está sendo os pedidos referente a cada localidade.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># como dito antes, aqui nós convertemos a localidade para fator</span>
+</span></span><span class="line"><span class="cl"><span class="n">order_by_localidade</span> <span class="o">&lt;-</span> <span class="n">orders_client_v2</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">select</span><span class="p">(</span><span class="n">localidade</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">hour</span><span class="p">,</span> <span class="n">nome_item_fac</span><span class="p">,</span> <span class="n">quantidade_item</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">localidade</span> <span class="o">=</span> <span class="nf">as.factor</span><span class="p">(</span><span class="n">localidade</span><span class="p">))</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">localidade</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">hour</span><span class="p">,</span> <span class="n">nome_item_fac</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">summarise</span><span class="p">(</span><span class="n">tot</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">quantidade_item</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="n">order_by_localidade</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">tot</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="nf">reorder_within</span><span class="p">(</span><span class="n">nome_item_fac</span><span class="p">,</span> <span class="n">tot</span><span class="p">,</span> <span class="n">localidade</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">             <span class="n">fill</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_col</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_fill_viridis_d</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="n">localidade</span><span class="p">,</span> <span class="n">scales</span> <span class="o">=</span> <span class="s">&#34;free_y&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_y_reordered</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">guides</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Quantidade total de pedidos&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="n">y</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/graph7.png"
+        data-srcset="/img/graph7.png, /img/graph7.png 1.5x, /img/graph7.png 2x"
+        data-sizes="auto"
+        alt="/img/graph7.png"
+        title="graph7" /></p>
+<p>Essas observações com certeza são importantíssimas para uma empresa de delivery, pois sabendo qual central recebe mais pedidos sobre um determinado produto, fica mais fácil fazer um <strong>controle de estoque</strong> ou até mesmo optar por <strong>não vender</strong> determinado produto numa região devido uma saída muito pequena, caso a economia com matéria-prima seja realmente interessante.</p>
+<p>Referente a <code>localidade</code>, podemos concluir:</p>
+<ul>
+<li>A maioria dos pedidos de salada saem da localidade 1, 3 e 5.</li>
+<li>Maior consumo de pizza, sobremesa e bebida do grupo 4, 7 e 9.</li>
+</ul>
+<p>Por fim, como temos dados períodos bem completos pode ser interessante dá uma olhada num heatmap da quantidade de pedidos ao longo do ano.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_by_localidade</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">hour</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="nf">as.factor</span><span class="p">(</span><span class="n">month</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">             <span class="n">fill</span> <span class="o">=</span> <span class="n">tot</span><span class="p">))</span> <span class="o">+</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_tile</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_fill_viridis_c</span><span class="p">()</span> <span class="o">+</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span> <span class="o">=</span> <span class="m">0</span><span class="o">:</span><span class="m">24</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">coord_equal</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Hora do dia&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Meses do ano&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="n">fill</span> <span class="o">=</span> <span class="s">&#34;Totais de\nPedidos&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme_minimal</span><span class="p">()</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/graph8.png"
+        data-srcset="/img/graph8.png, /img/graph8.png 1.5x, /img/graph8.png 2x"
+        data-sizes="auto"
+        alt="/img/graph8.png"
+        title="graph8" /></p>
+<p>Aqui nós vemos claramente o período do dia em que ocorre maior número de pedidos. E também o vácuo (das 2 às 11 horas) que representa a não ocorrência de pedidos.</p>
+<h1 id="cluster-analysis">Cluster analysis</h1>
+<p>Até agora nós tivemos um panorama geral dos dados, retirando bons insights. Dentre as variáveis analisadas, uma que não trabalhamos até agora é a <code>id_transacao</code>, até por que a mesma possui 100k valores únicos. Porém, ela é importantíssima para uma empresa de delivery, por que trás a informação do cliente.</p>
+<p>Uma forma de analisar uma informação com tamanha dimensionalidade é tentar agrupa-la em clusters. Para isso fazemos uso de métodos de machine learning não-supervisionados que visam <em>agrupar grupos</em> similares, essa similaridade é medida considerando diferentes tipos de distâncias: euclidiana, hamming, manhattan, similaridade cosseno&hellip;</p>
+<p>Cada distância dessa é indicada para um tipo de dado, sendo a mais usada a euclidiana (dados numéricos). Ao mudar a medida de distância damos origem a diferentes algorítmos de clusterização, e como você pode imaginar, essa pluralidade é tão grande que facilmente encontramos livros inteiros apenas sobre clusterização.</p>
+<p>Aqui nós optamos por utilizar o mais popular entre eles, o k-means, e primeiramente vamos pivotar os dados para um formato que será melhor analisado pelo algorítmo.</p>
+<h2 id="pivotando">Pivotando</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_client_clustering</span> <span class="o">&lt;-</span> <span class="n">orders_client_raw</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">select</span><span class="p">(</span><span class="n">id_transacao</span><span class="p">,</span> <span class="n">nome_item_fac</span><span class="p">,</span> <span class="n">quantidade_item</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">pivot_wider</span><span class="p">(</span><span class="n">id_transacao</span><span class="p">,</span> <span class="n">names_from</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">,</span> <span class="n">values_from</span> <span class="o">=</span> <span class="n">quantidade_item</span><span class="p">,</span> <span class="n">values_fill</span> <span class="o">=</span> <span class="m">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">order_client_clustering</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># A tibble: 100,000 x 5</span>
+</span></span><span class="line"><span class="cl">   <span class="n">id_transacao</span> <span class="n">bebida</span> <span class="n">pizza</span> <span class="n">sobremesa</span> <span class="n">salada</span>
+</span></span><span class="line"><span class="cl">   <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>         <span class="o">&lt;</span><span class="n">dbl</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">dbl</span><span class="o">&gt;</span>     <span class="o">&lt;</span><span class="n">dbl</span><span class="o">&gt;</span>  <span class="o">&lt;</span><span class="n">dbl</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"> <span class="m">1</span> <span class="mh">0x7901ee</span>          <span class="m">2</span>     <span class="m">2</span>         <span class="m">2</span>      <span class="m">0</span>
+</span></span><span class="line"><span class="cl"> <span class="m">2</span> <span class="mh">0x12b47f</span>          <span class="m">0</span>     <span class="m">0</span>         <span class="m">1</span>      <span class="m">1</span>
+</span></span><span class="line"><span class="cl"> <span class="m">3</span> <span class="mh">0x6d6979</span>          <span class="m">0</span>     <span class="m">2</span>         <span class="m">2</span>      <span class="m">0</span>
+</span></span><span class="line"><span class="cl"> <span class="m">4</span> <span class="mh">0x78dd1e</span>          <span class="m">2</span>     <span class="m">2</span>         <span class="m">2</span>      <span class="m">0</span>
+</span></span><span class="line"><span class="cl"> <span class="m">5</span> <span class="mh">0x4df8ab</span>          <span class="m">0</span>     <span class="m">0</span>         <span class="m">3</span>      <span class="m">3</span>
+</span></span><span class="line"><span class="cl"> <span class="m">6</span> <span class="mh">0x3be6d3</span>          <span class="m">0</span>     <span class="m">1</span>         <span class="m">1</span>      <span class="m">0</span>
+</span></span><span class="line"><span class="cl"> <span class="m">7</span> <span class="mh">0x755a0b</span>          <span class="m">3</span>     <span class="m">3</span>         <span class="m">4</span>      <span class="m">1</span>
+</span></span><span class="line"><span class="cl"> <span class="m">8</span> <span class="mh">0x653685</span>          <span class="m">1</span>     <span class="m">4</span>         <span class="m">4</span>      <span class="m">0</span>
+</span></span><span class="line"><span class="cl"> <span class="m">9</span> <span class="mh">0x44fe1b</span>          <span class="m">1</span>     <span class="m">2</span>         <span class="m">2</span>      <span class="m">0</span>
+</span></span><span class="line"><span class="cl"><span class="m">10</span> <span class="mh">0x8ade21</span>          <span class="m">2</span>     <span class="m">2</span>         <span class="m">3</span>      <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># … with 99,990 more rows</span>
+</span></span></code></pre></div><p>Como falamos antes, o k-means e outros algorítmos dessa classe de modelos, trabalham com distâncias, por isso é extremamente interessante que tenhamos os dados numa mesma escala e unidade. Aqui aplicaremos uma padronização (média = 0 e desvio = 1), assumindo assim que nossa distribuição é uma distribuição normal, o que de fato vimos que na maioria dos casos essa premissa se fez verdade.</p>
+<h2 id="padronização">Padronização</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># variáveis para padronizar</span>
+</span></span><span class="line"><span class="cl"><span class="n">vars_to_use</span> <span class="o">&lt;-</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">order_client_clustering</span><span class="p">)</span><span class="n">[</span><span class="m">-1</span><span class="n">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">pmatrix</span> <span class="o">&lt;-</span> <span class="nf">scale</span><span class="p">(</span><span class="n">order_client_clustering[</span><span class="p">,</span> <span class="n">vars_to_use]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">pcenter</span> <span class="o">&lt;-</span> <span class="nf">attr</span><span class="p">(</span><span class="n">pmatrix</span><span class="p">,</span> <span class="s">&#34;scaled:center&#34;</span><span class="p">)</span> <span class="c1"># parâmetro que foi utilizado para centralizar</span>
+</span></span><span class="line"><span class="cl"><span class="n">pscale</span> <span class="o">&lt;-</span> <span class="nf">attr</span><span class="p">(</span><span class="n">pmatrix</span><span class="p">,</span> <span class="s">&#34;scaled:scale&#34;</span><span class="p">)</span> <span class="c1"># parâmetro que foi utilizado para escalonar</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">rm_scales</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">scaled_matrix</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">attr</span><span class="p">(</span><span class="n">scaled_matrix</span><span class="p">,</span> <span class="s">&#34;scaled:center&#34;</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">attr</span><span class="p">(</span><span class="n">scaled_matrix</span><span class="p">,</span> <span class="s">&#34;scaled:scale&#34;</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl">  <span class="n">scaled_matrix</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># matriz que utilizaremos para modelagem</span>
+</span></span><span class="line"><span class="cl"><span class="n">pmatrix</span> <span class="o">&lt;-</span> <span class="nf">rm_scales</span><span class="p">(</span><span class="n">pmatrix</span><span class="p">)</span>
+</span></span></code></pre></div><h2 id="k-means">K-means</h2>
+<p>Antes de iniciar a implementação do k-means, vale pontuar algumas questões importantes sobre o algorítimo e que levaram a adotar o workflow abaixo.</p>
+<ul>
+<li>O k-means agrupa os dados para um número pré-determinado de k-clusters. Então é interessante ecolher um número de clusters anteriomente.</li>
+<li>O k-means inicia o processo a partir de um ponto aleatório do seu espaço de dados, por isso uma boa prática é rodar o modelo várias vezes para observar o comportamento dos dados nos clusters.</li>
+<li>Os grupos (clusters) formados pelo k-means não necessariamente serão &ldquo;clusters reais&rdquo; (explico abaixo). E para isso teremos que avaliar a estabilidade desses clusters.</li>
+</ul>
+<p>O último ponto trás o conceito de &ldquo;clusters reais&rdquo;, que de forma simplificada nada mais é do que um cluster de pontos que não são bem explicados por nenhum outro cluster. Para verificar isso vamos utilizar uma reamostragem bootstrap e rodar o kmeans() várias vezes e em diferentes porções dos dados e medir isso.</p>
+<p>E por fim, iremos utilizar o index <strong>Calinski-Harabasz</strong> para identificar o melhor cluster. Existem <em>váaarias</em> formas de fazer isso, mas eu preferi escolher essa e aqui segue um <a href="https://ethen8181.github.io/machine-learning/clustering_old/clustering/clustering.html" target="_blank" rel="noopener noreffer ">link</a> caso você queira entender melhor sobres as definições matemáticos por trás desse método, <strong>muito bem explicado</strong> por sinal.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># 1 - kmeansruns para encontrar o melhor número de cluster e visualizar o calinski-harabasz index</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 4 - clusterboot() para analisar a estabilidade do cluster</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 2 - col_to_print</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 3 - print_cluster()</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 5 - visualizar cada grupo</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># kmeansruns nos nossos dados padronizados, com um range em k de 1 a 10, e critério do calinski</span>
+</span></span><span class="line"><span class="cl"><span class="n">clustering_ch</span> <span class="o">&lt;-</span> <span class="nf">kmeansruns</span><span class="p">(</span><span class="n">pmatrix</span><span class="p">,</span> <span class="n">krange</span> <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span> <span class="n">criterion</span> <span class="o">=</span> <span class="s">&#34;ch&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># best k retornado pelo modelo</span>
+</span></span><span class="line"><span class="cl"><span class="n">clustering_ch</span><span class="o">$</span><span class="n">bestk</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># pequeno tratamento nos dados para poder visualizar o CH-index em função do cluster</span>
+</span></span><span class="line"><span class="cl"><span class="n">coef</span> <span class="o">&lt;-</span> <span class="n">clustering_ch</span><span class="o">$</span><span class="n">crit</span>
+</span></span><span class="line"><span class="cl"><span class="n">k</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span>
+</span></span><span class="line"><span class="cl"><span class="n">data</span> <span class="o">&lt;-</span> <span class="nf">tibble</span><span class="p">(</span><span class="n">coef</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">coef</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_line</span><span class="p">(</span><span class="n">linetype</span><span class="o">=</span><span class="s">&#34;dashed&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span> <span class="o">=</span> <span class="m">0</span><span class="o">:</span><span class="m">10</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme_minimal</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Calinski-Harabasz Index&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/graph9.png"
+        data-srcset="/img/graph9.png, /img/graph9.png 1.5x, /img/graph9.png 2x"
+        data-sizes="auto"
+        alt="/img/graph9.png"
+        title="graph9" /></p>
+<p>Quanto maior o índice, melhor. Então eu optei por escolher dois dos maiores pontos (3 e 8 clusters) e visualizar como se dá o comportamento deles quando realizado o bootstrap.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># essa célula pode demorar um pouco para rodar dependendo da sua máquina</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># running o clusterboot pra melhor escolher o k</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># k = 3</span>
+</span></span><span class="line"><span class="cl"><span class="n">cboot_3</span> <span class="o">&lt;-</span> <span class="nf">clusterboot</span><span class="p">(</span><span class="n">pmatrix</span><span class="p">,</span> <span class="n">clustermethod</span> <span class="o">=</span> <span class="n">kmeansCBI</span><span class="p">,</span> <span class="n">runs</span> <span class="o">=</span> <span class="m">100</span><span class="p">,</span> <span class="n">iter.max</span> <span class="o">=</span> <span class="m">100</span><span class="p">,</span> <span class="n">krange</span> <span class="o">=</span> <span class="m">3</span><span class="p">,</span> <span class="n">seed</span> <span class="o">=</span> <span class="m">2020</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># k = 8</span>
+</span></span><span class="line"><span class="cl"><span class="n">cboot_8</span> <span class="o">&lt;-</span> <span class="nf">clusterboot</span><span class="p">(</span><span class="n">pmatrix</span><span class="p">,</span> <span class="n">clustermethod</span> <span class="o">=</span> <span class="n">kmeansCBI</span><span class="p">,</span> <span class="n">runs</span> <span class="o">=</span> <span class="m">100</span><span class="p">,</span> <span class="n">iter.max</span> <span class="o">=</span> <span class="m">100</span><span class="p">,</span> <span class="n">krange</span> <span class="o">=</span> <span class="m">8</span><span class="p">,</span> <span class="n">seed</span> <span class="o">=</span> <span class="m">2020</span><span class="p">)</span>
+</span></span></code></pre></div><p>No objeto <code>cboot_x</code> retornado pela função <code>clusterboot()</code> podemos chamar o camapo <code>$bootmean</code> que indica justamente qual foi a estabilidade do cluster ao longo das 100 iterações do bootstrap.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">cboot_3</span><span class="o">$</span><span class="n">bootmean</span>
+</span></span><span class="line"><span class="cl"><span class="n">[1]</span> <span class="m">1</span> <span class="m">1</span> <span class="m">1</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">cboot_8</span><span class="o">$</span><span class="n">bootmean</span>
+</span></span><span class="line"><span class="cl"><span class="n">[1]</span> <span class="m">0.6846583</span> <span class="m">0.9253406</span> <span class="m">0.8652381</span> <span class="m">0.7604600</span> <span class="m">0.6980723</span> <span class="m">0.9149958</span> <span class="m">0.8921955</span> <span class="m">0.7588892</span>
+</span></span></code></pre></div><p>O que vemos aqui é que estranhamente o modelo com 3 clusters tem uma estabilidade de 1, o que seria perfeito em se tratando que o range de valores possíveis dessa técnica é de 0 a 1, provavelmente tem alguma coisa errada com esse número de clusters já que nada na vida é tão perfeito assim. Por isso, vamos optar de seguir com 8 clusters, utilizando então o objeto <code>cboot_8</code>.</p>
+<p>O que os números do <code>$bootmean</code> nos dizem?</p>
+<ul>
+<li>clusters com valores <strong>menores que 0.6</strong> são considerados instáveis.</li>
+<li>valores <strong>entre 0.6 e 0.75</strong> indicam que o cluster encontrou algum nível de padrão nos dados.</li>
+<li>valores acima disso possui maior estabilidade, sendo os mais estáveis os valores <strong>acima de 0.85</strong>.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># groups recebe os datasets com os cluster</span>
+</span></span><span class="line"><span class="cl"><span class="n">groups</span> <span class="o">&lt;-</span> <span class="n">cboot_8</span><span class="o">$</span><span class="n">result</span><span class="o">$</span><span class="n">partition</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># colunas que serão utilizadas dataset final com os clusters</span>
+</span></span><span class="line"><span class="cl"><span class="n">cols_to_print</span> <span class="o">&lt;-</span> <span class="n">wrapr</span><span class="o">::</span><span class="nf">qc</span><span class="p">(</span><span class="n">id_transacao</span><span class="p">,</span> <span class="n">bebida</span><span class="p">,</span> <span class="n">pizza</span><span class="p">,</span> <span class="n">sobremesa</span><span class="p">,</span> <span class="n">salada</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">print_clusters</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">groups</span><span class="p">,</span> <span class="n">columns</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">groupedID</span> <span class="o">&lt;-</span> <span class="nf">split</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">groups</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">lapply</span><span class="p">(</span><span class="n">groupedID</span><span class="p">,</span> <span class="nf">function</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="n">df[</span><span class="p">,</span> <span class="n">columns]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">clusters</span> <span class="o">&lt;-</span> <span class="nf">print_clusters</span><span class="p">(</span><span class="n">order_client_clustering</span><span class="p">,</span> <span class="n">groups</span><span class="p">,</span> <span class="n">cols_to_print</span><span class="p">)</span>
+</span></span></code></pre></div><p>Nesse ponto, o que temos é uma lista com um dataframe para cada cluster, ou seja, todos os pontos do nosso dataset original nos clusters que o modelo identificou.</p>
+<p>Vamos agora fazer algumas visualizações em cada cluster</p>
+<h2 id="clusters-visualization">Clusters Visualization</h2>
+<p>Nas próximas visualizações teremos basicamente o mesmo código de plotagem, onde cada gráfico trás a informação de um cliente (id_transacao), e qual o número de pedidos (1, 2, 3, 4 ou 5) que o mesmo fez em relação a cada produto (bebida, pizza, salada, sobremesa).</p>
+<p>Uma linha horizontal foi traçada para representar um cliente dentre os milhares presentes nos plots.</p>
+<h3 id="cluster-1">Cluster 1</h3>
+<p>O cluster 1 trás os clientes que possuem um maior consumo de sobremesa e salada, e que consomem pouco, ou não consomem nem bebida nem pizza. Aqueles que querem ser saudáveis mas não dispensam um docinho.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_1</span> <span class="o">&lt;-</span> <span class="n">clusters[[1]]</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">pivot_longer</span><span class="p">(</span><span class="n">cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;bebida&#34;</span><span class="p">,</span> <span class="s">&#34;pizza&#34;</span><span class="p">,</span> <span class="s">&#34;sobremesa&#34;</span><span class="p">,</span> <span class="s">&#34;salada&#34;</span><span class="p">),</span> <span class="n">names_to</span> <span class="o">=</span> <span class="s">&#34;pedidos&#34;</span><span class="p">,</span> <span class="n">values_to</span> <span class="o">=</span> <span class="s">&#34;values&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">cluster_1</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">values</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="n">id_transacao</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">color</span> <span class="o">=</span> <span class="n">pedidos</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_point</span><span class="p">(</span><span class="n">position</span> <span class="o">=</span> <span class="nf">position_jitter</span><span class="p">(</span><span class="n">height</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="m">.3</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span> <span class="o">=</span> <span class="m">0</span><span class="o">:</span><span class="m">4</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">annotate</span><span class="p">(</span><span class="n">geom</span> <span class="o">=</span> <span class="s">&#34;rect&#34;</span><span class="p">,</span> <span class="n">xmin</span> <span class="o">=</span> <span class="m">-0.5</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="m">4.5</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="m">16500</span><span class="p">,</span> <span class="n">ymin</span> <span class="o">=</span> <span class="m">16400</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">.3</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Número de pedidos realizado pelo cliente&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Pedidos feitos por cada cliente&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;A linha horizontal indica a informação de um cliente e seus pedidos&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.y.left</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>   
+</span></span><span class="line"><span class="cl">        <span class="n">axis.ticks.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">())</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/graph10.png"
+        data-srcset="/img/graph10.png, /img/graph10.png 1.5x, /img/graph10.png 2x"
+        data-sizes="auto"
+        alt="/img/graph10.png"
+        title="graph10" /></p>
+<h3 id="cluster-2">Cluster 2</h3>
+<p>O cluster 2 é um público que consome bem pouco, e quando consome, consome mais pizza, sobremesa e alguns ainda consomem bebida. Esses são realmente aversos a saladas.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_2</span> <span class="o">&lt;-</span> <span class="n">clusters[[2]]</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">pivot_longer</span><span class="p">(</span><span class="n">cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;bebida&#34;</span><span class="p">,</span> <span class="s">&#34;pizza&#34;</span><span class="p">,</span> <span class="s">&#34;sobremesa&#34;</span><span class="p">,</span> <span class="s">&#34;salada&#34;</span><span class="p">),</span> <span class="n">names_to</span> <span class="o">=</span> <span class="s">&#34;pedidos&#34;</span><span class="p">,</span> <span class="n">values_to</span> <span class="o">=</span> <span class="s">&#34;values&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">cluster_2</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">values</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="n">id_transacao</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">color</span> <span class="o">=</span> <span class="n">pedidos</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_point</span><span class="p">(</span><span class="n">position</span> <span class="o">=</span> <span class="nf">position_jitter</span><span class="p">(</span><span class="n">height</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="m">.3</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span> <span class="o">=</span> <span class="m">0</span><span class="o">:</span><span class="m">1</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">annotate</span><span class="p">(</span><span class="n">geom</span> <span class="o">=</span> <span class="s">&#34;rect&#34;</span><span class="p">,</span> <span class="n">xmin</span> <span class="o">=</span> <span class="m">-0.5</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="m">1.5</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="m">16500</span><span class="p">,</span> <span class="n">ymin</span> <span class="o">=</span> <span class="m">16400</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">.3</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Número de pedidos realizado pelo cliente&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Pedidos feitos por cada cliente&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;A linha horizontal indica a informação de um cliente e seus pedidos&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.y.left</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>   
+</span></span><span class="line"><span class="cl">        <span class="n">axis.ticks.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">())</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/graph11.png"
+        data-srcset="/img/graph11.png, /img/graph11.png 1.5x, /img/graph11.png 2x"
+        data-sizes="auto"
+        alt="/img/graph11.png"
+        title="graph11" /></p>
+<h3 id="cluster-3">Cluster 3</h3>
+<p>No cluster 3 nós vemos os clientes que pedem em maior quantidade pizza e sobremesa e optam por não pedir ou pedir pouco salada e bebida.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_3</span> <span class="o">&lt;-</span> <span class="n">clusters[[3]]</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">pivot_longer</span><span class="p">(</span><span class="n">cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;bebida&#34;</span><span class="p">,</span> <span class="s">&#34;pizza&#34;</span><span class="p">,</span> <span class="s">&#34;sobremesa&#34;</span><span class="p">,</span> <span class="s">&#34;salada&#34;</span><span class="p">),</span> <span class="n">names_to</span> <span class="o">=</span> <span class="s">&#34;pedidos&#34;</span><span class="p">,</span> <span class="n">values_to</span> <span class="o">=</span> <span class="s">&#34;values&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">cluster_3</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">values</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="n">id_transacao</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">color</span> <span class="o">=</span> <span class="n">pedidos</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_point</span><span class="p">(</span><span class="n">position</span> <span class="o">=</span> <span class="nf">position_jitter</span><span class="p">(</span><span class="n">height</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="m">.3</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span> <span class="o">=</span> <span class="m">0</span><span class="o">:</span><span class="m">5</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">annotate</span><span class="p">(</span><span class="n">geom</span> <span class="o">=</span> <span class="s">&#34;rect&#34;</span><span class="p">,</span> <span class="n">xmin</span> <span class="o">=</span> <span class="m">-0.5</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="m">5.5</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="m">3500</span><span class="p">,</span> <span class="n">ymin</span> <span class="o">=</span> <span class="m">3470</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">.3</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Número de pedidos realizado pelo cliente&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Pedidos feitos por cada cliente&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;A linha horizontal indica a informação de um cliente e seus pedidos&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.y.left</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>   
+</span></span><span class="line"><span class="cl">        <span class="n">axis.ticks.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">())</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/graph12.png"
+        data-srcset="/img/graph12.png, /img/graph12.png 1.5x, /img/graph12.png 2x"
+        data-sizes="auto"
+        alt="/img/graph12.png"
+        title="graph12" /></p>
+<h3 id="cluster-4">Cluster 4</h3>
+<p>O cluster 4 trás as pessoas que gostam de sobremesa mas que pedem um pouco de pizza e salada. Além disso não costuma pedir bebidas.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_4</span> <span class="o">&lt;-</span> <span class="n">clusters[[4]]</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">pivot_longer</span><span class="p">(</span><span class="n">cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;bebida&#34;</span><span class="p">,</span> <span class="s">&#34;pizza&#34;</span><span class="p">,</span> <span class="s">&#34;sobremesa&#34;</span><span class="p">,</span> <span class="s">&#34;salada&#34;</span><span class="p">),</span> <span class="n">names_to</span> <span class="o">=</span> <span class="s">&#34;pedidos&#34;</span><span class="p">,</span> <span class="n">values_to</span> <span class="o">=</span> <span class="s">&#34;values&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">cluster_4</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">values</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="n">id_transacao</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">color</span> <span class="o">=</span> <span class="n">pedidos</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_point</span><span class="p">(</span><span class="n">position</span> <span class="o">=</span> <span class="nf">position_jitter</span><span class="p">(</span><span class="n">height</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="m">.3</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span> <span class="o">=</span> <span class="m">0</span><span class="o">:</span><span class="m">2</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">annotate</span><span class="p">(</span><span class="n">geom</span> <span class="o">=</span> <span class="s">&#34;rect&#34;</span><span class="p">,</span> <span class="n">xmin</span> <span class="o">=</span> <span class="m">-0.5</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="m">2.5</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="m">11500</span><span class="p">,</span> <span class="n">ymin</span> <span class="o">=</span> <span class="m">11430</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">.3</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Número de pedidos realizado pelo cliente&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Pedidos feitos por cada cliente&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;A linha horizontal indica a informação de um cliente e seus pedidos&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.y.left</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>   
+</span></span><span class="line"><span class="cl">        <span class="n">axis.ticks.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">())</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/graph13.png"
+        data-srcset="/img/graph13.png, /img/graph13.png 1.5x, /img/graph13.png 2x"
+        data-sizes="auto"
+        alt="/img/graph13.png"
+        title="graph13" /></p>
+<h3 id="cluster-5">Cluster 5</h3>
+<p>Aqui vemos mais um cluster onde os clientes gostam de pedir muita salda com sobremesa, mas não dispensam uma pizza em algumas situações.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_5</span> <span class="o">&lt;-</span> <span class="n">clusters[[5]]</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">pivot_longer</span><span class="p">(</span><span class="n">cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;bebida&#34;</span><span class="p">,</span> <span class="s">&#34;pizza&#34;</span><span class="p">,</span> <span class="s">&#34;sobremesa&#34;</span><span class="p">,</span> <span class="s">&#34;salada&#34;</span><span class="p">),</span> <span class="n">names_to</span> <span class="o">=</span> <span class="s">&#34;pedidos&#34;</span><span class="p">,</span> <span class="n">values_to</span> <span class="o">=</span> <span class="s">&#34;values&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">cluster_5</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">values</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="n">id_transacao</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">color</span> <span class="o">=</span> <span class="n">pedidos</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_point</span><span class="p">(</span><span class="n">position</span> <span class="o">=</span> <span class="nf">position_jitter</span><span class="p">(</span><span class="n">height</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="m">.3</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span> <span class="o">=</span> <span class="m">0</span><span class="o">:</span><span class="m">5</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">annotate</span><span class="p">(</span><span class="n">geom</span> <span class="o">=</span> <span class="s">&#34;rect&#34;</span><span class="p">,</span> <span class="n">xmin</span> <span class="o">=</span> <span class="m">-0.5</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="m">5.5</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="m">2800</span><span class="p">,</span> <span class="n">ymin</span> <span class="o">=</span> <span class="m">2770</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">.3</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Número de pedidos realizado pelo cliente&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Pedidos feitos por cada cliente&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;A linha horizontal indica a informação de um cliente e seus pedidos&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.y.left</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>   
+</span></span><span class="line"><span class="cl">        <span class="n">axis.ticks.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">())</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/graph14.png"
+        data-srcset="/img/graph14.png, /img/graph14.png 1.5x, /img/graph14.png 2x"
+        data-sizes="auto"
+        alt="/img/graph14.png"
+        title="graph14" /></p>
+<h3 id="cluster-6">Cluster 6</h3>
+<p>Os clientes do grupo 6 são também bem aversos a salada, optando por uma combinação perfeita, sobremesa e pizza.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_6</span> <span class="o">&lt;-</span> <span class="n">clusters[[6]]</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">pivot_longer</span><span class="p">(</span><span class="n">cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;bebida&#34;</span><span class="p">,</span> <span class="s">&#34;pizza&#34;</span><span class="p">,</span> <span class="s">&#34;sobremesa&#34;</span><span class="p">,</span> <span class="s">&#34;salada&#34;</span><span class="p">),</span> <span class="n">names_to</span> <span class="o">=</span> <span class="s">&#34;pedidos&#34;</span><span class="p">,</span> <span class="n">values_to</span> <span class="o">=</span> <span class="s">&#34;values&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">cluster_6</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">values</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="n">id_transacao</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">color</span> <span class="o">=</span> <span class="n">pedidos</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_point</span><span class="p">(</span><span class="n">position</span> <span class="o">=</span> <span class="nf">position_jitter</span><span class="p">(</span><span class="n">height</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="m">.3</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span> <span class="o">=</span> <span class="m">0</span><span class="o">:</span><span class="m">3</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">annotate</span><span class="p">(</span><span class="n">geom</span> <span class="o">=</span> <span class="s">&#34;rect&#34;</span><span class="p">,</span> <span class="n">xmin</span> <span class="o">=</span> <span class="m">-0.5</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="m">3.5</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="m">15500</span><span class="p">,</span> <span class="n">ymin</span> <span class="o">=</span> <span class="m">15400</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">.3</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Número de pedidos realizado pelo cliente&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Pedidos feitos por cada cliente&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;A linha horizontal indica a informação de um cliente e seus pedidos&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.y.left</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>   
+</span></span><span class="line"><span class="cl">        <span class="n">axis.ticks.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">())</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/graph15.png"
+        data-srcset="/img/graph15.png, /img/graph15.png 1.5x, /img/graph15.png 2x"
+        data-sizes="auto"
+        alt="/img/graph15.png"
+        title="graph15" /></p>
+<h3 id="cluster-7">Cluster 7</h3>
+<p>No cluster 7 temos aqueles clientes que juntamente a pizza com sobremesa, adicionam uma bebida.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_7</span> <span class="o">&lt;-</span> <span class="n">clusters[[7]]</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">pivot_longer</span><span class="p">(</span><span class="n">cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;bebida&#34;</span><span class="p">,</span> <span class="s">&#34;pizza&#34;</span><span class="p">,</span> <span class="s">&#34;sobremesa&#34;</span><span class="p">,</span> <span class="s">&#34;salada&#34;</span><span class="p">),</span> <span class="n">names_to</span> <span class="o">=</span> <span class="s">&#34;pedidos&#34;</span><span class="p">,</span> <span class="n">values_to</span> <span class="o">=</span> <span class="s">&#34;values&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">cluster_7</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">values</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="n">id_transacao</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">color</span> <span class="o">=</span> <span class="n">pedidos</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_point</span><span class="p">(</span><span class="n">position</span> <span class="o">=</span> <span class="nf">position_jitter</span><span class="p">(</span><span class="n">height</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="m">.3</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span> <span class="o">=</span> <span class="m">0</span><span class="o">:</span><span class="m">5</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">annotate</span><span class="p">(</span><span class="n">geom</span> <span class="o">=</span> <span class="s">&#34;rect&#34;</span><span class="p">,</span> <span class="n">xmin</span> <span class="o">=</span> <span class="m">-0.5</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="m">5.5</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="m">17500</span><span class="p">,</span> <span class="n">ymin</span> <span class="o">=</span> <span class="m">17400</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">.3</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Número de pedidos realizado pelo cliente&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Pedidos feitos por cada cliente&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;A linha horizontal indica a informação de um cliente e seus pedidos&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.y.left</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>   
+</span></span><span class="line"><span class="cl">        <span class="n">axis.ticks.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">())</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/graph16.png"
+        data-srcset="/img/graph16.png, /img/graph16.png 1.5x, /img/graph16.png 2x"
+        data-sizes="auto"
+        alt="/img/graph16.png"
+        title="graph16" /></p>
+<h3 id="cluster-8">Cluster 8</h3>
+<p>E por fim, o cluster os loucos por sobremesa.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_8</span> <span class="o">&lt;-</span> <span class="n">clusters[[8]]</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">pivot_longer</span><span class="p">(</span><span class="n">cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;bebida&#34;</span><span class="p">,</span> <span class="s">&#34;pizza&#34;</span><span class="p">,</span> <span class="s">&#34;sobremesa&#34;</span><span class="p">,</span> <span class="s">&#34;salada&#34;</span><span class="p">),</span> <span class="n">names_to</span> <span class="o">=</span> <span class="s">&#34;pedidos&#34;</span><span class="p">,</span> <span class="n">values_to</span> <span class="o">=</span> <span class="s">&#34;values&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">cluster_8</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">values</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="n">id_transacao</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">color</span> <span class="o">=</span> <span class="n">pedidos</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_point</span><span class="p">(</span><span class="n">position</span> <span class="o">=</span> <span class="nf">position_jitter</span><span class="p">(</span><span class="n">height</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="m">.3</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span> <span class="o">=</span> <span class="m">0</span><span class="o">:</span><span class="m">5</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">annotate</span><span class="p">(</span><span class="n">geom</span> <span class="o">=</span> <span class="s">&#34;rect&#34;</span><span class="p">,</span> <span class="n">xmin</span> <span class="o">=</span> <span class="m">-0.5</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="m">5.5</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="m">9500</span><span class="p">,</span> <span class="n">ymin</span> <span class="o">=</span> <span class="m">9420</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">.3</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Número de pedidos realizado pelo cliente&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Pedidos feitos por cada cliente&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;A linha horizontal indica a informação de um cliente e seus pedidos&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.y.left</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>   
+</span></span><span class="line"><span class="cl">        <span class="n">axis.ticks.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">())</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/graph17.png"
+        data-srcset="/img/graph17.png, /img/graph17.png 1.5x, /img/graph17.png 2x"
+        data-sizes="auto"
+        alt="/img/graph17.png"
+        title="graph17" /></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-06-19</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://www.lobdata.com.br/posts/segment-client/" data-title="Segmentação de clientes de Food Delivery" data-hashtags="Project,Data Science,Machine Learning,K-Means"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://www.lobdata.com.br/posts/segment-client/" data-hashtag="Project"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://www.lobdata.com.br/posts/segment-client/" data-title="Segmentação de clientes de Food Delivery"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://www.lobdata.com.br/posts/segment-client/" data-title="Segmentação de clientes de Food Delivery"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://www.lobdata.com.br/posts/segment-client/" data-title="Segmentação de clientes de Food Delivery"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/project/">Project</a>,&nbsp;<a href="/tags/data-science/">Data Science</a>,&nbsp;<a href="/tags/machine-learning/">Machine Learning</a>,&nbsp;<a href="/tags/k-means/">K-Means</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/cat_in_the_dat/" class="prev" rel="prev" title="Categorical Feature Encoding Challenge"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Categorical Feature Encoding Challenge</a>
+            <a href="/posts/r_correlation/" class="next" rel="next" title="How to Perform Correlation Analysis in Time Series data using R?">How to Perform Correlation Analysis in Time Series data using R?<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.114.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Luba</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

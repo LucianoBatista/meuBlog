@@ -1,0 +1,104 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>My New Hugo Site</title>
+        <link>https://www.lobdata.com.br/</link>
+        <description>This is my cool site</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 21 Jun 2023 11:07:36 -0300</lastBuildDate>
+            <atom:link href="https://www.lobdata.com.br/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+    <title>First_post</title>
+    <link>https://www.lobdata.com.br/posts/first_post/</link>
+    <pubDate>Wed, 21 Jun 2023 11:07:36 -0300</pubDate>
+    <author>Luba</author>
+    <guid>https://www.lobdata.com.br/posts/first_post/</guid>
+    <description><![CDATA[Hi! This is a tip A tip banner ]]></description>
+</item>
+<item>
+    <title>mynotes 01</title>
+    <link>https://www.lobdata.com.br/posts/my_notes/</link>
+    <pubDate>Wed, 21 Jun 2023 00:00:00 &#43;0000</pubDate>
+    <author>Luciano</author>
+    <guid>https://www.lobdata.com.br/posts/my_notes/</guid>
+    <description><![CDATA[Estou iniciando um série de posts aqui no blog sobre IA Generativa. O conteúdo é como se fossem minhas anotações sobre um livro que estou lendo, e a intenção é que a cada capítulo eu traga um compilado aqui do que aprendi, por isso estarei chamando de mynotes.
+Teremos teoria e código, e além disso vou tentar dar meus 2 centavos de contribuição relacionando com fontes externas que talvez faça sentido relacionar.]]></description>
+</item>
+<item>
+    <title>Classificador BNCC Pt.2</title>
+    <link>https://www.lobdata.com.br/posts/bncc-modeling/</link>
+    <pubDate>Tue, 14 Jun 2022 00:00:00 &#43;0000</pubDate>
+    <author>Luciano, Pedro, Will e Brisa</author>
+    <guid>https://www.lobdata.com.br/posts/bncc-modeling/</guid>
+    <description><![CDATA[Resolvemos criar um novo artigo para detalhar melhor o que foi feito na etapa de modelagem do projeto do Classificador BNCC. Assim conseguimos dar mais atenção e justificar algumas escolhas.
+Cronograma de modelagem Nosso intuito foi buscar o melhor baseline para nosso problema, mapeando alguns universos de possibilidades, dentre modelos de machine learning e estratégias de transformação de texto em dado numérico.
+Válido lembrar que o dado que está entrando nessa etapa do pipeline está &ldquo;limpo&rdquo;, ou seja, passou pelas etapas de pré-processamentos que julgamos necessárias.]]></description>
+</item>
+<item>
+    <title>Classificador BNCC</title>
+    <link>https://www.lobdata.com.br/posts/bncc-classifier/</link>
+    <pubDate>Wed, 08 Jun 2022 00:00:00 &#43;0000</pubDate>
+    <author>Luciano, Pedro, Will e Brisa</author>
+    <guid>https://www.lobdata.com.br/posts/bncc-classifier/</guid>
+    <description><![CDATA[Projeto desenvolvido pelos alunos Brisa Rosatti, Luciano Batista, Pedro Moreau, Wilson França do Curso de Data Science &amp; Machine Learning da Tera em colaboração com a Studos e ArcoTech.
+PARTE I: Estrutura do projeto Contexto Segundo o IBGE, no Brasil, existem registradas 124840 escolas de ensino fundamental e 28933 escolas do ensino médio. Em termos de número de matrículas, isso representa 26718830 matrículas para o ensino fundamental e 7550753 para o ensino médio https://cidades.]]></description>
+</item>
+<item>
+    <title>Computer Vision</title>
+    <link>https://www.lobdata.com.br/posts/image-cleaning/</link>
+    <pubDate>Wed, 26 Jan 2022 00:00:00 &#43;0000</pubDate>
+    <author>Luciano</author>
+    <guid>https://www.lobdata.com.br/posts/image-cleaning/</guid>
+    <description><![CDATA[O intuito desse post é compartilhar uma solução simples que resolvou um problema complexo que estávamos enfrentando em de nossos produtos aqui na Studos, a Leitora de Gabaritos. Dessa forma, outros que estejam com problemas similares possam talvez ter um ponto de vista diferente na resolução do problema.
+O que é a leitora de gabaritos? Dando um pouco de contexto sobre o produto, a Leitora de Gabaritos é uma API desenvolvida utilizando (principalmente) a seguinte stack:]]></description>
+</item>
+<item>
+    <title>Efficient Pandas</title>
+    <link>https://www.lobdata.com.br/posts/efficient-pandas/</link>
+    <pubDate>Sun, 24 Oct 2021 00:00:00 &#43;0000</pubDate>
+    <author>Luciano</author>
+    <guid>https://www.lobdata.com.br/posts/efficient-pandas/</guid>
+    <description><![CDATA[Fala galera, tudo certo com vocês? Se você é um Cientista/Analista de dados, ou curte utilizar python para realizar diferentes análises em seu dataset, certamente já utilizou a biblioteca Pandas. Pandas é uma biblioteca open-source para estruturação e análise de dados, seus comandos se assemelham muitas vezes ao SQL, porém sua API traz um conjunto maior operações, maior robustez e se executado de forma correta, mais parformance.
+Nesse tutorial estou me baseando em um minicurso do DataCamp Writing Efficient Code with pandas.]]></description>
+</item>
+<item>
+    <title>Criando uma API Pronta para Produção com FastAPI - PT.5</title>
+    <link>https://www.lobdata.com.br/posts/econowallet-fastapi-pt5/</link>
+    <pubDate>Sun, 01 Aug 2021 00:00:00 &#43;0000</pubDate>
+    <author>Luciano</author>
+    <guid>https://www.lobdata.com.br/posts/econowallet-fastapi-pt5/</guid>
+    <description><![CDATA[Nos Capítulos Anteriores &hellip; Como dito anteriormente, hoje vamos configurar o SQLAlchemy!!
+Essa é a parte 5 do nosso projeto do EconoWallet e se você quiser verificar o que já fizemos até o momento, acesse os links abaixo:
+Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Sem enrolação, vamos logo ao que interessa!!!
+Reorganizando o projeto Antes de configurar o ORM, vamos ajustar algumas coisas no nosso diretório. Como estamos seguindo para um estágio mais maduro da aplicação e que você já compreende o básico de configuração do FastAPI, precisaremos agora separar melhor as competências dentro do projeto.]]></description>
+</item>
+<item>
+    <title>Criando uma API Pronta para Produção com FastAPI - PT.4</title>
+    <link>https://www.lobdata.com.br/posts/econowallet-fastapi-pt4/</link>
+    <pubDate>Sat, 31 Jul 2021 00:00:00 &#43;0000</pubDate>
+    <author>Luciano</author>
+    <guid>https://www.lobdata.com.br/posts/econowallet-fastapi-pt4/</guid>
+    <description><![CDATA[Nos Capítulos Anteriores &hellip; Após um tempinho sem postar nada, vamos dar continuidade a essa série sobre como desenvolver uma API pronta pro Deploy! 🚀 🚀
+Essa é a parte 4 do nosso projeto do EconoWallet e se você quiser verificar o que já fizemos até o momento, acesse os links abaixo:
+Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Dando continuidade a nossa aplicação, hoje vamos configurar qual será nosso banco de dados.]]></description>
+</item>
+<item>
+    <title>Criando uma API Pronta para Produção com FastAPI - PT.3</title>
+    <link>https://www.lobdata.com.br/posts/econowallet-fastapi-pt3/</link>
+    <pubDate>Thu, 08 Apr 2021 00:00:00 &#43;0000</pubDate>
+    <author>Luciano</author>
+    <guid>https://www.lobdata.com.br/posts/econowallet-fastapi-pt3/</guid>
+    <description><![CDATA[Nos Capítulos Anteriores &hellip; Essa é a parte 3 do nosso projeto do EconoWallet, se quiser verificar o que já fizemos até o momento, verifique os links abaixo:
+Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Dando continuidade a nossa aplicação, hoje vamos iniciar a configuração do Docker em nosso ambiente. E antes de mais nada, precisaremos instalar o Docker e o Docker Compose na nossa máquina.
+A documentação do Docker para instalação é muito bem explicada.]]></description>
+</item>
+<item>
+    <title>Criando uma API Pronta para Produção com FastAPI - PT.2</title>
+    <link>https://www.lobdata.com.br/posts/econowallet-fastapi-pt2/</link>
+    <pubDate>Sat, 03 Apr 2021 00:00:00 &#43;0000</pubDate>
+    <author>Luciano</author>
+    <guid>https://www.lobdata.com.br/posts/econowallet-fastapi-pt2/</guid>
+    <description><![CDATA[Neste tutorial iremos iniciar o Econowallet, essa aplicação que vai contar com uma API para controle financeiro de suas despesas e investimentos, se você não viu o post passado (onde explico mais sobre meu objetivo com esse projeto) clique aqui.
+Tópicos que serão abordados nesse post:
+Setup Inicial: main.py e config.py Rotas async Setup Como todo projeto python, é uma boa prática que você crie um ambiente virtual isolando as dependências do projeto, isso evita que você possa ter conflito entre diferentes libs de outros projetos que esteja trabalhando.]]></description>
+</item>
+</channel>
+</rss>

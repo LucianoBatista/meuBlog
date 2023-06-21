@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Word2Vec - Tag - My New Hugo Site</title>
+        <link>https://www.lobdata.com.br/tags/word2vec/</link>
+        <description>Word2Vec - Tag - My New Hugo Site</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 14 Jun 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/word2vec/" rel="self" type="application/rss+xml" /><item>
+    <title>Classificador BNCC Pt.2</title>
+    <link>https://www.lobdata.com.br/posts/bncc-modeling/</link>
+    <pubDate>Tue, 14 Jun 2022 00:00:00 &#43;0000</pubDate>
+    <author>Luciano, Pedro, Will e Brisa</author>
+    <guid>https://www.lobdata.com.br/posts/bncc-modeling/</guid>
+    <description><![CDATA[Resolvemos criar um novo artigo para detalhar melhor o que foi feito na etapa de modelagem do projeto do Classificador BNCC. Assim conseguimos dar mais atenção e justificar algumas escolhas.
+Cronograma de modelagem Nosso intuito foi buscar o melhor baseline para nosso problema, mapeando alguns universos de possibilidades, dentre modelos de machine learning e estratégias de transformação de texto em dado numérico.
+Válido lembrar que o dado que está entrando nessa etapa do pipeline está &ldquo;limpo&rdquo;, ou seja, passou pelas etapas de pré-processamentos que julgamos necessárias.]]></description>
+</item>
+</channel>
+</rss>

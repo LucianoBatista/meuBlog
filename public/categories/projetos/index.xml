@@ -1,0 +1,55 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Projetos - Category - My New Hugo Site</title>
+        <link>https://www.lobdata.com.br/categories/projetos/</link>
+        <description>Projetos - Category - My New Hugo Site</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 14 Jun 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/categories/projetos/" rel="self" type="application/rss+xml" /><item>
+    <title>Classificador BNCC Pt.2</title>
+    <link>https://www.lobdata.com.br/posts/bncc-modeling/</link>
+    <pubDate>Tue, 14 Jun 2022 00:00:00 &#43;0000</pubDate>
+    <author>Luciano, Pedro, Will e Brisa</author>
+    <guid>https://www.lobdata.com.br/posts/bncc-modeling/</guid>
+    <description><![CDATA[Resolvemos criar um novo artigo para detalhar melhor o que foi feito na etapa de modelagem do projeto do Classificador BNCC. Assim conseguimos dar mais atenção e justificar algumas escolhas.
+Cronograma de modelagem Nosso intuito foi buscar o melhor baseline para nosso problema, mapeando alguns universos de possibilidades, dentre modelos de machine learning e estratégias de transformação de texto em dado numérico.
+Válido lembrar que o dado que está entrando nessa etapa do pipeline está &ldquo;limpo&rdquo;, ou seja, passou pelas etapas de pré-processamentos que julgamos necessárias.]]></description>
+</item>
+<item>
+    <title>Classificador BNCC</title>
+    <link>https://www.lobdata.com.br/posts/bncc-classifier/</link>
+    <pubDate>Wed, 08 Jun 2022 00:00:00 &#43;0000</pubDate>
+    <author>Luciano, Pedro, Will e Brisa</author>
+    <guid>https://www.lobdata.com.br/posts/bncc-classifier/</guid>
+    <description><![CDATA[Projeto desenvolvido pelos alunos Brisa Rosatti, Luciano Batista, Pedro Moreau, Wilson França do Curso de Data Science &amp; Machine Learning da Tera em colaboração com a Studos e ArcoTech.
+PARTE I: Estrutura do projeto Contexto Segundo o IBGE, no Brasil, existem registradas 124840 escolas de ensino fundamental e 28933 escolas do ensino médio. Em termos de número de matrículas, isso representa 26718830 matrículas para o ensino fundamental e 7550753 para o ensino médio https://cidades.]]></description>
+</item>
+<item>
+    <title>Segmentação de clientes de Food Delivery</title>
+    <link>https://www.lobdata.com.br/posts/segment-client/</link>
+    <pubDate>Fri, 19 Jun 2020 00:00:00 &#43;0000</pubDate>
+    <author>Luciano</author>
+    <guid>https://www.lobdata.com.br/posts/segment-client/</guid>
+    <description><![CDATA[Segmentação de clientes de Food Delivery Neste projeto o objetivo é segmentar clientes de um food delivery. A segmentação permite que profissionais de marketing e product managers possam identificar subconjuntos de público-alvo para melhor adaptar suas estratégias.
+O dataset utilizado foi cedido pela Data Science Academy, e pode ser encontrado no meu github juntamente com todo o código apresentado aqui.
+Um breve overview do que será abordado no projeto:
+Preparação de dados Visualização de dados Padronização de variáveis Clusterização com K-Means Avaliação do melhor número de cluster com o índice de Calinski-Harabasz Bootstrap para avaliar consistência do cluster Visualização dos clusters Sem mais delongas, vamos ao código!]]></description>
+</item>
+<item>
+    <title>Categorical Feature Encoding Challenge</title>
+    <link>https://www.lobdata.com.br/posts/cat_in_the_dat/</link>
+    <pubDate>Mon, 04 Nov 2019 00:00:00 &#43;0000</pubDate>
+    <author>Luciano</author>
+    <guid>https://www.lobdata.com.br/posts/cat_in_the_dat/</guid>
+    <description><![CDATA[Is there a cat in your dat? Esse é um playground do Kaggle, onde diferentes pessoas competem dentro de um determinado problema &lsquo;incomum&rsquo; porém bastante relevante. Nesta competição foi disponibilizado um dataset repleto de variáveis categóricas.
+Sabemos que uma das tarefas do processo de machine learning é realizar o encoding de variáveis categóricas de forma que os algoritmos possam executar seus cálculos e retornar um resultado. Dominar tal skill é de grande importância para o Cientista de Dados.]]></description>
+</item>
+<item>
+    <title>Modelagem Preditiva em IoT</title>
+    <link>https://www.lobdata.com.br/posts/predictive_iot_energy/</link>
+    <pubDate>Thu, 04 Apr 2019 00:00:00 &#43;0000</pubDate>
+    <author>Luciano</author>
+    <guid>https://www.lobdata.com.br/posts/predictive_iot_energy/</guid>
+    <description><![CDATA[Previsão de Uso de Energia Quando falamos de revolução tecnológica, a noção de Internet das Coisas, ou Internet of Things (IoT), é um dos assuntos principais. O seu desenvolvimento está mudando a forma como o ser humando tem se conectado com diversos dispositivos tecnlógicos.
+IoT vem gerando uma quantidade imensa de dados, um dos maiores responsáveis pelo Big Data. Diante da geração de tanta informação, o papel do Cientista de Dados se faz cada vez mais presente, pois torna-se possível a obteção de grandes insights sobre diferentes área até então não analisadas.]]></description>
+</item>
+</channel>
+</rss>

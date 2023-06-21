@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Criando uma API Pronta para Produção com FastAPI - PT.1 - My New Hugo Site</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Criando uma API Pronta para Produção com FastAPI - PT.1" />
+<meta property="og:description" content="Motivação Atualmente tenho tido bastante dor de cabeça em voltar a utilizar o Excel para fazer uma planilha de controle de gastos, apesar da simplicidade do software, constantemente meus registros de compras feitas ou alguma outra movimentação financeira ficam uma completa bagunça. O que pode ser justificado pela minha falta de destreza com a ferramenta, mas fato é que a experiência estava deixando a desejar e consequentemente acabei perdendo a disciplina de organizar meus gastos, o que não recomendo a ninguém." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.lobdata.com.br/posts/finance_control_app/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-03-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-03-30T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Criando uma API Pronta para Produção com FastAPI - PT.1"/>
+<meta name="twitter:description" content="Motivação Atualmente tenho tido bastante dor de cabeça em voltar a utilizar o Excel para fazer uma planilha de controle de gastos, apesar da simplicidade do software, constantemente meus registros de compras feitas ou alguma outra movimentação financeira ficam uma completa bagunça. O que pode ser justificado pela minha falta de destreza com a ferramenta, mas fato é que a experiência estava deixando a desejar e consequentemente acabei perdendo a disciplina de organizar meus gastos, o que não recomendo a ninguém."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/finance_control_app/" /><link rel="prev" href="https://www.lobdata.com.br/posts/demand_forecasting_brazilian_commodities/" /><link rel="next" href="https://www.lobdata.com.br/posts/econowallet-fastapi-pt2/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Criando uma API Pronta para Produção com FastAPI - PT.1",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/www.lobdata.com.br\/posts\/finance_control_app\/"
+        },"genre": "posts","keywords": "RESTFull API, Web Development, Backend, Asynchronous, FastAPI, Docker, SQLAlchemy","wordcount":  984 ,
+        "url": "https:\/\/www.lobdata.com.br\/posts\/finance_control_app\/","datePublished": "2021-03-30T00:00:00+00:00","dateModified": "2021-03-30T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Luciano"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My New Hugo Site">My cool site</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My New Hugo Site">My cool site</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Criando uma API Pronta para Produção com FastAPI - PT.1</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Luciano</a></span>&nbsp;<span class="post-category">included in <a href="/categories/tutorials/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Tutorials</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2021-03-30">2021-03-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;984 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#fastapi">FastAPI</a></li>
+    <li><a href="#docker">Docker</a></li>
+    <li><a href="#pytest">Pytest</a></li>
+    <li><a href="#sqlalchemy">SQLAlchemy</a></li>
+    <li><a href="#celery">Celery</a></li>
+    <li><a href="#github">GitHub</a></li>
+    <li><a href="#heroku">Heroku</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/finance_app_tutorial/finance.jpg"
+        data-srcset="/img/finance_app_tutorial/finance.jpg, /img/finance_app_tutorial/finance.jpg 1.5x, /img/finance_app_tutorial/finance.jpg 2x"
+        data-sizes="auto"
+        alt="/img/finance_app_tutorial/finance.jpg"
+        title="Personal Finance" /></p>
+<h1 id="motivação">Motivação</h1>
+<p>Atualmente tenho tido bastante dor de cabeça em voltar a utilizar o Excel para fazer uma planilha de controle de gastos, apesar da simplicidade do software, constantemente meus registros de compras feitas ou alguma outra movimentação financeira ficam uma completa bagunça. O que pode ser justificado pela minha falta de destreza com a ferramenta, mas fato é que a experiência estava deixando a desejar e consequentemente acabei perdendo a disciplina de organizar meus gastos, o que não recomendo a ninguém.</p>
+<p>Foi então que me veio a ideia de largar as planilhas e armazenar essa informação em um banco de dados, o que me facilitaria muita coisa, como por exemplo: facilidade para geração de um relatório com o nível de personalização muito superior ao Excel (utilizando <strong>R</strong> ou <strong>Python</strong> para consumir os dados e fazer a parte analítica), manter a integridade dos dados de forma confiável e robusta, criar modelos de machine learning para prever próximos gastos e muito mais.</p>
+<p>Coincidentemente a tudo isso, tenho brincado bastante com o <strong>FastAPI</strong>, um framework fantástico para criação de RESTFull APIs utilizando linguagem python.</p>
+<p>E, por fim, um último quesito foi que vejo poucos tutoriais em português que trazem um material interessante sobre como criar APIs com o <strong>FastAPI</strong> em um nível pronto (ou mais próximo possível) para produção.</p>
+<h1 id="overview-do-app">Overview do app</h1>
+<p>Diante do que foi dito acima, decidi criar um projeto com várias tecnologias que eu considero super interessante e que vão auxiliar na entrega de um produto bem robusto e escalável (não que fosse necessário para essa situação).</p>
+<p>Então, juntamente com o <strong>FastAPI</strong>, vamos desenvolver usando um ambiente <strong>Docker</strong> e torná-lo o mais próximo possível de um ambiente de deploy. Utilizaremos o <strong>SQLAlchemy</strong> como nosso ORM (Object Relational Mapper) para &ldquo;conversar&rdquo; com o banco de dados (<strong>Postgres</strong>). Ainda iremos tentar desenvolver utilizando o <strong>TDD</strong> (Test Driven Development) com o <strong>pytest</strong>. Irei também adicionar o <strong>Celery</strong>, que vai permitir que tenhámos um produto altamente escalável ao final do projeto. Por fim, configuraremos GitHub Actions para implementar entrega e integração contínua (CI/CD) entre o desenvolvimento e o deploy no <strong>Heroku</strong>.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/finance_app_tutorial/mix_techs.png"
+        data-srcset="/img/finance_app_tutorial/mix_techs.png, /img/finance_app_tutorial/mix_techs.png 1.5x, /img/finance_app_tutorial/mix_techs.png 2x"
+        data-sizes="auto"
+        alt="/img/finance_app_tutorial/mix_techs.png"
+        title="Mix Techs" /></p>
+<p>Muito provavelmente existem soluções prontas e aplicativos para controle financeiro, mas minha experiência com eles é justamente a falta de liberdade em criar algo personalizado para as minhas necessidades.</p>
+<h1 id="tecnologias">Tecnologias</h1>
+<p>Nesse projeto vou trazer muitas ferramentas como citado acima e com código que você poderá reutilizar nos mais variados projetos. A seguir eu trouxe um pouco sobre cada tecnologia que será utilizada.</p>
+<h2 id="fastapi">FastAPI</h2>
+<p>Como disse antes, tenho tido muito contato com o <strong>FastAPI</strong> e é incrível como é intuitivo codar com este framework. Abaixo eu trouxe alguns motivos que fazem o <strong>FastAPI</strong> diferenciado dos outros frameworks em python (retirados da própria documentação).</p>
+<ul>
+<li>Tão rápido quanto NodeJS e GO (FastAPI é construído em cima do Starlette e Pydantic)</li>
+<li>Muito rápido para desenvolver APIs (200% a 300% em comparação a concorrentes)</li>
+<li>Redução de bugs</li>
+<li>Intuitivo</li>
+<li>Fácil de aprender</li>
+<li>Robusto</li>
+<li><em>Automagicamente</em> gera documentação para a API e JSON Schemas (<strong>Muito Legal</strong>)</li>
+</ul>
+<p>Acesse a <a href="https://fastapi.tiangolo.com" target="_blank" rel="noopener noreffer ">documentação</a> do FastAPI para mais detalhes, que por sinal é muito bem feita.</p>
+<h2 id="docker">Docker</h2>
+<p>Docker é uma plataforma de construção de containers utilizada para simular ambientes de desenvolvimento e deploy de forma isolada do seu sistema, ou seja, independentemente do seu SO (sistema operacional) você consegue ter o mesmo comportamento da aplicação pois cada container contém todas as dependências necessárias para sua execução.</p>
+<h2 id="pytest">Pytest</h2>
+<p><strong>pytest</strong> é um framework para escrever tests em Python, ele torna fácil e divertido escrever, organizar e rodar tests, quando comparado com o <strong>unittest</strong> (outro framework bastante conhecido). Abaixo cito algumas características do pytest:</p>
+<ul>
+<li>Requer menos código <em>boilerplate</em></li>
+<li>Suporta declaração <code>assert</code> (built-in do Python) ao invés de <code>assertSomething</code> (como no unittest)</li>
+<li>Atualizado frequentemente</li>
+<li>Possui as famosas <em>fixtures</em> que auxiliam na inicialização e finalização de configurações para determinados testes.</li>
+<li>Utiliza uma abordagem funcional</li>
+</ul>
+<h2 id="sqlalchemy">SQLAlchemy</h2>
+<p><strong>SQLAlchemy</strong> faz parte de um conjunto de frameworkers que são utilizados para abstrair a complexidade de lidar com o banco de dados diretamente. Desenvolver com um ORM não te prende à um banco de dados específico, onde posteriormente é possível plugar a aplicação ao Postgres, MySQL, Oracle, MariaDB ou outros (contanto que o framework tenha suporte). Escolhi o <strong>SQLAlchemy</strong> por alguns motivos:</p>
+<ul>
+<li>pela robustes: o SQLAlchemy possui diferentes módulos (Core e ORM) que te permite fazer muita coisa legal.</li>
+<li>muito tempo presente na comunidade: o que torna mais fácil lidar com problemas e bugs caso eles apareçam (e irão aparecer =D).</li>
+<li>ter sido bastante utilizado e testado em produção: isso atribui maior confiabilidade ao software.</li>
+</ul>
+<h2 id="celery">Celery</h2>
+<p>O <strong>Celery</strong> é um <em>task queue manager</em> utilizado para implementar processamento assíncrono ao seu código. Fique atento que não estamos falando aqui de utilização de mais threads para realização de uma task, e sim de desiginar as tasks à diferentes &ldquo;workers&rdquo;, o que possibilita um escalonamento horizontal e por isso acaba sendo muito atrativo ao design de microserviços.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/finance_app_tutorial/celery.jpeg"
+        data-srcset="/img/finance_app_tutorial/celery.jpeg, /img/finance_app_tutorial/celery.jpeg 1.5x, /img/finance_app_tutorial/celery.jpeg 2x"
+        data-sizes="auto"
+        alt="/img/finance_app_tutorial/celery.jpeg"
+        title="Celery Schema" /></p>
+<p>O Celery é utilizado na arquitetura de várias tecnologias de Big Data como <strong>Apache SuperSet</strong> e <strong>Apache Airflow</strong>, justamente por ser um framework muito útil para escalabilidade.</p>
+<h2 id="github">GitHub</h2>
+<p>O GitHub Actions é uma ferramente de integração contínua e entrega contínua (CI/CD), totalmente integrada com o GitHub. Temos outras plataformas que oferecem o mesmo serviço como:</p>
+<ul>
+<li>GitLab</li>
+<li>AWS (CodeCommit, CodeBuild, CodeDeploy, ECR)</li>
+<li>GCP (Cloud Source Repositories, Cloud Build, Container Registry)</li>
+<li>Azure (Repos, Pipelines, Container Registry)</li>
+</ul>
+<p>Mas como já utilizo o GitHub para outros projetos, resolvi seguir com a mesma plataforma.</p>
+<h2 id="heroku">Heroku</h2>
+<p>Heroku é uma cloud <em>Platform as a Service</em> (PaaS) que provê um local para deployar aplicações web. Eles abstraem muita da complixidade de infraestrutura e torna fácil hospedar aplicações com segurança e escalabilidade. Para esse projeto irei utilizar planos gratuitos, para que todos possam seguir o passo-a-passo. Porém, como nossa aplicação vai estar conteinerizada você pode deployar em basicamente em qualquer plataforma cloud que existe com poucas modificações no código. Mas aqui iremos ficar com o Heroku.</p>
+<p>Próximos tutoriais iremos partir para o hands-on!!!</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/finance_app_tutorial/coding_fast.gif"
+        data-srcset="/img/finance_app_tutorial/coding_fast.gif, /img/finance_app_tutorial/coding_fast.gif 1.5x, /img/finance_app_tutorial/coding_fast.gif 2x"
+        data-sizes="auto"
+        alt="/img/finance_app_tutorial/coding_fast.gif"
+        title="Coding fast" /></p>
+<p>Até lá!</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-03-30</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://www.lobdata.com.br/posts/finance_control_app/" data-title="Criando uma API Pronta para Produção com FastAPI - PT.1" data-hashtags="RESTFull API,Web Development,Backend,Asynchronous,FastAPI,Docker,SQLAlchemy"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://www.lobdata.com.br/posts/finance_control_app/" data-hashtag="RESTFull API"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://www.lobdata.com.br/posts/finance_control_app/" data-title="Criando uma API Pronta para Produção com FastAPI - PT.1"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://www.lobdata.com.br/posts/finance_control_app/" data-title="Criando uma API Pronta para Produção com FastAPI - PT.1"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://www.lobdata.com.br/posts/finance_control_app/" data-title="Criando uma API Pronta para Produção com FastAPI - PT.1"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/restfull-api/">RESTFull API</a>,&nbsp;<a href="/tags/web-development/">Web Development</a>,&nbsp;<a href="/tags/backend/">Backend</a>,&nbsp;<a href="/tags/asynchronous/">Asynchronous</a>,&nbsp;<a href="/tags/fastapi/">FastAPI</a>,&nbsp;<a href="/tags/docker/">Docker</a>,&nbsp;<a href="/tags/sqlalchemy/">SQLAlchemy</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/demand_forecasting_brazilian_commodities/" class="prev" rel="prev" title="Demand Forecasting of Brazilian Commodities"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Demand Forecasting of Brazilian Commodities</a>
+            <a href="/posts/econowallet-fastapi-pt2/" class="next" rel="next" title="Criando uma API Pronta para Produção com FastAPI - PT.2">Criando uma API Pronta para Produção com FastAPI - PT.2<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.114.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Luba</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

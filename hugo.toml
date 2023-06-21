@@ -1,0 +1,78 @@
+baseURL = "https://www.lobdata.com.br/"
+
+# Change the default theme to be use when building the site with Hugo
+theme = "LoveIt"
+
+# website title
+title = "LobData"
+
+# language code ["en", "zh-CN", "fr", "pl", ...]
+languageCode = "en"
+# language name ["English", "简体中文", "Français", "Polski", ...]
+languageName = "English"
+
+enableEmoji = "true"
+
+# Author config
+[author]
+name = "Luba"
+email = ""
+link = ""
+
+# Menu config
+[menu]
+[[menu.main]]
+weight = 1
+identifier = "posts"
+# you can add extra information before the name (HTML format is supported), such as icons
+pre = ""
+# you can add extra information after the name (HTML format is supported), such as icons
+post = ""
+name = "Posts"
+url = "/posts/"
+# title will be shown when you hover on this menu link
+title = ""
+[[menu.main]]
+weight = 2
+identifier = "tags"
+pre = ""
+post = ""
+name = "Tags"
+url = "/tags/"
+title = ""
+[[menu.main]]
+weight = 3
+identifier = "categories"
+pre = ""
+post = ""
+name = "Categories"
+url = "/categories/"
+title = ""
+[[menu.main]]
+weight = 3
+identifier = "about"
+pre = ""
+post = ""
+name = "About"
+url = "/about/"
+title = ""
+
+# Markup related configuration in Hugo
+[markup]
+# Syntax Highlighting (https://gohugo.io/content-management/syntax-highlighting)
+[markup.highlight]
+# false is a necessary configuration (https://github.com/dillonzq/LoveIt/issues/158)
+noClasses = false
+
+[params]
+title = "LobData"
+
+[params.header]
+[params.header.title]
+name = "LobData"
+
+# Home page config
+[params.home]
+[params.home.profile]
+title = "Oi"
+subtitle = "This is My New Hugo Site"

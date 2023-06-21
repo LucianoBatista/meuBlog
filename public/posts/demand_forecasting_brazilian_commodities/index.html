@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Demand Forecasting of Brazilian Commodities - My New Hugo Site</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Demand Forecasting of Brazilian Commodities" />
+<meta property="og:description" content="Demand Forecasting of Brazilian Commodities Soybean, Corn, Sugar, Soybean Meal, Soybean Oil and Wheat (left to right).
+Demand Forecasting is a technique for estimation of probable demand for a product or services. It is based on the analysis of past demand for that product or service in the present market condition. Demand forecasting should be done on a scientific basis and facts and events related to forecasting should be considered." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.lobdata.com.br/posts/demand_forecasting_brazilian_commodities/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-10-25T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-10-25T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Demand Forecasting of Brazilian Commodities"/>
+<meta name="twitter:description" content="Demand Forecasting of Brazilian Commodities Soybean, Corn, Sugar, Soybean Meal, Soybean Oil and Wheat (left to right).
+Demand Forecasting is a technique for estimation of probable demand for a product or services. It is based on the analysis of past demand for that product or service in the present market condition. Demand forecasting should be done on a scientific basis and facts and events related to forecasting should be considered."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/demand_forecasting_brazilian_commodities/" /><link rel="prev" href="https://www.lobdata.com.br/posts/correlation_analysis_in_r/" /><link rel="next" href="https://www.lobdata.com.br/posts/finance_control_app/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Demand Forecasting of Brazilian Commodities",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/www.lobdata.com.br\/posts\/demand_forecasting_brazilian_commodities\/"
+        },"genre": "posts","keywords": "Project, Data Science, Machine Learning, Time Series","wordcount":  5334 ,
+        "url": "https:\/\/www.lobdata.com.br\/posts\/demand_forecasting_brazilian_commodities\/","datePublished": "2020-10-25T00:00:00+00:00","dateModified": "2020-10-25T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Luciano"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My New Hugo Site">My cool site</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My New Hugo Site">My cool site</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Demand Forecasting of Brazilian Commodities</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Luciano</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-10-25">2020-10-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;5334 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;26 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#software-requirement">Software Requirement</a></li>
+    <li><a href="#exploratory-data-analysis">Exploratory Data Analysis</a>
+      <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#production-over-time">Production over time</a></li>
+        <li><a href="#most-important-commodities">Most Important Commodities</a></li>
+        <li><a href="#routes">Routes</a></li>
+        <li><a href="#trade-partners">Trade Partners</a></li>
+        <li><a href="#states-and-commodities">States and Commodities</a></li>
+      </ul>
+    </li>
+    <li><a href="#data-modeling">Data Modeling</a></li>
+    <li><a href="#a-quick-review-of-modeltime">A quick review of modeltime</a>
+      <ul>
+        <li><a href="#soybean">Soybean</a></li>
+        <li><a href="#corn">Corn</a></li>
+        <li><a href="#sugar">Sugar</a></li>
+        <li><a href="#next-steps-important">Next Steps! (Important)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="demand-forecasting-of-brazilian-commodities">Demand Forecasting of Brazilian Commodities</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/promotional.png"
+        data-srcset="/img/demand_forecasting/promotional.png, /img/demand_forecasting/promotional.png 1.5x, /img/demand_forecasting/promotional.png 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/promotional.png"
+        title="Plot" /></p>
+<blockquote>
+<p>Soybean, Corn, Sugar, Soybean Meal, Soybean Oil and Wheat (left to right).</p>
+</blockquote>
+<p><strong>Demand Forecasting</strong> is a technique for estimation of probable demand for a product or services. It is based on the analysis of past demand for that product or service in the present market condition. Demand forecasting should be done on a scientific basis and facts and events related to forecasting should be considered.</p>
+<p>Therefore, in simple words, we can say that after gathering information about various aspects of the market and demand based on the past, is possible to estimate future demand. What we call forecasting of demand.</p>
+<p>For example, suppose we sold 200, 250, 300 units of product X in January, February, and March respectively. Now we can say that there will be a demand for Y units approximately of product X in April.</p>
+<p>And you can ask, Why should I matter with demand forecasting? Good question, down below I point to you some <em>key advantages</em>:</p>
+<ul>
+<li>More effective production scheduling</li>
+<li>Inventory management and reduction</li>
+<li>Cost reduction</li>
+<li>Optimized transport logistics</li>
+<li>Increased customer satisfaction</li>
+</ul>
+<p>Those are just some benefits in <em>forecasting demand</em>. As this is a task applicable in almost any business area, the concepts and approaches used here can be extrapolate for your problem too, with specific adjustments.</p>
+<p>This project has the aim of forecast the next 3 years of exports of top 3 Brazilian commodities: soybean, corn and sugar. But not just that, I&rsquo;ll cover also the following steps of a Data Science project: <strong>exploratory data analysis</strong>, <strong>data preparation</strong>, <strong>data cleaning</strong>, <strong>feature engineering</strong> and <strong>modeling</strong>.</p>
+<p>The dataset used here came from a public source available by clicking <a href="http://comexstat.mdic.gov.br/en/home" title="Data" target="_blank" rel="noopener noreffer ">here</a>.</p>
+<h2 id="software-requirement">Software Requirement</h2>
+<p>If you want to reproduce the project in your environment, I suggest you to install the following packages first, before load them.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># Data Exploration</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">skimr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">lubridate</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tidytext</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">timetk</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">gt</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># color pallete</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tidyquant</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># modeling</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tidymodels</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">modeltime</span><span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/shall_we_begin.gif"
+        data-srcset="/img/demand_forecasting/shall_we_begin.gif, /img/demand_forecasting/shall_we_begin.gif 1.5x, /img/demand_forecasting/shall_we_begin.gif 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/shall_we_begin.gif"
+        title="gif" /></p>
+<h2 id="exploratory-data-analysis">Exploratory Data Analysis</h2>
+<p>As mentioned before, the dataset came from a public source called <em>COMEX STAT</em>. This website provides free access to Brazilian foreign trade statistics.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># reading the data and converting categorical features to factor</span>
+</span></span><span class="line"><span class="cl"><span class="n">exp_imp_tbl</span> <span class="o">&lt;-</span> <span class="nf">read_csv</span><span class="p">(</span><span class="s">&#34;data/data_comexstat.csv&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">mutate_if</span><span class="p">(</span><span class="n">is.character</span><span class="p">,</span> <span class="n">as_factor</span><span class="p">)</span>
+</span></span></code></pre></div><p>As usual, I always create a dictionary of the dataset I&rsquo;m working just to keep in mind the meaning of each variable, see the following list:</p>
+<ul>
+<li><strong>date</strong>: date where occurred the transaction of export or import (our time series information).</li>
+<li><strong>product</strong>: commodities (sugar, soybean meal, soybean oil, soybean, corn and wheat).</li>
+<li><strong>state</strong>: State responsible for the production.</li>
+<li><strong>country</strong>: Country responsible for the transaction</li>
+<li><strong>type</strong>: if there is export or import.</li>
+<li><strong>route</strong>: route used to transport the commodity.</li>
+<li><strong>tons</strong>: quantity export/import.</li>
+<li><strong>usd</strong>: commercial currency.</li>
+</ul>
+<h3 id="overview">Overview</h3>
+<p>The data contains all tracking information of monthly imports and exports of a range of products, by brazilian states, by routes (air, sea, ground, etc) and from/to which country.</p>
+<p>At the beginning of the process is a good idea to take a general overview of the data, and for that I love the <code>skimr::skim()</code> function, very handy to understand a big picture of your data.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">skim</span><span class="p">(</span><span class="n">exp_imp_tbl</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">── Data Summary ────────────────────────
+</span></span><span class="line"><span class="cl">                           Values
+</span></span><span class="line"><span class="cl">Name                       exp_imp_tbl
+</span></span><span class="line"><span class="cl">Number of rows             <span class="m">117965</span>
+</span></span><span class="line"><span class="cl">Number of columns          <span class="m">8</span>
+</span></span><span class="line"><span class="cl">_______________________
+</span></span><span class="line"><span class="cl">Column <span class="nb">type</span> frequency:
+</span></span><span class="line"><span class="cl">  Date                     <span class="m">1</span>
+</span></span><span class="line"><span class="cl">  factor                   <span class="m">5</span>
+</span></span><span class="line"><span class="cl">  numeric                  <span class="m">2</span>
+</span></span><span class="line"><span class="cl">________________________
+</span></span><span class="line"><span class="cl">Group variables            None
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">── Variable type: Date ────────────────────────────────────────────────────────────────────────────────────────────────
+</span></span><span class="line"><span class="cl">  skim_variable n_missing complete_rate min        max        median     n_unique
+</span></span><span class="line"><span class="cl"><span class="m">1</span> date                  <span class="m">0</span>             <span class="m">1</span> 1997-01-01 2019-12-01 2012-10-01      <span class="m">276</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">── Variable type: factor ──────────────────────────────────────────────────────────────────────────────────────────────
+</span></span><span class="line"><span class="cl">  skim_variable n_missing complete_rate ordered n_unique top_counts
+</span></span><span class="line"><span class="cl"><span class="m">1</span> product               <span class="m">0</span>             <span class="m">1</span> FALSE          <span class="m">6</span> sug: 35202, soy: 22914, cor: 21872, soy: <span class="m">18215</span>
+</span></span><span class="line"><span class="cl"><span class="m">2</span> state                 <span class="m">0</span>             <span class="m">1</span> FALSE         <span class="m">27</span> SP: 28713, PR: 17155, MT: 16837, GO: <span class="m">10981</span>
+</span></span><span class="line"><span class="cl"><span class="m">3</span> country               <span class="m">0</span>             <span class="m">1</span> FALSE        <span class="m">212</span> Chi: 7437, Par: 7160, Net: 7158, Arg: <span class="m">4842</span>
+</span></span><span class="line"><span class="cl"><span class="m">4</span> <span class="nb">type</span>                  <span class="m">0</span>             <span class="m">1</span> FALSE          <span class="m">2</span> Exp: 105861, Imp: <span class="m">12104</span>
+</span></span><span class="line"><span class="cl"><span class="m">5</span> route                 <span class="m">0</span>             <span class="m">1</span> FALSE          <span class="m">5</span> Sea: 93870, Gro: 13038, Oth: 6374, Air: <span class="m">2918</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">── Variable type: numeric ─────────────────────────────────────────────────────────────────────────────────────────────
+</span></span><span class="line"><span class="cl">  skim_variable n_missing complete_rate     mean        sd    p0    p25    p50      p75       p100 hist
+</span></span><span class="line"><span class="cl"><span class="m">1</span> tons                  <span class="m">0</span>             <span class="m">1</span>   14537.    49779.     <span class="m">0</span>   125.   <span class="m">2000</span>   13534.   1798446. ▇▁▁▁▁
+</span></span><span class="line"><span class="cl"><span class="m">2</span> usd                   <span class="m">0</span>             <span class="m">1</span> 4813150. 19494116.     <span class="m">0</span> <span class="m">71552</span>  <span class="m">725000</span> <span class="m">3895943</span>  <span class="m">903930411</span>  ▇▁▁▁▁
+</span></span></code></pre></div><p>As we can see, our dataset have:</p>
+<ul>
+<li>1 date variable</li>
+<li>5 categorical variables</li>
+<li>2 numerical variables</li>
+</ul>
+<p>For our luck there is no missing data in any of these columns. Two things pop up when we look at <code>type</code> and <code>route</code> variables.</p>
+<ul>
+<li><code>type</code>: Brazil is a country that export more than import (more than 100k of observations on export category).</li>
+<li><code>route</code>: The route that Brazil less use (considering exports and imports) is air. And the route more used is sea.</li>
+</ul>
+<h3 id="production-over-time">Production over time</h3>
+<p>We also saw the date range of this date feature, and it&rsquo;s from 1997/01/01 to 2019/01/12. Looking more closely at this feature we can investigate how was the exports from Brazil, considering all states and to everywhere, throughout the time.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># data wrangling before plot</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># adding two columns: year and month</span>
+</span></span><span class="line"><span class="cl"><span class="n">exp_imp_year_month_tbl</span> <span class="o">&lt;-</span> <span class="n">exp_imp_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">year</span> <span class="o">=</span> <span class="nf">year</span><span class="p">(</span><span class="n">date</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">         <span class="n">month</span> <span class="o">=</span> <span class="nf">month</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">abbr</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">locale</span> <span class="o">=</span> <span class="nf">Sys.setlocale</span><span class="p">(</span><span class="s">&#34;LC_COLLATE&#34;</span><span class="p">,</span> <span class="s">&#34;C&#34;</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># total of tons by year (considering just exports)</span>
+</span></span><span class="line"><span class="cl"><span class="n">expt_year_total_tbl</span> <span class="o">&lt;-</span> <span class="n">exp_imp_year_month_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="n">type</span> <span class="o">==</span> <span class="s">&#34;Export&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">summarise</span><span class="p">(</span><span class="n">total_tons</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">tons</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">ungroup</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># total of tons for each month of the year (considering just exports)</span>
+</span></span><span class="line"><span class="cl"><span class="n">expt_year_month_total_tbl</span> <span class="o">&lt;-</span> <span class="n">exp_imp_year_month_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="n">type</span> <span class="o">==</span> <span class="s">&#34;Export&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">summarise</span><span class="p">(</span><span class="n">total_tons</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">tons</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">ungroup</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># vizualizing the monthly total of tons (1997 - 2020)</span>
+</span></span><span class="line"><span class="cl"><span class="n">expt_year_month_total_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">month</span> <span class="o">=</span> <span class="n">month</span> <span class="o">%&gt;%</span> <span class="nf">str_to_title</span><span class="p">()</span> <span class="o">%&gt;%</span> <span class="nf">as_factor</span><span class="p">())</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">year</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="n">total_tons</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_point</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="m">.8</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="n">month</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme_tq</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_y_continuous</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="n">scales</span><span class="o">::</span><span class="nf">number_format</span><span class="p">(</span><span class="n">scale</span> <span class="o">=</span> <span class="m">1e-6</span><span class="p">,</span> <span class="n">suffix</span> <span class="o">=</span> <span class="s">&#34;M&#34;</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1997</span><span class="p">,</span> <span class="m">2000</span><span class="p">,</span> <span class="m">2005</span><span class="p">,</span> <span class="m">2010</span><span class="p">,</span> <span class="m">2015</span><span class="p">,</span> <span class="m">2019</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Total of Tons for the Monthly Exports Between 1997 and 2020&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;Considering all Brazilian States, and Soybean, Soybeans Meal, Soybean Oil, Sugar, Corn and Wheat commodities&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Millions of Tons&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;linkedin.com/in/lucianobatistads/&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.x</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="m">7</span><span class="p">))</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/plot1.svg"
+        data-srcset="/img/demand_forecasting/plot1.svg, /img/demand_forecasting/plot1.svg 1.5x, /img/demand_forecasting/plot1.svg 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/plot1.svg"
+        title="Plot" /></p>
+<blockquote>
+<p>On this monthly chart, we see that there is a higher pronounced growth trend in exports during the months from March to August.</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># building vizualizations</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># vizualizing the annual total of tons export (1997 - 2020)</span>
+</span></span><span class="line"><span class="cl"><span class="n">expt_year_total_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">year</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="n">total_tons</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme_tq</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_y_continuous</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="n">scales</span><span class="o">::</span><span class="nf">number_format</span><span class="p">(</span><span class="n">scale</span> <span class="o">=</span> <span class="m">1e-6</span><span class="p">,</span> <span class="n">suffix</span> <span class="o">=</span> <span class="s">&#34;M&#34;</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1997</span><span class="p">,</span> <span class="m">2000</span><span class="p">,</span> <span class="m">2005</span><span class="p">,</span> <span class="m">2010</span><span class="p">,</span> <span class="m">2015</span><span class="p">,</span> <span class="m">2019</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Total of Tons for the Annual Exports Between 1997 and 2020&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;Considering all Brazilian States, and Soybean, Soybeans Meal, Soybean Oil, Sugar, Corn and Wheat commodities&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Millions of Tons&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;linkedin.com/in/lucianobatistads/&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.x</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="m">10</span><span class="p">))</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/plot2.svg"
+        data-srcset="/img/demand_forecasting/plot2.svg, /img/demand_forecasting/plot2.svg 1.5x, /img/demand_forecasting/plot2.svg 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/plot2.svg"
+        title="Plot" /></p>
+<blockquote>
+<p>As expected, over the years, the brazilian exports follow a growing trend, even if 2020 bring us a terrible result because of COVID-19, it is likely to go back to the initial trend in the next year.</p>
+</blockquote>
+<h3 id="most-important-commodities">Most Important Commodities</h3>
+<p>We saw before our data have 6 different commodities: Soybean, Sugar, Soybeans Meal, Corn, Soybean Oil and Wheat. Let’s look at them and see which have been more export in the last 5 years.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># data wrangling before plot</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># filtering for recent years and type == &#34;Export&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># total of tons for these groups</span>
+</span></span><span class="line"><span class="cl"><span class="n">top_3_product_exp_tbl</span> <span class="o">&lt;-</span> <span class="n">exp_imp_year_month_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="n">year</span> <span class="o">%in%</span> <span class="nf">c</span><span class="p">(</span><span class="m">2019</span><span class="o">:</span><span class="m">2015</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="n">type</span> <span class="o">==</span> <span class="s">&#34;Export&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">product</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">summarise</span><span class="p">(</span><span class="n">total_tons_exp</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">tons</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">ungroup</span><span class="p">()</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">slice_max</span><span class="p">(</span><span class="n">total_tons_exp</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="m">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">top_3_product_exp_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">product_str</span> <span class="o">=</span> <span class="nf">case_when</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">product</span> <span class="o">==</span> <span class="s">&#34;soybeans&#34;</span> <span class="o">~</span> <span class="s">&#34;Soybean&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">product</span> <span class="o">==</span> <span class="s">&#34;corn&#34;</span> <span class="o">~</span> <span class="s">&#34;Corn&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Sugar&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">total_tons_exp</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="nf">fct_reorder</span><span class="p">(</span><span class="n">product_str</span><span class="p">,</span> <span class="n">total_tons_exp</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">             <span class="n">fill</span> <span class="o">=</span> <span class="n">product_str</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_col</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_fill_manual</span><span class="p">(</span><span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;#7EBEF7&#34;</span><span class="p">,</span> <span class="s">&#34;#2595F5&#34;</span><span class="p">,</span> <span class="s">&#34;#BBD7F0&#34;</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="n">scales</span><span class="o">::</span><span class="nf">number_format</span><span class="p">(</span><span class="n">scale</span> <span class="o">=</span> <span class="m">1e-6</span><span class="p">,</span> <span class="n">suffix</span> <span class="o">=</span> <span class="s">&#34;M&#34;</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">guides</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme_tq</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Top 3 - Brazilian Commodities Exports&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;Considering the Last 5 Years&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;linkedin.com/in/lucianobatistads/&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Millions of Tons&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Commodities&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># good table to plot</span>
+</span></span><span class="line"><span class="cl"><span class="n">top_3_product_exp_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">rename</span><span class="p">(</span><span class="n">Commodities</span> <span class="o">=</span> <span class="n">product</span><span class="p">,</span> <span class="n">`Total of Tons`</span> <span class="o">=</span> <span class="n">total_tons_exp</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">`Total of Tons`</span> <span class="o">=</span> <span class="n">`Total of Tons`</span> <span class="o">%&gt;%</span> <span class="n">scales</span><span class="o">::</span><span class="nf">number</span><span class="p">(</span><span class="n">scale</span> <span class="o">=</span> <span class="m">1e-6</span><span class="p">,</span> <span class="n">suffix</span> <span class="o">=</span> <span class="s">&#34;M&#34;</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">gt</span><span class="p">()</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/plot3.svg"
+        data-srcset="/img/demand_forecasting/plot3.svg, /img/demand_forecasting/plot3.svg 1.5x, /img/demand_forecasting/plot3.svg 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/plot3.svg"
+        title="Plot" /></p>
+<p>The plot above is showing the top 3 commodities exported in Brazil by the last 5 years: soybean, corn and sugar. With the more important being soybean. If we compare with the others, soybeans have 55.5% more than the second (Corn) and 63.2% more than the third (Sugar), it is an enormous difference.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/table.png"
+        data-srcset="/img/demand_forecasting/table.png, /img/demand_forecasting/table.png 1.5x, /img/demand_forecasting/table.png 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/table.png"
+        title="Plot" /></p>
+<h3 id="routes">Routes</h3>
+<p>These commodities we are seeing until now are exported by different routes: sea, ground, air, river and others. Let’s investigate if there is some preference to choose the route and product.</p>
+<p>Before building those visualizations, sounds a good idea to keep in mind the most chosen routes, considering all products, to establish a big picture of the situation. Look at the table below:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># data wrangling before plot</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># top exports routes on recent years</span>
+</span></span><span class="line"><span class="cl"><span class="n">tops_routes_exp</span> <span class="o">&lt;-</span> <span class="n">exp_imp_year_month_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="n">type</span> <span class="o">==</span> <span class="s">&#34;Export&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="n">year</span> <span class="o">&gt;</span> <span class="m">2000</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1"># selecting most recent years</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">count</span><span class="p">(</span><span class="n">route</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">prop</span> <span class="o">=</span> <span class="n">n</span> <span class="o">/</span> <span class="nf">sum</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># table</span>
+</span></span><span class="line"><span class="cl"><span class="n">tops_routes_exp</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">rename</span><span class="p">(</span><span class="n">Route</span> <span class="o">=</span> <span class="n">route</span><span class="p">,</span> <span class="n">Percent</span> <span class="o">=</span> <span class="n">prop</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">Percent</span> <span class="o">=</span> <span class="n">Percent</span> <span class="o">%&gt;%</span> <span class="n">scales</span><span class="o">::</span><span class="nf">number</span><span class="p">(</span><span class="n">scale</span> <span class="o">=</span> <span class="m">100</span><span class="p">,</span> <span class="n">suffix</span> <span class="o">=</span> <span class="s">&#34;%&#34;</span><span class="p">,</span> <span class="n">accuracy</span> <span class="o">=</span> <span class="m">.1</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">select</span><span class="p">(</span><span class="o">-</span><span class="n">n</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">gt</span><span class="p">()</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">tab_header</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Participation of Routes of Exports&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/table2.png"
+        data-srcset="/img/demand_forecasting/table2.png, /img/demand_forecasting/table2.png 1.5x, /img/demand_forecasting/table2.png 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/table2.png"
+        title="Plot" /></p>
+<p>Now let&rsquo;s see by product and routes what it&rsquo;s happening.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># data wrangling before plot</span>
+</span></span><span class="line"><span class="cl"><span class="n">exp_by_route_product_tbl</span> <span class="o">&lt;-</span> <span class="n">exp_imp_year_month_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">product</span> <span class="o">=</span> <span class="nf">case_when</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">product</span> <span class="o">==</span> <span class="s">&#34;corn&#34;</span> <span class="o">~</span> <span class="s">&#34;Corn&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">product</span> <span class="o">==</span> <span class="s">&#34;soybean_meal&#34;</span> <span class="o">~</span> <span class="s">&#34;Soybeans Meal&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">product</span> <span class="o">==</span> <span class="s">&#34;soybean_oil&#34;</span> <span class="o">~</span> <span class="s">&#34;Soybean Oil&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">product</span> <span class="o">==</span> <span class="s">&#34;sugar&#34;</span> <span class="o">~</span> <span class="s">&#34;Sugar&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">product</span> <span class="o">==</span> <span class="s">&#34;soybeans&#34;</span> <span class="o">~</span> <span class="s">&#34;Soybean&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Wheat&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="n">type</span> <span class="o">==</span> <span class="s">&#34;Export&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">route</span><span class="p">,</span> <span class="n">product</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">summarise</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="nf">n</span><span class="p">())</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">prop_by_route</span> <span class="o">=</span> <span class="n">n</span> <span class="o">/</span> <span class="nf">sum</span><span class="p">(</span><span class="n">n</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">ungroup</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">exp_by_route_product_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">tidytext</span><span class="o">::</span><span class="nf">reorder_within</span><span class="p">(</span><span class="n">product</span><span class="p">,</span> <span class="n">prop_by_route</span><span class="p">,</span> <span class="n">route</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="n">prop_by_route</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_col</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="n">prop_by_route</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="n">tidytext</span><span class="o">::</span><span class="nf">scale_x_reordered</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">coord_flip</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="n">route</span><span class="p">,</span> <span class="n">scales</span> <span class="o">=</span> <span class="s">&#34;free&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_fill_gradient</span><span class="p">(</span><span class="n">high</span> <span class="o">=</span> <span class="s">&#34;#144582&#34;</span><span class="p">,</span> <span class="n">low</span> <span class="o">=</span> <span class="s">&#34;#D4E8FF&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_y_continuous</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="n">scales</span><span class="o">::</span><span class="nf">percent_format</span><span class="p">(</span><span class="n">scale</span> <span class="o">=</span> <span class="m">100</span><span class="p">,</span> <span class="n">suffix</span> <span class="o">=</span> <span class="s">&#34;%&#34;</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Proportion of Commodities Exports for all Different Routes&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;linkedin.com/in/lucianobatistads/&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Commodities&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme_tq</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="s">&#34;Proportion by Routes&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/plot4.svg"
+        data-srcset="/img/demand_forecasting/plot4.svg, /img/demand_forecasting/plot4.svg 1.5x, /img/demand_forecasting/plot4.svg 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/plot4.svg"
+        title="Plot" /></p>
+<p>Although most products are transported by sea (table above), we observe that depending on the route there is a preference for the product that will be exported.</p>
+<p>Considering three major products exported in each route, we have:</p>
+<ul>
+<li><strong>Sea</strong>: sugar, soybean and soybeans meal.</li>
+<li><strong>Ground</strong>: soybean oil, sugar and corn.</li>
+<li><strong>Air</strong>: corn (much more), soybean and sugar.</li>
+<li><strong>Other</strong>: sugar, soybean oil and corn.</li>
+<li><strong>River</strong>: soybean, corn and sugar.</li>
+</ul>
+<p>And a closer look at soybean, give us the following chart:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># data wrangling before plot</span>
+</span></span><span class="line"><span class="cl"><span class="n">tops_routes_sugar_exp</span> <span class="o">&lt;-</span> <span class="n">exp_imp_year_month_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="n">product</span> <span class="o">==</span> <span class="s">&#34;soybeans&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="n">type</span> <span class="o">==</span> <span class="s">&#34;Export&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="n">year</span> <span class="o">&gt;</span> <span class="m">2000</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1"># selecting most recent years</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">count</span><span class="p">(</span><span class="n">route</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">prop</span> <span class="o">=</span> <span class="n">n</span> <span class="o">/</span> <span class="nf">sum</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">tops_routes_sugar_exp</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">prop</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="nf">fct_reorder</span><span class="p">(</span><span class="n">route</span><span class="p">,</span> <span class="n">prop</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">             <span class="n">fill</span> <span class="o">=</span> <span class="n">route</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_col</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="n">scales</span><span class="o">::</span><span class="nf">percent_format</span><span class="p">(</span><span class="n">scale</span> <span class="o">=</span> <span class="m">100</span><span class="p">,</span> <span class="n">suffix</span> <span class="o">=</span> <span class="s">&#34;%&#34;</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_fill_manual</span><span class="p">(</span><span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span> <span class="s">&#34;#2595F5&#34;</span><span class="p">,</span> <span class="s">&#34;#BBD7F0&#34;</span><span class="p">,</span> <span class="s">&#34;#BBD7F0&#34;</span><span class="p">,</span><span class="s">&#34;#BBD7F0&#34;</span><span class="p">,</span><span class="s">&#34;#7EBEF7&#34;</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme_tq</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Participation in Each Route of Brazilian Soybean Exports (1997 - 2020)&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;linkedin.com/in/lucianobatistads/&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Proportions&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Exportation Routes&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">guides</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/plot5.svg"
+        data-srcset="/img/demand_forecasting/plot5.svg, /img/demand_forecasting/plot5.svg 1.5x, /img/demand_forecasting/plot5.svg 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/plot5.svg"
+        title="Plot" /></p>
+<blockquote>
+<p>Yeah, a very high concentration in sea transportation route.</p>
+</blockquote>
+<h3 id="trade-partners">Trade Partners</h3>
+<p>Let’s look at our data by another perspective, <em>trade partners</em>. Brazil has a lot of trade partners, these are countries which with Brazil export and import more, and sounds a good idea to know which countries Brazil has been doing business.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># data wrangling before plot</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># filtering by the last 5 years</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># first look on the exportation</span>
+</span></span><span class="line"><span class="cl"><span class="n">exp_trade_partners_corn_sugar_tbl</span> <span class="o">&lt;-</span> <span class="n">exp_imp_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">year</span> <span class="o">=</span> <span class="nf">year</span><span class="p">(</span><span class="n">date</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="n">year</span> <span class="o">%in%</span> <span class="nf">c</span><span class="p">(</span><span class="m">2019</span><span class="o">:</span><span class="m">2014</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="n">type</span> <span class="o">==</span> <span class="s">&#34;Export&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># removing special characters</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">country2</span> <span class="o">=</span> <span class="n">country</span> <span class="o">%&gt;%</span> <span class="nf">str_replace_all</span><span class="p">(</span><span class="s">&#34;[[:punct:]]&#34;</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">str_trim</span><span class="p">(</span><span class="n">side</span> <span class="o">=</span> <span class="s">&#34;both&#34;</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">country2</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">summarise</span><span class="p">(</span><span class="n">total_usd</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">usd</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">ungroup</span><span class="p">()</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">year_fc</span> <span class="o">=</span> <span class="nf">as.factor</span><span class="p">(</span><span class="n">year</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">         <span class="n">name</span> <span class="o">=</span> <span class="nf">reorder_within</span><span class="p">(</span><span class="n">country2</span><span class="p">,</span> <span class="n">total_usd</span><span class="p">,</span> <span class="n">year_fc</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">exp_trade_partners_corn_sugar_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># threshold to selecting some countries</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="n">total_usd</span> <span class="o">&gt;</span> <span class="m">100000000</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">name</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="n">total_usd</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">fill</span> <span class="o">=</span> <span class="n">year</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_col</span><span class="p">(</span><span class="n">show.legend</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">coord_flip</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_x_reordered</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_y_continuous</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="n">scales</span><span class="o">::</span><span class="nf">dollar_format</span><span class="p">(</span><span class="n">scale</span> <span class="o">=</span> <span class="m">1e-6</span><span class="p">,</span> <span class="n">suffix</span> <span class="o">=</span> <span class="s">&#34;M&#34;</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="n">year</span><span class="p">,</span> <span class="n">scales</span> <span class="o">=</span> <span class="s">&#34;free&#34;</span><span class="p">,</span> <span class="n">nrow</span> <span class="o">=</span> <span class="m">3</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Trade Partners Evaluation for the last 5 years of Exportation&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;Considering all Brazilian States, and Soybean, Soybeans Meal, Soybean Oil, Sugar, Corn and Wheat Commodities&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Millions of U.S. Dollars&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;linkedin.com/in/lucianobatistads/&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme_tq</span><span class="p">()</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/plot6.svg"
+        data-srcset="/img/demand_forecasting/plot6.svg, /img/demand_forecasting/plot6.svg 1.5x, /img/demand_forecasting/plot6.svg 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/plot6.svg"
+        title="Plot" /></p>
+<blockquote>
+<p>It&rsquo;s clear that China is our most important export trade partner. The others positions have been rotating between Netherlands, Spain and Iran.</p>
+</blockquote>
+<p>Now, by imports perspective.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># this is the same code, but filtering by importation</span>
+</span></span><span class="line"><span class="cl"><span class="n">imp_trade_partners_corn_sugar_tbl</span> <span class="o">&lt;-</span> <span class="n">exp_imp_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">year</span> <span class="o">=</span> <span class="nf">year</span><span class="p">(</span><span class="n">date</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="n">year</span> <span class="o">%in%</span> <span class="nf">c</span><span class="p">(</span><span class="m">2019</span><span class="o">:</span><span class="m">2014</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="n">type</span> <span class="o">==</span> <span class="s">&#34;Import&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">country2</span> <span class="o">=</span> <span class="n">country</span> <span class="o">%&gt;%</span> <span class="nf">str_replace_all</span><span class="p">(</span><span class="s">&#34;[[:punct:]]&#34;</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">str_trim</span><span class="p">(</span><span class="n">side</span> <span class="o">=</span> <span class="s">&#34;both&#34;</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">country2</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">summarise</span><span class="p">(</span><span class="n">total_usd</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">usd</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">ungroup</span><span class="p">()</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">year_fc</span> <span class="o">=</span> <span class="nf">as.factor</span><span class="p">(</span><span class="n">year</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">         <span class="n">name</span> <span class="o">=</span> <span class="nf">reorder_within</span><span class="p">(</span><span class="n">country2</span><span class="p">,</span> <span class="n">total_usd</span><span class="p">,</span> <span class="n">year_fc</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">imp_trade_partners_corn_sugar_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">slice_max</span><span class="p">(</span><span class="n">total_usd</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="m">3</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">ungroup</span><span class="p">()</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">name</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="n">total_usd</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">fill</span> <span class="o">=</span> <span class="n">year</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_col</span><span class="p">(</span><span class="n">show.legend</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">coord_flip</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_x_reordered</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_y_continuous</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="n">scales</span><span class="o">::</span><span class="nf">dollar_format</span><span class="p">(</span><span class="n">scale</span> <span class="o">=</span> <span class="m">1e-6</span><span class="p">,</span> <span class="n">suffix</span> <span class="o">=</span> <span class="s">&#34;M&#34;</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="n">year</span><span class="p">,</span> <span class="n">scales</span> <span class="o">=</span> <span class="s">&#34;free&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Top 3 - Trade Partners Evaluation for the last 5 years of Imports&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;Considering Soybean, Soybeans Meal, Soybean Oil, Sugar, Corn and Wheat Commodities&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;linkedin.com/in/lucianobatistads/&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Millions of U.S. Dollars&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="s">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme_tq</span><span class="p">()</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/plot7.2.svg"
+        data-srcset="/img/demand_forecasting/plot7.2.svg, /img/demand_forecasting/plot7.2.svg 1.5x, /img/demand_forecasting/plot7.2.svg 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/plot7.2.svg"
+        title="Plot" /></p>
+<blockquote>
+<p>Brazil’s major import trade partners alternate between Argentina, Paraguay, and USA. Curiously, seems that the participation of USA has been decreasing through the time, as opposed to Argentina.</p>
+</blockquote>
+<h3 id="states-and-commodities">States and Commodities</h3>
+<p>Brazil is a huge country, the five largest country in the world, and this gives us different temperature ranges depends on each area you&rsquo;re looking at. This geographical aspect lead to cultures of food been produce in specific regions them others.</p>
+<p>Let’s see from which region comes the production of ours commodities, in terms of exports.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">quest_5_tbl</span> <span class="o">&lt;-</span> <span class="n">exp_imp_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="n">type</span> <span class="o">==</span> <span class="s">&#34;Export&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">product</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">summarise</span><span class="p">(</span><span class="n">total_usd</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">usd</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">ungroup</span><span class="p">()</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">product</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">top_n</span><span class="p">(</span><span class="m">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">quest_5_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">product</span> <span class="o">=</span> <span class="nf">case_when</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">product</span> <span class="o">==</span> <span class="s">&#34;corn&#34;</span> <span class="o">~</span> <span class="s">&#34;Corn&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">product</span> <span class="o">==</span> <span class="s">&#34;soybean_meal&#34;</span> <span class="o">~</span> <span class="s">&#34;Soybeans Meal&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">product</span> <span class="o">==</span> <span class="s">&#34;soybean_oil&#34;</span> <span class="o">~</span> <span class="s">&#34;Soybean Oil&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">product</span> <span class="o">==</span> <span class="s">&#34;sugar&#34;</span> <span class="o">~</span> <span class="s">&#34;Sugar&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">product</span> <span class="o">==</span> <span class="s">&#34;soybeans&#34;</span> <span class="o">~</span> <span class="s">&#34;Soybeans&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="kc">TRUE</span> <span class="o">~</span> <span class="s">&#34;Wheat&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">))</span>  <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">total_usd</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="nf">reorder_within</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">total_usd</span><span class="p">,</span> <span class="n">product</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">             <span class="n">fill</span> <span class="o">=</span> <span class="n">product</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_col</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="n">product</span><span class="p">,</span> <span class="n">scales</span> <span class="o">=</span> <span class="s">&#34;free&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">scale_fill_manual</span><span class="p">(</span><span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span> <span class="s">&#34;#1B8BB5&#34;</span><span class="p">,</span> <span class="s">&#34;#695905&#34;</span><span class="p">,</span> <span class="s">&#34;#1B60B5&#34;</span><span class="p">,</span> <span class="s">&#34;#B55C24&#34;</span><span class="p">,</span> <span class="s">&#34;#B59C12&#34;</span><span class="p">,</span><span class="s">&#34;#69381A&#34;</span> <span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_y_reordered</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="n">scales</span><span class="o">::</span><span class="nf">number_format</span><span class="p">(</span><span class="n">scale</span> <span class="o">=</span> <span class="m">1e-9</span><span class="p">,</span> <span class="n">suffix</span> <span class="o">=</span> <span class="s">&#34;Bi&#34;</span><span class="p">,</span> <span class="n">prefix</span> <span class="o">=</span> <span class="s">&#34;$&#34;</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">guides</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme_tq</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Billions of U.S. Dollars&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Top 5 - Most Important Brazilian States by Commodities&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;Considering Exports&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;linkedin.com/in/lucianobatistads/&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/plot8.svg"
+        data-srcset="/img/demand_forecasting/plot8.svg, /img/demand_forecasting/plot8.svg 1.5x, /img/demand_forecasting/plot8.svg 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/plot8.svg"
+        title="Plot" /></p>
+<blockquote>
+<p>Mato Grosso concentrates most of the exports of soybean oil, soybeans and soybean meal, along with Rio Grande do Sul and Paraná. São Paulo, on the other hand, takes part strongly in sugar exports. And very few states export wheat, the most expressive values comes from Rio Grande do Sul, Paraná and Santa Catarina.</p>
+</blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/calm_down.gif"
+        data-srcset="/img/demand_forecasting/calm_down.gif, /img/demand_forecasting/calm_down.gif 1.5x, /img/demand_forecasting/calm_down.gif 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/calm_down.gif"
+        title="gif" /></p>
+<blockquote>
+<p>Okay, we cover a lot until now. Take a minute, breathe, because now is <strong>modeling time</strong>!!</p>
+</blockquote>
+<h2 id="data-modeling">Data Modeling</h2>
+<p>As we know, there is 3 time-series to predict the next 3 years of demand in tons: soybean, corn and sugar. I&rsquo;ll model each separately, because by this way is better to understand the underlying rationale behind the data.</p>
+<p>Something important to say is that I already tried different approaches of feature engineering and here I’ll show you what had the better performance. Another point to clarify is I’ll be using a modeltime framework workflow, integrated with tidymodels principles (quick review down below).</p>
+<p>As this is a first part of this project, we’ll be using just ARIMA family of models, be aware that more advanced topics on modeling and feature engineering will covered in the <strong>second part</strong>.</p>
+<h2 id="a-quick-review-of-modeltime">A quick review of modeltime</h2>
+<p>For those that aren&rsquo;t familiar with <code>modeltime</code> framework, it&rsquo;s a R package that set up a time series analysis workflow in a very optimized way. The package works as an extension of tidymodels but applied to time series problems.</p>
+<p>I&rsquo;ll summarize here the principals verbs used:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/modeltime_workflow.jpg"
+        data-srcset="/img/demand_forecasting/modeltime_workflow.jpg, /img/demand_forecasting/modeltime_workflow.jpg 1.5x, /img/demand_forecasting/modeltime_workflow.jpg 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/modeltime_workflow.jpg"
+        title="post" /></p>
+<ol>
+<li>Collect data and split into training and test sets</li>
+<li>Create &amp; Fit Multiple Models</li>
+<li>Add fitted models to a <strong>Model Table</strong></li>
+<li><strong>Calibrate</strong> the models to a testing set.</li>
+<li>Perform Testing Set Forecast &amp; Accuracy Evaluation</li>
+<li><strong>Refit</strong> the models to Full Dataset &amp; Forecast Forward</li>
+</ol>
+<p>To get more details you can access the documantation <a href="https://business-science.github.io/modeltime/articles/getting-started-with-modeltime.html" target="_blank" rel="noopener noreffer ">here</a>.</p>
+<h3 id="soybean">Soybean</h3>
+<p>The first thing to do is set up our tibble with the right timestamp. And as we already know, the dataset has a monthly periodicity equally spaced (regular time series).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># data wrangling</span>
+</span></span><span class="line"><span class="cl"><span class="n">ts_soybean_tbl</span> <span class="o">&lt;-</span> <span class="n">exp_imp_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">select</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">product</span><span class="p">,</span> <span class="n">tons</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="n">product</span> <span class="o">==</span> <span class="s">&#34;soybeans&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">product</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">summarise</span><span class="p">(</span><span class="n">total_tons</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">tons</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">ungroup</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># visualizing</span>
+</span></span><span class="line"><span class="cl"><span class="n">ts_soybean_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">plot_time_series</span><span class="p">(</span><span class="n">.date_var</span> <span class="o">=</span> <span class="n">date</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="n">.value</span> <span class="o">=</span> <span class="n">total_tons</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="n">.interactive</span> <span class="o">=</span> <span class="bp">F</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="n">.smooth</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_y_continuous</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="n">scales</span><span class="o">::</span><span class="nf">number_format</span><span class="p">(</span><span class="n">scale</span> <span class="o">=</span> <span class="m">1e-6</span><span class="p">,</span> <span class="n">suffix</span> <span class="o">=</span> <span class="s">&#34;M&#34;</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Millions of Tons&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Soybean Time Series&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;linkedin.com/in/lucianobatistads/&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/plot9.svg"
+        data-srcset="/img/demand_forecasting/plot9.svg, /img/demand_forecasting/plot9.svg 1.5x, /img/demand_forecasting/plot9.svg 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/plot9.svg"
+        title="plot" /></p>
+<p>Just by analyzing this visualization, we’re seeing that there is a clear annual seasonality with a multiplicative behavior (values are growing throughout the time). We can verify these assumptions with ACF/PACF charts.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># High annual correlation</span>
+</span></span><span class="line"><span class="cl"><span class="n">ts_soybean_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">plot_acf_diagnostics</span><span class="p">(</span><span class="n">.date_var</span> <span class="o">=</span> <span class="n">date</span><span class="p">,</span> <span class="n">total_tons</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                       <span class="n">.interactive</span> <span class="o">=</span> <span class="bp">F</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                       <span class="n">.show_white_noise_bars</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Soybean Lag Diagnostics&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;linkedin.com/in/lucianobatistads/&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/plot10.svg"
+        data-srcset="/img/demand_forecasting/plot10.svg, /img/demand_forecasting/plot10.svg 1.5x, /img/demand_forecasting/plot10.svg 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/plot10.svg"
+        title="plot" /></p>
+<p>Here we’re confirm the high correlation with annual lags and also one high partial correlation considering 9, 10 and 11 lags. Is possible to use those features to improve performance, but here we’ll be working with the <code>forecast::auto_arima</code> model that automatic look for lags during the training.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">ts_soybean_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">plot_seasonal_diagnostics</span><span class="p">(</span><span class="n">.date_var</span> <span class="o">=</span> <span class="n">date</span><span class="p">,</span> <span class="nf">log</span><span class="p">(</span><span class="n">total_tons</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                            <span class="n">.interactive</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Soybean Seasonal Diagnostics&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Log scale&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;linkedin.com/in/lucianobatistads/&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/plot11.svg"
+        data-srcset="/img/demand_forecasting/plot11.svg, /img/demand_forecasting/plot11.svg 1.5x, /img/demand_forecasting/plot11.svg 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/plot11.svg"
+        title="plot" /></p>
+<blockquote>
+<p>Here we’re seeing that there is quarterly seasonality, every second and third quarters occur an increase in exports.</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">ts_soybean_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">mutate</span><span class="p">(</span><span class="n">year</span> <span class="o">=</span> <span class="nf">year</span><span class="p">(</span><span class="n">date</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">as_factor</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">         <span class="n">month</span> <span class="o">=</span> <span class="nf">month</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">locale</span> <span class="o">=</span> <span class="nf">Sys.setlocale</span><span class="p">(</span><span class="s">&#34;LC_COLLATE&#34;</span><span class="p">,</span> <span class="s">&#34;C&#34;</span><span class="p">))</span> <span class="o">%&gt;%</span> <span class="nf">as_factor</span><span class="p">())</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">year</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="nf">fct_rev</span><span class="p">(</span><span class="n">month</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">             <span class="n">fill</span> <span class="o">=</span> <span class="n">total_tons</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_fill_distiller</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="n">scales</span><span class="o">::</span><span class="nf">number_format</span><span class="p">(</span><span class="n">scale</span> <span class="o">=</span> <span class="m">1e-6</span><span class="p">,</span> <span class="n">suffix</span> <span class="o">=</span> <span class="s">&#34;M&#34;</span><span class="p">),</span> <span class="n">direction</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_tile</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s">&#34;grey40&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Totals of Exports of Soybeans Across the Years and Months&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Months&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fill</span> <span class="o">=</span> <span class="s">&#34;Millions of\nTons&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;linkedin.com/in/lucianobatistads/&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/plot12.svg"
+        data-srcset="/img/demand_forecasting/plot12.svg, /img/demand_forecasting/plot12.svg 1.5x, /img/demand_forecasting/plot12.svg 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/plot12.svg"
+        title="plot" /></p>
+<blockquote>
+<p>Now we have a big picture of what is happening. The second and third quarters of practically all months are darker, indicating a higher amount of exports in those periods.</p>
+</blockquote>
+<h4 id="modeling-soybean-time-series">Modeling soybean time series</h4>
+<p>First thing will be standardize our data, applying a box-cox transformation. This is a method used to variance reduction applying a power transformation. As we’ll be using ARIMA family, is interesting work that way.</p>
+<p>We also will keep track of the lambda value, important to back-transform our data after modeling phase.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">ts_boxcox_soybean_tbl</span> <span class="o">&lt;-</span> <span class="n">ts_soybean_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">select</span><span class="p">(</span><span class="o">-</span><span class="n">product</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">total_tons</span> <span class="o">=</span> <span class="nf">box_cox_vec</span><span class="p">(</span><span class="n">total_tons</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">boxcox_soybean_lambda</span> <span class="o">&lt;-</span> <span class="m">0.382376781152543</span>
+</span></span></code></pre></div><p>So, we don’t have so much data to work, actually our time series has 265 observations. That way, I split the data in 5 years of assessment and choose the rest to training.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">soybean_boxcox_splits</span> <span class="o">&lt;-</span> <span class="nf">time_series_split</span><span class="p">(</span><span class="n">ts_boxcox_soybean_tbl</span><span class="p">,</span> <span class="n">assess</span> <span class="o">=</span> <span class="s">&#34;5 years&#34;</span><span class="p">,</span> <span class="n">cumulative</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">train_soybean_boxcox_tbl</span> <span class="o">&lt;-</span> <span class="nf">training</span><span class="p">(</span><span class="n">soybean_boxcox_splits</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">test_soybean_boxcox_tbl</span> <span class="o">&lt;-</span> <span class="nf">testing</span><span class="p">(</span><span class="n">soybean_boxcox_splits</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">soybean_boxcox_splits</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">tk_time_series_cv_plan</span><span class="p">()</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">plot_time_series_cv_plan</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">total_tons</span><span class="p">,</span> <span class="n">.interactive</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Soybean Training and Testing Splits&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;BoxCox transformed values&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/plot13.svg"
+        data-srcset="/img/demand_forecasting/plot13.svg, /img/demand_forecasting/plot13.svg 1.5x, /img/demand_forecasting/plot13.svg 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/plot13.svg"
+        title="plot" /></p>
+<p>Now, we can start work with the <code>modeltime</code> workflow showed before.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">auto_arima_formula</span> <span class="o">&lt;-</span> <span class="nf">formula</span><span class="p">(</span><span class="n">total_tons</span> <span class="o">~</span> <span class="n">.)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># training</span>
+</span></span><span class="line"><span class="cl"><span class="n">auto_arima_boxcox_fit</span> <span class="o">&lt;-</span> <span class="nf">arima_reg</span><span class="p">()</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">set_engine</span><span class="p">(</span><span class="s">&#34;auto_arima&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">fit</span><span class="p">(</span><span class="n">auto_arima_formula</span><span class="p">,</span> <span class="n">train_soybean_boxcox_tbl</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># testing</span>
+</span></span><span class="line"><span class="cl"><span class="n">calibration_boxcox_tbl</span> <span class="o">&lt;-</span> <span class="nf">modeltime_table</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="n">auto_arima_boxcox_fit</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">modeltime_calibrate</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">new_data</span> <span class="o">=</span> <span class="n">test_soybean_boxcox_tbl</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># accuracy on testing data</span>
+</span></span><span class="line"><span class="cl"><span class="n">soybean_boxcox_accuracy</span> <span class="o">&lt;-</span> <span class="n">calibration_boxcox_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">modeltime_accuracy</span><span class="p">()</span>
+</span></span></code></pre></div><blockquote>
+<p><strong>Brief explanation about the auto-arima implementation:</strong> The auto-arima algo use the AIC metric to optimize the p, q, d and P, Q, D params, looking for the best values. These metrics works like a R-Squared in order to point you to a correct direction.</p>
+</blockquote>
+<p>You can see in <code>.model_desc</code> column discription or as a legend on the following pictures the best parmans choosed by the model.</p>
+<p>We get a good R-Squared (0.792), but is a good idea to visualize how was the fit of the model:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># vizualing forecasting</span>
+</span></span><span class="line"><span class="cl"><span class="n">calibration_boxcox_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">modeltime_forecast</span><span class="p">(</span><span class="n">new_data</span> <span class="o">=</span> <span class="n">test_soybean_boxcox_tbl</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                     <span class="n">actual_data</span> <span class="o">=</span> <span class="n">ts_boxcox_soybean_tbl</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">plot_modeltime_forecast</span><span class="p">(</span><span class="n">.interactive</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Soybean - Model Performance on Assessment Data&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;BoxCox transformed values&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;linkedin.com/in/lucianobatistads/&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/plot14.svg"
+        data-srcset="/img/demand_forecasting/plot14.svg, /img/demand_forecasting/plot14.svg 1.5x, /img/demand_forecasting/plot14.svg 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/plot14.svg"
+        title="plot" /></p>
+<p>I really liked of this fit, and we’ll stick with this model, seems to get the correct seasonality and trend. The next step is refit the model on all data and see how it works. If needed, the algorithm will update the coefficients to capture the general pattern.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">refit_boxcox_tbl</span> <span class="o">&lt;-</span> <span class="n">calibration_boxcox_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">modeltime_refit</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">ts_boxcox_soybean_tbl</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">refit_boxcox_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">modeltime_forecast</span><span class="p">(</span><span class="n">h</span> <span class="o">=</span> <span class="s">&#34;3 years&#34;</span><span class="p">,</span> <span class="n">actual_data</span> <span class="o">=</span> <span class="n">ts_boxcox_soybean_tbl</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">plot_modeltime_forecast</span><span class="p">(</span><span class="n">.interactive</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Soybean - Demand Forecast&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;Prediction for the next 3 years of Soybean Exports&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;BoxCox transformed values&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;linkedin.com/in/lucianobatistads/&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">refit_boxcox_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">modeltime_accuracy</span><span class="p">()</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/plot15.svg"
+        data-srcset="/img/demand_forecasting/plot15.svg, /img/demand_forecasting/plot15.svg 1.5x, /img/demand_forecasting/plot15.svg 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/plot15.svg"
+        title="plot" /></p>
+<blockquote>
+<p>Look, every time that you see the &ldquo;UPDATE&rdquo; as a prefix of model description, meaning that the model found better coefficients to explain the data.</p>
+</blockquote>
+<h4 id="pos-processing-step">Pos-Processing step</h4>
+<p>We need back-transform our data because of box-cox transformation at the beginning, and the values don’t represent exports quantities.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">forecast_boxcox_soybean_tbl</span> <span class="o">&lt;-</span> <span class="n">refit_boxcox_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">modeltime_forecast</span><span class="p">(</span><span class="n">h</span> <span class="o">=</span> <span class="s">&#34;3 years&#34;</span><span class="p">,</span> <span class="n">actual_data</span> <span class="o">=</span> <span class="n">ts_boxcox_soybean_tbl</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">forecast_soybean_tbl</span> <span class="o">&lt;-</span> <span class="n">forecast_boxcox_soybean_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">.value</span> <span class="o">=</span> <span class="nf">box_cox_inv_vec</span><span class="p">(</span><span class="n">.value</span><span class="p">,</span> <span class="n">lambda</span> <span class="o">=</span> <span class="n">boxcox_soybean_lambda</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">         <span class="n">.conf_lo</span> <span class="o">=</span> <span class="nf">box_cox_inv_vec</span><span class="p">(</span><span class="n">.conf_lo</span><span class="p">,</span> <span class="n">lambda</span> <span class="o">=</span> <span class="n">boxcox_soybean_lambda</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">         <span class="n">.conf_hi</span> <span class="o">=</span> <span class="nf">box_cox_inv_vec</span><span class="p">(</span><span class="n">.conf_hi</span><span class="p">,</span> <span class="n">lambda</span> <span class="o">=</span> <span class="n">boxcox_soybean_lambda</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">forecast_soybean_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">plot_modeltime_forecast</span><span class="p">(</span><span class="n">.interactive</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_y_continuous</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="n">scales</span><span class="o">::</span><span class="nf">number_format</span><span class="p">(</span><span class="n">scale</span> <span class="o">=</span> <span class="m">1e-6</span><span class="p">,</span> <span class="n">suffix</span> <span class="o">=</span> <span class="s">&#34;M&#34;</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Soybean - Demand Forecast&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;Prediction for the next 3 years of Soybean Exports&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Millions of Tons&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;linkedin.com/in/lucianobatistads/&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/plot16.svg"
+        data-srcset="/img/demand_forecasting/plot16.svg, /img/demand_forecasting/plot16.svg 1.5x, /img/demand_forecasting/plot16.svg 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/plot16.svg"
+        title="plot" /></p>
+<blockquote>
+<p>That is our final result for the demand forecast of the next 3 years of soybean production, with 95% of confidence interval.</p>
+</blockquote>
+<h3 id="corn">Corn</h3>
+<p>Here we&rsquo;ll follow the same workflow as soybean demand forecast showed before.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">ts_corn_tbl</span> <span class="o">&lt;-</span> <span class="n">exp_imp_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">select</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">product</span><span class="p">,</span> <span class="n">tons</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="n">product</span> <span class="o">==</span> <span class="s">&#34;corn&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">product</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">summarise</span><span class="p">(</span><span class="n">total_tons</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">tons</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">ungroup</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ts_corn_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">plot_time_series</span><span class="p">(</span><span class="n">.date_var</span> <span class="o">=</span> <span class="n">date</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="n">.value</span> <span class="o">=</span> <span class="n">total_tons</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="n">.interactive</span> <span class="o">=</span> <span class="bp">F</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="n">.smooth</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_y_continuous</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="n">scales</span><span class="o">::</span><span class="nf">number_format</span><span class="p">(</span><span class="n">scale</span> <span class="o">=</span> <span class="m">1e-6</span><span class="p">,</span> <span class="n">suffix</span> <span class="o">=</span> <span class="s">&#34;M&#34;</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Millions of Tons&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Corn Time Series&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;linkedin.com/in/lucianobatistads/&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/plot17.svg"
+        data-srcset="/img/demand_forecasting/plot17.svg, /img/demand_forecasting/plot17.svg 1.5x, /img/demand_forecasting/plot17.svg 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/plot17.svg"
+        title="plot" /></p>
+<p>We also have annual seasonality with a multiplicative behavior. Let&rsquo;s look the lag diagnostic.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># High annual correlation</span>
+</span></span><span class="line"><span class="cl"><span class="n">ts_corn_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">plot_acf_diagnostics</span><span class="p">(</span><span class="n">.date_var</span> <span class="o">=</span> <span class="n">date</span><span class="p">,</span> <span class="n">total_tons</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                       <span class="n">.interactive</span> <span class="o">=</span> <span class="bp">F</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                       <span class="n">.show_white_noise_bars</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Corn Lag Diagnostics&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;linkedin.com/in/lucianobatistads/&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/plot18.svg"
+        data-srcset="/img/demand_forecasting/plot18.svg, /img/demand_forecasting/plot18.svg 1.5x, /img/demand_forecasting/plot18.svg 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/plot18.svg"
+        title="plot" /></p>
+<blockquote>
+<p>Confirm our assumption of annual seasonality.</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">ts_corn_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">plot_seasonal_diagnostics</span><span class="p">(</span><span class="n">.date_var</span> <span class="o">=</span> <span class="n">date</span><span class="p">,</span> <span class="n">total_tons</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                            <span class="n">.interactive</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Corn Seasonal Diagnostics&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Log scale&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;linkedin.com/in/lucianobatistads/&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/plot19.svg"
+        data-srcset="/img/demand_forecasting/plot19.svg, /img/demand_forecasting/plot19.svg 1.5x, /img/demand_forecasting/plot19.svg 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/plot19.svg"
+        title="plot" /></p>
+<blockquote>
+<p>The interesting of this chart is that we can see a quarterly seasonality too (similiar to soybean seasonal diagnostics), this time with third and fourth quarters.</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">ts_corn_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">year</span> <span class="o">=</span> <span class="nf">year</span><span class="p">(</span><span class="n">date</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">as_factor</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">         <span class="n">month</span> <span class="o">=</span> <span class="nf">month</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">locale</span> <span class="o">=</span> <span class="nf">Sys.setlocale</span><span class="p">(</span><span class="s">&#34;LC_COLLATE&#34;</span><span class="p">,</span> <span class="s">&#34;C&#34;</span><span class="p">))</span> <span class="o">%&gt;%</span> <span class="nf">as_factor</span><span class="p">())</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">year</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="nf">fct_rev</span><span class="p">(</span><span class="n">month</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">             <span class="n">fill</span> <span class="o">=</span> <span class="n">total_tons</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_fill_distiller</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="n">scales</span><span class="o">::</span><span class="nf">number_format</span><span class="p">(</span><span class="n">scale</span> <span class="o">=</span> <span class="m">1e-6</span><span class="p">,</span> <span class="n">suffix</span> <span class="o">=</span> <span class="s">&#34;M&#34;</span><span class="p">),</span> <span class="n">direction</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_tile</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s">&#34;grey40&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Totals of Corn Exports Across the Years and Months&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Months&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fill</span> <span class="o">=</span> <span class="s">&#34;Millions of\nTons&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;linkedin.com/in/lucianobatistads/&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/plot20.svg"
+        data-srcset="/img/demand_forecasting/plot20.svg, /img/demand_forecasting/plot20.svg 1.5x, /img/demand_forecasting/plot20.svg 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/plot20.svg"
+        title="plot" /></p>
+<blockquote>
+<p>Looking at this heatmap is visible that through the years the exports are growing and the period of the year that has more exports (3rd and 4rd quarters).</p>
+</blockquote>
+<h4 id="modeling-corn-time-series">Modeling corn time series</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># transforming target ----</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># boxcox</span>
+</span></span><span class="line"><span class="cl"><span class="n">ts_boxcox_corn_tbl</span> <span class="o">&lt;-</span> <span class="n">ts_corn_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">select</span><span class="p">(</span><span class="o">-</span><span class="n">product</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">total_tons</span> <span class="o">=</span> <span class="nf">box_cox_vec</span><span class="p">(</span><span class="n">total_tons</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">boxcox_corn_lambda</span> <span class="o">&lt;-</span> <span class="m">0.0676121372845911</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># visualizing the transformations ----</span>
+</span></span><span class="line"><span class="cl"><span class="n">ts_boxcox_corn_tbl</span> <span class="o">%&gt;%</span> <span class="nf">plot_time_series</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">total_tons</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># splits ----</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># boxcox</span>
+</span></span><span class="line"><span class="cl"><span class="n">corn_boxcox_splits</span> <span class="o">&lt;-</span> <span class="nf">time_series_split</span><span class="p">(</span><span class="n">ts_boxcox_corn_tbl</span><span class="p">,</span> <span class="n">assess</span> <span class="o">=</span> <span class="s">&#34;5 years&#34;</span><span class="p">,</span> <span class="n">cumulative</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">train_corn_boxcox_tbl</span> <span class="o">&lt;-</span> <span class="nf">training</span><span class="p">(</span><span class="n">corn_boxcox_splits</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">test_corn_boxcox_tbl</span> <span class="o">&lt;-</span> <span class="nf">testing</span><span class="p">(</span><span class="n">corn_boxcox_splits</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">corn_boxcox_splits</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">tk_time_series_cv_plan</span><span class="p">()</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">plot_time_series_cv_plan</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">total_tons</span><span class="p">,</span> <span class="n">.interactive</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Corn Training and Testing Splits&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;BoxCox transformed values&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;linkedin.com/in/lucianobatistads/&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/plot21.svg"
+        data-srcset="/img/demand_forecasting/plot21.svg, /img/demand_forecasting/plot21.svg 1.5x, /img/demand_forecasting/plot21.svg 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/plot21.svg"
+        title="plot" /></p>
+<p>Our formula here will be different, by including this features our model could better capture the seasonality.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># modeling with modeltime ----</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># formula</span>
+</span></span><span class="line"><span class="cl"><span class="n">auto_arima_formula</span> <span class="o">&lt;-</span> <span class="nf">formula</span><span class="p">(</span><span class="n">total_tons</span> <span class="o">~</span> <span class="n">. </span><span class="o">+</span>
+</span></span><span class="line"><span class="cl">                                <span class="nf">year</span><span class="p">(</span><span class="n">date</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                                <span class="nf">month</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># training</span>
+</span></span><span class="line"><span class="cl"><span class="n">auto_arima_fit</span> <span class="o">&lt;-</span> <span class="nf">arima_reg</span><span class="p">()</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">set_engine</span><span class="p">(</span><span class="s">&#34;auto_arima&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">fit</span><span class="p">(</span><span class="n">auto_arima_formula</span><span class="p">,</span> <span class="n">train_corn_boxcox_tbl</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># testing</span>
+</span></span><span class="line"><span class="cl"><span class="n">calibration_boxcox_tbl</span> <span class="o">&lt;-</span> <span class="nf">modeltime_table</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="n">auto_arima_fit</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">modeltime_calibrate</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">new_data</span> <span class="o">=</span> <span class="n">test_corn_boxcox_tbl</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># accuracy on testing data</span>
+</span></span><span class="line"><span class="cl"><span class="n">corn_accuracy</span> <span class="o">&lt;-</span> <span class="n">calibration_boxcox_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">modeltime_accuracy</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># vizualing forecasting</span>
+</span></span><span class="line"><span class="cl"><span class="n">calibration_boxcox_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">modeltime_forecast</span><span class="p">(</span><span class="n">new_data</span> <span class="o">=</span> <span class="n">test_corn_boxcox_tbl</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                     <span class="n">actual_data</span> <span class="o">=</span> <span class="n">ts_boxcox_corn_tbl</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">plot_modeltime_forecast</span><span class="p">(</span><span class="n">.interactive</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Corn - Model Performance on Assessment Data&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;BoxCox transformed values&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;linkedin.com/in/lucianobatistads/&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/plot22.svg"
+        data-srcset="/img/demand_forecasting/plot22.svg, /img/demand_forecasting/plot22.svg 1.5x, /img/demand_forecasting/plot22.svg 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/plot22.svg"
+        title="plot" /></p>
+<p>The R-Squared here is about 0.643 with good understanding of the seasonality, but the model could not capture the depressions of the time series data. We&rsquo;ll stick with this model for now.</p>
+<p>Now let&rsquo;s refit the data.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># refiting ----</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># boxcox</span>
+</span></span><span class="line"><span class="cl"><span class="n">refit_boxcox_tbl</span> <span class="o">&lt;-</span> <span class="n">calibration_boxcox_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">modeltime_refit</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">ts_boxcox_corn_tbl</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">refit_boxcox_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">modeltime_forecast</span><span class="p">(</span><span class="n">h</span> <span class="o">=</span> <span class="s">&#34;3 years&#34;</span><span class="p">,</span> <span class="n">actual_data</span> <span class="o">=</span> <span class="n">ts_boxcox_corn_tbl</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">plot_modeltime_forecast</span><span class="p">(</span><span class="n">.interactive</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Corn - Demand Forecast&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;Prediction for the next 3 years of Soybean Exports&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;BoxCox transformed values&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;linkedin.com/in/lucianobatistads/&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/plot23.svg"
+        data-srcset="/img/demand_forecasting/plot23.svg, /img/demand_forecasting/plot23.svg 1.5x, /img/demand_forecasting/plot23.svg 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/plot23.svg"
+        title="plot" /></p>
+<p>This was our final model.</p>
+<h4 id="pos-processing-step-1">Pos-Processing step</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># inverting transformation</span>
+</span></span><span class="line"><span class="cl"><span class="n">forecast_boxcox_corn_tbl</span> <span class="o">&lt;-</span> <span class="n">refit_boxcox_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">modeltime_forecast</span><span class="p">(</span><span class="n">h</span> <span class="o">=</span> <span class="s">&#34;3 years&#34;</span><span class="p">,</span> <span class="n">actual_data</span> <span class="o">=</span> <span class="n">ts_boxcox_corn_tbl</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">forecast_corn_tbl</span> <span class="o">&lt;-</span> <span class="n">forecast_boxcox_corn_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">.value</span> <span class="o">=</span> <span class="nf">box_cox_inv_vec</span><span class="p">(</span><span class="n">.value</span><span class="p">,</span> <span class="n">lambda</span> <span class="o">=</span> <span class="n">boxcox_corn_lambda</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">         <span class="n">.conf_lo</span> <span class="o">=</span> <span class="nf">box_cox_inv_vec</span><span class="p">(</span><span class="n">.conf_lo</span><span class="p">,</span> <span class="n">lambda</span> <span class="o">=</span> <span class="n">boxcox_corn_lambda</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">         <span class="n">.conf_hi</span> <span class="o">=</span> <span class="nf">box_cox_inv_vec</span><span class="p">(</span><span class="n">.conf_hi</span><span class="p">,</span> <span class="n">lambda</span> <span class="o">=</span> <span class="n">boxcox_corn_lambda</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">forecast_corn_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">plot_modeltime_forecast</span><span class="p">(</span><span class="n">.interactive</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_y_continuous</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="n">scales</span><span class="o">::</span><span class="nf">number_format</span><span class="p">(</span><span class="n">scale</span> <span class="o">=</span> <span class="m">1e-6</span><span class="p">,</span> <span class="n">suffix</span> <span class="o">=</span> <span class="s">&#34;M&#34;</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Corn - Demand Forecast&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;Prediction for the next 3 years of Corn Exports&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Millions of Tons&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;linkedin.com/in/lucianobatistads/&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/plot24.svg"
+        data-srcset="/img/demand_forecasting/plot24.svg, /img/demand_forecasting/plot24.svg 1.5x, /img/demand_forecasting/plot24.svg 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/plot24.svg"
+        title="plot" /></p>
+<p>Besides our 95% confidence intervals been so high, our series capture a similar trend and seasonality of previous years.</p>
+<h3 id="sugar">Sugar</h3>
+<p>Let&rsquo;s investigate the final one.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">ts_sugar_tbl</span> <span class="o">&lt;-</span> <span class="n">exp_imp_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">select</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">product</span><span class="p">,</span> <span class="n">tons</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="n">product</span> <span class="o">==</span> <span class="s">&#34;sugar&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">product</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">summarise</span><span class="p">(</span><span class="n">total_tons</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">tons</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">ungroup</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ts_sugar_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">tk_summary_diagnostics</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ts_sugar_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">plot_time_series</span><span class="p">(</span><span class="n">.date_var</span> <span class="o">=</span> <span class="n">date</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="n">.value</span> <span class="o">=</span> <span class="n">total_tons</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="n">.interactive</span> <span class="o">=</span> <span class="bp">F</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="n">.smooth</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_y_continuous</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="n">scales</span><span class="o">::</span><span class="nf">number_format</span><span class="p">(</span><span class="n">scale</span> <span class="o">=</span> <span class="m">1e-6</span><span class="p">,</span> <span class="n">suffix</span> <span class="o">=</span> <span class="s">&#34;M&#34;</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Millions of Tons&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Sugar Time Series&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;linkedin.com/in/lucianobatistads/&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/plot25.svg"
+        data-srcset="/img/demand_forecasting/plot25.svg, /img/demand_forecasting/plot25.svg 1.5x, /img/demand_forecasting/plot25.svg 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/plot25.svg"
+        title="plot" /></p>
+<p>This time series seems to have a change in behavior after the year of 2012, with a high spike and a significant increase in quantity of exports.</p>
+<p><strong>What <em>ACF</em> and <em>PACF</em> tell us?</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># High annual correlation</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># lag 11 and 23 also have good indicate of correlation</span>
+</span></span><span class="line"><span class="cl"><span class="n">ts_sugar_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">plot_acf_diagnostics</span><span class="p">(</span><span class="n">.date_var</span> <span class="o">=</span> <span class="n">date</span><span class="p">,</span> <span class="n">total_tons</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                       <span class="n">.interactive</span> <span class="o">=</span> <span class="bp">F</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                       <span class="n">.show_white_noise_bars</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Sugar Lag Diagnostics&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;linkedin.com/in/lucianobatistads/&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/plot26.svg"
+        data-srcset="/img/demand_forecasting/plot26.svg, /img/demand_forecasting/plot26.svg 1.5x, /img/demand_forecasting/plot26.svg 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/plot26.svg"
+        title="plot" /></p>
+<blockquote>
+<p>Here we&rsquo;re seeing a high correlation mostly with recent 70 lags, and negative correlation with older lags. Then in PACF plot, lag 2 and 9 seems important to our model.</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">ts_sugar_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">plot_seasonal_diagnostics</span><span class="p">(</span><span class="n">.date_var</span> <span class="o">=</span> <span class="n">date</span><span class="p">,</span> <span class="nf">log</span><span class="p">(</span><span class="n">total_tons</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                            <span class="n">.interactive</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Sugar Seasonal Diagnostics&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Log scale&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;linkedin.com/in/lucianobatistads/&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/plot27.svg"
+        data-srcset="/img/demand_forecasting/plot27.svg, /img/demand_forecasting/plot27.svg 1.5x, /img/demand_forecasting/plot27.svg 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/plot27.svg"
+        title="plot" /></p>
+<blockquote>
+<p>As we confirmed, since 2012 we have higher exports. But looking at this plot, we don&rsquo;t see any seasonality throughout the time.</p>
+</blockquote>
+<p>So let filter the data and analyse the seasonality after 2012.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">ts_sugar_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">filter_by_time</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">.start_date</span> <span class="o">=</span> <span class="s">&#34;2012-01-01&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">plot_seasonal_diagnostics</span><span class="p">(</span><span class="n">.date_var</span> <span class="o">=</span> <span class="n">date</span><span class="p">,</span> <span class="n">total_tons</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                            <span class="n">.interactive</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_y_continuous</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="n">scales</span><span class="o">::</span><span class="nf">number_format</span><span class="p">(</span><span class="n">scale</span> <span class="o">=</span> <span class="m">1e-6</span><span class="p">,</span> <span class="n">suffix</span> <span class="o">=</span> <span class="s">&#34;M&#34;</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Sugar Seasonal Diagnostics&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;Seasonal diagnostics considering data since 2012&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Millions of Tons&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;linkedin.com/in/lucianobatistads/&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/plot28.svg"
+        data-srcset="/img/demand_forecasting/plot28.svg, /img/demand_forecasting/plot28.svg 1.5x, /img/demand_forecasting/plot28.svg 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/plot28.svg"
+        title="plot" /></p>
+<p>Now we can capture an interesting bahavior, seems that the third and first quarter have an increase in exports.</p>
+<p>Searching the why of happened this change in 2012, I found some events that probably are correlated to our problem.</p>
+<ol>
+<li>
+<p>2012 was the year that Brazil increases the production of ethanol</p>
+</li>
+<li>
+<p>To produce more ethanol was needed to plant more sugar cane (the base of ethanol production).</p>
+</li>
+<li>
+<p>Sugar also came from sugar cane, so, with more sugar cane cultivation, we saw an increase of sugar production, hence reflected on its exports.</p>
+</li>
+</ol>
+<p>So, there is a huge probability of our time series have really changed its behavior. Another point is that there is a quarterly seasonality that matches exactly with the period of sugar production: 90 days in the summer and 100 days in the winter.</p>
+<p>With this context in mind, I’ll use just the data after 2012 for now.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">ts_sugar_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">year</span> <span class="o">=</span> <span class="nf">year</span><span class="p">(</span><span class="n">date</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">as_factor</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">         <span class="n">month</span> <span class="o">=</span> <span class="nf">month</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">locale</span> <span class="o">=</span> <span class="nf">Sys.setlocale</span><span class="p">(</span><span class="s">&#34;LC_COLLATE&#34;</span><span class="p">,</span> <span class="s">&#34;C&#34;</span><span class="p">))</span> <span class="o">%&gt;%</span> <span class="nf">as_factor</span><span class="p">())</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">year</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="nf">fct_rev</span><span class="p">(</span><span class="n">month</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">             <span class="n">fill</span> <span class="o">=</span> <span class="n">total_tons</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_fill_distiller</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="n">scales</span><span class="o">::</span><span class="nf">number_format</span><span class="p">(</span><span class="n">scale</span> <span class="o">=</span> <span class="m">1e-6</span><span class="p">,</span> <span class="n">suffix</span> <span class="o">=</span> <span class="s">&#34;M&#34;</span><span class="p">),</span> <span class="n">direction</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_tile</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s">&#34;grey40&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Totals of Sugar Exports Across the Years and Months&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Months&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fill</span> <span class="o">=</span> <span class="s">&#34;Millions of\nTons&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;linkedin.com/in/lucianobatistads/&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/plot29.svg"
+        data-srcset="/img/demand_forecasting/plot29.svg, /img/demand_forecasting/plot29.svg 1.5x, /img/demand_forecasting/plot29.svg 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/plot29.svg"
+        title="plot" /></p>
+<blockquote>
+<p>Looking at this heatmap, it’s visible that through the years the exports intensified by a huge quantity since 2012.</p>
+</blockquote>
+<p>I&rsquo;ll choose look just for the years after 2012 to modeling our time series.</p>
+<h4 id="modeling-sugar-time-series">Modeling sugar time series</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># transforming target ----</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># log</span>
+</span></span><span class="line"><span class="cl"><span class="n">ts_boxcox_sugar_tbl</span> <span class="o">&lt;-</span> <span class="n">ts_sugar_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">select</span><span class="p">(</span><span class="o">-</span><span class="n">product</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">filter_by_time</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">.start_date</span> <span class="o">=</span> <span class="s">&#34;2012-01-01&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">total_tons</span> <span class="o">=</span> <span class="nf">box_cox_vec</span><span class="p">(</span><span class="n">total_tons</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">boxcox_sugar_lambda</span> <span class="o">&lt;-</span> <span class="m">0.645806609678906</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># visualizing the transformations ----</span>
+</span></span><span class="line"><span class="cl"><span class="n">ts_boxcox_sugar_tbl</span> <span class="o">%&gt;%</span> <span class="nf">plot_time_series</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">total_tons</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># splits ----</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># boxcox</span>
+</span></span><span class="line"><span class="cl"><span class="n">sugar_boxcox_splits</span> <span class="o">&lt;-</span> <span class="nf">time_series_split</span><span class="p">(</span><span class="n">ts_boxcox_sugar_tbl</span><span class="p">,</span> <span class="n">assess</span> <span class="o">=</span> <span class="s">&#34;4 years&#34;</span><span class="p">,</span> <span class="n">cumulative</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">train_sugar_boxcox_tbl</span> <span class="o">&lt;-</span> <span class="nf">training</span><span class="p">(</span><span class="n">sugar_boxcox_splits</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">test_sugar_boxcox_tbl</span> <span class="o">&lt;-</span> <span class="nf">testing</span><span class="p">(</span><span class="n">sugar_boxcox_splits</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">sugar_boxcox_splits</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">tk_time_series_cv_plan</span><span class="p">()</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">plot_time_series_cv_plan</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">total_tons</span><span class="p">,</span> <span class="n">.interactive</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Sugar Training and Testing Splits&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;BoxCox transformed values&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;linkedin.com/in/lucianobatistads/&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/plot30.svg"
+        data-srcset="/img/demand_forecasting/plot30.svg, /img/demand_forecasting/plot30.svg 1.5x, /img/demand_forecasting/plot30.svg 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/plot30.svg"
+        title="plot" /></p>
+<blockquote>
+<p>Here I needed to change the amount of data used as assessment data to 4 years instead of 5.</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># modeling with modeltime ----</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Modeling log transformed data</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># formula</span>
+</span></span><span class="line"><span class="cl"><span class="n">auto_arima_formula</span> <span class="o">&lt;-</span> <span class="nf">formula</span><span class="p">(</span><span class="n">total_tons</span> <span class="o">~</span> <span class="n">. </span><span class="o">+</span>
+</span></span><span class="line"><span class="cl">                                <span class="nf">month</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># add trimestres</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># training</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># modeling with modeltime ----</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Modeling boxcox transformed data</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># training</span>
+</span></span><span class="line"><span class="cl"><span class="n">auto_arima_boxcox_fit</span> <span class="o">&lt;-</span> <span class="nf">arima_reg</span><span class="p">()</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">set_engine</span><span class="p">(</span><span class="s">&#34;auto_arima&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">fit</span><span class="p">(</span><span class="n">auto_arima_formula</span><span class="p">,</span> <span class="n">train_sugar_boxcox_tbl</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># testing</span>
+</span></span><span class="line"><span class="cl"><span class="n">calibration_boxcox_tbl</span> <span class="o">&lt;-</span> <span class="nf">modeltime_table</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="n">auto_arima_boxcox_fit</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">modeltime_calibrate</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">new_data</span> <span class="o">=</span> <span class="n">test_sugar_boxcox_tbl</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># accuracy on testing data</span>
+</span></span><span class="line"><span class="cl"><span class="n">sugar_boxcox_accuracy</span> <span class="o">&lt;-</span> <span class="n">calibration_boxcox_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">modeltime_accuracy</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># vizualing forecasting</span>
+</span></span><span class="line"><span class="cl"><span class="n">calibration_boxcox_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">modeltime_forecast</span><span class="p">(</span><span class="n">new_data</span> <span class="o">=</span> <span class="n">test_sugar_boxcox_tbl</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                     <span class="n">actual_data</span> <span class="o">=</span> <span class="n">ts_boxcox_sugar_tbl</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">plot_modeltime_forecast</span><span class="p">(</span><span class="n">.interactive</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Sugar - Model Performance on Assessment Data&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;BoxCox transformed values&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;linkedin.com/in/lucianobatistads/&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/plot31.svg"
+        data-srcset="/img/demand_forecasting/plot31.svg, /img/demand_forecasting/plot31.svg 1.5x, /img/demand_forecasting/plot31.svg 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/plot31.svg"
+        title="plot" /></p>
+<blockquote>
+<p>Besides the fit was a little off of the real values, the model could capture a general seasonality and trend. We’ll stick with this model for now.</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># refiting ----</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># boxcox</span>
+</span></span><span class="line"><span class="cl"><span class="n">refit_boxcox_tbl</span> <span class="o">&lt;-</span> <span class="n">calibration_boxcox_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">modeltime_refit</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">ts_boxcox_sugar_tbl</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">refit_boxcox_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">modeltime_forecast</span><span class="p">(</span><span class="n">h</span> <span class="o">=</span> <span class="s">&#34;3 years&#34;</span><span class="p">,</span> <span class="n">actual_data</span> <span class="o">=</span> <span class="n">ts_boxcox_sugar_tbl</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">plot_modeltime_forecast</span><span class="p">(</span><span class="n">.interactive</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Sugar - Demand Forecast&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;Prediction for the next 3 years of Soybean Exports&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;BoxCox transformed values&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;linkedin.com/in/lucianobatistads/&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/plot32.svg"
+        data-srcset="/img/demand_forecasting/plot32.svg, /img/demand_forecasting/plot32.svg 1.5x, /img/demand_forecasting/plot32.svg 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/plot32.svg"
+        title="plot" /></p>
+<h4 id="pos-processing-step-2">Pos-Processing step</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># inverting transformation</span>
+</span></span><span class="line"><span class="cl"><span class="n">forecast_boxcox_sugar_tbl</span> <span class="o">&lt;-</span> <span class="n">refit_boxcox_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">modeltime_forecast</span><span class="p">(</span><span class="n">h</span> <span class="o">=</span> <span class="s">&#34;3 years&#34;</span><span class="p">,</span> <span class="n">actual_data</span> <span class="o">=</span> <span class="n">ts_boxcox_sugar_tbl</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">forecast_sugar_model2_tbl</span> <span class="o">&lt;-</span> <span class="n">forecast_boxcox_sugar_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">.value</span> <span class="o">=</span> <span class="nf">box_cox_inv_vec</span><span class="p">(</span><span class="n">.value</span><span class="p">,</span> <span class="n">lambda</span> <span class="o">=</span> <span class="n">boxcox_sugar_lambda</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">         <span class="n">.conf_lo</span> <span class="o">=</span> <span class="nf">box_cox_inv_vec</span><span class="p">(</span><span class="n">.conf_lo</span><span class="p">,</span> <span class="n">lambda</span> <span class="o">=</span> <span class="n">boxcox_sugar_lambda</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">         <span class="n">.conf_hi</span> <span class="o">=</span> <span class="nf">box_cox_inv_vec</span><span class="p">(</span><span class="n">.conf_hi</span><span class="p">,</span> <span class="n">lambda</span> <span class="o">=</span> <span class="n">boxcox_sugar_lambda</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">forecast_sugar_model2_tbl</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">plot_modeltime_forecast</span><span class="p">(</span><span class="n">.interactive</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_y_continuous</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="n">scales</span><span class="o">::</span><span class="nf">number_format</span><span class="p">(</span><span class="n">scale</span> <span class="o">=</span> <span class="m">1e-6</span><span class="p">,</span> <span class="n">suffix</span> <span class="o">=</span> <span class="s">&#34;M&#34;</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Sugar - Demand Forecast&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;Prediction for the next 3 years of Corn Exports&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Millions of Tons&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;linkedin.com/in/lucianobatistads/&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/plot33.svg"
+        data-srcset="/img/demand_forecasting/plot33.svg, /img/demand_forecasting/plot33.svg 1.5x, /img/demand_forecasting/plot33.svg 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/plot33.svg"
+        title="plot" /></p>
+<p>So, this is our final model to predict the next 3 years of sugar exports, and also the end of this first phase of the project.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/demand_forecasting/congrats.gif"
+        data-srcset="/img/demand_forecasting/congrats.gif, /img/demand_forecasting/congrats.gif 1.5x, /img/demand_forecasting/congrats.gif 2x"
+        data-sizes="auto"
+        alt="/img/demand_forecasting/congrats.gif"
+        title="gif" /></p>
+<h3 id="next-steps-important">Next Steps! (Important)</h3>
+<p>Throughout the project, we could see that ARIMA family of models is a very powerfull method. But, there is so much machine learning and deep learning algorithms available to work with time series forecasting that this article would be too big if I putt all that here.</p>
+<p>Now, that we have a great understanding about our dataset and also we have a really nice baseline model for all three commodities (soybean, corn and sugar), we can go deeper in modeling and cover advanced topics.</p>
+<p>As a spoiler to the next part of this project, check this list:</p>
+<ul>
+<li>Much more different models (<code>modeltime</code>)</li>
+<li>Lot more feature engineering (<code>recipes</code>)</li>
+<li>Hyperparameter Tunning (<code>tune</code>)</li>
+<li>Resampling tecniques (<code>modeltime.resample</code>)</li>
+<li>Stacking and ensembles models (<code>modeltime.ensemble</code>)</li>
+</ul>
+<p>Thanks for your attention, any question please let me know, Bye!</p>
+<p>source: <a href="https://www.toppr.com/guides/business-economics/theory-of-demand/demand-forecasting/" target="_blank" rel="noopener noreffer ">https://www.toppr.com/guides/business-economics/theory-of-demand/demand-forecasting/</a>
+source: <a href="https://blog.flexis.com/the-benefits-of-forecasting-in-planning-and-production" target="_blank" rel="noopener noreffer ">https://blog.flexis.com/the-benefits-of-forecasting-in-planning-and-production</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-10-25</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://www.lobdata.com.br/posts/demand_forecasting_brazilian_commodities/" data-title="Demand Forecasting of Brazilian Commodities" data-hashtags="Project,Data Science,Machine Learning,Time Series"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://www.lobdata.com.br/posts/demand_forecasting_brazilian_commodities/" data-hashtag="Project"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://www.lobdata.com.br/posts/demand_forecasting_brazilian_commodities/" data-title="Demand Forecasting of Brazilian Commodities"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://www.lobdata.com.br/posts/demand_forecasting_brazilian_commodities/" data-title="Demand Forecasting of Brazilian Commodities"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://www.lobdata.com.br/posts/demand_forecasting_brazilian_commodities/" data-title="Demand Forecasting of Brazilian Commodities"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/project/">Project</a>,&nbsp;<a href="/tags/data-science/">Data Science</a>,&nbsp;<a href="/tags/machine-learning/">Machine Learning</a>,&nbsp;<a href="/tags/time-series/">Time Series</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/correlation_analysis_in_r/" class="prev" rel="prev" title="Effective approach to analyze correlation coefficients"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Effective approach to analyze correlation coefficients</a>
+            <a href="/posts/finance_control_app/" class="next" rel="next" title="Criando uma API Pronta para Produção com FastAPI - PT.1">Criando uma API Pronta para Produção com FastAPI - PT.1<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.114.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Luba</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
