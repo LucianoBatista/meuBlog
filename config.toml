@@ -57,6 +57,9 @@ name = "About"
 url = "/about/"
 title = ""
 
+[outputs]
+home = ["HTML", "RSS", "JSON"]
+
 # Markup related configuration in Hugo
 [markup]
 # Syntax Highlighting (https://gohugo.io/content-management/syntax-highlighting)
@@ -76,3 +79,25 @@ name = "LobData"
 [params.home.profile]
 title = "Oi"
 subtitle = "This is My New Hugo Site"
+
+[params.search]
+  enable = true
+  # type of search engine ["lunr", "algolia"]
+  type = "algolia"
+  # max index length of the chunked content
+  contentLength = 4000
+  # placeholder of the search bar
+  placeholder = ""
+  #  max number of results length
+  maxResultLength = 10
+  #  snippet length of the result
+  snippetLength = 30
+  #  HTML tag name of the highlight part in results
+  highlightTag = "em"
+  #  whether to use the absolute URL based on the baseURL in search index
+  absoluteURL = false
+  [params.search.algolia]
+    index = "lobdata"
+    appID = "56XLI6KGAP"
+    searchKey = "d7c82e758baf996bfc63e0fffb1098fd"
+
