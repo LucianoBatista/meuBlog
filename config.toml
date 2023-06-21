@@ -81,23 +81,30 @@ title = "Oi"
 subtitle = "This is My New Hugo Site"
 
 [params.search]
-  enable = true
-  # type of search engine ["lunr", "algolia"]
-  type = "algolia"
-  # max index length of the chunked content
-  contentLength = 4000
-  # placeholder of the search bar
-  placeholder = ""
-  #  max number of results length
-  maxResultLength = 10
-  #  snippet length of the result
-  snippetLength = 30
-  #  HTML tag name of the highlight part in results
-  highlightTag = "em"
-  #  whether to use the absolute URL based on the baseURL in search index
-  absoluteURL = false
-  [params.search.algolia]
-    index = "lobdata"
-    appID = "56XLI6KGAP"
-    searchKey = "d7c82e758baf996bfc63e0fffb1098fd"
-
+enable = true
+# type of search engine ["lunr", "algolia"]
+type = "algolia"
+# max index length of the chunked content
+contentLength = 4000
+# placeholder of the search bar
+placeholder = ""
+#  max number of results length
+maxResultLength = 10
+#  snippet length of the result
+snippetLength = 30
+#  HTML tag name of the highlight part in results
+highlightTag = "em"
+#  whether to use the absolute URL based on the baseURL in search index
+absoluteURL = false
+[params.search.algolia]
+index = "lobdata"
+appID = "56XLI6KGAP"
+searchKey = "d7c82e758baf996bfc63e0fffb1098fd"
+[params.page.comment]
+enable = true
+# Disqus comment config
+[params.page.comment.disqus]
+# LoveIt NEW | 0.1.1
+enable = true
+# Disqus shortname to use Disqus in posts
+shortname = "https-www-lobdata-com-br"
