@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Docker - Tag - My New Hugo Site</title>
+        <title>Docker - Tag - LobData</title>
         <link>https://www.lobdata.com.br/tags/docker/</link>
-        <description>Docker - Tag - My New Hugo Site</description>
+        <description>Docker - Tag - LobData</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 01 Aug 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/docker/" rel="self" type="application/rss+xml" /><item>
     <title>Criando uma API Pronta para Produção com FastAPI - PT.5</title>
     <link>https://www.lobdata.com.br/posts/econowallet-fastapi-pt5/</link>

@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Logística - Tag - My New Hugo Site</title>
+        <title>Logística - Tag - LobData</title>
         <link>https://www.lobdata.com.br/tags/log%C3%ADstica/</link>
-        <description>Logística - Tag - My New Hugo Site</description>
+        <description>Logística - Tag - LobData</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 16 Mar 2019 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/log%C3%ADstica/" rel="self" type="application/rss+xml" /><item>
     <title>5 Diferentes Aplicações de Ciência de Dados</title>
     <link>https://www.lobdata.com.br/posts/5_topics_data_science_application/</link>

@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Data Science - Tag - My New Hugo Site</title>
+        <title>Data Science - Tag - LobData</title>
         <link>https://www.lobdata.com.br/tags/data-science/</link>
-        <description>Data Science - Tag - My New Hugo Site</description>
+        <description>Data Science - Tag - LobData</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 14 Jun 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/data-science/" rel="self" type="application/rss+xml" /><item>
     <title>Classificador BNCC Pt.2</title>
     <link>https://www.lobdata.com.br/posts/bncc-modeling/</link>

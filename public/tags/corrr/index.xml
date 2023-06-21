@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>corrr - Tag - My New Hugo Site</title>
+        <title>corrr - Tag - LobData</title>
         <link>https://www.lobdata.com.br/tags/corrr/</link>
-        <description>corrr - Tag - My New Hugo Site</description>
+        <description>corrr - Tag - LobData</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 13 Oct 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/corrr/" rel="self" type="application/rss+xml" /><item>
     <title>Effective approach to analyze correlation coefficients</title>
     <link>https://www.lobdata.com.br/posts/correlation_analysis_in_r/</link>

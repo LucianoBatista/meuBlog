@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Autocorrelation - Tag - My New Hugo Site</title>
+        <title>Autocorrelation - Tag - LobData</title>
         <link>https://www.lobdata.com.br/tags/autocorrelation/</link>
-        <description>Autocorrelation - Tag - My New Hugo Site</description>
+        <description>Autocorrelation - Tag - LobData</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 15 Sep 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/autocorrelation/" rel="self" type="application/rss+xml" /><item>
     <title>How to Perform Correlation Analysis in Time Series data using R?</title>
     <link>https://www.lobdata.com.br/posts/r_correlation/</link>

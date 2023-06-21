@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Pandas - Tag - My New Hugo Site</title>
+        <title>Pandas - Tag - LobData</title>
         <link>https://www.lobdata.com.br/tags/pandas/</link>
-        <description>Pandas - Tag - My New Hugo Site</description>
+        <description>Pandas - Tag - LobData</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 24 Oct 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/pandas/" rel="self" type="application/rss+xml" /><item>
     <title>Efficient Pandas</title>
     <link>https://www.lobdata.com.br/posts/efficient-pandas/</link>

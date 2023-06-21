@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Machine Learning - Tag - My New Hugo Site</title>
+        <title>Machine Learning - Tag - LobData</title>
         <link>https://www.lobdata.com.br/tags/machine-learning/</link>
-        <description>Machine Learning - Tag - My New Hugo Site</description>
+        <description>Machine Learning - Tag - LobData</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 25 Oct 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/machine-learning/" rel="self" type="application/rss+xml" /><item>
     <title>Demand Forecasting of Brazilian Commodities</title>
     <link>https://www.lobdata.com.br/posts/demand_forecasting_brazilian_commodities/</link>

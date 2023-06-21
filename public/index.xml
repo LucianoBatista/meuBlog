@@ -1,28 +1,11 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>My New Hugo Site</title>
+        <title>LobData</title>
         <link>https://www.lobdata.com.br/</link>
         <description>This is my cool site</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 21 Jun 2023 11:07:36 -0300</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 14 Jun 2022 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://www.lobdata.com.br/index.xml" rel="self" type="application/rss+xml" />
         <item>
-    <title>First_post</title>
-    <link>https://www.lobdata.com.br/posts/first_post/</link>
-    <pubDate>Wed, 21 Jun 2023 11:07:36 -0300</pubDate>
-    <author>Luba</author>
-    <guid>https://www.lobdata.com.br/posts/first_post/</guid>
-    <description><![CDATA[Hi! This is a tip A tip banner ]]></description>
-</item>
-<item>
-    <title>mynotes 01</title>
-    <link>https://www.lobdata.com.br/posts/my_notes/</link>
-    <pubDate>Wed, 21 Jun 2023 00:00:00 &#43;0000</pubDate>
-    <author>Luciano</author>
-    <guid>https://www.lobdata.com.br/posts/my_notes/</guid>
-    <description><![CDATA[Estou iniciando um série de posts aqui no blog sobre IA Generativa. O conteúdo é como se fossem minhas anotações sobre um livro que estou lendo, e a intenção é que a cada capítulo eu traga um compilado aqui do que aprendi, por isso estarei chamando de mynotes.
-Teremos teoria e código, e além disso vou tentar dar meus 2 centavos de contribuição relacionando com fontes externas que talvez faça sentido relacionar.]]></description>
-</item>
-<item>
     <title>Classificador BNCC Pt.2</title>
     <link>https://www.lobdata.com.br/posts/bncc-modeling/</link>
     <pubDate>Tue, 14 Jun 2022 00:00:00 &#43;0000</pubDate>
@@ -99,6 +82,23 @@ A documentação do Docker para instalação é muito bem explicada.]]></descrip
     <description><![CDATA[Neste tutorial iremos iniciar o Econowallet, essa aplicação que vai contar com uma API para controle financeiro de suas despesas e investimentos, se você não viu o post passado (onde explico mais sobre meu objetivo com esse projeto) clique aqui.
 Tópicos que serão abordados nesse post:
 Setup Inicial: main.py e config.py Rotas async Setup Como todo projeto python, é uma boa prática que você crie um ambiente virtual isolando as dependências do projeto, isso evita que você possa ter conflito entre diferentes libs de outros projetos que esteja trabalhando.]]></description>
+</item>
+<item>
+    <title>Criando uma API Pronta para Produção com FastAPI - PT.1</title>
+    <link>https://www.lobdata.com.br/posts/finance_control_app/</link>
+    <pubDate>Tue, 30 Mar 2021 00:00:00 &#43;0000</pubDate>
+    <author>Luciano</author>
+    <guid>https://www.lobdata.com.br/posts/finance_control_app/</guid>
+    <description><![CDATA[Motivação Atualmente tenho tido bastante dor de cabeça em voltar a utilizar o Excel para fazer uma planilha de controle de gastos, apesar da simplicidade do software, constantemente meus registros de compras feitas ou alguma outra movimentação financeira ficam uma completa bagunça. O que pode ser justificado pela minha falta de destreza com a ferramenta, mas fato é que a experiência estava deixando a desejar e consequentemente acabei perdendo a disciplina de organizar meus gastos, o que não recomendo a ninguém.]]></description>
+</item>
+<item>
+    <title>Demand Forecasting of Brazilian Commodities</title>
+    <link>https://www.lobdata.com.br/posts/demand_forecasting_brazilian_commodities/</link>
+    <pubDate>Sun, 25 Oct 2020 00:00:00 &#43;0000</pubDate>
+    <author>Luciano</author>
+    <guid>https://www.lobdata.com.br/posts/demand_forecasting_brazilian_commodities/</guid>
+    <description><![CDATA[Demand Forecasting of Brazilian Commodities Soybean, Corn, Sugar, Soybean Meal, Soybean Oil and Wheat (left to right).
+Demand Forecasting is a technique for estimation of probable demand for a product or services. It is based on the analysis of past demand for that product or service in the present market condition. Demand forecasting should be done on a scientific basis and facts and events related to forecasting should be considered.]]></description>
 </item>
 </channel>
 </rss>

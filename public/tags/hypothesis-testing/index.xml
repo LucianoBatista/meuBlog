@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Hypothesis Testing - Tag - My New Hugo Site</title>
+        <title>Hypothesis Testing - Tag - LobData</title>
         <link>https://www.lobdata.com.br/tags/hypothesis-testing/</link>
-        <description>Hypothesis Testing - Tag - My New Hugo Site</description>
+        <description>Hypothesis Testing - Tag - LobData</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 20 Sep 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/hypothesis-testing/" rel="self" type="application/rss+xml" /><item>
     <title>Hypothesis Testing by Computational Methodology - Part 1</title>
     <link>https://www.lobdata.com.br/posts/hype_test/</link>
