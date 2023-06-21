@@ -8,54 +8,53 @@
     
     <meta property="og:site_name" content="LOB.DATA">
     <meta property="og:type" content="article">
-    <meta property="og:image" content="https://www.lobdata.com.br/img/banner/beach_more_sea.jpg">
 
     
-      <meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:image" content="https://www.cedricscherer.com/img/banner/banner.png" >
-    
-
+    <meta property="og:image" content="img/post_0_4.png">
+    <meta property="twitter:image" content="img/post_0_4.png" />
     
 
     
-      <meta name="title" content="Criando uma API Pronta para Produção com FastAPI - PT.4" />
-      <meta property="og:title" content="Criando uma API Pronta para Produção com FastAPI - PT.4 - Luba" />
-      <meta property="twitter:title" content="Criando uma API Pronta para Produção com FastAPI - PT.4 - Luba" />
-      <meta property="twitter:text:title" content="Criando uma API Pronta para Produção com FastAPI - PT.4 - Luba" />
+    <meta name="title" content="Criando uma API Pronta para Produção com FastAPI - PT.4" />
+    <meta property="og:title" content="Criando uma API Pronta para Produção com FastAPI - PT.4" />
+    <meta property="twitter:title" content="Criando uma API Pronta para Produção com FastAPI - PT.4" />
     
 
     
-      <meta name="description" content="Blog by LuBa">
-      <meta property="og:description" content="Blog by LuBa" />
-      <meta property="twitter:description" content="Blog by LuBa" />
+    <meta name="description" content="Blog by LuBa">
+    <meta property="og:description" content="Blog by LuBa" />
+    <meta property="twitter:description" content="Blog by LuBa" />
     
 
+    
+    <meta property="twitter:card" content="summary" />
+    
     
 
     <meta name="keyword"  content="Data Visualization, Data Science, Programming, Web Development">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Criando uma API Pronta para Produção com FastAPI - PT.4 - Luba</title>
+    <title>Criando uma API Pronta para Produção com FastAPI - PT.4 | Luba</title>
 
     <link rel="canonical" href="/2021/07/31/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.4/">
 
-    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
-
+    
+    
     
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 
     
-    <link rel="stylesheet" href="/css/hux-blog.min.css">
-
-    
-    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
 
     
     <link rel="stylesheet" href="/css/zanshang.css">
 
     
-    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/css/font-awesome.all.min.css">
+
     
+    
+
     
     <script src="/js/jquery.min.js"></script>
 
@@ -66,13 +65,33 @@
     <script src="/js/hux-blog.min.js"></script>
 
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/styles/foundation.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
 </head>
 
 
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5NWJ42KMKC"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-5NWJ42KMKC', { 'anonymize_ip': false });
+}
+</script>
+
+
+
+
+
+
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
     <div class="container-fluid">
         
         <div class="navbar-header page-scroll">
@@ -91,31 +110,34 @@
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="/">Blog</a>
+                        <a href="/">All Posts</a>
                     </li>
                     
-                    <li>
-                        <a href="/categories/aplica%C3%A7%C3%B5es">aplicações</a>
-                    </li>
+                        
+                        <li>
+                            <a href="/categories/aplica%C3%A7%C3%B5es/">aplicações</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/project/">project</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/projetos/">projetos</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/tutorials/">tutorials</a>
+                        </li>
+                        
                     
-                    <li>
-                        <a href="/categories/project">project</a>
-                    </li>
                     
-                    <li>
-                        <a href="/categories/projetos">projetos</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/tutorials">tutorials</a>
-                    </li>
-                    
-
 		    
-                        <li><a href="/top/about/">About Me</a></li>
+                        <li><a href="/top/about//">About Me</a></li>
                     
-
-                    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
                 </ul>
             </div>
         </div>
@@ -160,7 +182,9 @@
         background-image: url('/img/post_0_4.png')
     }
 </style>
-<header class="intro-header">
+
+<header class="intro-header" >
+
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -199,14 +223,15 @@
                     <h1>Criando uma API Pronta para Produção com FastAPI - PT.4</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
-			Posted by
-			
-			    Luciano
-			
-			on
-			Saturday, July 31, 2021
                         
-                            <span id="/2021/07/31/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.4/" class="leancloud_visitors meta_data_item" data-flag-title="">
+                            Posted by 
+                            
+                                Luciano
+                             
+                            on 
+                            Saturday, July 31, 2021
+                            
+                                <span id="/2021/07/31/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.4/" class="leancloud_visitors meta_data_item" data-flag-title="">
     <span class="post-meta-item-icon">
       <span class="octicon octicon-eye"></span> 
     </span>
@@ -339,7 +364,10 @@ $(function() {
 });
 </script>
 
-                        
+                            
+                            
+                            
+                            
                     </span>
                 </div>
             </div>
@@ -361,28 +389,6 @@ $(function() {
                 post-container">
 
                 
-                <header>
-                    <h3>Table of Contents</h3>
-                </header>
-                <nav id="TableOfContents">
-  <ul>
-    <li><a href="#nos-capítulos-anteriores-">Nos Capítulos Anteriores &hellip;</a></li>
-    <li><a href="#modificações">Modificações</a></li>
-    <li><a href="#database">Database</a>
-      <ul>
-        <li><a href="#configurando-o-mysql">Configurando o MySQL</a></li>
-        <li><a href="#conectando-ao-mysql">Conectando ao MySQL</a></li>
-      </ul>
-    </li>
-    <li><a href="#sqlalchemy">SQLAlchemy</a>
-      <ul>
-        <li><a href="#como-funciona-o-sqlalchemy-omr">Como funciona o SQLAlchemy OMR?</a></li>
-      </ul>
-    </li>
-    <li><a href="#próximo-capítulo-">Próximo Capítulo&hellip; 🎉</a></li>
-  </ul>
-</nav>
-                
                 <h2 id="nos-capítulos-anteriores-">Nos Capítulos Anteriores &hellip;</h2>
 <p>Após um tempinho sem postar nada, vamos dar continuidade a essa série sobre como desenvolver uma API pronta pro Deploy! 🚀 🚀</p>
 <p>Essa é a parte 4 do nosso projeto do <strong>EconoWallet</strong> e se você quiser verificar o que já fizemos até o momento, acesse os links abaixo:</p>
@@ -394,75 +400,78 @@ $(function() {
 <li><a href="https://www.lobdata.com.br/2021/08/01/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.5/">Parte 5</a></li>
 </ul>
 <p>Dando continuidade a nossa aplicação, hoje vamos configurar qual será nosso banco de dados. Apesar de ter tido que nesse post iríamos também configurar o <strong>SQLAlchemy</strong>, prefirir deixar para o próximo post, pois iria ficar muito conteúdo nesse artigo.</p>
-<p><img src="/img/finance_app_tutorial/pt4/areYouReady.gif" alt="I&rsquo;m ready when you are"></p>
+<p>
+  <img src="/img/finance_app_tutorial/pt4/areYouReady.gif" alt="I&amp;rsquo;m ready when you are">
+
+</p>
 <h2 id="modificações">Modificações</h2>
 <p>Eu fiz algumas modificações de localização de arquivos de uma forma que fica simples a separação de competências do nosso app. Basicamente agora temos tudo que diz respeito às configurações do Docker (<code>Dockerfile</code>, <code>docker-compose</code>, <code>.dockerignore</code>) fora do diretório do projeto. Veja o resultado:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">.
-├── docker-compose.yml
-├── Dockerfile
-├── Pipfile
-├── Pipfile.lock
-├── project
-│   └── app
-│       ├── config.py
-│       ├── __init__.py
-│       └── main.py
-└── README.md
-</code></pre></div><p>E além de alterar a localização dos arquivos, foi preciso fazer um pequeno ajuste no <code>docker-compose.yml</code> para referenciar o Dockerfile no root do projeto.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># modified</span>
-<span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3.8&#39;</span>
-
-<span style="color:#f92672">services</span>:
-  <span style="color:#f92672">web</span>:
-    <span style="color:#f92672">build</span>: <span style="color:#ae81ff">.</span>
-    <span style="color:#f92672">command</span>: <span style="color:#ae81ff">uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 8000</span>
-    <span style="color:#f92672">volumes</span>:
-      - <span style="color:#ae81ff">./project:/usr/src/app</span>
-    <span style="color:#f92672">ports</span>:
-      - <span style="color:#ae81ff">8004</span>:<span style="color:#ae81ff">8000</span>
-    <span style="color:#f92672">environment</span>:
-      - <span style="color:#ae81ff">ENVIRONMENT=dev</span>
-      - <span style="color:#ae81ff">TESTING=0</span>
-</code></pre></div><p>Agora provavelmente tudo deve estar funcionando normalmente. Build novamente e tente acessar o <a href="http://127.0.0.1:8004/docs/">swager da API</a> (<code>docker-compose up --build -d</code>).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.
+</span></span><span style="display:flex;"><span>├── docker-compose.yml
+</span></span><span style="display:flex;"><span>├── Dockerfile
+</span></span><span style="display:flex;"><span>├── Pipfile
+</span></span><span style="display:flex;"><span>├── Pipfile.lock
+</span></span><span style="display:flex;"><span>├── project
+</span></span><span style="display:flex;"><span>│   └── app
+</span></span><span style="display:flex;"><span>│       ├── config.py
+</span></span><span style="display:flex;"><span>│       ├── __init__.py
+</span></span><span style="display:flex;"><span>│       └── main.py
+</span></span><span style="display:flex;"><span>└── README.md
+</span></span></code></pre></div><p>E além de alterar a localização dos arquivos, foi preciso fazer um pequeno ajuste no <code>docker-compose.yml</code> para referenciar o Dockerfile no root do projeto.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># modified</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3.8&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">web</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">build</span>: <span style="color:#ae81ff">.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">command</span>: <span style="color:#ae81ff">uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 8000</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./project:/usr/src/app</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">8004</span>:<span style="color:#ae81ff">8000</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">ENVIRONMENT=dev</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">TESTING=0</span>
+</span></span></code></pre></div><p>Agora provavelmente tudo deve estar funcionando normalmente. Build novamente e tente acessar o <a href="http://127.0.0.1:8004/docs/">swager da API</a> (<code>docker-compose up --build -d</code>).</p>
 <h2 id="database">Database</h2>
 <p>Nossa intenção durante o desenvolvimento é buscar ao máximo que nosso ambiente se assemelhe ao ambiente de produção, onde nossa API vai estar sendo acessada por usuários reais. Nesse cenário, as informações trafegadas precisam ser persistidas em algum lugar, e normalmente é nesse ponto onde o banco de dados se encaixa.</p>
 <p>Saiba que existem diferentes banco de dados para diferentes tipos de problemas, para nossa aplicação iremos utilizar o <strong>MySQL</strong>.</p>
 <h3 id="configurando-o-mysql">Configurando o MySQL</h3>
 <p>É realmente muito simples configurar suporte à uma base de dados à sua aplicação utilizando o <strong>docker-compose</strong>. Tudo que você precisa fazer é adicionar mais um <em>service</em>, veja:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3.8&#39;</span>
-
-<span style="color:#f92672">services</span>:
-  <span style="color:#f92672">web</span>:
-    <span style="color:#f92672">build</span>: <span style="color:#ae81ff">.</span>
-    <span style="color:#f92672">command</span>: <span style="color:#ae81ff">uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 8000</span>
-    <span style="color:#f92672">volumes</span>:
-      - <span style="color:#ae81ff">./project:/usr/src/app</span>
-    <span style="color:#f92672">ports</span>:
-      - <span style="color:#ae81ff">8004</span>:<span style="color:#ae81ff">8000</span>
-    <span style="color:#f92672">environment</span>:
-      - <span style="color:#ae81ff">ENVIRONMENT=dev</span>
-      - <span style="color:#ae81ff">TESTING=0</span>
-    <span style="color:#75715e"># new</span>
-    <span style="color:#f92672">depends_on</span>:
-      - <span style="color:#ae81ff">db</span>
-  <span style="color:#75715e"># new</span>
-  <span style="color:#f92672">db</span>:
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">mysql:8.0</span>
-    <span style="color:#f92672">command</span>: --<span style="color:#ae81ff">default-authentication-plugin=mysql_native_password</span>
-    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
-    <span style="color:#f92672">volumes</span>:
-      - <span style="color:#ae81ff">mysql_data:/var/lib/mysql_data/data/</span>
-    <span style="color:#f92672">environment</span>:
-      <span style="color:#f92672">MYSQL_DATABASE</span>: <span style="color:#ae81ff">econowallet</span>
-      <span style="color:#f92672">MYSQL_USER</span>: <span style="color:#ae81ff">user</span>
-      <span style="color:#f92672">MYSQL_PASSWORD</span>: <span style="color:#ae81ff">password</span>
-      <span style="color:#f92672">MYSQL_ROOT_PASSWORD</span>: <span style="color:#ae81ff">password</span>
-    <span style="color:#f92672">ports</span>:
-      - <span style="color:#ae81ff">3320</span>:<span style="color:#ae81ff">3306</span>
-
-<span style="color:#f92672">volumes</span>:
-  <span style="color:#f92672">mysql_data</span>:
-</code></pre></div><p>O que está acontecendo aqui é bem semelhante ao serviço <code>web</code>, com algumas ressalvas:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3.8&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">web</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">build</span>: <span style="color:#ae81ff">.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">command</span>: <span style="color:#ae81ff">uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 8000</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./project:/usr/src/app</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">8004</span>:<span style="color:#ae81ff">8000</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">ENVIRONMENT=dev</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">TESTING=0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># new</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">depends_on</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">db</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># new</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">db</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">mysql:8.0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">command</span>: --<span style="color:#ae81ff">default-authentication-plugin=mysql_native_password</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">mysql_data:/var/lib/mysql_data/data/</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">MYSQL_DATABASE</span>: <span style="color:#ae81ff">econowallet</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">MYSQL_USER</span>: <span style="color:#ae81ff">user</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">MYSQL_PASSWORD</span>: <span style="color:#ae81ff">password</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">MYSQL_ROOT_PASSWORD</span>: <span style="color:#ae81ff">password</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">3320</span>:<span style="color:#ae81ff">3306</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">mysql_data</span>:
+</span></span></code></pre></div><p>O que está acontecendo aqui é bem semelhante ao serviço <code>web</code>, com algumas ressalvas:</p>
 <ul>
 <li><code>depends_on</code>: aqui é utilizado pois agora o nosso serviço <code>web</code> depende que o <code>db</code> esteja pronto primeiro, antes de iniciar.</li>
 <li>estamos partindo de uma imagem base <a href="https://hub.docker.com/_/mysql">oficial</a> do MySQL.</li>
@@ -471,34 +480,52 @@ $(function() {
 <p>Além disso, agora precisamos especificar algumas variáveis de ambiente que serão utilizadas para criar nossa base de dados para o <strong>EconoWallet</strong> e a porta que iremos nos conectar para acessar as informações. E, como para nosso banco de dados estamos especificando um volume que não é um diretório, o mesmo precisa ser indicado ao final do <code>docker-compose.yml</code>.</p>
 <h3 id="conectando-ao-mysql">Conectando ao MySQL</h3>
 <p>Agora que nosso <code>docker-compose.yml</code> está configurado, podemos rebuildar nossa aplicação, eu gosto de <em>derrubar</em> o serviço removendo os volumes sempre que tem uma modificação relativamente grande, e em seguida <em>subir</em> novamente.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker-compose down -v
-docker-compose up --build -d
-</code></pre></div><p>Você pode também consultar os logs para saber se tudo correu bem, basta rodar <code>docker-compose logs -f</code>. Se tudo correu bem você já está apto a conectar no nosso banco de dados.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker-compose down -v
+</span></span><span style="display:flex;"><span>docker-compose up --build -d
+</span></span></code></pre></div><p>Você pode também consultar os logs para saber se tudo correu bem, basta rodar <code>docker-compose logs -f</code>. Se tudo correu bem você já está apto a conectar no nosso banco de dados.</p>
 <p>Se você tem uma versão premium do PyCharm é bem simples de fazer isso, mas aqui eu mostrarei como configurar pelo <strong>DBeaver</strong> um software gratuito e que todos tem acesso.</p>
-<p><img src="/img/finance_app_tutorial/pt4/dbeaver.png" alt="DBeaver"></p>
+<p>
+  <img src="/img/finance_app_tutorial/pt4/dbeaver.png" alt="DBeaver">
+
+</p>
 <p>Aqui tem o <a href="https://dbeaver.io">link oficial</a> do site deles, a instalação é super direta para qualquer SO.</p>
 <h4 id="passo-a-passo">Passo a Passo</h4>
 <ol>
 <li>Com o software instalado, vá na lateral superior esquerda e clique no símbolo de uma tomada:</li>
 </ol>
-<p><img src="/img/finance_app_tutorial/pt4/dbeaver-1.png" alt="DBeaver"></p>
+<p>
+  <img src="/img/finance_app_tutorial/pt4/dbeaver-1.png" alt="DBeaver">
+
+</p>
 <ol start="2">
 <li>
 <p>Agora você vai precisar preencher os campos as informações que estão no <code>docker-compose.yml</code> e clicar em <strong>Test connection</strong>.
-<img src="/img/finance_app_tutorial/pt4/dbeaver-2.png" alt="DBeaver"></p>
+
+  <img src="/img/finance_app_tutorial/pt4/dbeaver-2.png" alt="DBeaver">
+
+</p>
 </li>
 <li>
 <p>Provavelmente ele vai solicitar instalar alguns drives e se tudo correr bem verá uma mensagem como no print.
-<img src="/img/finance_app_tutorial/pt4/dbeaver-3.png" alt="DBeaver"></p>
+
+  <img src="/img/finance_app_tutorial/pt4/dbeaver-3.png" alt="DBeaver">
+
+</p>
 </li>
 <li>
 <p>Clique em finish e na lateral agora você deve estar vendo nosso banco já configurado!! ✨
-<img src="/img/finance_app_tutorial/pt4/dbeaver-4.png" alt="DBeaver"></p>
+
+  <img src="/img/finance_app_tutorial/pt4/dbeaver-4.png" alt="DBeaver">
+
+</p>
 </li>
 </ol>
 <p>Apesar de estarmos com nosso banco configurado, ainda não temos nenhuma tabela para interagir e também não temos nenhuma interação entre a API e o banco. <strong>SQLAlchemy ao resgate!!</strong> 🩺</p>
 <h2 id="sqlalchemy">SQLAlchemy</h2>
-<p><img src="/img/finance_app_tutorial/pt4/sqlalchemy.png" alt="SQLAlchemy"></p>
+<p>
+  <img src="/img/finance_app_tutorial/pt4/sqlalchemy.png" alt="SQLAlchemy">
+
+</p>
 <p><strong>SQLAlchemy</strong> faz parte de um conjunto de frameworkers que são utilizados para abstrair a complexidade de lidar com o banco de dados diretamente. Desenvolver com um ORM não te prende à um banco de dados específico, onde posteriormente é possível plugar a aplicação ao Postgres, MySQL, Oracle, MariaDB ou outros (contanto que o framework tenha suporte). Escolhi o <strong>SQLAlchemy</strong> por alguns motivos:</p>
 <ul>
 <li>pela robustes: o SQLAlchemy possui diferentes módulos (Core e ORM) que te permite fazer muita coisa legal.</li>
@@ -518,12 +545,18 @@ docker-compose up --build -d
 <ol>
 <li><strong>Cenário Um</strong></li>
 </ol>
-<p><img src="/img/finance_app_tutorial/pt4/sqlal-1.png" alt="SQLAlchemy Explain"></p>
+<p>
+  <img src="/img/finance_app_tutorial/pt4/sqlal-1.png" alt="SQLAlchemy Explain">
+
+</p>
 <p>Veja que partimos de uma classe mãe chamada de <code>declarative_base</code> pelo SQLAlchemy e que a mesma é utilizada na criação de cada um dos models. Além disso, após configurados os models, nós utilizamos o <code>.metadata.create_all(engine)</code> para de fato materializar esses models em tabelas no banco. Essa <strong>engine</strong> é justamente onde está a informação de qual banco de dados utilizar.</p>
 <ol>
 <li><strong>Cenário Dois</strong></li>
 </ol>
-<p><img src="/img/finance_app_tutorial/pt4/sqlal-2.png" alt="SQLAlchemy Explain"></p>
+<p>
+  <img src="/img/finance_app_tutorial/pt4/sqlal-2.png" alt="SQLAlchemy Explain">
+
+</p>
 <p>Aqui nós vemos como é feita a conexão com o banco e é por meio da session que faremos transações com as nossas tabelas criadas, o famoso <strong>C</strong>reate/<strong>R</strong>ead/<strong>U</strong>pdate/<strong>D</strong>elete. Um ponto para ficar atento é que ao configurar as sessions na nossa aplicação precisamos cuidar para que as sessions sejam sempre finalizadas, mesmo quando algum problema aconteça.</p>
 <h2 id="próximo-capítulo-">Próximo Capítulo&hellip; 🎉</h2>
 <p>Na próxima etapa, iremos configurar o <strong>SQLAlchemy</strong> e fazer com que nosso app comece a interagir com o banco!!</p>
@@ -535,6 +568,7 @@ docker-compose up --build -d
 
                 
 
+                
                 <hr>
                 <ul class="pager">
                     
@@ -550,13 +584,31 @@ docker-compose up --build -d
                     </li>
                     
                 </ul>
+                
 
                 
-<div id="disqus-comment"></div>
 
 
 
             </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
             
             <div class="
                 col-lg-8 col-lg-offset-2
@@ -569,6 +621,8 @@ docker-compose up --build -d
                     <hr class="hidden-sm hidden-xs">
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
+                        
+                        
                         
                         
                         
@@ -602,10 +656,6 @@ docker-compose up --build -d
                         
                         
                         
-                        <a href="/tags/data-visualization" title="data-visualization">
-                            data-visualization
-                        </a>
-                        
                         
                         
                         <a href="/tags/docker" title="docker">
@@ -626,9 +676,9 @@ docker-compose up --build -d
                         
                         
                         
-                        <a href="/tags/ggplot2" title="ggplot2">
-                            ggplot2
-                        </a>
+                        
+                        
+                        
                         
                         
                         
@@ -661,8 +711,6 @@ docker-compose up --build -d
                         <a href="/tags/project" title="project">
                             project
                         </a>
-                        
-                        
                         
                         
                         
@@ -727,52 +775,66 @@ docker-compose up --build -d
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <ul class="list-inline text-center">
-                    
-                    <li>
-                       <a href="" rel="alternate" type="application/rss+xml" title="LOB.DATA" >
-                           <span class="fa-stack fa-lg">
-                               <i class="fa fa-circle fa-stack-2x"></i>
-                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
-                           </span>
-                       </a>
-                    </li>
+                <ul class="list-inline text-center">                  
                     
                     
                     
+                    
+                    
+
+		            
                     
                     
                     <li>
                         <a target="_blank" href="https://github.com/LucianoBatista">
                             <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
                     </li>
-		                
+		            
+                    
                     
                     
                     <li>
                         <a target="_blank" href="https://www.linkedin.com/in/lucianobatistads/">
                             <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
                     </li>
-		                
+		           
                     
-                </ul>
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="LOB.DATA" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fas fa-circle fa-stack-2x"></i>
+                               <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+            
+             </ul>
 		<p class="copyright text-muted">
-                    A <a href="https://gohugo.io/">HUGO</a> <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite</a> page build with ♥ and powered by <a href="https://www.netlify.com/">Netlify</a>&nbsp;&nbsp;&bull;&nbsp;&nbsp;Header images by <a href="https://www.pexels.com/photo/climate-sea-landscape-nature-35626/">Pexels</a>
-    </p>
-    <p class="copyright text-muted" style='font-size:8pt;'>
-                    &copy; LOB.DATA 2019–2021. All rights reserved.&nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="https://lobdata.com.br/top/conduct/">Code of Conduct</a>
+                    Copyright &copy; LOB.DATA 2023
                     <br>
-                    Content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>.
-                    <br>
-                    <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
                 </p>
             </div>
         </div>
@@ -783,7 +845,7 @@ docker-compose up --build -d
 
 
 <script>
-    function async(u, c) {
+    function loadAsync(u, c) {
       var d = document, t = 'script',
           o = d.createElement(t),
           s = d.getElementsByTagName(t)[0];
@@ -801,10 +863,10 @@ docker-compose up --build -d
 <script>
     
     if($('#tag_cloud').length !== 0){
-        async("/js/jquery.tagcloud.js",function(){
+        loadAsync("/js/jquery.tagcloud.js",function(){
             $.fn.tagcloud.defaults = {
                 
-                color: {start: '#bbbbee', end: '#28a87d'},
+                color: {start: '#bbbbee', end: '#0085a1'},
             };
             $('#tag_cloud a').tagcloud();
         })
@@ -813,7 +875,7 @@ docker-compose up --build -d
 
 
 <script>
-    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
         var $nav = document.querySelector("nav");
         if($nav) FastClick.attach($nav);
     })
@@ -824,16 +886,65 @@ docker-compose up --build -d
 
 
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'G-5NWJ42KMKC', 'auto');
-	
-	ga('send', 'pageview');
-}
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
 
 
 

@@ -2,10 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://www.lobdata.com.br/tags/bag-of-words/</loc>
-    <lastmod>2022-06-14T00:00:00+00:00</lastmod>
+    <loc>https://www.lobdata.com.br/tags/ai/</loc>
+    <lastmod>2023-06-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lobdata.com.br/categories/</loc>
+    <lastmod>2023-06-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lobdata.com.br/tags/generative/</loc>
+    <lastmod>2023-06-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lobdata.com.br/tags/ia-generativa/</loc>
+    <lastmod>2023-06-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lobdata.com.br/</loc>
+    <lastmod>2023-06-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lobdata.com.br/2023/06/21/mynotes-01/</loc>
+    <lastmod>2023-06-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lobdata.com.br/post/</loc>
+    <lastmod>2023-06-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lobdata.com.br/tags/</loc>
+    <lastmod>2023-06-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lobdata.com.br/categories/tutorials/</loc>
+    <lastmod>2023-06-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lobdata.com.br/tags/bag-of-words/</loc>
     <lastmod>2022-06-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lobdata.com.br/2022/06/14/classificador-bncc-pt.2/</loc>
@@ -17,22 +41,13 @@
     <loc>https://www.lobdata.com.br/tags/education/</loc>
     <lastmod>2022-06-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lobdata.com.br/</loc>
-    <lastmod>2022-06-14T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.lobdata.com.br/tags/n-grams/</loc>
     <lastmod>2022-06-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lobdata.com.br/tags/nlp/</loc>
     <lastmod>2022-06-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lobdata.com.br/post/</loc>
-    <lastmod>2022-06-14T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.lobdata.com.br/categories/project/</loc>
-    <lastmod>2022-06-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lobdata.com.br/tags/</loc>
     <lastmod>2022-06-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lobdata.com.br/tags/tfidf/</loc>
@@ -48,9 +63,6 @@
     <lastmod>2022-06-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lobdata.com.br/2022/01/26/computer-vision/</loc>
-    <lastmod>2022-01-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lobdata.com.br/categories/tutorials/</loc>
     <lastmod>2022-01-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lobdata.com.br/tags/vis%C3%A3o-computacional/</loc>
@@ -133,12 +145,6 @@
   </url><url>
     <loc>https://www.lobdata.com.br/tags/r/</loc>
     <lastmod>2020-10-13T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lobdata.com.br/2020/10/02/how-to-automate-exploratory-plots/</loc>
-    <lastmod>2020-10-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lobdata.com.br/tags/purrr/</loc>
-    <lastmod>2020-10-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lobdata.com.br/tags/hypothesis-testing/</loc>
     <lastmod>2020-09-20T00:00:00+00:00</lastmod>

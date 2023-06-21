@@ -54,8 +54,8 @@ Nesse tutorial estou me baseando em um minicurso do DataCamp Writing Efficient C
       <pubDate>Sun, 25 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>https://www.lobdata.com.br/2020/10/25/demand-forecasting-of-brazilian-commodities/</guid>
-      <description>Demand Forecasting of Brazilian Commodities  Soybean, Corn, Sugar, Soybean Meal, Soybean Oil and Wheat (left to right).
- Demand Forecasting is a technique for estimation of probable demand for a product or services. It is based on the analysis of past demand for that product or service in the present market condition. Demand forecasting should be done on a scientific basis and facts and events related to forecasting should be considered.</description>
+      <description>Demand Forecasting of Brazilian Commodities Soybean, Corn, Sugar, Soybean Meal, Soybean Oil and Wheat (left to right).
+Demand Forecasting is a technique for estimation of probable demand for a product or services. It is based on the analysis of past demand for that product or service in the present market condition. Demand forecasting should be done on a scientific basis and facts and events related to forecasting should be considered.</description>
     </item>
     
     <item>
@@ -87,7 +87,7 @@ Measuring and analyzing the correlation between two variables, in the context of
       <description>Segmentação de clientes de Food Delivery Neste projeto o objetivo é segmentar clientes de um food delivery. A segmentação permite que profissionais de marketing e product managers possam identificar subconjuntos de público-alvo para melhor adaptar suas estratégias.
 O dataset utilizado foi cedido pela Data Science Academy, e pode ser encontrado no meu github juntamente com todo o código apresentado aqui.
 Um breve overview do que será abordado no projeto:
- Preparação de dados Visualização de dados Padronização de variáveis Clusterização com K-Means Avaliação do melhor número de cluster com o índice de Calinski-Harabasz Bootstrap para avaliar consistência do cluster Visualização dos clusters  Sem mais delongas, vamos ao código!</description>
+Preparação de dados Visualização de dados Padronização de variáveis Clusterização com K-Means Avaliação do melhor número de cluster com o índice de Calinski-Harabasz Bootstrap para avaliar consistência do cluster Visualização dos clusters Sem mais delongas, vamos ao código!</description>
     </item>
     
     <item>

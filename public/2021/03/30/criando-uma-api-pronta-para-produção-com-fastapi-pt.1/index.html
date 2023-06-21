@@ -8,54 +8,53 @@
     
     <meta property="og:site_name" content="LOB.DATA">
     <meta property="og:type" content="article">
-    <meta property="og:image" content="https://www.lobdata.com.br/img/banner/beach_more_sea.jpg">
 
     
-      <meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:image" content="https://www.cedricscherer.com/img/banner/banner.png" >
-    
-
+    <meta property="og:image" content="img/post_0_4.png">
+    <meta property="twitter:image" content="img/post_0_4.png" />
     
 
     
-      <meta name="title" content="Criando uma API Pronta para Produção com FastAPI - PT.1" />
-      <meta property="og:title" content="Criando uma API Pronta para Produção com FastAPI - PT.1 - Luba" />
-      <meta property="twitter:title" content="Criando uma API Pronta para Produção com FastAPI - PT.1 - Luba" />
-      <meta property="twitter:text:title" content="Criando uma API Pronta para Produção com FastAPI - PT.1 - Luba" />
+    <meta name="title" content="Criando uma API Pronta para Produção com FastAPI - PT.1" />
+    <meta property="og:title" content="Criando uma API Pronta para Produção com FastAPI - PT.1" />
+    <meta property="twitter:title" content="Criando uma API Pronta para Produção com FastAPI - PT.1" />
     
 
     
-      <meta name="description" content="Blog by LuBa">
-      <meta property="og:description" content="Blog by LuBa" />
-      <meta property="twitter:description" content="Blog by LuBa" />
+    <meta name="description" content="Blog by LuBa">
+    <meta property="og:description" content="Blog by LuBa" />
+    <meta property="twitter:description" content="Blog by LuBa" />
     
 
+    
+    <meta property="twitter:card" content="summary" />
+    
     
 
     <meta name="keyword"  content="Data Visualization, Data Science, Programming, Web Development">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Criando uma API Pronta para Produção com FastAPI - PT.1 - Luba</title>
+    <title>Criando uma API Pronta para Produção com FastAPI - PT.1 | Luba</title>
 
     <link rel="canonical" href="/2021/03/30/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.1/">
 
-    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
-
+    
+    
     
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 
     
-    <link rel="stylesheet" href="/css/hux-blog.min.css">
-
-    
-    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
 
     
     <link rel="stylesheet" href="/css/zanshang.css">
 
     
-    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/css/font-awesome.all.min.css">
+
     
+    
+
     
     <script src="/js/jquery.min.js"></script>
 
@@ -66,13 +65,33 @@
     <script src="/js/hux-blog.min.js"></script>
 
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/styles/foundation.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
 </head>
 
 
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5NWJ42KMKC"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-5NWJ42KMKC', { 'anonymize_ip': false });
+}
+</script>
+
+
+
+
+
+
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
     <div class="container-fluid">
         
         <div class="navbar-header page-scroll">
@@ -91,31 +110,34 @@
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="/">Blog</a>
+                        <a href="/">All Posts</a>
                     </li>
                     
-                    <li>
-                        <a href="/categories/aplica%C3%A7%C3%B5es">aplicações</a>
-                    </li>
+                        
+                        <li>
+                            <a href="/categories/aplica%C3%A7%C3%B5es/">aplicações</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/project/">project</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/projetos/">projetos</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/tutorials/">tutorials</a>
+                        </li>
+                        
                     
-                    <li>
-                        <a href="/categories/project">project</a>
-                    </li>
                     
-                    <li>
-                        <a href="/categories/projetos">projetos</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/tutorials">tutorials</a>
-                    </li>
-                    
-
 		    
-                        <li><a href="/top/about/">About Me</a></li>
+                        <li><a href="/top/about//">About Me</a></li>
                     
-
-                    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
                 </ul>
             </div>
         </div>
@@ -160,7 +182,9 @@
         background-image: url('/img/post_0_4.png')
     }
 </style>
-<header class="intro-header">
+
+<header class="intro-header" >
+
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -199,14 +223,15 @@
                     <h1>Criando uma API Pronta para Produção com FastAPI - PT.1</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
-			Posted by
-			
-			    Luciano
-			
-			on
-			Tuesday, March 30, 2021
                         
-                            <span id="/2021/03/30/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.1/" class="leancloud_visitors meta_data_item" data-flag-title="">
+                            Posted by 
+                            
+                                Luciano
+                             
+                            on 
+                            Tuesday, March 30, 2021
+                            
+                                <span id="/2021/03/30/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.1/" class="leancloud_visitors meta_data_item" data-flag-title="">
     <span class="post-meta-item-icon">
       <span class="octicon octicon-eye"></span> 
     </span>
@@ -339,7 +364,10 @@ $(function() {
 });
 </script>
 
-                        
+                            
+                            
+                            
+                            
                     </span>
                 </div>
             </div>
@@ -361,22 +389,10 @@ $(function() {
                 post-container">
 
                 
-                <header>
-                    <h3>Table of Contents</h3>
-                </header>
-                <nav id="TableOfContents">
-  <ul>
-    <li><a href="#fastapi">FastAPI</a></li>
-    <li><a href="#docker">Docker</a></li>
-    <li><a href="#pytest">Pytest</a></li>
-    <li><a href="#sqlalchemy">SQLAlchemy</a></li>
-    <li><a href="#celery">Celery</a></li>
-    <li><a href="#github">GitHub</a></li>
-    <li><a href="#heroku">Heroku</a></li>
-  </ul>
-</nav>
-                
-                <p><img src="/img/finance_app_tutorial/finance.jpg" alt="Personal Finance"></p>
+                <p>
+  <img src="/img/finance_app_tutorial/finance.jpg" alt="Personal Finance">
+
+</p>
 <h1 id="motivação">Motivação</h1>
 <p>Atualmente tenho tido bastante dor de cabeça em voltar a utilizar o Excel para fazer uma planilha de controle de gastos, apesar da simplicidade do software, constantemente meus registros de compras feitas ou alguma outra movimentação financeira ficam uma completa bagunça. O que pode ser justificado pela minha falta de destreza com a ferramenta, mas fato é que a experiência estava deixando a desejar e consequentemente acabei perdendo a disciplina de organizar meus gastos, o que não recomendo a ninguém.</p>
 <p>Foi então que me veio a ideia de largar as planilhas e armazenar essa informação em um banco de dados, o que me facilitaria muita coisa, como por exemplo: facilidade para geração de um relatório com o nível de personalização muito superior ao Excel (utilizando <strong>R</strong> ou <strong>Python</strong> para consumir os dados e fazer a parte analítica), manter a integridade dos dados de forma confiável e robusta, criar modelos de machine learning para prever próximos gastos e muito mais.</p>
@@ -385,7 +401,10 @@ $(function() {
 <h1 id="overview-do-app">Overview do app</h1>
 <p>Diante do que foi dito acima, decidi criar um projeto com várias tecnologias que eu considero super interessante e que vão auxiliar na entrega de um produto bem robusto e escalável (não que fosse necessário para essa situação).</p>
 <p>Então, juntamente com o <strong>FastAPI</strong>, vamos desenvolver usando um ambiente <strong>Docker</strong> e torná-lo o mais próximo possível de um ambiente de deploy. Utilizaremos o <strong>SQLAlchemy</strong> como nosso ORM (Object Relational Mapper) para &ldquo;conversar&rdquo; com o banco de dados (<strong>Postgres</strong>). Ainda iremos tentar desenvolver utilizando o <strong>TDD</strong> (Test Driven Development) com o <strong>pytest</strong>. Irei também adicionar o <strong>Celery</strong>, que vai permitir que tenhámos um produto altamente escalável ao final do projeto. Por fim, configuraremos GitHub Actions para implementar entrega e integração contínua (CI/CD) entre o desenvolvimento e o deploy no <strong>Heroku</strong>.</p>
-<p><img src="/img/finance_app_tutorial/mix_techs.png" alt="Mix Techs"></p>
+<p>
+  <img src="/img/finance_app_tutorial/mix_techs.png" alt="Mix Techs">
+
+</p>
 <p>Muito provavelmente existem soluções prontas e aplicativos para controle financeiro, mas minha experiência com eles é justamente a falta de liberdade em criar algo personalizado para as minhas necessidades.</p>
 <h1 id="tecnologias">Tecnologias</h1>
 <p>Nesse projeto vou trazer muitas ferramentas como citado acima e com código que você poderá reutilizar nos mais variados projetos. A seguir eu trouxe um pouco sobre cada tecnologia que será utilizada.</p>
@@ -421,7 +440,10 @@ $(function() {
 </ul>
 <h2 id="celery">Celery</h2>
 <p>O <strong>Celery</strong> é um <em>task queue manager</em> utilizado para implementar processamento assíncrono ao seu código. Fique atento que não estamos falando aqui de utilização de mais threads para realização de uma task, e sim de desiginar as tasks à diferentes &ldquo;workers&rdquo;, o que possibilita um escalonamento horizontal e por isso acaba sendo muito atrativo ao design de microserviços.</p>
-<p><img src="/img/finance_app_tutorial/celery.jpeg" alt="Celery Schema"></p>
+<p>
+  <img src="/img/finance_app_tutorial/celery.jpeg" alt="Celery Schema">
+
+</p>
 <p>O Celery é utilizado na arquitetura de várias tecnologias de Big Data como <strong>Apache SuperSet</strong> e <strong>Apache Airflow</strong>, justamente por ser um framework muito útil para escalabilidade.</p>
 <h2 id="github">GitHub</h2>
 <p>O GitHub Actions é uma ferramente de integração contínua e entrega contínua (CI/CD), totalmente integrada com o GitHub. Temos outras plataformas que oferecem o mesmo serviço como:</p>
@@ -435,12 +457,16 @@ $(function() {
 <h2 id="heroku">Heroku</h2>
 <p>Heroku é uma cloud <em>Platform as a Service</em> (PaaS) que provê um local para deployar aplicações web. Eles abstraem muita da complixidade de infraestrutura e torna fácil hospedar aplicações com segurança e escalabilidade. Para esse projeto irei utilizar planos gratuitos, para que todos possam seguir o passo-a-passo. Porém, como nossa aplicação vai estar conteinerizada você pode deployar em basicamente em qualquer plataforma cloud que existe com poucas modificações no código. Mas aqui iremos ficar com o Heroku.</p>
 <p>Próximos tutoriais iremos partir para o hands-on!!!</p>
-<p><img src="/img/finance_app_tutorial/coding_fast.gif" alt="Coding fast"></p>
+<p>
+  <img src="/img/finance_app_tutorial/coding_fast.gif" alt="Coding fast">
+
+</p>
 <p>Até lá!</p>
 
 
                 
 
+                
                 <hr>
                 <ul class="pager">
                     
@@ -456,13 +482,31 @@ $(function() {
                     </li>
                     
                 </ul>
+                
 
                 
-<div id="disqus-comment"></div>
 
 
 
             </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
             
             <div class="
                 col-lg-8 col-lg-offset-2
@@ -475,6 +519,8 @@ $(function() {
                     <hr class="hidden-sm hidden-xs">
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
+                        
+                        
                         
                         
                         
@@ -508,10 +554,6 @@ $(function() {
                         
                         
                         
-                        <a href="/tags/data-visualization" title="data-visualization">
-                            data-visualization
-                        </a>
-                        
                         
                         
                         <a href="/tags/docker" title="docker">
@@ -532,9 +574,9 @@ $(function() {
                         
                         
                         
-                        <a href="/tags/ggplot2" title="ggplot2">
-                            ggplot2
-                        </a>
+                        
+                        
+                        
                         
                         
                         
@@ -567,8 +609,6 @@ $(function() {
                         <a href="/tags/project" title="project">
                             project
                         </a>
-                        
-                        
                         
                         
                         
@@ -633,52 +673,66 @@ $(function() {
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <ul class="list-inline text-center">
-                    
-                    <li>
-                       <a href="" rel="alternate" type="application/rss+xml" title="LOB.DATA" >
-                           <span class="fa-stack fa-lg">
-                               <i class="fa fa-circle fa-stack-2x"></i>
-                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
-                           </span>
-                       </a>
-                    </li>
+                <ul class="list-inline text-center">                  
                     
                     
                     
+                    
+                    
+
+		            
                     
                     
                     <li>
                         <a target="_blank" href="https://github.com/LucianoBatista">
                             <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
                     </li>
-		                
+		            
+                    
                     
                     
                     <li>
                         <a target="_blank" href="https://www.linkedin.com/in/lucianobatistads/">
                             <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
                     </li>
-		                
+		           
                     
-                </ul>
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="LOB.DATA" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fas fa-circle fa-stack-2x"></i>
+                               <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+            
+             </ul>
 		<p class="copyright text-muted">
-                    A <a href="https://gohugo.io/">HUGO</a> <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite</a> page build with ♥ and powered by <a href="https://www.netlify.com/">Netlify</a>&nbsp;&nbsp;&bull;&nbsp;&nbsp;Header images by <a href="https://www.pexels.com/photo/climate-sea-landscape-nature-35626/">Pexels</a>
-    </p>
-    <p class="copyright text-muted" style='font-size:8pt;'>
-                    &copy; LOB.DATA 2019–2021. All rights reserved.&nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="https://lobdata.com.br/top/conduct/">Code of Conduct</a>
+                    Copyright &copy; LOB.DATA 2023
                     <br>
-                    Content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>.
-                    <br>
-                    <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
                 </p>
             </div>
         </div>
@@ -689,7 +743,7 @@ $(function() {
 
 
 <script>
-    function async(u, c) {
+    function loadAsync(u, c) {
       var d = document, t = 'script',
           o = d.createElement(t),
           s = d.getElementsByTagName(t)[0];
@@ -707,10 +761,10 @@ $(function() {
 <script>
     
     if($('#tag_cloud').length !== 0){
-        async("/js/jquery.tagcloud.js",function(){
+        loadAsync("/js/jquery.tagcloud.js",function(){
             $.fn.tagcloud.defaults = {
                 
-                color: {start: '#bbbbee', end: '#28a87d'},
+                color: {start: '#bbbbee', end: '#0085a1'},
             };
             $('#tag_cloud a').tagcloud();
         })
@@ -719,7 +773,7 @@ $(function() {
 
 
 <script>
-    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
         var $nav = document.querySelector("nav");
         if($nav) FastClick.attach($nav);
     })
@@ -730,16 +784,65 @@ $(function() {
 
 
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'G-5NWJ42KMKC', 'auto');
-	
-	ga('send', 'pageview');
-}
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
 
 
 

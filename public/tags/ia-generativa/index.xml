@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>IA Generativa on LOB.DATA</title>
+    <link>https://www.lobdata.com.br/tags/ia-generativa/</link>
+    <description>Recent content in IA Generativa on LOB.DATA</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 21 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/ia-generativa/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>mynotes 01</title>
+      <link>https://www.lobdata.com.br/2023/06/21/mynotes-01/</link>
+      <pubDate>Wed, 21 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lobdata.com.br/2023/06/21/mynotes-01/</guid>
+      <description>Estou iniciando um série de posts aqui no blog sobre IA Generativa. O conteúdo é como se fossem minhas anotações sobre um livro que estou lendo, e a intenção é que a cada capítulo eu traga um compilado aqui do que aprendi, por isso estarei chamando de mynotes.
+Teremos teoria e código, e além disso vou tentar dar meus 2 centavos de contribuição relacionando com fontes externas que talvez faça sentido relacionar.</description>
+    </item>
+    
+  </channel>
+</rss>

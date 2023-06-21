@@ -7,9 +7,6 @@
 <header class="intro-header" style="background-image: url('{{ .Site.Params.header_image | relURL }}')">
     <div class="container">
         <div class="row">
-            {{- if not .Site.IsServer }}
-		        {{ partial "google_analytics.html" . }}
-    	    {{- end }}
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
                 <div class="site-heading">
                     <h1>{{ .Site.Title}} </h1>
