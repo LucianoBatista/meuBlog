@@ -1,21 +1,21 @@
 ---
-layout:     post
-title:      "5 Diferentes Aplicações de Ciência de Dados"
-subtitle:   "Logística"
-date:       2019-03-16
-author:     "Luciano"
-image:      "img/post_0_2.jpg"
+layout: post
+title: "5 Diferentes Aplicações de Ciência de Dados"
+subtitle: "Logística"
+date: 2019-03-16
+author: "Luciano"
+featuredImagePreview: "img/ai-aplications.png"
 tags:
-    - Logística
-    - Logistic
-    - Data Science
-    - Machine Learning
-categories: [ Aplicações ]
+  - Logística
+  - Logistic
+  - Data Science
+  - Machine Learning
+categories: [Aplicações]
 ---
 
 Olá, como sabemos a ciência de dados é uma tecnologia de grande potencial e vem sendo aplicada em diferentes áreas de negócio. Estou iniciando uma série de artigos que visam aprensentar sua aplicação em 5 áreas distintas: Logística, Saúde, Turismo, Esporte e E-Sports e Engenharia.
 
-Antes de iniciar propriamente os tópicos, é interessante que estejamos na mesma página quando falamos de Data Science. Devido ao grande hype dessa tecnologia, ela pode acabar sendo mal interpretada, por isso eu gosto de utilizar uma definição dada pela DataRobot uma empresa pioneira em  Machine Learning, localizada no Quadrante mágico do Gartner.
+Antes de iniciar propriamente os tópicos, é interessante que estejamos na mesma página quando falamos de Data Science. Devido ao grande hype dessa tecnologia, ela pode acabar sendo mal interpretada, por isso eu gosto de utilizar uma definição dada pela DataRobot uma empresa pioneira em Machine Learning, localizada no Quadrante mágico do Gartner.
 
 "A ciência de dados é o campo de estudo que combina habilidades de programação e conhecimento de matemática e estatística para extrair informações significativas dos dados. Os profissionais de ciência de dados aplicam algoritmos de aprendizado de máquina à números, texto, imagens, vídeo, áudio e muito mais para produzir sistemas de inteligência artificial (IA) para executar tarefas que normalmente exigem inteligência humana. Por sua vez, esses sistemas geram insights que analistas e empresários podem traduzir em valor comercial tangível."
 
@@ -39,9 +39,11 @@ Um caso bastante interessante é de um supermercado on-line localizado na Grã-B
 Armazéns automatizados tendem a usar a visão computacional. Essa tecnologia permite reconhecer e organizar os itens.
 
 ### 2 – Detecção de Padrões Visuais
+
 O aprendizado de máquina é excelente no reconhecimento visual de padrões, abrindo muitas aplicações em potencial na inspeção física e manutenção de ativos físicos em toda uma rede da cadeia de suprimentos. Projetado usando algoritmos que buscam rapidamente colocar padrões comparáveis em vários conjuntos de dados, o aprendizado de máquina também está se mostrando muito eficaz na automação da inspeção de qualidade de entrada em todos os hubs de logística, isolando as remessas de produtos com danos e desgaste. Os algoritmos de aprendizado de máquina na plataforma Watson da IBM foram capazes de determinar se um contêiner de remessa e / ou produto foram danificados, classificá-lo por tempo de dano e recomendar a melhor ação corretiva para reparar os ativos. O Watson combina dados visuais e baseados em sistemas para rastrear, relatar e fazer recomendações em tempo real. Fonte: [Inteligência Artificial em Logística](https://www.ibm.com/downloads/cas/XOQW7Q0D).
 
 ### 3 – Prevendo o custo de carga
+
 Prever o preço de uma carga pode ser complicado, porque o custo envolvido em um transporte varia de estação para estação e até do sol para a chuva no dia-a-dia ou na hora do dia. A IA pode ajudar a monitorar essas condições e escolher o preço certo com base no tempo de entrega e em qual “faixa” - rota e destino - um embarque é encaminhado. Esses algoritmos monitoram uma série de parâmetros como tráfego, clima e parâmetros socioeconômicos que ajudam as empresas a alcançar um preço justo com o qual ambas as partes podem concordar.
 
 Fonte: [Towards Data Science](https://towardsdatascience.com/how-ai-changes-the-logistic-industry-3d55401778d) e [Forbes](https://www.forbes.com/sites/louiscolumbus/2018/06/11/10-ways-machine-learning-is-revolutionizing-supply-chain-management/#37936d9f3e37)

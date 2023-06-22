@@ -68,17 +68,51 @@ home = ["HTML", "RSS", "JSON"]
 noClasses = false
 
 [params]
-title = "LobData"
+title = "LOBData"
 
 [params.header]
 [params.header.title]
-name = "LobData"
+name = "LOBData"
 
 # Home page config
 [params.home]
 [params.home.profile]
-title = "Oi"
-subtitle = "This is My New Hugo Site"
+subtitle = "Olá! Tudo bem?"
+avatarURL = "img/me.jpeg"
+social = true
+
+[params.social]
+Linkedin = "lucianobatistads/"
+GitHub = "LucianoBatista"
+Youtubechannel = "UCBQhHragJQAbenC3iBIOJ5Q"
+Kaggle = "dsluciano"
+Twitter = "Luciano_Bats3"
+
+[params.page.share]
+enable = true
+Twitter = false
+Facebook = false
+Linkedin = true
+Whatsapp = false
+Pinterest = false
+Tumblr = false
+HackerNews = false
+Reddit = false
+VK = false
+Buffer = false
+Xing = false
+Line = false
+Instapaper = false
+Pocket = false
+Flipboard = false
+Weibo = false
+Blogger = false
+Baidu = false
+Odnoklassniki = false
+Evernote = false
+Skype = false
+Trello = false
+Mix = false
 
 [params.search]
 enable = true

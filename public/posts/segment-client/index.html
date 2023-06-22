@@ -12,7 +12,7 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.lobdata.com.br/posts/segment-client/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-06-19T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-06-19T00:00:00+00:00" /><meta property="og:site_name" content="LobData" />
+<meta property="article:modified_time" content="2020-06-19T00:00:00+00:00" /><meta property="og:site_name" content="LOBData" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Segmentação de clientes de Food Delivery"/>
 <meta name="twitter:description" content="Segmentação de clientes de Food Delivery Neste projeto o objetivo é segmentar clientes de um food delivery. A segmentação permite que profissionais de marketing e product managers possam identificar subconjuntos de público-alvo para melhor adaptar suas estratégias.
@@ -47,7 +47,7 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
-            <a href="/" title="LobData">LobData</a>
+            <a href="/" title="LobData">LOBData</a>
         </div>
         <div class="menu">
             <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
@@ -70,7 +70,7 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
     <div class="header-container">
         <div class="header-wrapper">
             <div class="header-title">
-                <a href="/" title="LobData">LobData</a>
+                <a href="/" title="LobData">LOBData</a>
             </div>
             <div class="menu-toggle" id="menu-toggle-mobile">
                 <span></span><span></span><span></span>
@@ -202,18 +202,18 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span></code></pre></div><p>No R temos um pacote muito interessante que permite ter um panorama geral sobre os dados, com várias estatísticas mais básicas, chamado <code>skimr</code>.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">skim</span><span class="p">(</span><span class="n">orders_client_raw</span><span class="p">)</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl">── <span class="n">Data</span> <span class="n">Summary</span> ────────────────────────
-</span></span><span class="line"><span class="cl">                           <span class="n">Values</span>           
+</span></span><span class="line"><span class="cl">                           <span class="n">Values</span>
 </span></span><span class="line"><span class="cl"><span class="n">Name</span>                       <span class="n">orders_client_raw</span>
-</span></span><span class="line"><span class="cl"><span class="n">Number</span> <span class="n">of</span> <span class="n">rows</span>             <span class="m">260645</span>           
-</span></span><span class="line"><span class="cl"><span class="n">Number</span> <span class="n">of</span> <span class="n">columns</span>          <span class="m">8</span>                
-</span></span><span class="line"><span class="cl"><span class="n">_______________________</span>                     
-</span></span><span class="line"><span class="cl"><span class="n">Column</span> <span class="n">type</span> <span class="n">frequency</span><span class="o">:</span>                      
-</span></span><span class="line"><span class="cl">  <span class="n">character</span>                <span class="m">2</span>                
-</span></span><span class="line"><span class="cl">  <span class="n">factor</span>                   <span class="m">1</span>                
-</span></span><span class="line"><span class="cl">  <span class="n">numeric</span>                  <span class="m">4</span>                
-</span></span><span class="line"><span class="cl">  <span class="n">POSIXct</span>                  <span class="m">1</span>                
-</span></span><span class="line"><span class="cl"><span class="n">________________________</span>                    
-</span></span><span class="line"><span class="cl"><span class="n">Group</span> <span class="n">variables</span>            <span class="n">None</span>             
+</span></span><span class="line"><span class="cl"><span class="n">Number</span> <span class="n">of</span> <span class="n">rows</span>             <span class="m">260645</span>
+</span></span><span class="line"><span class="cl"><span class="n">Number</span> <span class="n">of</span> <span class="n">columns</span>          <span class="m">8</span>
+</span></span><span class="line"><span class="cl"><span class="n">_______________________</span>
+</span></span><span class="line"><span class="cl"><span class="n">Column</span> <span class="n">type</span> <span class="n">frequency</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">  <span class="n">character</span>                <span class="m">2</span>
+</span></span><span class="line"><span class="cl">  <span class="n">factor</span>                   <span class="m">1</span>
+</span></span><span class="line"><span class="cl">  <span class="n">numeric</span>                  <span class="m">4</span>
+</span></span><span class="line"><span class="cl">  <span class="n">POSIXct</span>                  <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">________________________</span>
+</span></span><span class="line"><span class="cl"><span class="n">Group</span> <span class="n">variables</span>            <span class="n">None</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">── <span class="n">Variable</span> <span class="n">type</span><span class="o">:</span> <span class="n">character</span> ───────────────────────────────────────────────────────────────────────────────────────
 </span></span><span class="line"><span class="cl">  <span class="n">skim_variable</span> <span class="n">n_missing</span> <span class="n">complete_rate</span>   <span class="n">min</span>   <span class="n">max</span> <span class="n">empty</span> <span class="n">n_unique</span> <span class="n">whitespace</span>
@@ -221,11 +221,11 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl"><span class="m">2</span> <span class="n">nome_item</span>             <span class="m">0</span>             <span class="m">1</span>     <span class="m">5</span>     <span class="m">9</span>     <span class="m">0</span>        <span class="m">4</span>          <span class="m">0</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">── <span class="n">Variable</span> <span class="n">type</span><span class="o">:</span> <span class="n">factor</span> ──────────────────────────────────────────────────────────────────────────────────────────
-</span></span><span class="line"><span class="cl">  <span class="n">skim_variable</span> <span class="n">n_missing</span> <span class="n">complete_rate</span> <span class="n">ordered</span> <span class="n">n_unique</span> <span class="n">top_counts</span>                                     
+</span></span><span class="line"><span class="cl">  <span class="n">skim_variable</span> <span class="n">n_missing</span> <span class="n">complete_rate</span> <span class="n">ordered</span> <span class="n">n_unique</span> <span class="n">top_counts</span>
 </span></span><span class="line"><span class="cl"><span class="m">1</span> <span class="n">nome_item_fac</span>         <span class="m">0</span>             <span class="m">1</span> <span class="kc">FALSE</span>          <span class="m">4</span> <span class="n">sob</span><span class="o">:</span> <span class="m">100000</span><span class="p">,</span> <span class="n">piz</span><span class="o">:</span> <span class="m">76122</span><span class="p">,</span> <span class="n">beb</span><span class="o">:</span> <span class="m">46156</span><span class="p">,</span> <span class="n">sal</span><span class="o">:</span> <span class="m">38367</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">── <span class="n">Variable</span> <span class="n">type</span><span class="o">:</span> <span class="n">numeric</span> ─────────────────────────────────────────────────────────────────────────────────────────
-</span></span><span class="line"><span class="cl">  <span class="n">skim_variable</span>   <span class="n">n_missing</span> <span class="n">complete_rate</span>   <span class="n">mean</span>    <span class="n">sd</span>    <span class="n">p0</span>   <span class="n">p25</span>   <span class="n">p50</span>   <span class="n">p75</span>  <span class="n">p100</span> <span class="n">hist</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">skim_variable</span>   <span class="n">n_missing</span> <span class="n">complete_rate</span>   <span class="n">mean</span>    <span class="n">sd</span>    <span class="n">p0</span>   <span class="n">p25</span>   <span class="n">p50</span>   <span class="n">p75</span>  <span class="n">p100</span> <span class="n">hist</span>
 </span></span><span class="line"><span class="cl"><span class="m">1</span> <span class="n">localidade</span>              <span class="m">0</span>             <span class="m">1</span>   <span class="m">5.13</span> <span class="m">2.55</span>    <span class="m">1</span>     <span class="m">3</span>     <span class="m">5</span>     <span class="m">7</span>     <span class="m">9</span>   ▆▆▂▇▆
 </span></span><span class="line"><span class="cl"><span class="m">2</span> <span class="n">quantidade_item</span>         <span class="m">0</span>             <span class="m">1</span>   <span class="m">2.45</span> <span class="m">1.33</span>    <span class="m">1</span>     <span class="m">1</span>     <span class="m">2</span>     <span class="m">4</span>     <span class="m">5</span>   ▇▆▅▅▂
 </span></span><span class="line"><span class="cl"><span class="m">3</span> <span class="n">latitude</span>                <span class="m">0</span>             <span class="m">1</span>  <span class="m">41.8</span>  <span class="m">0.144</span>  <span class="m">41.5</span>  <span class="m">41.8</span>  <span class="m">41.9</span>  <span class="m">41.9</span>  <span class="m">42.0</span> ▂▁▅▇▂
@@ -236,13 +236,13 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl"><span class="m">1</span> <span class="n">horario_pedido</span>         <span class="m">0</span>             <span class="m">1</span> <span class="m">2019-01-01</span> <span class="m">00</span><span class="o">:</span><span class="m">00</span><span class="o">:</span><span class="m">00</span> <span class="m">2019-12-30</span> <span class="m">23</span><span class="o">:</span><span class="m">59</span><span class="o">:</span><span class="m">00</span> <span class="m">2019-07-01</span> <span class="m">11</span><span class="o">:</span><span class="m">49</span><span class="o">:</span><span class="m">00</span>    <span class="m">76799</span>
 </span></span></code></pre></div><p>De mais importante no resumo acima, podemos ver que os dados não possuem valores missing (=D), temos 100.000 valores únicos no <code>id_transacao</code> e temos 4 produtos de diferentes categorias.</p>
 <p>Localidade possívelmente precisará ser convertida à fator, pois cada valor representa um local diferente de onde o pedido processado. Mas caso venhámos a fazer alguma análise com esta variável podemos converte-la mais a frente.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">orders_client_v1</span> <span class="o">&lt;-</span> <span class="n">orders_client_raw</span> <span class="o">%&gt;%</span> 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">orders_client_v1</span> <span class="o">&lt;-</span> <span class="n">orders_client_raw</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">month</span> <span class="o">=</span> <span class="nf">month</span><span class="p">(</span><span class="n">horario_pedido</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">abbr</span> <span class="o">=</span> <span class="bp">F</span><span class="p">),</span>
 </span></span><span class="line"><span class="cl">         <span class="n">year</span> <span class="o">=</span> <span class="nf">year</span><span class="p">(</span><span class="n">horario_pedido</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># visualizando o período referente aos dados</span>
-</span></span><span class="line"><span class="cl"><span class="n">orders_client_v1</span> <span class="o">%&gt;%</span> 
-</span></span><span class="line"><span class="cl">  <span class="nf">select</span><span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl"><span class="n">orders_client_v1</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">select</span><span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">unique</span><span class="p">()</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># A tibble: 1 x 1</span>
 </span></span><span class="line"><span class="cl">   <span class="n">year</span>
@@ -250,13 +250,13 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl"><span class="m">1</span>  <span class="m">2019</span>
 </span></span></code></pre></div><p>Vemos que os dados são referentes ao ano de 2019. Uma visualização interessante seria dos pedidos ao longo dos meses, podendo entender o que vende mais em determinado período.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># pedidos em cada mês</span>
-</span></span><span class="line"><span class="cl"><span class="n">order_by_month_name</span> <span class="o">&lt;-</span> <span class="n">orders_client_v1</span> <span class="o">%&gt;%</span> 
-</span></span><span class="line"><span class="cl">  <span class="nf">select</span><span class="p">(</span><span class="n">month</span><span class="p">,</span> <span class="n">nome_item_fac</span><span class="p">,</span> <span class="n">quantidade_item</span><span class="p">)</span> <span class="o">%&gt;%</span> 
-</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">month</span><span class="p">,</span> <span class="n">nome_item_fac</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl"><span class="n">order_by_month_name</span> <span class="o">&lt;-</span> <span class="n">orders_client_v1</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">select</span><span class="p">(</span><span class="n">month</span><span class="p">,</span> <span class="n">nome_item_fac</span><span class="p">,</span> <span class="n">quantidade_item</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">month</span><span class="p">,</span> <span class="n">nome_item_fac</span><span class="p">)</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">summarise</span><span class="p">(</span><span class="n">tot</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">quantidade_item</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># visualização</span>
-</span></span><span class="line"><span class="cl"><span class="n">order_by_month_name</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl"><span class="n">order_by_month_name</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">tot</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="nf">reorder</span><span class="p">(</span><span class="n">nome_item_fac</span><span class="p">,</span> <span class="n">tot</span><span class="p">),</span>
 </span></span><span class="line"><span class="cl">             <span class="n">color</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">))</span> <span class="o">+</span>
@@ -280,17 +280,17 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 <p>Vimos que ao longo dos meses essa loja recebeu praticamente a mesma quantidade de pedidos todos os meses. Sempre com a menor preferência por salada e a maior preferência por sobremesa.</p>
 <p>Como nós também temos os dados durante as horas do dia, vamos realizar mais uma preparação nos dados.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># incluindo a hora do dia para visualizar depois</span>
-</span></span><span class="line"><span class="cl"><span class="n">orders_client_v2</span> <span class="o">&lt;-</span> <span class="n">orders_client_raw</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl"><span class="n">orders_client_v2</span> <span class="o">&lt;-</span> <span class="n">orders_client_raw</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">month</span> <span class="o">=</span> <span class="nf">month</span><span class="p">(</span><span class="n">horario_pedido</span><span class="p">),</span>
 </span></span><span class="line"><span class="cl">         <span class="n">year</span> <span class="o">=</span> <span class="nf">year</span><span class="p">(</span><span class="n">horario_pedido</span><span class="p">),</span>
 </span></span><span class="line"><span class="cl">         <span class="n">hour</span> <span class="o">=</span> <span class="nf">hour</span><span class="p">(</span><span class="n">horario_pedido</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">order_by_hour_name</span> <span class="o">&lt;-</span> <span class="n">orders_client_v2</span> <span class="o">%&gt;%</span> 
-</span></span><span class="line"><span class="cl">  <span class="nf">select</span><span class="p">(</span><span class="n">month</span><span class="p">,</span> <span class="n">hour</span><span class="p">,</span> <span class="n">nome_item_fac</span><span class="p">,</span> <span class="n">quantidade_item</span><span class="p">)</span> <span class="o">%&gt;%</span> 
-</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">month</span><span class="p">,</span> <span class="n">hour</span><span class="p">,</span> <span class="n">nome_item_fac</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl"><span class="n">order_by_hour_name</span> <span class="o">&lt;-</span> <span class="n">orders_client_v2</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">select</span><span class="p">(</span><span class="n">month</span><span class="p">,</span> <span class="n">hour</span><span class="p">,</span> <span class="n">nome_item_fac</span><span class="p">,</span> <span class="n">quantidade_item</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">month</span><span class="p">,</span> <span class="n">hour</span><span class="p">,</span> <span class="n">nome_item_fac</span><span class="p">)</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">summarise</span><span class="p">(</span><span class="n">tot</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">quantidade_item</span><span class="p">))</span>
 </span></span></code></pre></div><p>Agora que o dataset <code>order_by_hour_name</code> possui as informações necesssárias para fazer a visualização, vamos visualizar então como foram os pedidos para cada hora do dia ao longo dos meses e do ano de 2019.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_by_hour_name</span> <span class="o">%&gt;%</span> 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_by_hour_name</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">tot</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="nf">reorder</span><span class="p">(</span><span class="n">nome_item_fac</span><span class="p">,</span> <span class="n">tot</span><span class="p">),</span>
 </span></span><span class="line"><span class="cl">             <span class="n">fill</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">))</span> <span class="o">+</span>
@@ -320,10 +320,10 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </ul>
 <p>Bom, até agora nós visualizamos os pedidos durante o mês e durante as horas nos meses do ano. Mas seria interessante também observar o total da distribuição de pedidos no ano como um todo.</p>
 <p>Para isso eu gosto muito de utilizar o pacote <code>ggridgs</code>, com ele podemos observar as várias distribuições de uma forma mais compacta e ainda traçar linhas referentes aos diferentes quartis.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_by_hour_name</span> <span class="o">%&gt;%</span> 
-</span></span><span class="line"><span class="cl"><span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">tot</span><span class="p">,</span> 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_by_hour_name</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">tot</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">           <span class="n">y</span> <span class="o">=</span> <span class="nf">reorder</span><span class="p">(</span><span class="n">nome_item_fac</span><span class="p">,</span> <span class="n">tot</span><span class="p">),</span>
-</span></span><span class="line"><span class="cl">           <span class="n">fill</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">))</span> <span class="o">+</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">fill</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">))</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">geom_density_ridges</span><span class="p">(</span><span class="n">scale</span> <span class="o">=</span> <span class="m">3</span><span class="p">,</span> <span class="n">quantile_lines</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">quantiles</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">scale_fill_viridis_d</span><span class="p">()</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="n">hour</span><span class="p">,</span> <span class="n">scales</span> <span class="o">=</span> <span class="s">&#34;free_x&#34;</span><span class="p">)</span> <span class="o">+</span>
@@ -341,10 +341,10 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
         title="graph3" /></p>
 <p>Legal, nesse gráfico nós vemos que em algumas distribuições nós temos caudas muito longas, e outras parecem ser bimodal. Pode ser interessante visualizar se esse comportamento está sendo provocado por outliers ou se é um comportamento &ldquo;real&rdquo; desses dados.</p>
 <p>Para isso chamaremos o bom e velho boxplot/violinoplot, porém adicionamos à ele uma camada de visualização dos pontos que o compões. Vamos lá!</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_by_hour_name</span> <span class="o">%&gt;%</span> 
-</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">,</span> 
-</span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="n">tot</span><span class="p">))</span> <span class="o">+</span> 
-</span></span><span class="line"><span class="cl">  <span class="nf">geom_half_boxplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">),</span> <span class="n">side</span> <span class="o">=</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">.3</span><span class="p">)</span> <span class="o">+</span> 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_by_hour_name</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="n">tot</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_half_boxplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">),</span> <span class="n">side</span> <span class="o">=</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">.3</span><span class="p">)</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">geom_half_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">),</span> <span class="n">side</span> <span class="o">=</span> <span class="s">&#39;l&#39;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">.6</span><span class="p">)</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">coord_flip</span><span class="p">()</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Quantidade total de pedidos&#34;</span><span class="p">,</span>
@@ -360,10 +360,10 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
         data-sizes="auto"
         alt="/img/graph5.png"
         title="graph5" /></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_by_hour_name</span> <span class="o">%&gt;%</span> 
-</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">,</span> 
-</span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="n">tot</span><span class="p">))</span> <span class="o">+</span> 
-</span></span><span class="line"><span class="cl">  <span class="nf">geom_half_violin</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">),</span> <span class="n">side</span> <span class="o">=</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">.3</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="m">3</span><span class="p">)</span> <span class="o">+</span> 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_by_hour_name</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="n">tot</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_half_violin</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">),</span> <span class="n">side</span> <span class="o">=</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">.3</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="m">3</span><span class="p">)</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">geom_half_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">),</span> <span class="n">side</span> <span class="o">=</span> <span class="s">&#39;l&#39;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">.6</span><span class="p">)</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">coord_flip</span><span class="p">()</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Quantidade total de pedidos&#34;</span><span class="p">,</span>
@@ -378,10 +378,10 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
         alt="/img/graph4.png"
         title="graph4" /></p>
 <p>Vamos colocar um highlight na região de outliers</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_by_hour_name</span> <span class="o">%&gt;%</span> 
-</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">,</span> 
-</span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="n">tot</span><span class="p">))</span> <span class="o">+</span> 
-</span></span><span class="line"><span class="cl">  <span class="nf">geom_half_boxplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">),</span> <span class="n">side</span> <span class="o">=</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">.3</span><span class="p">)</span> <span class="o">+</span> 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_by_hour_name</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="n">tot</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_half_boxplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">),</span> <span class="n">side</span> <span class="o">=</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">.3</span><span class="p">)</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">geom_half_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">),</span> <span class="n">side</span> <span class="o">=</span> <span class="s">&#39;l&#39;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">.6</span><span class="p">)</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">coord_flip</span><span class="p">()</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">annotate</span><span class="p">(</span><span class="n">geom</span> <span class="o">=</span> <span class="s">&#34;rect&#34;</span><span class="p">,</span> <span class="n">xmin</span> <span class="o">=</span> <span class="m">2.7</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="m">3.1</span><span class="p">,</span> <span class="n">ymin</span> <span class="o">=</span> <span class="m">1100</span> <span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="m">2300</span><span class="p">,</span>
@@ -404,13 +404,13 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 <p>Uma observação interessante é que, realizando essa segmentação, poderemos entender melhor qual grupo de clientes que consomem mais saladas e que também bebem mais que outros consumidores (outliers do nossos dados).</p>
 <p>Vamos visualizar como está sendo os pedidos referente a cada localidade.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># como dito antes, aqui nós convertemos a localidade para fator</span>
-</span></span><span class="line"><span class="cl"><span class="n">order_by_localidade</span> <span class="o">&lt;-</span> <span class="n">orders_client_v2</span> <span class="o">%&gt;%</span> 
-</span></span><span class="line"><span class="cl">  <span class="nf">select</span><span class="p">(</span><span class="n">localidade</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">hour</span><span class="p">,</span> <span class="n">nome_item_fac</span><span class="p">,</span> <span class="n">quantidade_item</span><span class="p">)</span> <span class="o">%&gt;%</span> 
-</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">localidade</span> <span class="o">=</span> <span class="nf">as.factor</span><span class="p">(</span><span class="n">localidade</span><span class="p">))</span> <span class="o">%&gt;%</span> 
-</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">localidade</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">hour</span><span class="p">,</span> <span class="n">nome_item_fac</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl"><span class="n">order_by_localidade</span> <span class="o">&lt;-</span> <span class="n">orders_client_v2</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">select</span><span class="p">(</span><span class="n">localidade</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">hour</span><span class="p">,</span> <span class="n">nome_item_fac</span><span class="p">,</span> <span class="n">quantidade_item</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">localidade</span> <span class="o">=</span> <span class="nf">as.factor</span><span class="p">(</span><span class="n">localidade</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">localidade</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">hour</span><span class="p">,</span> <span class="n">nome_item_fac</span><span class="p">)</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">summarise</span><span class="p">(</span><span class="n">tot</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">quantidade_item</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">  
-</span></span><span class="line"><span class="cl"><span class="n">order_by_localidade</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">order_by_localidade</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">tot</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="nf">reorder_within</span><span class="p">(</span><span class="n">nome_item_fac</span><span class="p">,</span> <span class="n">tot</span><span class="p">,</span> <span class="n">localidade</span><span class="p">),</span>
 </span></span><span class="line"><span class="cl">             <span class="n">fill</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">))</span> <span class="o">+</span>
@@ -436,12 +436,12 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 <li>Maior consumo de pizza, sobremesa e bebida do grupo 4, 7 e 9.</li>
 </ul>
 <p>Por fim, como temos dados períodos bem completos pode ser interessante dá uma olhada num heatmap da quantidade de pedidos ao longo do ano.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_by_localidade</span> <span class="o">%&gt;%</span> 
-</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">hour</span><span class="p">,</span> 
-</span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="nf">as.factor</span><span class="p">(</span><span class="n">month</span><span class="p">),</span> 
-</span></span><span class="line"><span class="cl">             <span class="n">fill</span> <span class="o">=</span> <span class="n">tot</span><span class="p">))</span> <span class="o">+</span> 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_by_localidade</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">hour</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="nf">as.factor</span><span class="p">(</span><span class="n">month</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">             <span class="n">fill</span> <span class="o">=</span> <span class="n">tot</span><span class="p">))</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">geom_tile</span><span class="p">()</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">scale_fill_viridis_c</span><span class="p">()</span> <span class="o">+</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_fill_viridis_c</span><span class="p">()</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span> <span class="o">=</span> <span class="m">0</span><span class="o">:</span><span class="m">24</span><span class="p">)</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">coord_equal</span><span class="p">()</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Hora do dia&#34;</span><span class="p">,</span>
@@ -463,8 +463,8 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 <p>Cada distância dessa é indicada para um tipo de dado, sendo a mais usada a euclidiana (dados numéricos). Ao mudar a medida de distância damos origem a diferentes algorítmos de clusterização, e como você pode imaginar, essa pluralidade é tão grande que facilmente encontramos livros inteiros apenas sobre clusterização.</p>
 <p>Aqui nós optamos por utilizar o mais popular entre eles, o k-means, e primeiramente vamos pivotar os dados para um formato que será melhor analisado pelo algorítmo.</p>
 <h2 id="pivotando">Pivotando</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_client_clustering</span> <span class="o">&lt;-</span> <span class="n">orders_client_raw</span> <span class="o">%&gt;%</span> 
-</span></span><span class="line"><span class="cl">  <span class="nf">select</span><span class="p">(</span><span class="n">id_transacao</span><span class="p">,</span> <span class="n">nome_item_fac</span><span class="p">,</span> <span class="n">quantidade_item</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_client_clustering</span> <span class="o">&lt;-</span> <span class="n">orders_client_raw</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">select</span><span class="p">(</span><span class="n">id_transacao</span><span class="p">,</span> <span class="n">nome_item_fac</span><span class="p">,</span> <span class="n">quantidade_item</span><span class="p">)</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">pivot_wider</span><span class="p">(</span><span class="n">id_transacao</span><span class="p">,</span> <span class="n">names_from</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">,</span> <span class="n">values_from</span> <span class="o">=</span> <span class="n">quantidade_item</span><span class="p">,</span> <span class="n">values_fill</span> <span class="o">=</span> <span class="m">0</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">order_client_clustering</span>
@@ -576,11 +576,11 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 <p>Uma linha horizontal foi traçada para representar um cliente dentre os milhares presentes nos plots.</p>
 <h3 id="cluster-1">Cluster 1</h3>
 <p>O cluster 1 trás os clientes que possuem um maior consumo de sobremesa e salada, e que consomem pouco, ou não consomem nem bebida nem pizza. Aqueles que querem ser saudáveis mas não dispensam um docinho.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_1</span> <span class="o">&lt;-</span> <span class="n">clusters[[1]]</span> <span class="o">%&gt;%</span> 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_1</span> <span class="o">&lt;-</span> <span class="n">clusters[[1]]</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">pivot_longer</span><span class="p">(</span><span class="n">cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;bebida&#34;</span><span class="p">,</span> <span class="s">&#34;pizza&#34;</span><span class="p">,</span> <span class="s">&#34;sobremesa&#34;</span><span class="p">,</span> <span class="s">&#34;salada&#34;</span><span class="p">),</span> <span class="n">names_to</span> <span class="o">=</span> <span class="s">&#34;pedidos&#34;</span><span class="p">,</span> <span class="n">values_to</span> <span class="o">=</span> <span class="s">&#34;values&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">cluster_1</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl"><span class="n">cluster_1</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">values</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="n">id_transacao</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">             <span class="n">color</span> <span class="o">=</span> <span class="n">pedidos</span><span class="p">))</span> <span class="o">+</span>
@@ -591,7 +591,7 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl">       <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Pedidos feitos por cada cliente&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">       <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;A linha horizontal indica a informação de um cliente e seus pedidos&#34;</span><span class="p">)</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.y.left</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
-</span></span><span class="line"><span class="cl">        <span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>   
+</span></span><span class="line"><span class="cl">        <span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
 </span></span><span class="line"><span class="cl">        <span class="n">axis.ticks.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">())</span>
 </span></span></code></pre></div><p><img
         class="lazyload"
@@ -603,11 +603,11 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
         title="graph10" /></p>
 <h3 id="cluster-2">Cluster 2</h3>
 <p>O cluster 2 é um público que consome bem pouco, e quando consome, consome mais pizza, sobremesa e alguns ainda consomem bebida. Esses são realmente aversos a saladas.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_2</span> <span class="o">&lt;-</span> <span class="n">clusters[[2]]</span> <span class="o">%&gt;%</span> 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_2</span> <span class="o">&lt;-</span> <span class="n">clusters[[2]]</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">pivot_longer</span><span class="p">(</span><span class="n">cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;bebida&#34;</span><span class="p">,</span> <span class="s">&#34;pizza&#34;</span><span class="p">,</span> <span class="s">&#34;sobremesa&#34;</span><span class="p">,</span> <span class="s">&#34;salada&#34;</span><span class="p">),</span> <span class="n">names_to</span> <span class="o">=</span> <span class="s">&#34;pedidos&#34;</span><span class="p">,</span> <span class="n">values_to</span> <span class="o">=</span> <span class="s">&#34;values&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">cluster_2</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl"><span class="n">cluster_2</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">values</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="n">id_transacao</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">             <span class="n">color</span> <span class="o">=</span> <span class="n">pedidos</span><span class="p">))</span> <span class="o">+</span>
@@ -618,7 +618,7 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl">       <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Pedidos feitos por cada cliente&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">       <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;A linha horizontal indica a informação de um cliente e seus pedidos&#34;</span><span class="p">)</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.y.left</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
-</span></span><span class="line"><span class="cl">        <span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>   
+</span></span><span class="line"><span class="cl">        <span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
 </span></span><span class="line"><span class="cl">        <span class="n">axis.ticks.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">())</span>
 </span></span></code></pre></div><p><img
         class="lazyload"
@@ -630,11 +630,11 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
         title="graph11" /></p>
 <h3 id="cluster-3">Cluster 3</h3>
 <p>No cluster 3 nós vemos os clientes que pedem em maior quantidade pizza e sobremesa e optam por não pedir ou pedir pouco salada e bebida.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_3</span> <span class="o">&lt;-</span> <span class="n">clusters[[3]]</span> <span class="o">%&gt;%</span> 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_3</span> <span class="o">&lt;-</span> <span class="n">clusters[[3]]</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">pivot_longer</span><span class="p">(</span><span class="n">cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;bebida&#34;</span><span class="p">,</span> <span class="s">&#34;pizza&#34;</span><span class="p">,</span> <span class="s">&#34;sobremesa&#34;</span><span class="p">,</span> <span class="s">&#34;salada&#34;</span><span class="p">),</span> <span class="n">names_to</span> <span class="o">=</span> <span class="s">&#34;pedidos&#34;</span><span class="p">,</span> <span class="n">values_to</span> <span class="o">=</span> <span class="s">&#34;values&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">cluster_3</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl"><span class="n">cluster_3</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">values</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="n">id_transacao</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">             <span class="n">color</span> <span class="o">=</span> <span class="n">pedidos</span><span class="p">))</span> <span class="o">+</span>
@@ -645,7 +645,7 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl">       <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Pedidos feitos por cada cliente&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">       <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;A linha horizontal indica a informação de um cliente e seus pedidos&#34;</span><span class="p">)</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.y.left</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
-</span></span><span class="line"><span class="cl">        <span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>   
+</span></span><span class="line"><span class="cl">        <span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
 </span></span><span class="line"><span class="cl">        <span class="n">axis.ticks.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">())</span>
 </span></span></code></pre></div><p><img
         class="lazyload"
@@ -657,11 +657,11 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
         title="graph12" /></p>
 <h3 id="cluster-4">Cluster 4</h3>
 <p>O cluster 4 trás as pessoas que gostam de sobremesa mas que pedem um pouco de pizza e salada. Além disso não costuma pedir bebidas.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_4</span> <span class="o">&lt;-</span> <span class="n">clusters[[4]]</span> <span class="o">%&gt;%</span> 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_4</span> <span class="o">&lt;-</span> <span class="n">clusters[[4]]</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">pivot_longer</span><span class="p">(</span><span class="n">cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;bebida&#34;</span><span class="p">,</span> <span class="s">&#34;pizza&#34;</span><span class="p">,</span> <span class="s">&#34;sobremesa&#34;</span><span class="p">,</span> <span class="s">&#34;salada&#34;</span><span class="p">),</span> <span class="n">names_to</span> <span class="o">=</span> <span class="s">&#34;pedidos&#34;</span><span class="p">,</span> <span class="n">values_to</span> <span class="o">=</span> <span class="s">&#34;values&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">cluster_4</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl"><span class="n">cluster_4</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">values</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="n">id_transacao</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">             <span class="n">color</span> <span class="o">=</span> <span class="n">pedidos</span><span class="p">))</span> <span class="o">+</span>
@@ -672,7 +672,7 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl">       <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Pedidos feitos por cada cliente&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">       <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;A linha horizontal indica a informação de um cliente e seus pedidos&#34;</span><span class="p">)</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.y.left</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
-</span></span><span class="line"><span class="cl">        <span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>   
+</span></span><span class="line"><span class="cl">        <span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
 </span></span><span class="line"><span class="cl">        <span class="n">axis.ticks.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">())</span>
 </span></span></code></pre></div><p><img
         class="lazyload"
@@ -684,11 +684,11 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
         title="graph13" /></p>
 <h3 id="cluster-5">Cluster 5</h3>
 <p>Aqui vemos mais um cluster onde os clientes gostam de pedir muita salda com sobremesa, mas não dispensam uma pizza em algumas situações.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_5</span> <span class="o">&lt;-</span> <span class="n">clusters[[5]]</span> <span class="o">%&gt;%</span> 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_5</span> <span class="o">&lt;-</span> <span class="n">clusters[[5]]</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">pivot_longer</span><span class="p">(</span><span class="n">cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;bebida&#34;</span><span class="p">,</span> <span class="s">&#34;pizza&#34;</span><span class="p">,</span> <span class="s">&#34;sobremesa&#34;</span><span class="p">,</span> <span class="s">&#34;salada&#34;</span><span class="p">),</span> <span class="n">names_to</span> <span class="o">=</span> <span class="s">&#34;pedidos&#34;</span><span class="p">,</span> <span class="n">values_to</span> <span class="o">=</span> <span class="s">&#34;values&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">cluster_5</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl"><span class="n">cluster_5</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">values</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="n">id_transacao</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">             <span class="n">color</span> <span class="o">=</span> <span class="n">pedidos</span><span class="p">))</span> <span class="o">+</span>
@@ -699,7 +699,7 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl">       <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Pedidos feitos por cada cliente&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">       <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;A linha horizontal indica a informação de um cliente e seus pedidos&#34;</span><span class="p">)</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.y.left</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
-</span></span><span class="line"><span class="cl">        <span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>   
+</span></span><span class="line"><span class="cl">        <span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
 </span></span><span class="line"><span class="cl">        <span class="n">axis.ticks.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">())</span>
 </span></span></code></pre></div><p><img
         class="lazyload"
@@ -711,11 +711,11 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
         title="graph14" /></p>
 <h3 id="cluster-6">Cluster 6</h3>
 <p>Os clientes do grupo 6 são também bem aversos a salada, optando por uma combinação perfeita, sobremesa e pizza.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_6</span> <span class="o">&lt;-</span> <span class="n">clusters[[6]]</span> <span class="o">%&gt;%</span> 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_6</span> <span class="o">&lt;-</span> <span class="n">clusters[[6]]</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">pivot_longer</span><span class="p">(</span><span class="n">cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;bebida&#34;</span><span class="p">,</span> <span class="s">&#34;pizza&#34;</span><span class="p">,</span> <span class="s">&#34;sobremesa&#34;</span><span class="p">,</span> <span class="s">&#34;salada&#34;</span><span class="p">),</span> <span class="n">names_to</span> <span class="o">=</span> <span class="s">&#34;pedidos&#34;</span><span class="p">,</span> <span class="n">values_to</span> <span class="o">=</span> <span class="s">&#34;values&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">cluster_6</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl"><span class="n">cluster_6</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">values</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="n">id_transacao</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">             <span class="n">color</span> <span class="o">=</span> <span class="n">pedidos</span><span class="p">))</span> <span class="o">+</span>
@@ -726,7 +726,7 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl">       <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Pedidos feitos por cada cliente&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">       <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;A linha horizontal indica a informação de um cliente e seus pedidos&#34;</span><span class="p">)</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.y.left</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
-</span></span><span class="line"><span class="cl">        <span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>   
+</span></span><span class="line"><span class="cl">        <span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
 </span></span><span class="line"><span class="cl">        <span class="n">axis.ticks.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">())</span>
 </span></span></code></pre></div><p><img
         class="lazyload"
@@ -738,11 +738,11 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
         title="graph15" /></p>
 <h3 id="cluster-7">Cluster 7</h3>
 <p>No cluster 7 temos aqueles clientes que juntamente a pizza com sobremesa, adicionam uma bebida.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_7</span> <span class="o">&lt;-</span> <span class="n">clusters[[7]]</span> <span class="o">%&gt;%</span> 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_7</span> <span class="o">&lt;-</span> <span class="n">clusters[[7]]</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">pivot_longer</span><span class="p">(</span><span class="n">cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;bebida&#34;</span><span class="p">,</span> <span class="s">&#34;pizza&#34;</span><span class="p">,</span> <span class="s">&#34;sobremesa&#34;</span><span class="p">,</span> <span class="s">&#34;salada&#34;</span><span class="p">),</span> <span class="n">names_to</span> <span class="o">=</span> <span class="s">&#34;pedidos&#34;</span><span class="p">,</span> <span class="n">values_to</span> <span class="o">=</span> <span class="s">&#34;values&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">cluster_7</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl"><span class="n">cluster_7</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">values</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="n">id_transacao</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">             <span class="n">color</span> <span class="o">=</span> <span class="n">pedidos</span><span class="p">))</span> <span class="o">+</span>
@@ -753,7 +753,7 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl">       <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Pedidos feitos por cada cliente&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">       <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;A linha horizontal indica a informação de um cliente e seus pedidos&#34;</span><span class="p">)</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.y.left</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
-</span></span><span class="line"><span class="cl">        <span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>   
+</span></span><span class="line"><span class="cl">        <span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
 </span></span><span class="line"><span class="cl">        <span class="n">axis.ticks.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">())</span>
 </span></span></code></pre></div><p><img
         class="lazyload"
@@ -765,11 +765,11 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
         title="graph16" /></p>
 <h3 id="cluster-8">Cluster 8</h3>
 <p>E por fim, o cluster os loucos por sobremesa.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_8</span> <span class="o">&lt;-</span> <span class="n">clusters[[8]]</span> <span class="o">%&gt;%</span> 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_8</span> <span class="o">&lt;-</span> <span class="n">clusters[[8]]</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">pivot_longer</span><span class="p">(</span><span class="n">cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;bebida&#34;</span><span class="p">,</span> <span class="s">&#34;pizza&#34;</span><span class="p">,</span> <span class="s">&#34;sobremesa&#34;</span><span class="p">,</span> <span class="s">&#34;salada&#34;</span><span class="p">),</span> <span class="n">names_to</span> <span class="o">=</span> <span class="s">&#34;pedidos&#34;</span><span class="p">,</span> <span class="n">values_to</span> <span class="o">=</span> <span class="s">&#34;values&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">cluster_8</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl"><span class="n">cluster_8</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">values</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="n">id_transacao</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">             <span class="n">color</span> <span class="o">=</span> <span class="n">pedidos</span><span class="p">))</span> <span class="o">+</span>
@@ -780,7 +780,7 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl">       <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Pedidos feitos por cada cliente&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">       <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;A linha horizontal indica a informação de um cliente e seus pedidos&#34;</span><span class="p">)</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.y.left</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
-</span></span><span class="line"><span class="cl">        <span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>   
+</span></span><span class="line"><span class="cl">        <span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
 </span></span><span class="line"><span class="cl">        <span class="n">axis.ticks.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">())</span>
 </span></span></code></pre></div><p><img
         class="lazyload"
@@ -799,7 +799,7 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://www.lobdata.com.br/posts/segment-client/" data-title="Segmentação de clientes de Food Delivery" data-hashtags="Project,Data Science,Machine Learning,K-Means"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://www.lobdata.com.br/posts/segment-client/" data-hashtag="Project"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://www.lobdata.com.br/posts/segment-client/" data-title="Segmentação de clientes de Food Delivery"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://www.lobdata.com.br/posts/segment-client/" data-title="Segmentação de clientes de Food Delivery"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://www.lobdata.com.br/posts/segment-client/" data-title="Segmentação de clientes de Food Delivery"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://www.lobdata.com.br/posts/segment-client/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>

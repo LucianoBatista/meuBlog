@@ -1,18 +1,18 @@
 ---
-layout:     post
-title:      "Effective approach to analyze correlation coefficients"
-subtitle:   "Learn how to use corrplot and corrr packages"
-date:       2020-10-13
-author:     "Luciano"
-image:      "img/post_0_4.png"
+layout: post
+title: "Effective approach to analyze correlation coefficients"
+subtitle: "Learn how to use corrplot and corrr packages"
+date: 2020-10-13
+author: "Luciano"
+featuredImagePreview: "img/autocorrelation.png"
 tags:
-    - Data exploration
-    - Data visualization
-    - ggplot2
-    - corrr
-    - corplot
-    - R
-categories: [ Tutorials ]
+  - Data exploration
+  - Data visualization
+  - ggplot2
+  - corrr
+  - corplot
+  - R
+categories: [Tutorials]
 ---
 
 ![Plot](/img/correlation/correlation_post.png)
@@ -21,8 +21,8 @@ categories: [ Tutorials ]
 
 Probably, the best way to see correlations between variables is to use scatterplots, but in most of time you're working with a high dimensional dataset with a high number of variables, in these situations you have two major problems:
 
--   It's a high computational task to plot lots of scatterplot, specially if you have a big dataset.
--   Even if you can plot all scatterplots at once, the readability of the charts will be horrible, and you'll not see nothing useful.
+- It's a high computational task to plot lots of scatterplot, specially if you have a big dataset.
+- Even if you can plot all scatterplots at once, the readability of the charts will be horrible, and you'll not see nothing useful.
 
 One great approach to solve this problem is calculating the coefficient of correlation and instead of having lots of scatterplots, you'll have a matrix showing how much it correlates your variables, assuming a range from -1 to 1, high negatively correlated to high positively correlated, respectively. This is definitely much faster to plot and easy to interpret.
 
@@ -42,9 +42,9 @@ Correlation coefficient gives us a quantitative determination of a relationship 
 
 Another aspect that we need to be aware of is the factors that influencing the size of the correlation coefficient and can also lead to misinterpretation, like:
 
--   The size of the coefficient is very much dependent upon the variability of measured values in the correlated sample. The greater the variability, the higher will be the correlation, everything else being equal.
--   The size of the coefficient is altered when an investigator selects an extreme group of subjects to compare these groups regarding certain behavior. The coefficient got from the combined data of extreme groups would be larger than the coefficient got from a random sample of the same group.
--   Addition or dropping the extreme cases from the group can lead to a change in the coefficient's size. Addition of the extreme case may increase the size of correlation, while dropping the extreme cases will lower the value of the coefficient.
+- The size of the coefficient is very much dependent upon the variability of measured values in the correlated sample. The greater the variability, the higher will be the correlation, everything else being equal.
+- The size of the coefficient is altered when an investigator selects an extreme group of subjects to compare these groups regarding certain behavior. The coefficient got from the combined data of extreme groups would be larger than the coefficient got from a random sample of the same group.
+- Addition or dropping the extreme cases from the group can lead to a change in the coefficient's size. Addition of the extreme case may increase the size of correlation, while dropping the extreme cases will lower the value of the coefficient.
 
 With that in mind, it's a good idea to do a standardized step before looking for correlations, to minimize variability and extreme values.
 
@@ -60,7 +60,7 @@ As a dataset for this tutorial, I'll use some data from a personal project in de
 
 ![lol](/img/correlation/lol.jpg)
 
-*League of Legends* is one of the most popular video games in the world. It is played by over 100 million active users every single month. Each team has a base they must guard from their opponents while simultaneously attacking their opponent's base, there is the Blue team, whose base is in the lower left part of the map, and the Red team, whose base is in the upper right part of the map, at the back of each team's base there is a building called The Nexus. You win the game by destroying the enemy team's Nexus.
+_League of Legends_ is one of the most popular video games in the world. It is played by over 100 million active users every single month. Each team has a base they must guard from their opponents while simultaneously attacking their opponent's base, there is the Blue team, whose base is in the lower left part of the map, and the Red team, whose base is in the upper right part of the map, at the back of each team's base there is a building called The Nexus. You win the game by destroying the enemy team's Nexus.
 
 During the match, there are a lot of statistics about performing each player (5 in each team) and also from the match itself, so, I created a script to collect all this information.
 
@@ -177,9 +177,9 @@ This second approach is the most tidy way to perform a correlation analysis. To 
 
 ```r
 # plot 1
-lol_diamond_tbl %>% 
-    correlate() %>% 
-    rearrange() %>% 
+lol_diamond_tbl %>%
+    correlate() %>%
+    rearrange() %>%
     shave() %>%
     # rplot need to receive a correlation matrix
     rplot()
@@ -198,9 +198,9 @@ Yes, it's a mess and difficult to read. Let's improve this plot following some c
 3.  I'll choose better colors. And at the end, I will set the x-axis label angle to 45 and `hjust = 1`, to put the axis text in right place.
 
 ```r
-lol_diamond_tbl %>% 
-    correlate(use = "pairwise.complete.obs") %>% 
-    rearrange(method = "PCA") %>% 
+lol_diamond_tbl %>%
+    correlate(use = "pairwise.complete.obs") %>%
+    rearrange(method = "PCA") %>%
     shave() %>%
     # rplot need to receive a correlation matrix
     rplot(shape = 15, colours = c("darkorange", "white", "darkcyan")) +
@@ -219,9 +219,9 @@ The `corrr` library can also use a lot of different clustering methods for rearr
 One more convenience in use `corrr` is that you can create `plotly` interactive plots and hover through specific squares to investigate the values of correlation coefficients and the variable in x and y axis [play the video](https://www.youtube.com/watch?v=4Xv4x7wklSM).
 
 ```r
-g <- lol_diamond_tbl %>% 
-    correlate(use = "pairwise.complete.obs") %>% 
-    rearrange(method = "PCA") %>% 
+g <- lol_diamond_tbl %>%
+    correlate(use = "pairwise.complete.obs") %>%
+    rearrange(method = "PCA") %>%
     corrr::shave() %>%
     # rplot need to receive a correlation matrix
     rplot(shape = 15, colours = c("darkorange", "white", "darkcyan")) +
@@ -250,41 +250,41 @@ First, we need the `get_cor()` function, that will return the correlation matrix
 # getting the correlation matrix
 get_cor <- function(data, target, use = "pairwise.complete.obs",
          fct_reorder = FALSE, fct_rev = FALSE) {
-    
+
     # meta programming to capture the variables
     # like tidy functions
     feature_expr <- enquo(target)
     feature_name <- quo_name(feature_expr)
-    
+
     # get the corralating matrix
     # and also ensuring that the data is in the
     # right format
-    data_cor <- data %>% 
-        mutate(across(where(is.character), as_factor)) %>% 
-        mutate(across(where(is.factor), as.numeric)) %>% 
-        cor(use = use) %>% 
-        as_tibble() %>% 
-        mutate(feature = names(.)) %>% 
-        select(feature, !! feature_expr) %>% 
+    data_cor <- data %>%
+        mutate(across(where(is.character), as_factor)) %>%
+        mutate(across(where(is.factor), as.numeric)) %>%
+        cor(use = use) %>%
+        as_tibble() %>%
+        mutate(feature = names(.)) %>%
+        select(feature, !! feature_expr) %>%
         filter(!(feature == feature_name))
-    
+
     # conditionals to sort the variables
     # very usefull to plot
     if (fct_reorder) {
-        data_cor <- data_cor %>% 
-            mutate(feature = fct_reorder(feature, !! feature_expr)) %>% 
+        data_cor <- data_cor %>%
+            mutate(feature = fct_reorder(feature, !! feature_expr)) %>%
             arrange(feature)
     }
-    
+
     if (fct_rev) {
-        data_cor <- data_cor %>% 
-            mutate(feature = fct_rev(feature)) %>% 
+        data_cor <- data_cor %>%
+            mutate(feature = fct_rev(feature)) %>%
             arrange(feature)
 
     }
-    
+
     return(data_cor)
-    
+
 }
 
 ```
@@ -293,32 +293,32 @@ Second, we need the plot function.
 
 ```r
 # this function plot the correlation scores in order of values
-# and have a lot of parameters that can be used to 
+# and have a lot of parameters that can be used to
 # fully customize your plot as you want
 plot_cor <- function(data, target, fct_reorder = FALSE, fct_rev = FALSE,
                      include_lbl = TRUE, lbl_precision = 2, lbl_position = "outward",
                      size = 2, line_size = 1, vert_size = 1,
                      color_pos = palette_light()[[1]],
                      color_neg = palette_light()[[2]]) {
-    
+
     # meta programming to capture the variables
     # like tidy functions
     feature_expr <- enquo(target)
     feature_name <- quo_name(feature_expr)
-    
-    
-    data_cor <- data %>% 
-        get_cor(!! feature_expr, fct_reorder = fct_reorder, fct_rev = fct_rev) %>% 
-        
+
+
+    data_cor <- data %>%
+        get_cor(!! feature_expr, fct_reorder = fct_reorder, fct_rev = fct_rev) %>%
+
         # used as label, and also putting the precision of the numbers
-        mutate(feature_name_text = round(!! feature_expr, lbl_precision)) %>% 
-        
+        mutate(feature_name_text = round(!! feature_expr, lbl_precision)) %>%
+
         # labeling the correlation as negative and positive
         mutate(Correlation = case_when(
             (!! feature_expr) >= 0 ~ "Positive",
             TRUE ~ "Negative") %>% as.factor())
-    
-    g <- data_cor %>% 
+
+    g <- data_cor %>%
         ggplot(aes_string(x = feature_name, y = "feature", group = "feature")) +
         geom_point(aes(color = Correlation), size = size) +
         geom_segment(aes(xend = 0, yend = feature, color = Correlation), size = line_size) +
@@ -326,9 +326,9 @@ plot_cor <- function(data, target, fct_reorder = FALSE, fct_rev = FALSE,
         expand_limits(x = c(-1, 1)) +
         theme_tq() +
         scale_color_manual(values = c(color_neg, color_pos))
-    
+
     if (include_lbl) g <- g + geom_label(aes(label = feature_name_text), hjust = lbl_position)
-    
+
     return(g)
 
 }
@@ -338,7 +338,6 @@ plot_cor(lol_diamond_tbl, totalDamageDealt, fct_reorder = T)
 ```
 
 ![final_result](/img/correlation/correlation_10.png)
-
 
 And that is the final result. As we can see, goldEarned and goldSpent is more related to totalDamageDealt (target variable), and make sense because you earn gold when you kill/destroy players/minions/objectives in the game, hence, with more gold you spent more gold.
 

@@ -1,15 +1,16 @@
 ---
-layout:     post
-title:      "Modelagem Preditiva em IoT"
-date:       2019-04-04
-author:     "Luciano"
-image:      "img/post_0_3.jpg"
+layout: post
+title: "Modelagem Preditiva em IoT"
+date: 2019-04-04
+author: "Luciano"
+featuredImagePreview: "img/iotdevice.png"
 tags:
-    - Project
-    - Data Science
-    - Machine Learning
-categories: [ Projetos ]
+  - Project
+  - Data Science
+  - Machine Learning
+categories: [Projetos]
 ---
+
 # Previsão de Uso de Energia
 
 Quando falamos de revolução tecnológica, a noção de Internet das Coisas, ou Internet of Things (IoT), é um dos assuntos principais. O seu desenvolvimento está mudando a forma como o ser humando tem se conectado com diversos dispositivos tecnlógicos.
@@ -23,7 +24,6 @@ A versão completa do projeto pode ser encontrada no repositório do meu [GitHub
 # Análise Exploratória dos Dados
 
 ## O que representa cada variável no dataset?
-
 
 - **date:** Tempo de coleta dos dados pelos sensores
 - **Appliances:** Uso de energia (em W)
@@ -39,14 +39,11 @@ A versão completa do projeto pode ser encontrada no repositório do meu [GitHub
 - **Day_of_week:** Dia da semana
 - **NSM:** Medida de tempo (em s)
 
-
 Ao importar os dados foi visto que os dados possuem a mesma quantidade de colunas e que elas são iguais, sendo assim, os dados de teste e treino foram concatenados para realizar uma análise conjunta dos dados.
-
 
 ```python
 df = pd.concat([train, test], axis=0)
 ```
-
 
 ```python
 print(f'O novo dataset possui {df.shape[0]} linhas e {df.shape[1]} variáveis')
@@ -56,9 +53,7 @@ print(f'O dataset possui {sum(df.isnull().sum())} valores nulos')
     O novo dataset possui 19735 linhas e 32 variáveis
     O dataset possui 0 valores nulos
 
-
 Optei por separar variáveis numéricas e categóricas para melhor observar algumas informações que são características de cada tipo.
-
 
 ```python
 num_vars = [name for name in df.columns if df[name].dtype != 'object']
@@ -70,7 +65,7 @@ print(f'O data set possui {len(num_vars)} variáveis numéricas e {len(cat_vars)
 
     O data set possui 29 variáveis numéricas e 3 de tipo objeto, sendo todas relacionadas à data.
 
-Uma observação interessante é que precisamos estar sempre atentos ao tipo de dado que está sendo manipulado, no atual conjunto de dados a variável *'date'* não foi importada como tipo de data. Logo, foi preciso realizar essa conversão, além disso, a data (agora convertida) foi adicionada ao index do DataFrame.
+Uma observação interessante é que precisamos estar sempre atentos ao tipo de dado que está sendo manipulado, no atual conjunto de dados a variável _'date'_ não foi importada como tipo de data. Logo, foi preciso realizar essa conversão, além disso, a data (agora convertida) foi adicionada ao index do DataFrame.
 
 A adição da variável de data ao index do objeto DataFrame do pacote Pandas permite uma manipulação mais intuitiva desse tipo de dado. Mais à frente tal funcionalidade será observada.
 
@@ -83,16 +78,10 @@ df_cat['date'] = pd.to_datetime(df_cat['date'])
 df_cat.dtypes
 ```
 
-
-
-
     date           datetime64[ns]
     WeekStatus             object
     Day_of_week            object
     dtype: object
-
-
-
 
 ```python
 # Transformando a coluna de data em index podemos realizar algumas análises
@@ -100,7 +89,6 @@ df_cat.dtypes
 df_cat.index = pd.DatetimeIndex(df_cat['date'])
 df_num.index = pd.DatetimeIndex(df_cat['date'])
 ```
-
 
 ```python
 # Também precisaremos de uma coluna com as datas (utilizada para alguns plots).
@@ -111,33 +99,25 @@ df_num['date'] = df_cat['date'].copy()
 df_num.columns
 ```
 
-
-
-
     Index(['Appliances', 'lights', 'T1', 'RH_1', 'T2', 'RH_2', 'T3', 'RH_3', 'T4',
            'RH_4', 'T5', 'RH_5', 'T6', 'RH_6', 'T7', 'RH_7', 'T8', 'RH_8', 'T9',
            'RH_9', 'T_out', 'Press_mm_hg', 'RH_out', 'Windspeed', 'Visibility',
            'Tdewpoint', 'rv1', 'rv2', 'NSM', 'date'],
           dtype='object')
 
-
-
-
 ```python
 df_cat.columns
 ```
 
-
-
-
     Index(['date', 'WeekStatus', 'Day_of_week'], dtype='object')
-___
+
+---
+
 ## Agora vamos observar um conjunto de plots que ajudaram a entender melhor os dados.
 
 ## Pairplot
 
 O código abaixo permite a visualização de um pairplot filtrado por períodos. È possível visualizar os dados em diferentes intervalos de dias, semanas, meses e ano (caso nosso dataset tivesse dados de um ano diferente à 2016).
-
 
 ```python
 # Precisa editar algumas linhas caso precise plotar um dia específico
@@ -168,15 +148,11 @@ plt.show()
 
     2016-05 até 2016-05-01 23:00:00 com 3853 pontos
 
-
-
 ![png](/img/output_21_1.png)
-
 
 Podemos visualizar que a maioria das distribuição se assemelham à uma distribuição normal, sendo que algumas poucas possuem desvios. Vamos verificar agora se existe a presença de muitos outliers nos dados
 
 ## Boxplot
-
 
 ```python
 # Novamente, cada plot tem um código que permite o filtro por data.
@@ -206,15 +182,11 @@ plt.show()
 
     2016-04 até 2016-05-01 23:00:00 com 4320 pontos
 
-
-
 ![png](/img/output_24_1.png)
-
 
 Os dados que mais possuem outliers é a variável target. Nesse caso é essencial que esse pontos sejam tratados, o que será feito mais a frente.
 
 ## Plot Comparativo
-
 
 ```python
 # Gráficos comparativo de qualquer variável ao longo de um período
@@ -246,11 +218,7 @@ for i in range(0, n):
     print(f'{date_start} até {date_end} com {len(df_num[date_start: date_end][name])} pontos')
 ```
 
-
-
-
 ![png](/img/output_27_2.png)
-
 
 Com o código acima é possível visualizar o comportamento de qualquer variável numérica em relação ao tempo. Por conta de ser um post no blog, eu optei em apenas mostrar uma das figuras criadas pelo código. Mas você pode acessar o [link](https://github.com/LucianoBatista/iot_energy_consumption_prediction/blob/master/modelagem_preditiva_iot.ipynb) para visualizar a saída completa dessa célula.
 
@@ -262,11 +230,9 @@ Podemos observar o seguinte:
 - **Pressão:** Apresenta um comportamento bem padrão.
 - **rv_1, rv_2:** Possuem um comportamento bem aleatório ao longo do tempo, já que se trata realmente de uma variável aleatória adicionada aos dados.
 
-
 ## FacetGrid
 
-Este é um tipo de gráfico que permite a visualização do comportamento de mais de duas variáveis ao mesmo tempo. Na figura, optei por visualizar a variável *'Appliances'* em relação à *'rv1'* e *'T_out'*.
-
+Este é um tipo de gráfico que permite a visualização do comportamento de mais de duas variáveis ao mesmo tempo. Na figura, optei por visualizar a variável _'Appliances'_ em relação à _'rv1'_ e _'T_out'_.
 
 ```python
 # Aqui basta alterar o intervalo desejado e as variáveis desejadas
@@ -274,9 +240,7 @@ g = sns.FacetGrid(df_num['2016-05'], col="Appliances", col_wrap=8, height=2, yli
 g.map(sns.scatterplot, "rv1", "T_out", ci=None);
 ```
 
-
 ![png](/img/output_31_0.png)
-
 
 Vemos que a maior varialibilidade dos dados se dá entre 20 a 130 do Appliance. Logo a modelagem pode ser favorecida a partir da remoção de outliers.
 
@@ -287,7 +251,6 @@ Vemos que a maior varialibilidade dos dados se dá entre 20 a 130 do Appliance. 
 Como vimos que o 'Appliances' possui muito valores outliers. Podemos iniciar o tratamento pela elimação desses valores.
 
 Para isso, identifiquei o Interquantile Range para remvover o whisker superior do boxplot. Como pode ser visto no código a seguir.
-
 
 ```python
 # Primeiro e terceiro quartil e cálculo da distância IQR
@@ -303,8 +266,6 @@ print(IQR)
     100.0
     50.0
 
-
-
 ```python
 # Determinação dos ranges inferiores e superiores do boxplot
 Lower_Whisker = Q1 - 1.5*IQR
@@ -314,13 +275,10 @@ print(Lower_Whisker, Upper_Whisker)
 
     -25.0 175.0
 
-
-
 ```python
 # Remoção dos dados outiliers
 new_df = df_num[df_num['Appliances'] < 175.0]
 ```
-
 
 ```python
 year_start = '2016'
@@ -349,17 +307,12 @@ plt.show()
 
     2016-04 até 2016-05-01 23:00:00 com 3870 pontos
 
-
-
 ![png](/img/output_39_1.png)
-
-
 
 ```python
 # Removendo variável de data, adicionada para ajudar na construção dos gráficos
 new_df_num = new_df.drop(['date'], axis=1)
 ```
-
 
 ```python
 # Resetando o index
@@ -367,12 +320,7 @@ new_df_num.reset_index(drop=True, inplace=True)
 new_df_num.index
 ```
 
-
-
-
     RangeIndex(start=0, stop=17597, step=1)
-
-
 
 ## Correlation
 
@@ -389,10 +337,7 @@ sns.heatmap(cor, annot=True, cmap=plt.cm.Reds)
 plt.show()
 ```
 
-
 ![png](/img/output_43_0.png)
-
-
 
 ```python
 #Correlation with output variable
@@ -401,9 +346,6 @@ cor_target = abs(cor["Appliances"])
 relevant_features = cor_target[cor_target<0.2]
 relevant_features
 ```
-
-
-
 
     RH_1           0.045596
     RH_2           0.109746
@@ -423,8 +365,6 @@ relevant_features
     rv1            0.009986
     rv2            0.009986
     Name: Appliances, dtype: float64
-
-
 
 Uma observação interessante é que maioria das variáveis possuem uma correlação negativa com a variável target, ou seja, o 'Appliances' aumenta a medida que uma variável específica diminui.
 
@@ -448,7 +388,6 @@ for name in columns:
 
     ['lights', 'T1', 'RH_1', 'T2', 'RH_2', 'T3', 'RH_3', 'T4', 'RH_4', 'T5', 'RH_5', 'T6', 'RH_6', 'T7', 'RH_7', 'T8', 'RH_8', 'T9', 'RH_9', 'T_out', 'Press_mm_hg', 'RH_out', 'Windspeed', 'Visibility', 'Tdewpoint', 'rv1', 'rv2', 'NSM']
 
-
 Algumas variáveis ainda possuem muitos outliers, mas serão mantidas.
 
 # Feature Selection
@@ -459,25 +398,18 @@ Aqui apliquei 2 diferentes métodos de seleção de variáveis.
 
 Neste método, precisamos definir quantas variáveis queremos para rodar o modelo, e depois, quando obtido o número ótimo aplicamos a seleção de variáveis. O método identifica, recursivamente, qual conjunto de variáveis possuem maior score.
 
-
 ```python
 new_df_num.shape
 ```
 
-
-
-
     (17597, 28)
-
-
-
 
 ```python
 #no of features
-nof_list=np.arange(1,28)            
+nof_list=np.arange(1,28)
 high_score=0
 #Variable to store the optimum features
-nof=0           
+nof=0
 score_list =[]
 for n in range(len(nof_list)):
     X_train, X_test, y_train, y_test = train_test_split(new_df_num, new_df_num_Y, test_size = 0.3, random_state = 0)
@@ -498,8 +430,6 @@ print("Score with %d features: %f" % (nof, high_score))
     Optimum number of features: 21
     Score with 21 features: 0.353213
 
-
-
 ```python
 cols = list(new_df_num.columns)
 model = LinearRegression()
@@ -507,9 +437,9 @@ model = LinearRegression()
 rfe = RFE(model, 21)
 #Transforming data using RFE
 X_train, X_test, y_train, y_test = train_test_split(new_df_num, new_df_num_Y, test_size = 0.3, random_state = 0)
-X_rfe = rfe.fit_transform(X_train,y_train)  
+X_rfe = rfe.fit_transform(X_train,y_train)
 #Fitting the data to model
-model.fit(X_rfe,y_train)             
+model.fit(X_rfe,y_train)
 temp = pd.Series(rfe.support_,index = cols)
 selected_features_rfe = temp[temp==True].index
 print(selected_features_rfe)
@@ -520,9 +450,7 @@ print(selected_features_rfe)
            'Windspeed', 'NSM'],
           dtype='object')
 
-
 ## Embedded Method
-
 
 ```python
 reg = LassoCV()
@@ -547,12 +475,7 @@ plt.title("Feature importance using Lasso Model")
 
     Text(0.5, 1.0, 'Feature importance using Lasso Model')
 
-
-
-
 ![png](/img/output_57_2.png)
-
-
 
 # Machine Learning
 
@@ -563,11 +486,9 @@ Na etapa de escolha do modelo, selecionei 3 métodos para problemas de regressã
 new_df_v = new_df_num.drop(['rv1', 'rv2'], axis=1)
 ```
 
-
 ```python
 X_train, X_test, y_train, y_test = train_test_split(new_df_v, new_df_num_Y, train_size=0.7)
 ```
-
 
 ```python
 # Regressão Linear Múltipla
@@ -581,8 +502,6 @@ print(score)
 
     0.34058856776814994
 
-
-
 ```python
 # Support Vector Regression
 modelo = SVR()
@@ -594,8 +513,6 @@ print(score)
 ```
 
     0.3594652532873541
-
-
 
 ```python
 # Gradient Boosting Regressor
@@ -612,7 +529,6 @@ print(f"R2 SCORE: {r2score}")
 ```
 
     R2 SCORE: 0.6598
-
 
 Vemos então que o modelo que apresentou melhor resultado foi o Gradient Boosting Regressor, com 65,98% na métrica de R². Tal resultado pode ser tido como um resultado preliminar, e etapas de otimização podem ser realizadas daqui em diante para melhorar o score do modelo.
 
