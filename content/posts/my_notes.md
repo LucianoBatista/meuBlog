@@ -11,7 +11,7 @@ tags:
   - Generative
   - IA Generativa
 categories: [Tutorials]
-draft: false
+draft: true
 ---
 
 Estou iniciando um série de posts aqui no blog sobre IA Generativa. O conteúdo é como se fossem minhas anotações sobre um livro que estou lendo, e a intenção é que a cada capítulo eu traga um compilado aqui do que aprendi, por isso estarei chamando de **mynotes**.
