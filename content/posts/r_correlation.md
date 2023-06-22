@@ -3,7 +3,7 @@ layout: post
 title: "How to Perform Correlation Analysis in Time Series data using R?"
 date: 2020-09-15
 author: "Luciano"
-featuredImagePreview: "img/cor_ts.png"
+featuredImage: "img/cor_ts.png"
 tags:
   - Time Series
   - Data Science

@@ -9,7 +9,9 @@
     <pubDate>Tue, 13 Oct 2020 00:00:00 &#43;0000</pubDate>
     <author>Luciano</author>
     <guid>https://www.lobdata.com.br/posts/correlation_analysis_in_r/</guid>
-    <description><![CDATA[Correlation analysis is a key task when you&rsquo;re exploring any dataset. The principal objective is to find linear relationships between features that can help to understanding the big picture.
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/autocorrelation.png" referrerpolicy="no-referrer">
+            </div>Correlation analysis is a key task when you&rsquo;re exploring any dataset. The principal objective is to find linear relationships between features that can help to understanding the big picture.
 Probably, the best way to see correlations between variables is to use scatterplots, but in most of time you&rsquo;re working with a high dimensional dataset with a high number of variables, in these situations you have two major problems:
 It&rsquo;s a high computational task to plot lots of scatterplot, specially if you have a big dataset.]]></description>
 </item>

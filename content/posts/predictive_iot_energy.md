@@ -3,7 +3,7 @@ layout: post
 title: "Modelagem Preditiva em IoT"
 date: 2019-04-04
 author: "Luciano"
-featuredImagePreview: "img/iotdevice.png"
+featuredImage: "img/iotdevice.png"
 tags:
   - Project
   - Data Science

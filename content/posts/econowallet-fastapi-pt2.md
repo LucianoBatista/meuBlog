@@ -4,7 +4,7 @@ title: "Criando uma API Pronta para Produção com FastAPI - PT.2"
 date: 2021-04-03
 author: "Luciano"
 image: "img/post_0_4.png"
-featuredImagePreview: "img/fastapi.png"
+featuredImage: "img/fastapi.png"
 tags:
   - RESTFull API
   - Backend

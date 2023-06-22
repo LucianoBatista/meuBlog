@@ -4,7 +4,7 @@ title: "Classificador BNCC Pt.2"
 subtitle: "Modelagem"
 date: 2022-06-14
 author: "Luciano, Pedro, Will e Brisa"
-featuredImagePreview: "img/bncc_classifier.png"
+featuredImage: "img/bncc_classifier.png"
 tags:
   - Bag of words
   - TFIDF

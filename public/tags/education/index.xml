@@ -9,7 +9,9 @@
     <pubDate>Tue, 14 Jun 2022 00:00:00 &#43;0000</pubDate>
     <author>Luciano, Pedro, Will e Brisa</author>
     <guid>https://www.lobdata.com.br/posts/bncc-modeling/</guid>
-    <description><![CDATA[Resolvemos criar um novo artigo para detalhar melhor o que foi feito na etapa de modelagem do projeto do Classificador BNCC. Assim conseguimos dar mais atenção e justificar algumas escolhas.
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/bncc_classifier.png" referrerpolicy="no-referrer">
+            </div>Resolvemos criar um novo artigo para detalhar melhor o que foi feito na etapa de modelagem do projeto do Classificador BNCC. Assim conseguimos dar mais atenção e justificar algumas escolhas.
 Cronograma de modelagem Nosso intuito foi buscar o melhor baseline para nosso problema, mapeando alguns universos de possibilidades, dentre modelos de machine learning e estratégias de transformação de texto em dado numérico.
 Válido lembrar que o dado que está entrando nessa etapa do pipeline está &ldquo;limpo&rdquo;, ou seja, passou pelas etapas de pré-processamentos que julgamos necessárias.]]></description>
 </item>
@@ -19,7 +21,9 @@ Válido lembrar que o dado que está entrando nessa etapa do pipeline está &ldq
     <pubDate>Wed, 08 Jun 2022 00:00:00 &#43;0000</pubDate>
     <author>Luciano, Pedro, Will e Brisa</author>
     <guid>https://www.lobdata.com.br/posts/bncc-classifier/</guid>
-    <description><![CDATA[Projeto desenvolvido pelos alunos Brisa Rosatti, Luciano Batista, Pedro Moreau, Wilson França do Curso de Data Science &amp; Machine Learning da Tera em colaboração com a Studos e ArcoTech.
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/bncc_classifier.png" referrerpolicy="no-referrer">
+            </div>Projeto desenvolvido pelos alunos Brisa Rosatti, Luciano Batista, Pedro Moreau, Wilson França do Curso de Data Science &amp; Machine Learning da Tera em colaboração com a Studos e ArcoTech.
 PARTE I: Estrutura do projeto Contexto Segundo o IBGE, no Brasil, existem registradas 124840 escolas de ensino fundamental e 28933 escolas do ensino médio. Em termos de número de matrículas, isso representa 26718830 matrículas para o ensino fundamental e 7550753 para o ensino médio https://cidades.]]></description>
 </item>
 </channel>

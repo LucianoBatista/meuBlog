@@ -9,7 +9,9 @@
     <pubDate>Tue, 13 Oct 2020 00:00:00 &#43;0000</pubDate>
     <author>Luciano</author>
     <guid>https://www.lobdata.com.br/posts/correlation_analysis_in_r/</guid>
-    <description><![CDATA[Correlation analysis is a key task when you&rsquo;re exploring any dataset. The principal objective is to find linear relationships between features that can help to understanding the big picture.
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/autocorrelation.png" referrerpolicy="no-referrer">
+            </div>Correlation analysis is a key task when you&rsquo;re exploring any dataset. The principal objective is to find linear relationships between features that can help to understanding the big picture.
 Probably, the best way to see correlations between variables is to use scatterplots, but in most of time you&rsquo;re working with a high dimensional dataset with a high number of variables, in these situations you have two major problems:
 It&rsquo;s a high computational task to plot lots of scatterplot, specially if you have a big dataset.]]></description>
 </item>
@@ -19,7 +21,9 @@ It&rsquo;s a high computational task to plot lots of scatterplot, specially if y
     <pubDate>Sun, 20 Sep 2020 00:00:00 &#43;0000</pubDate>
     <author>Luciano</author>
     <guid>https://www.lobdata.com.br/posts/hype_test/</guid>
-    <description><![CDATA[Introduction This is the first of two articles that we&rsquo;ll talk about two different approaches to perform hypotheses tests, covering the classical and computational methodologies. In the end I&rsquo;ll show you one R package (Infer) capable to execute any of these methods in an easy, flexible, and less error-prone way.
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/testing.png" referrerpolicy="no-referrer">
+            </div>Introduction This is the first of two articles that we&rsquo;ll talk about two different approaches to perform hypotheses tests, covering the classical and computational methodologies. In the end I&rsquo;ll show you one R package (Infer) capable to execute any of these methods in an easy, flexible, and less error-prone way.
 In the second article, we&rsquo;ll go deeper in a hands-on experiment using the Infer package, if you already know the package and want to see more code than text, click here.]]></description>
 </item>
 <item>
@@ -28,7 +32,9 @@ In the second article, we&rsquo;ll go deeper in a hands-on experiment using the 
     <pubDate>Tue, 15 Sep 2020 00:00:00 &#43;0000</pubDate>
     <author>Luciano</author>
     <guid>https://www.lobdata.com.br/posts/r_correlation/</guid>
-    <description><![CDATA[What is it correlation analysis? The concept of correlation is the same used in non-time series data: identify and quantify the relationship between two variables. Due to the continuous and chronologically ordered nature of time series data, there is a likelihood that there will be some degree of correlation between the series observations.
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/cor_ts.png" referrerpolicy="no-referrer">
+            </div>What is it correlation analysis? The concept of correlation is the same used in non-time series data: identify and quantify the relationship between two variables. Due to the continuous and chronologically ordered nature of time series data, there is a likelihood that there will be some degree of correlation between the series observations.
 Measuring and analyzing the correlation between two variables, in the context of time series analysis, can be understood by two different aspects:]]></description>
 </item>
 </channel>

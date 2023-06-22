@@ -3,7 +3,7 @@ layout: post
 title: "Criando uma API Pronta para Produção com FastAPI - PT.1"
 date: 2021-03-30
 author: "Luciano"
-featuredImagePreview: "img/fastapi.png"
+featuredImage: "img/fastapi.png"
 tags:
   - RESTFull API
   - Web Development

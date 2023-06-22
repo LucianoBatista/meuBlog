@@ -4,7 +4,7 @@ title: "Classificador BNCC"
 subtitle: "Classificador de questões do Ensino Médio e Fundamental"
 date: 2022-06-08
 author: "Luciano, Pedro, Will e Brisa"
-featuredImagePreview: "img/bncc_classifier.png"
+featuredImage: "img/bncc_classifier.png"
 tags:
   - Tutorial
   - Data Science

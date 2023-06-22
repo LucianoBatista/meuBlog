@@ -9,7 +9,9 @@
     <pubDate>Sun, 25 Oct 2020 00:00:00 &#43;0000</pubDate>
     <author>Luciano</author>
     <guid>https://www.lobdata.com.br/posts/demand_forecasting_brazilian_commodities/</guid>
-    <description><![CDATA[Demand Forecasting of Brazilian Commodities Soybean, Corn, Sugar, Soybean Meal, Soybean Oil and Wheat (left to right).
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/comodities.png" referrerpolicy="no-referrer">
+            </div>Demand Forecasting of Brazilian Commodities Soybean, Corn, Sugar, Soybean Meal, Soybean Oil and Wheat (left to right).
 Demand Forecasting is a technique for estimation of probable demand for a product or services. It is based on the analysis of past demand for that product or service in the present market condition. Demand forecasting should be done on a scientific basis and facts and events related to forecasting should be considered.]]></description>
 </item>
 <item>
@@ -18,7 +20,9 @@ Demand Forecasting is a technique for estimation of probable demand for a produc
     <pubDate>Fri, 19 Jun 2020 00:00:00 &#43;0000</pubDate>
     <author>Luciano</author>
     <guid>https://www.lobdata.com.br/posts/segment-client/</guid>
-    <description><![CDATA[Segmentação de clientes de Food Delivery Neste projeto o objetivo é segmentar clientes de um food delivery. A segmentação permite que profissionais de marketing e product managers possam identificar subconjuntos de público-alvo para melhor adaptar suas estratégias.
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/segmentation.png" referrerpolicy="no-referrer">
+            </div>Segmentação de clientes de Food Delivery Neste projeto o objetivo é segmentar clientes de um food delivery. A segmentação permite que profissionais de marketing e product managers possam identificar subconjuntos de público-alvo para melhor adaptar suas estratégias.
 O dataset utilizado foi cedido pela Data Science Academy, e pode ser encontrado no meu github juntamente com todo o código apresentado aqui.
 Um breve overview do que será abordado no projeto:
 Preparação de dados Visualização de dados Padronização de variáveis Clusterização com K-Means Avaliação do melhor número de cluster com o índice de Calinski-Harabasz Bootstrap para avaliar consistência do cluster Visualização dos clusters Sem mais delongas, vamos ao código!]]></description>
@@ -29,7 +33,9 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
     <pubDate>Mon, 04 Nov 2019 00:00:00 &#43;0000</pubDate>
     <author>Luciano</author>
     <guid>https://www.lobdata.com.br/posts/cat_in_the_dat/</guid>
-    <description><![CDATA[Is there a cat in your dat? Esse é um playground do Kaggle, onde diferentes pessoas competem dentro de um determinado problema &lsquo;incomum&rsquo; porém bastante relevante. Nesta competição foi disponibilizado um dataset repleto de variáveis categóricas.
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/cat_data.png" referrerpolicy="no-referrer">
+            </div>Is there a cat in your dat? Esse é um playground do Kaggle, onde diferentes pessoas competem dentro de um determinado problema &lsquo;incomum&rsquo; porém bastante relevante. Nesta competição foi disponibilizado um dataset repleto de variáveis categóricas.
 Sabemos que uma das tarefas do processo de machine learning é realizar o encoding de variáveis categóricas de forma que os algoritmos possam executar seus cálculos e retornar um resultado. Dominar tal skill é de grande importância para o Cientista de Dados.]]></description>
 </item>
 <item>
@@ -38,7 +44,9 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
     <pubDate>Thu, 04 Apr 2019 00:00:00 &#43;0000</pubDate>
     <author>Luciano</author>
     <guid>https://www.lobdata.com.br/posts/predictive_iot_energy/</guid>
-    <description><![CDATA[Previsão de Uso de Energia Quando falamos de revolução tecnológica, a noção de Internet das Coisas, ou Internet of Things (IoT), é um dos assuntos principais. O seu desenvolvimento está mudando a forma como o ser humando tem se conectado com diversos dispositivos tecnlógicos.
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/iotdevice.png" referrerpolicy="no-referrer">
+            </div>Previsão de Uso de Energia Quando falamos de revolução tecnológica, a noção de Internet das Coisas, ou Internet of Things (IoT), é um dos assuntos principais. O seu desenvolvimento está mudando a forma como o ser humando tem se conectado com diversos dispositivos tecnlógicos.
 IoT vem gerando uma quantidade imensa de dados, um dos maiores responsáveis pelo Big Data. Diante da geração de tanta informação, o papel do Cientista de Dados se faz cada vez mais presente, pois torna-se possível a obteção de grandes insights sobre diferentes área até então não analisadas.]]></description>
 </item>
 </channel>

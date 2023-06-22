@@ -4,7 +4,7 @@ title: "Efficient Pandas"
 date: 2021-10-24
 author: "Luciano"
 image: "img/post_0_4.png"
-featuredImagePreview: "img/efficient_pandas.png"
+featuredImage: "img/efficient_pandas.png"
 tags:
   - Tutorial
   - Data Science

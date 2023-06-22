@@ -4,7 +4,7 @@ title: "Effective approach to analyze correlation coefficients"
 subtitle: "Learn how to use corrplot and corrr packages"
 date: 2020-10-13
 author: "Luciano"
-featuredImagePreview: "img/autocorrelation.png"
+featuredImage: "img/autocorrelation.png"
 tags:
   - Data exploration
   - Data visualization

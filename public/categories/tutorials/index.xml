@@ -20,7 +20,9 @@ Teremos teoria e código, e além disso vou tentar dar meus 2 centavos de contri
     <pubDate>Wed, 26 Jan 2022 00:00:00 &#43;0000</pubDate>
     <author>Luciano</author>
     <guid>https://www.lobdata.com.br/posts/image-cleaning/</guid>
-    <description><![CDATA[O intuito desse post é compartilhar uma solução simples que resolvou um problema complexo que estávamos enfrentando em de nossos produtos aqui na Studos, a Leitora de Gabaritos. Dessa forma, outros que estejam com problemas similares possam talvez ter um ponto de vista diferente na resolução do problema.
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/computer_vision.png" referrerpolicy="no-referrer">
+            </div>O intuito desse post é compartilhar uma solução simples que resolvou um problema complexo que estávamos enfrentando em de nossos produtos aqui na Studos, a Leitora de Gabaritos. Dessa forma, outros que estejam com problemas similares possam talvez ter um ponto de vista diferente na resolução do problema.
 O que é a leitora de gabaritos? Dando um pouco de contexto sobre o produto, a Leitora de Gabaritos é uma API desenvolvida utilizando (principalmente) a seguinte stack:]]></description>
 </item>
 <item>
@@ -29,7 +31,9 @@ O que é a leitora de gabaritos? Dando um pouco de contexto sobre o produto, a L
     <pubDate>Sun, 24 Oct 2021 00:00:00 &#43;0000</pubDate>
     <author>Luciano</author>
     <guid>https://www.lobdata.com.br/posts/efficient-pandas/</guid>
-    <description><![CDATA[Fala galera, tudo certo com vocês? Se você é um Cientista/Analista de dados, ou curte utilizar python para realizar diferentes análises em seu dataset, certamente já utilizou a biblioteca Pandas. Pandas é uma biblioteca open-source para estruturação e análise de dados, seus comandos se assemelham muitas vezes ao SQL, porém sua API traz um conjunto maior operações, maior robustez e se executado de forma correta, mais parformance.
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/efficient_pandas.png" referrerpolicy="no-referrer">
+            </div>Fala galera, tudo certo com vocês? Se você é um Cientista/Analista de dados, ou curte utilizar python para realizar diferentes análises em seu dataset, certamente já utilizou a biblioteca Pandas. Pandas é uma biblioteca open-source para estruturação e análise de dados, seus comandos se assemelham muitas vezes ao SQL, porém sua API traz um conjunto maior operações, maior robustez e se executado de forma correta, mais parformance.
 Nesse tutorial estou me baseando em um minicurso do DataCamp Writing Efficient Code with pandas.]]></description>
 </item>
 <item>
@@ -38,7 +42,9 @@ Nesse tutorial estou me baseando em um minicurso do DataCamp Writing Efficient C
     <pubDate>Sun, 01 Aug 2021 00:00:00 &#43;0000</pubDate>
     <author>Luciano</author>
     <guid>https://www.lobdata.com.br/posts/econowallet-fastapi-pt5/</guid>
-    <description><![CDATA[Nos Capítulos Anteriores &hellip; Como dito anteriormente, hoje vamos configurar o SQLAlchemy!!
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/fastapi.png" referrerpolicy="no-referrer">
+            </div>Nos Capítulos Anteriores &hellip; Como dito anteriormente, hoje vamos configurar o SQLAlchemy!!
 Essa é a parte 5 do nosso projeto do EconoWallet e se você quiser verificar o que já fizemos até o momento, acesse os links abaixo:
 Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Sem enrolação, vamos logo ao que interessa!!!
 Reorganizando o projeto Antes de configurar o ORM, vamos ajustar algumas coisas no nosso diretório. Como estamos seguindo para um estágio mais maduro da aplicação e que você já compreende o básico de configuração do FastAPI, precisaremos agora separar melhor as competências dentro do projeto.]]></description>
@@ -49,7 +55,9 @@ Reorganizando o projeto Antes de configurar o ORM, vamos ajustar algumas coisas 
     <pubDate>Sat, 31 Jul 2021 00:00:00 &#43;0000</pubDate>
     <author>Luciano</author>
     <guid>https://www.lobdata.com.br/posts/econowallet-fastapi-pt4/</guid>
-    <description><![CDATA[Nos Capítulos Anteriores &hellip; Após um tempinho sem postar nada, vamos dar continuidade a essa série sobre como desenvolver uma API pronta pro Deploy! 🚀 🚀
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/fastapi.png" referrerpolicy="no-referrer">
+            </div>Nos Capítulos Anteriores &hellip; Após um tempinho sem postar nada, vamos dar continuidade a essa série sobre como desenvolver uma API pronta pro Deploy! 🚀 🚀
 Essa é a parte 4 do nosso projeto do EconoWallet e se você quiser verificar o que já fizemos até o momento, acesse os links abaixo:
 Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Dando continuidade a nossa aplicação, hoje vamos configurar qual será nosso banco de dados.]]></description>
 </item>
@@ -59,7 +67,9 @@ Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Dando continuidade a nossa aplicação, 
     <pubDate>Thu, 08 Apr 2021 00:00:00 &#43;0000</pubDate>
     <author>Luciano</author>
     <guid>https://www.lobdata.com.br/posts/econowallet-fastapi-pt3/</guid>
-    <description><![CDATA[Nos Capítulos Anteriores &hellip; Essa é a parte 3 do nosso projeto do EconoWallet, se quiser verificar o que já fizemos até o momento, verifique os links abaixo:
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/fastapi.png" referrerpolicy="no-referrer">
+            </div>Nos Capítulos Anteriores &hellip; Essa é a parte 3 do nosso projeto do EconoWallet, se quiser verificar o que já fizemos até o momento, verifique os links abaixo:
 Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Dando continuidade a nossa aplicação, hoje vamos iniciar a configuração do Docker em nosso ambiente. E antes de mais nada, precisaremos instalar o Docker e o Docker Compose na nossa máquina.
 A documentação do Docker para instalação é muito bem explicada.]]></description>
 </item>
@@ -69,7 +79,9 @@ A documentação do Docker para instalação é muito bem explicada.]]></descrip
     <pubDate>Sat, 03 Apr 2021 00:00:00 &#43;0000</pubDate>
     <author>Luciano</author>
     <guid>https://www.lobdata.com.br/posts/econowallet-fastapi-pt2/</guid>
-    <description><![CDATA[Neste tutorial iremos iniciar o Econowallet, essa aplicação que vai contar com uma API para controle financeiro de suas despesas e investimentos, se você não viu o post passado (onde explico mais sobre meu objetivo com esse projeto) clique aqui.
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/fastapi.png" referrerpolicy="no-referrer">
+            </div>Neste tutorial iremos iniciar o Econowallet, essa aplicação que vai contar com uma API para controle financeiro de suas despesas e investimentos, se você não viu o post passado (onde explico mais sobre meu objetivo com esse projeto) clique aqui.
 Tópicos que serão abordados nesse post:
 Setup Inicial: main.py e config.py Rotas async Setup Como todo projeto python, é uma boa prática que você crie um ambiente virtual isolando as dependências do projeto, isso evita que você possa ter conflito entre diferentes libs de outros projetos que esteja trabalhando.]]></description>
 </item>
@@ -79,7 +91,9 @@ Setup Inicial: main.py e config.py Rotas async Setup Como todo projeto python, �
     <pubDate>Tue, 30 Mar 2021 00:00:00 &#43;0000</pubDate>
     <author>Luciano</author>
     <guid>https://www.lobdata.com.br/posts/finance_control_app/</guid>
-    <description><![CDATA[Motivação Atualmente tenho tido bastante dor de cabeça em voltar a utilizar o Excel para fazer uma planilha de controle de gastos, apesar da simplicidade do software, constantemente meus registros de compras feitas ou alguma outra movimentação financeira ficam uma completa bagunça. O que pode ser justificado pela minha falta de destreza com a ferramenta, mas fato é que a experiência estava deixando a desejar e consequentemente acabei perdendo a disciplina de organizar meus gastos, o que não recomendo a ninguém.]]></description>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/fastapi.png" referrerpolicy="no-referrer">
+            </div>Motivação Atualmente tenho tido bastante dor de cabeça em voltar a utilizar o Excel para fazer uma planilha de controle de gastos, apesar da simplicidade do software, constantemente meus registros de compras feitas ou alguma outra movimentação financeira ficam uma completa bagunça. O que pode ser justificado pela minha falta de destreza com a ferramenta, mas fato é que a experiência estava deixando a desejar e consequentemente acabei perdendo a disciplina de organizar meus gastos, o que não recomendo a ninguém.]]></description>
 </item>
 <item>
     <title>Effective approach to analyze correlation coefficients</title>
@@ -87,7 +101,9 @@ Setup Inicial: main.py e config.py Rotas async Setup Como todo projeto python, �
     <pubDate>Tue, 13 Oct 2020 00:00:00 &#43;0000</pubDate>
     <author>Luciano</author>
     <guid>https://www.lobdata.com.br/posts/correlation_analysis_in_r/</guid>
-    <description><![CDATA[Correlation analysis is a key task when you&rsquo;re exploring any dataset. The principal objective is to find linear relationships between features that can help to understanding the big picture.
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/autocorrelation.png" referrerpolicy="no-referrer">
+            </div>Correlation analysis is a key task when you&rsquo;re exploring any dataset. The principal objective is to find linear relationships between features that can help to understanding the big picture.
 Probably, the best way to see correlations between variables is to use scatterplots, but in most of time you&rsquo;re working with a high dimensional dataset with a high number of variables, in these situations you have two major problems:
 It&rsquo;s a high computational task to plot lots of scatterplot, specially if you have a big dataset.]]></description>
 </item>
@@ -97,7 +113,9 @@ It&rsquo;s a high computational task to plot lots of scatterplot, specially if y
     <pubDate>Sun, 20 Sep 2020 00:00:00 &#43;0000</pubDate>
     <author>Luciano</author>
     <guid>https://www.lobdata.com.br/posts/hype_test/</guid>
-    <description><![CDATA[Introduction This is the first of two articles that we&rsquo;ll talk about two different approaches to perform hypotheses tests, covering the classical and computational methodologies. In the end I&rsquo;ll show you one R package (Infer) capable to execute any of these methods in an easy, flexible, and less error-prone way.
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/testing.png" referrerpolicy="no-referrer">
+            </div>Introduction This is the first of two articles that we&rsquo;ll talk about two different approaches to perform hypotheses tests, covering the classical and computational methodologies. In the end I&rsquo;ll show you one R package (Infer) capable to execute any of these methods in an easy, flexible, and less error-prone way.
 In the second article, we&rsquo;ll go deeper in a hands-on experiment using the Infer package, if you already know the package and want to see more code than text, click here.]]></description>
 </item>
 </channel>

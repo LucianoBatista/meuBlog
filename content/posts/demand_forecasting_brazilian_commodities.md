@@ -3,7 +3,7 @@ title: "Demand Forecasting of Brazilian Commodities"
 author: "Luciano"
 date: "2020-10-25"
 output: pdf_document
-featuredImagePreview: "img/comodities.png"
+featuredImage: "img/comodities.png"
 tags:
   - Project
   - Data Science

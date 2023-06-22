@@ -3,7 +3,7 @@ layout: post
 title: "Segmentação de clientes de Food Delivery"
 date: 2020-06-19
 author: "Luciano"
-featuredImagePreview: "img/segmentation.png"
+featuredImage: "img/segmentation.png"
 tags:
   - Project
   - Data Science

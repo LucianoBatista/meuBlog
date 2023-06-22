@@ -4,7 +4,7 @@ title: "Computer Vision"
 subtitle: "Como excluir artefatos indesejados numa imagem?"
 date: 2022-01-26
 author: "Luciano"
-featuredImagePreview: "img/computer_vision.png"
+featuredImage: "img/computer_vision.png"
 tags:
   - Tutorial
   - Data Science

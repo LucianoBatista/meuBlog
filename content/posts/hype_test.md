@@ -3,7 +3,7 @@ layout: post
 title: "Hypothesis Testing by Computational Methodology - Part 1"
 date: 2020-09-20
 author: "Luciano"
-featuredImagePreview: "img/testing.png"
+featuredImage: "img/testing.png"
 tags:
   - Hypothesis Testing
   - Data Science

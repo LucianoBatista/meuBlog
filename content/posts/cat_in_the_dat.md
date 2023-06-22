@@ -3,7 +3,7 @@ layout: post
 title: "Categorical Feature Encoding Challenge"
 date: 2019-11-04
 author: "Luciano"
-featuredImagePreview: "img/cat_data.png"
+featuredImage: "img/cat_data.png"
 tags:
   - Project
   - Challenge

@@ -4,7 +4,7 @@ title: "5 Diferentes Aplicações de Ciência de Dados"
 subtitle: "Logística"
 date: 2019-03-16
 author: "Luciano"
-featuredImagePreview: "img/ai-aplications.png"
+featuredImage: "img/ai-aplications.png"
 tags:
   - Logística
   - Logistic
