@@ -3,7 +3,31 @@
         <title>Tags - Tag - LobData</title>
         <link>https://www.lobdata.com.br/tags/</link>
         <description>Tags - Tag - LobData</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 14 Jun 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 21 Jun 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>AI</title>
+    <link>https://www.lobdata.com.br/tags/ai/</link>
+    <pubDate>Wed, 21 Jun 2023 00:00:00 &#43;0000</pubDate>
+    <author>Luba</author>
+    <guid>https://www.lobdata.com.br/tags/ai/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Generative</title>
+    <link>https://www.lobdata.com.br/tags/generative/</link>
+    <pubDate>Wed, 21 Jun 2023 00:00:00 &#43;0000</pubDate>
+    <author>Luba</author>
+    <guid>https://www.lobdata.com.br/tags/generative/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>IA Generativa</title>
+    <link>https://www.lobdata.com.br/tags/ia-generativa/</link>
+    <pubDate>Wed, 21 Jun 2023 00:00:00 &#43;0000</pubDate>
+    <author>Luba</author>
+    <guid>https://www.lobdata.com.br/tags/ia-generativa/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>Bag of words</title>
     <link>https://www.lobdata.com.br/tags/bag-of-words/</link>
     <pubDate>Tue, 14 Jun 2022 00:00:00 &#43;0000</pubDate>
@@ -57,30 +81,6 @@
     <pubDate>Tue, 14 Jun 2022 00:00:00 &#43;0000</pubDate>
     <author>Luba</author>
     <guid>https://www.lobdata.com.br/tags/word2vec/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Tutorial</title>
-    <link>https://www.lobdata.com.br/tags/tutorial/</link>
-    <pubDate>Wed, 08 Jun 2022 00:00:00 &#43;0000</pubDate>
-    <author>Luba</author>
-    <guid>https://www.lobdata.com.br/tags/tutorial/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Visão Computacional</title>
-    <link>https://www.lobdata.com.br/tags/vis%C3%A3o-computacional/</link>
-    <pubDate>Wed, 26 Jan 2022 00:00:00 &#43;0000</pubDate>
-    <author>Luba</author>
-    <guid>https://www.lobdata.com.br/tags/vis%C3%A3o-computacional/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Pandas</title>
-    <link>https://www.lobdata.com.br/tags/pandas/</link>
-    <pubDate>Sun, 24 Oct 2021 00:00:00 &#43;0000</pubDate>
-    <author>Luba</author>
-    <guid>https://www.lobdata.com.br/tags/pandas/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>

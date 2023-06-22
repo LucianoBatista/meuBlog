@@ -4,13 +4,14 @@ title: "mynotes 01"
 subtitle: "Generative Modeling"
 date: 2023-06-21
 author: "Luciano"
-image: "img/post_0_4.png"
+authorLink: "https://www.linkedin.com/in/lucianobatistads/"
+featuredImage: "img/cat_data.png"
 tags:
   - AI
   - Generative
   - IA Generativa
 categories: [Tutorials]
-draft: True
+draft: false
 ---
 
 Estou iniciando um série de posts aqui no blog sobre IA Generativa. O conteúdo é como se fossem minhas anotações sobre um livro que estou lendo, e a intenção é que a cada capítulo eu traga um compilado aqui do que aprendi, por isso estarei chamando de **mynotes**.

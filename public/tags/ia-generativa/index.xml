@@ -1,15 +1,17 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>IA Generativa - Tag - My New Hugo Site</title>
+        <title>IA Generativa - Tag - LobData</title>
         <link>https://www.lobdata.com.br/tags/ia-generativa/</link>
-        <description>IA Generativa - Tag - My New Hugo Site</description>
+        <description>IA Generativa - Tag - LobData</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 21 Jun 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/ia-generativa/" rel="self" type="application/rss+xml" /><item>
     <title>mynotes 01</title>
     <link>https://www.lobdata.com.br/posts/my_notes/</link>
     <pubDate>Wed, 21 Jun 2023 00:00:00 &#43;0000</pubDate>
     <author>Luciano</author>
     <guid>https://www.lobdata.com.br/posts/my_notes/</guid>
-    <description><![CDATA[Estou iniciando um série de posts aqui no blog sobre IA Generativa. O conteúdo é como se fossem minhas anotações sobre um livro que estou lendo, e a intenção é que a cada capítulo eu traga um compilado aqui do que aprendi, por isso estarei chamando de mynotes.
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/cat_data.png" referrerpolicy="no-referrer">
+            </div>Estou iniciando um série de posts aqui no blog sobre IA Generativa. O conteúdo é como se fossem minhas anotações sobre um livro que estou lendo, e a intenção é que a cada capítulo eu traga um compilado aqui do que aprendi, por isso estarei chamando de mynotes.
 Teremos teoria e código, e além disso vou tentar dar meus 2 centavos de contribuição relacionando com fontes externas que talvez faça sentido relacionar.]]></description>
 </item>
 </channel>

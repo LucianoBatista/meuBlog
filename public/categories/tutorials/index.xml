@@ -3,7 +3,18 @@
         <title>Tutorials - Category - LobData</title>
         <link>https://www.lobdata.com.br/categories/tutorials/</link>
         <description>Tutorials - Category - LobData</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 26 Jan 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/categories/tutorials/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 21 Jun 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/categories/tutorials/" rel="self" type="application/rss+xml" /><item>
+    <title>mynotes 01</title>
+    <link>https://www.lobdata.com.br/posts/my_notes/</link>
+    <pubDate>Wed, 21 Jun 2023 00:00:00 &#43;0000</pubDate>
+    <author>Luciano</author>
+    <guid>https://www.lobdata.com.br/posts/my_notes/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/cat_data.png" referrerpolicy="no-referrer">
+            </div>Estou iniciando um série de posts aqui no blog sobre IA Generativa. O conteúdo é como se fossem minhas anotações sobre um livro que estou lendo, e a intenção é que a cada capítulo eu traga um compilado aqui do que aprendi, por isso estarei chamando de mynotes.
+Teremos teoria e código, e além disso vou tentar dar meus 2 centavos de contribuição relacionando com fontes externas que talvez faça sentido relacionar.]]></description>
+</item>
+<item>
     <title>Computer Vision</title>
     <link>https://www.lobdata.com.br/posts/image-cleaning/</link>
     <pubDate>Wed, 26 Jan 2022 00:00:00 &#43;0000</pubDate>
@@ -88,15 +99,6 @@ It&rsquo;s a high computational task to plot lots of scatterplot, specially if y
     <guid>https://www.lobdata.com.br/posts/hype_test/</guid>
     <description><![CDATA[Introduction This is the first of two articles that we&rsquo;ll talk about two different approaches to perform hypotheses tests, covering the classical and computational methodologies. In the end I&rsquo;ll show you one R package (Infer) capable to execute any of these methods in an easy, flexible, and less error-prone way.
 In the second article, we&rsquo;ll go deeper in a hands-on experiment using the Infer package, if you already know the package and want to see more code than text, click here.]]></description>
-</item>
-<item>
-    <title>How to Perform Correlation Analysis in Time Series data using R?</title>
-    <link>https://www.lobdata.com.br/posts/r_correlation/</link>
-    <pubDate>Tue, 15 Sep 2020 00:00:00 &#43;0000</pubDate>
-    <author>Luciano</author>
-    <guid>https://www.lobdata.com.br/posts/r_correlation/</guid>
-    <description><![CDATA[What is it correlation analysis? The concept of correlation is the same used in non-time series data: identify and quantify the relationship between two variables. Due to the continuous and chronologically ordered nature of time series data, there is a likelihood that there will be some degree of correlation between the series observations.
-Measuring and analyzing the correlation between two variables, in the context of time series analysis, can be understood by two different aspects:]]></description>
 </item>
 </channel>
 </rss>
