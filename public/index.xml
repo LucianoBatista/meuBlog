@@ -3,9 +3,20 @@
         <title>LobData</title>
         <link>https://www.lobdata.com.br/</link>
         <description>This is my cool site</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 14 Jun 2022 00:00:00 &#43;0000</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 21 Jun 2023 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://www.lobdata.com.br/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>#mynotes-01</title>
+    <link>https://www.lobdata.com.br/posts/my_notes/</link>
+    <pubDate>Wed, 21 Jun 2023 00:00:00 &#43;0000</pubDate>
+    <author>Luciano</author>
+    <guid>https://www.lobdata.com.br/posts/my_notes/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/generative-ai-pt1.png" referrerpolicy="no-referrer">
+            </div>Estou iniciando um série de posts no blog sobre IA Generativa. O conteúdo postado aqui serão minhas anotações sobre um livro que estou lendo, e a intenção é que a cada capítulo seja um compilado do que aprendi em junção com algum material extra que venha a consumir.
+Teremos teoria e código, já que o livro segue essa linha, que eu particularmente curto bastante. Um adendo é que o hands-on do livro é em keras, nada contra, mas eu sou time torch 🔥 😅.]]></description>
+</item>
+<item>
     <title>Classificador BNCC Pt.2</title>
     <link>https://www.lobdata.com.br/posts/bncc-modeling/</link>
     <pubDate>Tue, 14 Jun 2022 00:00:00 &#43;0000</pubDate>
@@ -108,17 +119,6 @@ Setup Inicial: main.py e config.py Rotas async Setup Como todo projeto python, �
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/fastapi.png" referrerpolicy="no-referrer">
             </div>Motivação Atualmente tenho tido bastante dor de cabeça em voltar a utilizar o Excel para fazer uma planilha de controle de gastos, apesar da simplicidade do software, constantemente meus registros de compras feitas ou alguma outra movimentação financeira ficam uma completa bagunça. O que pode ser justificado pela minha falta de destreza com a ferramenta, mas fato é que a experiência estava deixando a desejar e consequentemente acabei perdendo a disciplina de organizar meus gastos, o que não recomendo a ninguém.]]></description>
-</item>
-<item>
-    <title>Demand Forecasting of Brazilian Commodities</title>
-    <link>https://www.lobdata.com.br/posts/demand_forecasting_brazilian_commodities/</link>
-    <pubDate>Sun, 25 Oct 2020 00:00:00 &#43;0000</pubDate>
-    <author>Luciano</author>
-    <guid>https://www.lobdata.com.br/posts/demand_forecasting_brazilian_commodities/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/img/comodities.png" referrerpolicy="no-referrer">
-            </div>Demand Forecasting of Brazilian Commodities Soybean, Corn, Sugar, Soybean Meal, Soybean Oil and Wheat (left to right).
-Demand Forecasting is a technique for estimation of probable demand for a product or services. It is based on the analysis of past demand for that product or service in the present market condition. Demand forecasting should be done on a scientific basis and facts and events related to forecasting should be considered.]]></description>
 </item>
 </channel>
 </rss>

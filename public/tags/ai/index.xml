@@ -4,15 +4,15 @@
         <link>https://www.lobdata.com.br/tags/ai/</link>
         <description>AI - Tag - LobData</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 21 Jun 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/ai/" rel="self" type="application/rss+xml" /><item>
-    <title>mynotes 01</title>
+    <title>#mynotes-01</title>
     <link>https://www.lobdata.com.br/posts/my_notes/</link>
     <pubDate>Wed, 21 Jun 2023 00:00:00 &#43;0000</pubDate>
     <author>Luciano</author>
     <guid>https://www.lobdata.com.br/posts/my_notes/</guid>
     <description><![CDATA[<div class="featured-image">
-                <img src="/img/cat_data.png" referrerpolicy="no-referrer">
-            </div>Estou iniciando um série de posts aqui no blog sobre IA Generativa. O conteúdo é como se fossem minhas anotações sobre um livro que estou lendo, e a intenção é que a cada capítulo eu traga um compilado aqui do que aprendi, por isso estarei chamando de mynotes.
-Teremos teoria e código, e além disso vou tentar dar meus 2 centavos de contribuição relacionando com fontes externas que talvez faça sentido relacionar.]]></description>
+                <img src="/img/generative-ai-pt1.png" referrerpolicy="no-referrer">
+            </div>Estou iniciando um série de posts no blog sobre IA Generativa. O conteúdo postado aqui serão minhas anotações sobre um livro que estou lendo, e a intenção é que a cada capítulo seja um compilado do que aprendi em junção com algum material extra que venha a consumir.
+Teremos teoria e código, já que o livro segue essa linha, que eu particularmente curto bastante. Um adendo é que o hands-on do livro é em keras, nada contra, mas eu sou time torch 🔥 😅.]]></description>
 </item>
 </channel>
 </rss>
