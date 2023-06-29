@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Deep Learning - LobData</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Deep Learning" />
+<meta property="og:description" content="Chegamos no capítulo 2 do livro, e o mesmo fala sobre Deep Learning e implementações de CNNs utilizando o Keras como framework base para codar as implementações. Porém, as coisas são explicadas de uma forma bem superficial, e dificilmente quem nunca teve contato com esse conteúdo vai conseguir acompanhar de forma satisfatória.
+Pensando nisso, gostaria de fazer algo diferente, pensei em desmembrar o assunto e fazer uma sequência de 3 posts para cobrir o capítulo 2." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.lobdata.com.br/posts/generative_ai_notes_02/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-06-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-06-28T00:00:00+00:00" /><meta property="og:site_name" content="LOBData" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Deep Learning"/>
+<meta name="twitter:description" content="Chegamos no capítulo 2 do livro, e o mesmo fala sobre Deep Learning e implementações de CNNs utilizando o Keras como framework base para codar as implementações. Porém, as coisas são explicadas de uma forma bem superficial, e dificilmente quem nunca teve contato com esse conteúdo vai conseguir acompanhar de forma satisfatória.
+Pensando nisso, gostaria de fazer algo diferente, pensei em desmembrar o assunto e fazer uma sequência de 3 posts para cobrir o capítulo 2."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/generative_ai_notes_02/" /><link rel="prev" href="https://www.lobdata.com.br/posts/my_notes/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Deep Learning",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/www.lobdata.com.br\/posts\/generative_ai_notes_02\/"
+        },"genre": "posts","keywords": "AI, Generative, IA Generativa","wordcount":  1591 ,
+        "url": "https:\/\/www.lobdata.com.br\/posts\/generative_ai_notes_02\/","datePublished": "2023-06-28T00:00:00+00:00","dateModified": "2023-06-28T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Luciano"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="LobData">LOBData</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="LobData">LOBData</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Deep Learning</h1><h2 class="single-subtitle">Chapter 02 - Generative Deep Learning Book</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://www.linkedin.com/in/lucianobatistads/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Luciano</a></span>&nbsp;<span class="post-category">included in <a href="/categories/tutorials/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Tutorials</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-06-28">2023-06-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1591 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;8 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/deep-learnig-network.png"
+        data-srcset="/img/deep-learnig-network.png, /img/deep-learnig-network.png 1.5x, /img/deep-learnig-network.png 2x"
+        data-sizes="auto"
+        alt="/img/deep-learnig-network.png"
+        title="/img/deep-learnig-network.png" width="1456" height="816" /></div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#o-tal-do-deep-learning">O &ldquo;tal&rdquo; do Deep Learning</a></li>
+    <li><a href="#deep-learning-como-um-carro">Deep Learning como um carro</a></li>
+    <li><a href="#um-pouco-de-matemática">Um pouco de matemática</a></li>
+    <li><a href="#o-pytorch-nesse-processo">O Pytorch nesse processo</a></li>
+    <li><a href="#fontes">Fontes</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>Chegamos no capítulo 2 do livro, e o mesmo fala sobre Deep Learning e implementações de CNNs utilizando o Keras como framework base para codar as implementações. Porém, as coisas são explicadas de uma forma bem superficial, e dificilmente quem nunca teve contato com esse conteúdo vai conseguir acompanhar de forma satisfatória.</p>
+<p>Pensando nisso, gostaria de fazer algo diferente, pensei em desmembrar o assunto e fazer uma sequência de <strong>3 posts</strong> para cobrir o capítulo 2.</p>
+<p>Esse primeiro vai retratar o que é Deep Learning, trazendo para vocês um pouco do fundamento por de trás, e ao mesmo tempo trazer uma percepção de quais são as &ldquo;pecinhas&rdquo; que compõe esse quebra-cabeça. E sim, <em>eu penso o Deep Learning como um grande Lego que a gente tem montar para que a coisa funcione como esperado.</em></p>
+<p>Já o artigo dois, supondo que você agora compreende alguns conceitos importantes, vamos ser responsáveis por implementar um MultiLayer Perceptron utilizando o <code>pytorch-lightning</code>. Aqui também iremos trazer mais alguns conceitos úteis para nossa caminhada no mundo da IA Generativa.</p>
+<p>O artigo três, finaliza a sequência cobrindo CNNs. Acho que assim fica mais interessante de mais pessoas acompanharem os artigos seguintes. Dito isso, vamos lá!!</p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Nota<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Vale lembrar que vou utilizar uma outra referência para escrever esses três artigos e você pode encontrar o nome do livro final do post 😉.</div>
+        </div>
+    </div>
+<h2 id="o-tal-do-deep-learning">O &ldquo;tal&rdquo; do Deep Learning</h2>
+<p>O único pressuposto que vou fazer aqui é que você já possui um entendimento sobre Machine Learning e sobre algumas nomenclaturas e conceitos da área, dessa forma conseguimos com maior facilidade trazer o Deep Learning para o seu contexto.</p>
+<p>Vamos começar pelo clássico diagrama de Venn, batido, mas ainda assim interessante para situar você de onde o Deep Learning está, dentro do universo de IA.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/posts/gen-ai-02/ven-diagram-dl.png"
+        data-srcset="/img/posts/gen-ai-02/ven-diagram-dl.png, /img/posts/gen-ai-02/ven-diagram-dl.png 1.5x, /img/posts/gen-ai-02/ven-diagram-dl.png 2x"
+        data-sizes="auto"
+        alt="/img/posts/gen-ai-02/ven-diagram-dl.png"
+        title="img" width="964" height="626" /></p>
+<p>Como você pode ver, o Deep Learning é um &ldquo;subset&rdquo; do Machine Learning e portanto ambos compartilham do mesmo objetivo, o aprendizado. Porém, o diferencial é que o Deep Learning vai trabalhar exclusivamente com redes neurais artificiais para &ldquo;aprender&rdquo; a executar as mais diferentes tasks possíveis:</p>
+<ul>
+<li>image segmentation</li>
+<li>object detection</li>
+<li>text generation</li>
+</ul>
+<p>Essas redes, são compostas por diferentes arquiteturas que nascem de muita pesquisa e que funcionam muito bem para um contexto específico. Esse contexto é chamado aqui de &ldquo;<em>Conhecimento a Priori</em>&rdquo; e basicamente isso quer dizer que nós estamos sempre partindo de um tipo de dado que respeita um algum tipo de estrutura.</p>
+<p>Se eu to partindo de que meu dado possui algum tipo de estrutura, um questionamento pode surgir na sua cabeça:</p>
+<blockquote>
+<p><em>Como assim estruturado? Eu vejo muitos modelos trabalhando com imagens, textos, vídeos&hellip; E são dados desestruturados</em></p>
+</blockquote>
+<p>Justamente, esses dados, por um determinado ponto de vista 👀, são na verdade estruturados.</p>
+<p>Vamos pegar uma imagem como exemplo:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/emXiYTb.png"
+        data-srcset="https://i.imgur.com/emXiYTb.png, https://i.imgur.com/emXiYTb.png 1.5x, https://i.imgur.com/emXiYTb.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/emXiYTb.png"
+        title="https://i.imgur.com/emXiYTb.png" />
+<em>(<a href="https://www.researchgate.net/figure/mage-of-Abraham-Lincoln-as-a-matrix-of-pixel-values_fig1_330902210%29" target="_blank" rel="noopener noreffer ">https://www.researchgate.net/figure/mage-of-Abraham-Lincoln-as-a-matrix-of-pixel-values_fig1_330902210)</a></em></p>
+<p>Ela é nada mais que uma matriz multidimensional (imagens coloridas) de números dispostos de uma dada forma que cada valor presente na matriz vai ser representado como um pixel. Esse mesmo comportamento se repete para um vídeo ou para um texto.</p>
+<p>Então, se eu sei que meu dado tem essa característica, eu posso pensar numa arquitetura que consiga responder algumas perguntas sobre esse tipo de dado. Como por exemplo, se uma imagem pode ser classificada como um gato? Ou, qual é a probabilidade da próxima palavra ser <em>&ldquo;quente&rdquo;</em>, dado que eu falei <em>&lsquo;cachorro-&rsquo;</em> &hellip;?</p>
+<p>Isso não acontece por exemplo com um dado tabular de previsão de Churn de clientes. Vamos pensar no seguinte exemplo, na empresa de João nós temos as variáveis $x$ e $y$ que explicam muito bem os motivos de Churn dos clientes, e é possível ter uma previsão que permite a empresa agir de forma proativa e minimizar esse problema com antecipação 👌.</p>
+<p>Agora, considerando a empresa de Pedro, as variáveis que explicam o mesmo fenômeno são $z$ e $p$, logo, não existe um <strong>Conhecimento a Priori</strong> que poderia ser obedecido, veja que o mesmo problema podem ser explicados por variáveis diferentes com pesos diferentes. Esse é um dos motivos que normalmente você não vê um modelo de Deep Learning performando tão bem quanto um Xgboost em competições tabulares no Kaggle.</p>
+<h2 id="deep-learning-como-um-carro">Deep Learning como um carro</h2>
+<p>Uma comparação que para mim fez bastante sentido foi a da imagem abaixo. Nela, o autor pensa o treinamento de um modelo de Deep Learning como um funcionamento de um carro. Podemos dizer que o combustível desse carro é o <strong>Dado</strong>, logo, nós iremos precisar de uma forma de carregar esse dado para dentro do nosso motor, no caso do <code>Pytorch</code>, esse seria o papel do <code>DataLoader</code>. O motor, responsável pelo aprendizado, precisa de uma forma de <strong>ajustar os parâmetros e pesos</strong> (em conjunto com esse &ldquo;Box of blocks&rdquo;) para levar o nosso modelo para a direção certa.</p>
+<a class="lightgallery" href="https://i.imgur.com/QHKlwyM.png" title="https://i.imgur.com/QHKlwyM.png" data-thumbnail="https://i.imgur.com/QHKlwyM.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/QHKlwyM.png"
+            data-srcset="https://i.imgur.com/QHKlwyM.png, https://i.imgur.com/QHKlwyM.png 1.5x, https://i.imgur.com/QHKlwyM.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/QHKlwyM.png" width="800" />
+    </a>
+<p>O seu papel aqui é um pouco diferente de quando você utiliza por exemplo o <code>scikit-learn</code> para treinar uma Random Forest. Nessa abordagem, você não precisa codar o modelo e muito menos o processo de treinamento, pois tudo isso foi encapsulado em um método <code>.fit()</code> e em uma classe <code>RandomForest</code>.</p>
+<p>Diferentemente, no Deep Learning, você se torna o responsável por juntar cada pecinha que até então, no Machine Learning &ldquo;tradicional&rdquo; foi abstraído de você, de uma forma que o aprendizado ocorra da forma esperada.</p>
+<p>A depender de onde você trabalhe, codar a arquitetura de um modelo de Deep Learning, ou até mesmo criar uma arquitetura nova, não serão atividades do seu dia-a-dia. Mas, ainda assim, restam várias pecinhas que você precisa conectar, afim de realizar um treinamento de Deep Learning corretamente. E ainda assim, caso você não seja o responsável por implementar arquiteturas do zero, existem alguns ajustes que você pode vir a fazer para realizar algum retreino ou fine-tunning de um desses modelos, que conhecer a arquitetura pode vir a ajudar.</p>
+<p>Um ponto chave para entender o aprendizado em Deep Learning, é pensar que nós estamos sempre tentando minimizar uma função, ou seja, nós queremos sempre caminhar para encontrar os pesos e parâmetros que nos darão os menores valores para essa função. Essa função é comumente chamada de <strong>Loss Function</strong>.</p>
+<h2 id="um-pouco-de-matemática">Um pouco de matemática</h2>
+<p>Nas disciplinas de cálculo, vimos que quando é necessário encontrar o mínimo de uma função, nós precisamos calcular a derivada dessa função e iguala-la a 0. Nessa situação os valores que a função vai assumir, serão os valores que estaremos interessados (parâmetros e pesos).</p>
+<p>Para ilustrar a situação, vamos pensar num problema simples, uma função que inclusive conseguiremos visualizar graficamente em duas dimensões.</p>
+<p>$ f(x) = (x-2)^{2} $</p>
+<p>Nesse caso, nós queremos saber, qual valor $x$ deve assumir para que eu tenha o menor valor de $f(x)$.</p>
+<p>Para visualizar essa função, segue o código abaixo:</p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Nota<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Todo código mostrado aqui pode ser encontrado no repositório dessa sequência de blog posts, ao final do capítulo você encontra o link.</div>
+        </div>
+    </div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">torch</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">pow</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="mf">2.0</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">x_axis_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">y_axis_vals_p</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">x_axis_vals</span><span class="p">))</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_axis_vals</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_axis_vals_p</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&#34;$f(x)=(x-2)^2$&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><a class="lightgallery" href="https://i.imgur.com/PmPP787.png" title="https://i.imgur.com/PmPP787.png" data-thumbnail="https://i.imgur.com/PmPP787.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/PmPP787.png"
+            data-srcset="https://i.imgur.com/PmPP787.png, https://i.imgur.com/PmPP787.png 1.5x, https://i.imgur.com/PmPP787.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/PmPP787.png" width="800" />
+    </a>
+<p>Ao aplicar regras de cálculo de derivada, para essa função teríamos:</p>
+<p>$f&rsquo;(x) = 2x - 4$</p>
+<p>Logo, ao iguala-la a 0:</p>
+<p>$x = 2$</p>
+<p>Esse é o valor responsável por nos dar o mínimo da função $f(x)$.</p>
+<p>Como disse acima, essa é uma representação simplificada do processo. <strong>Normalmente o que acontece é o cálculo de gradiente</strong>, que explicando de uma forma chula, é uma derivada para uma função que possui mais de uma variável ($g(x, z)$ por exemplo).</p>
+<p>Na prática, não é um processo simples encontrar o valor exato do mínimo de uma função, até por que devido a complexidade dessas funções elas acabam tendo vários mínimos disponíveis.</p>
+<p>Justamente por essas questões, que utilizamos um processo iterativo para tentar minimizar o máximo que for possível. Nesse processo, utilizamos um outro benefício do cálculo do gradiente, que é o sinal do resultado.</p>
+<p>Sempre que é calculado o gradiente de uma função, o sinal vai nos indicar para onde devemos caminhar afim de encontrar esse ponto de minimização da função, ou seja, para quais valores de pesos e parâmetros eu preciso atualizar para caminhar para o mínimo global da minha <em>loss function</em>. Na prática, usamos o conceito de &ldquo;Learning Rate&rdquo; afim de ter uma cadência de como iremos caminhar nos valores dos nossos parâmetros, afim de minimizar a função.</p>
+<p>Resumindo:</p>
+<ol>
+<li>temos uma loss para minimizar</li>
+<li>essa minimização ocorre através da variação de parâmetros</li>
+<li>esses parâmetros são atualizados de acordo uma learning rate</li>
+<li>sempre investigando qual o sinal do cálculo do gradiente</li>
+</ol>
+<p>O gráfico abaixo mostra basicamente qual é o fluxo.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/otdv1GE.png"
+        data-srcset="https://i.imgur.com/otdv1GE.png, https://i.imgur.com/otdv1GE.png 1.5x, https://i.imgur.com/otdv1GE.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/otdv1GE.png"
+        title="https://i.imgur.com/otdv1GE.png" /></p>
+<h2 id="o-pytorch-nesse-processo">O Pytorch nesse processo</h2>
+<p>Bom, provavelmente você deve ta imaginando a dor de cabeça que seria implementar toda essa matemática para as mais diversas arquiteturas que existem. Não se preocupe, o <code>Pytorch</code> ta aqui pra te auxiliar no processo, trazendo várias abstrações muito úteis na implementação de arquiteturas, treinamento, fine-tunning&hellip; de modelos de Deep Learning.</p>
+<p>No ecossistema de frameworks de Deep Learning, o <code>Pytorch</code> seria um &ldquo;concorrente&rdquo; do <code>TensorFlow</code>. Basicamente os dois te permite realizar as mesmas atividades, mas recentemente tem tido uma adoção muito maior pela utilização do <code>Pytorch</code> em detrimento do <code>TensorFlow</code>. Vou deixar abaixo um gráfico de tendência de utilização de diversos frameworks em publicação de papers.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/wzh3kTT.png"
+        data-srcset="https://i.imgur.com/wzh3kTT.png, https://i.imgur.com/wzh3kTT.png 1.5x, https://i.imgur.com/wzh3kTT.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/wzh3kTT.png"
+        title="https://i.imgur.com/wzh3kTT.png" /></p>
+<p>Veja como a utilização do <code>TensorFlow</code> (em laranja) vem caindo ao longo do tempo. Mesmo esses papers sendo lançados primeiramente com implementação em <code>Pytorch</code>, não quer dizer que a comunidade aos poucos não faça uma implementação para o <code>TensorFlow</code>.</p>
+<p>Para esse post era isso, espero que tenha curtido o conteúdo e no próximo continuaremos falando do <code>Pytorch</code> e <code>Pytorch-Lightining</code>.</p>
+<h2 id="fontes">Fontes</h2>
+<ul>
+<li>Livro: Inside Deep Learning</li>
+<li>Trend dos frameworks: <a href="https://paperswithcode.com/trends" target="_blank" rel="noopener noreffer ">https://paperswithcode.com/trends</a></li>
+<li>Código: &hellip;</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-06-28</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://www.lobdata.com.br/posts/generative_ai_notes_02/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/ai/">AI</a>,&nbsp;<a href="/tags/generative/">Generative</a>,&nbsp;<a href="/tags/ia-generativa/">IA Generativa</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/my_notes/" class="prev" rel="prev" title="Generative Modeling"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Generative Modeling</a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.114.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Luba</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"56XLI6KGAP","algoliaIndex":"lobdata","algoliaSearchKey":"d7c82e758baf996bfc63e0fffb1098fd","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

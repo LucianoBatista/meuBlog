@@ -70,6 +70,15 @@ noClasses = false
 [params]
 title = "LOBData"
 
+[params.math]
+enable = true
+inlineLeftDelimiter = ""
+inlineRightDelimiter = ""
+blockLeftDelimiter = ""
+blockRightDelimiter = ""
+copyTex = true
+mhchem = true
+
 [params.header]
 [params.header.title]
 name = "LOBData"

@@ -3,10 +3,21 @@
         <title>LobData</title>
         <link>https://www.lobdata.com.br/</link>
         <description>This is my cool site</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 21 Jun 2023 00:00:00 &#43;0000</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 28 Jun 2023 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://www.lobdata.com.br/index.xml" rel="self" type="application/rss+xml" />
         <item>
-    <title>#mynotes-01</title>
+    <title>Deep Learning</title>
+    <link>https://www.lobdata.com.br/posts/generative_ai_notes_02/</link>
+    <pubDate>Wed, 28 Jun 2023 00:00:00 &#43;0000</pubDate>
+    <author>Luciano</author>
+    <guid>https://www.lobdata.com.br/posts/generative_ai_notes_02/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/deep-learnig-network.png" referrerpolicy="no-referrer">
+            </div>Chegamos no capítulo 2 do livro, e o mesmo fala sobre Deep Learning e implementações de CNNs utilizando o Keras como framework base para codar as implementações. Porém, as coisas são explicadas de uma forma bem superficial, e dificilmente quem nunca teve contato com esse conteúdo vai conseguir acompanhar de forma satisfatória.
+Pensando nisso, gostaria de fazer algo diferente, pensei em desmembrar o assunto e fazer uma sequência de 3 posts para cobrir o capítulo 2.]]></description>
+</item>
+<item>
+    <title>Generative Modeling</title>
     <link>https://www.lobdata.com.br/posts/my_notes/</link>
     <pubDate>Wed, 21 Jun 2023 00:00:00 &#43;0000</pubDate>
     <author>Luciano</author>
@@ -109,16 +120,6 @@ A documentação do Docker para instalação é muito bem explicada.]]></descrip
             </div>Neste tutorial iremos iniciar o Econowallet, essa aplicação que vai contar com uma API para controle financeiro de suas despesas e investimentos, se você não viu o post passado (onde explico mais sobre meu objetivo com esse projeto) clique aqui.
 Tópicos que serão abordados nesse post:
 Setup Inicial: main.py e config.py Rotas async Setup Como todo projeto python, é uma boa prática que você crie um ambiente virtual isolando as dependências do projeto, isso evita que você possa ter conflito entre diferentes libs de outros projetos que esteja trabalhando.]]></description>
-</item>
-<item>
-    <title>Criando uma API Pronta para Produção com FastAPI - PT.1</title>
-    <link>https://www.lobdata.com.br/posts/finance_control_app/</link>
-    <pubDate>Tue, 30 Mar 2021 00:00:00 &#43;0000</pubDate>
-    <author>Luciano</author>
-    <guid>https://www.lobdata.com.br/posts/finance_control_app/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/img/fastapi.png" referrerpolicy="no-referrer">
-            </div>Motivação Atualmente tenho tido bastante dor de cabeça em voltar a utilizar o Excel para fazer uma planilha de controle de gastos, apesar da simplicidade do software, constantemente meus registros de compras feitas ou alguma outra movimentação financeira ficam uma completa bagunça. O que pode ser justificado pela minha falta de destreza com a ferramenta, mas fato é que a experiência estava deixando a desejar e consequentemente acabei perdendo a disciplina de organizar meus gastos, o que não recomendo a ninguém.]]></description>
 </item>
 </channel>
 </rss>

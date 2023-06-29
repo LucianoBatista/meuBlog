@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "#mynotes-01"
-subtitle: "Generative Modeling"
+title: "Generative Modeling"
+subtitle: "Chapter 01 - Generative Deep Learning Book"
 date: 2023-06-21
 author: "Luciano"
 authorLink: "https://www.linkedin.com/in/lucianobatistads/"

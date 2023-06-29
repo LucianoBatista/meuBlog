@@ -3,8 +3,19 @@
         <title>Tutorials - Category - LobData</title>
         <link>https://www.lobdata.com.br/categories/tutorials/</link>
         <description>Tutorials - Category - LobData</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 21 Jun 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/categories/tutorials/" rel="self" type="application/rss+xml" /><item>
-    <title>#mynotes-01</title>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 28 Jun 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/categories/tutorials/" rel="self" type="application/rss+xml" /><item>
+    <title>Deep Learning</title>
+    <link>https://www.lobdata.com.br/posts/generative_ai_notes_02/</link>
+    <pubDate>Wed, 28 Jun 2023 00:00:00 &#43;0000</pubDate>
+    <author>Luciano</author>
+    <guid>https://www.lobdata.com.br/posts/generative_ai_notes_02/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/deep-learnig-network.png" referrerpolicy="no-referrer">
+            </div>Chegamos no capítulo 2 do livro, e o mesmo fala sobre Deep Learning e implementações de CNNs utilizando o Keras como framework base para codar as implementações. Porém, as coisas são explicadas de uma forma bem superficial, e dificilmente quem nunca teve contato com esse conteúdo vai conseguir acompanhar de forma satisfatória.
+Pensando nisso, gostaria de fazer algo diferente, pensei em desmembrar o assunto e fazer uma sequência de 3 posts para cobrir o capítulo 2.]]></description>
+</item>
+<item>
+    <title>Generative Modeling</title>
     <link>https://www.lobdata.com.br/posts/my_notes/</link>
     <pubDate>Wed, 21 Jun 2023 00:00:00 &#43;0000</pubDate>
     <author>Luciano</author>
@@ -106,17 +117,6 @@ Setup Inicial: main.py e config.py Rotas async Setup Como todo projeto python, �
             </div>Correlation analysis is a key task when you&rsquo;re exploring any dataset. The principal objective is to find linear relationships between features that can help to understanding the big picture.
 Probably, the best way to see correlations between variables is to use scatterplots, but in most of time you&rsquo;re working with a high dimensional dataset with a high number of variables, in these situations you have two major problems:
 It&rsquo;s a high computational task to plot lots of scatterplot, specially if you have a big dataset.]]></description>
-</item>
-<item>
-    <title>Hypothesis Testing by Computational Methodology - Part 1</title>
-    <link>https://www.lobdata.com.br/posts/hype_test/</link>
-    <pubDate>Sun, 20 Sep 2020 00:00:00 &#43;0000</pubDate>
-    <author>Luciano</author>
-    <guid>https://www.lobdata.com.br/posts/hype_test/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/img/testing.png" referrerpolicy="no-referrer">
-            </div>Introduction This is the first of two articles that we&rsquo;ll talk about two different approaches to perform hypotheses tests, covering the classical and computational methodologies. In the end I&rsquo;ll show you one R package (Infer) capable to execute any of these methods in an easy, flexible, and less error-prone way.
-In the second article, we&rsquo;ll go deeper in a hands-on experiment using the Infer package, if you already know the package and want to see more code than text, click here.]]></description>
 </item>
 </channel>
 </rss>
