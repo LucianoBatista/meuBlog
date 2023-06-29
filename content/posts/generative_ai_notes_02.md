@@ -159,4 +159,4 @@ Para esse post era isso, espero que tenha curtido o conteúdo e no próximo cont
 
 - Livro: Inside Deep Learning
 - Trend dos frameworks: https://paperswithcode.com/trends
-- Código: ...
+- Código: https://github.com/LucianoBatista/generative-ai
