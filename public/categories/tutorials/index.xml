@@ -3,7 +3,18 @@
         <title>Tutorials - Category - LobData</title>
         <link>https://www.lobdata.com.br/categories/tutorials/</link>
         <description>Tutorials - Category - LobData</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 28 Jun 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/categories/tutorials/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 06 Jul 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/categories/tutorials/" rel="self" type="application/rss+xml" /><item>
+    <title>Intro ao Pytorch</title>
+    <link>https://www.lobdata.com.br/posts/generative_ai_notes_03/</link>
+    <pubDate>Thu, 06 Jul 2023 00:00:00 &#43;0000</pubDate>
+    <author>Luciano</author>
+    <guid>https://www.lobdata.com.br/posts/generative_ai_notes_03/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/intro-torch.png" referrerpolicy="no-referrer">
+            </div>Nesse artigo, vamos de mão na massa! Mas gostaria de fazer um disclaimer um pouco chato pra você, vamos ver tudo de forma superficial, cada tópico abordado aqui por si só precisaria de muitas páginas de explicação, então, vou fazer o melhor para a explicação não se tornar um Frankstein e o post virar uma cocha de retalhos.
+Meu papel aqui é trazer de forma objetiva cada tópico desse para que você consiga correlacionar depois com o avançar dos capítulos do livro que estou trazendo os reviews.]]></description>
+</item>
+<item>
     <title>Deep Learning</title>
     <link>https://www.lobdata.com.br/posts/generative_ai_notes_02/</link>
     <pubDate>Wed, 28 Jun 2023 00:00:00 &#43;0000</pubDate>
@@ -105,18 +116,6 @@ Setup Inicial: main.py e config.py Rotas async Setup Como todo projeto python, �
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/fastapi.png" referrerpolicy="no-referrer">
             </div>Motivação Atualmente tenho tido bastante dor de cabeça em voltar a utilizar o Excel para fazer uma planilha de controle de gastos, apesar da simplicidade do software, constantemente meus registros de compras feitas ou alguma outra movimentação financeira ficam uma completa bagunça. O que pode ser justificado pela minha falta de destreza com a ferramenta, mas fato é que a experiência estava deixando a desejar e consequentemente acabei perdendo a disciplina de organizar meus gastos, o que não recomendo a ninguém.]]></description>
-</item>
-<item>
-    <title>Effective approach to analyze correlation coefficients</title>
-    <link>https://www.lobdata.com.br/posts/correlation_analysis_in_r/</link>
-    <pubDate>Tue, 13 Oct 2020 00:00:00 &#43;0000</pubDate>
-    <author>Luciano</author>
-    <guid>https://www.lobdata.com.br/posts/correlation_analysis_in_r/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/img/autocorrelation.png" referrerpolicy="no-referrer">
-            </div>Correlation analysis is a key task when you&rsquo;re exploring any dataset. The principal objective is to find linear relationships between features that can help to understanding the big picture.
-Probably, the best way to see correlations between variables is to use scatterplots, but in most of time you&rsquo;re working with a high dimensional dataset with a high number of variables, in these situations you have two major problems:
-It&rsquo;s a high computational task to plot lots of scatterplot, specially if you have a big dataset.]]></description>
 </item>
 </channel>
 </rss>

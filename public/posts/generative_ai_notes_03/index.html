@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Intro ao Pytorch - LobData</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Intro ao Pytorch" />
+<meta property="og:description" content="Nesse artigo, vamos de mão na massa! Mas gostaria de fazer um disclaimer um pouco chato pra você, vamos ver tudo de forma superficial, cada tópico abordado aqui por si só precisaria de muitas páginas de explicação, então, vou fazer o melhor para a explicação não se tornar um Frankstein e o post virar uma cocha de retalhos.
+Meu papel aqui é trazer de forma objetiva cada tópico desse para que você consiga correlacionar depois com o avançar dos capítulos do livro que estou trazendo os reviews." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.lobdata.com.br/posts/generative_ai_notes_03/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-07-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-07-06T00:00:00+00:00" /><meta property="og:site_name" content="LOBData" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Intro ao Pytorch"/>
+<meta name="twitter:description" content="Nesse artigo, vamos de mão na massa! Mas gostaria de fazer um disclaimer um pouco chato pra você, vamos ver tudo de forma superficial, cada tópico abordado aqui por si só precisaria de muitas páginas de explicação, então, vou fazer o melhor para a explicação não se tornar um Frankstein e o post virar uma cocha de retalhos.
+Meu papel aqui é trazer de forma objetiva cada tópico desse para que você consiga correlacionar depois com o avançar dos capítulos do livro que estou trazendo os reviews."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/generative_ai_notes_03/" /><link rel="prev" href="https://www.lobdata.com.br/posts/generative_ai_notes_02/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Intro ao Pytorch",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/www.lobdata.com.br\/posts\/generative_ai_notes_03\/"
+        },"genre": "posts","keywords": "AI, Generative, IA Generativa","wordcount":  2168 ,
+        "url": "https:\/\/www.lobdata.com.br\/posts\/generative_ai_notes_03\/","datePublished": "2023-07-06T00:00:00+00:00","dateModified": "2023-07-06T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Luciano"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="LobData">LOBData</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="LobData">LOBData</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Intro ao Pytorch</h1><h2 class="single-subtitle">Chapter 02 - Generative Deep Learning Book</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://www.linkedin.com/in/lucianobatistads/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Luciano</a></span>&nbsp;<span class="post-category">included in <a href="/categories/tutorials/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Tutorials</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-07-06">2023-07-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2168 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;11 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/intro-torch.png"
+        data-srcset="/img/intro-torch.png, /img/intro-torch.png 1.5x, /img/intro-torch.png 2x"
+        data-sizes="auto"
+        alt="/img/intro-torch.png"
+        title="/img/intro-torch.png" width="1456" height="816" /></div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#tudo-começa-com-tensores">Tudo começa com tensores&hellip;</a></li>
+    <li><a href="#por-debaixo-do-capô">Por debaixo do capô&hellip;</a>
+      <ul>
+        <li><a href="#diferenção-automática">Diferenção automática</a></li>
+        <li><a href="#optimizers">Optimizers</a></li>
+      </ul>
+    </li>
+    <li><a href="#primeira-rede-neural">Primeira Rede Neural</a>
+      <ul>
+        <li><a href="#training-loop">Training Loop</a></li>
+        <li><a href="#data">Data</a></li>
+        <li><a href="#model-e-loss">Model e Loss</a></li>
+        <li><a href="#juntando-o-quebra-cabeça-">Juntando o quebra-cabeça ✨</a></li>
+        <li><a href="#funções-de-ativação-ao-resgate">Funções de ativação ao resgate</a></li>
+      </ul>
+    </li>
+    <li><a href="#links-úteis">Links úteis</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>Nesse artigo, vamos de mão na massa! Mas gostaria de fazer um disclaimer um pouco chato pra você, <strong>vamos ver tudo de forma superficial</strong>, cada tópico abordado aqui por si só precisaria de muitas páginas de explicação, então, vou fazer o melhor para a explicação não se tornar um Frankstein e o post virar uma <em>cocha de retalhos</em>.</p>
+<p>Meu papel aqui é trazer de forma objetiva cada tópico desse para que você consiga correlacionar depois com o avançar dos capítulos do livro que estou trazendo os reviews.</p>
+<p>E se você chegou apenas para esse artigo e não sabe do contexto, eu na verdade estou trazendo uma série de blog posts sobre minhas anotações sobre o livro <strong>Generative Deep Learning</strong>. E, já rolaram dois posts até então:</p>
+<ul>
+<li><a href="https://www.lobdata.com.br/posts/my_notes/" target="_blank" rel="noopener noreffer ">parte 1</a></li>
+<li><a href="https://www.lobdata.com.br/posts/generative_ai_notes_02/" target="_blank" rel="noopener noreffer ">parte 2</a></li>
+</ul>
+<p>Você pode acompanhar na lateral (👉) o TOC do post e pular para parte que mais te interessa 😉. Vamos lá!!!</p>
+<h2 id="tudo-começa-com-tensores">Tudo começa com tensores&hellip;</h2>
+<p>De forma simples, tensores são uma forma &lsquo;fancy&rsquo; de se representar arrays multidimensionais.</p>
+<p>Você muito provavelmente já está acostumado a trabalhar com <code>numpy</code> arrays, porém apesar de terem um comportamento parecido, as implementações de tensores te fornecem não só uma série de outras operações matemáticas e otimizações, mas também a capacidade de rodar tudo isso em gpus ou tpus, o que basicamente torna o avanço de Deep Learning possível (do ponto de vista de força bruta para treinar os modelos).</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Nota<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Vale falar que os tensores não são exclusividade do <code>Pytorch</code> ta? O <strong>TENSOR</strong>Flow leva inclusive o termo escrito bem no nome do framework.</div>
+        </div>
+    </div>
+<p>Definir um tensor no <code>Pytorch</code> é bem simples:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">Float16</span><span class="p">)</span>
+</span></span></code></pre></div><p>Devido a capacidade de rodar em diferentes dispositivos, como gpus, cpus e tpus, a biblioteca do <code>Pytorch</code> te possibilita migrar esse dado entre dispositivos, te dando total liberdade de como você vai executar o treinamento. Liberdade essa que se estende para multi-gpus, multi-tpus&hellip;</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># simples assim você leva um tensor para diferentes dispositivos</span>
+</span></span><span class="line"><span class="cl"><span class="n">x</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&#34;cuda&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>Para enviar e armazenar esse tensor na memória da GPU, utilizamos o nome <code>cuda</code>. E, para CPU&hellip; É cpu mesmo.</p>
+<p>O nome <code>cuda</code>, para quem nunca ouviu falar, vem de <em>Compute Unified Device Architecture</em> e foi desenvolvido pela NVidia para permitir as implementações de processamento paralelo utilizando placas de vídeo.</p>
+<p>Provavelmente por uma decisão de projeto, o nome <code>cuda</code> permanece sendo utilizado no <code>Pytorch</code> até hoje, mesmo não sendo o mais intuitivo (pelo menos na minha humilde opnião), mas, bibliotecas mais recentes e que rodam sobre o <code>Pytorch</code>, como <code>pytorch-lightining</code> utiliza <code>gpu</code> para indicar que seu treinamento vai ser executado na GPU. Nada mais intuitivo, concorda?</p>
+<p>Com grandes poderes, vem grandes responsabilidades!! E a configuração do <code>device</code> hoje gera alguns dos erros mais comuns quando estamos trabalhando com o <code>Pytorch</code>.</p>
+<p>Como é bastante comum estarmos rodando o treinamento utilizando GPUs, para que tudo funcione, todos objetos que você trabalha precisam estar alocados na memória de apenas um dispositivo.</p>
+<ul>
+<li>modelo</li>
+<li>input</li>
+<li>labels</li>
+<li>pesos</li>
+<li>etc</li>
+</ul>
+<p>Sendo nós os responsáveis por levar esse dado para o lugar certo, muitas vezes acabamos esquecendo de fazer isso, e o resultado é uma bela mensagem de erro.</p>
+<div class="details admonition danger open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-skull-crossbones fa-fw" aria-hidden="true"></i>Perigo<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Tente executar o código abaixo, para você também entrar para a estatística:</div>
+        </div>
+    </div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
+</span></span></code></pre></div><p>Gostaria de fazer uma menção honrosa aqui a uma função que eu de fato não sei se está sendo muito utilizada por quem atua diretamente com o desenvolvimento de arquiteturas de Deep Learning, mas que quando eu vi eu achei super interessante, que são os chamados <code>named_tensors</code>.</p>
+<p>Basicamente você pode adicionar um nome para as dimensões dos tensores que você está trabalhando, o que possibilita um debug mais fácil quando algum problema acontece, e também algumas operações podem ser feitas por esses nomes. Vou deixar ao fim do post um link para documentação com uma explicação mais profunda e com alguns exemplos.</p>
+<p>Temos também uma pohaaada de operações que são possíveis de realizar com tensores, mas devido nossa abordagem aqui, vamose vê-las a medida que fomos utilizando.</p>
+<h2 id="por-debaixo-do-capô">Por debaixo do capô&hellip;</h2>
+<p>A esse ponto, eu queria que você tivesse um modelo mental de que um treinamento de uma rede neural é um encadeamento de operações, arranjadas de certa forma que nós conseguimos atualizar pesos e parâmetros que irão no final cuminar em um modelo.</p>
+<p>Esse conjunto de operações, e as formas como eles se conectam, são criados no momento de execução e &ldquo;armazenados&rdquo; pelo <code>Pytorch</code>. Essa organização é feita em grafos que podem ser representados como na imagem abaixo.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/JL2RSfo.png"
+        data-srcset="https://i.imgur.com/JL2RSfo.png, https://i.imgur.com/JL2RSfo.png 1.5x, https://i.imgur.com/JL2RSfo.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/JL2RSfo.png"
+        title="grafo" /></p>
+<p>O Autograd é um módulo do <code>Pytorch</code> que permite o cálculo do gradiente, de forma performática e de forma completamente abstraída para nós, usuários do framework.</p>
+<p>Você pode, também ir bem deep no entendimento dos detalhes internos do <code>Pytorch</code>, deixarei um post no fim do artigo para isso.</p>
+<h3 id="diferenção-automática">Diferenção automática</h3>
+<p>Blz!! Temos várias operações para realizar, e consequentemente várias derivadas para calcular, será que precisamos fazer isso na mão??</p>
+<p>De forma alguma&hellip; É então que a diferenciação automática entra em nossas vidas, essa feature do <code>Pytorch</code> permite que o framework consiga calcular o gradiente ao longo de toda a cadeia de operações realizadas pela sua rede neural, em relação a variáveis que você indica pra ele. Similar à imagem abaixo:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/77Em0MV.png"
+        data-srcset="https://i.imgur.com/77Em0MV.png, https://i.imgur.com/77Em0MV.png 1.5x, https://i.imgur.com/77Em0MV.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/77Em0MV.png"
+        title="https://i.imgur.com/77Em0MV.png" /></p>
+<p>Essa indicação das variáveis que serão consideradas na hora do cálculo do gradiente é feita pelo parâmetro <code>require_grad=True</code>. Dessa forma o <code>Pytorch</code> vai armazenar o valor do gradiente em uma propriedade chamada <code>.grad</code>.</p>
+<h3 id="optimizers">Optimizers</h3>
+<p>No artigo passado nós falamos sobre minimização, esse processo que acaba sendo chamado de otimização. Justamente por esse motivo, o <code>Pytorch</code> criou uma abstração chamada, adivinha o nome?, <code>optimizers</code>. Nesse módulo você vai encontrar diversos métodos de otimização, entre eles, um dos mais comuns, chamado de Stochastic Gradient Descent (SGB).</p>
+<p>A imagem abaixo mostra como o processo de otimização acontece:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/dCqfggz.png"
+        data-srcset="https://i.imgur.com/dCqfggz.png, https://i.imgur.com/dCqfggz.png 1.5x, https://i.imgur.com/dCqfggz.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/dCqfggz.png"
+        title="https://i.imgur.com/dCqfggz.png" /></p>
+<p>Então, relembrando, nós temos uma loss, nós precisamos minimizar, esse processo se chama otimização, e minimizar essa função implica que os pesos ao longo da arquitetura da rede neural sejam atualizados.</p>
+<p>Em código, veja abaixo como esses passos se desenrolam:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># learning rate</span>
+</span></span><span class="line"><span class="cl"><span class="n">eta</span> <span class="o">=</span> <span class="mf">0.1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># variável que o modelo vai considerar na hora de minimizar a função</span>
+</span></span><span class="line"><span class="cl"><span class="n">x_param</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="o">-</span><span class="mf">3.5</span><span class="p">]),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># escolha do optimizer a ser utilizado</span>
+</span></span><span class="line"><span class="cl"><span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">([</span><span class="n">x_param</span><span class="p">],</span> <span class="n">lr</span><span class="o">=</span><span class="n">eta</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># as épocas são como nós nomeamos as iterações</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">200</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># como a cada iteração o torch mantém os valores antigos do gradiente</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># o zero_grad() é justamente para zerar esse dados</span>
+</span></span><span class="line"><span class="cl">    <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">loss_incurred</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x_param</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># fazemos o cálculo</span>
+</span></span><span class="line"><span class="cl">    <span class="n">loss_incurred</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># atualizamos os pesos para próxima iteração</span>
+</span></span><span class="line"><span class="cl">    <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">x_param</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</span></span></code></pre></div><pre tabindex="0"><code>tensor([2.0000])
+</code></pre><p>Nosso resultado aqui é o mesmo do mostrado no artigo passado, só que dessa vez nós realizamos o processo de forma iterativa. Guarda esse processo, mais abaixo nós também vamos utilizá-lo para o treinamento da nossa <strong>primeira rede neural</strong>.</p>
+<h2 id="primeira-rede-neural">Primeira Rede Neural</h2>
+<p>Um insight muito massa que eu tive ao ler o livro <code>Inside Deep Learning</code>, é que o <code>Pytorch</code> foi construído com uma premissa bem forte de que todo treinamento de uma rede neural é na verdade um problema de otimização.</p>
+<p>Então, independentemente do problema que estamos atacando (classificação, regressão&hellip;), temos que pensar o problema como um problema de otimização. E de fato isso faz muito sentido, dado que todos os pesos dos modelos são alterados com base no processo de minimização de uma função, a loss.</p>
+<p>No processo de treinamento de uma rede neural fica então evidenciado um padrão. Nós teremos sempre <code>dados</code> que irão alimentar o <code>modelo</code>, teremos o modelo (nossa arquitetura) e a <code>loss</code> que vai alterar a depender do tipo de task que estaremos atacando. A seguinte imagem traduz muito bem o processo:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/cftsFDk.png"
+        data-srcset="https://i.imgur.com/cftsFDk.png, https://i.imgur.com/cftsFDk.png 1.5x, https://i.imgur.com/cftsFDk.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/cftsFDk.png"
+        title="https://i.imgur.com/cftsFDk.png" /></p>
+<p>Vamos então codar pedacinho desse e ver como desenrola na prática!!</p>
+<h3 id="training-loop">Training Loop</h3>
+<p>Vimos acima, com um exemplo mais simples, que esse é um processo iterativo. A implementação que você vê abaixo, é uma adaptação do anterior para contemplar uma situação real de treinamento de uma rede neural.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># apenas para ter um typehint</span>
+</span></span><span class="line"><span class="cl"><span class="n">Loss</span> <span class="o">=</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">train_simple_network</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">model</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">loss_func</span><span class="p">:</span> <span class="n">Loss</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">training_loader</span><span class="p">:</span> <span class="n">DataLoader</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">epochs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">device</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&#34;cuda&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 1</span>
+</span></span><span class="line"><span class="cl">    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">model</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">),</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&#34;Epochs&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 2</span>
+</span></span><span class="line"><span class="cl">        <span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">running_loss</span> <span class="o">=</span> <span class="mf">0.0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="nb">input</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">training_loader</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&#34;Training&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># 3</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">input</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1"># 4</span>
+</span></span><span class="line"><span class="cl">            <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1"># 5</span>
+</span></span><span class="line"><span class="cl">            <span class="n">output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_func</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1"># 6</span>
+</span></span><span class="line"><span class="cl">            <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="n">running_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+</span></span></code></pre></div><p>Nesse fluxo o que está acontecendo é o seguinte:</p>
+<ol>
+<li>Iniciamos o optimizer e enviamos o modelo para o device correto</li>
+<li>Colocamos o modelo em modo de treino, indicando para o <code>Pytorch</code> que eu quero atualizar os pesos</li>
+<li>Colocamos os dados para o device correto</li>
+<li>Muito importante, zeramos o gradiente</li>
+<li>Fazemos o &ldquo;predict&rdquo; e avaliamos o quão distante estamos do valor real, utilizando a loss para isso</li>
+<li>Calculamos o gradiente e enfim atualizamos os pesos</li>
+</ol>
+<h3 id="data">Data</h3>
+<p>Como vamos treinar para uma task de regressão, vamo gerar aqui alguns dados sintéticos com auxílio do <code>numpy</code> e vamos também visualizar o resultado.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="o">=</span> <span class="n">X</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/eSUJdmr.png"
+        data-srcset="https://i.imgur.com/eSUJdmr.png, https://i.imgur.com/eSUJdmr.png 1.5x, https://i.imgur.com/eSUJdmr.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/eSUJdmr.png"
+        title="https://i.imgur.com/eSUJdmr.png" /></p>
+<p>Como foi dito no último artigo, o <code>Pytorch</code> trabalha com duas abstrações chamadas de <code>Dataset</code> e <code>DataLoader</code>. Elas são responsáveis por alimentar seu treinamento com os dados, fazendo isso de forma bem performática.</p>
+<p>As imagens abaixo ilustram muito bem o papel de cada um:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/KTKptDw.png"
+        data-srcset="https://i.imgur.com/KTKptDw.png, https://i.imgur.com/KTKptDw.png 1.5x, https://i.imgur.com/KTKptDw.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/KTKptDw.png"
+        title="https://i.imgur.com/KTKptDw.png" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/dhd1XJy.png"
+        data-srcset="https://i.imgur.com/dhd1XJy.png, https://i.imgur.com/dhd1XJy.png 1.5x, https://i.imgur.com/dhd1XJy.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/dhd1XJy.png"
+        title="https://i.imgur.com/dhd1XJy.png" /></p>
+<p>Na primeira, o que a gente vê é o <code>Dataset</code> sendo o responsável por ir no nosso dado e selecionar um item. Por isso, dois métodos são obrigatórios quando estamos implementando o <code>Dataset</code>:</p>
+<ul>
+<li><code>__len__</code>: vai nos dizer o tamanho do dataset</li>
+<li><code>__getitem__</code>: vai coletar um item do dataset</li>
+</ul>
+<p>Na segunda imagem, você vê a atuação do DataLoader, que tem o objetivo de pedir ao <code>Dataset</code> por específicos items. Como nós, durante o treinamento, passamos os dados em lote e embaralhados, os índices que estão sendo pedidos ao <code>Dataset</code> acabam não tendo uma ordem.</p>
+<p>Do ponto de vista de implementação, basicamente o método <code>__getitem__</code> <strong>precisa retornar uma tupla com o item + label</strong>, seja os tensores das imagens, de texto, som&hellip; E o seu trabalho é basicamente adaptar o dado bruto para essa estrutura.</p>
+<p>Em alguns casos, o <code>Pytorch</code> facilita esse trabalho e nós não precisamos codar uma classe <code>Dataset</code> customizada, como por exemplo quando trabalhamos com imagens. Veremos mais detalhes sobre, em próximos artigos.</p>
+<p>Certo, eis aqui nosso <code>Dataset</code> e <code>DataLoader</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">SimpleRegressionDataset</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="p">:],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="p">:],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">training_dataset</span> <span class="o">=</span> <span class="n">SimpleRegressionDataset</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">training_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">training_dataset</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span></code></pre></div><h3 id="model-e-loss">Model e Loss</h3>
+<p>Basicamente você pode criar uma arquitetura (modelo) de Deep Learning de duas formas. Respeitando a orientação a objeto ou pelo paradigma funcional.</p>
+<p>Por OOP nós criamos uma classe e herdamos do <code>Pytorch</code> a classe <code>Module</code> e obrigatoriamente precisamos implementar o método <code>forward</code>. Vamos simplificar aqui e criar nosso modelo utilizando o paradigma funcional, que ficaria assim:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">simple_model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</span></span></code></pre></div><p>Pronto, temos nosso primeiro modelo 🎉, que de forma visual, seria algo como na seguinte imagem, lendo debaixo para cima:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/ZivUyKV.png"
+        data-srcset="https://i.imgur.com/ZivUyKV.png, https://i.imgur.com/ZivUyKV.png 1.5x, https://i.imgur.com/ZivUyKV.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/ZivUyKV.png"
+        title="https://i.imgur.com/ZivUyKV.png" /></p>
+<p>E então, nossa loss aqui vai ser a MSE (Mean Squared Error):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">loss_func</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+</span></span></code></pre></div><h3 id="juntando-o-quebra-cabeça-">Juntando o quebra-cabeça ✨</h3>
+<p>Just run&hellip;</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&#34;cuda&#34;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&#34;cpu&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">train_simple_network</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">loss_func</span><span class="p">,</span> <span class="n">training_loader</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</span></span></code></pre></div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Nota<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">É comum você encontrar esse condicional para buscar por <code>cuda</code> caso ela esteja disponível no seu computador, caso contrário use <code>cpu</code>. Caso esteja confortável em sempre utilizar a GPU, pode remover e apenas deixar <code>cuda</code>.</div>
+        </div>
+    </div>
+<p>Avaliando nossos resultados:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">inference_mode</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Y_pred</span> <span class="o">=</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">model</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="o">.</span><span class="n">cpu</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">Y_pred</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&#34;red&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/fuKABqV.png"
+        data-srcset="https://i.imgur.com/fuKABqV.png, https://i.imgur.com/fuKABqV.png 1.5x, https://i.imgur.com/fuKABqV.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/fuKABqV.png"
+        title="https://i.imgur.com/fuKABqV.png" /></p>
+<p>A linha reta em vermelho aqui são nossas previsões. Mas, por que será que o modelo não conseguiu capturar a não lineariedade dos dados?</p>
+<p>Isso acontece basicamente por que estamos concatenando operações lineares uma atrás da outra. E nesse caso, no final, se você utilizasse 1000 camadas no <code>nn.Sequential</code> esse modelo não conseguiria capturar esse perfil não linear dos dados.</p>
+<h3 id="funções-de-ativação-ao-resgate">Funções de ativação ao resgate</h3>
+<p>Para resolver esse problema, nós adicionamos uma perturbação nas camadas internas da rede neural, que auxiliam o modelo a representar não lineariedades.</p>
+<p>Vou deixar uma imagem aqui com algumas funções de ativação, e em seguimos vamos reimplementar o código, usando a <code>Tanh()</code>.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/DRxjyPv.png"
+        data-srcset="https://i.imgur.com/DRxjyPv.png, https://i.imgur.com/DRxjyPv.png 1.5x, https://i.imgur.com/DRxjyPv.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/DRxjyPv.png"
+        title="https://i.imgur.com/DRxjyPv.png" /></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">(),</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</span></span></code></pre></div><p>E então, rodamos novamente o treinamento:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">train_simple_network</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">loss_func</span><span class="p">,</span> <span class="n">training_loader</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</span></span></code></pre></div><p>Agora, como vemos na figura, foi possível capturar o formato não linear dos dados.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/Sd3H5sc.png"
+        data-srcset="https://i.imgur.com/Sd3H5sc.png, https://i.imgur.com/Sd3H5sc.png 1.5x, https://i.imgur.com/Sd3H5sc.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/Sd3H5sc.png"
+        title="https://i.imgur.com/Sd3H5sc.png" /></p>
+<p>Show, para esse artigo era isso, espero que tenha conseguido deixar um pouco mais claro quais são as principais peças na hora de montar esse puzzle do Deep Learning.</p>
+<p>Agora, nós iremos começar a entrar mais nas particularidades das diferentes arquiteturas, começando por CNNs, até lá!</p>
+<h2 id="links-úteis">Links úteis</h2>
+<ul>
+<li>Books: [Inside Deep Learning, Generative Deep Learning, Deep Learning with Pytorch]</li>
+<li>Repositório: <a href="https://github.com/LucianoBatista/generative-ai" target="_blank" rel="noopener noreffer ">link</a></li>
+<li>Named Tensors doc: <a href="https://pytorch.org/docs/stable/named_tensor.html" target="_blank" rel="noopener noreffer ">link</a></li>
+<li>Pytorch Internals: <a href="https://pytorch.org/blog/computational-graphs-constructed-in-pytorch/" target="_blank" rel="noopener noreffer ">link</a></li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-07-06</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://www.lobdata.com.br/posts/generative_ai_notes_03/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/ai/">AI</a>,&nbsp;<a href="/tags/generative/">Generative</a>,&nbsp;<a href="/tags/ia-generativa/">IA Generativa</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/generative_ai_notes_02/" class="prev" rel="prev" title="Deep Learning"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Deep Learning</a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.115.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Luba</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"56XLI6KGAP","algoliaIndex":"lobdata","algoliaSearchKey":"d7c82e758baf996bfc63e0fffb1098fd","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
