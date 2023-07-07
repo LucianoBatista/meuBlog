@@ -193,39 +193,42 @@ Meu papel aqui é trazer de forma objetiva cada tópico desse para que você con
 <h2 id="por-debaixo-do-capô">Por debaixo do capô&hellip;</h2>
 <p>A esse ponto, eu queria que você tivesse um modelo mental de que um treinamento de uma rede neural é um encadeamento de operações, arranjadas de certa forma que nós conseguimos atualizar pesos e parâmetros que irão no final cuminar em um modelo.</p>
 <p>Esse conjunto de operações, e as formas como eles se conectam, são criados no momento de execução e &ldquo;armazenados&rdquo; pelo <code>Pytorch</code>. Essa organização é feita em grafos que podem ser representados como na imagem abaixo.</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://i.imgur.com/JL2RSfo.png"
-        data-srcset="https://i.imgur.com/JL2RSfo.png, https://i.imgur.com/JL2RSfo.png 1.5x, https://i.imgur.com/JL2RSfo.png 2x"
-        data-sizes="auto"
-        alt="https://i.imgur.com/JL2RSfo.png"
-        title="grafo" /></p>
+<a class="lightgallery" href="https://i.imgur.com/JL2RSfo.png" title="https://i.imgur.com/JL2RSfo.png" data-thumbnail="https://i.imgur.com/JL2RSfo.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/JL2RSfo.png"
+            data-srcset="https://i.imgur.com/JL2RSfo.png, https://i.imgur.com/JL2RSfo.png 1.5x, https://i.imgur.com/JL2RSfo.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/JL2RSfo.png" width="800" />
+    </a>
 <p>O Autograd é um módulo do <code>Pytorch</code> que permite o cálculo do gradiente, de forma performática e de forma completamente abstraída para nós, usuários do framework.</p>
 <p>Você pode, também ir bem deep no entendimento dos detalhes internos do <code>Pytorch</code>, deixarei um post no fim do artigo para isso.</p>
 <h3 id="diferenção-automática">Diferenção automática</h3>
 <p>Blz!! Temos várias operações para realizar, e consequentemente várias derivadas para calcular, será que precisamos fazer isso na mão??</p>
 <p>De forma alguma&hellip; É então que a diferenciação automática entra em nossas vidas, essa feature do <code>Pytorch</code> permite que o framework consiga calcular o gradiente ao longo de toda a cadeia de operações realizadas pela sua rede neural, em relação a variáveis que você indica pra ele. Similar à imagem abaixo:</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://i.imgur.com/77Em0MV.png"
-        data-srcset="https://i.imgur.com/77Em0MV.png, https://i.imgur.com/77Em0MV.png 1.5x, https://i.imgur.com/77Em0MV.png 2x"
-        data-sizes="auto"
-        alt="https://i.imgur.com/77Em0MV.png"
-        title="https://i.imgur.com/77Em0MV.png" /></p>
+<a class="lightgallery" href="https://i.imgur.com/77Em0MV.png" title="https://i.imgur.com/77Em0MV.png" data-thumbnail="https://i.imgur.com/77Em0MV.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/77Em0MV.png"
+            data-srcset="https://i.imgur.com/77Em0MV.png, https://i.imgur.com/77Em0MV.png 1.5x, https://i.imgur.com/77Em0MV.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/77Em0MV.png" width="800" />
+    </a>
 <p>Essa indicação das variáveis que serão consideradas na hora do cálculo do gradiente é feita pelo parâmetro <code>require_grad=True</code>. Dessa forma o <code>Pytorch</code> vai armazenar o valor do gradiente em uma propriedade chamada <code>.grad</code>.</p>
 <h3 id="optimizers">Optimizers</h3>
 <p>No artigo passado nós falamos sobre minimização, esse processo que acaba sendo chamado de otimização. Justamente por esse motivo, o <code>Pytorch</code> criou uma abstração chamada, adivinha o nome?, <code>optimizers</code>. Nesse módulo você vai encontrar diversos métodos de otimização, entre eles, um dos mais comuns, chamado de Stochastic Gradient Descent (SGB).</p>
 <p>A imagem abaixo mostra como o processo de otimização acontece:</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://i.imgur.com/dCqfggz.png"
-        data-srcset="https://i.imgur.com/dCqfggz.png, https://i.imgur.com/dCqfggz.png 1.5x, https://i.imgur.com/dCqfggz.png 2x"
-        data-sizes="auto"
-        alt="https://i.imgur.com/dCqfggz.png"
-        title="https://i.imgur.com/dCqfggz.png" /></p>
+<a class="lightgallery" href="https://i.imgur.com/dCqfggz.png" title="https://i.imgur.com/dCqfggz.png" data-thumbnail="https://i.imgur.com/dCqfggz.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/dCqfggz.png"
+            data-srcset="https://i.imgur.com/dCqfggz.png, https://i.imgur.com/dCqfggz.png 1.5x, https://i.imgur.com/dCqfggz.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/dCqfggz.png" width="800" />
+    </a>
 <p>Então, relembrando, nós temos uma loss, nós precisamos minimizar, esse processo se chama otimização, e minimizar essa função implica que os pesos ao longo da arquitetura da rede neural sejam atualizados.</p>
 <p>Em código, veja abaixo como esses passos se desenrolam:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># learning rate</span>
@@ -257,14 +260,15 @@ Meu papel aqui é trazer de forma objetiva cada tópico desse para que você con
 <p>Um insight muito massa que eu tive ao ler o livro <code>Inside Deep Learning</code>, é que o <code>Pytorch</code> foi construído com uma premissa bem forte de que todo treinamento de uma rede neural é na verdade um problema de otimização.</p>
 <p>Então, independentemente do problema que estamos atacando (classificação, regressão&hellip;), temos que pensar o problema como um problema de otimização. E de fato isso faz muito sentido, dado que todos os pesos dos modelos são alterados com base no processo de minimização de uma função, a loss.</p>
 <p>No processo de treinamento de uma rede neural fica então evidenciado um padrão. Nós teremos sempre <code>dados</code> que irão alimentar o <code>modelo</code>, teremos o modelo (nossa arquitetura) e a <code>loss</code> que vai alterar a depender do tipo de task que estaremos atacando. A seguinte imagem traduz muito bem o processo:</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://i.imgur.com/cftsFDk.png"
-        data-srcset="https://i.imgur.com/cftsFDk.png, https://i.imgur.com/cftsFDk.png 1.5x, https://i.imgur.com/cftsFDk.png 2x"
-        data-sizes="auto"
-        alt="https://i.imgur.com/cftsFDk.png"
-        title="https://i.imgur.com/cftsFDk.png" /></p>
+<a class="lightgallery" href="https://i.imgur.com/cftsFDk.png" title="https://i.imgur.com/cftsFDk.png" data-thumbnail="https://i.imgur.com/cftsFDk.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/cftsFDk.png"
+            data-srcset="https://i.imgur.com/cftsFDk.png, https://i.imgur.com/cftsFDk.png 1.5x, https://i.imgur.com/cftsFDk.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/cftsFDk.png" width="800" />
+    </a>
 <p>Vamos então codar pedacinho desse e ver como desenrola na prática!!</p>
 <h3 id="training-loop">Training Loop</h3>
 <p>Vimos acima, com um exemplo mais simples, que esse é um processo iterativo. A implementação que você vê abaixo, é uma adaptação do anterior para contemplar uma situação real de treinamento de uma rede neural.</p>
@@ -318,32 +322,35 @@ Meu papel aqui é trazer de forma objetiva cada tópico desse para que você con
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="o">=</span> <span class="n">X</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
-</span></span></code></pre></div><p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://i.imgur.com/eSUJdmr.png"
-        data-srcset="https://i.imgur.com/eSUJdmr.png, https://i.imgur.com/eSUJdmr.png 1.5x, https://i.imgur.com/eSUJdmr.png 2x"
-        data-sizes="auto"
-        alt="https://i.imgur.com/eSUJdmr.png"
-        title="https://i.imgur.com/eSUJdmr.png" /></p>
+</span></span></code></pre></div><a class="lightgallery" href="https://i.imgur.com/eSUJdmr.png" title="https://i.imgur.com/eSUJdmr.png" data-thumbnail="https://i.imgur.com/eSUJdmr.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/eSUJdmr.png"
+            data-srcset="https://i.imgur.com/eSUJdmr.png, https://i.imgur.com/eSUJdmr.png 1.5x, https://i.imgur.com/eSUJdmr.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/eSUJdmr.png" width="800" />
+    </a>
 <p>Como foi dito no último artigo, o <code>Pytorch</code> trabalha com duas abstrações chamadas de <code>Dataset</code> e <code>DataLoader</code>. Elas são responsáveis por alimentar seu treinamento com os dados, fazendo isso de forma bem performática.</p>
 <p>As imagens abaixo ilustram muito bem o papel de cada um:</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://i.imgur.com/KTKptDw.png"
-        data-srcset="https://i.imgur.com/KTKptDw.png, https://i.imgur.com/KTKptDw.png 1.5x, https://i.imgur.com/KTKptDw.png 2x"
-        data-sizes="auto"
-        alt="https://i.imgur.com/KTKptDw.png"
-        title="https://i.imgur.com/KTKptDw.png" />
-<img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://i.imgur.com/dhd1XJy.png"
-        data-srcset="https://i.imgur.com/dhd1XJy.png, https://i.imgur.com/dhd1XJy.png 1.5x, https://i.imgur.com/dhd1XJy.png 2x"
-        data-sizes="auto"
-        alt="https://i.imgur.com/dhd1XJy.png"
-        title="https://i.imgur.com/dhd1XJy.png" /></p>
+<p><a class="lightgallery" href="https://i.imgur.com/KTKptDw.png" title="https://i.imgur.com/KTKptDw.png" data-thumbnail="https://i.imgur.com/KTKptDw.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/KTKptDw.png"
+            data-srcset="https://i.imgur.com/KTKptDw.png, https://i.imgur.com/KTKptDw.png 1.5x, https://i.imgur.com/KTKptDw.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/KTKptDw.png" width="800" />
+    </a>
+<a class="lightgallery" href="https://i.imgur.com/dhd1XJy.png" title="https://i.imgur.com/dhd1XJy.png" data-thumbnail="https://i.imgur.com/dhd1XJy.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/dhd1XJy.png"
+            data-srcset="https://i.imgur.com/dhd1XJy.png, https://i.imgur.com/dhd1XJy.png 1.5x, https://i.imgur.com/dhd1XJy.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/dhd1XJy.png" width="800" />
+    </a></p>
 <p>Na primeira, o que a gente vê é o <code>Dataset</code> sendo o responsável por ir no nosso dado e selecionar um item. Por isso, dois métodos são obrigatórios quando estamos implementando o <code>Dataset</code>:</p>
 <ul>
 <li><code>__len__</code>: vai nos dizer o tamanho do dataset</li>
@@ -374,14 +381,15 @@ Meu papel aqui é trazer de forma objetiva cada tópico desse para que você con
 <p>Por OOP nós criamos uma classe e herdamos do <code>Pytorch</code> a classe <code>Module</code> e obrigatoriamente precisamos implementar o método <code>forward</code>. Vamos simplificar aqui e criar nosso modelo utilizando o paradigma funcional, que ficaria assim:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">simple_model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 </span></span></code></pre></div><p>Pronto, temos nosso primeiro modelo 🎉, que de forma visual, seria algo como na seguinte imagem, lendo debaixo para cima:</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://i.imgur.com/ZivUyKV.png"
-        data-srcset="https://i.imgur.com/ZivUyKV.png, https://i.imgur.com/ZivUyKV.png 1.5x, https://i.imgur.com/ZivUyKV.png 2x"
-        data-sizes="auto"
-        alt="https://i.imgur.com/ZivUyKV.png"
-        title="https://i.imgur.com/ZivUyKV.png" /></p>
+<a class="lightgallery" href="https://i.imgur.com/ZivUyKV.png" title="https://i.imgur.com/ZivUyKV.png" data-thumbnail="https://i.imgur.com/ZivUyKV.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/ZivUyKV.png"
+            data-srcset="https://i.imgur.com/ZivUyKV.png, https://i.imgur.com/ZivUyKV.png 1.5x, https://i.imgur.com/ZivUyKV.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/ZivUyKV.png" width="800" />
+    </a>
 <p>E então, nossa loss aqui vai ser a MSE (Mean Squared Error):</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">loss_func</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
 </span></span></code></pre></div><h3 id="juntando-o-quebra-cabeça-">Juntando o quebra-cabeça ✨</h3>
@@ -406,40 +414,43 @@ Meu papel aqui é trazer de forma objetiva cada tópico desse para que você con
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">Y_pred</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&#34;red&#34;</span><span class="p">)</span>
-</span></span></code></pre></div><p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://i.imgur.com/fuKABqV.png"
-        data-srcset="https://i.imgur.com/fuKABqV.png, https://i.imgur.com/fuKABqV.png 1.5x, https://i.imgur.com/fuKABqV.png 2x"
-        data-sizes="auto"
-        alt="https://i.imgur.com/fuKABqV.png"
-        title="https://i.imgur.com/fuKABqV.png" /></p>
+</span></span></code></pre></div><a class="lightgallery" href="https://i.imgur.com/fuKABqV.png" title="https://i.imgur.com/fuKABqV.png" data-thumbnail="https://i.imgur.com/fuKABqV.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/fuKABqV.png"
+            data-srcset="https://i.imgur.com/fuKABqV.png, https://i.imgur.com/fuKABqV.png 1.5x, https://i.imgur.com/fuKABqV.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/fuKABqV.png" width="800" />
+    </a>
 <p>A linha reta em vermelho aqui são nossas previsões. Mas, por que será que o modelo não conseguiu capturar a não lineariedade dos dados?</p>
 <p>Isso acontece basicamente por que estamos concatenando operações lineares uma atrás da outra. E nesse caso, no final, se você utilizasse 1000 camadas no <code>nn.Sequential</code> esse modelo não conseguiria capturar esse perfil não linear dos dados.</p>
 <h3 id="funções-de-ativação-ao-resgate">Funções de ativação ao resgate</h3>
 <p>Para resolver esse problema, nós adicionamos uma perturbação nas camadas internas da rede neural, que auxiliam o modelo a representar não lineariedades.</p>
 <p>Vou deixar uma imagem aqui com algumas funções de ativação, e em seguimos vamos reimplementar o código, usando a <code>Tanh()</code>.</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://i.imgur.com/DRxjyPv.png"
-        data-srcset="https://i.imgur.com/DRxjyPv.png, https://i.imgur.com/DRxjyPv.png 1.5x, https://i.imgur.com/DRxjyPv.png 2x"
-        data-sizes="auto"
-        alt="https://i.imgur.com/DRxjyPv.png"
-        title="https://i.imgur.com/DRxjyPv.png" /></p>
+<a class="lightgallery" href="https://i.imgur.com/DRxjyPv.png" title="https://i.imgur.com/DRxjyPv.png" data-thumbnail="https://i.imgur.com/DRxjyPv.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/DRxjyPv.png"
+            data-srcset="https://i.imgur.com/DRxjyPv.png, https://i.imgur.com/DRxjyPv.png 1.5x, https://i.imgur.com/DRxjyPv.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/DRxjyPv.png" width="800" />
+    </a>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">(),</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 </span></span></code></pre></div><p>E então, rodamos novamente o treinamento:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">train_simple_network</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">loss_func</span><span class="p">,</span> <span class="n">training_loader</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 </span></span></code></pre></div><p>Agora, como vemos na figura, foi possível capturar o formato não linear dos dados.</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://i.imgur.com/Sd3H5sc.png"
-        data-srcset="https://i.imgur.com/Sd3H5sc.png, https://i.imgur.com/Sd3H5sc.png 1.5x, https://i.imgur.com/Sd3H5sc.png 2x"
-        data-sizes="auto"
-        alt="https://i.imgur.com/Sd3H5sc.png"
-        title="https://i.imgur.com/Sd3H5sc.png" /></p>
+<a class="lightgallery" href="https://i.imgur.com/Sd3H5sc.png" title="https://i.imgur.com/Sd3H5sc.png" data-thumbnail="https://i.imgur.com/Sd3H5sc.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/Sd3H5sc.png"
+            data-srcset="https://i.imgur.com/Sd3H5sc.png, https://i.imgur.com/Sd3H5sc.png 1.5x, https://i.imgur.com/Sd3H5sc.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/Sd3H5sc.png" width="800" />
+    </a>
 <p>Show, para esse artigo era isso, espero que tenha conseguido deixar um pouco mais claro quais são as principais peças na hora de montar esse puzzle do Deep Learning.</p>
 <p>Agora, nós iremos começar a entrar mais nas particularidades das diferentes arquiteturas, começando por CNNs, até lá!</p>
 <h2 id="links-úteis">Links úteis</h2>

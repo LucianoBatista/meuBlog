@@ -91,7 +91,7 @@ A esse ponto, eu queria que você tivesse um modelo mental de que um treinamento
 
 Esse conjunto de operações, e as formas como eles se conectam, são criados no momento de execução e "armazenados" pelo `Pytorch`. Essa organização é feita em grafos que podem ser representados como na imagem abaixo.
 
-![grafo](https://i.imgur.com/JL2RSfo.png)
+{{<image width=800 src="https://i.imgur.com/JL2RSfo.png">}}
 
 O Autograd é um módulo do `Pytorch` que permite o cálculo do gradiente, de forma performática e de forma completamente abstraída para nós, usuários do framework.
 
@@ -103,7 +103,7 @@ Blz!! Temos várias operações para realizar, e consequentemente várias deriva
 
 De forma alguma... É então que a diferenciação automática entra em nossas vidas, essa feature do `Pytorch` permite que o framework consiga calcular o gradiente ao longo de toda a cadeia de operações realizadas pela sua rede neural, em relação a variáveis que você indica pra ele. Similar à imagem abaixo:
 
-![](https://i.imgur.com/77Em0MV.png)
+{{<image width=800 src="https://i.imgur.com/77Em0MV.png">}}
 
 Essa indicação das variáveis que serão consideradas na hora do cálculo do gradiente é feita pelo parâmetro `require_grad=True`. Dessa forma o `Pytorch` vai armazenar o valor do gradiente em uma propriedade chamada `.grad`.
 
@@ -113,7 +113,7 @@ No artigo passado nós falamos sobre minimização, esse processo que acaba send
 
 A imagem abaixo mostra como o processo de otimização acontece:
 
-![](https://i.imgur.com/dCqfggz.png)
+{{<image width=800 src="https://i.imgur.com/dCqfggz.png">}}
 
 Então, relembrando, nós temos uma loss, nós precisamos minimizar, esse processo se chama otimização, e minimizar essa função implica que os pesos ao longo da arquitetura da rede neural sejam atualizados.
 
@@ -159,7 +159,7 @@ Então, independentemente do problema que estamos atacando (classificação, reg
 
 No processo de treinamento de uma rede neural fica então evidenciado um padrão. Nós teremos sempre `dados` que irão alimentar o `modelo`, teremos o modelo (nossa arquitetura) e a `loss` que vai alterar a depender do tipo de task que estaremos atacando. A seguinte imagem traduz muito bem o processo:
 
-![](https://i.imgur.com/cftsFDk.png)
+{{<image width=800 src="https://i.imgur.com/cftsFDk.png">}}
 
 Vamos então codar pedacinho desse e ver como desenrola na prática!!
 
@@ -226,14 +226,14 @@ y = X + np.sin(X) * 2 + np.random.normal(size=X.shape)
 sns.scatterplot(x=X, y=y)
 ```
 
-![](https://i.imgur.com/eSUJdmr.png)
+{{<image width=800 src="https://i.imgur.com/eSUJdmr.png">}}
 
 Como foi dito no último artigo, o `Pytorch` trabalha com duas abstrações chamadas de `Dataset` e `DataLoader`. Elas são responsáveis por alimentar seu treinamento com os dados, fazendo isso de forma bem performática.
 
 As imagens abaixo ilustram muito bem o papel de cada um:
 
-![](https://i.imgur.com/KTKptDw.png)
-![](https://i.imgur.com/dhd1XJy.png)
+{{<image width=800 src="https://i.imgur.com/KTKptDw.png">}}
+{{<image width=800 src="https://i.imgur.com/dhd1XJy.png">}}
 
 Na primeira, o que a gente vê é o `Dataset` sendo o responsável por ir no nosso dado e selecionar um item. Por isso, dois métodos são obrigatórios quando estamos implementando o `Dataset`:
 
@@ -280,7 +280,7 @@ simple_model = nn.Sequential(nn.Linear(1, 10), nn.Linear(10, 1))
 
 Pronto, temos nosso primeiro modelo :tada:, que de forma visual, seria algo como na seguinte imagem, lendo debaixo para cima:
 
-![](https://i.imgur.com/ZivUyKV.png)
+{{<image width=800 src="https://i.imgur.com/ZivUyKV.png">}}
 
 E então, nossa loss aqui vai ser a MSE (Mean Squared Error):
 
@@ -315,7 +315,7 @@ sns.scatterplot(x=X, y=y)
 sns.lineplot(x=X, y=Y_pred.ravel(), color="red")
 ```
 
-![](https://i.imgur.com/fuKABqV.png)
+{{<image width=800 src="https://i.imgur.com/fuKABqV.png">}}
 
 A linha reta em vermelho aqui são nossas previsões. Mas, por que será que o modelo não conseguiu capturar a não lineariedade dos dados?
 
@@ -327,7 +327,7 @@ Para resolver esse problema, nós adicionamos uma perturbação nas camadas inte
 
 Vou deixar uma imagem aqui com algumas funções de ativação, e em seguimos vamos reimplementar o código, usando a `Tanh()`.
 
-![](https://i.imgur.com/DRxjyPv.png)
+{{<image width=800 src="https://i.imgur.com/DRxjyPv.png">}}
 
 ```python
 model = nn.Sequential(nn.Linear(1, 10), nn.Tanh(), nn.Linear(10, 1))
@@ -342,7 +342,7 @@ train_simple_network(model, loss_func, training_loader, device=device, epochs=10
 
 Agora, como vemos na figura, foi possível capturar o formato não linear dos dados.
 
-![](https://i.imgur.com/Sd3H5sc.png)
+{{<image width=800 src="https://i.imgur.com/Sd3H5sc.png">}}
 
 Show, para esse artigo era isso, espero que tenha conseguido deixar um pouco mais claro quais são as principais peças na hora de montar esse puzzle do Deep Learning.
 
