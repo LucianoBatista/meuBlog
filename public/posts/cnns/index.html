@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>CNNs - LobData</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="CNNs" />
+<meta property="og:description" content="Hoje nós vamos avançar mais um pouco em direção ao universo de arquiteturas de Deep Learning relacionadas a IA Generativa. Até aqui, nós já falamos sobre:
+IA Generativa, abordando de forma geral Pytorch, explicando um pouco sobre o framework Deep Learning, trazendo conceitos básicos úteis para nosso entendimento ao decorrer dos artigos. E agora, vamos falar sobre Redes Neurais Convolucionais (CNNs).
+Por que CNNs? As Convolutional Neural Networs são meio que um lugar comum por onde nós normalmente começamos a estudar a fim de entender sobre arquiteturas de Deep Learning." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.lobdata.com.br/posts/cnns/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-07-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-07-06T00:00:00+00:00" /><meta property="og:site_name" content="LOBData" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="CNNs"/>
+<meta name="twitter:description" content="Hoje nós vamos avançar mais um pouco em direção ao universo de arquiteturas de Deep Learning relacionadas a IA Generativa. Até aqui, nós já falamos sobre:
+IA Generativa, abordando de forma geral Pytorch, explicando um pouco sobre o framework Deep Learning, trazendo conceitos básicos úteis para nosso entendimento ao decorrer dos artigos. E agora, vamos falar sobre Redes Neurais Convolucionais (CNNs).
+Por que CNNs? As Convolutional Neural Networs são meio que um lugar comum por onde nós normalmente começamos a estudar a fim de entender sobre arquiteturas de Deep Learning."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/cnns/" /><link rel="prev" href="https://www.lobdata.com.br/posts/generative_ai_notes_03/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "CNNs",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/www.lobdata.com.br\/posts\/cnns\/"
+        },"genre": "posts","keywords": "AI, Generative, IA Generativa","wordcount":  2586 ,
+        "url": "https:\/\/www.lobdata.com.br\/posts\/cnns\/","datePublished": "2023-07-06T00:00:00+00:00","dateModified": "2023-07-06T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Luciano"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="LobData">LOBData</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="LobData">LOBData</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">CNNs</h1><h2 class="single-subtitle">Chapter 02 - Generative Deep Learning Book</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://www.linkedin.com/in/lucianobatistads/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Luciano</a></span>&nbsp;<span class="post-category">included in <a href="/categories/tutorials/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Tutorials</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-07-06">2023-07-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2586 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;13 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/cnn.png"
+        data-srcset="/img/cnn.png, /img/cnn.png 1.5x, /img/cnn.png 2x"
+        data-sizes="auto"
+        alt="/img/cnn.png"
+        title="/img/cnn.png" width="1024" height="1024" /></div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#por-que-cnns">Por que CNNs?</a></li>
+    <li><a href="#conhecimento-a-priori">Conhecimento a priori</a></li>
+    <li><a href="#o-que-são-convoluções">O que são convoluções?</a>
+      <ul>
+        <li><a href="#padding">Padding</a></li>
+      </ul>
+    </li>
+    <li><a href="#processamento-de-imagens-com-convoluções">Processamento de imagens com convoluções</a>
+      <ul>
+        <li><a href="#coletando-os-dados">Coletando os dados</a></li>
+        <li><a href="#transformações">Transformações</a></li>
+      </ul>
+    </li>
+    <li><a href="#nossa-primeira-cnn--sem-pooling">Nossa primeira CNN 🔥 (sem pooling)</a>
+      <ul>
+        <li><a href="#verificando-a-movimentação-do-objeto">Verificando a movimentação do objeto</a></li>
+      </ul>
+    </li>
+    <li><a href="#nossa-segunda-cnn--com-pooling">Nossa segunda CNN 🔥 (com pooling)</a></li>
+    <li><a href="#nossa-terceira-cnn--com-data-augmentation">Nossa terceira CNN 🔥 (com data augmentation)</a>
+      <ul>
+        <li><a href="#transforms-do-torchvision">Transforms do <code>torchvision</code></a></li>
+        <li><a href="#treinando">Treinando</a></li>
+      </ul>
+    </li>
+    <li><a href="#modelos-pré-treinados">Modelos pré-treinados</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>Hoje nós vamos avançar mais um pouco em direção ao universo de arquiteturas de Deep Learning relacionadas a IA Generativa. Até aqui, nós já falamos sobre:</p>
+<ul>
+<li><a href="https://www.lobdata.com.br/posts/my_notes/" target="_blank" rel="noopener noreffer ">IA Generativa, abordando de forma geral</a></li>
+<li><a href="https://www.lobdata.com.br/posts/generative_ai_notes_02/" target="_blank" rel="noopener noreffer ">Pytorch, explicando um pouco sobre o framework</a></li>
+<li><a href="https://www.lobdata.com.br/posts/generative_ai_notes_03/" target="_blank" rel="noopener noreffer ">Deep Learning, trazendo conceitos básicos úteis para nosso entendimento ao decorrer dos artigos.</a></li>
+</ul>
+<p>E agora, vamos falar sobre Redes Neurais Convolucionais (CNNs).</p>
+<h2 id="por-que-cnns">Por que CNNs?</h2>
+<p>As <strong>Convolutional Neural Networs</strong> são meio que um lugar comum por onde nós normalmente começamos a estudar a fim de entender sobre arquiteturas de Deep Learning. Acredito que muito pelo trade-of que elas oferecem, em relação a complexidade vs aplicações.</p>
+<p>Entender conceitualmente sobre essas redes neurais acaba sendo mais intuitivo do que entender outras arquiteturas de Deep Learning, como RNNs. Além disso, você consegue utilizá-las para realizar tarefas relacionadas a Visão Computacional.</p>
+<p>Além disso, como a premissa inicial dessa série de blog posts é tentar caminhar junto com o livro (<strong>Generative Deep Learning</strong>), eis que entramos na arquitetura abordada no capítulo 2.</p>
+<h2 id="conhecimento-a-priori">Conhecimento a priori</h2>
+<p><a href="https://www.lobdata.com.br/posts/generative_ai_notes_03/" target="_blank" rel="noopener noreffer ">No artigo passado</a>&hellip; Falamos sobre imagens serem na realidade um tipo de dado que possui uma estrutura atrelada, contrariando o que aprendemos, onde imagens são um tipo de dado desestruturado.</p>
+<p>Estrutura aqui, vem muito no sentido da composição dessas imagens, sempre com um &ldquo;arranjo&rdquo; de matrizes, onde cada posição desse dado vai representar um pixel.</p>
+<p>Uma imagem, além das dimensões de largura e altura (linhas e colunas), também possuem <strong>chanels</strong> (dimensões). O <code>Pytorch</code>, framework de Deep Learning que estamos utlizando, acaba assumindo uma convenção para quando uma imagem é representada como um tensor:</p>
+<ul>
+<li>N: número do batch de imagens</li>
+<li>C: número de channels</li>
+<li>W: largura</li>
+<li>H: altura</li>
+</ul>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>This is a tip<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Tudo isso vem composto na seguinte ordem <code>(N, C, W, H)</code>. Mais a frente veremos na prática como as imagens são representadas no <code>Pytorch</code>.</div>
+        </div>
+    </div>
+<p><em>A estrutura de uma image nos indica que o valor que um pixel pode assumir não é independente do valor do pixel vizinho</em>, em outras palavras, nós iremos ter uma correlação entre os pixels de um determinado conjunto de imagens e eles não podem ser analisados isoladamente. Esse tipo de <em>conhecimento a priori</em> é também chamada de <em>estrutura espacial a priori</em> e é ela que as CNNs tentam &ldquo;aprender&rdquo;.</p>
+<p>Apenas para ilustrar, se nós embaralhasse-mos os pixels de uma imagem de um número 5, o mesmo ficaria irreconhecível, corroborando para esse conceito de correlação dos pixels. Veja na imagem abaixo:</p>
+<a class="lightgallery" href="https://i.imgur.com/tI3VLRL.png" title="https://i.imgur.com/tI3VLRL.png" data-thumbnail="https://i.imgur.com/tI3VLRL.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/tI3VLRL.png"
+            data-srcset="https://i.imgur.com/tI3VLRL.png, https://i.imgur.com/tI3VLRL.png 1.5x, https://i.imgur.com/tI3VLRL.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/tI3VLRL.png" width="800" />
+    </a>
+<h2 id="o-que-são-convoluções">O que são convoluções?</h2>
+<p>Convolução nada mais é que uma função matemática que recebe dois inputs: uma imagem e um filtro (também chamado de kernel).</p>
+<p>Como saída dessa função temos uma nova imagem.</p>
+<blockquote>
+<p><em>Mas como que essa operação pode ser utilizada para treinamento de uma rede neural, e eventual aprendizado de padrões sobre as imagens?</em></p>
+</blockquote>
+<p>O principal responsável para isso são os filtros. Esse input da função é muito especial e têm a capacidade de reconhecer certos padrões na entrada e realçá-los na saída. Tradicionalmente, os filtros têm sido utilizados em muitas aplicações para capturar padrões ou aplicar comportamentos específicos às imagens, como por exemplo:</p>
+<ul>
+<li><strong>aplicar desfoque gaussiano</strong></li>
+<li><strong>detectar linhas horizontais</strong></li>
+<li><strong>aumentar a nitidez</strong></li>
+<li><strong>capturar as bordas das imagens</strong></li>
+</ul>
+<p>Porém, quando aplicados ao deep learning, nosso <strong>real interesse é encontrar os melhores filtros que possam criar os melhores padrões para representar os dados de maneira mais adequada</strong>. No final, com essa ótima representação, seremos capazes de classificar, detectar ou realizar qualquer outra tarefa relacionada à visão computacional.</p>
+<p>As convoluções existem em diferentes dimensões (1D, 2D, &hellip;), mas o racional por de trás continurá sendo o mesmo. Veja na imagem abaixo como o filtro vai percorrer a imagem e ao realizar os cálculos vai retornar uma nova imagem.</p>
+<a class="lightgallery" href="https://miro.medium.com/v2/resize:fit:640/1*d2Q7BJrDzSQZgLFR4PMgYw.gif" title="https://miro.medium.com/v2/resize:fit:640/1*d2Q7BJrDzSQZgLFR4PMgYw.gif" data-thumbnail="https://miro.medium.com/v2/resize:fit:640/1*d2Q7BJrDzSQZgLFR4PMgYw.gif">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://miro.medium.com/v2/resize:fit:640/1*d2Q7BJrDzSQZgLFR4PMgYw.gif"
+            data-srcset="https://miro.medium.com/v2/resize:fit:640/1*d2Q7BJrDzSQZgLFR4PMgYw.gif, https://miro.medium.com/v2/resize:fit:640/1*d2Q7BJrDzSQZgLFR4PMgYw.gif 1.5x, https://miro.medium.com/v2/resize:fit:640/1*d2Q7BJrDzSQZgLFR4PMgYw.gif 2x"
+            data-sizes="auto"
+            alt="https://miro.medium.com/v2/resize:fit:640/1*d2Q7BJrDzSQZgLFR4PMgYw.gif" width="800" />
+    </a>
+<p>Um ponto importante a observar é que a imagem resultante (imagem em verde), pela pura operação do convolução é uma imagem menor que a original. Como resolvemos isso?</p>
+<h3 id="padding">Padding</h3>
+<p>É justamente para isso que existem os <code>paddings</code>. De forma simples, os paddings vão adicionar linhas e colunas ao redor da imagem original, para que durante a operação de convolução, a imagem resultante permaneça com a mesma dimensão.</p>
+<p>O mais comum é o <code>zero-padding</code>, mas as referências citam que podemos utilizar outros tipos também (eu particularmente nunca usei).</p>
+<a class="lightgallery" href="https://i.imgur.com/tTw3nUg.png" title="https://i.imgur.com/tTw3nUg.png" data-thumbnail="https://i.imgur.com/tTw3nUg.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/tTw3nUg.png"
+            data-srcset="https://i.imgur.com/tTw3nUg.png, https://i.imgur.com/tTw3nUg.png 1.5x, https://i.imgur.com/tTw3nUg.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/tTw3nUg.png" width="800" />
+    </a>
+<h2 id="processamento-de-imagens-com-convoluções">Processamento de imagens com convoluções</h2>
+<p>Como dito acima, <strong>convolução é apenas uma operação matemática</strong>. Sendo assim, ao longo do tempo a pesquisa chegou há alguns kernels que aplicam algumas transformaçẽos em imagens.</p>
+<p>Então, vamos realizar um experimento e passar alguns kernels por algumas imagens do dataset mais batido da bolha de data science, <strong>MNIST</strong>. Para isso, vamos utilizar o <code>Torchvision</code>, ele nos fornece um meio de baixar esses dados e automaticamente criar um objeto <code>Dataset</code>:</p>
+<h3 id="coletando-os-dados">Coletando os dados</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">transforms</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">torch</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_mnist_dataset</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">train_transformers</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span> <span class="n">test_transformers</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dataset</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mnist_train_dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">root</span><span class="o">=</span><span class="s2">&#34;./data&#34;</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">train_transformers</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mnist_test_dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">root</span><span class="o">=</span><span class="s2">&#34;./data&#34;</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">test_transformers</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">mnist_train_dataset</span><span class="p">,</span> <span class="n">mnist_test_dataset</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_mnist_dataloaders</span><span class="p">(</span><span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dataset</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mnist_train_dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">root</span><span class="o">=</span><span class="s2">&#34;./data&#34;</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mnist_test_dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">root</span><span class="o">=</span><span class="s2">&#34;./data&#34;</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">mnist_train_dataset</span><span class="p">,</span> <span class="n">mnist_test_dataset</span>
+</span></span></code></pre></div><p>Eu vou criar também uma função para nos permitir visualizar uma imagem desse conjunto de dados, utilizando para isso o matplotlib.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">plot_dataset_image</span><span class="p">(</span><span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">dataset</span><span class="p">:</span> <span class="n">Dataset</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">image</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">image_reshaped</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_reshaped</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&#34;gray&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">plot_dataset_image</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">mnist_train_dataset</span><span class="p">)</span>
+</span></span></code></pre></div><a class="lightgallery" href="https://i.imgur.com/OLsAIrE.png" title="https://i.imgur.com/OLsAIrE.png" data-thumbnail="https://i.imgur.com/OLsAIrE.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/OLsAIrE.png"
+            data-srcset="https://i.imgur.com/OLsAIrE.png, https://i.imgur.com/OLsAIrE.png 1.5x, https://i.imgur.com/OLsAIrE.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/OLsAIrE.png" width="800" />
+    </a>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Um breve disclaimer<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>Quando retornamos a imgem direto do <code>Dataset</code> obtemos um tensor no formato:</p>
+<ul>
+<li>(C, W, H)</li>
+</ul>
+<p>Porém, o matplotlib espera que se a imagem for colorida (RBG), ela tenha o seguinte formato:</p>
+<ul>
+<li>(W, H, C)</li>
+</ul>
+<p>Então para facilitar, e como essas imagem já vem com apenas 1 channel, nós simplemente estamos considerando as dimensões W, H. Por isso você vai ver o método de reshape na função <code>plot_dataset_image</code>.</p>
+</div>
+        </div>
+    </div>
+<h3 id="transformações">Transformações</h3>
+<p>Vamos vizualizar 4 transformações nos dados que podem ser feitas aplicando diretamente a operação de convolução:</p>
+<ul>
+<li>Desfoque gaussiano</li>
+<li>Detecção de contornos</li>
+<li>Detecção de linhas horizontais</li>
+<li>Detecção de linhas verticais</li>
+</ul>
+<p>O ponto comum entre todas operações, é a necessidade de configuração de um kernel. Veja abaixo o kernel que gera um determinado resultado.</p>
+<p><a class="lightgallery" href="https://i.imgur.com/7yDtRKR.png" title="https://i.imgur.com/7yDtRKR.png" data-thumbnail="https://i.imgur.com/7yDtRKR.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/7yDtRKR.png"
+            data-srcset="https://i.imgur.com/7yDtRKR.png, https://i.imgur.com/7yDtRKR.png 1.5x, https://i.imgur.com/7yDtRKR.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/7yDtRKR.png" width="800" />
+    </a>
+<a class="lightgallery" href="https://i.imgur.com/Pqt5X34.png" title="https://i.imgur.com/Pqt5X34.png" data-thumbnail="https://i.imgur.com/Pqt5X34.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/Pqt5X34.png"
+            data-srcset="https://i.imgur.com/Pqt5X34.png, https://i.imgur.com/Pqt5X34.png 1.5x, https://i.imgur.com/Pqt5X34.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/Pqt5X34.png" width="800" />
+    </a>
+<a class="lightgallery" href="https://i.imgur.com/WoAf7u8.png" title="https://i.imgur.com/WoAf7u8.png" data-thumbnail="https://i.imgur.com/WoAf7u8.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/WoAf7u8.png"
+            data-srcset="https://i.imgur.com/WoAf7u8.png, https://i.imgur.com/WoAf7u8.png 1.5x, https://i.imgur.com/WoAf7u8.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/WoAf7u8.png" width="800" />
+    </a></p>
+<p>No <code>Pytorch</code>, uma forma de replicar essa operação é aplicando um método de operação convolucional:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">blurring_image</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">kernel</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">kernel_size</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">)</span> <span class="o">/</span> <span class="n">kernel_size</span><span class="o">**</span><span class="mi">2</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">conv2d</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">kernel</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># calling</span>
+</span></span><span class="line"><span class="cl"><span class="n">image</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">mnist_train_dataset</span><span class="p">[</span><span class="mi">90</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">new_image</span> <span class="o">=</span> <span class="n">blurring_image</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+</span></span></code></pre></div><p>Você pode encontrar todas as outras operações <a href="https://" rel="">nesse notebook</a>. E abaixo temos o resultado das 4 transformações que foram citadas acima.</p>
+<a class="lightgallery" href="https://i.imgur.com/VBH1T0X.png%29" title="https://i.imgur.com/VBH1T0X.png)" data-thumbnail="https://i.imgur.com/VBH1T0X.png)">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/VBH1T0X.png%29"
+            data-srcset="https://i.imgur.com/VBH1T0X.png%29, https://i.imgur.com/VBH1T0X.png%29 1.5x, https://i.imgur.com/VBH1T0X.png%29 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/VBH1T0X.png)" width="800" />
+    </a>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Um breve disclaimer<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Você vai ver algumas operaçẽos de <code>unsqueeze(0)</code> nesses códigos de transformação das imagens. Isso é apenas para ajustar as dimensões durante as manipulações. Esse método basicamente cria uma nova dimensão mantendo o shape do formato inicial:</div>
+        </div>
+    </div>
+<div class="mermaid" id="id-1"></div>
+<h2 id="nossa-primeira-cnn--sem-pooling">Nossa primeira CNN 🔥 (sem pooling)</h2>
+<p>Bom, agora que nós temos os dados, vamo realizar o treinamento da nossa primeira CNN. Eu vou utilizar aqui três funções de ajuda do livro <strong>Inside Deep Learning</strong>, onde essas funções contêm alguns códigos que normalmente se repetem para todo tipo de treinamento de modelo de Deep Learning.</p>
+<blockquote>
+<p><em>O que essas funções fazem?</em></p>
+</blockquote>
+<ul>
+<li>movem um objeto em python para o device correto</li>
+<li>loop de treino</li>
+<li>salvam alguns dados durante o treinamento: modelo, métricas de performance, etc.</li>
+</ul>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Referência<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>As funções podem ser acessadas nesse <a href="https://github.com/EdwardRaff/Inside-Deep-Learning/blob/main/idlmam.py" target="_blank" rel="noopener noreffer ">repositório</a>, são elas:</p>
+<ul>
+<li><code>moveto</code></li>
+<li><code>run_epoch</code></li>
+<li><code>simple_training_loop</code>.</li>
+</ul>
+</div>
+        </div>
+    </div>
+<p>Agora, vamos criar o código do nosso modelo, passando também algumas constantes:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">B</span> <span class="o">=</span> <span class="mi">32</span>  <span class="c1"># batch size</span>
+</span></span><span class="line"><span class="cl"><span class="n">D</span> <span class="o">=</span> <span class="mi">28</span> <span class="o">*</span> <span class="mi">28</span>  <span class="c1"># image dimensionality</span>
+</span></span><span class="line"><span class="cl"><span class="n">C</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># number of channels</span>
+</span></span><span class="line"><span class="cl"><span class="n">classes</span> <span class="o">=</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl"><span class="n">filters</span> <span class="o">=</span> <span class="mi">16</span>
+</span></span><span class="line"><span class="cl"><span class="n">kernel_size</span> <span class="o">=</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">fc_model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nn</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>  <span class="c1"># (B, C, W, H) -&gt; (B, C * W * H) = (B, D)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="mi">256</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="n">classes</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">model_conv</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="n">kernel_size</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nn</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">filters</span> <span class="o">*</span> <span class="n">D</span><span class="p">,</span> <span class="n">classes</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></div><p>Apenas a nível de comparação, vamos treinar os dois modelos (fully-connected e CNN):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">loss_func</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">cnn_results</span> <span class="o">=</span> <span class="n">train_simple_network</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">model_conv</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">loss_func</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">train_loader</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">test_loader</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">score_funcs</span><span class="o">=</span><span class="p">{</span><span class="s2">&#34;accuracy&#34;</span><span class="p">:</span> <span class="n">accuracy_score</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">checkpoint_file</span><span class="o">=</span><span class="s2">&#34;./model/cnn_checkpoint.pth&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">loss_func</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">fc_results</span> <span class="o">=</span> <span class="n">train_simple_network</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fc_model</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">loss_func</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">train_loader</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">test_loader</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">score_funcs</span><span class="o">=</span><span class="p">{</span><span class="s2">&#34;accuracy&#34;</span><span class="p">:</span> <span class="n">accuracy_score</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">checkpoint_file</span><span class="o">=</span><span class="s2">&#34;./model/cnn_checkpoint.pth&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></div><p>Caso esteja demorando muito o treinamento para 100 épocas, você pode diminuir o número de épocas. Mas como resultado nós teremos algo como no plot abaixo:</p>
+<div class="echarts" id="id-2" style="width: 100%; height: 30rem;"></div>
+<div class="details admonition warning open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw" aria-hidden="true"></i>Aviso<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">O código para criar um plot semelhante a esse, pode ser encontrado também no <a href="" rel="">repositório</a> que estamos utilizando para a séries de blog posts.</div>
+        </div>
+    </div>
+<p>Apesar de ter obtido bons resultados, nosso modelo ainda é bem sensível há algumas mudanças no comportamento dos dados, como por exemplo, sensível a translação do objeto que estamos classificando (números).</p>
+<p>Os números do dataset <code>MNIST</code> que estamos tentando prever estão todos centralizados, e com isso se algum número mudar de posição, provavelmente vai levar a uma variação na acurácia do modelo.</p>
+<h3 id="verificando-a-movimentação-do-objeto">Verificando a movimentação do objeto</h3>
+<p>Vamos utilizar um método do numpy que faz essencialmente isso, o <code>np.roll</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">img_idx</span> <span class="o">=</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl"><span class="n">img</span><span class="p">,</span> <span class="n">correct_class</span> <span class="o">=</span> <span class="n">mnist_train_dataset</span><span class="p">[</span><span class="n">img_idx</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">img_lr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">img_ul</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span></code></pre></div><p>Então, o que está acontecendo aqui é o descolando da imagem em uma duas direções distintas:</p>
+<ul>
+<li><code>img_lr</code>: <em>lower right</em></li>
+<li><code>img_ul</code>: <em>upper left</em></li>
+</ul>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Tip<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>Para ficar mais claro o que o <code>np.roll</code> faz, eu sempre gosto de rodar o método em um pedaço de código mais simples, nesse caso, em um array unidimensional, temos:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
+</span></span><span class="line"><span class="cl"><span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span></span></code></pre></div></div>
+        </div>
+    </div>
+<p>Agora, vamos ver então como ficaram todas as movimentações em comparação com a imagem original:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">f</span><span class="p">,</span> <span class="n">axarr</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">axarr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&#34;gray&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">axarr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_lr</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&#34;gray&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">axarr</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_ul</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&#34;gray&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></div><a class="lightgallery" href="https://i.imgur.com/3RHuWYv.png" title="https://i.imgur.com/3RHuWYv.png" data-thumbnail="https://i.imgur.com/3RHuWYv.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/3RHuWYv.png"
+            data-srcset="https://i.imgur.com/3RHuWYv.png, https://i.imgur.com/3RHuWYv.png 1.5x, https://i.imgur.com/3RHuWYv.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/3RHuWYv.png" width="800" />
+    </a>
+<p>Agora que nossa imagem já foi movimentada, vamos investigar a acurácia em cada uma das situações:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># creating a prediction function</span>
+</span></span><span class="line"><span class="cl"><span class="n">model</span> <span class="o">=</span> <span class="n">model_conv</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>  <span class="c1"># passing to cpu and eval mode to be simpler</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">pred</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">img</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">        <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">img</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># We need add some dimensions to the image so that it is in the correct shape</span>
+</span></span><span class="line"><span class="cl">        <span class="n">x</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">logits</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># We need to apply softmax to get the probabilities</span>
+</span></span><span class="line"><span class="cl">        <span class="n">y_hat</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">y_hat</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># calling</span>
+</span></span><span class="line"><span class="cl"><span class="n">img_lr_pred</span> <span class="o">=</span> <span class="n">pred</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">img_lr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">img_pred</span> <span class="o">=</span> <span class="n">pred</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">img_ul_pred</span> <span class="o">=</span> <span class="n">pred</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">img_ul</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="sa">f</span><span class="s2">&#34;Predicted class for original image: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">img_pred</span><span class="p">)</span><span class="si">}</span><span class="s2"> / Probability: </span><span class="si">{</span><span class="n">img_pred</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">img_pred</span><span class="p">)]</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="sa">f</span><span class="s2">&#34;Predicted class for left-right image: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">img_lr_pred</span><span class="p">)</span><span class="si">}</span><span class="s2"> / Probability: </span><span class="si">{</span><span class="n">img_lr_pred</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">img_lr_pred</span><span class="p">)]</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="sa">f</span><span class="s2">&#34;Predicted class for up-left image: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">img_ul_pred</span><span class="p">)</span><span class="si">}</span><span class="s2"> / Probability: </span><span class="si">{</span><span class="n">img_ul_pred</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">img_ul_pred</span><span class="p">)]</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></div><ul>
+<li><strong>imagem normal</strong>: 0.99</li>
+<li><strong>lower right</strong>: 0.73</li>
+<li><strong>upper left</strong>: 0.61</li>
+</ul>
+<p>Para que nosso modelo possa ser mais robusto em relação a translação do objeto, vamos tentar aplicar um pooling na nossa arquitetura.</p>
+<h2 id="nossa-segunda-cnn--com-pooling">Nossa segunda CNN 🔥 (com pooling)</h2>
+<p>O pooling nada mais é que uma técnica que nos ajuda a ter uma propriedade chamada <code>translation invariance</code>, ou seja, o aprendizado do nosso modelo fica menos suscetível a movimentação do objeto de interesse.</p>
+<p>De forma prática, aqui nós vamo estar utilizando o <em>max pooling</em>, onde é utilizado o valor máximo da matriz da imagem de input na camada de pooling. Pela imagem abaixo fica mais claro o que estou querendo dizer:</p>
+<a class="lightgallery" href="https://i.imgur.com/bp5FjS1.png" title="https://i.imgur.com/bp5FjS1.png" data-thumbnail="https://i.imgur.com/bp5FjS1.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/bp5FjS1.png"
+            data-srcset="https://i.imgur.com/bp5FjS1.png, https://i.imgur.com/bp5FjS1.png 1.5x, https://i.imgur.com/bp5FjS1.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/bp5FjS1.png" width="800" />
+    </a>
+<p>A partir do momento que aumentamos o K, acabamos tendo uma janela maior para retornar o valor máximo. Um ponto importante é que o pooling diminui o tamanho da imagem, então precisamos de cuidado pois ao final podemos machucar muito a representação do nosso problema, tendo uma perda muito grande de informação útil.</p>
+<p>Nossa CNN com pooling e mais camadas, fica assim:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">model_cnn_pool</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">3</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">filters</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">3</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">filters</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">3</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">filters</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">filters</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">3</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">filters</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">filters</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">3</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">filters</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">filters</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">3</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nn</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">filters</span> <span class="o">*</span> <span class="n">D</span> <span class="o">//</span> <span class="p">(</span><span class="mi">4</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span> <span class="n">classes</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># training</span>
+</span></span><span class="line"><span class="cl"><span class="n">cnn_results_with_pool</span> <span class="o">=</span> <span class="n">train_simple_network</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">model_cnn_pool</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">loss_func</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">train_loader</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">test_loader</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">score_funcs</span><span class="o">=</span><span class="p">{</span><span class="s2">&#34;accuracy&#34;</span><span class="p">:</span> <span class="n">accuracy_score</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">checkpoint_file</span><span class="o">=</span><span class="s2">&#34;./model/cnn_pooling_checkpoint.pth&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></div><div class="echarts" id="id-3" style="width: 100%; height: 30rem;"></div>
+<p>Nesse caso para a mesma imagem que foi transladada em diferentes posições, nós tivemos os seguintes scores:</p>
+<ul>
+<li><strong>imagem normal:</strong> 0.99</li>
+<li><strong>lower right:</strong> 0.94</li>
+<li><strong>upper left:</strong> 0.73</li>
+</ul>
+<h2 id="nossa-terceira-cnn--com-data-augmentation">Nossa terceira CNN 🔥 (com data augmentation)</h2>
+<p>Por fim, uma última estratégia que gostaria de trazer aqui é o *Data Augmentation**. E a ideia por de trás é basicamente a de expor o seu modelo ao maior número possível de varientes da imagem original, para que ele consigar ter um ótimo grau de generalização.</p>
+<p>A sacada é que você não precisa necessariamente coletar novos dados, e sim manipular uma imagem para criar diferentes situações para ela:</p>
+<ul>
+<li>rotacionar</li>
+<li>ditorcer</li>
+<li>alterar brilho e contraste</li>
+<li>alterar cores do canal rgb</li>
+<li>aplicação de ruído</li>
+</ul>
+<p>A lista é imensa e o <code>torchvision</code> tem um módulo que nos ajuda nisso, chamado <code>transforms</code>. Você também pode encontrar módulos de terceiros como o <a href="https://albumentations.ai/docs/" target="_blank" rel="noopener noreffer ">Albumentation</a>, mas acho que independente da lib que você estiver utilizando, o importante mesmo vai ser escolher a transformação que faz sentido para o seu dado.</p>
+<p>Digo isso por quê você pode <strong>aplicar uma transformação de brilho e contraste numa image, e o resultado ser uma imagem completamente ilegível</strong>, que dificilmente um humando vai conseguir distinguir o que é. Essas transformações precisam ser aplicadas considerando o &ldquo;universo&rdquo; de possibilidades de transformações que essas imagens podem sofrer.</p>
+<p>Vamos visualizar como essas transformações se comportam no <code>torchvision</code> e em seguida vamos treinar nossa CNN, porém agora passando algumas transformações ao dado.</p>
+<h3 id="transforms-do-torchvision">Transforms do <code>torchvision</code></h3>
+<p>O código abaixo aplica algumas transformações ao nosso dataset:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">sample_transforms</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Rotation&#34;</span><span class="p">:</span> <span class="n">transforms</span><span class="o">.</span><span class="n">RandomAffine</span><span class="p">(</span><span class="n">degrees</span><span class="o">=</span><span class="mi">45</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Translation&#34;</span><span class="p">:</span> <span class="n">transforms</span><span class="o">.</span><span class="n">RandomAffine</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">translate</span><span class="o">=</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Shear&#34;</span><span class="p">:</span> <span class="n">transforms</span><span class="o">.</span><span class="n">RandomAffine</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">shear</span><span class="o">=</span><span class="mi">45</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;RandomCrop&#34;</span><span class="p">:</span> <span class="n">transforms</span><span class="o">.</span><span class="n">RandomCrop</span><span class="p">((</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Horizontal Flip&#34;</span><span class="p">:</span> <span class="n">transforms</span><span class="o">.</span><span class="n">RandomHorizontalFlip</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Vertical Flip&#34;</span><span class="p">:</span> <span class="n">transforms</span><span class="o">.</span><span class="n">RandomVerticalFlip</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Color Jitter&#34;</span><span class="p">:</span> <span class="n">transforms</span><span class="o">.</span><span class="n">ColorJitter</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">brightness</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">contrast</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">saturation</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="mf">0.5</span>
+</span></span><span class="line"><span class="cl">    <span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Perspective&#34;</span><span class="p">:</span> <span class="n">transforms</span><span class="o">.</span><span class="n">RandomPerspective</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">pil_img</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">ToPILImage</span><span class="p">()(</span><span class="n">img</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">f</span><span class="p">,</span> <span class="n">axarr</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">transform</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sample_transforms</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pil_img_transformed</span> <span class="o">=</span> <span class="n">transform</span><span class="p">(</span><span class="n">pil_img</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">axarr</span><span class="p">[</span><span class="n">i</span> <span class="o">//</span> <span class="mi">4</span><span class="p">,</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">pil_img_transformed</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&#34;gray&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">axarr</span><span class="p">[</span><span class="n">i</span> <span class="o">//</span> <span class="mi">4</span><span class="p">,</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></div><a class="lightgallery" href="https://i.imgur.com/YLZO3h9.png" title="https://i.imgur.com/YLZO3h9.png" data-thumbnail="https://i.imgur.com/YLZO3h9.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/YLZO3h9.png"
+            data-srcset="https://i.imgur.com/YLZO3h9.png, https://i.imgur.com/YLZO3h9.png 1.5x, https://i.imgur.com/YLZO3h9.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/YLZO3h9.png" width="800" />
+    </a>
+<h3 id="treinando">Treinando</h3>
+<p>Vamos ao que interessa! Como transforms, eu vou utilizar variação de rotação, translação e escala. Ao final disso, vamos converter a imagem para tensor.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">train_transform</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="n">transforms</span><span class="o">.</span><span class="n">RandomAffine</span><span class="p">(</span><span class="n">degrees</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">translate</span><span class="o">=</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">),</span> <span class="n">scale</span><span class="o">=</span><span class="p">(</span><span class="mf">0.95</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">test_transform</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">mnist_train_dataset_v2</span> <span class="o">=</span> <span class="n">MNIST</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">root</span><span class="o">=</span><span class="s2">&#34;./data&#34;</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">train_transform</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">mnist_test_dataset_v2</span> <span class="o">=</span> <span class="n">MNIST</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">root</span><span class="o">=</span><span class="s2">&#34;./data&#34;</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">test_transform</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">train_loader_v2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mnist_train_dataset_v2</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">B</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">test_loader_v2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mnist_test_dataset_v2</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">B</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></div><p>Como a arquitetura do modelo é a mesma, não vou repetir esse código aqui. Mas, ainda assim você precisa reeinstanciar o objeto, para que o <code>Pytorch</code> não utilize os pesos que já fora oriundos do treinamento passado.</p>
+<p>A única diferença é que agora você precisa passar o <code>train_loader_v2</code> e <code>test_loader_v2</code> para a função <code>train_simple_network</code>.</p>
+<p>Dito isso, nossos resultados foram:</p>
+<ul>
+<li><strong>imagem normal:</strong> 0.99</li>
+<li><strong>lower right:</strong> 0.99</li>
+<li><strong>upper left:</strong> 0.53</li>
+</ul>
+<p>Olha que interessante, nós conseguimos melhorar a acurácia para a previsão do <code>lower right</code>, porém, para o <code>upper left</code> acabamos piorando a situação. Isso pode ter acontecido por conta da transformação que foi aplicada na imagem durante o treinamento do modelo não refletir a situação que a gente gerou, manualmente, de transladar a imagem.</p>
+<h2 id="modelos-pré-treinados">Modelos pré-treinados</h2>
+<p>Espero que tenha consigo passar para você os principais conceitos relacionados as famosas CNNs e como codar o treinamento dessas arquiteturas. Apesar de conseguirmos ter resultados interessantes compondo o básico de uma arquitetura de CNN, esses resultados são ainda melhores quando utilizamos os modelos pré-treinados de CNNs mais complexas.</p>
+<p>Não vamos entrar aqui no detalhe dessas arquiteturas mais robustas, mas vou deixar aqui um comando que você pode rodar para ter acesso há todos os modelo disponíveis no <code>torchvision</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nb">dir</span><span class="p">(</span><span class="n">torchvision</span><span class="o">.</span><span class="n">models</span><span class="p">)</span>
+</span></span></code></pre></div><p>Isso te entregar uma lista imensa com todos os modelos gerido pelo hub do <code>torchvision</code>.</p>
+<p>Por hoje foi isso, espero que tenha gostado, e no próximo artigo vamos falar sobre autoencoders!!</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-07-06</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://www.lobdata.com.br/posts/cnns/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/ai/">AI</a>,&nbsp;<a href="/tags/generative/">Generative</a>,&nbsp;<a href="/tags/ia-generativa/">IA Generativa</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/generative_ai_notes_03/" class="prev" rel="prev" title="Intro ao Pytorch"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Intro ao Pytorch</a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.115.3">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Luba</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid@9.1.3/dist/mermaid.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.3.3/dist/echarts.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"data":{"id-1":"graph LR;\nA(28 x 28) --\u003e B(.unsqueeze em 0)\nB --\u003e C(1 x 28 x 28)","id-2":"{\"grid\":{\"bottom\":\"5%\",\"containLabel\":true,\"left\":\"5%\",\"right\":\"5%\",\"top\":\"20%\"},\"legend\":{\"data\":[\"Fully Connected\",\"CNN\"],\"top\":\"10%\"},\"series\":[{\"data\":[0.7673,0.8161,0.8443,0.8596,0.8701,0.8767,0.8838,0.8881,0.8908,0.8931,0.8957,0.8977,0.8999,0.9011,0.9019,0.9029,0.9044,0.905,0.906,0.9073,0.9087,0.9092,0.9102,0.9107,0.9114,0.9129,0.9135,0.9143,0.9143,0.9141,0.9148,0.9158,0.9158,0.9158,0.9163,0.9173,0.9174,0.9178,0.9184,0.9182,0.9181,0.9194,0.9189,0.9197,0.9205,0.9199,0.9205,0.9204,0.9211,0.9206,0.9223,0.9224,0.9228,0.9229,0.9233,0.9233,0.9242,0.9243,0.9251,0.9252,0.9254,0.9261,0.9261,0.9264,0.9266,0.9274,0.9269,0.9268,0.9276,0.9272,0.9278,0.928,0.928,0.9281,0.9281,0.9292,0.929,0.9295,0.9292,0.9299,0.9301,0.9305,0.9303,0.9306,0.931,0.9314,0.9318,0.9317,0.9322,0.9321,0.9328,0.9327,0.9332,0.9333,0.9334,0.9336,0.9341,0.9343,0.9344,0.9349],\"name\":\"Fully Connected\",\"type\":\"line\"},{\"data\":[0.8798,0.8967,0.905,0.9096,0.9125,0.9146,0.9157,0.9182,0.9192,0.9208,0.922,0.9229,0.925,0.9248,0.9245,0.9244,0.9273,0.928,0.9288,0.9292,0.9292,0.9308,0.9316,0.9306,0.9321,0.9322,0.9328,0.9317,0.9322,0.9335,0.9335,0.9343,0.9344,0.9344,0.9365,0.9364,0.9378,0.9374,0.9391,0.9382,0.9396,0.9409,0.9399,0.9411,0.9413,0.9406,0.9412,0.9422,0.9426,0.9426,0.9439,0.9423,0.9435,0.9442,0.945,0.9452,0.9461,0.9457,0.9477,0.9461,0.9478,0.949,0.9502,0.9502,0.9493,0.9518,0.9512,0.9517,0.953,0.9537,0.9551,0.9545,0.9553,0.9555,0.9552,0.9565,0.957,0.9571,0.9581,0.9593,0.9584,0.9592,0.9595,0.9596,0.9593,0.9605,0.9609,0.961,0.9617,0.9619,0.9627,0.9629,0.9631,0.9632,0.9635,0.964,0.9643,0.965,0.9651,0.965],\"name\":\"CNN\",\"type\":\"line\"}],\"title\":{\"left\":\"center\",\"text\":\"CNN vs Fully Connected\",\"top\":\"2%\"},\"toolbox\":{\"feature\":{\"saveAsImage\":{\"title\":\"Save as Image\"}}},\"tooltip\":{\"trigger\":\"axis\"},\"xAxis\":{\"boundaryGap\":false,\"data\":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99],\"type\":\"category\"},\"yAxis\":{\"type\":\"value\"}}","id-3":"{\"grid\":{\"bottom\":\"5%\",\"containLabel\":true,\"left\":\"5%\",\"right\":\"5%\",\"top\":\"20%\"},\"legend\":{\"data\":[\"CNN without Pooling\",\"CNN with Pooling\"],\"top\":\"10%\"},\"series\":[{\"data\":[0.8798,0.8967,0.905,0.9096,0.9125,0.9146,0.9157,0.9182,0.9192,0.9208,0.922,0.9229,0.925,0.9248,0.9245,0.9244,0.9273,0.928,0.9288,0.9292,0.9292,0.9308,0.9316,0.9306,0.9321,0.93,0.9328,0.9317,0.9322,0.9335,0.9335,0.9343,0.9344,0.9344,0.9365,0.9364,0.9378,0.9374,0.9391,0.9382,0.9396,0.9409,0.9399,0.9411,0.9413,0.9406,0.9412,0.9422,0.9426,0.9426,0.9439,0.9423,0.9435,0.9442,0.945,0.9452,0.9461,0.9457,0.9477,0.9461,0.9478,0.949,0.9502,0.9502,0.9493,0.9518,0.9512,0.9517,0.953,0.9537,0.9551,0.9545,0.9553,0.9555,0.9552,0.9565,0.957,0.9571,0.9581,0.9593,0.9584,0.9592,0.9595,0.9596,0.9593,0.9605,0.9609,0.961,0.9617,0.9619,0.9627,0.9629,0.9631,0.9632,0.9635,0.964,0.9643,0.965,0.9651,0.965],\"name\":\"CNN without Pooling\",\"type\":\"line\"},{\"data\":[0.2263,0.7541,0.8569,0.8903,0.9074,0.9177,0.9249,0.9303,0.9357,0.9388,0.9432,0.9461,0.9483,0.9508,0.9534,0.9554,0.9562,0.958,0.9589,0.9598,0.9612,0.9616,0.9633,0.9635,0.9643,0.9661,0.9664,0.9669,0.9681,0.9681,0.9693,0.9695,0.9707,0.9714,0.9712,0.9726,0.9733,0.9738,0.974,0.9744,0.9744,0.9755,0.9755,0.9759,0.976,0.9773,0.9767,0.9772,0.9769,0.9785,0.9779,0.9785,0.9786,0.9786,0.9788,0.9788,0.979,0.9797,0.9797,0.9801,0.981,0.9807,0.9799,0.9813,0.9808,0.9811,0.9817,0.9817,0.9815,0.9819,0.9818,0.9824,0.9823,0.9823,0.9823,0.9827,0.9828,0.9828,0.9832,0.9833,0.9832,0.9834,0.9835,0.9839,0.9843,0.984,0.9843,0.9841,0.9843,0.9842,0.9843,0.9843,0.9845,0.9843,0.9846,0.9843,0.9846,0.9847,0.9846,0.9846],\"name\":\"CNN with Pooling\",\"type\":\"line\"}],\"title\":{\"left\":\"center\",\"text\":\"Pooling vs No Pooling\",\"top\":\"2%\"},\"toolbox\":{\"feature\":{\"saveAsImage\":{\"title\":\"Save as Image\"}}},\"tooltip\":{\"trigger\":\"axis\"},\"xAxis\":{\"boundaryGap\":false,\"data\":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99],\"type\":\"category\"},\"yAxis\":{\"type\":\"value\"}}"},"echarts":{"darkTheme":{"backgroundColor":"rgba(41,52,65,1)","bar":{"itemStyle":{"barBorderColor":"#ccc","barBorderWidth":0}},"boxplot":{"itemStyle":{"borderColor":"#ccc","borderWidth":0}},"candlestick":{"itemStyle":{"borderColor":"#fc97af","borderColor0":"#87f7cf","borderWidth":1,"color":"#fc97af","color0":"transparent"}},"categoryAxis":{"axisLabel":{"color":"#aaaaaa","show":true},"axisLine":{"lineStyle":{"color":"#666666"},"show":true},"axisTick":{"lineStyle":{"color":"#333"},"show":true},"splitArea":{"areaStyle":{"color":["rgba(250,250,250,0.05)","rgba(200,200,200,0.02)"]},"show":false},"splitLine":{"lineStyle":{"color":["#e6e6e6"]},"show":false}},"color":["#fc97af","#87f7cf","#f7f494","#72ccff","#f7c5a0","#d4a4eb","#d2f5a6","#76f2f2"],"dataZoom":{"backgroundColor":"rgba(255,255,255,0)","dataBackgroundColor":"rgba(114,204,255,1)","fillerColor":"rgba(114,204,255,0.2)","handleColor":"#72ccff","handleSize":"100%","textStyle":{"color":"#333333"}},"funnel":{"itemStyle":{"borderColor":"#ccc","borderWidth":0}},"gauge":{"itemStyle":{"borderColor":"#ccc","borderWidth":0}},"geo":{"emphasis":{"itemStyle":{"areaColor":"rgba(255,178,72,1)","borderColor":"#eb8146","borderWidth":1},"label":{"color":"rgb(137,52,72)"}},"itemStyle":{"areaColor":"#f3f3f3","borderColor":"#999999","borderWidth":0.5},"label":{"color":"#893448"}},"graph":{"color":["#fc97af","#87f7cf","#f7f494","#72ccff","#f7c5a0","#d4a4eb","#d2f5a6","#76f2f2"],"itemStyle":{"borderColor":"#ccc","borderWidth":0},"label":{"color":"#293441"},"lineStyle":{"color":"#ffffff","width":1},"smooth":true,"symbol":"emptyCircle","symbolSize":3},"legend":{"textStyle":{"color":"#999999"}},"line":{"itemStyle":{"borderWidth":1},"lineStyle":{"width":2},"smooth":true,"symbol":"circle","symbolSize":6},"logAxis":{"axisLabel":{"color":"#aaaaaa","show":true},"axisLine":{"lineStyle":{"color":"#666666"},"show":true},"axisTick":{"lineStyle":{"color":"#333"},"show":true},"splitArea":{"areaStyle":{"color":["rgba(250,250,250,0.05)","rgba(200,200,200,0.02)"]},"show":true},"splitLine":{"lineStyle":{"color":["#e6e6e6"]},"show":true}},"map":{"emphasis":{"itemStyle":{"areaColor":"rgba(255,178,72,1)","borderColor":"#eb8146","borderWidth":1},"label":{"color":"rgb(137,52,72)"}},"itemStyle":{"areaColor":"#f3f3f3","borderColor":"#999999","borderWidth":0.5},"label":{"color":"#893448"}},"markPoint":{"emphasis":{"label":{"color":"#293441"}},"label":{"color":"#293441"}},"parallel":{"itemStyle":{"borderColor":"#ccc","borderWidth":0}},"pie":{"itemStyle":{"borderColor":"#ccc","borderWidth":0}},"radar":{"itemStyle":{"borderWidth":1},"lineStyle":{"width":2},"smooth":true,"symbol":"circle","symbolSize":3},"sankey":{"itemStyle":{"borderColor":"#ccc","borderWidth":0}},"scatter":{"itemStyle":{"borderColor":"#ccc","borderWidth":0}},"textStyle":{},"timeAxis":{"axisLabel":{"color":"#aaaaaa","show":true},"axisLine":{"lineStyle":{"color":"#666666"},"show":true},"axisTick":{"lineStyle":{"color":"#333"},"show":true},"splitArea":{"areaStyle":{"color":["rgba(250,250,250,0.05)","rgba(200,200,200,0.02)"]},"show":false},"splitLine":{"lineStyle":{"color":["#e6e6e6"]},"show":true}},"timeline":{"checkpointStyle":{"borderColor":"#fc97af","color":"#fc97af"},"controlStyle":{"borderColor":"#87f7cf","borderWidth":0.5,"color":"#87f7cf"},"emphasis":{"controlStyle":{"borderColor":"#87f7cf","borderWidth":0.5,"color":"#87f7cf"},"itemStyle":{"color":"#f7f494"},"label":{"color":"#87f7cf"}},"itemStyle":{"borderWidth":1,"color":"#87f7cf"},"label":{"color":"#87f7cf"},"lineStyle":{"color":"#87f7cf","width":1}},"title":{"subtextStyle":{"color":"#dddddd"},"textStyle":{"color":"#ffffff"}},"toolbox":{"emphasis":{"iconStyle":{"borderColor":"#666666"}},"iconStyle":{"borderColor":"#999999"}},"tooltip":{"axisPointer":{"crossStyle":{"color":"#cccccc","width":1},"lineStyle":{"color":"#cccccc","width":1}}},"valueAxis":{"axisLabel":{"color":"#aaaaaa","show":true},"axisLine":{"lineStyle":{"color":"#666666"},"show":true},"axisTick":{"lineStyle":{"color":"#333"},"show":true},"splitArea":{"areaStyle":{"color":["rgba(250,250,250,0.05)","rgba(200,200,200,0.02)"]},"show":false},"splitLine":{"lineStyle":{"color":["#e6e6e6"]},"show":true}},"visualMap":{"color":["#fc97af","#87f7cf"]}},"lightTheme":{"backgroundColor":"rgba(0,0,0,0)","bar":{"itemStyle":{"barBorderColor":"#ccc","barBorderWidth":0}},"boxplot":{"itemStyle":{"borderColor":"#ccc","borderWidth":0}},"candlestick":{"itemStyle":{"borderColor":"#d87a80","borderColor0":"#2ec7c9","borderWidth":1,"color":"#d87a80","color0":"#2ec7c9"}},"categoryAxis":{"axisLabel":{"color":"#333","show":true},"axisLine":{"lineStyle":{"color":"#008acd"},"show":true},"axisTick":{"lineStyle":{"color":"#333"},"show":true},"splitArea":{"areaStyle":{"color":["rgba(250,250,250,0.3)","rgba(200,200,200,0.3)"]},"show":false},"splitLine":{"lineStyle":{"color":["#eee"]},"show":false}},"color":["#2ec7c9","#b6a2de","#5ab1ef","#ffb980","#d87a80","#8d98b3","#e5cf0d","#97b552","#95706d","#dc69aa","#07a2a4","#9a7fd1","#588dd5","#f5994e","#c05050","#59678c","#c9ab00","#7eb00a","#6f5553","#c14089"],"dataZoom":{"backgroundColor":"rgba(47,69,84,0)","dataBackgroundColor":"#efefff","fillerColor":"rgba(182,162,222,0.2)","handleColor":"#008acd","handleSize":"100%","textStyle":{"color":"#333333"}},"funnel":{"itemStyle":{"borderColor":"#ccc","borderWidth":0}},"gauge":{"itemStyle":{"borderColor":"#ccc","borderWidth":0}},"geo":{"emphasis":{"itemStyle":{"areaColor":"rgba(254,153,78,1)","borderColor":"#444","borderWidth":1},"label":{"color":"rgb(100,0,0)"}},"itemStyle":{"areaColor":"#dddddd","borderColor":"#eeeeee","borderWidth":0.5},"label":{"color":"#d87a80"}},"graph":{"color":["#2ec7c9","#b6a2de","#5ab1ef","#ffb980","#d87a80","#8d98b3","#e5cf0d","#97b552","#95706d","#dc69aa","#07a2a4","#9a7fd1","#588dd5","#f5994e","#c05050","#59678c","#c9ab00","#7eb00a","#6f5553","#c14089"],"itemStyle":{"borderColor":"#ccc","borderWidth":0},"label":{"color":"#eeeeee"},"lineStyle":{"color":"#aaaaaa","width":1},"smooth":true,"symbol":"emptyCircle","symbolSize":3},"legend":{"textStyle":{"color":"#333333"}},"line":{"itemStyle":{"borderWidth":1},"lineStyle":{"width":2},"smooth":true,"symbol":"emptyCircle","symbolSize":5},"logAxis":{"axisLabel":{"color":"#333","show":true},"axisLine":{"lineStyle":{"color":"#008acd"},"show":true},"axisTick":{"lineStyle":{"color":"#333"},"show":true},"splitArea":{"areaStyle":{"color":["rgba(250,250,250,0.3)","rgba(200,200,200,0.3)"]},"show":true},"splitLine":{"lineStyle":{"color":["#eee"]},"show":true}},"map":{"emphasis":{"itemStyle":{"areaColor":"rgba(254,153,78,1)","borderColor":"#444","borderWidth":1},"label":{"color":"rgb(100,0,0)"}},"itemStyle":{"areaColor":"#dddddd","borderColor":"#eeeeee","borderWidth":0.5},"label":{"color":"#d87a80"}},"markPoint":{"emphasis":{"label":{"color":"#eeeeee"}},"label":{"color":"#eeeeee"}},"parallel":{"itemStyle":{"borderColor":"#ccc","borderWidth":0}},"pie":{"itemStyle":{"borderColor":"#ccc","borderWidth":0}},"radar":{"itemStyle":{"borderWidth":1},"lineStyle":{"width":2},"smooth":true,"symbol":"emptyCircle","symbolSize":3},"sankey":{"itemStyle":{"borderColor":"#ccc","borderWidth":0}},"scatter":{"itemStyle":{"borderColor":"#ccc","borderWidth":0}},"textStyle":{},"timeAxis":{"axisLabel":{"color":"#333","show":true},"axisLine":{"lineStyle":{"color":"#008acd"},"show":true},"axisTick":{"lineStyle":{"color":"#333"},"show":true},"splitArea":{"areaStyle":{"color":["rgba(250,250,250,0.3)","rgba(200,200,200,0.3)"]},"show":false},"splitLine":{"lineStyle":{"color":["#eee"]},"show":true}},"timeline":{"checkpointStyle":{"borderColor":"#2ec7c9","color":"#2ec7c9"},"controlStyle":{"borderColor":"#008acd","borderWidth":0.5,"color":"#008acd"},"emphasis":{"controlStyle":{"borderColor":"#008acd","borderWidth":0.5,"color":"#008acd"},"itemStyle":{"color":"#a9334c"},"label":{"color":"#008acd"}},"itemStyle":{"borderWidth":1,"color":"#008acd"},"label":{"color":"#008acd"},"lineStyle":{"color":"#008acd","width":1}},"title":{"subtextStyle":{"color":"#aaaaaa"},"textStyle":{"color":"#008acd"}},"toolbox":{"emphasis":{"iconStyle":{"borderColor":"#18a4a6"}},"iconStyle":{"borderColor":"#2ec7c9"}},"tooltip":{"axisPointer":{"crossStyle":{"color":"#008acd","width":1},"lineStyle":{"color":"#008acd","width":1}}},"valueAxis":{"axisLabel":{"color":"#333","show":true},"axisLine":{"lineStyle":{"color":"#008acd"},"show":true},"axisTick":{"lineStyle":{"color":"#333"},"show":true},"splitArea":{"areaStyle":{"color":["rgba(250,250,250,0.3)","rgba(200,200,200,0.3)"]},"show":true},"splitLine":{"lineStyle":{"color":["#eee"]},"show":true}},"visualMap":{"color":["#5ab1ef","#e0ffff"]}}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"56XLI6KGAP","algoliaIndex":"lobdata","algoliaSearchKey":"d7c82e758baf996bfc63e0fffb1098fd","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

@@ -4,6 +4,18 @@
         <link>https://www.lobdata.com.br/posts/</link>
         <description>All Posts | LobData</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 06 Jul 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>CNNs</title>
+    <link>https://www.lobdata.com.br/posts/cnns/</link>
+    <pubDate>Thu, 06 Jul 2023 00:00:00 &#43;0000</pubDate>
+    <author>Luciano</author>
+    <guid>https://www.lobdata.com.br/posts/cnns/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/cnn.png" referrerpolicy="no-referrer">
+            </div>Hoje nós vamos avançar mais um pouco em direção ao universo de arquiteturas de Deep Learning relacionadas a IA Generativa. Até aqui, nós já falamos sobre:
+IA Generativa, abordando de forma geral Pytorch, explicando um pouco sobre o framework Deep Learning, trazendo conceitos básicos úteis para nosso entendimento ao decorrer dos artigos. E agora, vamos falar sobre Redes Neurais Convolucionais (CNNs).
+Por que CNNs? As Convolutional Neural Networs são meio que um lugar comum por onde nós normalmente começamos a estudar a fim de entender sobre arquiteturas de Deep Learning.]]></description>
+</item>
+<item>
     <title>Intro ao Pytorch</title>
     <link>https://www.lobdata.com.br/posts/generative_ai_notes_03/</link>
     <pubDate>Thu, 06 Jul 2023 00:00:00 &#43;0000</pubDate>
@@ -105,18 +117,6 @@ Reorganizando o projeto Antes de configurar o ORM, vamos ajustar algumas coisas 
             </div>Nos Capítulos Anteriores &hellip; Após um tempinho sem postar nada, vamos dar continuidade a essa série sobre como desenvolver uma API pronta pro Deploy! 🚀 🚀
 Essa é a parte 4 do nosso projeto do EconoWallet e se você quiser verificar o que já fizemos até o momento, acesse os links abaixo:
 Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Dando continuidade a nossa aplicação, hoje vamos configurar qual será nosso banco de dados.]]></description>
-</item>
-<item>
-    <title>Criando uma API Pronta para Produção com FastAPI - PT.3</title>
-    <link>https://www.lobdata.com.br/posts/econowallet-fastapi-pt3/</link>
-    <pubDate>Thu, 08 Apr 2021 00:00:00 &#43;0000</pubDate>
-    <author>Luciano</author>
-    <guid>https://www.lobdata.com.br/posts/econowallet-fastapi-pt3/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/img/fastapi.png" referrerpolicy="no-referrer">
-            </div>Nos Capítulos Anteriores &hellip; Essa é a parte 3 do nosso projeto do EconoWallet, se quiser verificar o que já fizemos até o momento, verifique os links abaixo:
-Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Dando continuidade a nossa aplicação, hoje vamos iniciar a configuração do Docker em nosso ambiente. E antes de mais nada, precisaremos instalar o Docker e o Docker Compose na nossa máquina.
-A documentação do Docker para instalação é muito bem explicada.]]></description>
 </item>
 </channel>
 </rss>
