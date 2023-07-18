@@ -15,7 +15,7 @@
                 <img src="/img/cnn.png" referrerpolicy="no-referrer">
             </div>Hoje nós vamos avançar mais um pouco em direção ao universo de arquiteturas de Deep Learning relacionadas a IA Generativa. Até aqui, nós já falamos sobre:
 IA Generativa, abordando de forma geral Pytorch, explicando um pouco sobre o framework Deep Learning, trazendo conceitos básicos úteis para nosso entendimento ao decorrer dos artigos. E agora, vamos falar sobre Redes Neurais Convolucionais (CNNs).
-Por que CNNs? As Convolutional Neural Networs são meio que um lugar comum por onde nós normalmente começamos a estudar a fim de entender sobre arquiteturas de Deep Learning.]]></description>
+Por que CNNs? As Convolutional Neural Networs são o lugar comum por onde nós normalmente começamos a estudar a fim de entender sobre arquiteturas de Deep Learning.]]></description>
 </item>
 <item>
     <title>Intro ao Pytorch</title>

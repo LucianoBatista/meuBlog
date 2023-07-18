@@ -26,11 +26,11 @@ E agora, vamos falar sobre Redes Neurais Convolucionais (CNNs).
 
 ## Por que CNNs?
 
-As **Convolutional Neural Networs** são meio que um lugar comum por onde nós normalmente começamos a estudar a fim de entender sobre arquiteturas de Deep Learning. Acredito que muito pelo trade-of que elas oferecem, em relação a complexidade vs aplicações.
+As **Convolutional Neural Networs** são o lugar comum por onde nós normalmente começamos a estudar a fim de entender sobre arquiteturas de Deep Learning. Acredito que muito pelo trade-of que elas oferecem, em relação a complexidade vs aplicações.
 
 Entender conceitualmente sobre essas redes neurais acaba sendo mais intuitivo do que entender outras arquiteturas de Deep Learning, como RNNs. Além disso, você consegue utilizá-las para realizar tarefas relacionadas a Visão Computacional.
 
-Além disso, como a premissa inicial dessa série de blog posts é tentar caminhar junto com o livro (**Generative Deep Learning**), eis que entramos na arquitetura abordada no capítulo 2.
+E um último motivo é que a premissa inicial dessa série de blog posts é tentar caminhar junto com o livro (**Generative Deep Learning**), e por isso que entramos na arquitetura abordada no capítulo 2.
 
 ## Conhecimento a priori
 
@@ -51,7 +51,7 @@ Tudo isso vem composto na seguinte ordem `(N, C, W, H)`. Mais a frente veremos n
 
 {{< /admonition >}}
 
-_A estrutura de uma image nos indica que o valor que um pixel pode assumir não é independente do valor do pixel vizinho_, em outras palavras, nós iremos ter uma correlação entre os pixels de um determinado conjunto de imagens e eles não podem ser analisados isoladamente. Esse tipo de _conhecimento a priori_ é também chamada de _estrutura espacial a priori_ e é ela que as CNNs tentam "aprender".
+_A estrutura de uma image nos indica que o valor que um pixel pode assumir não é independente do valor do pixel vizinho_, em outras palavras, nós iremos ter uma correlação entre os pixels de um determinado conjunto de imagens e eles não podem ser analisados isoladamente. Esse tipo de _conhecimento a priori_ é também chamado de _estrutura espacial a priori_ e é ela que as CNNs tentam "aprender".
 
 Apenas para ilustrar, se nós embaralhasse-mos os pixels de uma imagem de um número 5, o mesmo ficaria irreconhecível, corroborando para esse conceito de correlação dos pixels. Veja na imagem abaixo:
 
@@ -63,7 +63,7 @@ Convolução nada mais é que uma função matemática que recebe dois inputs: u
 
 Como saída dessa função temos uma nova imagem.
 
-> _Mas como que essa operação pode ser utilizada para treinamento de uma rede neural, e eventual aprendizado de padrões sobre as imagens?_
+> _Mas como é que essa operação pode ser utilizada para treinamento de uma rede neural, e eventual aprendizado de padrões sobre as imagens?_
 
 O principal responsável para isso são os filtros. Esse input da função é muito especial e têm a capacidade de reconhecer certos padrões na entrada e realçá-los na saída. Tradicionalmente, os filtros têm sido utilizados em muitas aplicações para capturar padrões ou aplicar comportamentos específicos às imagens, como por exemplo:
 
@@ -90,7 +90,7 @@ O mais comum é o `zero-padding`, mas as referências citam que podemos utilizar
 
 ## Processamento de imagens com convoluções
 
-Como dito acima, **convolução é apenas uma operação matemática**. Sendo assim, ao longo do tempo a pesquisa chegou há alguns kernels que aplicam algumas transformaçẽos em imagens.
+Como dito acima, **convolução é apenas uma operação matemática**. Sendo assim, ao longo do tempo a pesquisa científica chegou há alguns kernels que aplicam algumas transformaçẽos em imagens.
 
 Então, vamos realizar um experimento e passar alguns kernels por algumas imagens do dataset mais batido da bolha de data science, **MNIST**. Para isso, vamos utilizar o `Torchvision`, ele nos fornece um meio de baixar esses dados e automaticamente criar um objeto `Dataset`:
 
@@ -273,7 +273,7 @@ fc_results = train_simple_network(
 
 ```
 
-Caso esteja demorando muito o treinamento para 100 épocas, você pode diminuir o número de épocas. Mas como resultado nós teremos algo como no plot abaixo:
+Caso esteja demorando muito o treinamento para 100 épocas, você pode diminuir o número de épocas. Mas, como resultado nós teremos algo semelhante ao do plot abaixo:
 
 {{< echarts >}}
 {
@@ -683,7 +683,7 @@ plt.show()
 
 {{<image width=800 src="https://i.imgur.com/3RHuWYv.png">}}
 
-Agora que nossa imagem já foi movimentada, vamos investigar a acurácia em cada uma das situações:
+Veja que nossa imagem já foi movimentada, vamos investigar a acurácia em cada uma das situações:
 
 ```python
 # creating a prediction function
@@ -736,7 +736,7 @@ De forma prática, aqui nós vamo estar utilizando o _max pooling_, onde é util
 
 {{<image width=800 src="https://i.imgur.com/bp5FjS1.png">}}
 
-A partir do momento que aumentamos o K, acabamos tendo uma janela maior para retornar o valor máximo. Um ponto importante é que o pooling diminui o tamanho da imagem, então precisamos de cuidado pois ao final podemos machucar muito a representação do nosso problema, tendo uma perda muito grande de informação útil.
+A partir do momento que aumentamos o `K` (input do método), acabamos tendo uma janela maior para retornar o valor máximo. Um ponto importante é que o pooling diminui o tamanho da imagem, então precisamos de cuidado pois ao final podemos machucar muito a representação do nosso problema, tendo uma perda muito grande de informação útil.
 
 Nossa CNN com pooling e mais camadas, fica assim:
 
@@ -936,7 +936,7 @@ Nesse caso para a mesma imagem que foi transladada em diferentes posições, nó
 
 ## Nossa terceira CNN :fire: (com data augmentation)
 
-Por fim, uma última estratégia que gostaria de trazer aqui é o \*Data Augmentation\*\*. E a ideia por de trás é basicamente a de expor o seu modelo ao maior número possível de varientes da imagem original, para que ele consigar ter um ótimo grau de generalização.
+Por fim, uma última estratégia que gostaria de trazer aqui é o _Data Augmentation_. E a ideia por de trás é basicamente a de expor o seu modelo ao maior número possível de varientes da imagem original, para que ele consigar ter um ótimo grau de generalização.
 
 A sacada é que você não precisa necessariamente coletar novos dados, e sim manipular uma imagem para criar diferentes situações para ela:
 
@@ -948,7 +948,7 @@ A sacada é que você não precisa necessariamente coletar novos dados, e sim ma
 
 A lista é imensa e o `torchvision` tem um módulo que nos ajuda nisso, chamado `transforms`. Você também pode encontrar módulos de terceiros como o [Albumentation](https://albumentations.ai/docs/), mas acho que independente da lib que você estiver utilizando, o importante mesmo vai ser escolher a transformação que faz sentido para o seu dado.
 
-Digo isso por quê você pode **aplicar uma transformação de brilho e contraste numa image, e o resultado ser uma imagem completamente ilegível**, que dificilmente um humando vai conseguir distinguir o que é. Essas transformações precisam ser aplicadas considerando o "universo" de possibilidades de transformações que essas imagens podem sofrer.
+Digo isso por quê você pode **aplicar uma transformação de brilho e contraste numa image, e o resultado ser uma imagem completamente ilegível**, que dificilmente um humano vai conseguir distinguir o que é. Essas transformações precisam ser aplicadas considerando o "universo" de possibilidades de transformações que essas imagens podem sofrer.
 
 Vamos visualizar como essas transformações se comportam no `torchvision` e em seguida vamos treinar nossa CNN, porém agora passando algumas transformações ao dado.
 
@@ -1022,7 +1022,7 @@ Dito isso, nossos resultados foram:
 - **lower right:** 0.99
 - **upper left:** 0.53
 
-Olha que interessante, nós conseguimos melhorar a acurácia para a previsão do `lower right`, porém, para o `upper left` acabamos piorando a situação. Isso pode ter acontecido por conta da transformação que foi aplicada na imagem durante o treinamento do modelo não refletir a situação que a gente gerou, manualmente, de transladar a imagem.
+Olha que interessante, nós conseguimos melhorar a acurácia para a previsão do `lower right`, porém, para o `upper left` acabamos piorando a situação. Isso pode ter acontecido por conta da transformação que foi aplicada na imagem durante o treinamento do modelo não refletir a situação da imagem que a gente gerou, manualmente, de translação.
 
 ## Modelos pré-treinados
 
@@ -1034,6 +1034,6 @@ Não vamos entrar aqui no detalhe dessas arquiteturas mais robustas, mas vou dei
 dir(torchvision.models)
 ```
 
-Isso te entregar uma lista imensa com todos os modelos gerido pelo hub do `torchvision`.
+Isso vai te retornar uma lista imensa com todos os modelos geridos pelo hub do `torchvision`.
 
 Por hoje foi isso, espero que tenha gostado, e no próximo artigo vamos falar sobre autoencoders!!

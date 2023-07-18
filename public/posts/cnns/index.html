@@ -7,7 +7,7 @@
         <title>CNNs - LobData</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="CNNs" />
 <meta property="og:description" content="Hoje nós vamos avançar mais um pouco em direção ao universo de arquiteturas de Deep Learning relacionadas a IA Generativa. Até aqui, nós já falamos sobre:
 IA Generativa, abordando de forma geral Pytorch, explicando um pouco sobre o framework Deep Learning, trazendo conceitos básicos úteis para nosso entendimento ao decorrer dos artigos. E agora, vamos falar sobre Redes Neurais Convolucionais (CNNs).
-Por que CNNs? As Convolutional Neural Networs são meio que um lugar comum por onde nós normalmente começamos a estudar a fim de entender sobre arquiteturas de Deep Learning." />
+Por que CNNs? As Convolutional Neural Networs são o lugar comum por onde nós normalmente começamos a estudar a fim de entender sobre arquiteturas de Deep Learning." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.lobdata.com.br/posts/cnns/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-07-06T00:00:00+00:00" />
@@ -16,7 +16,7 @@ Por que CNNs? As Convolutional Neural Networs são meio que um lugar comum por o
 <meta name="twitter:title" content="CNNs"/>
 <meta name="twitter:description" content="Hoje nós vamos avançar mais um pouco em direção ao universo de arquiteturas de Deep Learning relacionadas a IA Generativa. Até aqui, nós já falamos sobre:
 IA Generativa, abordando de forma geral Pytorch, explicando um pouco sobre o framework Deep Learning, trazendo conceitos básicos úteis para nosso entendimento ao decorrer dos artigos. E agora, vamos falar sobre Redes Neurais Convolucionais (CNNs).
-Por que CNNs? As Convolutional Neural Networs são meio que um lugar comum por onde nós normalmente começamos a estudar a fim de entender sobre arquiteturas de Deep Learning."/>
+Por que CNNs? As Convolutional Neural Networs são o lugar comum por onde nós normalmente começamos a estudar a fim de entender sobre arquiteturas de Deep Learning."/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -31,7 +31,7 @@ Por que CNNs? As Convolutional Neural Networs são meio que um lugar comum por o
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/www.lobdata.com.br\/posts\/cnns\/"
-        },"genre": "posts","keywords": "AI, Generative, IA Generativa","wordcount":  2586 ,
+        },"genre": "posts","keywords": "AI, Generative, IA Generativa","wordcount":  2596 ,
         "url": "https:\/\/www.lobdata.com.br\/posts\/cnns\/","datePublished": "2023-07-06T00:00:00+00:00","dateModified": "2023-07-06T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -105,7 +105,7 @@ Por que CNNs? As Convolutional Neural Networs são meio que um lugar comum por o
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">CNNs</h1><h2 class="single-subtitle">Chapter 02 - Generative Deep Learning Book</h2><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://www.linkedin.com/in/lucianobatistads/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Luciano</a></span>&nbsp;<span class="post-category">included in <a href="/categories/tutorials/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Tutorials</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-07-06">2023-07-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2586 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-07-06">2023-07-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2596 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;13 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
@@ -157,9 +157,9 @@ Por que CNNs? As Convolutional Neural Networs são meio que um lugar comum por o
 </ul>
 <p>E agora, vamos falar sobre Redes Neurais Convolucionais (CNNs).</p>
 <h2 id="por-que-cnns">Por que CNNs?</h2>
-<p>As <strong>Convolutional Neural Networs</strong> são meio que um lugar comum por onde nós normalmente começamos a estudar a fim de entender sobre arquiteturas de Deep Learning. Acredito que muito pelo trade-of que elas oferecem, em relação a complexidade vs aplicações.</p>
+<p>As <strong>Convolutional Neural Networs</strong> são o lugar comum por onde nós normalmente começamos a estudar a fim de entender sobre arquiteturas de Deep Learning. Acredito que muito pelo trade-of que elas oferecem, em relação a complexidade vs aplicações.</p>
 <p>Entender conceitualmente sobre essas redes neurais acaba sendo mais intuitivo do que entender outras arquiteturas de Deep Learning, como RNNs. Além disso, você consegue utilizá-las para realizar tarefas relacionadas a Visão Computacional.</p>
-<p>Além disso, como a premissa inicial dessa série de blog posts é tentar caminhar junto com o livro (<strong>Generative Deep Learning</strong>), eis que entramos na arquitetura abordada no capítulo 2.</p>
+<p>E um último motivo é que a premissa inicial dessa série de blog posts é tentar caminhar junto com o livro (<strong>Generative Deep Learning</strong>), e por isso que entramos na arquitetura abordada no capítulo 2.</p>
 <h2 id="conhecimento-a-priori">Conhecimento a priori</h2>
 <p><a href="https://www.lobdata.com.br/posts/generative_ai_notes_03/" target="_blank" rel="noopener noreffer ">No artigo passado</a>&hellip; Falamos sobre imagens serem na realidade um tipo de dado que possui uma estrutura atrelada, contrariando o que aprendemos, onde imagens são um tipo de dado desestruturado.</p>
 <p>Estrutura aqui, vem muito no sentido da composição dessas imagens, sempre com um &ldquo;arranjo&rdquo; de matrizes, onde cada posição desse dado vai representar um pixel.</p>
@@ -178,7 +178,7 @@ Por que CNNs? As Convolutional Neural Networs são meio que um lugar comum por o
             <div class="admonition-content">Tudo isso vem composto na seguinte ordem <code>(N, C, W, H)</code>. Mais a frente veremos na prática como as imagens são representadas no <code>Pytorch</code>.</div>
         </div>
     </div>
-<p><em>A estrutura de uma image nos indica que o valor que um pixel pode assumir não é independente do valor do pixel vizinho</em>, em outras palavras, nós iremos ter uma correlação entre os pixels de um determinado conjunto de imagens e eles não podem ser analisados isoladamente. Esse tipo de <em>conhecimento a priori</em> é também chamada de <em>estrutura espacial a priori</em> e é ela que as CNNs tentam &ldquo;aprender&rdquo;.</p>
+<p><em>A estrutura de uma image nos indica que o valor que um pixel pode assumir não é independente do valor do pixel vizinho</em>, em outras palavras, nós iremos ter uma correlação entre os pixels de um determinado conjunto de imagens e eles não podem ser analisados isoladamente. Esse tipo de <em>conhecimento a priori</em> é também chamado de <em>estrutura espacial a priori</em> e é ela que as CNNs tentam &ldquo;aprender&rdquo;.</p>
 <p>Apenas para ilustrar, se nós embaralhasse-mos os pixels de uma imagem de um número 5, o mesmo ficaria irreconhecível, corroborando para esse conceito de correlação dos pixels. Veja na imagem abaixo:</p>
 <a class="lightgallery" href="https://i.imgur.com/tI3VLRL.png" title="https://i.imgur.com/tI3VLRL.png" data-thumbnail="https://i.imgur.com/tI3VLRL.png">
         <img
@@ -193,7 +193,7 @@ Por que CNNs? As Convolutional Neural Networs são meio que um lugar comum por o
 <p>Convolução nada mais é que uma função matemática que recebe dois inputs: uma imagem e um filtro (também chamado de kernel).</p>
 <p>Como saída dessa função temos uma nova imagem.</p>
 <blockquote>
-<p><em>Mas como que essa operação pode ser utilizada para treinamento de uma rede neural, e eventual aprendizado de padrões sobre as imagens?</em></p>
+<p><em>Mas como é que essa operação pode ser utilizada para treinamento de uma rede neural, e eventual aprendizado de padrões sobre as imagens?</em></p>
 </blockquote>
 <p>O principal responsável para isso são os filtros. Esse input da função é muito especial e têm a capacidade de reconhecer certos padrões na entrada e realçá-los na saída. Tradicionalmente, os filtros têm sido utilizados em muitas aplicações para capturar padrões ou aplicar comportamentos específicos às imagens, como por exemplo:</p>
 <ul>
@@ -227,7 +227,7 @@ Por que CNNs? As Convolutional Neural Networs são meio que um lugar comum por o
             alt="https://i.imgur.com/tTw3nUg.png" width="800" />
     </a>
 <h2 id="processamento-de-imagens-com-convoluções">Processamento de imagens com convoluções</h2>
-<p>Como dito acima, <strong>convolução é apenas uma operação matemática</strong>. Sendo assim, ao longo do tempo a pesquisa chegou há alguns kernels que aplicam algumas transformaçẽos em imagens.</p>
+<p>Como dito acima, <strong>convolução é apenas uma operação matemática</strong>. Sendo assim, ao longo do tempo a pesquisa científica chegou há alguns kernels que aplicam algumas transformaçẽos em imagens.</p>
 <p>Então, vamos realizar um experimento e passar alguns kernels por algumas imagens do dataset mais batido da bolha de data science, <strong>MNIST</strong>. Para isso, vamos utilizar o <code>Torchvision</code>, ele nos fornece um meio de baixar esses dados e automaticamente criar um objeto <code>Dataset</code>:</p>
 <h3 id="coletando-os-dados">Coletando os dados</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">transforms</span>
@@ -422,7 +422,7 @@ Por que CNNs? As Convolutional Neural Networs são meio que um lugar comum por o
 </span></span><span class="line"><span class="cl">    <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="n">checkpoint_file</span><span class="o">=</span><span class="s2">&#34;./model/cnn_checkpoint.pth&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl"><span class="p">)</span>
-</span></span></code></pre></div><p>Caso esteja demorando muito o treinamento para 100 épocas, você pode diminuir o número de épocas. Mas como resultado nós teremos algo como no plot abaixo:</p>
+</span></span></code></pre></div><p>Caso esteja demorando muito o treinamento para 100 épocas, você pode diminuir o número de épocas. Mas, como resultado nós teremos algo semelhante ao do plot abaixo:</p>
 <div class="echarts" id="id-2" style="width: 100%; height: 30rem;"></div>
 <div class="details admonition warning open">
         <div class="details-summary admonition-title">
@@ -472,7 +472,7 @@ Por que CNNs? As Convolutional Neural Networs são meio que um lugar comum por o
             data-sizes="auto"
             alt="https://i.imgur.com/3RHuWYv.png" width="800" />
     </a>
-<p>Agora que nossa imagem já foi movimentada, vamos investigar a acurácia em cada uma das situações:</p>
+<p>Veja que nossa imagem já foi movimentada, vamos investigar a acurácia em cada uma das situações:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># creating a prediction function</span>
 </span></span><span class="line"><span class="cl"><span class="n">model</span> <span class="o">=</span> <span class="n">model_conv</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>  <span class="c1"># passing to cpu and eval mode to be simpler</span>
 </span></span><span class="line"><span class="cl">
@@ -524,7 +524,7 @@ Por que CNNs? As Convolutional Neural Networs são meio que um lugar comum por o
             data-sizes="auto"
             alt="https://i.imgur.com/bp5FjS1.png" width="800" />
     </a>
-<p>A partir do momento que aumentamos o K, acabamos tendo uma janela maior para retornar o valor máximo. Um ponto importante é que o pooling diminui o tamanho da imagem, então precisamos de cuidado pois ao final podemos machucar muito a representação do nosso problema, tendo uma perda muito grande de informação útil.</p>
+<p>A partir do momento que aumentamos o <code>K</code> (input do método), acabamos tendo uma janela maior para retornar o valor máximo. Um ponto importante é que o pooling diminui o tamanho da imagem, então precisamos de cuidado pois ao final podemos machucar muito a representação do nosso problema, tendo uma perda muito grande de informação útil.</p>
 <p>Nossa CNN com pooling e mais camadas, fica assim:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">model_cnn_pool</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">3</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),</span>
@@ -564,7 +564,7 @@ Por que CNNs? As Convolutional Neural Networs são meio que um lugar comum por o
 <li><strong>upper left:</strong> 0.73</li>
 </ul>
 <h2 id="nossa-terceira-cnn--com-data-augmentation">Nossa terceira CNN 🔥 (com data augmentation)</h2>
-<p>Por fim, uma última estratégia que gostaria de trazer aqui é o *Data Augmentation**. E a ideia por de trás é basicamente a de expor o seu modelo ao maior número possível de varientes da imagem original, para que ele consigar ter um ótimo grau de generalização.</p>
+<p>Por fim, uma última estratégia que gostaria de trazer aqui é o <em>Data Augmentation</em>. E a ideia por de trás é basicamente a de expor o seu modelo ao maior número possível de varientes da imagem original, para que ele consigar ter um ótimo grau de generalização.</p>
 <p>A sacada é que você não precisa necessariamente coletar novos dados, e sim manipular uma imagem para criar diferentes situações para ela:</p>
 <ul>
 <li>rotacionar</li>
@@ -574,7 +574,7 @@ Por que CNNs? As Convolutional Neural Networs são meio que um lugar comum por o
 <li>aplicação de ruído</li>
 </ul>
 <p>A lista é imensa e o <code>torchvision</code> tem um módulo que nos ajuda nisso, chamado <code>transforms</code>. Você também pode encontrar módulos de terceiros como o <a href="https://albumentations.ai/docs/" target="_blank" rel="noopener noreffer ">Albumentation</a>, mas acho que independente da lib que você estiver utilizando, o importante mesmo vai ser escolher a transformação que faz sentido para o seu dado.</p>
-<p>Digo isso por quê você pode <strong>aplicar uma transformação de brilho e contraste numa image, e o resultado ser uma imagem completamente ilegível</strong>, que dificilmente um humando vai conseguir distinguir o que é. Essas transformações precisam ser aplicadas considerando o &ldquo;universo&rdquo; de possibilidades de transformações que essas imagens podem sofrer.</p>
+<p>Digo isso por quê você pode <strong>aplicar uma transformação de brilho e contraste numa image, e o resultado ser uma imagem completamente ilegível</strong>, que dificilmente um humano vai conseguir distinguir o que é. Essas transformações precisam ser aplicadas considerando o &ldquo;universo&rdquo; de possibilidades de transformações que essas imagens podem sofrer.</p>
 <p>Vamos visualizar como essas transformações se comportam no <code>torchvision</code> e em seguida vamos treinar nossa CNN, porém agora passando algumas transformações ao dado.</p>
 <h3 id="transforms-do-torchvision">Transforms do <code>torchvision</code></h3>
 <p>O código abaixo aplica algumas transformações ao nosso dataset:</p>
@@ -641,12 +641,12 @@ Por que CNNs? As Convolutional Neural Networs são meio que um lugar comum por o
 <li><strong>lower right:</strong> 0.99</li>
 <li><strong>upper left:</strong> 0.53</li>
 </ul>
-<p>Olha que interessante, nós conseguimos melhorar a acurácia para a previsão do <code>lower right</code>, porém, para o <code>upper left</code> acabamos piorando a situação. Isso pode ter acontecido por conta da transformação que foi aplicada na imagem durante o treinamento do modelo não refletir a situação que a gente gerou, manualmente, de transladar a imagem.</p>
+<p>Olha que interessante, nós conseguimos melhorar a acurácia para a previsão do <code>lower right</code>, porém, para o <code>upper left</code> acabamos piorando a situação. Isso pode ter acontecido por conta da transformação que foi aplicada na imagem durante o treinamento do modelo não refletir a situação da imagem que a gente gerou, manualmente, de translação.</p>
 <h2 id="modelos-pré-treinados">Modelos pré-treinados</h2>
 <p>Espero que tenha consigo passar para você os principais conceitos relacionados as famosas CNNs e como codar o treinamento dessas arquiteturas. Apesar de conseguirmos ter resultados interessantes compondo o básico de uma arquitetura de CNN, esses resultados são ainda melhores quando utilizamos os modelos pré-treinados de CNNs mais complexas.</p>
 <p>Não vamos entrar aqui no detalhe dessas arquiteturas mais robustas, mas vou deixar aqui um comando que você pode rodar para ter acesso há todos os modelo disponíveis no <code>torchvision</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nb">dir</span><span class="p">(</span><span class="n">torchvision</span><span class="o">.</span><span class="n">models</span><span class="p">)</span>
-</span></span></code></pre></div><p>Isso te entregar uma lista imensa com todos os modelos gerido pelo hub do <code>torchvision</code>.</p>
+</span></span></code></pre></div><p>Isso vai te retornar uma lista imensa com todos os modelos geridos pelo hub do <code>torchvision</code>.</p>
 <p>Por hoje foi isso, espero que tenha gostado, e no próximo artigo vamos falar sobre autoencoders!!</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
