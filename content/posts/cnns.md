@@ -24,6 +24,11 @@ Hoje nós vamos avançar mais um pouco em direção ao universo de arquiteturas 
 
 E agora, vamos falar sobre Redes Neurais Convolucionais (CNNs).
 
+{{<admonition>}}
+**O código que estamos rodando aqui pode ser encontrado nesse [notebook](https://github.com/LucianoBatista/generative-ai/blob/main/chapter-02/dl-04-v2.ipynb). Os imports das bibliotecas necessárias estão no início do arquivo.**
+
+{{</admonition>}}
+
 ## Por que CNNs?
 
 As **Convolutional Neural Networs** são o lugar comum por onde nós normalmente começamos a estudar a fim de entender sobre arquiteturas de Deep Learning. Acredito que muito pelo trade-of que elas oferecem, em relação a complexidade vs aplicações.
@@ -97,12 +102,9 @@ Então, vamos realizar um experimento e passar alguns kernels por algumas imagen
 ### Coletando os dados
 
 ```python
-from torchvision import datasets, transforms
-import torch
-
 def get_mnist_dataset(
     train_transformers=transforms.ToTensor(), test_transformers=transforms.ToTensor()
-) -> Dataset:
+) -> tuple[Dataset, Dataset]:
     mnist_train_dataset = datasets.MNIST(
         root="./data", train=True, download=True, transform=train_transformers
     )
@@ -111,14 +113,18 @@ def get_mnist_dataset(
     )
     return mnist_train_dataset, mnist_test_dataset
 
-def get_mnist_dataloaders(batch_size: int) -> Dataset:
-    mnist_train_dataset = datasets.MNIST(
-        root="./data", train=True, download=True, transform=transforms.ToTensor()
-    )
-    mnist_test_dataset = datasets.MNIST(
-        root="./data", train=False, download=True, transform=transforms.ToTensor()
-    )
-    return mnist_train_dataset, mnist_test_dataset
+
+def get_mnist_dataloaders(
+    batch_size: int, train_dataset: Dataset, test_dataset: Dataset
+) -> tuple[DataLoader, DataLoader]:
+    train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+    test_dataloader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
+    return train_dataloader, test_dataloader
+
+mnist_train_dataset, mnist_test_dataset = get_mnist_dataset()
+mnist_train_dataloder, mnist_test_dataloder = get_mnist_dataloaders(
+    64, mnist_train_dataset, mnist_test_dataset
+)
 
 ```
 
@@ -251,8 +257,8 @@ loss_func = nn.CrossEntropyLoss()
 cnn_results = train_simple_network(
     model_conv,
     loss_func,
-    train_loader,
-    test_loader,
+    mnist_train_dataloder,
+    mnist_test_dataloder,
     score_funcs={"accuracy": accuracy_score},
     device=device,
     epochs=100,
@@ -263,8 +269,8 @@ loss_func = nn.CrossEntropyLoss()
 fc_results = train_simple_network(
     fc_model,
     loss_func,
-    train_loader,
-    test_loader,
+    mnist_train_dataloder,
+    mnist_test_dataloder,
     score_funcs={"accuracy": accuracy_score},
     device=device,
     epochs=100,
@@ -761,11 +767,12 @@ model_cnn_pool = nn.Sequential(
 )
 
 # training
+loss_func = nn.CrossEntropyLoss()
 cnn_results_with_pool = train_simple_network(
     model_cnn_pool,
     loss_func,
-    train_loader,
-    test_loader,
+    mnist_train_dataloder,
+    mnist_test_dataloder,
     score_funcs={"accuracy": accuracy_score},
     device=device,
     epochs=100,
@@ -1031,7 +1038,7 @@ Espero que tenha consigo passar para você os principais conceitos relacionados 
 Não vamos entrar aqui no detalhe dessas arquiteturas mais robustas, mas vou deixar aqui um comando que você pode rodar para ter acesso há todos os modelo disponíveis no `torchvision`:
 
 ```python
-dir(torchvision.models)
+dir(models)
 ```
 
 Isso vai te retornar uma lista imensa com todos os modelos geridos pelo hub do `torchvision`.

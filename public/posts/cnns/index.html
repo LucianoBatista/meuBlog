@@ -7,7 +7,7 @@
         <title>CNNs - LobData</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="CNNs" />
 <meta property="og:description" content="Hoje nós vamos avançar mais um pouco em direção ao universo de arquiteturas de Deep Learning relacionadas a IA Generativa. Até aqui, nós já falamos sobre:
 IA Generativa, abordando de forma geral Pytorch, explicando um pouco sobre o framework Deep Learning, trazendo conceitos básicos úteis para nosso entendimento ao decorrer dos artigos. E agora, vamos falar sobre Redes Neurais Convolucionais (CNNs).
-Por que CNNs? As Convolutional Neural Networs são o lugar comum por onde nós normalmente começamos a estudar a fim de entender sobre arquiteturas de Deep Learning." />
+Note O código que estamos rodando aqui pode ser encontrado nesse notebook." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.lobdata.com.br/posts/cnns/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-07-06T00:00:00+00:00" />
@@ -16,7 +16,7 @@ Por que CNNs? As Convolutional Neural Networs são o lugar comum por onde nós n
 <meta name="twitter:title" content="CNNs"/>
 <meta name="twitter:description" content="Hoje nós vamos avançar mais um pouco em direção ao universo de arquiteturas de Deep Learning relacionadas a IA Generativa. Até aqui, nós já falamos sobre:
 IA Generativa, abordando de forma geral Pytorch, explicando um pouco sobre o framework Deep Learning, trazendo conceitos básicos úteis para nosso entendimento ao decorrer dos artigos. E agora, vamos falar sobre Redes Neurais Convolucionais (CNNs).
-Por que CNNs? As Convolutional Neural Networs são o lugar comum por onde nós normalmente começamos a estudar a fim de entender sobre arquiteturas de Deep Learning."/>
+Note O código que estamos rodando aqui pode ser encontrado nesse notebook."/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -31,7 +31,7 @@ Por que CNNs? As Convolutional Neural Networs são o lugar comum por onde nós n
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/www.lobdata.com.br\/posts\/cnns\/"
-        },"genre": "posts","keywords": "AI, Generative, IA Generativa","wordcount":  2596 ,
+        },"genre": "posts","keywords": "AI, Generative, IA Generativa","wordcount":  2628 ,
         "url": "https:\/\/www.lobdata.com.br\/posts\/cnns\/","datePublished": "2023-07-06T00:00:00+00:00","dateModified": "2023-07-06T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -105,7 +105,7 @@ Por que CNNs? As Convolutional Neural Networs são o lugar comum por onde nós n
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">CNNs</h1><h2 class="single-subtitle">Chapter 02 - Generative Deep Learning Book</h2><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://www.linkedin.com/in/lucianobatistads/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Luciano</a></span>&nbsp;<span class="post-category">included in <a href="/categories/tutorials/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Tutorials</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-07-06">2023-07-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2596 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-07-06">2023-07-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2628 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;13 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
@@ -156,6 +156,14 @@ Por que CNNs? As Convolutional Neural Networs são o lugar comum por onde nós n
 <li><a href="https://www.lobdata.com.br/posts/generative_ai_notes_03/" target="_blank" rel="noopener noreffer ">Deep Learning, trazendo conceitos básicos úteis para nosso entendimento ao decorrer dos artigos.</a></li>
 </ul>
 <p>E agora, vamos falar sobre Redes Neurais Convolucionais (CNNs).</p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>O código que estamos rodando aqui pode ser encontrado nesse <a href="https://github.com/LucianoBatista/generative-ai/blob/main/chapter-02/dl-04-v2.ipynb" target="_blank" rel="noopener noreffer ">notebook</a>. Os imports das bibliotecas necessárias estão no início do arquivo.</strong></div>
+        </div>
+    </div>
 <h2 id="por-que-cnns">Por que CNNs?</h2>
 <p>As <strong>Convolutional Neural Networs</strong> são o lugar comum por onde nós normalmente começamos a estudar a fim de entender sobre arquiteturas de Deep Learning. Acredito que muito pelo trade-of que elas oferecem, em relação a complexidade vs aplicações.</p>
 <p>Entender conceitualmente sobre essas redes neurais acaba sendo mais intuitivo do que entender outras arquiteturas de Deep Learning, como RNNs. Além disso, você consegue utilizá-las para realizar tarefas relacionadas a Visão Computacional.</p>
@@ -230,12 +238,9 @@ Por que CNNs? As Convolutional Neural Networs são o lugar comum por onde nós n
 <p>Como dito acima, <strong>convolução é apenas uma operação matemática</strong>. Sendo assim, ao longo do tempo a pesquisa científica chegou há alguns kernels que aplicam algumas transformaçẽos em imagens.</p>
 <p>Então, vamos realizar um experimento e passar alguns kernels por algumas imagens do dataset mais batido da bolha de data science, <strong>MNIST</strong>. Para isso, vamos utilizar o <code>Torchvision</code>, ele nos fornece um meio de baixar esses dados e automaticamente criar um objeto <code>Dataset</code>:</p>
 <h3 id="coletando-os-dados">Coletando os dados</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">transforms</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">torch</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_mnist_dataset</span><span class="p">(</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_mnist_dataset</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="n">train_transformers</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span> <span class="n">test_transformers</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dataset</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">Dataset</span><span class="p">]:</span>
 </span></span><span class="line"><span class="cl">    <span class="n">mnist_train_dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">        <span class="n">root</span><span class="o">=</span><span class="s2">&#34;./data&#34;</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">train_transformers</span>
 </span></span><span class="line"><span class="cl">    <span class="p">)</span>
@@ -244,14 +249,18 @@ Por que CNNs? As Convolutional Neural Networs são o lugar comum por onde nós n
 </span></span><span class="line"><span class="cl">    <span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">mnist_train_dataset</span><span class="p">,</span> <span class="n">mnist_test_dataset</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_mnist_dataloaders</span><span class="p">(</span><span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dataset</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">    <span class="n">mnist_train_dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">        <span class="n">root</span><span class="o">=</span><span class="s2">&#34;./data&#34;</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">    <span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">mnist_test_dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">        <span class="n">root</span><span class="o">=</span><span class="s2">&#34;./data&#34;</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">    <span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">mnist_train_dataset</span><span class="p">,</span> <span class="n">mnist_test_dataset</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_mnist_dataloaders</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">train_dataset</span><span class="p">:</span> <span class="n">Dataset</span><span class="p">,</span> <span class="n">test_dataset</span><span class="p">:</span> <span class="n">Dataset</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">DataLoader</span><span class="p">,</span> <span class="n">DataLoader</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">train_dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">test_dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">train_dataloader</span><span class="p">,</span> <span class="n">test_dataloader</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">mnist_train_dataset</span><span class="p">,</span> <span class="n">mnist_test_dataset</span> <span class="o">=</span> <span class="n">get_mnist_dataset</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">mnist_train_dataloder</span><span class="p">,</span> <span class="n">mnist_test_dataloder</span> <span class="o">=</span> <span class="n">get_mnist_dataloaders</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="mi">64</span><span class="p">,</span> <span class="n">mnist_train_dataset</span><span class="p">,</span> <span class="n">mnist_test_dataset</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
 </span></span></code></pre></div><p>Eu vou criar também uma função para nos permitir visualizar uma imagem desse conjunto de dados, utilizando para isso o matplotlib.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">plot_dataset_image</span><span class="p">(</span><span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">dataset</span><span class="p">:</span> <span class="n">Dataset</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">    <span class="n">image</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
@@ -403,8 +412,8 @@ Por que CNNs? As Convolutional Neural Networs são o lugar comum por onde nós n
 </span></span><span class="line"><span class="cl"><span class="n">cnn_results</span> <span class="o">=</span> <span class="n">train_simple_network</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="n">model_conv</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="n">loss_func</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="n">train_loader</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="n">test_loader</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mnist_train_dataloder</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mnist_test_dataloder</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="n">score_funcs</span><span class="o">=</span><span class="p">{</span><span class="s2">&#34;accuracy&#34;</span><span class="p">:</span> <span class="n">accuracy_score</span><span class="p">},</span>
 </span></span><span class="line"><span class="cl">    <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
@@ -415,8 +424,8 @@ Por que CNNs? As Convolutional Neural Networs são o lugar comum por onde nós n
 </span></span><span class="line"><span class="cl"><span class="n">fc_results</span> <span class="o">=</span> <span class="n">train_simple_network</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="n">fc_model</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="n">loss_func</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="n">train_loader</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="n">test_loader</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mnist_train_dataloder</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mnist_test_dataloder</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="n">score_funcs</span><span class="o">=</span><span class="p">{</span><span class="s2">&#34;accuracy&#34;</span><span class="p">:</span> <span class="n">accuracy_score</span><span class="p">},</span>
 </span></span><span class="line"><span class="cl">    <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
@@ -546,11 +555,12 @@ Por que CNNs? As Convolutional Neural Networs são o lugar comum por onde nós n
 </span></span><span class="line"><span class="cl"><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># training</span>
+</span></span><span class="line"><span class="cl"><span class="n">loss_func</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="n">cnn_results_with_pool</span> <span class="o">=</span> <span class="n">train_simple_network</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="n">model_cnn_pool</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="n">loss_func</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="n">train_loader</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="n">test_loader</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mnist_train_dataloder</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mnist_test_dataloder</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="n">score_funcs</span><span class="o">=</span><span class="p">{</span><span class="s2">&#34;accuracy&#34;</span><span class="p">:</span> <span class="n">accuracy_score</span><span class="p">},</span>
 </span></span><span class="line"><span class="cl">    <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
@@ -645,7 +655,7 @@ Por que CNNs? As Convolutional Neural Networs são o lugar comum por onde nós n
 <h2 id="modelos-pré-treinados">Modelos pré-treinados</h2>
 <p>Espero que tenha consigo passar para você os principais conceitos relacionados as famosas CNNs e como codar o treinamento dessas arquiteturas. Apesar de conseguirmos ter resultados interessantes compondo o básico de uma arquitetura de CNN, esses resultados são ainda melhores quando utilizamos os modelos pré-treinados de CNNs mais complexas.</p>
 <p>Não vamos entrar aqui no detalhe dessas arquiteturas mais robustas, mas vou deixar aqui um comando que você pode rodar para ter acesso há todos os modelo disponíveis no <code>torchvision</code>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nb">dir</span><span class="p">(</span><span class="n">torchvision</span><span class="o">.</span><span class="n">models</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nb">dir</span><span class="p">(</span><span class="n">models</span><span class="p">)</span>
 </span></span></code></pre></div><p>Isso vai te retornar uma lista imensa com todos os modelos geridos pelo hub do <code>torchvision</code>.</p>
 <p>Por hoje foi isso, espero que tenha gostado, e no próximo artigo vamos falar sobre autoencoders!!</p>
 </div><div class="post-footer" id="post-footer">
