@@ -2,7 +2,7 @@
 layout: post
 title: "CNNs"
 subtitle: "Chapter 02 - Generative Deep Learning Book"
-date: 2023-07-06
+date: 2023-07-17
 author: "Luciano"
 authorLink: "https://www.linkedin.com/in/lucianobatistads/"
 featuredImage: "img/cnn.png"
