@@ -188,7 +188,7 @@ image, _ = mnist_train_dataset[90]
 new_image = blurring_image(image)
 ```
 
-Você pode encontrar todas as outras operações [nesse notebook](https://). E abaixo temos o resultado das 4 transformações que foram citadas acima.
+Você pode encontrar todas as outras operações [nesse notebook](https://github.com/LucianoBatista/generative-ai/blob/main/chapter-02/dl-04-v2.ipynb). E abaixo temos o resultado das 4 transformações que foram citadas acima.
 
 {{<image width=800 src="https://i.imgur.com/VBH1T0X.png)">}}
 
