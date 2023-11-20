@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Understanding recommender systems - LobData</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Understanding recommender systems" />
+<meta property="og:description" content="Welcome to the beginning of an adventure on recommendation systems! I&rsquo;m diving into the book Practical Recommender Systems (you can find the link at the end) and sharing my notes here as part of a practice exercise.
+In this post, I&rsquo;ll focus on Chapter 1. It delves into the fundamental concept of what a recommender system is and introduces key ideas that will likely resurface throughout the book.
+To save some typing, I&rsquo;ll use the abbreviation RecSys for Recommender Systems in the upcoming posts, considering we&rsquo;ll mention it frequently." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.lobdata.com.br/posts/recommender_systems_001/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-11-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-11-20T00:00:00+00:00" /><meta property="og:site_name" content="LOBData" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Understanding recommender systems"/>
+<meta name="twitter:description" content="Welcome to the beginning of an adventure on recommendation systems! I&rsquo;m diving into the book Practical Recommender Systems (you can find the link at the end) and sharing my notes here as part of a practice exercise.
+In this post, I&rsquo;ll focus on Chapter 1. It delves into the fundamental concept of what a recommender system is and introduces key ideas that will likely resurface throughout the book.
+To save some typing, I&rsquo;ll use the abbreviation RecSys for Recommender Systems in the upcoming posts, considering we&rsquo;ll mention it frequently."/>
+<meta name="twitter:site" content="@Luciano_Bats3"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/recommender_systems_001/" /><link rel="prev" href="https://www.lobdata.com.br/posts/cnns/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Understanding recommender systems",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/www.lobdata.com.br\/posts\/recommender_systems_001\/"
+        },"genre": "posts","keywords": "AI, Recommender System","wordcount":  1360 ,
+        "url": "https:\/\/www.lobdata.com.br\/posts\/recommender_systems_001\/","datePublished": "2023-11-20T00:00:00+00:00","dateModified": "2023-11-20T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Luciano"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="LobData">LOBData</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="LobData">LOBData</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Understanding recommender systems</h1><h2 class="single-subtitle">Chapter 01</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://www.linkedin.com/in/lucianobatistads/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Luciano</a></span>&nbsp;<span class="post-category">included in <a href="/categories/tutorials/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Tutorials</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-11-20">2023-11-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1360 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;7 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/recsys-001.png"
+        data-srcset="/img/recsys-001.png, /img/recsys-001.png 1.5x, /img/recsys-001.png 2x"
+        data-sizes="auto"
+        alt="/img/recsys-001.png"
+        title="/img/recsys-001.png" width="1024" height="1024" /></div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#real-life-recommendations">Real-life recommendations</a></li>
+    <li><a href="#where-recommender-systems-shiny">Where recommender systems shiny?</a></li>
+    <li><a href="#recommender-system-definitions">Recommender system definitions</a></li>
+    <li><a href="#taxonomy-of-recsys">Taxonomy of RecSys</a>
+      <ul>
+        <li><a href="#domain">Domain</a></li>
+        <li><a href="#purpose">Purpose</a></li>
+        <li><a href="#context">Context</a></li>
+        <li><a href="#personalization-level">Personalization level</a></li>
+        <li><a href="#privacy-and-trustworthiness">Privacy and trustworthiness</a></li>
+        <li><a href="#interface">Interface</a></li>
+        <li><a href="#algorithms">Algorithms</a></li>
+      </ul>
+    </li>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#referencies">Referencies</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>Welcome to the beginning of an adventure on recommendation systems! I&rsquo;m diving into the book <em>Practical Recommender Systems</em> (you can find the link at the end) and sharing my notes here as part of a practice exercise.</p>
+<p>In this post, I&rsquo;ll focus on <strong>Chapter 1</strong>. It delves into the fundamental concept of what a recommender system is and introduces key ideas that will likely resurface throughout the book.</p>
+<p>To save some typing, I&rsquo;ll use the abbreviation <strong>RecSys</strong> for Recommender Systems in the upcoming posts, considering we&rsquo;ll mention it frequently.</p>
+<h2 id="real-life-recommendations">Real-life recommendations</h2>
+<p>Recommendations have become integral to our digital experience. Consider these everyday scenarios:</p>
+<ul>
+<li>You grab your phone, open <strong>Spotify</strong>, and pick a track to play. The soundtrack, the song itself, or even the artist might have been suggested to you.</li>
+<li>Launch <strong>Google Chrome</strong> on your smartphone, and the homepage might display news aligned with your typical search patterns.</li>
+<li>Visit your <strong>YouTube</strong> account, and the suggested videos are based on your usual watch history.</li>
+</ul>
+<p>However, not everything presented is a recommendation. These same apps often display advertisements, most of which aren&rsquo;t tailored specifically to you; they&rsquo;re essentially sponsored content on these platforms and are sometimes targeted at a broader audience segment.</p>
+<p>The distinction between recommendations and commercials (advertisements) lies primarily in their content intent.</p>
+<blockquote>
+<p><em>A recommendation is calculated based on what the active user like&rsquo;s, what others have liked in the past, and what&rsquo;s oftem requested by the receiver. A commercial is given for the benefit of the sender and is usually pushed on the receiver.</em></p>
+</blockquote>
+<h2 id="where-recommender-systems-shiny">Where recommender systems shiny?</h2>
+<p>RecSys are crucial for products with vast item catalogs. Their primary role lies in aiding users in discovering the best items suited to their preferences. For instance, imagine navigating through millions of Netflix series without personalized recommendations—relying solely on filters would make finding a suitable match incredibly challenging. Similarly, if your YouTube feed fails to display videos aligned with your interests, it becomes more arduous to locate desired content.</p>
+<p>However, the significance of RecSys isn&rsquo;t limited to user convenience; it profoundly benefits the platforms hosting such content. By optimizing user experiences, platforms can achieve their objectives, whether it&rsquo;s increasing user engagement (leading to more ad views), prolonging subscriptions, or driving more sales.</p>
+<div class="details admonition warning open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw" aria-hidden="true"></i>Opinion<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">From my perspective, these platforms often prioritize financial goals alongside user preferences. This could mean that recommendations might not always align solely with your taste, as they&rsquo;re influenced by the platform&rsquo;s objectives. Consequently, certain content may not be recommended to you despite being relevant to your interests.</div>
+        </div>
+    </div>
+<h2 id="recommender-system-definitions">Recommender system definitions</h2>
+<p>As some concepts will be frequently used throughout the chapters, the author provides some definitions:</p>
+<ul>
+<li><strong>Prediction:</strong> A prediction denotes an estimation of how much the user would rate/like an item.</li>
+<li><strong>Relevancy:</strong> Relevancy involves arranging items based on what&rsquo;s most pertinent to the user at a given moment. It&rsquo;s determined by context, demographics, and (predicted) ratings.</li>
+<li><strong>Recommendation:</strong> Refers to the top N most relevant items.</li>
+<li><strong>Personalization:</strong> Involves integrating relevancy into the presentation.</li>
+<li><strong>Taste profile:</strong> Represents a list of defining characteristics.</li>
+</ul>
+<p>These definitions can be validated within the following pipeline:</p>
+<a class="lightgallery" href="https://i.imgur.com/1pKjwIk.png" title="https://i.imgur.com/1pKjwIk.png" data-thumbnail="https://i.imgur.com/1pKjwIk.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/1pKjwIk.png"
+            data-srcset="https://i.imgur.com/1pKjwIk.png, https://i.imgur.com/1pKjwIk.png 1.5x, https://i.imgur.com/1pKjwIk.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/1pKjwIk.png" width="800" />
+    </a>
+<p>It&rsquo;s crucial to emphasize that the system I&rsquo;m referring to is already operational, which implies that we&rsquo;ve gathered user data and constructed our models. Two very important steps that take a lot of our times.</p>
+<p>Regarding the data itself, it encompasses a wide array of diverse information types. This includes:</p>
+<ul>
+<li><strong>Historical data:</strong> Information gathered from past interactions or behaviors.</li>
+<li><strong>Content data:</strong> Details about the items or content available within the system.</li>
+<li><strong>Context data:</strong> Varied contextual information such as the device being used, whether the person is in motion or stationary, time of day, etc.</li>
+<li><strong>Demographics:</strong> A comprehensive range of demographic details including age, gender, political inclinations, income levels, nationality, and more.</li>
+</ul>
+<p>All these different categories of data contribute significantly to the functioning and accuracy of our models.</p>
+<h2 id="taxonomy-of-recsys">Taxonomy of RecSys</h2>
+<p>This is for me, <strong>the most important session of the chapter</strong>. As RecSys are not just algorithms, there is a lot of pieces we need to pull out together in order to make it work. These seven points serve as a framework we can use at starting point of our RecSys.</p>
+<h3 id="domain">Domain</h3>
+<p>Absolutely, the domain of a recommendation system dictates the type of content it suggests. For instance:</p>
+<ul>
+<li>Netflix focuses on movies and TV series.</li>
+<li>Amazon recommends products.</li>
+<li>Spotify suggests music and podcasts.</li>
+</ul>
+<p>Understanding the domain is crucial because it determines the impact of a poor recommendation:</p>
+<ul>
+<li>Recommending a bad music track might disappoint but won&rsquo;t cause significant harm.</li>
+<li>However, suggesting a bad foster parent for children in need could have severe consequences.</li>
+</ul>
+<h3 id="purpose">Purpose</h3>
+<p>The purpose of a recommendation system benefits both the user and the system itself. Let&rsquo;s take Netflix as an example:</p>
+<ul>
+<li><strong>User:</strong> Their goal is to find relevant content to watch and enjoy.</li>
+<li><strong>System:</strong> Its goal is to maintain user subscriptions for as long as possible, ensuring continued revenue.</li>
+</ul>
+<p>In some cases, a <em>proxy goal</em> might be employed to indirectly measure the primary purpose. However, selecting a suitable <em>proxy goal</em> is crucial; an inappropriate one can lead to undesired outcomes.</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Note<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>The author suggest the book &ldquo;Weapons of Math Destruction&rdquo; provides further examples of proxy goals, offering valuable insights into how these indirect measures can sometimes have unintended consequences.</em></div>
+        </div>
+    </div>
+<p>Using a <em>proxy goal</em> helps gauge or approximate the primary objective indirectly. In the case of Netflix, it might be measuring user engagement or time spent watching content as a means to assess whether users are finding the recommended content appealing enough to continue their subscription.</p>
+<h3 id="context">Context</h3>
+<p>The context is also very important, because will set some variables regarding the environment in which the consumer receives a recommendation, for example:</p>
+<ul>
+<li><strong>current location</strong></li>
+<li><strong>time of the day</strong></li>
+<li><strong>what the consumer is doing</strong></li>
+<li><strong>weather conditions</strong></li>
+<li><strong>user&rsquo;s mood</strong></li>
+</ul>
+<h3 id="personalization-level">Personalization level</h3>
+<p>We can think of RecSys using many personalization levels, like in the figure below:</p>
+<p><a class="lightgallery" href="https://i.imgur.com/rf2KlcB.png" title="https://i.imgur.com/rf2KlcB.png" data-thumbnail="https://i.imgur.com/rf2KlcB.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/rf2KlcB.png"
+            data-srcset="https://i.imgur.com/rf2KlcB.png, https://i.imgur.com/rf2KlcB.png 1.5x, https://i.imgur.com/rf2KlcB.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/rf2KlcB.png" width="800" />
+    </a>
+As the arrow goes up, we increase the complexity of our system.</p>
+<h3 id="privacy-and-trustworthiness">Privacy and trustworthiness</h3>
+<p>This is a very important &ldquo;pauta&rdquo; to address. Is here where the company that is implementing the RecSys needs to understanding what is allowed and whats not allowed to or expose from user&rsquo;s data.</p>
+<p>Talk about manipulation and recommendations, this shake the trustness of the service by the user.</p>
+<h3 id="interface">Interface</h3>
+<p>Interface of a recommender system depicts the kind of input and output it produces.</p>
+<h4 id="input">Input</h4>
+<p>The system will allow for certain interactions with the platform, this data can be used by the RecSys.</p>
+<h4 id="output">Output</h4>
+<p>The way the information comes back to the user:</p>
+<ul>
+<li>predictions</li>
+<li>recommendations</li>
+<li>filtering</li>
+</ul>
+<h3 id="algorithms">Algorithms</h3>
+<p>The author split the algorithms presented in this book into to categories:</p>
+<ul>
+<li><strong>collaborative filtering</strong>: employ usage data.</li>
+<li><strong>content-based filtering</strong>: use content metadata and user profiles to calculate recommendations.</li>
+<li><strong>hybrid</strong>: a mix of the two types.</li>
+</ul>
+<h4 id="collaborative-filtering">Collaborative filtering</h4>
+<p>These types of algorithms attempt to identify preference segments. Each time a new user searches for an item, the algorithm places this user into relevant segments or &ldquo;buckets.&rdquo; This allows for a comparison between the user&rsquo;s taste and that of others who share similar preferences.</p>
+<a class="lightgallery" href="https://i.imgur.com/2qDDWbb.png" title="https://i.imgur.com/2qDDWbb.png" data-thumbnail="https://i.imgur.com/2qDDWbb.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/2qDDWbb.png"
+            data-srcset="https://i.imgur.com/2qDDWbb.png, https://i.imgur.com/2qDDWbb.png 1.5x, https://i.imgur.com/2qDDWbb.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/2qDDWbb.png" width="800" />
+    </a>
+<h4 id="content-based-filtering">Content-based filtering</h4>
+<p>The system utilizes the metadata available for the offered items. For instance, if you give a 5-star rating to the movie &ldquo;Interstellar&rdquo; and a 2-star rating to &ldquo;Game of Thrones,&rdquo; it uses this data to construct a profile that reflects your preferences in movies or TV Series.</p>
+<h4 id="hybrid">Hybrid</h4>
+<p>Hybrid algorithms combine collaborative and content-based approaches to form a powerful strategy. It&rsquo;s crucial to note that the more complex your strategy becomes, the harder it is to explain its results.</p>
+<p>For example, in the Netflix Prize, competition hosted on Kaggle, the wining solution was too complex and expansive to put into production. The costs with computational resources was not worthy. Besides, probably the interpretation level was also hurt by this solution.</p>
+<h2 id="summary">Summary</h2>
+<p>The most important takeaway from this chapter, for me, is the framework provided. It offers a structured approach to constructing a RecSys.</p>
+<p>While algorithms are important, a successful RecSys requires assembling various pieces of the puzzle.</p>
+<a class="lightgallery" href="https://i.imgur.com/hnbBvSS.png" title="https://i.imgur.com/hnbBvSS.png" data-thumbnail="https://i.imgur.com/hnbBvSS.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/hnbBvSS.png"
+            data-srcset="https://i.imgur.com/hnbBvSS.png, https://i.imgur.com/hnbBvSS.png 1.5x, https://i.imgur.com/hnbBvSS.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/hnbBvSS.png" width="800" />
+    </a>
+<p>The author also introduces the app that will be used throughout the book, but I&rsquo;ll provide a better description in the next post.</p>
+<h2 id="referencies">Referencies</h2>
+<ul>
+<li>book: Practical Recommender Systems</li>
+<li>course: Recommender Systems - Introduction (Coursera)</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-11-20</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://www.lobdata.com.br/posts/recommender_systems_001/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/ai/">AI</a>,&nbsp;<a href="/tags/recommender-system/">Recommender System</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/cnns/" class="prev" rel="prev" title="CNNs"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>CNNs</a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Luba</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"56XLI6KGAP","algoliaIndex":"lobdata","algoliaSearchKey":"d7c82e758baf996bfc63e0fffb1098fd","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

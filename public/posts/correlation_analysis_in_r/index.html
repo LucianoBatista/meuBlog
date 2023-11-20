@@ -12,11 +12,13 @@ It&rsquo;s a high computational task to plot lots of scatterplot, specially if y
 <meta property="og:url" content="https://www.lobdata.com.br/posts/correlation_analysis_in_r/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-10-13T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-10-13T00:00:00+00:00" /><meta property="og:site_name" content="LOBData" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Effective approach to analyze correlation coefficients"/>
 <meta name="twitter:description" content="Correlation analysis is a key task when you&rsquo;re exploring any dataset. The principal objective is to find linear relationships between features that can help to understanding the big picture.
 Probably, the best way to see correlations between variables is to use scatterplots, but in most of time you&rsquo;re working with a high dimensional dataset with a high number of variables, in these situations you have two major problems:
 It&rsquo;s a high computational task to plot lots of scatterplot, specially if you have a big dataset."/>
+<meta name="twitter:site" content="@Luciano_Bats3"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -377,7 +379,7 @@ It&rsquo;s a high computational task to plot lots of scatterplot, specially if y
 <p>First, we need the <code>get_cor()</code> function, that will return the correlation matrix. After, we plug into <code>plot_cor()</code> function and get our awesome chart.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># getting the correlation matrix</span>
-</span></span><span class="line"><span class="cl"><span class="n">get_cor</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">use</span> <span class="o">=</span> <span class="s">&#34;pairwise.complete.obs&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">get_cor</span> <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">use</span> <span class="o">=</span> <span class="s">&#34;pairwise.complete.obs&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">         <span class="n">fct_reorder</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">fct_rev</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1"># meta programming to capture the variables</span>
@@ -399,27 +401,27 @@ It&rsquo;s a high computational task to plot lots of scatterplot, specially if y
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1"># conditionals to sort the variables</span>
 </span></span><span class="line"><span class="cl">    <span class="c1"># very usefull to plot</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">if </span><span class="p">(</span><span class="n">fct_reorder</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">if</span> <span class="p">(</span><span class="n">fct_reorder</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="n">data_cor</span> <span class="o">&lt;-</span> <span class="n">data_cor</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">            <span class="nf">mutate</span><span class="p">(</span><span class="n">feature</span> <span class="o">=</span> <span class="nf">fct_reorder</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="o">!!</span> <span class="n">feature_expr</span><span class="p">))</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">            <span class="nf">arrange</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nf">if </span><span class="p">(</span><span class="n">fct_rev</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">if</span> <span class="p">(</span><span class="n">fct_rev</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="n">data_cor</span> <span class="o">&lt;-</span> <span class="n">data_cor</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">            <span class="nf">mutate</span><span class="p">(</span><span class="n">feature</span> <span class="o">=</span> <span class="nf">fct_rev</span><span class="p">(</span><span class="n">feature</span><span class="p">))</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">            <span class="nf">arrange</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nf">return</span><span class="p">(</span><span class="n">data_cor</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">return</span><span class="p">(</span><span class="n">data_cor</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>Second, we need the plot function.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># this function plot the correlation scores in order of values</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># and have a lot of parameters that can be used to</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># fully customize your plot as you want</span>
-</span></span><span class="line"><span class="cl"><span class="n">plot_cor</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">fct_reorder</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">fct_rev</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">plot_cor</span> <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">fct_reorder</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">fct_rev</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                     <span class="n">include_lbl</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">lbl_precision</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">lbl_position</span> <span class="o">=</span> <span class="s">&#34;outward&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                     <span class="n">size</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">line_size</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span> <span class="n">vert_size</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                     <span class="n">color_pos</span> <span class="o">=</span> <span class="nf">palette_light</span><span class="p">()</span><span class="n">[[1]]</span><span class="p">,</span>
@@ -451,9 +453,9 @@ It&rsquo;s a high computational task to plot lots of scatterplot, specially if y
 </span></span><span class="line"><span class="cl">        <span class="nf">theme_tq</span><span class="p">()</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">        <span class="nf">scale_color_manual</span><span class="p">(</span><span class="n">values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="n">color_neg</span><span class="p">,</span> <span class="n">color_pos</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nf">if </span><span class="p">(</span><span class="n">include_lbl</span><span class="p">)</span> <span class="n">g</span> <span class="o">&lt;-</span> <span class="n">g</span> <span class="o">+</span> <span class="nf">geom_label</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="n">feature_name_text</span><span class="p">),</span> <span class="n">hjust</span> <span class="o">=</span> <span class="n">lbl_position</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">if</span> <span class="p">(</span><span class="n">include_lbl</span><span class="p">)</span> <span class="n">g</span> <span class="o">&lt;-</span> <span class="n">g</span> <span class="o">+</span> <span class="nf">geom_label</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="n">feature_name_text</span><span class="p">),</span> <span class="n">hjust</span> <span class="o">=</span> <span class="n">lbl_position</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nf">return</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">return</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
@@ -499,7 +501,7 @@ It&rsquo;s a high computational task to plot lots of scatterplot, specially if y
 </div>
 <div id="comments"></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.115.3">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Luba</a></span></div>
         </div>
     </footer></div>

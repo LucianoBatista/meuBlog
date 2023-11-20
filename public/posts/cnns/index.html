@@ -12,15 +12,17 @@ Note O código que estamos rodando aqui pode ser encontrado nesse notebook." />
 <meta property="og:url" content="https://www.lobdata.com.br/posts/cnns/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-07-17T00:00:00+00:00" />
 <meta property="article:modified_time" content="2023-07-17T00:00:00+00:00" /><meta property="og:site_name" content="LOBData" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="CNNs"/>
 <meta name="twitter:description" content="Hoje nós vamos avançar mais um pouco em direção ao universo de arquiteturas de Deep Learning relacionadas a IA Generativa. Até aqui, nós já falamos sobre:
 IA Generativa, abordando de forma geral Pytorch, explicando um pouco sobre o framework Deep Learning, trazendo conceitos básicos úteis para nosso entendimento ao decorrer dos artigos. E agora, vamos falar sobre Redes Neurais Convolucionais (CNNs).
 Note O código que estamos rodando aqui pode ser encontrado nesse notebook."/>
+<meta name="twitter:site" content="@Luciano_Bats3"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/cnns/" /><link rel="prev" href="https://www.lobdata.com.br/posts/generative_ai_notes_03/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/cnns/" /><link rel="prev" href="https://www.lobdata.com.br/posts/generative_ai_notes_03/" /><link rel="next" href="https://www.lobdata.com.br/posts/recommender_systems_001/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -134,13 +136,13 @@ Note O código que estamos rodando aqui pode ser encontrado nesse notebook."/>
         <li><a href="#transformações">Transformações</a></li>
       </ul>
     </li>
-    <li><a href="#nossa-primeira-cnn--sem-pooling">Nossa primeira CNN 🔥 (sem pooling)</a>
+    <li><a href="#nossa-primeira-cnn-fire-sem-pooling">Nossa primeira CNN  (sem pooling)</a>
       <ul>
         <li><a href="#verificando-a-movimentação-do-objeto">Verificando a movimentação do objeto</a></li>
       </ul>
     </li>
-    <li><a href="#nossa-segunda-cnn--com-pooling">Nossa segunda CNN 🔥 (com pooling)</a></li>
-    <li><a href="#nossa-terceira-cnn--com-data-augmentation">Nossa terceira CNN 🔥 (com data augmentation)</a>
+    <li><a href="#nossa-segunda-cnn-fire-com-pooling">Nossa segunda CNN  (com pooling)</a></li>
+    <li><a href="#nossa-terceira-cnn-fire-com-data-augmentation">Nossa terceira CNN  (com data augmentation)</a>
       <ul>
         <li><a href="#transforms-do-torchvision">Transforms do <code>torchvision</code></a></li>
         <li><a href="#treinando">Treinando</a></li>
@@ -362,7 +364,7 @@ Note O código que estamos rodando aqui pode ser encontrado nesse notebook."/>
         </div>
     </div>
 <div class="mermaid" id="id-1"></div>
-<h2 id="nossa-primeira-cnn--sem-pooling">Nossa primeira CNN 🔥 (sem pooling)</h2>
+<h2 id="nossa-primeira-cnn-fire-sem-pooling">Nossa primeira CNN &#x1f525; (sem pooling)</h2>
 <p>Bom, agora que nós temos os dados, vamo realizar o treinamento da nossa primeira CNN. Eu vou utilizar aqui três funções de ajuda do livro <strong>Inside Deep Learning</strong>, onde essas funções contêm alguns códigos que normalmente se repetem para todo tipo de treinamento de modelo de Deep Learning.</p>
 <blockquote>
 <p><em>O que essas funções fazem?</em></p>
@@ -521,7 +523,7 @@ Note O código que estamos rodando aqui pode ser encontrado nesse notebook."/>
 <li><strong>upper left</strong>: 0.61</li>
 </ul>
 <p>Para que nosso modelo possa ser mais robusto em relação a translação do objeto, vamos tentar aplicar um pooling na nossa arquitetura.</p>
-<h2 id="nossa-segunda-cnn--com-pooling">Nossa segunda CNN 🔥 (com pooling)</h2>
+<h2 id="nossa-segunda-cnn-fire-com-pooling">Nossa segunda CNN &#x1f525; (com pooling)</h2>
 <p>O pooling nada mais é que uma técnica que nos ajuda a ter uma propriedade chamada <code>translation invariance</code>, ou seja, o aprendizado do nosso modelo fica menos suscetível a movimentação do objeto de interesse.</p>
 <p>De forma prática, aqui nós vamo estar utilizando o <em>max pooling</em>, onde é utilizado o valor máximo da matriz da imagem de input na camada de pooling. Pela imagem abaixo fica mais claro o que estou querendo dizer:</p>
 <a class="lightgallery" href="https://i.imgur.com/bp5FjS1.png" title="https://i.imgur.com/bp5FjS1.png" data-thumbnail="https://i.imgur.com/bp5FjS1.png">
@@ -573,7 +575,7 @@ Note O código que estamos rodando aqui pode ser encontrado nesse notebook."/>
 <li><strong>lower right:</strong> 0.94</li>
 <li><strong>upper left:</strong> 0.73</li>
 </ul>
-<h2 id="nossa-terceira-cnn--com-data-augmentation">Nossa terceira CNN 🔥 (com data augmentation)</h2>
+<h2 id="nossa-terceira-cnn-fire-com-data-augmentation">Nossa terceira CNN &#x1f525; (com data augmentation)</h2>
 <p>Por fim, uma última estratégia que gostaria de trazer aqui é o <em>Data Augmentation</em>. E a ideia por de trás é basicamente a de expor o seu modelo ao maior número possível de varientes da imagem original, para que ele consigar ter um ótimo grau de generalização.</p>
 <p>A sacada é que você não precisa necessariamente coletar novos dados, e sim manipular uma imagem para criar diferentes situações para ela:</p>
 <ul>
@@ -679,11 +681,12 @@ Note O código que estamos rodando aqui pode ser encontrado nesse notebook."/>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/generative_ai_notes_03/" class="prev" rel="prev" title="Intro ao Pytorch"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Intro ao Pytorch</a></div>
+    <div class="post-nav"><a href="/posts/generative_ai_notes_03/" class="prev" rel="prev" title="Intro ao Pytorch"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Intro ao Pytorch</a>
+            <a href="/posts/recommender_systems_001/" class="next" rel="next" title="Understanding recommender systems">Understanding recommender systems<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 <div id="comments"></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.115.3">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Luba</a></span></div>
         </div>
     </footer></div>

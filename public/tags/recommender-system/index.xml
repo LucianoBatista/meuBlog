@@ -1,0 +1,19 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Recommender System - Tag - LobData</title>
+        <link>https://www.lobdata.com.br/tags/recommender-system/</link>
+        <description>Recommender System - Tag - LobData</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 20 Nov 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/recommender-system/" rel="self" type="application/rss+xml" /><item>
+    <title>Understanding recommender systems</title>
+    <link>https://www.lobdata.com.br/posts/recommender_systems_001/</link>
+    <pubDate>Mon, 20 Nov 2023 00:00:00 &#43;0000</pubDate>
+    <author>Luciano</author>
+    <guid>https://www.lobdata.com.br/posts/recommender_systems_001/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/recsys-001.png" referrerpolicy="no-referrer">
+            </div>Welcome to the beginning of an adventure on recommendation systems! I&rsquo;m diving into the book Practical Recommender Systems (you can find the link at the end) and sharing my notes here as part of a practice exercise.
+In this post, I&rsquo;ll focus on Chapter 1. It delves into the fundamental concept of what a recommender system is and introduces key ideas that will likely resurface throughout the book.
+To save some typing, I&rsquo;ll use the abbreviation RecSys for Recommender Systems in the upcoming posts, considering we&rsquo;ll mention it frequently.]]></description>
+</item>
+</channel>
+</rss>

@@ -3,7 +3,19 @@
         <title>Tutorials - Category - LobData</title>
         <link>https://www.lobdata.com.br/categories/tutorials/</link>
         <description>Tutorials - Category - LobData</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 17 Jul 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/categories/tutorials/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 20 Nov 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/categories/tutorials/" rel="self" type="application/rss+xml" /><item>
+    <title>Understanding recommender systems</title>
+    <link>https://www.lobdata.com.br/posts/recommender_systems_001/</link>
+    <pubDate>Mon, 20 Nov 2023 00:00:00 &#43;0000</pubDate>
+    <author>Luciano</author>
+    <guid>https://www.lobdata.com.br/posts/recommender_systems_001/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/recsys-001.png" referrerpolicy="no-referrer">
+            </div>Welcome to the beginning of an adventure on recommendation systems! I&rsquo;m diving into the book Practical Recommender Systems (you can find the link at the end) and sharing my notes here as part of a practice exercise.
+In this post, I&rsquo;ll focus on Chapter 1. It delves into the fundamental concept of what a recommender system is and introduces key ideas that will likely resurface throughout the book.
+To save some typing, I&rsquo;ll use the abbreviation RecSys for Recommender Systems in the upcoming posts, considering we&rsquo;ll mention it frequently.]]></description>
+</item>
+<item>
     <title>CNNs</title>
     <link>https://www.lobdata.com.br/posts/cnns/</link>
     <pubDate>Mon, 17 Jul 2023 00:00:00 &#43;0000</pubDate>
@@ -46,7 +58,7 @@ Pensando nisso, gostaria de fazer algo diferente, pensei em desmembrar o assunto
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/generative-ai-pt1.png" referrerpolicy="no-referrer">
             </div>Estou iniciando um série de posts no blog sobre IA Generativa. O conteúdo postado aqui serão minhas anotações sobre um livro que estou lendo, e a intenção é que a cada capítulo seja um compilado do que aprendi em junção com algum material extra que venha a consumir.
-Teremos teoria e código, já que o livro segue essa linha, que eu particularmente curto bastante. Um adendo é que o hands-on do livro é em keras, nada contra, mas eu sou time torch 🔥 😅.]]></description>
+Teremos teoria e código, já que o livro segue essa linha, que eu particularmente curto bastante. Um adendo é que o hands-on do livro é em keras, nada contra, mas eu sou time torch &#x1f525; &#x1f605;.]]></description>
 </item>
 <item>
     <title>Computer Vision</title>
@@ -106,18 +118,6 @@ Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Dando continuidade a nossa aplicação, 
             </div>Nos Capítulos Anteriores &hellip; Essa é a parte 3 do nosso projeto do EconoWallet, se quiser verificar o que já fizemos até o momento, verifique os links abaixo:
 Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Dando continuidade a nossa aplicação, hoje vamos iniciar a configuração do Docker em nosso ambiente. E antes de mais nada, precisaremos instalar o Docker e o Docker Compose na nossa máquina.
 A documentação do Docker para instalação é muito bem explicada.]]></description>
-</item>
-<item>
-    <title>Criando uma API Pronta para Produção com FastAPI - PT.2</title>
-    <link>https://www.lobdata.com.br/posts/econowallet-fastapi-pt2/</link>
-    <pubDate>Sat, 03 Apr 2021 00:00:00 &#43;0000</pubDate>
-    <author>Luciano</author>
-    <guid>https://www.lobdata.com.br/posts/econowallet-fastapi-pt2/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/img/fastapi.png" referrerpolicy="no-referrer">
-            </div>Neste tutorial iremos iniciar o Econowallet, essa aplicação que vai contar com uma API para controle financeiro de suas despesas e investimentos, se você não viu o post passado (onde explico mais sobre meu objetivo com esse projeto) clique aqui.
-Tópicos que serão abordados nesse post:
-Setup Inicial: main.py e config.py Rotas async Setup Como todo projeto python, é uma boa prática que você crie um ambiente virtual isolando as dependências do projeto, isso evita que você possa ter conflito entre diferentes libs de outros projetos que esteja trabalhando.]]></description>
 </item>
 </channel>
 </rss>

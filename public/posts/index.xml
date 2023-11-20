@@ -3,7 +3,19 @@
         <title>All Posts - LobData</title>
         <link>https://www.lobdata.com.br/posts/</link>
         <description>All Posts | LobData</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 17 Jul 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 20 Nov 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Understanding recommender systems</title>
+    <link>https://www.lobdata.com.br/posts/recommender_systems_001/</link>
+    <pubDate>Mon, 20 Nov 2023 00:00:00 &#43;0000</pubDate>
+    <author>Luciano</author>
+    <guid>https://www.lobdata.com.br/posts/recommender_systems_001/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/recsys-001.png" referrerpolicy="no-referrer">
+            </div>Welcome to the beginning of an adventure on recommendation systems! I&rsquo;m diving into the book Practical Recommender Systems (you can find the link at the end) and sharing my notes here as part of a practice exercise.
+In this post, I&rsquo;ll focus on Chapter 1. It delves into the fundamental concept of what a recommender system is and introduces key ideas that will likely resurface throughout the book.
+To save some typing, I&rsquo;ll use the abbreviation RecSys for Recommender Systems in the upcoming posts, considering we&rsquo;ll mention it frequently.]]></description>
+</item>
+<item>
     <title>CNNs</title>
     <link>https://www.lobdata.com.br/posts/cnns/</link>
     <pubDate>Mon, 17 Jul 2023 00:00:00 &#43;0000</pubDate>
@@ -46,7 +58,7 @@ Pensando nisso, gostaria de fazer algo diferente, pensei em desmembrar o assunto
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/generative-ai-pt1.png" referrerpolicy="no-referrer">
             </div>Estou iniciando um série de posts no blog sobre IA Generativa. O conteúdo postado aqui serão minhas anotações sobre um livro que estou lendo, e a intenção é que a cada capítulo seja um compilado do que aprendi em junção com algum material extra que venha a consumir.
-Teremos teoria e código, já que o livro segue essa linha, que eu particularmente curto bastante. Um adendo é que o hands-on do livro é em keras, nada contra, mas eu sou time torch 🔥 😅.]]></description>
+Teremos teoria e código, já que o livro segue essa linha, que eu particularmente curto bastante. Um adendo é que o hands-on do livro é em keras, nada contra, mas eu sou time torch &#x1f525; &#x1f605;.]]></description>
 </item>
 <item>
     <title>Classificador BNCC Pt.2</title>
@@ -105,18 +117,6 @@ Nesse tutorial estou me baseando em um minicurso do DataCamp Writing Efficient C
 Essa é a parte 5 do nosso projeto do EconoWallet e se você quiser verificar o que já fizemos até o momento, acesse os links abaixo:
 Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Sem enrolação, vamos logo ao que interessa!!!
 Reorganizando o projeto Antes de configurar o ORM, vamos ajustar algumas coisas no nosso diretório. Como estamos seguindo para um estágio mais maduro da aplicação e que você já compreende o básico de configuração do FastAPI, precisaremos agora separar melhor as competências dentro do projeto.]]></description>
-</item>
-<item>
-    <title>Criando uma API Pronta para Produção com FastAPI - PT.4</title>
-    <link>https://www.lobdata.com.br/posts/econowallet-fastapi-pt4/</link>
-    <pubDate>Sat, 31 Jul 2021 00:00:00 &#43;0000</pubDate>
-    <author>Luciano</author>
-    <guid>https://www.lobdata.com.br/posts/econowallet-fastapi-pt4/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/img/fastapi.png" referrerpolicy="no-referrer">
-            </div>Nos Capítulos Anteriores &hellip; Após um tempinho sem postar nada, vamos dar continuidade a essa série sobre como desenvolver uma API pronta pro Deploy! 🚀 🚀
-Essa é a parte 4 do nosso projeto do EconoWallet e se você quiser verificar o que já fizemos até o momento, acesse os links abaixo:
-Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Dando continuidade a nossa aplicação, hoje vamos configurar qual será nosso banco de dados.]]></description>
 </item>
 </channel>
 </rss>

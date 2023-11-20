@@ -3,7 +3,19 @@
         <title>AI - Tag - LobData</title>
         <link>https://www.lobdata.com.br/tags/ai/</link>
         <description>AI - Tag - LobData</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 17 Jul 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/ai/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 20 Nov 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/ai/" rel="self" type="application/rss+xml" /><item>
+    <title>Understanding recommender systems</title>
+    <link>https://www.lobdata.com.br/posts/recommender_systems_001/</link>
+    <pubDate>Mon, 20 Nov 2023 00:00:00 &#43;0000</pubDate>
+    <author>Luciano</author>
+    <guid>https://www.lobdata.com.br/posts/recommender_systems_001/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/recsys-001.png" referrerpolicy="no-referrer">
+            </div>Welcome to the beginning of an adventure on recommendation systems! I&rsquo;m diving into the book Practical Recommender Systems (you can find the link at the end) and sharing my notes here as part of a practice exercise.
+In this post, I&rsquo;ll focus on Chapter 1. It delves into the fundamental concept of what a recommender system is and introduces key ideas that will likely resurface throughout the book.
+To save some typing, I&rsquo;ll use the abbreviation RecSys for Recommender Systems in the upcoming posts, considering we&rsquo;ll mention it frequently.]]></description>
+</item>
+<item>
     <title>CNNs</title>
     <link>https://www.lobdata.com.br/posts/cnns/</link>
     <pubDate>Mon, 17 Jul 2023 00:00:00 &#43;0000</pubDate>
@@ -46,7 +58,7 @@ Pensando nisso, gostaria de fazer algo diferente, pensei em desmembrar o assunto
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/generative-ai-pt1.png" referrerpolicy="no-referrer">
             </div>Estou iniciando um série de posts no blog sobre IA Generativa. O conteúdo postado aqui serão minhas anotações sobre um livro que estou lendo, e a intenção é que a cada capítulo seja um compilado do que aprendi em junção com algum material extra que venha a consumir.
-Teremos teoria e código, já que o livro segue essa linha, que eu particularmente curto bastante. Um adendo é que o hands-on do livro é em keras, nada contra, mas eu sou time torch 🔥 😅.]]></description>
+Teremos teoria e código, já que o livro segue essa linha, que eu particularmente curto bastante. Um adendo é que o hands-on do livro é em keras, nada contra, mas eu sou time torch &#x1f525; &#x1f605;.]]></description>
 </item>
 </channel>
 </rss>
