@@ -4,26 +4,34 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Criando uma API Pronta para Produção com FastAPI - PT.3 - LobData</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Criando uma API Pronta para Produção com FastAPI - PT.3" />
-<meta property="og:description" content="Nos Capítulos Anteriores &hellip; Essa é a parte 3 do nosso projeto do EconoWallet, se quiser verificar o que já fizemos até o momento, verifique os links abaixo:
-Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Dando continuidade a nossa aplicação, hoje vamos iniciar a configuração do Docker em nosso ambiente. E antes de mais nada, precisaremos instalar o Docker e o Docker Compose na nossa máquina.
-A documentação do Docker para instalação é muito bem explicada." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.lobdata.com.br/posts/econowallet-fastapi-pt3/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-04-08T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-04-08T00:00:00+00:00" /><meta property="og:site_name" content="LOBData" />
+        <title>Criando uma API Pronta para Produção com FastAPI - PT.3 - LobData</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="https://www.lobdata.com.br/posts/econowallet-fastapi-pt3/">
+  <meta property="og:site_name" content="LobData">
+  <meta property="og:title" content="Criando uma API Pronta para Produção com FastAPI - PT.3">
+  <meta property="og:description" content="Nos Capítulos Anteriores … Essa é a parte 3 do nosso projeto do EconoWallet, se quiser verificar o que já fizemos até o momento, verifique os links abaixo:
+Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Dando continuidade a nossa aplicação, hoje vamos iniciar a configuração do Docker em nosso ambiente. E antes de mais nada, precisaremos instalar o Docker e o Docker Compose na nossa máquina.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2021-04-08T00:00:00+00:00">
+    <meta property="article:modified_time" content="2021-04-08T00:00:00+00:00">
+    <meta property="article:tag" content="RESTFull API">
+    <meta property="article:tag" content="Web Development">
+    <meta property="article:tag" content="Backend">
+    <meta property="article:tag" content="Asynchronous">
+    <meta property="article:tag" content="FastAPI">
+    <meta property="article:tag" content="Docker">
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Criando uma API Pronta para Produção com FastAPI - PT.3"/>
-<meta name="twitter:description" content="Nos Capítulos Anteriores &hellip; Essa é a parte 3 do nosso projeto do EconoWallet, se quiser verificar o que já fizemos até o momento, verifique os links abaixo:
-Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Dando continuidade a nossa aplicação, hoje vamos iniciar a configuração do Docker em nosso ambiente. E antes de mais nada, precisaremos instalar o Docker e o Docker Compose na nossa máquina.
-A documentação do Docker para instalação é muito bem explicada."/>
-<meta name="twitter:site" content="@Luciano_Bats3"/>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Criando uma API Pronta para Produção com FastAPI - PT.3">
+  <meta name="twitter:description" content="Nos Capítulos Anteriores … Essa é a parte 3 do nosso projeto do EconoWallet, se quiser verificar o que já fizemos até o momento, verifique os links abaixo:
+Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Dando continuidade a nossa aplicação, hoje vamos iniciar a configuração do Docker em nosso ambiente. E antes de mais nada, precisaremos instalar o Docker e o Docker Compose na nossa máquina.">
+      <meta name="twitter:site" content="@Luciano_Bats3">
 <meta name="application-name" content="My cool site">
-<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="apple-mobile-web-app-title" content="My cool site">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/econowallet-fastapi-pt3/" /><link rel="prev" href="https://www.lobdata.com.br/posts/econowallet-fastapi-pt2/" /><link rel="next" href="https://www.lobdata.com.br/posts/econowallet-fastapi-pt4/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/econowallet-fastapi-pt3/" /><link rel="prev" href="https://www.lobdata.com.br/posts/econowallet-fastapi-pt2/" /><link rel="next" href="https://www.lobdata.com.br/posts/econowallet-fastapi-pt4/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
@@ -42,7 +50,7 @@ A documentação do Docker para instalação é muito bem explicada."/>
             },"description": ""
     }
     </script></head>
-    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -139,13 +147,23 @@ A documentação do Docker para instalação é muito bem explicada."/>
         data-srcset="/img/finance_app_tutorial/pt3/lets_do_it.gif, /img/finance_app_tutorial/pt3/lets_do_it.gif 1.5x, /img/finance_app_tutorial/pt3/lets_do_it.gif 2x"
         data-sizes="auto"
         alt="/img/finance_app_tutorial/pt3/lets_do_it.gif"
-        title="Let&amp;rsquo;s Do This" /></p>
+        title="Let&rsquo;s Do This" /></p>
 <p>A <a href="https://docs.docker.com/get-docker/" target="_blank" rel="noopener noreffer ">documentação</a> do Docker para instalação é muito bem explicada. Ao acessar o link você encontrará um passo-a-passo para qualquer SO que esteja usando (macOS, Linux ou Windows). Ao final da instalação, o próprio tutorial indica como verificar se está tudo funcionando corretamente, a versão que estarei utilizando aqui é:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker -v
-</span></span><span class="line"><span class="cl">Docker version 20.10.5, build 55c4c88
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker-compose -v
-</span></span><span class="line"><span class="cl">docker-compose version 1.27.4, build <span class="m">40524192</span>
-</span></span></code></pre></div><p>O workflow que vamos seguir aqui é o de containerizar cada parte da aplicação e depois orquestrar isso de alguma forma, para que cada parte se comunique de forma harmônica e a aplicação final funcione através dos containers e imagens criadas. Nesse processo, cada &ldquo;bloco&rdquo; da aplicação vai ser construído utilizando um template de instruções, nossos Dockerfiles, e a orquestração aqui vai ser feita por um arquivo chamado docker-compose.yml.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-bash">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker -v
+</span></span><span class="line"><span class="cl">Docker version 20.10.5, build 55c4c88</span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-bash">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker-compose -v
+</span></span><span class="line"><span class="cl">docker-compose version 1.27.4, build <span class="m">40524192</span></span></span></code></pre></div></div>
+<p>O workflow que vamos seguir aqui é o de containerizar cada parte da aplicação e depois orquestrar isso de alguma forma, para que cada parte se comunique de forma harmônica e a aplicação final funcione através dos containers e imagens criadas. Nesse processo, cada &ldquo;bloco&rdquo; da aplicação vai ser construído utilizando um template de instruções, nossos Dockerfiles, e a orquestração aqui vai ser feita por um arquivo chamado docker-compose.yml.</p>
 <p>Ao final desse workflow você vai ter um <em>bundle</em> onde cada container contêm parte da aplicação, mas tudo funciona em conjunto. Veja na imagem (de forma simplificada) o que acontece.</p>
 <p><img
         class="lazyload"
@@ -156,11 +174,9 @@ A documentação do Docker para instalação é muito bem explicada."/>
         alt="/img/finance_app_tutorial/pt3/container_application.png"
         title="Containerized Application" /></p>
 <blockquote>
-<p>Imagem retirada do Google</p>
-</blockquote>
+<p>Imagem retirada do Google</p></blockquote>
 <blockquote>
-<p>Uma ressalva que gostaria de fazer é que existem outras formas de orquestrar os containers que não seja utilizando um arquivo docker-compose.yml, como por exemplo utilizando Kubernetes (k8s).</p>
-</blockquote>
+<p>Uma ressalva que gostaria de fazer é que existem outras formas de orquestrar os containers que não seja utilizando um arquivo docker-compose.yml, como por exemplo utilizando Kubernetes (k8s).</p></blockquote>
 <h1 id="criando-o-primeiro-dockerfile">Criando o primeiro Dockerfile</h1>
 <p>Uma regra básica na hora de criar seus Dockerfiles é considerar que suas instruções ao longo do arquivo representam camadas, e as camadas que exigem mais processamento e mais tempo para &ldquo;construir&rdquo; devem estar posicionadas no início. Dessa forma, você otimiza o tempo de processamento, e caso seja precise rebuildar a imagem com alguma modificação em camadas mais superiores, pois as que não sofrem modificação são recarregadas a partir de um cache.</p>
 <p>No caso de Dockerfiles para aplicações web em python eu costumo seguir um pipeline básico do que é preciso/interessante ter na imagem, e ao longo do projeto vou modificando de acordo a necessidade:</p>
@@ -173,7 +189,12 @@ A documentação do Docker para instalação é muito bem explicada."/>
         alt="/img/finance_app_tutorial/pt3/diagrams.png"
         title="Diagram" /></p>
 <p>Ainda assim, é fácil encontrar modelos de Dockerfile para diversos tipos de aplicação no github, apenas busque entender o que de fato está acontecendo antes de copiar e colar.</p>
-<pre tabindex="0"><code>FROM python:3.9.0-slim-buster
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><pre tabindex="0"><code>FROM python:3.9.0-slim-buster
 
 WORKDIR /usr/src/app
 
@@ -189,11 +210,10 @@ RUN pip install --upgrade pip \
 COPY /Pipenv Pipfile.lock ./
 RUN pipenv install --deploy --system
 
-COPY . .
-</code></pre><p>Como visto no fluxograma, primeiramente vemos uma imagem base do python, que aqui estamos utilizando o <code>python:3.9.0-slim-buster</code>, uma espécie de imagem mínima apenas com o essencial para podermos rodar uma aplicação python, além da slim-buster temos outras variações que buscam aplicar o mesmo conceito de economia de espaço. Este artigo do <a href="https://medium.com/swlh/alpine-slim-stretch-buster-jessie-bullseye-bookworm-what-are-the-differences-in-docker-62171ed4531d" target="_blank" rel="noopener noreffer ">Medium</a> contém uma boa explicação sobre a diferença entre os tipos: Slim, Alpine, Strech, Buster, Jessie e Bullseye.</p>
+COPY . .</code></pre></div>
+<p>Como visto no fluxograma, primeiramente vemos uma imagem base do python, que aqui estamos utilizando o <code>python:3.9.0-slim-buster</code>, uma espécie de imagem mínima apenas com o essencial para podermos rodar uma aplicação python, além da slim-buster temos outras variações que buscam aplicar o mesmo conceito de economia de espaço. Este artigo do <a href="https://medium.com/swlh/alpine-slim-stretch-buster-jessie-bullseye-bookworm-what-are-the-differences-in-docker-62171ed4531d" target="_blank" rel="noopener noreffer ">Medium</a> contém uma boa explicação sobre a diferença entre os tipos: Slim, Alpine, Strech, Buster, Jessie e Bullseye.</p>
 <blockquote>
-<p>Como são imagens mínimas e de tamanho reduzido, pode ser que a depender de sua aplicação, você precise completar a imagem com alguma dependência. É difícil saber de antemão qual a imagem que vai funcionar corretamente com seu projeto, mas graças a praticidade de trabalhar com Docker, podemos facilmente trocar e buscar a que melhor se adapte.</p>
-</blockquote>
+<p>Como são imagens mínimas e de tamanho reduzido, pode ser que a depender de sua aplicação, você precise completar a imagem com alguma dependência. É difícil saber de antemão qual a imagem que vai funcionar corretamente com seu projeto, mas graças a praticidade de trabalhar com Docker, podemos facilmente trocar e buscar a que melhor se adapte.</p></blockquote>
 <p>Voltando ao código que escrevemos, nas variáveis de ambiente (<code>ENV</code>), é uma boa prática ao trabalhar com projetos em python que adicionemos as seguintes variáveis:</p>
 <ul>
 <li><code>PYTHONDONTWRITEBYTECODE</code>: Impede que o Python grave arquivos pyc no disco (equivalente a opção -B)</li>
@@ -202,10 +222,14 @@ COPY . .
 <h1 id="criando-o-primeiro-docker-composeyml">Criando o primeiro docker-compose.yml</h1>
 <p>Antes de criarmos o docker-compose.yml, vamos adicionar um .dockerignore, uma boa prática para manter a segurança do nosso ambiente, já que estamos copiando arquivos locais para dentro das imagens, pode ser que em algum momento, por descuido, variáveis de ambiente vazem em produção gerando assim uma grande falha de segurança.</p>
 <blockquote>
-<p>Se quiser fazer um review de boas práticas de Docker para desenvolvedores python, <a href="https://mherman.org/presentations/dockercon-2018/" target="_blank" rel="noopener noreffer ">acesse</a>.</p>
-</blockquote>
+<p>Se quiser fazer um review de boas práticas de Docker para desenvolvedores python, <a href="https://mherman.org/presentations/dockercon-2018/" target="_blank" rel="noopener noreffer ">acesse</a>.</p></blockquote>
 <p>Adicione à sua pasta <code>project/</code> o arquivo <code>docker-compose.yml</code>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;3.8&#34;</span><span class="w">
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-yaml">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;3.8&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">web</span><span class="p">:</span><span class="w">
@@ -217,18 +241,27 @@ COPY . .
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="m">8004</span><span class="p">:</span><span class="m">8000</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">ENVIRONMENT=dev</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">TESTING=0</span><span class="w">
-</span></span></span></code></pre></div><p>Se você nunca trabalhou com esse tipo de arquivo, não se assuste, é apenas uma linguagem de marcação com um conceito de maps e listas muito semelhante ao chave-valor de dicionários em python, tanto que tem um pacote chamado <a href="https://pypi.org/project/PyYAML/" target="_blank" rel="noopener noreffer ">PyYAML</a> que mapeia o seu arquivo yml em um dicionário.</p>
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">TESTING=0</span></span></span></code></pre></div></div>
+<p>Se você nunca trabalhou com esse tipo de arquivo, não se assuste, é apenas uma linguagem de marcação com um conceito de maps e listas muito semelhante ao chave-valor de dicionários em python, tanto que tem um pacote chamado <a href="https://pypi.org/project/PyYAML/" target="_blank" rel="noopener noreffer ">PyYAML</a> que mapeia o seu arquivo yml em um dicionário.</p>
 <p>Com essas instruções nós construímos nossos serviços. O primeiro será nosso serviço web, onde foi especificado um diretório para <code>build</code> onde basicamente o Docker vai buscar o seu template (Dockerfile), depois a gente inicia o container rodando o <code>uvicorn</code> na porta 8000.</p>
 <p>A marcação de <code>volumes</code> é extremamente interessante/importante para que tenhámos persistência de dados ao longo do desenvolvimento e em produção. Basicamente estou dizendo que o <code>./project</code> local vai ser mapeado no diretório <code>/usr/src/app</code>, e tudo que acontecer localmente também vai ser atualizado dentro do ambiente docker sem necessidade de rebuildar a imagem.</p>
 <p>Depois disso nós expomos uma porta 8004 que vai escutar a porta 8000 dentro da nossa image Docker. E por fim adicionamos duas variáveis de ambiente, que são as mesmas que estão na nossa classe Settings no arquivo <code>config.py</code>.</p>
 <p>Vamos buidar nossa imagem:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker-compose build
-</span></span></code></pre></div><blockquote>
-<p>Eu tive um problema ao buildar a imagem pois o diretório root da imagem é diferente do que está meu projeto no pyCharm. Para resolver isso eu tive que alterar o main.py e mudar o que o pyCharm considera como root.</p>
-</blockquote>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-bash">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker-compose build</span></span></code></pre></div></div>
+<blockquote>
+<p>Eu tive um problema ao buildar a imagem pois o diretório root da imagem é diferente do que está meu projeto no pyCharm. Para resolver isso eu tive que alterar o main.py e mudar o que o pyCharm considera como root.</p></blockquote>
 <p>Modificando o <code>main.py</code>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># project/app/main.py</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># project/app/main.py</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span><span class="p">,</span> <span class="n">Depends</span>
 </span></span><span class="line"><span class="cl">
@@ -244,18 +277,33 @@ COPY . .
 </span></span><span class="line"><span class="cl">        <span class="s2">&#34;ping&#34;</span><span class="p">:</span> <span class="s2">&#34;pong!&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">        <span class="s2">&#34;environment&#34;</span><span class="p">:</span> <span class="n">settings</span><span class="o">.</span><span class="n">environment</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">        <span class="s2">&#34;testing&#34;</span><span class="p">:</span> <span class="n">settings</span><span class="o">.</span><span class="n">testing</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span></code></pre></div><p>Para configurar o pyCharm, clique com o botão direito em cima da pasta do project e vá em <strong>Mark Directory as</strong> &gt; <strong>Sources Root</strong>. Agora rode a build novamente e provavelmente deve funcionar.</p>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre></div></div>
+<p>Para configurar o pyCharm, clique com o botão direito em cima da pasta do project e vá em <strong>Mark Directory as</strong> &gt; <strong>Sources Root</strong>. Agora rode a build novamente e provavelmente deve funcionar.</p>
 <p>Assim que a build estiver pronta, vamos iniciar o container em background (detached <code>-d</code>):</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker-compose up -d
-</span></span></code></pre></div><p>Vá até o link <a href="http://localhost:8004/ping" target="_blank" rel="noopener noreffer ">http://localhost:8004/ping</a> e você verá o seguinte output:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-bash">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker-compose up -d</span></span></code></pre></div></div>
+<p>Vá até o link <a href="http://localhost:8004/ping" target="_blank" rel="noopener noreffer ">http://localhost:8004/ping</a> e você verá o seguinte output:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-json">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;ping&#34;</span><span class="p">:</span> <span class="s2">&#34;pong!&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;environment&#34;</span><span class="p">:</span> <span class="s2">&#34;dev&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;testing&#34;</span><span class="p">:</span> <span class="kc">false</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>Em nosso diretório de projeto, você deverá ter uma estrutura semelhante a essa:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">.
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
+<p>Em nosso diretório de projeto, você deverá ter uma estrutura semelhante a essa:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-bash">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">.
 </span></span><span class="line"><span class="cl">├── docker-compose.yml
 </span></span><span class="line"><span class="cl">├── project
 </span></span><span class="line"><span class="cl">│   ├── app
@@ -265,8 +313,8 @@ COPY . .
 </span></span><span class="line"><span class="cl">│   ├── Dockerfile
 </span></span><span class="line"><span class="cl">│   ├── Pipfile
 </span></span><span class="line"><span class="cl">│   └── Pipfile.lock
-</span></span><span class="line"><span class="cl">└── README.md
-</span></span></code></pre></div><h1 id="próximo-capítulo">Próximo Capítulo&hellip;</h1>
+</span></span><span class="line"><span class="cl">└── README.md</span></span></code></pre></div></div>
+<h1 id="próximo-capítulo">Próximo Capítulo&hellip;</h1>
 <p>Na próxima etapa, iremos adicionar um banco de dados para nossa aplicação, onde irei containerizar o PostgreSQL e adicionar um ORM (SqlAlchemy) para abstrair parte da complexidade de trabalhar diretamente com o banco.</p>
 <p>Você pode acompanhar o repositório do projeto no link abaixo:</p>
 <ul>
@@ -281,7 +329,7 @@ COPY . .
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://www.lobdata.com.br/posts/econowallet-fastapi-pt3/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="https://www.lobdata.com.br/posts/econowallet-fastapi-pt3/" data-title="Criando uma API Pronta para Produção com FastAPI - PT.3" data-via="Luciano_Bats3" data-hashtags="RESTFull API,Web Development,Backend,Asynchronous,FastAPI,Docker,SQLAlchemy"><i class="fab fa-x-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Threads" data-sharer="threads" data-url="https://www.lobdata.com.br/posts/econowallet-fastapi-pt3/" data-title="Criando uma API Pronta para Produção com FastAPI - PT.3"><i class="fab fa-threads fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://www.lobdata.com.br/posts/econowallet-fastapi-pt3/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Diaspora" data-sharer="diaspora" data-url="https://www.lobdata.com.br/posts/econowallet-fastapi-pt3/" data-title="Criando uma API Pronta para Produção com FastAPI - PT.3" data-description=""><i class="fab fa-diaspora fa-fw" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=https%3a%2f%2fwww.lobdata.com.br%2fposts%2feconowallet-fastapi-pt3%2f&amp;text=Criando%20uma%20API%20Pronta%20para%20Produ%c3%a7%c3%a3o%20com%20FastAPI%20-%20PT.3" target="_blank" title="Share on Telegram"><i class="fab fa-telegram fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -298,15 +346,18 @@ COPY . .
 </div>
 <div id="comments"></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Luba</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.145.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.3.1-DEV"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span></div>
         </div>
     </footer></div>
 
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
                 <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
-            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"search":{"algoliaAppID":"56XLI6KGAP","algoliaIndex":"lobdata","algoliaSearchKey":"d7c82e758baf996bfc63e0fffb1098fd","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><script src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script src="https://cdn.jsdelivr.net/npm/algoliasearch@5.20.2/dist/lite/builds/browser.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.2/sharer.min.js"></script><script>window.config={"comment":{},"search":{"algoliaAppID":"56XLI6KGAP","algoliaIndex":"lobdata","algoliaSearchKey":"d7c82e758baf996bfc63e0fffb1098fd","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script src="/js/theme.min.js"></script></body>
 </html>

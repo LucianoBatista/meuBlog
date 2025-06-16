@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Bag of words - Tag - LobData</title>
+        <title>Bag of Words - Tag - LobData</title>
         <link>https://www.lobdata.com.br/tags/bag-of-words/</link>
-        <description>Bag of words - Tag - LobData</description>
+        <description>Bag of Words - Tag - LobData</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 14 Jun 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/bag-of-words/" rel="self" type="application/rss+xml" /><item>
     <title>Classificador BNCC Pt.2</title>
     <link>https://www.lobdata.com.br/posts/bncc-modeling/</link>
@@ -11,9 +11,10 @@
     <guid>https://www.lobdata.com.br/posts/bncc-modeling/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/bncc_classifier.png" referrerpolicy="no-referrer">
-            </div>Resolvemos criar um novo artigo para detalhar melhor o que foi feito na etapa de modelagem do projeto do Classificador BNCC. Assim conseguimos dar mais atenção e justificar algumas escolhas.
-Cronograma de modelagem Nosso intuito foi buscar o melhor baseline para nosso problema, mapeando alguns universos de possibilidades, dentre modelos de machine learning e estratégias de transformação de texto em dado numérico.
-Válido lembrar que o dado que está entrando nessa etapa do pipeline está &ldquo;limpo&rdquo;, ou seja, passou pelas etapas de pré-processamentos que julgamos necessárias.]]></description>
+            </div><p>Resolvemos criar um novo artigo para detalhar melhor o que foi feito na etapa de modelagem do projeto do <a href="https://www.lobdata.com.br/2022/06/08/classificador-bncc/" target="_blank" rel="noopener noreffer ">Classificador BNCC</a>. Assim conseguimos dar mais atenção e justificar algumas escolhas.</p>
+<h2 id="cronograma-de-modelagem">Cronograma de modelagem</h2>
+<p>Nosso intuito foi buscar o <strong>melhor baseline</strong> para nosso problema, mapeando alguns universos de possibilidades, dentre modelos de machine learning e estratégias de transformação de texto em dado numérico.</p>
+<p>Válido lembrar que o dado que está entrando nessa etapa do pipeline está <em>&ldquo;limpo&rdquo;</em>, ou seja, passou pelas etapas de pré-processamentos que julgamos necessárias. Resumido abaixo:</p>]]></description>
 </item>
 </channel>
 </rss>

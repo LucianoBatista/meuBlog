@@ -11,9 +11,23 @@
     <guid>https://www.lobdata.com.br/posts/cnns/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/cnn.png" referrerpolicy="no-referrer">
-            </div>Hoje nós vamos avançar mais um pouco em direção ao universo de arquiteturas de Deep Learning relacionadas a IA Generativa. Até aqui, nós já falamos sobre:
-IA Generativa, abordando de forma geral Pytorch, explicando um pouco sobre o framework Deep Learning, trazendo conceitos básicos úteis para nosso entendimento ao decorrer dos artigos. E agora, vamos falar sobre Redes Neurais Convolucionais (CNNs).
-Note O código que estamos rodando aqui pode ser encontrado nesse notebook.]]></description>
+            </div><p>Hoje nós vamos avançar mais um pouco em direção ao universo de arquiteturas de Deep Learning relacionadas a IA Generativa. Até aqui, nós já falamos sobre:</p>
+<ul>
+<li><a href="https://www.lobdata.com.br/posts/my_notes/" target="_blank" rel="noopener noreffer ">IA Generativa, abordando de forma geral</a></li>
+<li><a href="https://www.lobdata.com.br/posts/generative_ai_notes_02/" target="_blank" rel="noopener noreffer ">Pytorch, explicando um pouco sobre o framework</a></li>
+<li><a href="https://www.lobdata.com.br/posts/generative_ai_notes_03/" target="_blank" rel="noopener noreffer ">Deep Learning, trazendo conceitos básicos úteis para nosso entendimento ao decorrer dos artigos.</a></li>
+</ul>
+<p>E agora, vamos falar sobre Redes Neurais Convolucionais (CNNs).</p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>O código que estamos rodando aqui pode ser encontrado nesse <a href="https://github.com/LucianoBatista/generative-ai/blob/main/chapter-02/dl-04-v2.ipynb" target="_blank" rel="noopener noreffer ">notebook</a>. Os imports das bibliotecas necessárias estão no início do arquivo.</strong></div>
+        </div>
+    </div>
+<h2 id="por-que-cnns">Por que CNNs?</h2>
+<p>As <strong>Convolutional Neural Networs</strong> são o lugar comum por onde nós normalmente começamos a estudar a fim de entender sobre arquiteturas de Deep Learning. Acredito que muito pelo trade-of que elas oferecem, em relação a complexidade vs aplicações.</p>]]></description>
 </item>
 <item>
     <title>Intro ao Pytorch</title>
@@ -23,8 +37,8 @@ Note O código que estamos rodando aqui pode ser encontrado nesse notebook.]]></
     <guid>https://www.lobdata.com.br/posts/generative_ai_notes_03/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/intro-torch.png" referrerpolicy="no-referrer">
-            </div>Nesse artigo, vamos de mão na massa! Mas gostaria de fazer um disclaimer um pouco chato pra você, vamos ver tudo de forma superficial, cada tópico abordado aqui por si só precisaria de muitas páginas de explicação, então, vou fazer o melhor para a explicação não se tornar um Frankstein e o post virar uma cocha de retalhos.
-Meu papel aqui é trazer de forma objetiva cada tópico desse para que você consiga correlacionar depois com o avançar dos capítulos do livro que estou trazendo os reviews.]]></description>
+            </div><p>Nesse artigo, vamos de mão na massa! Mas gostaria de fazer um disclaimer um pouco chato pra você, <strong>vamos ver tudo de forma superficial</strong>, cada tópico abordado aqui por si só precisaria de muitas páginas de explicação, então, vou fazer o melhor para a explicação não se tornar um Frankstein e o post virar uma <em>cocha de retalhos</em>.</p>
+<p>Meu papel aqui é trazer de forma objetiva cada tópico desse para que você consiga correlacionar depois com o avançar dos capítulos do livro que estou trazendo os reviews.</p>]]></description>
 </item>
 <item>
     <title>Deep Learning</title>
@@ -34,8 +48,8 @@ Meu papel aqui é trazer de forma objetiva cada tópico desse para que você con
     <guid>https://www.lobdata.com.br/posts/generative_ai_notes_02/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/deep-learnig-network.png" referrerpolicy="no-referrer">
-            </div>Chegamos no capítulo 2 do livro, e o mesmo fala sobre Deep Learning e implementações de CNNs utilizando o Keras como framework base para codar as implementações. Porém, as coisas são explicadas de uma forma bem superficial, e dificilmente quem nunca teve contato com esse conteúdo vai conseguir acompanhar de forma satisfatória.
-Pensando nisso, gostaria de fazer algo diferente, pensei em desmembrar o assunto e fazer uma sequência de 3 posts para cobrir o capítulo 2.]]></description>
+            </div><p>Chegamos no capítulo 2 do livro, e o mesmo fala sobre Deep Learning e implementações de CNNs utilizando o Keras como framework base para codar as implementações. Porém, as coisas são explicadas de uma forma bem superficial, e dificilmente quem nunca teve contato com esse conteúdo vai conseguir acompanhar de forma satisfatória.</p>
+<p>Pensando nisso, gostaria de fazer algo diferente, pensei em desmembrar o assunto e fazer uma sequência de <strong>3 posts</strong> para cobrir o capítulo 2.</p>]]></description>
 </item>
 <item>
     <title>Generative Modeling</title>
@@ -45,8 +59,8 @@ Pensando nisso, gostaria de fazer algo diferente, pensei em desmembrar o assunto
     <guid>https://www.lobdata.com.br/posts/my_notes/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/generative-ai-pt1.png" referrerpolicy="no-referrer">
-            </div>Estou iniciando um série de posts no blog sobre IA Generativa. O conteúdo postado aqui serão minhas anotações sobre um livro que estou lendo, e a intenção é que a cada capítulo seja um compilado do que aprendi em junção com algum material extra que venha a consumir.
-Teremos teoria e código, já que o livro segue essa linha, que eu particularmente curto bastante. Um adendo é que o hands-on do livro é em keras, nada contra, mas eu sou time torch &#x1f525; &#x1f605;.]]></description>
+            </div><p>Estou iniciando um série de posts no blog sobre IA Generativa. O conteúdo postado aqui serão minhas anotações sobre um livro que estou lendo, e a intenção é que a cada capítulo seja um compilado do que aprendi em junção com algum material extra que venha a consumir.</p>
+<p>Teremos teoria e código, já que o livro segue essa linha, que eu particularmente curto bastante. Um adendo é que o hands-on do livro é em <code>keras</code>, nada contra, mas eu sou time <code>torch</code> &#x1f525; &#x1f605;.</p>]]></description>
 </item>
 </channel>
 </rss>

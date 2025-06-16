@@ -4,26 +4,34 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Effective approach to analyze correlation coefficients - LobData</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Effective approach to analyze correlation coefficients" />
-<meta property="og:description" content="Correlation analysis is a key task when you&rsquo;re exploring any dataset. The principal objective is to find linear relationships between features that can help to understanding the big picture.
-Probably, the best way to see correlations between variables is to use scatterplots, but in most of time you&rsquo;re working with a high dimensional dataset with a high number of variables, in these situations you have two major problems:
-It&rsquo;s a high computational task to plot lots of scatterplot, specially if you have a big dataset." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.lobdata.com.br/posts/correlation_analysis_in_r/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-10-13T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-10-13T00:00:00+00:00" /><meta property="og:site_name" content="LOBData" />
+        <title>Effective approach to analyze correlation coefficients - LobData</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="https://www.lobdata.com.br/posts/correlation_analysis_in_r/">
+  <meta property="og:site_name" content="LobData">
+  <meta property="og:title" content="Effective approach to analyze correlation coefficients">
+  <meta property="og:description" content="Correlation analysis is a key task when you’re exploring any dataset. The principal objective is to find linear relationships between features that can help to understanding the big picture.
+Probably, the best way to see correlations between variables is to use scatterplots, but in most of time you’re working with a high dimensional dataset with a high number of variables, in these situations you have two major problems:">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2020-10-13T00:00:00+00:00">
+    <meta property="article:modified_time" content="2020-10-13T00:00:00+00:00">
+    <meta property="article:tag" content="Data Exploration">
+    <meta property="article:tag" content="Data Visualization">
+    <meta property="article:tag" content="Ggplot2">
+    <meta property="article:tag" content="Corrr">
+    <meta property="article:tag" content="Corplot">
+    <meta property="article:tag" content="R">
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Effective approach to analyze correlation coefficients"/>
-<meta name="twitter:description" content="Correlation analysis is a key task when you&rsquo;re exploring any dataset. The principal objective is to find linear relationships between features that can help to understanding the big picture.
-Probably, the best way to see correlations between variables is to use scatterplots, but in most of time you&rsquo;re working with a high dimensional dataset with a high number of variables, in these situations you have two major problems:
-It&rsquo;s a high computational task to plot lots of scatterplot, specially if you have a big dataset."/>
-<meta name="twitter:site" content="@Luciano_Bats3"/>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Effective approach to analyze correlation coefficients">
+  <meta name="twitter:description" content="Correlation analysis is a key task when you’re exploring any dataset. The principal objective is to find linear relationships between features that can help to understanding the big picture.
+Probably, the best way to see correlations between variables is to use scatterplots, but in most of time you’re working with a high dimensional dataset with a high number of variables, in these situations you have two major problems:">
+      <meta name="twitter:site" content="@Luciano_Bats3">
 <meta name="application-name" content="My cool site">
-<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="apple-mobile-web-app-title" content="My cool site">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/correlation_analysis_in_r/" /><link rel="prev" href="https://www.lobdata.com.br/posts/hype_test/" /><link rel="next" href="https://www.lobdata.com.br/posts/demand_forecasting_brazilian_commodities/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/correlation_analysis_in_r/" /><link rel="prev" href="https://www.lobdata.com.br/posts/hype_test/" /><link rel="next" href="https://www.lobdata.com.br/posts/demand_forecasting_brazilian_commodities/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
@@ -42,7 +50,7 @@ It&rsquo;s a high computational task to plot lots of scatterplot, specially if y
             },"description": ""
     }
     </script></head>
-    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -190,7 +198,12 @@ It&rsquo;s a high computational task to plot lots of scatterplot, specially if y
 <p>Just to simplify the example, I&rsquo;ll show just the data for one particular tier of users, diamond players.</p>
 <p>I choose this dataset because we have a lot of variables, high dimensionality, and look for linear correlations can be useful to build our model in the next stage of the project.</p>
 <p>Let&rsquo;s begin!</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># libraries used in this tutorial</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># libraries used in this tutorial</span>
 </span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">corrr</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">corrplot</span><span class="p">)</span>
@@ -202,8 +215,13 @@ It&rsquo;s a high computational task to plot lots of scatterplot, specially if y
 </span></span><span class="line"><span class="cl"><span class="n">lol_diamond_tbl</span> <span class="o">&lt;-</span> <span class="nf">read_csv</span><span class="p">(</span><span class="s">&#34;data/lol_diamond_numeric_final.csv&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">lol_diamond_tbl</span> <span class="o">%&gt;%</span> <span class="nf">glimpse</span><span class="p">()</span>
-</span></span></code></pre></div><pre tabindex="0"><code>
+</span></span><span class="line"><span class="cl"><span class="n">lol_diamond_tbl</span> <span class="o">%&gt;%</span> <span class="nf">glimpse</span><span class="p">()</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><pre tabindex="0"><code>
     Rows: 99,727
     Columns: 68
     $ totalDamageDealt                 &lt;dbl&gt; -0.2930711279, 2.5773485960, 0.2419916679, 0.7503652702, 0.9952605522, -0.04…
@@ -218,8 +236,8 @@ It&rsquo;s a high computational task to plot lots of scatterplot, specially if y
     $ tripleKills                      &lt;dbl&gt; -0.2604183, -0.2604183, -0.2604183, -0.2604183, -0.2604183, -0.2604183, -0.2…
     $ quadraKills                      &lt;dbl&gt; -0.1065788, -0.1065788, -0.1065788, -0.1065788, -0.1065788, -0.1065788, -0.1…
     $ pentaKills                       &lt;dbl&gt; -0.04710454, -0.04710454, -0.04710454, -0.04710454, -0.04710454, -0.04710454…
-    (...)
-</code></pre><p>I cleaned the dataset before, and the script used for that is in my <a href="https://github.com/LucianoBatista/articles" target="_blank" rel="noopener noreffer ">GitHub repo</a>. Besides that, you can find the description of the variables used here on this <a href="https://www.kaggle.com/dsluciano/league-of-legends-match-statistics/" target="_blank" rel="noopener noreffer ">kaggle kernel</a> created by me. If you have any questions, please let me know.</p>
+    (...)</code></pre></div>
+<p>I cleaned the dataset before, and the script used for that is in my <a href="https://github.com/LucianoBatista/articles" target="_blank" rel="noopener noreffer ">GitHub repo</a>. Besides that, you can find the description of the variables used here on this <a href="https://www.kaggle.com/dsluciano/league-of-legends-match-statistics/" target="_blank" rel="noopener noreffer ">kaggle kernel</a> created by me. If you have any questions, please let me know.</p>
 <h3 id="using-corplot-package">Using corplot package</h3>
 <p>This is a well-known library, that R users normally choose. The downside from <code>corrplot</code> package is we don&rsquo;t have a ggplot object at the output, and because of that is difficult to customize the plot with something that you want.</p>
 <p>But the procedure to plot the correlation coefficients using <code>corrplot</code> is fairly simple:</p>
@@ -229,10 +247,15 @@ It&rsquo;s a high computational task to plot lots of scatterplot, specially if y
 <li>customize</li>
 </ol>
 <p>Although the simplicity of this process, the final result it&rsquo;s not so beautiful and it&rsquo;s not the best chart to put in your report.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># basic procedure</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># basic procedure</span>
 </span></span><span class="line"><span class="cl"><span class="n">corr_matrix_train_mtx</span> <span class="o">&lt;-</span> <span class="n">lol_diamond_tbl</span> <span class="o">%&gt;%</span> <span class="nf">cor</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="nf">corrplot</span><span class="p">(</span><span class="n">corr_matrix_train_mtx</span><span class="p">)</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl"><span class="nf">corrplot</span><span class="p">(</span><span class="n">corr_matrix_train_mtx</span><span class="p">)</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/correlation/corr_01.png"
@@ -259,7 +282,12 @@ It&rsquo;s a high computational task to plot lots of scatterplot, specially if y
 <p>And the most important, we can rearrange the variables using clustering methods, the corrplot function accept 5 different ways: AOE, FPC, hclust and alphabet (look the documentation to see more).</p>
 </li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># first plot</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># first plot</span>
 </span></span><span class="line"><span class="cl"><span class="nf">corrplot</span><span class="p">(</span><span class="n">corr_matrix_train_mtx</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s">&#34;square&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># second plot</span>
@@ -275,8 +303,8 @@ It&rsquo;s a high computational task to plot lots of scatterplot, specially if y
 </span></span><span class="line"><span class="cl"><span class="c1"># final plot</span>
 </span></span><span class="line"><span class="cl"><span class="nf">corrplot</span><span class="p">(</span><span class="n">corr_matrix_train_mtx</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s">&#34;color&#34;</span><span class="p">,</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&#34;lower&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">         <span class="n">tl.col</span> <span class="o">=</span> <span class="s">&#34;black&#34;</span><span class="p">,</span> <span class="n">tl.cex</span> <span class="o">=</span> <span class="m">0.5</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">         <span class="n">order</span> <span class="o">=</span> <span class="s">&#34;hclust&#34;</span><span class="p">,)</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl">         <span class="n">order</span> <span class="o">=</span> <span class="s">&#34;hclust&#34;</span><span class="p">,)</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/correlation/corr_01_02.png"
@@ -310,14 +338,19 @@ It&rsquo;s a high computational task to plot lots of scatterplot, specially if y
         data-sizes="auto"
         alt="/img/correlation/correlation_07.png"
         title="flowchart" /></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># plot 1</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># plot 1</span>
 </span></span><span class="line"><span class="cl"><span class="n">lol_diamond_tbl</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">correlate</span><span class="p">()</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">rearrange</span><span class="p">()</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">shave</span><span class="p">()</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">    <span class="c1"># rplot need to receive a correlation matrix</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">rplot</span><span class="p">()</span>
-</span></span></code></pre></div><p>It&rsquo;s incredibly straightforward, and you just need to tune specific parameters to achieve a astonish chart. The standard configuration is shown in the next figure:</p>
+</span></span><span class="line"><span class="cl">    <span class="nf">rplot</span><span class="p">()</span></span></span></code></pre></div></div>
+<p>It&rsquo;s incredibly straightforward, and you just need to tune specific parameters to achieve a astonish chart. The standard configuration is shown in the next figure:</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -338,7 +371,12 @@ It&rsquo;s a high computational task to plot lots of scatterplot, specially if y
 <p>I&rsquo;ll choose better colors. And at the end, I will set the x-axis label angle to 45 and <code>hjust = 1</code>, to put the axis text in right place.</p>
 </li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">lol_diamond_tbl</span> <span class="o">%&gt;%</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">lol_diamond_tbl</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">correlate</span><span class="p">(</span><span class="n">use</span> <span class="o">=</span> <span class="s">&#34;pairwise.complete.obs&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">rearrange</span><span class="p">(</span><span class="n">method</span> <span class="o">=</span> <span class="s">&#34;PCA&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">shave</span><span class="p">()</span> <span class="o">%&gt;%</span>
@@ -347,8 +385,8 @@ It&rsquo;s a high computational task to plot lots of scatterplot, specially if y
 </span></span><span class="line"><span class="cl">    <span class="nf">theme_minimal</span><span class="p">()</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">theme</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">        <span class="n">axis.text.x</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">angle</span> <span class="o">=</span> <span class="m">45</span><span class="p">,</span> <span class="n">hjust</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">)</span>
-</span></span></code></pre></div><p>This is a much better chart! =)</p>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span></span></span></code></pre></div></div>
+<p>This is a much better chart! =)</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -359,7 +397,12 @@ It&rsquo;s a high computational task to plot lots of scatterplot, specially if y
         title="flowchart" /></p>
 <p>The <code>corrr</code> library can also use a lot of different clustering methods for rearranging the variables, and you can get the full list from the <a href="https://www.rdocumentation.org/packages/seriation/versions/1.2-8/topics/seriate" target="_blank" rel="noopener noreffer ">seriate package documentation</a>.</p>
 <p>One more convenience in use <code>corrr</code> is that you can create <code>plotly</code> interactive plots and hover through specific squares to investigate the values of correlation coefficients and the variable in x and y axis <a href="https://www.youtube.com/watch?v=4Xv4x7wklSM" target="_blank" rel="noopener noreffer ">play the video</a>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">g</span> <span class="o">&lt;-</span> <span class="n">lol_diamond_tbl</span> <span class="o">%&gt;%</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">g</span> <span class="o">&lt;-</span> <span class="n">lol_diamond_tbl</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">correlate</span><span class="p">(</span><span class="n">use</span> <span class="o">=</span> <span class="s">&#34;pairwise.complete.obs&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">rearrange</span><span class="p">(</span><span class="n">method</span> <span class="o">=</span> <span class="s">&#34;PCA&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">    <span class="n">corrr</span><span class="o">::</span><span class="nf">shave</span><span class="p">()</span> <span class="o">%&gt;%</span>
@@ -371,13 +414,18 @@ It&rsquo;s a high computational task to plot lots of scatterplot, specially if y
 </span></span><span class="line"><span class="cl">    <span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">plotly</span><span class="o">::</span><span class="nf">ggplotly</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
-</span></span></code></pre></div><p>Now that you already have a fully understanding in how to plot a good chart to investigate the correlation between your variables, I&rsquo;ll show you one specific approach to a more applicable task in your modeling workflow.</p>
+</span></span><span class="line"><span class="cl"><span class="n">plotly</span><span class="o">::</span><span class="nf">ggplotly</span><span class="p">(</span><span class="n">g</span><span class="p">)</span></span></span></code></pre></div></div>
+<p>Now that you already have a fully understanding in how to plot a good chart to investigate the correlation between your variables, I&rsquo;ll show you one specific approach to a more applicable task in your modeling workflow.</p>
 <p>See, the correlation between all variables is useful, but as we are investigating a correlation against one specific variable (target), a better way is to extract the correlation coefficients to that specific variable and plot it.</p>
 <h3 id="creating-the-plot_cor-function">Creating the plot_cor() function</h3>
 <p>In this last section, I&rsquo;ll show you two functions you can use to create beautiful plots and see which variable can contribute more to your correlation analysis.</p>
 <p>First, we need the <code>get_cor()</code> function, that will return the correlation matrix. After, we plug into <code>plot_cor()</code> function and get our awesome chart.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl">
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># getting the correlation matrix</span>
 </span></span><span class="line"><span class="cl"><span class="n">get_cor</span> <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">use</span> <span class="o">=</span> <span class="s">&#34;pairwise.complete.obs&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">         <span class="n">fct_reorder</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">fct_rev</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span> <span class="p">{</span>
@@ -416,9 +464,14 @@ It&rsquo;s a high computational task to plot lots of scatterplot, specially if y
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="kr">return</span><span class="p">(</span><span class="n">data_cor</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>Second, we need the plot function.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># this function plot the correlation scores in order of values</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
+<p>Second, we need the plot function.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># this function plot the correlation scores in order of values</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># and have a lot of parameters that can be used to</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># fully customize your plot as you want</span>
 </span></span><span class="line"><span class="cl"><span class="n">plot_cor</span> <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">fct_reorder</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">fct_rev</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
@@ -460,8 +513,8 @@ It&rsquo;s a high computational task to plot lots of scatterplot, specially if y
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nf">plot_cor</span><span class="p">(</span><span class="n">lol_diamond_tbl</span><span class="p">,</span> <span class="n">totalDamageDealt</span><span class="p">,</span> <span class="n">fct_reorder</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl"><span class="nf">plot_cor</span><span class="p">(</span><span class="n">lol_diamond_tbl</span><span class="p">,</span> <span class="n">totalDamageDealt</span><span class="p">,</span> <span class="n">fct_reorder</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/correlation/correlation_10.png"
@@ -484,13 +537,13 @@ It&rsquo;s a high computational task to plot lots of scatterplot, specially if y
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://www.lobdata.com.br/posts/correlation_analysis_in_r/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="https://www.lobdata.com.br/posts/correlation_analysis_in_r/" data-title="Effective approach to analyze correlation coefficients" data-via="Luciano_Bats3" data-hashtags="Data exploration,Data visualization,ggplot2,corrr,corplot,R"><i class="fab fa-x-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Threads" data-sharer="threads" data-url="https://www.lobdata.com.br/posts/correlation_analysis_in_r/" data-title="Effective approach to analyze correlation coefficients"><i class="fab fa-threads fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://www.lobdata.com.br/posts/correlation_analysis_in_r/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Diaspora" data-sharer="diaspora" data-url="https://www.lobdata.com.br/posts/correlation_analysis_in_r/" data-title="Effective approach to analyze correlation coefficients" data-description=""><i class="fab fa-diaspora fa-fw" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=https%3a%2f%2fwww.lobdata.com.br%2fposts%2fcorrelation_analysis_in_r%2f&amp;text=Effective%20approach%20to%20analyze%20correlation%20coefficients" target="_blank" title="Share on Telegram"><i class="fab fa-telegram fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/data-exploration/">Data exploration</a>,&nbsp;<a href="/tags/data-visualization/">Data visualization</a>,&nbsp;<a href="/tags/ggplot2/">ggplot2</a>,&nbsp;<a href="/tags/corrr/">corrr</a>,&nbsp;<a href="/tags/corplot/">corplot</a>,&nbsp;<a href="/tags/r/">R</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/data-exploration/">Data Exploration</a>,&nbsp;<a href="/tags/data-visualization/">Data Visualization</a>,&nbsp;<a href="/tags/ggplot2/">Ggplot2</a>,&nbsp;<a href="/tags/corrr/">Corrr</a>,&nbsp;<a href="/tags/corplot/">Corplot</a>,&nbsp;<a href="/tags/r/">R</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
@@ -501,15 +554,18 @@ It&rsquo;s a high computational task to plot lots of scatterplot, specially if y
 </div>
 <div id="comments"></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Luba</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.145.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.3.1-DEV"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span></div>
         </div>
     </footer></div>
 
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
                 <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
-            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"search":{"algoliaAppID":"56XLI6KGAP","algoliaIndex":"lobdata","algoliaSearchKey":"d7c82e758baf996bfc63e0fffb1098fd","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><script src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script src="https://cdn.jsdelivr.net/npm/algoliasearch@5.20.2/dist/lite/builds/browser.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.2/sharer.min.js"></script><script>window.config={"comment":{},"search":{"algoliaAppID":"56XLI6KGAP","algoliaIndex":"lobdata","algoliaSearchKey":"d7c82e758baf996bfc63e0fffb1098fd","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script src="/js/theme.min.js"></script></body>
 </html>

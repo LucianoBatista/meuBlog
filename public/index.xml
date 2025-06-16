@@ -3,9 +3,20 @@
         <title>LobData</title>
         <link>https://www.lobdata.com.br/</link>
         <description>This is my cool site</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 20 Nov 2023 00:00:00 &#43;0000</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 16 Jun 2025 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://www.lobdata.com.br/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Testing</title>
+    <link>https://www.lobdata.com.br/posts/testing_post/</link>
+    <pubDate>Mon, 16 Jun 2025 00:00:00 &#43;0000</pubDate>
+    <author>Luciano</author>
+    <guid>https://www.lobdata.com.br/posts/testing_post/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/ai-aplications.png" referrerpolicy="no-referrer">
+            </div><p>Olá, como sabemos a ciência de dados é uma tecnologia de grande potencial e vem sendo aplicada em diferentes áreas de negócio. Estou iniciando uma série de artigos que visam aprensentar sua aplicação em 5 áreas distintas: Logística, Saúde, Turismo, Esporte e E-Sports e Engenharia.</p>
+<p>Antes de iniciar propriamente os tópicos, é interessante que estejamos na mesma página quando falamos de Data Science. Devido ao grande hype dessa tecnologia, ela pode acabar sendo mal interpretada, por isso eu gosto de utilizar uma definição dada pela DataRobot uma empresa pioneira em Machine Learning, localizada no Quadrante mágico do Gartner.</p>]]></description>
+</item>
+<item>
     <title>Understanding recommender systems</title>
     <link>https://www.lobdata.com.br/posts/recommender_systems_001/</link>
     <pubDate>Mon, 20 Nov 2023 00:00:00 &#43;0000</pubDate>
@@ -13,9 +24,9 @@
     <guid>https://www.lobdata.com.br/posts/recommender_systems_001/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/recsys-001.png" referrerpolicy="no-referrer">
-            </div>Welcome to the beginning of an adventure on recommendation systems! I&rsquo;m diving into the book Practical Recommender Systems (you can find the link at the end) and sharing my notes here as part of a practice exercise.
-In this post, I&rsquo;ll focus on Chapter 1. It delves into the fundamental concept of what a recommender system is and introduces key ideas that will likely resurface throughout the book.
-To save some typing, I&rsquo;ll use the abbreviation RecSys for Recommender Systems in the upcoming posts, considering we&rsquo;ll mention it frequently.]]></description>
+            </div><p>Welcome to the beginning of an adventure on recommendation systems! I&rsquo;m diving into the book <em>Practical Recommender Systems</em> (you can find the link at the end) and sharing my notes here as part of a practice exercise.</p>
+<p>In this post, I&rsquo;ll focus on <strong>Chapter 1</strong>. It delves into the fundamental concept of what a recommender system is and introduces key ideas that will likely resurface throughout the book.</p>
+<p>To save some typing, I&rsquo;ll use the abbreviation <strong>RecSys</strong> for Recommender Systems in the upcoming posts, considering we&rsquo;ll mention it frequently.</p>]]></description>
 </item>
 <item>
     <title>CNNs</title>
@@ -25,9 +36,23 @@ To save some typing, I&rsquo;ll use the abbreviation RecSys for Recommender Syst
     <guid>https://www.lobdata.com.br/posts/cnns/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/cnn.png" referrerpolicy="no-referrer">
-            </div>Hoje nós vamos avançar mais um pouco em direção ao universo de arquiteturas de Deep Learning relacionadas a IA Generativa. Até aqui, nós já falamos sobre:
-IA Generativa, abordando de forma geral Pytorch, explicando um pouco sobre o framework Deep Learning, trazendo conceitos básicos úteis para nosso entendimento ao decorrer dos artigos. E agora, vamos falar sobre Redes Neurais Convolucionais (CNNs).
-Note O código que estamos rodando aqui pode ser encontrado nesse notebook.]]></description>
+            </div><p>Hoje nós vamos avançar mais um pouco em direção ao universo de arquiteturas de Deep Learning relacionadas a IA Generativa. Até aqui, nós já falamos sobre:</p>
+<ul>
+<li><a href="https://www.lobdata.com.br/posts/my_notes/" target="_blank" rel="noopener noreffer ">IA Generativa, abordando de forma geral</a></li>
+<li><a href="https://www.lobdata.com.br/posts/generative_ai_notes_02/" target="_blank" rel="noopener noreffer ">Pytorch, explicando um pouco sobre o framework</a></li>
+<li><a href="https://www.lobdata.com.br/posts/generative_ai_notes_03/" target="_blank" rel="noopener noreffer ">Deep Learning, trazendo conceitos básicos úteis para nosso entendimento ao decorrer dos artigos.</a></li>
+</ul>
+<p>E agora, vamos falar sobre Redes Neurais Convolucionais (CNNs).</p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>O código que estamos rodando aqui pode ser encontrado nesse <a href="https://github.com/LucianoBatista/generative-ai/blob/main/chapter-02/dl-04-v2.ipynb" target="_blank" rel="noopener noreffer ">notebook</a>. Os imports das bibliotecas necessárias estão no início do arquivo.</strong></div>
+        </div>
+    </div>
+<h2 id="por-que-cnns">Por que CNNs?</h2>
+<p>As <strong>Convolutional Neural Networs</strong> são o lugar comum por onde nós normalmente começamos a estudar a fim de entender sobre arquiteturas de Deep Learning. Acredito que muito pelo trade-of que elas oferecem, em relação a complexidade vs aplicações.</p>]]></description>
 </item>
 <item>
     <title>Intro ao Pytorch</title>
@@ -37,8 +62,8 @@ Note O código que estamos rodando aqui pode ser encontrado nesse notebook.]]></
     <guid>https://www.lobdata.com.br/posts/generative_ai_notes_03/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/intro-torch.png" referrerpolicy="no-referrer">
-            </div>Nesse artigo, vamos de mão na massa! Mas gostaria de fazer um disclaimer um pouco chato pra você, vamos ver tudo de forma superficial, cada tópico abordado aqui por si só precisaria de muitas páginas de explicação, então, vou fazer o melhor para a explicação não se tornar um Frankstein e o post virar uma cocha de retalhos.
-Meu papel aqui é trazer de forma objetiva cada tópico desse para que você consiga correlacionar depois com o avançar dos capítulos do livro que estou trazendo os reviews.]]></description>
+            </div><p>Nesse artigo, vamos de mão na massa! Mas gostaria de fazer um disclaimer um pouco chato pra você, <strong>vamos ver tudo de forma superficial</strong>, cada tópico abordado aqui por si só precisaria de muitas páginas de explicação, então, vou fazer o melhor para a explicação não se tornar um Frankstein e o post virar uma <em>cocha de retalhos</em>.</p>
+<p>Meu papel aqui é trazer de forma objetiva cada tópico desse para que você consiga correlacionar depois com o avançar dos capítulos do livro que estou trazendo os reviews.</p>]]></description>
 </item>
 <item>
     <title>Deep Learning</title>
@@ -48,8 +73,8 @@ Meu papel aqui é trazer de forma objetiva cada tópico desse para que você con
     <guid>https://www.lobdata.com.br/posts/generative_ai_notes_02/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/deep-learnig-network.png" referrerpolicy="no-referrer">
-            </div>Chegamos no capítulo 2 do livro, e o mesmo fala sobre Deep Learning e implementações de CNNs utilizando o Keras como framework base para codar as implementações. Porém, as coisas são explicadas de uma forma bem superficial, e dificilmente quem nunca teve contato com esse conteúdo vai conseguir acompanhar de forma satisfatória.
-Pensando nisso, gostaria de fazer algo diferente, pensei em desmembrar o assunto e fazer uma sequência de 3 posts para cobrir o capítulo 2.]]></description>
+            </div><p>Chegamos no capítulo 2 do livro, e o mesmo fala sobre Deep Learning e implementações de CNNs utilizando o Keras como framework base para codar as implementações. Porém, as coisas são explicadas de uma forma bem superficial, e dificilmente quem nunca teve contato com esse conteúdo vai conseguir acompanhar de forma satisfatória.</p>
+<p>Pensando nisso, gostaria de fazer algo diferente, pensei em desmembrar o assunto e fazer uma sequência de <strong>3 posts</strong> para cobrir o capítulo 2.</p>]]></description>
 </item>
 <item>
     <title>Generative Modeling</title>
@@ -59,8 +84,8 @@ Pensando nisso, gostaria de fazer algo diferente, pensei em desmembrar o assunto
     <guid>https://www.lobdata.com.br/posts/my_notes/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/generative-ai-pt1.png" referrerpolicy="no-referrer">
-            </div>Estou iniciando um série de posts no blog sobre IA Generativa. O conteúdo postado aqui serão minhas anotações sobre um livro que estou lendo, e a intenção é que a cada capítulo seja um compilado do que aprendi em junção com algum material extra que venha a consumir.
-Teremos teoria e código, já que o livro segue essa linha, que eu particularmente curto bastante. Um adendo é que o hands-on do livro é em keras, nada contra, mas eu sou time torch &#x1f525; &#x1f605;.]]></description>
+            </div><p>Estou iniciando um série de posts no blog sobre IA Generativa. O conteúdo postado aqui serão minhas anotações sobre um livro que estou lendo, e a intenção é que a cada capítulo seja um compilado do que aprendi em junção com algum material extra que venha a consumir.</p>
+<p>Teremos teoria e código, já que o livro segue essa linha, que eu particularmente curto bastante. Um adendo é que o hands-on do livro é em <code>keras</code>, nada contra, mas eu sou time <code>torch</code> &#x1f525; &#x1f605;.</p>]]></description>
 </item>
 <item>
     <title>Classificador BNCC Pt.2</title>
@@ -70,9 +95,10 @@ Teremos teoria e código, já que o livro segue essa linha, que eu particularmen
     <guid>https://www.lobdata.com.br/posts/bncc-modeling/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/bncc_classifier.png" referrerpolicy="no-referrer">
-            </div>Resolvemos criar um novo artigo para detalhar melhor o que foi feito na etapa de modelagem do projeto do Classificador BNCC. Assim conseguimos dar mais atenção e justificar algumas escolhas.
-Cronograma de modelagem Nosso intuito foi buscar o melhor baseline para nosso problema, mapeando alguns universos de possibilidades, dentre modelos de machine learning e estratégias de transformação de texto em dado numérico.
-Válido lembrar que o dado que está entrando nessa etapa do pipeline está &ldquo;limpo&rdquo;, ou seja, passou pelas etapas de pré-processamentos que julgamos necessárias.]]></description>
+            </div><p>Resolvemos criar um novo artigo para detalhar melhor o que foi feito na etapa de modelagem do projeto do <a href="https://www.lobdata.com.br/2022/06/08/classificador-bncc/" target="_blank" rel="noopener noreffer ">Classificador BNCC</a>. Assim conseguimos dar mais atenção e justificar algumas escolhas.</p>
+<h2 id="cronograma-de-modelagem">Cronograma de modelagem</h2>
+<p>Nosso intuito foi buscar o <strong>melhor baseline</strong> para nosso problema, mapeando alguns universos de possibilidades, dentre modelos de machine learning e estratégias de transformação de texto em dado numérico.</p>
+<p>Válido lembrar que o dado que está entrando nessa etapa do pipeline está <em>&ldquo;limpo&rdquo;</em>, ou seja, passou pelas etapas de pré-processamentos que julgamos necessárias. Resumido abaixo:</p>]]></description>
 </item>
 <item>
     <title>Classificador BNCC</title>
@@ -82,8 +108,10 @@ Válido lembrar que o dado que está entrando nessa etapa do pipeline está &ldq
     <guid>https://www.lobdata.com.br/posts/bncc-classifier/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/bncc_classifier.png" referrerpolicy="no-referrer">
-            </div>Projeto desenvolvido pelos alunos Brisa Rosatti, Luciano Batista, Pedro Moreau, Wilson França do Curso de Data Science &amp; Machine Learning da Tera em colaboração com a Studos e ArcoTech.
-PARTE I: Estrutura do projeto Contexto Segundo o IBGE, no Brasil, existem registradas 124840 escolas de ensino fundamental e 28933 escolas do ensino médio. Em termos de número de matrículas, isso representa 26718830 matrículas para o ensino fundamental e 7550753 para o ensino médio https://cidades.]]></description>
+            </div><p>Projeto desenvolvido pelos alunos Brisa Rosatti, Luciano Batista, Pedro Moreau, Wilson França do Curso de Data Science &amp; Machine Learning da Tera em colaboração com a Studos e ArcoTech.</p>
+<h2 id="parte-i-estrutura-do-projeto">PARTE I: Estrutura do projeto</h2>
+<h3 id="contexto">Contexto</h3>
+<p>Segundo o IBGE, no Brasil, existem registradas 124840 escolas de ensino fundamental e 28933 escolas do ensino médio. Em termos de número de matrículas, isso representa 26718830 matrículas para o ensino fundamental e 7550753 para o ensino médio <a href="https://cidades.ibge.gov.br/brasil/pesquisa/13/5908" target="_blank" rel="noopener noreffer ">https://cidades.ibge.gov.br/brasil/pesquisa/13/5908</a>. Com o intuito de harmonizar a base curricular desse grande número escolas e estudantes, oferecendo assim um modelo de ensino de qualidade e que vise capacitar os alunos para as consecutivas fases da sua vida, o Ministério da Educação publicou, em 16 de setembro de 2015 a primeira versão da [Base Nacional Comum Curricular (BNCC)]~(<a href="http://basenacionalcomum.mec.gov.br/%29" target="_blank" rel="noopener noreffer ">http://basenacionalcomum.mec.gov.br/)</a>. Este documento normativo define o conjunto de aprendizagens que todos os alunos devem desenvolver ao longo da sua formação na Educação Básica.</p>]]></description>
 </item>
 <item>
     <title>Computer Vision</title>
@@ -93,8 +121,9 @@ PARTE I: Estrutura do projeto Contexto Segundo o IBGE, no Brasil, existem regist
     <guid>https://www.lobdata.com.br/posts/image-cleaning/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/computer_vision.png" referrerpolicy="no-referrer">
-            </div>O intuito desse post é compartilhar uma solução simples que resolvou um problema complexo que estávamos enfrentando em de nossos produtos aqui na Studos, a Leitora de Gabaritos. Dessa forma, outros que estejam com problemas similares possam talvez ter um ponto de vista diferente na resolução do problema.
-O que é a leitora de gabaritos? Dando um pouco de contexto sobre o produto, a Leitora de Gabaritos é uma API desenvolvida utilizando (principalmente) a seguinte stack:]]></description>
+            </div><p>O intuito desse post é compartilhar uma solução simples que resolvou um problema complexo que estávamos enfrentando em de nossos produtos aqui na <a href="https://www.studos.com.br" target="_blank" rel="noopener noreffer "><strong>Studos</strong></a>, a <em>Leitora de Gabaritos</em>. Dessa forma, outros que estejam com problemas similares possam talvez ter um ponto de vista diferente na resolução do problema.</p>
+<h2 id="o-que-é-a-leitora-de-gabaritos">O que é a leitora de gabaritos?</h2>
+<p>Dando um pouco de contexto sobre o produto, a Leitora de Gabaritos é uma API desenvolvida utilizando (principalmente) a seguinte stack:</p>]]></description>
 </item>
 <item>
     <title>Efficient Pandas</title>
@@ -104,21 +133,8 @@ O que é a leitora de gabaritos? Dando um pouco de contexto sobre o produto, a L
     <guid>https://www.lobdata.com.br/posts/efficient-pandas/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/efficient_pandas.png" referrerpolicy="no-referrer">
-            </div>Fala galera, tudo certo com vocês? Se você é um Cientista/Analista de dados, ou curte utilizar python para realizar diferentes análises em seu dataset, certamente já utilizou a biblioteca Pandas. Pandas é uma biblioteca open-source para estruturação e análise de dados, seus comandos se assemelham muitas vezes ao SQL, porém sua API traz um conjunto maior operações, maior robustez e se executado de forma correta, mais parformance.
-Nesse tutorial estou me baseando em um minicurso do DataCamp Writing Efficient Code with pandas.]]></description>
-</item>
-<item>
-    <title>Criando uma API Pronta para Produção com FastAPI - PT.5</title>
-    <link>https://www.lobdata.com.br/posts/econowallet-fastapi-pt5/</link>
-    <pubDate>Sun, 01 Aug 2021 00:00:00 &#43;0000</pubDate>
-    <author>Luciano</author>
-    <guid>https://www.lobdata.com.br/posts/econowallet-fastapi-pt5/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/img/fastapi.png" referrerpolicy="no-referrer">
-            </div>Nos Capítulos Anteriores &hellip; Como dito anteriormente, hoje vamos configurar o SQLAlchemy!!
-Essa é a parte 5 do nosso projeto do EconoWallet e se você quiser verificar o que já fizemos até o momento, acesse os links abaixo:
-Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Sem enrolação, vamos logo ao que interessa!!!
-Reorganizando o projeto Antes de configurar o ORM, vamos ajustar algumas coisas no nosso diretório. Como estamos seguindo para um estágio mais maduro da aplicação e que você já compreende o básico de configuração do FastAPI, precisaremos agora separar melhor as competências dentro do projeto.]]></description>
+            </div><p></p>
+<p>Fala galera, tudo certo com vocês? Se você é um Cientista/Analista de dados, ou curte utilizar python para realizar diferentes análises em seu dataset, certamente já utilizou a biblioteca <code>Pandas</code>. Pandas é uma biblioteca open-source para estruturação e análise de dados, seus comandos se assemelham muitas vezes ao SQL, porém sua API traz um conjunto maior operações, maior robustez e se executado de forma correta, mais parformance.</p>]]></description>
 </item>
 </channel>
 </rss>

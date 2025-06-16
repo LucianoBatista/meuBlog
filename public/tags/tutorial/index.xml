@@ -11,8 +11,10 @@
     <guid>https://www.lobdata.com.br/posts/bncc-classifier/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/bncc_classifier.png" referrerpolicy="no-referrer">
-            </div>Projeto desenvolvido pelos alunos Brisa Rosatti, Luciano Batista, Pedro Moreau, Wilson França do Curso de Data Science &amp; Machine Learning da Tera em colaboração com a Studos e ArcoTech.
-PARTE I: Estrutura do projeto Contexto Segundo o IBGE, no Brasil, existem registradas 124840 escolas de ensino fundamental e 28933 escolas do ensino médio. Em termos de número de matrículas, isso representa 26718830 matrículas para o ensino fundamental e 7550753 para o ensino médio https://cidades.]]></description>
+            </div><p>Projeto desenvolvido pelos alunos Brisa Rosatti, Luciano Batista, Pedro Moreau, Wilson França do Curso de Data Science &amp; Machine Learning da Tera em colaboração com a Studos e ArcoTech.</p>
+<h2 id="parte-i-estrutura-do-projeto">PARTE I: Estrutura do projeto</h2>
+<h3 id="contexto">Contexto</h3>
+<p>Segundo o IBGE, no Brasil, existem registradas 124840 escolas de ensino fundamental e 28933 escolas do ensino médio. Em termos de número de matrículas, isso representa 26718830 matrículas para o ensino fundamental e 7550753 para o ensino médio <a href="https://cidades.ibge.gov.br/brasil/pesquisa/13/5908" target="_blank" rel="noopener noreffer ">https://cidades.ibge.gov.br/brasil/pesquisa/13/5908</a>. Com o intuito de harmonizar a base curricular desse grande número escolas e estudantes, oferecendo assim um modelo de ensino de qualidade e que vise capacitar os alunos para as consecutivas fases da sua vida, o Ministério da Educação publicou, em 16 de setembro de 2015 a primeira versão da [Base Nacional Comum Curricular (BNCC)]~(<a href="http://basenacionalcomum.mec.gov.br/%29" target="_blank" rel="noopener noreffer ">http://basenacionalcomum.mec.gov.br/)</a>. Este documento normativo define o conjunto de aprendizagens que todos os alunos devem desenvolver ao longo da sua formação na Educação Básica.</p>]]></description>
 </item>
 <item>
     <title>Computer Vision</title>
@@ -22,8 +24,9 @@ PARTE I: Estrutura do projeto Contexto Segundo o IBGE, no Brasil, existem regist
     <guid>https://www.lobdata.com.br/posts/image-cleaning/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/computer_vision.png" referrerpolicy="no-referrer">
-            </div>O intuito desse post é compartilhar uma solução simples que resolvou um problema complexo que estávamos enfrentando em de nossos produtos aqui na Studos, a Leitora de Gabaritos. Dessa forma, outros que estejam com problemas similares possam talvez ter um ponto de vista diferente na resolução do problema.
-O que é a leitora de gabaritos? Dando um pouco de contexto sobre o produto, a Leitora de Gabaritos é uma API desenvolvida utilizando (principalmente) a seguinte stack:]]></description>
+            </div><p>O intuito desse post é compartilhar uma solução simples que resolvou um problema complexo que estávamos enfrentando em de nossos produtos aqui na <a href="https://www.studos.com.br" target="_blank" rel="noopener noreffer "><strong>Studos</strong></a>, a <em>Leitora de Gabaritos</em>. Dessa forma, outros que estejam com problemas similares possam talvez ter um ponto de vista diferente na resolução do problema.</p>
+<h2 id="o-que-é-a-leitora-de-gabaritos">O que é a leitora de gabaritos?</h2>
+<p>Dando um pouco de contexto sobre o produto, a Leitora de Gabaritos é uma API desenvolvida utilizando (principalmente) a seguinte stack:</p>]]></description>
 </item>
 <item>
     <title>Efficient Pandas</title>
@@ -33,8 +36,8 @@ O que é a leitora de gabaritos? Dando um pouco de contexto sobre o produto, a L
     <guid>https://www.lobdata.com.br/posts/efficient-pandas/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/efficient_pandas.png" referrerpolicy="no-referrer">
-            </div>Fala galera, tudo certo com vocês? Se você é um Cientista/Analista de dados, ou curte utilizar python para realizar diferentes análises em seu dataset, certamente já utilizou a biblioteca Pandas. Pandas é uma biblioteca open-source para estruturação e análise de dados, seus comandos se assemelham muitas vezes ao SQL, porém sua API traz um conjunto maior operações, maior robustez e se executado de forma correta, mais parformance.
-Nesse tutorial estou me baseando em um minicurso do DataCamp Writing Efficient Code with pandas.]]></description>
+            </div><p></p>
+<p>Fala galera, tudo certo com vocês? Se você é um Cientista/Analista de dados, ou curte utilizar python para realizar diferentes análises em seu dataset, certamente já utilizou a biblioteca <code>Pandas</code>. Pandas é uma biblioteca open-source para estruturação e análise de dados, seus comandos se assemelham muitas vezes ao SQL, porém sua API traz um conjunto maior operações, maior robustez e se executado de forma correta, mais parformance.</p>]]></description>
 </item>
 </channel>
 </rss>

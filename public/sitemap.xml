@@ -2,12 +2,15 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
+            <loc>https://www.lobdata.com.br/categories/aplica%C3%A7%C3%B5es/</loc><lastmod>2025-06-16T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://www.lobdata.com.br/categories/</loc><lastmod>2025-06-16T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://www.lobdata.com.br/</loc><lastmod>2025-06-16T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://www.lobdata.com.br/tags/machine-learning/</loc><lastmod>2025-06-16T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://www.lobdata.com.br/posts/</loc><lastmod>2025-06-16T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://www.lobdata.com.br/tags/</loc><lastmod>2025-06-16T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://www.lobdata.com.br/posts/testing_post/</loc><lastmod>2025-06-16T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://www.lobdata.com.br/tags/ai/</loc><lastmod>2023-11-20T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://www.lobdata.com.br/categories/</loc><lastmod>2023-11-20T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://www.lobdata.com.br/</loc><lastmod>2023-11-20T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://www.lobdata.com.br/posts/</loc><lastmod>2023-11-20T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://www.lobdata.com.br/tags/recommender-system/</loc><lastmod>2023-11-20T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://www.lobdata.com.br/tags/</loc><lastmod>2023-11-20T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://www.lobdata.com.br/categories/tutorials/</loc><lastmod>2023-11-20T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://www.lobdata.com.br/posts/recommender_systems_001/</loc><lastmod>2023-11-20T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://www.lobdata.com.br/posts/cnns/</loc><lastmod>2023-07-17T00:00:00&#43;00:00</lastmod></url><url>
@@ -45,7 +48,6 @@
             <loc>https://www.lobdata.com.br/posts/econowallet-fastapi-pt2/</loc><lastmod>2021-04-03T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://www.lobdata.com.br/posts/finance_control_app/</loc><lastmod>2021-03-30T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://www.lobdata.com.br/posts/demand_forecasting_brazilian_commodities/</loc><lastmod>2020-10-25T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://www.lobdata.com.br/tags/machine-learning/</loc><lastmod>2020-10-25T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://www.lobdata.com.br/tags/project/</loc><lastmod>2020-10-25T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://www.lobdata.com.br/tags/time-series/</loc><lastmod>2020-10-25T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://www.lobdata.com.br/tags/corplot/</loc><lastmod>2020-10-13T00:00:00&#43;00:00</lastmod></url><url>
@@ -67,6 +69,5 @@
             <loc>https://www.lobdata.com.br/tags/challenge/</loc><lastmod>2019-11-04T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://www.lobdata.com.br/posts/predictive_iot_energy/</loc><lastmod>2019-04-04T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://www.lobdata.com.br/posts/5_topics_data_science_application/</loc><lastmod>2019-03-16T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://www.lobdata.com.br/categories/aplica%C3%A7%C3%B5es/</loc><lastmod>2019-03-16T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://www.lobdata.com.br/tags/logistic/</loc><lastmod>2019-03-16T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://www.lobdata.com.br/tags/log%C3%ADstica/</loc><lastmod>2019-03-16T00:00:00&#43;00:00</lastmod></url></urlset>

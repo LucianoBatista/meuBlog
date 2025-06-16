@@ -4,28 +4,34 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Segmentação de clientes de Food Delivery - LobData</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Segmentação de clientes de Food Delivery" />
-<meta property="og:description" content="Segmentação de clientes de Food Delivery Neste projeto o objetivo é segmentar clientes de um food delivery. A segmentação permite que profissionais de marketing e product managers possam identificar subconjuntos de público-alvo para melhor adaptar suas estratégias.
+        <title>Segmentação de clientes de Food Delivery - LobData</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="https://www.lobdata.com.br/posts/segment-client/">
+  <meta property="og:site_name" content="LobData">
+  <meta property="og:title" content="Segmentação de clientes de Food Delivery">
+  <meta property="og:description" content="Segmentação de clientes de Food Delivery Neste projeto o objetivo é segmentar clientes de um food delivery. A segmentação permite que profissionais de marketing e product managers possam identificar subconjuntos de público-alvo para melhor adaptar suas estratégias.
 O dataset utilizado foi cedido pela Data Science Academy, e pode ser encontrado no meu github juntamente com todo o código apresentado aqui.
-Um breve overview do que será abordado no projeto:
-Preparação de dados Visualização de dados Padronização de variáveis Clusterização com K-Means Avaliação do melhor número de cluster com o índice de Calinski-Harabasz Bootstrap para avaliar consistência do cluster Visualização dos clusters Sem mais delongas, vamos ao código!" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.lobdata.com.br/posts/segment-client/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-06-19T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-06-19T00:00:00+00:00" /><meta property="og:site_name" content="LOBData" />
+Um breve overview do que será abordado no projeto:">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2020-06-19T00:00:00+00:00">
+    <meta property="article:modified_time" content="2020-06-19T00:00:00+00:00">
+    <meta property="article:tag" content="Project">
+    <meta property="article:tag" content="Data Science">
+    <meta property="article:tag" content="Machine Learning">
+    <meta property="article:tag" content="K-Means">
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Segmentação de clientes de Food Delivery"/>
-<meta name="twitter:description" content="Segmentação de clientes de Food Delivery Neste projeto o objetivo é segmentar clientes de um food delivery. A segmentação permite que profissionais de marketing e product managers possam identificar subconjuntos de público-alvo para melhor adaptar suas estratégias.
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Segmentação de clientes de Food Delivery">
+  <meta name="twitter:description" content="Segmentação de clientes de Food Delivery Neste projeto o objetivo é segmentar clientes de um food delivery. A segmentação permite que profissionais de marketing e product managers possam identificar subconjuntos de público-alvo para melhor adaptar suas estratégias.
 O dataset utilizado foi cedido pela Data Science Academy, e pode ser encontrado no meu github juntamente com todo o código apresentado aqui.
-Um breve overview do que será abordado no projeto:
-Preparação de dados Visualização de dados Padronização de variáveis Clusterização com K-Means Avaliação do melhor número de cluster com o índice de Calinski-Harabasz Bootstrap para avaliar consistência do cluster Visualização dos clusters Sem mais delongas, vamos ao código!"/>
-<meta name="twitter:site" content="@Luciano_Bats3"/>
+Um breve overview do que será abordado no projeto:">
+      <meta name="twitter:site" content="@Luciano_Bats3">
 <meta name="application-name" content="My cool site">
-<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="apple-mobile-web-app-title" content="My cool site">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/segment-client/" /><link rel="prev" href="https://www.lobdata.com.br/posts/cat_in_the_dat/" /><link rel="next" href="https://www.lobdata.com.br/posts/r_correlation/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/segment-client/" /><link rel="prev" href="https://www.lobdata.com.br/posts/cat_in_the_dat/" /><link rel="next" href="https://www.lobdata.com.br/posts/r_correlation/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
@@ -44,7 +50,7 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
             },"description": ""
     }
     </script></head>
-    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -170,7 +176,12 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
         alt="/img/food_delivery.png"
         title="food_delivery" /></p>
 <h2 id="libs">Libs</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">scales</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">lubridate</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">ggridges</span><span class="p">)</span>
@@ -180,13 +191,23 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">wrapr</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">fpc</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">wesanderson</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">skimr</span><span class="p">)</span>
-</span></span></code></pre></div><h2 id="análise-exploratória-dos-dados">Análise Exploratória dos Dados</h2>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">skimr</span><span class="p">)</span></span></span></code></pre></div></div>
+<h2 id="análise-exploratória-dos-dados">Análise Exploratória dos Dados</h2>
 <p>Vamos importar os dados e visualizar quais são as variáveis que iremos trabalhar ao longo desse projeto.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">orders_client_raw</span> <span class="o">&lt;-</span> <span class="nf">read_csv</span><span class="p">(</span><span class="s">&#34;data/dataset.csv&#34;</span><span class="p">)</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">orders_client_raw</span> <span class="o">&lt;-</span> <span class="nf">read_csv</span><span class="p">(</span><span class="s">&#34;data/dataset.csv&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nf">glimpse</span><span class="p">(</span><span class="n">orders_client_raw</span><span class="p">)</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">Rows</span><span class="o">:</span> <span class="m">260</span><span class="p">,</span><span class="m">645</span>
+</span></span><span class="line"><span class="cl"><span class="nf">glimpse</span><span class="p">(</span><span class="n">orders_client_raw</span><span class="p">)</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">Rows</span><span class="o">:</span> <span class="m">260</span><span class="p">,</span><span class="m">645</span>
 </span></span><span class="line"><span class="cl"><span class="n">Columns</span><span class="o">:</span> <span class="m">8</span>
 </span></span><span class="line"><span class="cl"><span class="o">$</span> <span class="n">id_transacao</span>    <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span> <span class="s">&#34;0x7901ee&#34;</span><span class="p">,</span> <span class="s">&#34;0x7901ee&#34;</span><span class="p">,</span> <span class="s">&#34;0x7901ee&#34;</span><span class="p">,</span> <span class="s">&#34;0x12b47f&#34;</span><span class="p">,</span> <span class="s">&#34;0x12b47f&#34;</span><span class="p">,</span> <span class="s">&#34;0x6d6979&#34;</span><span class="p">,</span> <span class="s">&#34;0x6d6979&#34;</span><span class="p">,</span> <span class="s">&#34;0x78dd1e&#34;</span><span class="p">,</span> <span class="s">&#34;0x78dd1e&#34;</span><span class="p">,</span> <span class="s">&#34;0x78dd1e&#34;</span><span class="p">,</span> <span class="s">&#34;0x4df8ab&#34;</span><span class="p">,</span> <span class="s">&#34;…
 </span></span></span><span class="line"><span class="cl"><span class="s">$ horario_pedido  &lt;dttm&gt; 2019-01-16 18:33:00, 2019-01-16 18:33:00, 2019-01-16 18:33:00, 2019-09-04 12:36:00, 2019-09-04 12:36:00, 2019-03-18 00:27:00, 2019-0…
@@ -195,8 +216,8 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl"><span class="o">$</span> <span class="n">quantidade_item</span> <span class="o">&lt;</span><span class="n">dbl</span><span class="o">&gt;</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span>…
 </span></span><span class="line"><span class="cl"><span class="o">$</span> <span class="n">latitude</span>        <span class="o">&lt;</span><span class="n">dbl</span><span class="o">&gt;</span> <span class="m">41.79413</span><span class="p">,</span> <span class="m">41.79413</span><span class="p">,</span> <span class="m">41.79413</span><span class="p">,</span> <span class="m">41.88449</span><span class="p">,</span> <span class="m">41.88449</span><span class="p">,</span> <span class="m">41.78458</span><span class="p">,</span> <span class="m">41.78458</span><span class="p">,</span> <span class="m">42.04931</span><span class="p">,</span> <span class="m">42.04931</span><span class="p">,</span> <span class="m">42.04931</span><span class="p">,</span> <span class="m">41.89420</span><span class="p">,</span> <span class="m">41.89420</span><span class="p">,</span> <span class="m">41.78458</span><span class="p">,</span> <span class="m">41</span><span class="n">.…</span>
 </span></span><span class="line"><span class="cl"><span class="o">$</span> <span class="n">longitude</span>       <span class="o">&lt;</span><span class="n">dbl</span><span class="o">&gt;</span> <span class="m">-88.01014</span><span class="p">,</span> <span class="m">-88.01014</span><span class="p">,</span> <span class="m">-88.01014</span><span class="p">,</span> <span class="m">-87.62706</span><span class="p">,</span> <span class="m">-87.62706</span><span class="p">,</span> <span class="m">-87.60756</span><span class="p">,</span> <span class="m">-87.60756</span><span class="p">,</span> <span class="m">-87.67761</span><span class="p">,</span> <span class="m">-87.67761</span><span class="p">,</span> <span class="m">-87.67761</span><span class="p">,</span> <span class="m">-87.62096</span><span class="p">,</span> <span class="m">-87.62096</span><span class="p">,</span> <span class="o">-</span>…
-</span></span><span class="line"><span class="cl"><span class="o">$</span> <span class="n">nome_item_fac</span>   <span class="o">&lt;</span><span class="n">fct</span><span class="o">&gt;</span> <span class="n">bebida</span><span class="p">,</span> <span class="n">pizza</span><span class="p">,</span> <span class="n">sobremesa</span><span class="p">,</span> <span class="n">salada</span><span class="p">,</span> <span class="n">sobremesa</span><span class="p">,</span> <span class="n">pizza</span><span class="p">,</span> <span class="n">sobremesa</span><span class="p">,</span> <span class="n">bebida</span><span class="p">,</span> <span class="n">pizza</span><span class="p">,</span> <span class="n">sobremesa</span><span class="p">,</span> <span class="n">salada</span><span class="p">,</span> <span class="n">sobremesa</span><span class="p">,</span> <span class="n">pizza</span><span class="p">,</span> <span class="n">sobremesa</span><span class="p">,</span> <span class="n">bebida</span><span class="p">,</span>…
-</span></span></code></pre></div><p>A nível de melhor compreender os dados podemos estabelecer um dicionário com o que cada preditor representa:</p>
+</span></span><span class="line"><span class="cl"><span class="o">$</span> <span class="n">nome_item_fac</span>   <span class="o">&lt;</span><span class="n">fct</span><span class="o">&gt;</span> <span class="n">bebida</span><span class="p">,</span> <span class="n">pizza</span><span class="p">,</span> <span class="n">sobremesa</span><span class="p">,</span> <span class="n">salada</span><span class="p">,</span> <span class="n">sobremesa</span><span class="p">,</span> <span class="n">pizza</span><span class="p">,</span> <span class="n">sobremesa</span><span class="p">,</span> <span class="n">bebida</span><span class="p">,</span> <span class="n">pizza</span><span class="p">,</span> <span class="n">sobremesa</span><span class="p">,</span> <span class="n">salada</span><span class="p">,</span> <span class="n">sobremesa</span><span class="p">,</span> <span class="n">pizza</span><span class="p">,</span> <span class="n">sobremesa</span><span class="p">,</span> <span class="n">bebida</span><span class="p">,</span>…</span></span></code></pre></div></div>
+<p>A nível de melhor compreender os dados podemos estabelecer um dicionário com o que cada preditor representa:</p>
 <ul>
 <li><strong>id_transacao</strong>: ID da transação. Um mesmo ID pode ter vários itens de um pedido.</li>
 <li><strong>horario_pedido</strong>: Horário exato do pedido.</li>
@@ -207,10 +228,25 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 <li><strong>longitude</strong>: Longitude da localidade onde o pedido foi gerado.</li>
 </ul>
 <p>Observamos que a variável nome_item possui um tipo de character, porém é mais indicado trabalhar com a mesma como fator.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">orders_client_raw</span><span class="o">$</span><span class="n">nome_item_fac</span> <span class="o">&lt;-</span> <span class="nf">as.factor</span><span class="p">(</span><span class="n">orders_client_raw</span><span class="o">$</span><span class="n">nome_item</span><span class="p">)</span>
-</span></span></code></pre></div><p>No R temos um pacote muito interessante que permite ter um panorama geral sobre os dados, com várias estatísticas mais básicas, chamado <code>skimr</code>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">skim</span><span class="p">(</span><span class="n">orders_client_raw</span><span class="p">)</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl">── <span class="n">Data</span> <span class="n">Summary</span> ────────────────────────
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">orders_client_raw</span><span class="o">$</span><span class="n">nome_item_fac</span> <span class="o">&lt;-</span> <span class="nf">as.factor</span><span class="p">(</span><span class="n">orders_client_raw</span><span class="o">$</span><span class="n">nome_item</span><span class="p">)</span></span></span></code></pre></div></div>
+<p>No R temos um pacote muito interessante que permite ter um panorama geral sobre os dados, com várias estatísticas mais básicas, chamado <code>skimr</code>.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">skim</span><span class="p">(</span><span class="n">orders_client_raw</span><span class="p">)</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl">── <span class="n">Data</span> <span class="n">Summary</span> ────────────────────────
 </span></span><span class="line"><span class="cl">                           <span class="n">Values</span>
 </span></span><span class="line"><span class="cl"><span class="n">Name</span>                       <span class="n">orders_client_raw</span>
 </span></span><span class="line"><span class="cl"><span class="n">Number</span> <span class="n">of</span> <span class="n">rows</span>             <span class="m">260645</span>
@@ -242,23 +278,38 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">── <span class="n">Variable</span> <span class="n">type</span><span class="o">:</span> <span class="n">POSIXct</span> ─────────────────────────────────────────────────────────────────────────────────────────
 </span></span><span class="line"><span class="cl">  <span class="n">skim_variable</span>  <span class="n">n_missing</span> <span class="n">complete_rate</span> <span class="n">min</span>                 <span class="n">max</span>                 <span class="n">median</span>              <span class="n">n_unique</span>
-</span></span><span class="line"><span class="cl"><span class="m">1</span> <span class="n">horario_pedido</span>         <span class="m">0</span>             <span class="m">1</span> <span class="m">2019-01-01</span> <span class="m">00</span><span class="o">:</span><span class="m">00</span><span class="o">:</span><span class="m">00</span> <span class="m">2019-12-30</span> <span class="m">23</span><span class="o">:</span><span class="m">59</span><span class="o">:</span><span class="m">00</span> <span class="m">2019-07-01</span> <span class="m">11</span><span class="o">:</span><span class="m">49</span><span class="o">:</span><span class="m">00</span>    <span class="m">76799</span>
-</span></span></code></pre></div><p>De mais importante no resumo acima, podemos ver que os dados não possuem valores missing (=D), temos 100.000 valores únicos no <code>id_transacao</code> e temos 4 produtos de diferentes categorias.</p>
+</span></span><span class="line"><span class="cl"><span class="m">1</span> <span class="n">horario_pedido</span>         <span class="m">0</span>             <span class="m">1</span> <span class="m">2019-01-01</span> <span class="m">00</span><span class="o">:</span><span class="m">00</span><span class="o">:</span><span class="m">00</span> <span class="m">2019-12-30</span> <span class="m">23</span><span class="o">:</span><span class="m">59</span><span class="o">:</span><span class="m">00</span> <span class="m">2019-07-01</span> <span class="m">11</span><span class="o">:</span><span class="m">49</span><span class="o">:</span><span class="m">00</span>    <span class="m">76799</span></span></span></code></pre></div></div>
+<p>De mais importante no resumo acima, podemos ver que os dados não possuem valores missing (=D), temos 100.000 valores únicos no <code>id_transacao</code> e temos 4 produtos de diferentes categorias.</p>
 <p>Localidade possívelmente precisará ser convertida à fator, pois cada valor representa um local diferente de onde o pedido processado. Mas caso venhámos a fazer alguma análise com esta variável podemos converte-la mais a frente.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">orders_client_v1</span> <span class="o">&lt;-</span> <span class="n">orders_client_raw</span> <span class="o">%&gt;%</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">orders_client_v1</span> <span class="o">&lt;-</span> <span class="n">orders_client_raw</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">month</span> <span class="o">=</span> <span class="nf">month</span><span class="p">(</span><span class="n">horario_pedido</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">abbr</span> <span class="o">=</span> <span class="bp">F</span><span class="p">),</span>
 </span></span><span class="line"><span class="cl">         <span class="n">year</span> <span class="o">=</span> <span class="nf">year</span><span class="p">(</span><span class="n">horario_pedido</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># visualizando o período referente aos dados</span>
 </span></span><span class="line"><span class="cl"><span class="n">orders_client_v1</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">select</span><span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="o">%&gt;%</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">unique</span><span class="p">()</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># A tibble: 1 x 1</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">unique</span><span class="p">()</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># A tibble: 1 x 1</span>
 </span></span><span class="line"><span class="cl">   <span class="n">year</span>
 </span></span><span class="line"><span class="cl">  <span class="o">&lt;</span><span class="n">dbl</span><span class="o">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="m">1</span>  <span class="m">2019</span>
-</span></span></code></pre></div><p>Vemos que os dados são referentes ao ano de 2019. Uma visualização interessante seria dos pedidos ao longo dos meses, podendo entender o que vende mais em determinado período.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># pedidos em cada mês</span>
+</span></span><span class="line"><span class="cl"><span class="m">1</span>  <span class="m">2019</span></span></span></code></pre></div></div>
+<p>Vemos que os dados são referentes ao ano de 2019. Uma visualização interessante seria dos pedidos ao longo dos meses, podendo entender o que vende mais em determinado período.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># pedidos em cada mês</span>
 </span></span><span class="line"><span class="cl"><span class="n">order_by_month_name</span> <span class="o">&lt;-</span> <span class="n">orders_client_v1</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">select</span><span class="p">(</span><span class="n">month</span><span class="p">,</span> <span class="n">nome_item_fac</span><span class="p">,</span> <span class="n">quantidade_item</span><span class="p">)</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">month</span><span class="p">,</span> <span class="n">nome_item_fac</span><span class="p">)</span> <span class="o">%&gt;%</span>
@@ -277,8 +328,8 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Quantidades de pedidos em milhar&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">       <span class="n">y</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">       <span class="n">color</span> <span class="o">=</span> <span class="s">&#34;Pedidos&#34;</span><span class="p">)</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">theme_minimal</span><span class="p">()</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl">  <span class="nf">theme_minimal</span><span class="p">()</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/graph1.png"
@@ -288,7 +339,12 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
         title="graph1" /></p>
 <p>Vimos que ao longo dos meses essa loja recebeu praticamente a mesma quantidade de pedidos todos os meses. Sempre com a menor preferência por salada e a maior preferência por sobremesa.</p>
 <p>Como nós também temos os dados durante as horas do dia, vamos realizar mais uma preparação nos dados.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># incluindo a hora do dia para visualizar depois</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># incluindo a hora do dia para visualizar depois</span>
 </span></span><span class="line"><span class="cl"><span class="n">orders_client_v2</span> <span class="o">&lt;-</span> <span class="n">orders_client_raw</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">month</span> <span class="o">=</span> <span class="nf">month</span><span class="p">(</span><span class="n">horario_pedido</span><span class="p">),</span>
 </span></span><span class="line"><span class="cl">         <span class="n">year</span> <span class="o">=</span> <span class="nf">year</span><span class="p">(</span><span class="n">horario_pedido</span><span class="p">),</span>
@@ -297,9 +353,14 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl"><span class="n">order_by_hour_name</span> <span class="o">&lt;-</span> <span class="n">orders_client_v2</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">select</span><span class="p">(</span><span class="n">month</span><span class="p">,</span> <span class="n">hour</span><span class="p">,</span> <span class="n">nome_item_fac</span><span class="p">,</span> <span class="n">quantidade_item</span><span class="p">)</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">month</span><span class="p">,</span> <span class="n">hour</span><span class="p">,</span> <span class="n">nome_item_fac</span><span class="p">)</span> <span class="o">%&gt;%</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">summarise</span><span class="p">(</span><span class="n">tot</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">quantidade_item</span><span class="p">))</span>
-</span></span></code></pre></div><p>Agora que o dataset <code>order_by_hour_name</code> possui as informações necesssárias para fazer a visualização, vamos visualizar então como foram os pedidos para cada hora do dia ao longo dos meses e do ano de 2019.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_by_hour_name</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">summarise</span><span class="p">(</span><span class="n">tot</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">quantidade_item</span><span class="p">))</span></span></span></code></pre></div></div>
+<p>Agora que o dataset <code>order_by_hour_name</code> possui as informações necesssárias para fazer a visualização, vamos visualizar então como foram os pedidos para cada hora do dia ao longo dos meses e do ano de 2019.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_by_hour_name</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">tot</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="nf">reorder</span><span class="p">(</span><span class="n">nome_item_fac</span><span class="p">,</span> <span class="n">tot</span><span class="p">),</span>
 </span></span><span class="line"><span class="cl">             <span class="n">fill</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">))</span> <span class="o">+</span>
@@ -310,8 +371,8 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl">  <span class="nf">guides</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Quantidades de pedidos em milhar&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">       <span class="n">y</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">       <span class="n">color</span> <span class="o">=</span> <span class="s">&#34;Pedidos&#34;</span><span class="p">)</span>
-</span></span></code></pre></div><p><em>Para uma melhor visualização, rode o código acima na sua máquina e visualize o gráfico em um maior tamanho.</em></p>
+</span></span><span class="line"><span class="cl">       <span class="n">color</span> <span class="o">=</span> <span class="s">&#34;Pedidos&#34;</span><span class="p">)</span></span></span></code></pre></div></div>
+<p><em>Para uma melhor visualização, rode o código acima na sua máquina e visualize o gráfico em um maior tamanho.</em></p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -329,7 +390,12 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </ul>
 <p>Bom, até agora nós visualizamos os pedidos durante o mês e durante as horas nos meses do ano. Mas seria interessante também observar o total da distribuição de pedidos no ano como um todo.</p>
 <p>Para isso eu gosto muito de utilizar o pacote <code>ggridgs</code>, com ele podemos observar as várias distribuições de uma forma mais compacta e ainda traçar linhas referentes aos diferentes quartis.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_by_hour_name</span> <span class="o">%&gt;%</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_by_hour_name</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl"><span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">tot</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">           <span class="n">y</span> <span class="o">=</span> <span class="nf">reorder</span><span class="p">(</span><span class="n">nome_item_fac</span><span class="p">,</span> <span class="n">tot</span><span class="p">),</span>
 </span></span><span class="line"><span class="cl">           <span class="n">fill</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">))</span> <span class="o">+</span>
@@ -339,8 +405,8 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl">  <span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="nf">label_number</span><span class="p">(</span><span class="n">scale</span> <span class="o">=</span> <span class="m">1</span><span class="o">/</span><span class="m">1000</span><span class="p">))</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">guides</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Quantidades de pedidos em milhar&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">       <span class="n">y</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">)</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl">       <span class="n">y</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">)</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/graph3.png"
@@ -350,7 +416,12 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
         title="graph3" /></p>
 <p>Legal, nesse gráfico nós vemos que em algumas distribuições nós temos caudas muito longas, e outras parecem ser bimodal. Pode ser interessante visualizar se esse comportamento está sendo provocado por outliers ou se é um comportamento &ldquo;real&rdquo; desses dados.</p>
 <p>Para isso chamaremos o bom e velho boxplot/violinoplot, porém adicionamos à ele uma camada de visualização dos pontos que o compões. Vamos lá!</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_by_hour_name</span> <span class="o">%&gt;%</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_by_hour_name</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="n">tot</span><span class="p">))</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">geom_half_boxplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">),</span> <span class="n">side</span> <span class="o">=</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">.3</span><span class="p">)</span> <span class="o">+</span>
@@ -360,8 +431,8 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl">       <span class="n">x</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">)</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">guides</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="bp">F</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nf">ggsave</span><span class="p">(</span><span class="s">&#34;graph5.png&#34;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="m">7</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="m">5</span><span class="p">)</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl"><span class="nf">ggsave</span><span class="p">(</span><span class="s">&#34;graph5.png&#34;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="m">7</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="m">5</span><span class="p">)</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/graph5.png"
@@ -369,7 +440,12 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
         data-sizes="auto"
         alt="/img/graph5.png"
         title="graph5" /></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_by_hour_name</span> <span class="o">%&gt;%</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_by_hour_name</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="n">tot</span><span class="p">))</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">geom_half_violin</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">),</span> <span class="n">side</span> <span class="o">=</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">.3</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="m">3</span><span class="p">)</span> <span class="o">+</span>
@@ -377,8 +453,8 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl">  <span class="nf">coord_flip</span><span class="p">()</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Quantidade total de pedidos&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">       <span class="n">x</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">)</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">guides</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="bp">F</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl">  <span class="nf">guides</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="bp">F</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/graph4.png"
@@ -387,7 +463,12 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
         alt="/img/graph4.png"
         title="graph4" /></p>
 <p>Vamos colocar um highlight na região de outliers</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_by_hour_name</span> <span class="o">%&gt;%</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_by_hour_name</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="n">tot</span><span class="p">))</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">geom_half_boxplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">),</span> <span class="n">side</span> <span class="o">=</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">.3</span><span class="p">)</span> <span class="o">+</span>
@@ -400,8 +481,8 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Quantidade total de pedidos&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">       <span class="n">x</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">)</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">guides</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="bp">F</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">theme_minimal</span><span class="p">()</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl">  <span class="nf">theme_minimal</span><span class="p">()</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/graph6.png"
@@ -412,7 +493,12 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 <p>Ótimo, na sequência acima nós podemos visualizar as regiões com outliers para cada classe de pedido. Como nós estamos tentando entender melhor os dados, não faremos nenhum tratamento neles e levaremos para o modelo final (k-means).</p>
 <p>Uma observação interessante é que, realizando essa segmentação, poderemos entender melhor qual grupo de clientes que consomem mais saladas e que também bebem mais que outros consumidores (outliers do nossos dados).</p>
 <p>Vamos visualizar como está sendo os pedidos referente a cada localidade.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># como dito antes, aqui nós convertemos a localidade para fator</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># como dito antes, aqui nós convertemos a localidade para fator</span>
 </span></span><span class="line"><span class="cl"><span class="n">order_by_localidade</span> <span class="o">&lt;-</span> <span class="n">orders_client_v2</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">select</span><span class="p">(</span><span class="n">localidade</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">hour</span><span class="p">,</span> <span class="n">nome_item_fac</span><span class="p">,</span> <span class="n">quantidade_item</span><span class="p">)</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">localidade</span> <span class="o">=</span> <span class="nf">as.factor</span><span class="p">(</span><span class="n">localidade</span><span class="p">))</span> <span class="o">%&gt;%</span>
@@ -429,8 +515,8 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl">  <span class="nf">scale_y_reordered</span><span class="p">()</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">guides</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="bp">F</span><span class="p">)</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Quantidade total de pedidos&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">       <span class="n">y</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">)</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl">       <span class="n">y</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">)</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/graph7.png"
@@ -445,7 +531,12 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 <li>Maior consumo de pizza, sobremesa e bebida do grupo 4, 7 e 9.</li>
 </ul>
 <p>Por fim, como temos dados períodos bem completos pode ser interessante dá uma olhada num heatmap da quantidade de pedidos ao longo do ano.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_by_localidade</span> <span class="o">%&gt;%</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_by_localidade</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">hour</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="nf">as.factor</span><span class="p">(</span><span class="n">month</span><span class="p">),</span>
 </span></span><span class="line"><span class="cl">             <span class="n">fill</span> <span class="o">=</span> <span class="n">tot</span><span class="p">))</span> <span class="o">+</span>
@@ -456,8 +547,8 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Hora do dia&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">       <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Meses do ano&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">       <span class="n">fill</span> <span class="o">=</span> <span class="s">&#34;Totais de\nPedidos&#34;</span><span class="p">)</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">theme_minimal</span><span class="p">()</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl">  <span class="nf">theme_minimal</span><span class="p">()</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/graph8.png"
@@ -472,12 +563,22 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 <p>Cada distância dessa é indicada para um tipo de dado, sendo a mais usada a euclidiana (dados numéricos). Ao mudar a medida de distância damos origem a diferentes algorítmos de clusterização, e como você pode imaginar, essa pluralidade é tão grande que facilmente encontramos livros inteiros apenas sobre clusterização.</p>
 <p>Aqui nós optamos por utilizar o mais popular entre eles, o k-means, e primeiramente vamos pivotar os dados para um formato que será melhor analisado pelo algorítmo.</p>
 <h2 id="pivotando">Pivotando</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_client_clustering</span> <span class="o">&lt;-</span> <span class="n">orders_client_raw</span> <span class="o">%&gt;%</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">order_client_clustering</span> <span class="o">&lt;-</span> <span class="n">orders_client_raw</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">select</span><span class="p">(</span><span class="n">id_transacao</span><span class="p">,</span> <span class="n">nome_item_fac</span><span class="p">,</span> <span class="n">quantidade_item</span><span class="p">)</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">pivot_wider</span><span class="p">(</span><span class="n">id_transacao</span><span class="p">,</span> <span class="n">names_from</span> <span class="o">=</span> <span class="n">nome_item_fac</span><span class="p">,</span> <span class="n">values_from</span> <span class="o">=</span> <span class="n">quantidade_item</span><span class="p">,</span> <span class="n">values_fill</span> <span class="o">=</span> <span class="m">0</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">order_client_clustering</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># A tibble: 100,000 x 5</span>
+</span></span><span class="line"><span class="cl"><span class="n">order_client_clustering</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># A tibble: 100,000 x 5</span>
 </span></span><span class="line"><span class="cl">   <span class="n">id_transacao</span> <span class="n">bebida</span> <span class="n">pizza</span> <span class="n">sobremesa</span> <span class="n">salada</span>
 </span></span><span class="line"><span class="cl">   <span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span>         <span class="o">&lt;</span><span class="n">dbl</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">dbl</span><span class="o">&gt;</span>     <span class="o">&lt;</span><span class="n">dbl</span><span class="o">&gt;</span>  <span class="o">&lt;</span><span class="n">dbl</span><span class="o">&gt;</span>
 </span></span><span class="line"><span class="cl"> <span class="m">1</span> <span class="mh">0x7901ee</span>          <span class="m">2</span>     <span class="m">2</span>         <span class="m">2</span>      <span class="m">0</span>
@@ -490,10 +591,15 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl"> <span class="m">8</span> <span class="mh">0x653685</span>          <span class="m">1</span>     <span class="m">4</span>         <span class="m">4</span>      <span class="m">0</span>
 </span></span><span class="line"><span class="cl"> <span class="m">9</span> <span class="mh">0x44fe1b</span>          <span class="m">1</span>     <span class="m">2</span>         <span class="m">2</span>      <span class="m">0</span>
 </span></span><span class="line"><span class="cl"><span class="m">10</span> <span class="mh">0x8ade21</span>          <span class="m">2</span>     <span class="m">2</span>         <span class="m">3</span>      <span class="m">1</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># … with 99,990 more rows</span>
-</span></span></code></pre></div><p>Como falamos antes, o k-means e outros algorítmos dessa classe de modelos, trabalham com distâncias, por isso é extremamente interessante que tenhamos os dados numa mesma escala e unidade. Aqui aplicaremos uma padronização (média = 0 e desvio = 1), assumindo assim que nossa distribuição é uma distribuição normal, o que de fato vimos que na maioria dos casos essa premissa se fez verdade.</p>
+</span></span><span class="line"><span class="cl"><span class="c1"># … with 99,990 more rows</span></span></span></code></pre></div></div>
+<p>Como falamos antes, o k-means e outros algorítmos dessa classe de modelos, trabalham com distâncias, por isso é extremamente interessante que tenhamos os dados numa mesma escala e unidade. Aqui aplicaremos uma padronização (média = 0 e desvio = 1), assumindo assim que nossa distribuição é uma distribuição normal, o que de fato vimos que na maioria dos casos essa premissa se fez verdade.</p>
 <h2 id="padronização">Padronização</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># variáveis para padronizar</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># variáveis para padronizar</span>
 </span></span><span class="line"><span class="cl"><span class="n">vars_to_use</span> <span class="o">&lt;-</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">order_client_clustering</span><span class="p">)</span><span class="n">[</span><span class="m">-1</span><span class="n">]</span>
 </span></span><span class="line"><span class="cl"><span class="n">pmatrix</span> <span class="o">&lt;-</span> <span class="nf">scale</span><span class="p">(</span><span class="n">order_client_clustering[</span><span class="p">,</span> <span class="n">vars_to_use]</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="n">pcenter</span> <span class="o">&lt;-</span> <span class="nf">attr</span><span class="p">(</span><span class="n">pmatrix</span><span class="p">,</span> <span class="s">&#34;scaled:center&#34;</span><span class="p">)</span> <span class="c1"># parâmetro que foi utilizado para centralizar</span>
@@ -506,8 +612,8 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># matriz que utilizaremos para modelagem</span>
-</span></span><span class="line"><span class="cl"><span class="n">pmatrix</span> <span class="o">&lt;-</span> <span class="nf">rm_scales</span><span class="p">(</span><span class="n">pmatrix</span><span class="p">)</span>
-</span></span></code></pre></div><h2 id="k-means">K-means</h2>
+</span></span><span class="line"><span class="cl"><span class="n">pmatrix</span> <span class="o">&lt;-</span> <span class="nf">rm_scales</span><span class="p">(</span><span class="n">pmatrix</span><span class="p">)</span></span></span></code></pre></div></div>
+<h2 id="k-means">K-means</h2>
 <p>Antes de iniciar a implementação do k-means, vale pontuar algumas questões importantes sobre o algorítimo e que levaram a adotar o workflow abaixo.</p>
 <ul>
 <li>O k-means agrupa os dados para um número pré-determinado de k-clusters. Então é interessante ecolher um número de clusters anteriomente.</li>
@@ -516,7 +622,12 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </ul>
 <p>O último ponto trás o conceito de &ldquo;clusters reais&rdquo;, que de forma simplificada nada mais é do que um cluster de pontos que não são bem explicados por nenhum outro cluster. Para verificar isso vamos utilizar uma reamostragem bootstrap e rodar o kmeans() várias vezes e em diferentes porções dos dados e medir isso.</p>
 <p>E por fim, iremos utilizar o index <strong>Calinski-Harabasz</strong> para identificar o melhor cluster. Existem <em>váaarias</em> formas de fazer isso, mas eu preferi escolher essa e aqui segue um <a href="https://ethen8181.github.io/machine-learning/clustering_old/clustering/clustering.html" target="_blank" rel="noopener noreffer ">link</a> caso você queira entender melhor sobres as definições matemáticos por trás desse método, <strong>muito bem explicado</strong> por sinal.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># 1 - kmeansruns para encontrar o melhor número de cluster e visualizar o calinski-harabasz index</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># 1 - kmeansruns para encontrar o melhor número de cluster e visualizar o calinski-harabasz index</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># 4 - clusterboot() para analisar a estabilidade do cluster</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># 2 - col_to_print</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># 3 - print_cluster()</span>
@@ -538,8 +649,8 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl">  <span class="nf">geom_line</span><span class="p">(</span><span class="n">linetype</span><span class="o">=</span><span class="s">&#34;dashed&#34;</span><span class="p">)</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span> <span class="o">=</span> <span class="m">0</span><span class="o">:</span><span class="m">10</span><span class="p">)</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">theme_minimal</span><span class="p">()</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Calinski-Harabasz Index&#34;</span><span class="p">)</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Calinski-Harabasz Index&#34;</span><span class="p">)</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/graph9.png"
@@ -548,25 +659,45 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
         alt="/img/graph9.png"
         title="graph9" /></p>
 <p>Quanto maior o índice, melhor. Então eu optei por escolher dois dos maiores pontos (3 e 8 clusters) e visualizar como se dá o comportamento deles quando realizado o bootstrap.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># essa célula pode demorar um pouco para rodar dependendo da sua máquina</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># essa célula pode demorar um pouco para rodar dependendo da sua máquina</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># running o clusterboot pra melhor escolher o k</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># k = 3</span>
 </span></span><span class="line"><span class="cl"><span class="n">cboot_3</span> <span class="o">&lt;-</span> <span class="nf">clusterboot</span><span class="p">(</span><span class="n">pmatrix</span><span class="p">,</span> <span class="n">clustermethod</span> <span class="o">=</span> <span class="n">kmeansCBI</span><span class="p">,</span> <span class="n">runs</span> <span class="o">=</span> <span class="m">100</span><span class="p">,</span> <span class="n">iter.max</span> <span class="o">=</span> <span class="m">100</span><span class="p">,</span> <span class="n">krange</span> <span class="o">=</span> <span class="m">3</span><span class="p">,</span> <span class="n">seed</span> <span class="o">=</span> <span class="m">2020</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># k = 8</span>
-</span></span><span class="line"><span class="cl"><span class="n">cboot_8</span> <span class="o">&lt;-</span> <span class="nf">clusterboot</span><span class="p">(</span><span class="n">pmatrix</span><span class="p">,</span> <span class="n">clustermethod</span> <span class="o">=</span> <span class="n">kmeansCBI</span><span class="p">,</span> <span class="n">runs</span> <span class="o">=</span> <span class="m">100</span><span class="p">,</span> <span class="n">iter.max</span> <span class="o">=</span> <span class="m">100</span><span class="p">,</span> <span class="n">krange</span> <span class="o">=</span> <span class="m">8</span><span class="p">,</span> <span class="n">seed</span> <span class="o">=</span> <span class="m">2020</span><span class="p">)</span>
-</span></span></code></pre></div><p>No objeto <code>cboot_x</code> retornado pela função <code>clusterboot()</code> podemos chamar o camapo <code>$bootmean</code> que indica justamente qual foi a estabilidade do cluster ao longo das 100 iterações do bootstrap.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">cboot_3</span><span class="o">$</span><span class="n">bootmean</span>
-</span></span><span class="line"><span class="cl"><span class="n">[1]</span> <span class="m">1</span> <span class="m">1</span> <span class="m">1</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">cboot_8</span><span class="o">$</span><span class="n">bootmean</span>
-</span></span><span class="line"><span class="cl"><span class="n">[1]</span> <span class="m">0.6846583</span> <span class="m">0.9253406</span> <span class="m">0.8652381</span> <span class="m">0.7604600</span> <span class="m">0.6980723</span> <span class="m">0.9149958</span> <span class="m">0.8921955</span> <span class="m">0.7588892</span>
-</span></span></code></pre></div><p>O que vemos aqui é que estranhamente o modelo com 3 clusters tem uma estabilidade de 1, o que seria perfeito em se tratando que o range de valores possíveis dessa técnica é de 0 a 1, provavelmente tem alguma coisa errada com esse número de clusters já que nada na vida é tão perfeito assim. Por isso, vamos optar de seguir com 8 clusters, utilizando então o objeto <code>cboot_8</code>.</p>
+</span></span><span class="line"><span class="cl"><span class="n">cboot_8</span> <span class="o">&lt;-</span> <span class="nf">clusterboot</span><span class="p">(</span><span class="n">pmatrix</span><span class="p">,</span> <span class="n">clustermethod</span> <span class="o">=</span> <span class="n">kmeansCBI</span><span class="p">,</span> <span class="n">runs</span> <span class="o">=</span> <span class="m">100</span><span class="p">,</span> <span class="n">iter.max</span> <span class="o">=</span> <span class="m">100</span><span class="p">,</span> <span class="n">krange</span> <span class="o">=</span> <span class="m">8</span><span class="p">,</span> <span class="n">seed</span> <span class="o">=</span> <span class="m">2020</span><span class="p">)</span></span></span></code></pre></div></div>
+<p>No objeto <code>cboot_x</code> retornado pela função <code>clusterboot()</code> podemos chamar o camapo <code>$bootmean</code> que indica justamente qual foi a estabilidade do cluster ao longo das 100 iterações do bootstrap.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">cboot_3</span><span class="o">$</span><span class="n">bootmean</span>
+</span></span><span class="line"><span class="cl"><span class="n">[1]</span> <span class="m">1</span> <span class="m">1</span> <span class="m">1</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">cboot_8</span><span class="o">$</span><span class="n">bootmean</span>
+</span></span><span class="line"><span class="cl"><span class="n">[1]</span> <span class="m">0.6846583</span> <span class="m">0.9253406</span> <span class="m">0.8652381</span> <span class="m">0.7604600</span> <span class="m">0.6980723</span> <span class="m">0.9149958</span> <span class="m">0.8921955</span> <span class="m">0.7588892</span></span></span></code></pre></div></div>
+<p>O que vemos aqui é que estranhamente o modelo com 3 clusters tem uma estabilidade de 1, o que seria perfeito em se tratando que o range de valores possíveis dessa técnica é de 0 a 1, provavelmente tem alguma coisa errada com esse número de clusters já que nada na vida é tão perfeito assim. Por isso, vamos optar de seguir com 8 clusters, utilizando então o objeto <code>cboot_8</code>.</p>
 <p>O que os números do <code>$bootmean</code> nos dizem?</p>
 <ul>
 <li>clusters com valores <strong>menores que 0.6</strong> são considerados instáveis.</li>
 <li>valores <strong>entre 0.6 e 0.75</strong> indicam que o cluster encontrou algum nível de padrão nos dados.</li>
 <li>valores acima disso possui maior estabilidade, sendo os mais estáveis os valores <strong>acima de 0.85</strong>.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># groups recebe os datasets com os cluster</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># groups recebe os datasets com os cluster</span>
 </span></span><span class="line"><span class="cl"><span class="n">groups</span> <span class="o">&lt;-</span> <span class="n">cboot_8</span><span class="o">$</span><span class="n">result</span><span class="o">$</span><span class="n">partition</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># colunas que serão utilizadas dataset final com os clusters</span>
@@ -577,15 +708,20 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl">  <span class="nf">lapply</span><span class="p">(</span><span class="n">groupedID</span><span class="p">,</span> <span class="kr">function</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="n">df[</span><span class="p">,</span> <span class="n">columns]</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">clusters</span> <span class="o">&lt;-</span> <span class="nf">print_clusters</span><span class="p">(</span><span class="n">order_client_clustering</span><span class="p">,</span> <span class="n">groups</span><span class="p">,</span> <span class="n">cols_to_print</span><span class="p">)</span>
-</span></span></code></pre></div><p>Nesse ponto, o que temos é uma lista com um dataframe para cada cluster, ou seja, todos os pontos do nosso dataset original nos clusters que o modelo identificou.</p>
+</span></span><span class="line"><span class="cl"><span class="n">clusters</span> <span class="o">&lt;-</span> <span class="nf">print_clusters</span><span class="p">(</span><span class="n">order_client_clustering</span><span class="p">,</span> <span class="n">groups</span><span class="p">,</span> <span class="n">cols_to_print</span><span class="p">)</span></span></span></code></pre></div></div>
+<p>Nesse ponto, o que temos é uma lista com um dataframe para cada cluster, ou seja, todos os pontos do nosso dataset original nos clusters que o modelo identificou.</p>
 <p>Vamos agora fazer algumas visualizações em cada cluster</p>
 <h2 id="clusters-visualization">Clusters Visualization</h2>
 <p>Nas próximas visualizações teremos basicamente o mesmo código de plotagem, onde cada gráfico trás a informação de um cliente (id_transacao), e qual o número de pedidos (1, 2, 3, 4 ou 5) que o mesmo fez em relação a cada produto (bebida, pizza, salada, sobremesa).</p>
 <p>Uma linha horizontal foi traçada para representar um cliente dentre os milhares presentes nos plots.</p>
 <h3 id="cluster-1">Cluster 1</h3>
 <p>O cluster 1 trás os clientes que possuem um maior consumo de sobremesa e salada, e que consomem pouco, ou não consomem nem bebida nem pizza. Aqueles que querem ser saudáveis mas não dispensam um docinho.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_1</span> <span class="o">&lt;-</span> <span class="n">clusters[[1]]</span> <span class="o">%&gt;%</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_1</span> <span class="o">&lt;-</span> <span class="n">clusters[[1]]</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">pivot_longer</span><span class="p">(</span><span class="n">cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;bebida&#34;</span><span class="p">,</span> <span class="s">&#34;pizza&#34;</span><span class="p">,</span> <span class="s">&#34;sobremesa&#34;</span><span class="p">,</span> <span class="s">&#34;salada&#34;</span><span class="p">),</span> <span class="n">names_to</span> <span class="o">=</span> <span class="s">&#34;pedidos&#34;</span><span class="p">,</span> <span class="n">values_to</span> <span class="o">=</span> <span class="s">&#34;values&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
@@ -601,8 +737,8 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl">       <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;A linha horizontal indica a informação de um cliente e seus pedidos&#34;</span><span class="p">)</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.y.left</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
 </span></span><span class="line"><span class="cl">        <span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
-</span></span><span class="line"><span class="cl">        <span class="n">axis.ticks.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">())</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl">        <span class="n">axis.ticks.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">())</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/graph10.png"
@@ -612,7 +748,12 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
         title="graph10" /></p>
 <h3 id="cluster-2">Cluster 2</h3>
 <p>O cluster 2 é um público que consome bem pouco, e quando consome, consome mais pizza, sobremesa e alguns ainda consomem bebida. Esses são realmente aversos a saladas.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_2</span> <span class="o">&lt;-</span> <span class="n">clusters[[2]]</span> <span class="o">%&gt;%</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_2</span> <span class="o">&lt;-</span> <span class="n">clusters[[2]]</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">pivot_longer</span><span class="p">(</span><span class="n">cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;bebida&#34;</span><span class="p">,</span> <span class="s">&#34;pizza&#34;</span><span class="p">,</span> <span class="s">&#34;sobremesa&#34;</span><span class="p">,</span> <span class="s">&#34;salada&#34;</span><span class="p">),</span> <span class="n">names_to</span> <span class="o">=</span> <span class="s">&#34;pedidos&#34;</span><span class="p">,</span> <span class="n">values_to</span> <span class="o">=</span> <span class="s">&#34;values&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
@@ -628,8 +769,8 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl">       <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;A linha horizontal indica a informação de um cliente e seus pedidos&#34;</span><span class="p">)</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.y.left</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
 </span></span><span class="line"><span class="cl">        <span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
-</span></span><span class="line"><span class="cl">        <span class="n">axis.ticks.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">())</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl">        <span class="n">axis.ticks.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">())</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/graph11.png"
@@ -639,7 +780,12 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
         title="graph11" /></p>
 <h3 id="cluster-3">Cluster 3</h3>
 <p>No cluster 3 nós vemos os clientes que pedem em maior quantidade pizza e sobremesa e optam por não pedir ou pedir pouco salada e bebida.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_3</span> <span class="o">&lt;-</span> <span class="n">clusters[[3]]</span> <span class="o">%&gt;%</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_3</span> <span class="o">&lt;-</span> <span class="n">clusters[[3]]</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">pivot_longer</span><span class="p">(</span><span class="n">cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;bebida&#34;</span><span class="p">,</span> <span class="s">&#34;pizza&#34;</span><span class="p">,</span> <span class="s">&#34;sobremesa&#34;</span><span class="p">,</span> <span class="s">&#34;salada&#34;</span><span class="p">),</span> <span class="n">names_to</span> <span class="o">=</span> <span class="s">&#34;pedidos&#34;</span><span class="p">,</span> <span class="n">values_to</span> <span class="o">=</span> <span class="s">&#34;values&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
@@ -655,8 +801,8 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl">       <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;A linha horizontal indica a informação de um cliente e seus pedidos&#34;</span><span class="p">)</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.y.left</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
 </span></span><span class="line"><span class="cl">        <span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
-</span></span><span class="line"><span class="cl">        <span class="n">axis.ticks.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">())</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl">        <span class="n">axis.ticks.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">())</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/graph12.png"
@@ -666,7 +812,12 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
         title="graph12" /></p>
 <h3 id="cluster-4">Cluster 4</h3>
 <p>O cluster 4 trás as pessoas que gostam de sobremesa mas que pedem um pouco de pizza e salada. Além disso não costuma pedir bebidas.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_4</span> <span class="o">&lt;-</span> <span class="n">clusters[[4]]</span> <span class="o">%&gt;%</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_4</span> <span class="o">&lt;-</span> <span class="n">clusters[[4]]</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">pivot_longer</span><span class="p">(</span><span class="n">cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;bebida&#34;</span><span class="p">,</span> <span class="s">&#34;pizza&#34;</span><span class="p">,</span> <span class="s">&#34;sobremesa&#34;</span><span class="p">,</span> <span class="s">&#34;salada&#34;</span><span class="p">),</span> <span class="n">names_to</span> <span class="o">=</span> <span class="s">&#34;pedidos&#34;</span><span class="p">,</span> <span class="n">values_to</span> <span class="o">=</span> <span class="s">&#34;values&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
@@ -682,8 +833,8 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl">       <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;A linha horizontal indica a informação de um cliente e seus pedidos&#34;</span><span class="p">)</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.y.left</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
 </span></span><span class="line"><span class="cl">        <span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
-</span></span><span class="line"><span class="cl">        <span class="n">axis.ticks.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">())</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl">        <span class="n">axis.ticks.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">())</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/graph13.png"
@@ -693,7 +844,12 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
         title="graph13" /></p>
 <h3 id="cluster-5">Cluster 5</h3>
 <p>Aqui vemos mais um cluster onde os clientes gostam de pedir muita salda com sobremesa, mas não dispensam uma pizza em algumas situações.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_5</span> <span class="o">&lt;-</span> <span class="n">clusters[[5]]</span> <span class="o">%&gt;%</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_5</span> <span class="o">&lt;-</span> <span class="n">clusters[[5]]</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">pivot_longer</span><span class="p">(</span><span class="n">cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;bebida&#34;</span><span class="p">,</span> <span class="s">&#34;pizza&#34;</span><span class="p">,</span> <span class="s">&#34;sobremesa&#34;</span><span class="p">,</span> <span class="s">&#34;salada&#34;</span><span class="p">),</span> <span class="n">names_to</span> <span class="o">=</span> <span class="s">&#34;pedidos&#34;</span><span class="p">,</span> <span class="n">values_to</span> <span class="o">=</span> <span class="s">&#34;values&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
@@ -709,8 +865,8 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl">       <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;A linha horizontal indica a informação de um cliente e seus pedidos&#34;</span><span class="p">)</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.y.left</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
 </span></span><span class="line"><span class="cl">        <span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
-</span></span><span class="line"><span class="cl">        <span class="n">axis.ticks.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">())</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl">        <span class="n">axis.ticks.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">())</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/graph14.png"
@@ -720,7 +876,12 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
         title="graph14" /></p>
 <h3 id="cluster-6">Cluster 6</h3>
 <p>Os clientes do grupo 6 são também bem aversos a salada, optando por uma combinação perfeita, sobremesa e pizza.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_6</span> <span class="o">&lt;-</span> <span class="n">clusters[[6]]</span> <span class="o">%&gt;%</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_6</span> <span class="o">&lt;-</span> <span class="n">clusters[[6]]</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">pivot_longer</span><span class="p">(</span><span class="n">cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;bebida&#34;</span><span class="p">,</span> <span class="s">&#34;pizza&#34;</span><span class="p">,</span> <span class="s">&#34;sobremesa&#34;</span><span class="p">,</span> <span class="s">&#34;salada&#34;</span><span class="p">),</span> <span class="n">names_to</span> <span class="o">=</span> <span class="s">&#34;pedidos&#34;</span><span class="p">,</span> <span class="n">values_to</span> <span class="o">=</span> <span class="s">&#34;values&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
@@ -736,8 +897,8 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl">       <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;A linha horizontal indica a informação de um cliente e seus pedidos&#34;</span><span class="p">)</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.y.left</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
 </span></span><span class="line"><span class="cl">        <span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
-</span></span><span class="line"><span class="cl">        <span class="n">axis.ticks.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">())</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl">        <span class="n">axis.ticks.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">())</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/graph15.png"
@@ -747,7 +908,12 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
         title="graph15" /></p>
 <h3 id="cluster-7">Cluster 7</h3>
 <p>No cluster 7 temos aqueles clientes que juntamente a pizza com sobremesa, adicionam uma bebida.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_7</span> <span class="o">&lt;-</span> <span class="n">clusters[[7]]</span> <span class="o">%&gt;%</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_7</span> <span class="o">&lt;-</span> <span class="n">clusters[[7]]</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">pivot_longer</span><span class="p">(</span><span class="n">cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;bebida&#34;</span><span class="p">,</span> <span class="s">&#34;pizza&#34;</span><span class="p">,</span> <span class="s">&#34;sobremesa&#34;</span><span class="p">,</span> <span class="s">&#34;salada&#34;</span><span class="p">),</span> <span class="n">names_to</span> <span class="o">=</span> <span class="s">&#34;pedidos&#34;</span><span class="p">,</span> <span class="n">values_to</span> <span class="o">=</span> <span class="s">&#34;values&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
@@ -763,8 +929,8 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl">       <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;A linha horizontal indica a informação de um cliente e seus pedidos&#34;</span><span class="p">)</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.y.left</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
 </span></span><span class="line"><span class="cl">        <span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
-</span></span><span class="line"><span class="cl">        <span class="n">axis.ticks.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">())</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl">        <span class="n">axis.ticks.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">())</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/graph16.png"
@@ -774,7 +940,12 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
         title="graph16" /></p>
 <h3 id="cluster-8">Cluster 8</h3>
 <p>E por fim, o cluster os loucos por sobremesa.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_8</span> <span class="o">&lt;-</span> <span class="n">clusters[[8]]</span> <span class="o">%&gt;%</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">cluster_8</span> <span class="o">&lt;-</span> <span class="n">clusters[[8]]</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">pivot_longer</span><span class="p">(</span><span class="n">cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;bebida&#34;</span><span class="p">,</span> <span class="s">&#34;pizza&#34;</span><span class="p">,</span> <span class="s">&#34;sobremesa&#34;</span><span class="p">,</span> <span class="s">&#34;salada&#34;</span><span class="p">),</span> <span class="n">names_to</span> <span class="o">=</span> <span class="s">&#34;pedidos&#34;</span><span class="p">,</span> <span class="n">values_to</span> <span class="o">=</span> <span class="s">&#34;values&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
@@ -790,8 +961,8 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </span></span><span class="line"><span class="cl">       <span class="n">subtitle</span> <span class="o">=</span> <span class="s">&#34;A linha horizontal indica a informação de um cliente e seus pedidos&#34;</span><span class="p">)</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.y.left</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
 </span></span><span class="line"><span class="cl">        <span class="n">axis.title.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
-</span></span><span class="line"><span class="cl">        <span class="n">axis.ticks.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">())</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl">        <span class="n">axis.ticks.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">())</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/graph17.png"
@@ -808,7 +979,7 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://www.lobdata.com.br/posts/segment-client/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="https://www.lobdata.com.br/posts/segment-client/" data-title="Segmentação de clientes de Food Delivery" data-via="Luciano_Bats3" data-hashtags="Project,Data Science,Machine Learning,K-Means"><i class="fab fa-x-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Threads" data-sharer="threads" data-url="https://www.lobdata.com.br/posts/segment-client/" data-title="Segmentação de clientes de Food Delivery"><i class="fab fa-threads fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://www.lobdata.com.br/posts/segment-client/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Diaspora" data-sharer="diaspora" data-url="https://www.lobdata.com.br/posts/segment-client/" data-title="Segmentação de clientes de Food Delivery" data-description=""><i class="fab fa-diaspora fa-fw" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=https%3a%2f%2fwww.lobdata.com.br%2fposts%2fsegment-client%2f&amp;text=Segmenta%c3%a7%c3%a3o%20de%20clientes%20de%20Food%20Delivery" target="_blank" title="Share on Telegram"><i class="fab fa-telegram fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -825,15 +996,18 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
 </div>
 <div id="comments"></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Luba</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.145.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.3.1-DEV"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span></div>
         </div>
     </footer></div>
 
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
                 <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
-            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"search":{"algoliaAppID":"56XLI6KGAP","algoliaIndex":"lobdata","algoliaSearchKey":"d7c82e758baf996bfc63e0fffb1098fd","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><script src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script src="https://cdn.jsdelivr.net/npm/algoliasearch@5.20.2/dist/lite/builds/browser.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.2/sharer.min.js"></script><script>window.config={"comment":{},"search":{"algoliaAppID":"56XLI6KGAP","algoliaIndex":"lobdata","algoliaSearchKey":"d7c82e758baf996bfc63e0fffb1098fd","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script src="/js/theme.min.js"></script></body>
 </html>

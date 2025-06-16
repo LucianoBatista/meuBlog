@@ -4,24 +4,31 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Computer Vision - LobData</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Computer Vision" />
-<meta property="og:description" content="O intuito desse post é compartilhar uma solução simples que resolvou um problema complexo que estávamos enfrentando em de nossos produtos aqui na Studos, a Leitora de Gabaritos. Dessa forma, outros que estejam com problemas similares possam talvez ter um ponto de vista diferente na resolução do problema.
-O que é a leitora de gabaritos? Dando um pouco de contexto sobre o produto, a Leitora de Gabaritos é uma API desenvolvida utilizando (principalmente) a seguinte stack:" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.lobdata.com.br/posts/image-cleaning/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-01-26T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-01-26T00:00:00+00:00" /><meta property="og:site_name" content="LOBData" />
+        <title>Computer Vision - LobData</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="https://www.lobdata.com.br/posts/image-cleaning/">
+  <meta property="og:site_name" content="LobData">
+  <meta property="og:title" content="Computer Vision">
+  <meta property="og:description" content="O intuito desse post é compartilhar uma solução simples que resolvou um problema complexo que estávamos enfrentando em de nossos produtos aqui na Studos, a Leitora de Gabaritos. Dessa forma, outros que estejam com problemas similares possam talvez ter um ponto de vista diferente na resolução do problema.
+O que é a leitora de gabaritos? Dando um pouco de contexto sobre o produto, a Leitora de Gabaritos é uma API desenvolvida utilizando (principalmente) a seguinte stack:">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2022-01-26T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-01-26T00:00:00+00:00">
+    <meta property="article:tag" content="Tutorial">
+    <meta property="article:tag" content="Data Science">
+    <meta property="article:tag" content="Visão Computacional">
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Computer Vision"/>
-<meta name="twitter:description" content="O intuito desse post é compartilhar uma solução simples que resolvou um problema complexo que estávamos enfrentando em de nossos produtos aqui na Studos, a Leitora de Gabaritos. Dessa forma, outros que estejam com problemas similares possam talvez ter um ponto de vista diferente na resolução do problema.
-O que é a leitora de gabaritos? Dando um pouco de contexto sobre o produto, a Leitora de Gabaritos é uma API desenvolvida utilizando (principalmente) a seguinte stack:"/>
-<meta name="twitter:site" content="@Luciano_Bats3"/>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Computer Vision">
+  <meta name="twitter:description" content="O intuito desse post é compartilhar uma solução simples que resolvou um problema complexo que estávamos enfrentando em de nossos produtos aqui na Studos, a Leitora de Gabaritos. Dessa forma, outros que estejam com problemas similares possam talvez ter um ponto de vista diferente na resolução do problema.
+O que é a leitora de gabaritos? Dando um pouco de contexto sobre o produto, a Leitora de Gabaritos é uma API desenvolvida utilizando (principalmente) a seguinte stack:">
+      <meta name="twitter:site" content="@Luciano_Bats3">
 <meta name="application-name" content="My cool site">
-<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="apple-mobile-web-app-title" content="My cool site">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/image-cleaning/" /><link rel="prev" href="https://www.lobdata.com.br/posts/efficient-pandas/" /><link rel="next" href="https://www.lobdata.com.br/posts/bncc-classifier/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/image-cleaning/" /><link rel="prev" href="https://www.lobdata.com.br/posts/efficient-pandas/" /><link rel="next" href="https://www.lobdata.com.br/posts/bncc-classifier/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
@@ -40,7 +47,7 @@ O que é a leitora de gabaritos? Dando um pouco de contexto sobre o produto, a L
             },"description": ""
     }
     </script></head>
-    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -170,13 +177,17 @@ O que é a leitora de gabaritos? Dando um pouco de contexto sobre o produto, a L
 <p>O problema que estávamos enfrentando era justamente na leitura desses segmentos. Mais especificamente, na etapa <em>extração das marcações</em>, onde é necessário que todas as marcações sejam extraídas sem trazer nenhum resíduo do gabarito.</p>
 <p>É nesse ponto que nos deparamos com a complexidade do problema, pois a quantidade de variáveis envolvidas no processo é absurda, e nem sempre conseguíamos fazer a melhor separação possível, impactando na ponta e gerando insatisfação do usuário. Essa <strong>variabilidade de imagens</strong>, conta com:</p>
 <blockquote>
-<p>&hellip;imagens de qualquer faixa de DPI, imagens coloridas, escala de cinza e preto e branco, canetas pretas e azuis, pouca luz, sombra e ruídos ao longo da imagem, imagens tiradas com foto, imagens digitalizadas com diferentes scanners&hellip;</p>
-</blockquote>
+<p>&hellip;imagens de qualquer faixa de DPI, imagens coloridas, escala de cinza e preto e branco, canetas pretas e azuis, pouca luz, sombra e ruídos ao longo da imagem, imagens tiradas com foto, imagens digitalizadas com diferentes scanners&hellip;</p></blockquote>
 <p>O ponto específico onde o OpenCV entra para realizar a transformação que precisamos é, mostrado abaixo no código:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">img_black_and_white</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">threshold</span><span class="p">(</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">img_black_and_white</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">threshold</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="n">img_warp_gray</span><span class="p">,</span> <span class="n">thresh_param</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="n">cv</span><span class="o">.</span><span class="n">THRESH_BINARY</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="n">img_threshold</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">threshold</span><span class="p">(</span><span class="n">img_black_and_white</span><span class="p">,</span> <span class="mi">215</span><span class="p">,</span> <span class="mi">350</span><span class="p">,</span> <span class="n">cv</span><span class="o">.</span><span class="n">THRESH_BINARY_INV</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
-</span></span></code></pre></div><p>Veja que, como input para a função <code>cv.threshold</code>, precisamos fornecer uma <strong>imagem em escala de cinza</strong> e um <strong>parâmetro de threshold</strong> que será utilizado como um ponto de corte. É justamente esse threshold que precisava ser otimizado.</p>
+</span></span><span class="line"><span class="cl"><span class="n">img_threshold</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">threshold</span><span class="p">(</span><span class="n">img_black_and_white</span><span class="p">,</span> <span class="mi">215</span><span class="p">,</span> <span class="mi">350</span><span class="p">,</span> <span class="n">cv</span><span class="o">.</span><span class="n">THRESH_BINARY_INV</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span></span></span></code></pre></div></div>
+<p>Veja que, como input para a função <code>cv.threshold</code>, precisamos fornecer uma <strong>imagem em escala de cinza</strong> e um <strong>parâmetro de threshold</strong> que será utilizado como um ponto de corte. É justamente esse threshold que precisava ser otimizado.</p>
 <p>Antes dessa solução, realizávamos dois checks: <em>a imagem é colorida, ou escala de cinza?</em> e <em>a imagem tem caneta azul ou preta?</em>. Com base nos outputs, ajustávamos o threshold de acordo.</p>
 <p>Porém, tal ajuste não funcionava 100% das vezes, e algumas imagens estavam com a leitura impossibilitada justamente por não conseguir ajustar o threshold. Veja abaixo um caso onde o ajuste errado do threshold leva a uma leitura incorreta.</p>
 <p><img
@@ -199,8 +210,7 @@ O que é a leitora de gabaritos? Dando um pouco de contexto sobre o produto, a L
         alt="/img/leitora_gabarito/pixels-distributions.png"
         title="pixels" /></p>
 <blockquote>
-<p>Essa é a distribuição dos pixels para o segmento do cartão apresentado acima. Quanto mais valores em direção ao 255, mais marcado está esse cartão. Valores tendendo ao 0, estão relacionados ao preto.</p>
-</blockquote>
+<p>Essa é a distribuição dos pixels para o segmento do cartão apresentado acima. Quanto mais valores em direção ao 255, mais marcado está esse cartão. Valores tendendo ao 0, estão relacionados ao preto.</p></blockquote>
 <h3 id="distribuição-de-pixels">Distribuição de pixels</h3>
 <p>Ao analisar a distribuição de pixels, vimos que as imagens similares possuem distribuições de pixels bem características. E que todas possuem uma calda longa a esquerda com um ponto onde a distribuição começa a &ldquo;subir&rdquo; (aumento no valor de pixel).</p>
 <p><img
@@ -223,8 +233,7 @@ O que é a leitora de gabaritos? Dando um pouco de contexto sobre o produto, a L
 <p>Antes de chegar na técnica que resolveu o problema, algumas outras foram testadas, algumas mais complexas e outras mais simples, mas nenhuma generalizou do jeito que precisávamos.</p>
 <p>Nossa hipótese aqui foi a seguinte:</p>
 <blockquote>
-<p>Considerando que a maior parte da distribuição, com pixels maiores, correspondem as marcações, a zona mais escura (região da calda longa da distribuição) corresponde ao gabarito. Dessa forma, se considerarmos uma porcentagem e eliminarmos parte da calda, seria possível saber onde está o ponto ótimo de corte.</p>
-</blockquote>
+<p>Considerando que a maior parte da distribuição, com pixels maiores, correspondem as marcações, a zona mais escura (região da calda longa da distribuição) corresponde ao gabarito. Dessa forma, se considerarmos uma porcentagem e eliminarmos parte da calda, seria possível saber onde está o ponto ótimo de corte.</p></blockquote>
 <p>Para melhor visualizar essa abordagem, criamos um <a href="https://en.wikipedia.org/wiki/Empirical_distribution_function" target="_blank" rel="noopener noreffer "><strong>ECDF</strong></a> das distribuições dos pixels e traçamos uma linha horizontal na porcentagem de pontos que gostaríamos de remover da distribuição.</p>
 <p><img
         class="lazyload"
@@ -235,7 +244,12 @@ O que é a leitora de gabaritos? Dando um pouco de contexto sobre o produto, a L
         alt="/img/leitora_gabarito/ecdf.png"
         title="ecdf" /></p>
 <p>Dae em diante, para testar se realmente esse método funcionava, o que precisávamos fazer era encontrar os pontos de intersercção da reta na horizontal com a distribuição, coletar o máximo e retornar como ponto de corte. A implementação está no código abaixo.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_param</span><span class="p">(</span><span class="n">img_warp_gray</span><span class="p">):</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_param</span><span class="p">(</span><span class="n">img_warp_gray</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">    <span class="c1"># x and y for the ecdf plot</span>
 </span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">img_warp_gray</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
 </span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -274,8 +288,8 @@ O que é a leitora de gabaritos? Dando um pouco de contexto sobre o produto, a L
 </span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">    <span class="n">main</span><span class="p">()</span>
-</span></span></code></pre></div><p>Espantosamente, nessa linha de 5%, foi justamente a região de inflexão da distribuição. E aplicando o parâmetro que a função <code>get_param()</code> retornou, o resultado da transformação foi o seguinte:</p>
+</span></span><span class="line"><span class="cl">    <span class="n">main</span><span class="p">()</span></span></span></code></pre></div></div>
+<p>Espantosamente, nessa linha de 5%, foi justamente a região de inflexão da distribuição. E aplicando o parâmetro que a função <code>get_param()</code> retornou, o resultado da transformação foi o seguinte:</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -296,7 +310,7 @@ O que é a leitora de gabaritos? Dando um pouco de contexto sobre o produto, a L
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://www.lobdata.com.br/posts/image-cleaning/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="https://www.lobdata.com.br/posts/image-cleaning/" data-title="Computer Vision" data-via="Luciano_Bats3" data-hashtags="Tutorial,Data Science,Visão Computacional"><i class="fab fa-x-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Threads" data-sharer="threads" data-url="https://www.lobdata.com.br/posts/image-cleaning/" data-title="Computer Vision"><i class="fab fa-threads fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://www.lobdata.com.br/posts/image-cleaning/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Diaspora" data-sharer="diaspora" data-url="https://www.lobdata.com.br/posts/image-cleaning/" data-title="Computer Vision" data-description=""><i class="fab fa-diaspora fa-fw" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=https%3a%2f%2fwww.lobdata.com.br%2fposts%2fimage-cleaning%2f&amp;text=Computer%20Vision" target="_blank" title="Share on Telegram"><i class="fab fa-telegram fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -313,15 +327,18 @@ O que é a leitora de gabaritos? Dando um pouco de contexto sobre o produto, a L
 </div>
 <div id="comments"></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Luba</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.145.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.3.1-DEV"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span></div>
         </div>
     </footer></div>
 
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
                 <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
-            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"search":{"algoliaAppID":"56XLI6KGAP","algoliaIndex":"lobdata","algoliaSearchKey":"d7c82e758baf996bfc63e0fffb1098fd","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><script src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script src="https://cdn.jsdelivr.net/npm/algoliasearch@5.20.2/dist/lite/builds/browser.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.2/sharer.min.js"></script><script>window.config={"comment":{},"search":{"algoliaAppID":"56XLI6KGAP","algoliaIndex":"lobdata","algoliaSearchKey":"d7c82e758baf996bfc63e0fffb1098fd","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script src="/js/theme.min.js"></script></body>
 </html>

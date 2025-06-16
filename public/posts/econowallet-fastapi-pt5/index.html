@@ -4,28 +4,36 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Criando uma API Pronta para Produção com FastAPI - PT.5 - LobData</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Criando uma API Pronta para Produção com FastAPI - PT.5" />
-<meta property="og:description" content="Nos Capítulos Anteriores &hellip; Como dito anteriormente, hoje vamos configurar o SQLAlchemy!!
+        <title>Criando uma API Pronta para Produção com FastAPI - PT.5 - LobData</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="https://www.lobdata.com.br/posts/econowallet-fastapi-pt5/">
+  <meta property="og:site_name" content="LobData">
+  <meta property="og:title" content="Criando uma API Pronta para Produção com FastAPI - PT.5">
+  <meta property="og:description" content="Nos Capítulos Anteriores … Como dito anteriormente, hoje vamos configurar o SQLAlchemy!!
 Essa é a parte 5 do nosso projeto do EconoWallet e se você quiser verificar o que já fizemos até o momento, acesse os links abaixo:
-Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Sem enrolação, vamos logo ao que interessa!!!
-Reorganizando o projeto Antes de configurar o ORM, vamos ajustar algumas coisas no nosso diretório. Como estamos seguindo para um estágio mais maduro da aplicação e que você já compreende o básico de configuração do FastAPI, precisaremos agora separar melhor as competências dentro do projeto." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.lobdata.com.br/posts/econowallet-fastapi-pt5/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-08-01T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-08-01T00:00:00+00:00" /><meta property="og:site_name" content="LOBData" />
+Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Sem enrolação, vamos logo ao que interessa!!!">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2021-08-01T00:00:00+00:00">
+    <meta property="article:modified_time" content="2021-08-01T00:00:00+00:00">
+    <meta property="article:tag" content="RESTFull API">
+    <meta property="article:tag" content="Web Development">
+    <meta property="article:tag" content="Backend">
+    <meta property="article:tag" content="Asynchronous">
+    <meta property="article:tag" content="FastAPI">
+    <meta property="article:tag" content="Docker">
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Criando uma API Pronta para Produção com FastAPI - PT.5"/>
-<meta name="twitter:description" content="Nos Capítulos Anteriores &hellip; Como dito anteriormente, hoje vamos configurar o SQLAlchemy!!
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Criando uma API Pronta para Produção com FastAPI - PT.5">
+  <meta name="twitter:description" content="Nos Capítulos Anteriores … Como dito anteriormente, hoje vamos configurar o SQLAlchemy!!
 Essa é a parte 5 do nosso projeto do EconoWallet e se você quiser verificar o que já fizemos até o momento, acesse os links abaixo:
-Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Sem enrolação, vamos logo ao que interessa!!!
-Reorganizando o projeto Antes de configurar o ORM, vamos ajustar algumas coisas no nosso diretório. Como estamos seguindo para um estágio mais maduro da aplicação e que você já compreende o básico de configuração do FastAPI, precisaremos agora separar melhor as competências dentro do projeto."/>
-<meta name="twitter:site" content="@Luciano_Bats3"/>
+Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Sem enrolação, vamos logo ao que interessa!!!">
+      <meta name="twitter:site" content="@Luciano_Bats3">
 <meta name="application-name" content="My cool site">
-<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="apple-mobile-web-app-title" content="My cool site">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/econowallet-fastapi-pt5/" /><link rel="prev" href="https://www.lobdata.com.br/posts/econowallet-fastapi-pt4/" /><link rel="next" href="https://www.lobdata.com.br/posts/efficient-pandas/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/econowallet-fastapi-pt5/" /><link rel="prev" href="https://www.lobdata.com.br/posts/econowallet-fastapi-pt4/" /><link rel="next" href="https://www.lobdata.com.br/posts/efficient-pandas/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
@@ -44,7 +52,7 @@ Reorganizando o projeto Antes de configurar o ORM, vamos ajustar algumas coisas 
             },"description": ""
     }
     </script></head>
-    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -157,24 +165,34 @@ Reorganizando o projeto Antes de configurar o ORM, vamos ajustar algumas coisas 
         data-srcset="/img/finance_app_tutorial/pt4/letscode.gif, /img/finance_app_tutorial/pt4/letscode.gif 1.5x, /img/finance_app_tutorial/pt4/letscode.gif 2x"
         data-sizes="auto"
         alt="/img/finance_app_tutorial/pt4/letscode.gif"
-        title="I&amp;rsquo;m ready when you are" /></p>
+        title="I&rsquo;m ready when you are" /></p>
 <h2 id="reorganizando-o-projeto">Reorganizando o projeto</h2>
 <p>Antes de configurar o ORM, vamos ajustar algumas coisas no nosso diretório. Como estamos seguindo para um estágio mais maduro da aplicação e que você já compreende o básico de configuração do FastAPI, precisaremos agora <strong>separar melhor as competências</strong> dentro do projeto.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir project/app/api
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-bash">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir project/app/api
 </span></span><span class="line"><span class="cl">mkdir project/app/database
 </span></span><span class="line"><span class="cl">mkdir project/app/models
 </span></span><span class="line"><span class="cl">touch project/app/api/__init__.py
 </span></span><span class="line"><span class="cl">touch project/app/database/__init__.py
 </span></span><span class="line"><span class="cl">touch project/app/models/__init__.py
-</span></span><span class="line"><span class="cl">touch project/app/api/status.py
-</span></span></code></pre></div><p>Veja que agora nós temos alguns diretórios novos✨ que irão comportar diferentes lógicas no nosso projeto:</p>
+</span></span><span class="line"><span class="cl">touch project/app/api/status.py</span></span></code></pre></div></div>
+<p>Veja que agora nós temos alguns diretórios novos✨ que irão comportar diferentes lógicas no nosso projeto:</p>
 <ul>
 <li><strong>api</strong>: todas as nossas rotas da api.</li>
 <li><strong>database</strong>: toda a lógica de configuração do SQLAlchemy.</li>
 <li><strong>models</strong>: toda a especificação de como deverão ser nossas tabelas.</li>
 </ul>
 <p>Nós também adicionamos um arquivo chamado <code>status.py</code>, esse irá conter a rota de status da nossa aplicação, que antes estava no nosso arquivo <code>main.py</code>. Veja como está nosso <code>main.py</code> e nosso <code>status.py</code>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># main.py</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># main.py</span>
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">logging</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span>
@@ -199,15 +217,20 @@ Reorganizando o projeto Antes de configurar o ORM, vamos ajustar algumas coisas 
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nd">@app.on_event</span><span class="p">(</span><span class="s2">&#34;startup&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="k">async</span> <span class="k">def</span> <span class="nf">startup_event</span><span class="p">():</span>
-</span></span><span class="line"><span class="cl">    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&#34;Starting up...&#34;</span><span class="p">)</span>
-</span></span></code></pre></div><p>Aqui nós não configuramos mais diretamente as rotas no <code>main.py</code>, elas agora ficam em diretórios separados, e sempre na inicialização da aplicação é carregado todas as rotas ao chamar a função <code>create_application</code>. Dentro dessa função nós adicionamos um <code>include_router</code> que faz algumas coisas interessantes:</p>
+</span></span><span class="line"><span class="cl">    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&#34;Starting up...&#34;</span><span class="p">)</span></span></span></code></pre></div></div>
+<p>Aqui nós não configuramos mais diretamente as rotas no <code>main.py</code>, elas agora ficam em diretórios separados, e sempre na inicialização da aplicação é carregado todas as rotas ao chamar a função <code>create_application</code>. Dentro dessa função nós adicionamos um <code>include_router</code> que faz algumas coisas interessantes:</p>
 <ul>
 <li>inclui todas as rotas de um determinado arquivo.</li>
 <li>adiciona uma tag para separar melhor no contexto de exibição no swager.</li>
 <li>adiciona um prefixo à rota: eu normalmente utilizo <code>/api/v1</code> pelo motivo de que fica fácil alterar para uma versão 2 caso a mesma venha a existir.</li>
 </ul>
 <p>Um decorator muito legal do FastAPI é <code>@app.on_event</code>, onde você pode configurar métodos que irão rodar sempre que a aplicação inicializar ou finalizar. Iremos adicionar mais coisas nesse <em>event</em>, mas por enquanto apenas estamos printando um log no console.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># status.py</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># status.py</span>
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">APIRouter</span><span class="p">,</span> <span class="n">Depends</span>
@@ -225,12 +248,17 @@ Reorganizando o projeto Antes de configurar o ORM, vamos ajustar algumas coisas 
 </span></span><span class="line"><span class="cl">        <span class="s2">&#34;version&#34;</span><span class="p">:</span> <span class="n">APP_VERSION</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">        <span class="s2">&#34;environment&#34;</span><span class="p">:</span> <span class="n">settings</span><span class="o">.</span><span class="n">environment</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">        <span class="s2">&#34;testing&#34;</span><span class="p">:</span> <span class="n">settings</span><span class="o">.</span><span class="n">testing</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span></code></pre></div><p>Veja que aqui nós temos uma modificação da rota <em>/ping</em> para <em>/status</em> e ela é definida por <em>@router.get</em> e não mais <em>@app.get</em>. Eu adicionei também uma variável chamada <code>APP_VERSION</code> que é responsável por manter atualizado o registro da verssão da aplicação.</p>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre></div></div>
+<p>Veja que aqui nós temos uma modificação da rota <em>/ping</em> para <em>/status</em> e ela é definida por <em>@router.get</em> e não mais <em>@app.get</em>. Eu adicionei também uma variável chamada <code>APP_VERSION</code> que é responsável por manter atualizado o registro da verssão da aplicação.</p>
 <p>Executamos assim nosso workflow de teste, para saber se tudo está funcionando:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose down -v
-</span></span><span class="line"><span class="cl">docker-compose up --build -d
-</span></span></code></pre></div><p>Ao acessar <a href="http://127.0.0.1:8004/docs/" target="_blank" rel="noopener noreffer ">http://127.0.0.1:8004/docs/</a> você deverá ver uma tela igual a de baixo:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-bash">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose down -v
+</span></span><span class="line"><span class="cl">docker-compose up --build -d</span></span></code></pre></div></div>
+<p>Ao acessar <a href="http://127.0.0.1:8004/docs/" target="_blank" rel="noopener noreffer ">http://127.0.0.1:8004/docs/</a> você deverá ver uma tela igual a de baixo:</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -240,7 +268,12 @@ Reorganizando o projeto Antes de configurar o ORM, vamos ajustar algumas coisas 
         alt="/img/finance_app_tutorial/pt4/status-router.png"
         title="status" /></p>
 <p>E nossa árvore de diretórios deve estar como no seguinte snippet:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">.
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-bash">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">.
 </span></span><span class="line"><span class="cl">├── docker-compose.yml
 </span></span><span class="line"><span class="cl">├── Dockerfile
 </span></span><span class="line"><span class="cl">├── Pipfile
@@ -257,19 +290,34 @@ Reorganizando o projeto Antes de configurar o ORM, vamos ajustar algumas coisas 
 </span></span><span class="line"><span class="cl">│       ├── main.py
 </span></span><span class="line"><span class="cl">│       └── models
 </span></span><span class="line"><span class="cl">│           └── __init__.py
-</span></span><span class="line"><span class="cl">└── README.md
-</span></span></code></pre></div><h2 id="configurando-o-sqlalchemy-no-projeto">Configurando o SQLAlchemy no Projeto</h2>
+</span></span><span class="line"><span class="cl">└── README.md</span></span></code></pre></div></div>
+<h2 id="configurando-o-sqlalchemy-no-projeto">Configurando o SQLAlchemy no Projeto</h2>
 <p>No intuito de ter uma tabela inicial bem simples no nosso banco de dados, apenas para iniciar a configuração do SQLAlchemy, vamos iniciar o processo criando um model. Como dito no post <a href="https://www.lobdata.com.br/2021/08/01/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.4/" target="_blank" rel="noopener noreffer ">anterior</a>, estamos no que estou chamando de <em>primeiro cenário do SQLAlchemy</em>, onde precisamos da classe <code>declarative_base</code> antes de iniciar a configuração do model.</p>
 <p>Antes de tudo, primeiro iremos instalar o <strong>SQLAlchemy</strong>: <code>pipenv install sqlalchemy==1.4.20</code>. Agora, vamos criar dois novos arquivos:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">touch project/app/database/modelbase.py
-</span></span><span class="line"><span class="cl">touch project/app/models/register.py
-</span></span></code></pre></div><p>O <code>modelbase.py</code> é onde eu normalmente coloco a <code>declarative_base</code>, sendo assim, é desse arquivo que nossos models irão buscar a <strong>classe mãe</strong>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># modelbase.py</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-bash">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">touch project/app/database/modelbase.py
+</span></span><span class="line"><span class="cl">touch project/app/models/register.py</span></span></code></pre></div></div>
+<p>O <code>modelbase.py</code> é onde eu normalmente coloco a <code>declarative_base</code>, sendo assim, é desse arquivo que nossos models irão buscar a <strong>classe mãe</strong>.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># modelbase.py</span>
 </span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sqlalchemy.ext</span> <span class="kn">import</span> <span class="n">declarative</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">Base</span> <span class="o">=</span> <span class="n">declarative</span><span class="o">.</span><span class="n">declarative_base</span><span class="p">()</span>
-</span></span></code></pre></div><p>Podemos agora criar o model. Um model é uma abstração de tudo que você faria se estivesse criando uma tabela diretamente no banco, com a diferença de que aqui a gente tem uma abordagem <em>python-like</em>. Cada tipo de ORM tem uma sintaxe própria, e no SQLAlchemy a gente tem a configuração como no arquivo abaixo:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># register.py</span>
+</span></span><span class="line"><span class="cl"><span class="n">Base</span> <span class="o">=</span> <span class="n">declarative</span><span class="o">.</span><span class="n">declarative_base</span><span class="p">()</span></span></span></code></pre></div></div>
+<p>Podemos agora criar o model. Um model é uma abstração de tudo que você faria se estivesse criando uma tabela diretamente no banco, com a diferença de que aqui a gente tem uma abordagem <em>python-like</em>. Cada tipo de ORM tem uma sintaxe própria, e no SQLAlchemy a gente tem a configuração como no arquivo abaixo:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># register.py</span>
 </span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">Column</span><span class="p">,</span> <span class="n">Date</span><span class="p">,</span> <span class="n">BigInteger</span><span class="p">,</span> <span class="n">String</span>
@@ -283,11 +331,16 @@ Reorganizando o projeto Antes de configurar o ORM, vamos ajustar algumas coisas 
 </span></span><span class="line"><span class="cl">    <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">BigInteger</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">autoincrement</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="n">products</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="n">created_at</span><span class="p">:</span> <span class="n">date</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Date</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">expire_at</span><span class="p">:</span> <span class="n">date</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Date</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span></span></code></pre></div><p>Pronto, nosso primeiro model está criado. Como você pode ver, é basicamente uma classe que herda da <code>declarative_base</code>, e nosso dever é configurar como vai ser cada coluna da tabela. Diferentemente de outros ORMs como o <code>django</code>, aqui nós precisamos explicitamente determinar a coluna de id.</p>
+</span></span><span class="line"><span class="cl">    <span class="n">expire_at</span><span class="p">:</span> <span class="n">date</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Date</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></span></span></code></pre></div></div>
+<p>Pronto, nosso primeiro model está criado. Como você pode ver, é basicamente uma classe que herda da <code>declarative_base</code>, e nosso dever é configurar como vai ser cada coluna da tabela. Diferentemente de outros ORMs como o <code>django</code>, aqui nós precisamos explicitamente determinar a coluna de id.</p>
 <p>Para as outras colunas, nós temos formato de string e data. Sendo que nenhuma delas podem ser atribuídos valores nulos, ou seja, são campos obrigatórios da nossa tabela. Veja que eu já estou adicionando alguns indexes, que basicamente permitem que a consulta à essas colunas seja feita de forma mais rápida.</p>
 <p>Até agora nós já temos alguns elementos do primeiro cenário do SQLAlchemy, porém, para criar as tabelas no banco e expor uma session, nós iremos precisar criar um novo arquivo: <code>touch project/app/database/database_session.py</code>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># database_session.py</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># database_session.py</span>
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">logging</span>
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
 </span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Optional</span>
@@ -336,8 +389,8 @@ Reorganizando o projeto Antes de configurar o ORM, vamos ajustar algumas coisas 
 </span></span><span class="line"><span class="cl">    <span class="n">session</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">__factory</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="n">session</span><span class="o">.</span><span class="n">expire_on_commit</span> <span class="o">=</span> <span class="kc">False</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">session</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">session</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/finance_app_tutorial/pt4/what.gif"
@@ -365,10 +418,20 @@ Reorganizando o projeto Antes de configurar o ORM, vamos ajustar algumas coisas 
 <p>É extremamente indicado não <strong>hard coded</strong> essas informações diretamente no código. Ao invés disso, que coloquemos as mesmas como variáveis de ambiente em um arquivo separado e oculto do repositório onde você está versionando o seu projeto. Vamos ver então como fazer isso!!</p>
 <h3 id="configurando-variáveis-de-ambiente">Configurando Variáveis de Ambiente</h3>
 <p>Graças ao Docker, é simples configurar variáveis de ambiente para nosso projeto. Primeiro, vamos criar alguns arquivos:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir env
-</span></span><span class="line"><span class="cl">touch env/.dev
-</span></span></code></pre></div><p>Dentro do <code>.dev</code> é onde você vai colocar todas as suas variáveis de ambiente:</p>
-<pre tabindex="0"><code>ENVIRONMENT=dev
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-bash">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir env
+</span></span><span class="line"><span class="cl">touch env/.dev</span></span></code></pre></div></div>
+<p>Dentro do <code>.dev</code> é onde você vai colocar todas as suas variáveis de ambiente:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><pre tabindex="0"><code>ENVIRONMENT=dev
 TESTING=0
 DATABASE_URL=mysql://user:password@db:3306/econowallet
 
@@ -376,15 +439,25 @@ SQL_DATABASE=econowallet
 SQL_USER=user
 SQL_PASSWORD=password
 SQL_HOST=db
-SQL_PORT=3306
-</code></pre><p>E agora, atualizamos nosso <code>.gitignore</code>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># .gitignore</span>
+SQL_PORT=3306</code></pre></div>
+<p>E agora, atualizamos nosso <code>.gitignore</code>:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-bash">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># .gitignore</span>
 </span></span><span class="line"><span class="cl">__pycache__
 </span></span><span class="line"><span class="cl"><span class="c1"># new</span>
-</span></span><span class="line"><span class="cl">env
-</span></span></code></pre></div><p>Show! Agora, localmente teremos como testar nossa aplicação, e quando a mesma for funcionar em um ambiente de produção, essas variáveis de ambiente serão substituídas dinamicamente para funcionar com as configurações de produção 😍.</p>
+</span></span><span class="line"><span class="cl">env</span></span></code></pre></div></div>
+<p>Show! Agora, localmente teremos como testar nossa aplicação, e quando a mesma for funcionar em um ambiente de produção, essas variáveis de ambiente serão substituídas dinamicamente para funcionar com as configurações de produção 😍.</p>
 <p>Por fim, dentro do <code>docker-compose.yml</code> nós iremos apontar onde o arquivo de variáveis de ambiente está localizado:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;3.8&#34;</span><span class="w">
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-yaml">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;3.8&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">web</span><span class="p">:</span><span class="w">
@@ -417,10 +490,15 @@ SQL_PORT=3306
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="m">3320</span><span class="p">:</span><span class="m">3306</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">volumes</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">mysql_data</span><span class="p">:</span><span class="w">
-</span></span></span></code></pre></div><h3 id="inicializando-em-conjunto-com-o-sqlalchemy">Inicializando em Conjunto com o SQLAlchemy</h3>
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">mysql_data:</span></span></span></code></pre></div></div>
+<h3 id="inicializando-em-conjunto-com-o-sqlalchemy">Inicializando em Conjunto com o SQLAlchemy</h3>
 <p>Lembrando que precisamos inicializar uma sessão global por meio do <code>global_init()</code> que vimos anteriormente, vamos então fazer uso de uma feature do FastAPI que vimos anteriormente, <code>@app.on_event()</code>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">logging</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">logging</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span>
 </span></span><span class="line"><span class="cl">
@@ -446,14 +524,19 @@ SQL_PORT=3306
 </span></span><span class="line"><span class="cl"><span class="nd">@app.on_event</span><span class="p">(</span><span class="s2">&#34;startup&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="k">async</span> <span class="k">def</span> <span class="nf">startup_event</span><span class="p">():</span>
 </span></span><span class="line"><span class="cl">    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&#34;Starting up...&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">global_init</span><span class="p">()</span>
-</span></span></code></pre></div><p>Sendo assim, sempre que o app inicializar, vamos iniciar as configurações do SQLAlchemy em conjunto!!</p>
+</span></span><span class="line"><span class="cl">    <span class="n">global_init</span><span class="p">()</span></span></span></code></pre></div></div>
+<p>Sendo assim, sempre que o app inicializar, vamos iniciar as configurações do SQLAlchemy em conjunto!!</p>
 <p>Estamos quaseee lá!</p>
 <h3 id="bug-do-mysql-">Bug do MySQL 🐛</h3>
 <p>Se você tentar buildar o projeto, provavelmente irá se deparar com um problema onde o serviço web não irá conseguir inicializar pois não vai ter encontrado um banco MySQL disponível. Eu já busquei explicação do por que disso acontecer, mesmo especificando o <code>depends_on: db</code> no <code>docker-compose.yml</code> o serviço <strong>web</strong> tenta inicializar primeiro, e como não encontra um banco online, temos uma mensagem de erro.</p>
 <p>Para driblar isso, vamos utilizar um pouquinho de conhecimento de bash e adicionar o que chamamos de <code>entrypoint</code> para garantir que nosso serviço web apenas siga em frente após conectar com o banco.</p>
 <p>Crie um arquivo chamado <code>local-entrypoint.sh</code> e copie o seguinte código:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-bash">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="c1"># if any of the commands in your code fails for any reason, the entire script fails</span>
 </span></span><span class="line"><span class="cl"><span class="nb">set</span> -o errexit
 </span></span><span class="line"><span class="cl"><span class="c1"># fail exit if one of your pipe command fails</span>
@@ -485,9 +568,14 @@ SQL_PORT=3306
 </span></span><span class="line"><span class="cl"><span class="k">done</span>
 </span></span><span class="line"><span class="cl">&gt;<span class="p">&amp;</span><span class="m">2</span> <span class="nb">echo</span> <span class="s1">&#39;Mysql is available&#39;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">uvicorn project.app.main:app --reload --workers <span class="m">1</span> --host 0.0.0.0 --port <span class="m">8000</span>
-</span></span></code></pre></div><p>Nesse script é executado um loop que finaliza apenas quando o MySQL estiver disponível. Precisamos agora apontar nosso <code>Dockerfile</code> para esse entrypoint.</p>
-<pre tabindex="0"><code># Dockerfile
+</span></span><span class="line"><span class="cl">uvicorn project.app.main:app --reload --workers <span class="m">1</span> --host 0.0.0.0 --port <span class="m">8000</span></span></span></code></pre></div></div>
+<p>Nesse script é executado um loop que finaliza apenas quando o MySQL estiver disponível. Precisamos agora apontar nosso <code>Dockerfile</code> para esse entrypoint.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><pre tabindex="0"><code># Dockerfile
 FROM python:3.9.0-slim-buster
 
 WORKDIR /usr/src/app
@@ -513,9 +601,14 @@ COPY . .
 COPY ./local-entrypoint.sh /usr/src/app/local-entrypoint.sh
 RUN chmod +x /usr/src/app/local-entrypoint.sh
 
-CMD [&#34;/bin/bash&#34;, &#34;-c&#34;, &#34;./local-entrypoint.sh&#34;]
-</code></pre><p>Nosso <code>docker-compose.yml</code> também precisará ser alterado:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># docker-compose.yml</span><span class="w">
+CMD [&#34;/bin/bash&#34;, &#34;-c&#34;, &#34;./local-entrypoint.sh&#34;]</code></pre></div>
+<p>Nosso <code>docker-compose.yml</code> também precisará ser alterado:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-yaml">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># docker-compose.yml</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;3.8&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
@@ -549,16 +642,21 @@ CMD [&#34;/bin/bash&#34;, &#34;-c&#34;, &#34;./local-entrypoint.sh&#34;]
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="m">3320</span><span class="p">:</span><span class="m">3306</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">volumes</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">mysql_data</span><span class="p">:</span><span class="w">
-</span></span></span></code></pre></div><p>Aqui tivemos <strong>duas mudanças</strong>:</p>
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">mysql_data:</span></span></span></code></pre></div></div>
+<p>Aqui tivemos <strong>duas mudanças</strong>:</p>
 <ol>
 <li>nosso volume não é referente ao <code>.project</code> e sim a pasta root <code>.</code> (caso contrário o <code>local-entrypoint.sh</code> não será encontrado).</li>
 <li>removemos o <code>command</code> que estava inicializando app, e jogamos para dentro do entrypoint.</li>
 </ol>
 <p>Por fim, garanta a instalação do drive do MySQL e do pacote <code>mysql-connector-python</code>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pipenv install <span class="nv">mysqlclient</span><span class="o">==</span>2.0.3
-</span></span><span class="line"><span class="cl">pipenv install mysql-connector-python<span class="o">==</span>8.0.25
-</span></span></code></pre></div><h3 id="refatoração-">Refatoração 🔨</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-bash">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pipenv install <span class="nv">mysqlclient</span><span class="o">==</span>2.0.3
+</span></span><span class="line"><span class="cl">pipenv install mysql-connector-python<span class="o">==</span>8.0.25</span></span></code></pre></div></div>
+<h3 id="refatoração-">Refatoração 🔨</h3>
 <p>No início do projeto nós fizemos uma configuração no PyCharm para considerar o diretório <strong>project</strong> como root. Porém, teremos que retornar para o diretório anterior (efetuando os mesmos passos <a href="https://www.lobdata.com.br/2021/04/08/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.3/" target="_blank" rel="noopener noreffer ">link de como fazer</a>.</p>
 <p>E além disso, iremos alterar todas as referências nos nossos arquivos de volta para <code>project.app</code>&hellip; Os arquivos que precisarão sofrer essa refatoração são:</p>
 <ul>
@@ -570,10 +668,15 @@ CMD [&#34;/bin/bash&#34;, &#34;-c&#34;, &#34;./local-entrypoint.sh&#34;]
 </ul>
 <p>Sorry!</p>
 <p>Agora sim, vamos rebuildar a aplicação e observar no DBeaver se veremos uma nova tabela (como especificado nosso model).</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose down -v
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-bash">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose down -v
 </span></span><span class="line"><span class="cl">docker-compose up --build -d
-</span></span><span class="line"><span class="cl">docker-compose logs -f
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl">docker-compose logs -f</span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/finance_app_tutorial/pt4/dbeaver-registers.png"
@@ -597,7 +700,7 @@ CMD [&#34;/bin/bash&#34;, &#34;-c&#34;, &#34;./local-entrypoint.sh&#34;]
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://www.lobdata.com.br/posts/econowallet-fastapi-pt5/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="https://www.lobdata.com.br/posts/econowallet-fastapi-pt5/" data-title="Criando uma API Pronta para Produção com FastAPI - PT.5" data-via="Luciano_Bats3" data-hashtags="RESTFull API,Web Development,Backend,Asynchronous,FastAPI,Docker,SQLAlchemy"><i class="fab fa-x-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Threads" data-sharer="threads" data-url="https://www.lobdata.com.br/posts/econowallet-fastapi-pt5/" data-title="Criando uma API Pronta para Produção com FastAPI - PT.5"><i class="fab fa-threads fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://www.lobdata.com.br/posts/econowallet-fastapi-pt5/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Diaspora" data-sharer="diaspora" data-url="https://www.lobdata.com.br/posts/econowallet-fastapi-pt5/" data-title="Criando uma API Pronta para Produção com FastAPI - PT.5" data-description=""><i class="fab fa-diaspora fa-fw" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=https%3a%2f%2fwww.lobdata.com.br%2fposts%2feconowallet-fastapi-pt5%2f&amp;text=Criando%20uma%20API%20Pronta%20para%20Produ%c3%a7%c3%a3o%20com%20FastAPI%20-%20PT.5" target="_blank" title="Share on Telegram"><i class="fab fa-telegram fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -614,15 +717,18 @@ CMD [&#34;/bin/bash&#34;, &#34;-c&#34;, &#34;./local-entrypoint.sh&#34;]
 </div>
 <div id="comments"></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Luba</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.145.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.3.1-DEV"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span></div>
         </div>
     </footer></div>
 
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
                 <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
-            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"search":{"algoliaAppID":"56XLI6KGAP","algoliaIndex":"lobdata","algoliaSearchKey":"d7c82e758baf996bfc63e0fffb1098fd","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><script src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script src="https://cdn.jsdelivr.net/npm/algoliasearch@5.20.2/dist/lite/builds/browser.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.2/sharer.min.js"></script><script>window.config={"comment":{},"search":{"algoliaAppID":"56XLI6KGAP","algoliaIndex":"lobdata","algoliaSearchKey":"d7c82e758baf996bfc63e0fffb1098fd","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script src="/js/theme.min.js"></script></body>
 </html>

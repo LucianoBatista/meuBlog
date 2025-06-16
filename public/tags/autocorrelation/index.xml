@@ -11,8 +11,9 @@
     <guid>https://www.lobdata.com.br/posts/r_correlation/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/cor_ts.png" referrerpolicy="no-referrer">
-            </div>What is it correlation analysis? The concept of correlation is the same used in non-time series data: identify and quantify the relationship between two variables. Due to the continuous and chronologically ordered nature of time series data, there is a likelihood that there will be some degree of correlation between the series observations.
-Measuring and analyzing the correlation between two variables, in the context of time series analysis, can be understood by two different aspects:]]></description>
+            </div><h1 id="what-is-it-correlation-analysis">What is it correlation analysis?</h1>
+<p>The concept of correlation is the same used in non-time series data: <em>identify and quantify the relationship between two variables.</em> Due to the continuous and chronologically ordered nature of time series data, there is a likelihood that there will be some degree of correlation between the series observations.</p>
+<p>Measuring and analyzing the correlation between two variables, in the context of time series analysis, can be understood by two different aspects:</p>]]></description>
 </item>
 </channel>
 </rss>

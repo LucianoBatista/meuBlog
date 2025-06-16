@@ -4,24 +4,32 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Categorical Feature Encoding Challenge - LobData</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Categorical Feature Encoding Challenge" />
-<meta property="og:description" content="Is there a cat in your dat? Esse é um playground do Kaggle, onde diferentes pessoas competem dentro de um determinado problema &lsquo;incomum&rsquo; porém bastante relevante. Nesta competição foi disponibilizado um dataset repleto de variáveis categóricas.
-Sabemos que uma das tarefas do processo de machine learning é realizar o encoding de variáveis categóricas de forma que os algoritmos possam executar seus cálculos e retornar um resultado. Dominar tal skill é de grande importância para o Cientista de Dados." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.lobdata.com.br/posts/cat_in_the_dat/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2019-11-04T00:00:00+00:00" />
-<meta property="article:modified_time" content="2019-11-04T00:00:00+00:00" /><meta property="og:site_name" content="LOBData" />
+        <title>Categorical Feature Encoding Challenge - LobData</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="https://www.lobdata.com.br/posts/cat_in_the_dat/">
+  <meta property="og:site_name" content="LobData">
+  <meta property="og:title" content="Categorical Feature Encoding Challenge">
+  <meta property="og:description" content="Is there a cat in your dat? Esse é um playground do Kaggle, onde diferentes pessoas competem dentro de um determinado problema ‘incomum’ porém bastante relevante. Nesta competição foi disponibilizado um dataset repleto de variáveis categóricas.
+Sabemos que uma das tarefas do processo de machine learning é realizar o encoding de variáveis categóricas de forma que os algoritmos possam executar seus cálculos e retornar um resultado. Dominar tal skill é de grande importância para o Cientista de Dados.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2019-11-04T00:00:00+00:00">
+    <meta property="article:modified_time" content="2019-11-04T00:00:00+00:00">
+    <meta property="article:tag" content="Project">
+    <meta property="article:tag" content="Challenge">
+    <meta property="article:tag" content="Data Science">
+    <meta property="article:tag" content="Machine Learning">
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Categorical Feature Encoding Challenge"/>
-<meta name="twitter:description" content="Is there a cat in your dat? Esse é um playground do Kaggle, onde diferentes pessoas competem dentro de um determinado problema &lsquo;incomum&rsquo; porém bastante relevante. Nesta competição foi disponibilizado um dataset repleto de variáveis categóricas.
-Sabemos que uma das tarefas do processo de machine learning é realizar o encoding de variáveis categóricas de forma que os algoritmos possam executar seus cálculos e retornar um resultado. Dominar tal skill é de grande importância para o Cientista de Dados."/>
-<meta name="twitter:site" content="@Luciano_Bats3"/>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Categorical Feature Encoding Challenge">
+  <meta name="twitter:description" content="Is there a cat in your dat? Esse é um playground do Kaggle, onde diferentes pessoas competem dentro de um determinado problema ‘incomum’ porém bastante relevante. Nesta competição foi disponibilizado um dataset repleto de variáveis categóricas.
+Sabemos que uma das tarefas do processo de machine learning é realizar o encoding de variáveis categóricas de forma que os algoritmos possam executar seus cálculos e retornar um resultado. Dominar tal skill é de grande importância para o Cientista de Dados.">
+      <meta name="twitter:site" content="@Luciano_Bats3">
 <meta name="application-name" content="My cool site">
-<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="apple-mobile-web-app-title" content="My cool site">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/cat_in_the_dat/" /><link rel="prev" href="https://www.lobdata.com.br/posts/predictive_iot_energy/" /><link rel="next" href="https://www.lobdata.com.br/posts/segment-client/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/cat_in_the_dat/" /><link rel="prev" href="https://www.lobdata.com.br/posts/predictive_iot_energy/" /><link rel="next" href="https://www.lobdata.com.br/posts/segment-client/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
@@ -40,7 +48,7 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
             },"description": ""
     }
     </script></head>
-    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -150,7 +158,12 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
 <li><strong>Cíclicas:</strong> variáveis que possuem algum tipo de periodização (dia da semana, horas e minutos do dia, velocidade do vento, período de marés&hellip;).</li>
 </ul>
 <p>Esta foi o primeiro <em>Categorical Feature Encoding Challenge</em>, já está disponível o segundo, com maior nível de dificuldade, mas vamos por partes.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Import</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Import</span>
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">sparse</span><span class="p">,</span> <span class="n">stats</span>
@@ -161,24 +174,49 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
 </span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">xgboost</span> <span class="kn">import</span> <span class="n">XGBClassifier</span>
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">matplotlib.gridspec</span> <span class="k">as</span> <span class="nn">gridspec</span>
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Carregando os dados</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Carregando os dados</span>
 </span></span><span class="line"><span class="cl"><span class="n">df_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/train.csv&#39;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="n">df_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/test.csv&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">submission</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;sample_submission.csv&#39;</span><span class="p">)</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">train</span> <span class="o">=</span> <span class="n">df_train</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="n">test</span> <span class="o">=</span> <span class="n">df_test</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># removendo target dos dados</span>
+</span></span><span class="line"><span class="cl"><span class="n">submission</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;sample_submission.csv&#39;</span><span class="p">)</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">train</span> <span class="o">=</span> <span class="n">df_train</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">test</span> <span class="o">=</span> <span class="n">df_test</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># removendo target dos dados</span>
 </span></span><span class="line"><span class="cl"><span class="n">labels</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;target&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="o">=</span> <span class="n">labels</span><span class="o">.</span><span class="n">values</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># removendo e salvando o id dos datasets</span>
+</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="o">=</span> <span class="n">labels</span><span class="o">.</span><span class="n">values</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># removendo e salvando o id dos datasets</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># será últil mais tarde</span>
 </span></span><span class="line"><span class="cl"><span class="n">train_id</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">test_id</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
-</span></span></code></pre></div><p>Antes de começarmos a fazer qualquer tipo de tratamento no dataset é importante que analisemos o comportamento das variáveis. E para isso entra em ação a Análise Exploratória dos Ddaos. Vamos a ela!</p>
+</span></span><span class="line"><span class="cl"><span class="n">test_id</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span></span></span></code></pre></div></div>
+<p>Antes de começarmos a fazer qualquer tipo de tratamento no dataset é importante que analisemos o comportamento das variáveis. E para isso entra em ação a Análise Exploratória dos Ddaos. Vamos a ela!</p>
 <h1 id="eda-exploratory-data-analysis">EDA (Exploratory Data Analysis)</h1>
 <p>Primeiramente é interessante ter uma função que nos permita ter uma visão geral dos dados, para dados numéricos poderíamos utilizar o <em>describe</em>, porém aqui não seria nada útil. Portanto a seguinte função foi desenvolvida.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">resumetable</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">resumetable</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Dataset Shape: </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="n">summary</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;dtypes&#39;</span><span class="p">])</span>
 </span></span><span class="line"><span class="cl">    <span class="n">summary</span> <span class="o">=</span> <span class="n">summary</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
@@ -191,10 +229,15 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
 </span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">summary</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">        <span class="n">summary</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">summary</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">name</span><span class="p">,</span> <span class="s1">&#39;Entropy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">entropy</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">base</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">summary</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">summary</span> <span class="o">=</span> <span class="n">resumetable</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">summary</span>
-</span></span></code></pre></div><pre><code>Dataset Shape: (300000, 23)
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">summary</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">summary</span> <span class="o">=</span> <span class="n">resumetable</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">summary</span></span></span></code></pre></div></div>
+<pre><code>Dataset Shape: (300000, 23)
 </code></pre>
 <!-- raw HTML omitted -->
 <pre><code>.dataframe tbody tr th {
@@ -211,7 +254,12 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
 <p>Veja também que foi calculado a entropia, que corrobora com a informação de valores únicos, possuindo um valor mais alto para variáveis de maior nível de cardinalidade. De forma simples, a Entropia (aqui baseada na Teoria da Informação), mede o grau de heterogeneidade dos dados.</p>
 <p>Porém, como estamos lidando com variáveis categóricas e ainda por cima com alto número de valores únicos, é possível que exista alguns desse valores que esteja no dataset de treino e não esteja no dataset de teste e virse-versa. O impacto provocado por essa característica é que nosso modelo será treinado sobre um determinado conjunto de classes e avaliado com classes que ele nunca viu, o que pode ser bem crítico para o desempenho do modelo.</p>
 <p>Vamos então em busca dessa informação!</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">describe_infos</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">):</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">describe_infos</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">    <span class="s1">&#39;&#39;&#39;Diferença entre os datasets.&#39;&#39;&#39;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="n">stats</span> <span class="o">=</span> <span class="p">[]</span>
@@ -247,9 +295,14 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
 </span></span><span class="line"><span class="cl">        <span class="s2">&#34;Valores únicos em treino e não no teste (%)&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">        <span class="s2">&#34;Valores únicos em teste e não no treino (%)&#34;</span><span class="p">])</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">df_stats</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">describe_infos</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">)</span>
-</span></span></code></pre></div><!-- raw HTML omitted -->
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">df_stats</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">describe_infos</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">)</span></span></span></code></pre></div></div>
+<!-- raw HTML omitted -->
 <pre><code>.dataframe tbody tr th {
     vertical-align: top;
 }
@@ -267,10 +320,20 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
 <li>Para minimizar esta situação, algumas transformações podem ser realizadas no dataset como um todo. Essas transformações serão vistas mais a frente.</li>
 </ul>
 <h2 id="visualizações-target">Visualizações: Target</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Criando uma paleta de cores</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Criando uma paleta de cores</span>
 </span></span><span class="line"><span class="cl"><span class="n">flatui</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;#e74c3c&#34;</span><span class="p">,</span> <span class="s2">&#34;#3498db&#34;</span><span class="p">,</span> <span class="s2">&#34;#95a5a6&#34;</span><span class="p">,</span> <span class="s2">&#34;#9b59b6&#34;</span><span class="p">,</span> <span class="s2">&#34;#f1c40fff&#34;</span><span class="p">,</span> <span class="s2">&#34;#34495e&#34;</span><span class="p">,</span> <span class="s2">&#34;#2ecc71&#34;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="n">flatui</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="n">flatui</span><span class="p">)</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">total</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_train</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">flatui</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="n">flatui</span><span class="p">)</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">total</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_train</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">
@@ -290,8 +353,8 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
 </span></span><span class="line"><span class="cl">            <span class="n">ha</span><span class="o">=</span><span class="s2">&#34;center&#34;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="n">g</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">sizes</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.15</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/output_18_02.png"
@@ -305,7 +368,12 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
 <li><strong>30,59%</strong> pertence a classe 1</li>
 </ul>
 <h2 id="visualizações-binárias">Visualizações: Binárias</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># vamos fazer um grid</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># vamos fazer um grid</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># temos 5 variáveis binárias, logo uma iremos</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># plotar em 2 linhas e 3 colunas.</span>
 </span></span><span class="line"><span class="cl"><span class="n">grid</span> <span class="o">=</span> <span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
@@ -331,8 +399,8 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
 </span></span><span class="line"><span class="cl">                <span class="n">ha</span><span class="o">=</span><span class="s2">&#34;center&#34;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">sizes</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.15</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/output_21_02.png"
@@ -348,9 +416,19 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
 </ul>
 <p>Novamente fica bem claro que os dados são relativamente bem balanceados, apenas variável <em>bin_1</em> apresenta uma maior diferença entre as classes da variável target.</p>
 <h2 id="visualizações-nominais">Visualizações: Nominais</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># nom_cols = [&#39;nom_0&#39;, &#39;nom_1&#39;, &#39;nom_2&#39;, &#39;nom_3&#39;, &#39;nom_4&#39;, &#39;nom_5&#39;, &#39;nom_6&#39;, &#39;nom_7&#39;, &#39;nom_8&#39;, &#39;nom_9&#39;]</span>
-</span></span><span class="line"><span class="cl"><span class="n">nom_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;nom_0&#39;</span><span class="p">,</span> <span class="s1">&#39;nom_1&#39;</span><span class="p">,</span> <span class="s1">&#39;nom_2&#39;</span><span class="p">,</span> <span class="s1">&#39;nom_3&#39;</span><span class="p">,</span> <span class="s1">&#39;nom_4&#39;</span><span class="p">]</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">ploting_cat_fet</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">vis_row</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">vis_col</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># nom_cols = [&#39;nom_0&#39;, &#39;nom_1&#39;, &#39;nom_2&#39;, &#39;nom_3&#39;, &#39;nom_4&#39;, &#39;nom_5&#39;, &#39;nom_6&#39;, &#39;nom_7&#39;, &#39;nom_8&#39;, &#39;nom_9&#39;]</span>
+</span></span><span class="line"><span class="cl"><span class="n">nom_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;nom_0&#39;</span><span class="p">,</span> <span class="s1">&#39;nom_1&#39;</span><span class="p">,</span> <span class="s1">&#39;nom_2&#39;</span><span class="p">,</span> <span class="s1">&#39;nom_3&#39;</span><span class="p">,</span> <span class="s1">&#39;nom_4&#39;</span><span class="p">]</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">ploting_cat_fet</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">vis_row</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">vis_col</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">    <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&#34;white&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="n">grid</span> <span class="o">=</span> <span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="n">vis_row</span><span class="p">,</span><span class="n">vis_col</span><span class="p">)</span> <span class="c1"># The grid of chart</span>
@@ -387,9 +465,14 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">.3</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">ploting_cat_fet</span><span class="p">(</span><span class="n">df_train</span><span class="p">,</span> <span class="n">nom_cols</span><span class="p">,</span> <span class="n">vis_row</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">vis_col</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">ploting_cat_fet</span><span class="p">(</span><span class="n">df_train</span><span class="p">,</span> <span class="n">nom_cols</span><span class="p">,</span> <span class="n">vis_row</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">vis_col</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/output_26_02.png"
@@ -401,9 +484,14 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
 <p>É observado que a ocorrência de valores True é maior em classes de variáveis nominais que possuem menor ocorrência no grupo.</p>
 <p>Para variáveis nominais de alta cardinalidade (<em>nom_5</em> a <em>nom_9</em>) se torna inviável de realizar o mesmo tipo de plot</p>
 <h2 id="visualização-ordinais">Visualização: Ordinais</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">ord_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ord_0&#39;</span><span class="p">,</span> <span class="s1">&#39;ord_1&#39;</span><span class="p">,</span> <span class="s1">&#39;ord_2&#39;</span><span class="p">,</span> <span class="s1">&#39;ord_3&#39;</span><span class="p">,</span> <span class="s1">&#39;ord_4&#39;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="n">ploting_cat_fet</span><span class="p">(</span><span class="n">df_train</span><span class="p">,</span> <span class="n">ord_cols</span><span class="p">,</span> <span class="n">vis_row</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">vis_col</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-</span></span></code></pre></div><p><img
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">ord_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ord_0&#39;</span><span class="p">,</span> <span class="s1">&#39;ord_1&#39;</span><span class="p">,</span> <span class="s1">&#39;ord_2&#39;</span><span class="p">,</span> <span class="s1">&#39;ord_3&#39;</span><span class="p">,</span> <span class="s1">&#39;ord_4&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">ploting_cat_fet</span><span class="p">(</span><span class="n">df_train</span><span class="p">,</span> <span class="n">ord_cols</span><span class="p">,</span> <span class="n">vis_row</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">vis_col</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/output_30_02.png"
@@ -414,7 +502,12 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
 <p>Muito interessante, como estamos tratando de variáveis ordinais, significa que cada ordem irá possuir um nível de importância. O que fica nítido ao visualizar ord_4 e ord_5, que estão ordenados de A a Z.</p>
 <p>O mesmo padrão também é visto em ord_0. Mas por que não vemos o mesmo comportamento em ord_1 e ord_2?</p>
 <p>O motivo é que as variáveis não estão ordenadas pelo que de fato elas representam, e sim por ordem alfabética. Vamos visualizar então quando organizamos as variáveis ord_1 e ord_2 por uma ordem espécífica e para isso definimos algumas funções.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Vamos definir algumas funções para conversão</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Vamos definir algumas funções para conversão</span>
 </span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">ord_to_fac</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">categories</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">    <span class="s1">&#39;&#39;&#39;
 </span></span></span><span class="line"><span class="cl"><span class="s1">    A função converte para uma ordem específica
@@ -434,30 +527,55 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
 </span></span><span class="line"><span class="cl">    <span class="n">encoder</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="n">encoded</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">raw_cat</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="n">new_name</span> <span class="o">=</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;_v2&#39;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">df</span><span class="p">[</span><span class="n">new_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">encoded</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Verificando as classes nas variáveis ordinais</span>
+</span></span><span class="line"><span class="cl">    <span class="n">df</span><span class="p">[</span><span class="n">new_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">encoded</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Verificando as classes nas variáveis ordinais</span>
 </span></span><span class="line"><span class="cl"><span class="n">unique_ord0</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;ord_0&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="n">unique_ord1</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;ord_1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="n">unique_ord2</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;ord_2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="n">unique_ord3</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;ord_3&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="n">unique_ord4</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;ord_4&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="n">unique_ord5</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;ord_5&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;ord_1&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">unique_ord5</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;ord_5&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;ord_1&#39;</span>
 </span></span><span class="line"><span class="cl"><span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Novice&#39;</span><span class="p">,</span> <span class="s1">&#39;Contributor&#39;</span><span class="p">,</span> <span class="s1">&#39;Expert&#39;</span><span class="p">,</span> <span class="s1">&#39;Master&#39;</span><span class="p">,</span> <span class="s1">&#39;Grandmaster&#39;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="n">ord_to_fac</span><span class="p">(</span><span class="n">df_train</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">categories</span><span class="p">)</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df_train</span><span class="o">.</span><span class="n">columns</span>
-</span></span></code></pre></div><pre><code>Index(['id', 'bin_0', 'bin_1', 'bin_2', 'bin_3', 'bin_4', 'nom_0', 'nom_1',
+</span></span><span class="line"><span class="cl"><span class="n">ord_to_fac</span><span class="p">(</span><span class="n">df_train</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">categories</span><span class="p">)</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df_train</span><span class="o">.</span><span class="n">columns</span></span></span></code></pre></div></div>
+<pre><code>Index(['id', 'bin_0', 'bin_1', 'bin_2', 'bin_3', 'bin_4', 'nom_0', 'nom_1',
        'nom_2', 'nom_3', 'nom_4', 'nom_5', 'nom_6', 'nom_7', 'nom_8', 'nom_9',
        'ord_0', 'ord_1', 'ord_2', 'ord_3', 'ord_4', 'ord_5', 'day', 'month',
        'target', 'ord_1_v2'],
       dtype='object')
 </code></pre>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;ord_2&#39;</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;ord_2&#39;</span>
 </span></span><span class="line"><span class="cl"><span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Freezing&#39;</span><span class="p">,</span> <span class="s1">&#39;Cold&#39;</span><span class="p">,</span> <span class="s1">&#39;Warm&#39;</span><span class="p">,</span> <span class="s1">&#39;Hot&#39;</span><span class="p">,</span> <span class="s1">&#39;Boiling Hot&#39;</span><span class="p">,</span> <span class="s1">&#39;Lava Hot&#39;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="n">ord_to_fac</span><span class="p">(</span><span class="n">df_train</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">categories</span><span class="p">)</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">ord_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ord_1_v2&#39;</span><span class="p">,</span> <span class="s1">&#39;ord_2_v2&#39;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="n">ploting_cat_fet</span><span class="p">(</span><span class="n">df_train</span><span class="p">,</span> <span class="n">ord_cols</span><span class="p">,</span> <span class="n">vis_row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">vis_col</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl"><span class="n">ord_to_fac</span><span class="p">(</span><span class="n">df_train</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">categories</span><span class="p">)</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">ord_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ord_1_v2&#39;</span><span class="p">,</span> <span class="s1">&#39;ord_2_v2&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">ploting_cat_fet</span><span class="p">(</span><span class="n">df_train</span><span class="p">,</span> <span class="n">ord_cols</span><span class="p">,</span> <span class="n">vis_row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">vis_col</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/output_37_02.png"
@@ -466,7 +584,12 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
         alt="/img/output_37_02.png"
         title="png" /></p>
 <p>Muito bom, agora o padrão se torna nítido. Por último vamos observar a variável <em>ord_5</em>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;ord_5&#39;</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;ord_5&#39;</span>
 </span></span><span class="line"><span class="cl"><span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;AP&#39;</span><span class="p">,</span> <span class="s1">&#39;Ai&#39;</span><span class="p">,</span> <span class="s1">&#39;Aj&#39;</span><span class="p">,</span> <span class="s1">&#39;BA&#39;</span><span class="p">,</span> <span class="s1">&#39;BE&#39;</span><span class="p">,</span> <span class="s1">&#39;Bb&#39;</span><span class="p">,</span> <span class="s1">&#39;Bd&#39;</span><span class="p">,</span> <span class="s1">&#39;Bn&#39;</span><span class="p">,</span> <span class="s1">&#39;CL&#39;</span><span class="p">,</span> <span class="s1">&#39;CM&#39;</span><span class="p">,</span> <span class="s1">&#39;CU&#39;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">       <span class="s1">&#39;CZ&#39;</span><span class="p">,</span> <span class="s1">&#39;Cl&#39;</span><span class="p">,</span> <span class="s1">&#39;DH&#39;</span><span class="p">,</span> <span class="s1">&#39;DN&#39;</span><span class="p">,</span> <span class="s1">&#39;Dc&#39;</span><span class="p">,</span> <span class="s1">&#39;Dx&#39;</span><span class="p">,</span> <span class="s1">&#39;Ed&#39;</span><span class="p">,</span> <span class="s1">&#39;Eg&#39;</span><span class="p">,</span> <span class="s1">&#39;Er&#39;</span><span class="p">,</span> <span class="s1">&#39;FI&#39;</span><span class="p">,</span> <span class="s1">&#39;Fd&#39;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">       <span class="s1">&#39;Fo&#39;</span><span class="p">,</span> <span class="s1">&#39;GD&#39;</span><span class="p">,</span> <span class="s1">&#39;GJ&#39;</span><span class="p">,</span> <span class="s1">&#39;Gb&#39;</span><span class="p">,</span> <span class="s1">&#39;Gx&#39;</span><span class="p">,</span> <span class="s1">&#39;Hj&#39;</span><span class="p">,</span> <span class="s1">&#39;IK&#39;</span><span class="p">,</span> <span class="s1">&#39;Id&#39;</span><span class="p">,</span> <span class="s1">&#39;JX&#39;</span><span class="p">,</span> <span class="s1">&#39;Jc&#39;</span><span class="p">,</span> <span class="s1">&#39;Jf&#39;</span><span class="p">,</span>
@@ -485,10 +608,15 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
 </span></span><span class="line"><span class="cl">       <span class="s1">&#39;rp&#39;</span><span class="p">,</span> <span class="s1">&#39;sD&#39;</span><span class="p">,</span> <span class="s1">&#39;sV&#39;</span><span class="p">,</span> <span class="s1">&#39;sY&#39;</span><span class="p">,</span> <span class="s1">&#39;sn&#39;</span><span class="p">,</span> <span class="s1">&#39;su&#39;</span><span class="p">,</span> <span class="s1">&#39;tM&#39;</span><span class="p">,</span> <span class="s1">&#39;tP&#39;</span><span class="p">,</span> <span class="s1">&#39;tv&#39;</span><span class="p">,</span> <span class="s1">&#39;uJ&#39;</span><span class="p">,</span> <span class="s1">&#39;uS&#39;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">       <span class="s1">&#39;ud&#39;</span><span class="p">,</span> <span class="s1">&#39;us&#39;</span><span class="p">,</span> <span class="s1">&#39;ut&#39;</span><span class="p">,</span> <span class="s1">&#39;ux&#39;</span><span class="p">,</span> <span class="s1">&#39;uy&#39;</span><span class="p">,</span> <span class="s1">&#39;vK&#39;</span><span class="p">,</span> <span class="s1">&#39;vq&#39;</span><span class="p">,</span> <span class="s1">&#39;vy&#39;</span><span class="p">,</span> <span class="s1">&#39;wu&#39;</span><span class="p">,</span> <span class="s1">&#39;wy&#39;</span><span class="p">,</span> <span class="s1">&#39;xP&#39;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">       <span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="s1">&#39;yN&#39;</span><span class="p">,</span> <span class="s1">&#39;yY&#39;</span><span class="p">,</span> <span class="s1">&#39;yc&#39;</span><span class="p">,</span> <span class="s1">&#39;zU&#39;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="n">ord_to_num</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">df_train</span><span class="p">,</span> <span class="n">categories</span><span class="p">)</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">ord_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ord_5_v2&#39;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="n">ploting_cat_fet</span><span class="p">(</span><span class="n">df_train</span><span class="p">,</span> <span class="n">ord_cols</span><span class="p">,</span> <span class="n">vis_row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vis_col</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl"><span class="n">ord_to_num</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">df_train</span><span class="p">,</span> <span class="n">categories</span><span class="p">)</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">ord_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ord_5_v2&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">ploting_cat_fet</span><span class="p">(</span><span class="n">df_train</span><span class="p">,</span> <span class="n">ord_cols</span><span class="p">,</span> <span class="n">vis_row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vis_col</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/output_40_02.png"
@@ -502,7 +630,12 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
 <li>Ou ela realmente possui (intrinsecamente) esse ruído, e não teríamos muito oq fazer.</li>
 </ul>
 <p>Podemos então testar a primeira suposição, e realizar a separação da <em>ord_5</em> em novas duas variáveis. Onde a primeira coluna diz respeito ao primeiro caractere de cada amostra, e a segunda coluna ao segundo caractere de cada amostra.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Iremos considerar que a variável ord_5 foi resultado da junção de 2 outras</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Iremos considerar que a variável ord_5 foi resultado da junção de 2 outras</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># sendo um caractere oriundo de uma variável e o outro de outra.</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># Dessa forma separaremos cada elemento da ord_5 do dataset.</span>
 </span></span><span class="line"><span class="cl"><span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;AP&#39;</span><span class="p">,</span> <span class="s1">&#39;Ai&#39;</span><span class="p">,</span> <span class="s1">&#39;Aj&#39;</span><span class="p">,</span> <span class="s1">&#39;BA&#39;</span><span class="p">,</span> <span class="s1">&#39;BE&#39;</span><span class="p">,</span> <span class="s1">&#39;Bb&#39;</span><span class="p">,</span> <span class="s1">&#39;Bd&#39;</span><span class="p">,</span> <span class="s1">&#39;Bn&#39;</span><span class="p">,</span> <span class="s1">&#39;CL&#39;</span><span class="p">,</span> <span class="s1">&#39;CM&#39;</span><span class="p">,</span> <span class="s1">&#39;CU&#39;</span><span class="p">,</span>
@@ -532,19 +665,34 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
 </span></span><span class="line"><span class="cl">    <span class="n">ord_5_v4</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;ord_5_v3&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ord_5_v3</span>
-</span></span><span class="line"><span class="cl"><span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;ord_5_v4&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ord_5_v4</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df_train</span><span class="o">.</span><span class="n">columns</span>
-</span></span></code></pre></div><pre><code>Index(['id', 'bin_0', 'bin_1', 'bin_2', 'bin_3', 'bin_4', 'nom_0', 'nom_1',
+</span></span><span class="line"><span class="cl"><span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;ord_5_v4&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ord_5_v4</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df_train</span><span class="o">.</span><span class="n">columns</span></span></span></code></pre></div></div>
+<pre><code>Index(['id', 'bin_0', 'bin_1', 'bin_2', 'bin_3', 'bin_4', 'nom_0', 'nom_1',
        'nom_2', 'nom_3', 'nom_4', 'nom_5', 'nom_6', 'nom_7', 'nom_8', 'nom_9',
        'ord_0', 'ord_1', 'ord_2', 'ord_3', 'ord_4', 'ord_5', 'day', 'month',
        'target', 'ord_1_v2', 'ord_2_v2', 'ord_5_v2', 'ord_5_v3', 'ord_5_v4'],
       dtype='object')
 </code></pre>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">ord_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ord_5_v4&#39;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="n">ploting_cat_fet</span><span class="p">(</span><span class="n">df_train</span><span class="p">,</span> <span class="n">ord_cols</span><span class="p">,</span> <span class="n">vis_row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vis_col</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">ord_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ord_5_v3&#39;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="n">ploting_cat_fet</span><span class="p">(</span><span class="n">df_train</span><span class="p">,</span> <span class="n">ord_cols</span><span class="p">,</span> <span class="n">vis_row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vis_col</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</span></span></code></pre></div><p><img
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">ord_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ord_5_v4&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">ploting_cat_fet</span><span class="p">(</span><span class="n">df_train</span><span class="p">,</span> <span class="n">ord_cols</span><span class="p">,</span> <span class="n">vis_row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vis_col</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">ord_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ord_5_v3&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">ploting_cat_fet</span><span class="p">(</span><span class="n">df_train</span><span class="p">,</span> <span class="n">ord_cols</span><span class="p">,</span> <span class="n">vis_row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vis_col</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/output_44_452.png"
@@ -555,7 +703,12 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
 <p>Incrível! Vemos que ao separar a variável <em>ord_5</em> em duas, uma delas mostrou um padrão muito mais linear que a original. E que a outra variável criada apresenta apenas ruído.</p>
 <h1 id="visualização-data">Visualização: Data</h1>
 <p>Temos no dataset algumas variáveis de data. Uma representando alguns meses do ano e a outra os dias da semana.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">total</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_train</span><span class="p">)</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">total</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_train</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">
@@ -575,8 +728,8 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
 </span></span><span class="line"><span class="cl">            <span class="n">ha</span><span class="o">=</span><span class="s2">&#34;center&#34;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="n">g</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">sizes</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.15</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/output_49_02.png"
@@ -584,7 +737,12 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
         data-sizes="auto"
         alt="/img/output_49_02.png"
         title="png" /></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">total</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_train</span><span class="p">)</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">total</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_train</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">
@@ -604,8 +762,8 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
 </span></span><span class="line"><span class="cl">            <span class="n">ha</span><span class="o">=</span><span class="s2">&#34;center&#34;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="n">g</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">sizes</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.15</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/output_50_02.png"
@@ -615,12 +773,22 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
         title="png" /></p>
 <p>Uma observação, apesar de ser irrelevante, é que o dia 6 e o mês 6 apresentaram a menor ocorrência de 0 e 1. A distribuição de valores do target, ao longo das datas não apresentam muito desbalanceamento, permanecendo dentro do que vem sendo observado.</p>
 <p>Começaremos agora o pré-processamento dos dados, onde será tratado cada tipo das variáveis (binária, ordinal, nominal e data).</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># para evitar de não identificar alguma classe nos dados</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># para evitar de não identificar alguma classe nos dados</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># vamos trabalhar com os dois dataset juntos, depois iremos separar na etapa de machine learning.</span>
-</span></span><span class="line"><span class="cl"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-</span></span></code></pre></div><h1 id="tratamento-de-variáveis-ordinais">Tratamento de variáveis ordinais</h1>
+</span></span><span class="line"><span class="cl"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></span></span></code></pre></div></div>
+<h1 id="tratamento-de-variáveis-ordinais">Tratamento de variáveis ordinais</h1>
 <p>Aqui aplicaremos 2 principais técnicas de tratamento de variáveis categóricas. O Label Encoder e o One Hot Encoder disponíveis no Scikit Learn e no Pandas, respectivamente.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Como foi informado que possuímos variáveis ordinais</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Como foi informado que possuímos variáveis ordinais</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># faz sentido que a var_7 tenha mais importância que a var_0.</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># Vamos definir algumas funções para conversão</span>
 </span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">ord_to_fac</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">categories</span><span class="p">):</span>
@@ -642,39 +810,79 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
 </span></span><span class="line"><span class="cl">    <span class="n">encoder</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="n">encoded</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">raw_cat</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="n">new_name</span> <span class="o">=</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;_v2&#39;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">df</span><span class="p">[</span><span class="n">new_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">encoded</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Verificando as classes nas variáveis ordinais</span>
+</span></span><span class="line"><span class="cl">    <span class="n">df</span><span class="p">[</span><span class="n">new_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">encoded</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Verificando as classes nas variáveis ordinais</span>
 </span></span><span class="line"><span class="cl"><span class="n">unique_ord0</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ord_0&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="n">unique_ord1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ord_1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="n">unique_ord2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ord_2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="n">unique_ord3</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ord_3&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="n">unique_ord4</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ord_4&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="n">unique_ord5</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ord_5&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;ord_1&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">unique_ord5</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ord_5&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;ord_1&#39;</span>
 </span></span><span class="line"><span class="cl"><span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Novice&#39;</span><span class="p">,</span> <span class="s1">&#39;Contributor&#39;</span><span class="p">,</span> <span class="s1">&#39;Expert&#39;</span><span class="p">,</span> <span class="s1">&#39;Master&#39;</span><span class="p">,</span> <span class="s1">&#39;Grandmaster&#39;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="n">ord_to_fac</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">categories</span><span class="p">)</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;ord_2&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">ord_to_fac</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">categories</span><span class="p">)</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;ord_2&#39;</span>
 </span></span><span class="line"><span class="cl"><span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Freezing&#39;</span><span class="p">,</span> <span class="s1">&#39;Cold&#39;</span><span class="p">,</span> <span class="s1">&#39;Warm&#39;</span><span class="p">,</span> <span class="s1">&#39;Hot&#39;</span><span class="p">,</span> <span class="s1">&#39;Boiling Hot&#39;</span><span class="p">,</span> <span class="s1">&#39;Lava Hot&#39;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="n">ord_to_fac</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">categories</span><span class="p">)</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;ord_3&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">ord_to_fac</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">categories</span><span class="p">)</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;ord_3&#39;</span>
 </span></span><span class="line"><span class="cl"><span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="s1">&#39;j&#39;</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="n">ord_to_num</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">categories</span><span class="p">)</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;ord_4&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">ord_to_num</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">categories</span><span class="p">)</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;ord_4&#39;</span>
 </span></span><span class="line"><span class="cl"><span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;O&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;Q&#39;</span><span class="p">,</span> <span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;U&#39;</span><span class="p">,</span> <span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;W&#39;</span><span class="p">,</span> <span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="s1">&#39;Z&#39;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="n">ord_to_num</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">categories</span><span class="p">)</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">ord_5_v3</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl"><span class="n">ord_to_num</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">categories</span><span class="p">)</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">ord_5_v3</span> <span class="o">=</span> <span class="p">[]</span>
 </span></span><span class="line"><span class="cl"><span class="n">ord_5_v4</span> <span class="o">=</span> <span class="p">[]</span>
 </span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ord_5&#39;</span><span class="p">]:</span>
 </span></span><span class="line"><span class="cl">    <span class="n">lista</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="n">ord_5_v3</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </span></span><span class="line"><span class="cl">    <span class="n">ord_5_v4</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="p">[</span><span class="s1">&#39;ord_5_v3&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ord_5_v3</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;ord_5_v3&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="p">[</span><span class="s1">&#39;ord_5_v3&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ord_5_v3</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;ord_5_v3&#39;</span>
 </span></span><span class="line"><span class="cl"><span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;O&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;Q&#39;</span><span class="p">,</span> <span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;U&#39;</span><span class="p">,</span> <span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;W&#39;</span><span class="p">,</span> <span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="s1">&#39;Z&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="s1">&#39;j&#39;</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="s1">&#39;q&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="s1">&#39;u&#39;</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="n">ord_to_num</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">categories</span><span class="p">)</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
-</span></span></code></pre></div><pre><code>Index(['bin_0', 'bin_1', 'bin_2', 'bin_3', 'bin_4', 'nom_0', 'nom_1', 'nom_2',
+</span></span><span class="line"><span class="cl"><span class="n">ord_to_num</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">categories</span><span class="p">)</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">columns</span></span></span></code></pre></div></div>
+<pre><code>Index(['bin_0', 'bin_1', 'bin_2', 'bin_3', 'bin_4', 'nom_0', 'nom_1', 'nom_2',
        'nom_3', 'nom_4', 'nom_5', 'nom_6', 'nom_7', 'nom_8', 'nom_9', 'ord_0',
        'ord_1', 'ord_2', 'ord_3', 'ord_4', 'ord_5', 'day', 'month', 'ord_1_v2',
        'ord_2_v2', 'ord_3_v2', 'ord_4_v2', 'ord_5_v3', 'ord_5_v3_v2'],
@@ -682,23 +890,48 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
 </code></pre>
 <h1 id="tratamento-de-variáveis-binárias">Tratamento de variáveis binárias</h1>
 <p>As variáveis <em>bin_0</em>, <em>bin_1</em> e <em>bin_2</em> já possuem valores numéricos, então iremos apenas substituir das variáveis <em>bin_3</em> e <em>bin_4</em>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">unique_bin3</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;bin_3&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="n">unique_bin4</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;bin_4&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;bin_3&#39;</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">unique_bin3</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;bin_3&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">unique_bin4</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;bin_4&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;bin_3&#39;</span>
 </span></span><span class="line"><span class="cl"><span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="n">ord_to_num</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">categories</span><span class="p">)</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;bin_4&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">ord_to_num</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">categories</span><span class="p">)</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;bin_4&#39;</span>
 </span></span><span class="line"><span class="cl"><span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="n">ord_to_num</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">categories</span><span class="p">)</span>
-</span></span></code></pre></div><h1 id="tratando-variáveis-cíclicas">Tratando variáveis cíclicas</h1>
+</span></span><span class="line"><span class="cl"><span class="n">ord_to_num</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">categories</span><span class="p">)</span></span></span></code></pre></div></div>
+<h1 id="tratando-variáveis-cíclicas">Tratando variáveis cíclicas</h1>
 <h3 id="temos-dia-da-semana-e-meses-do-ano">Temos dia da semana e meses do ano</h3>
 <p>Para os meses do ano, o mais indicado é que se divida os dados em trimestres. Aos quais as novas variáveis serão: <em>Q1</em>, <em>Q2</em>, <em>Q3</em>, <em>Q4</em>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="p">[</span><span class="s1">&#39;quarters&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%m&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;period[Q]&#39;</span><span class="p">)</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="p">[</span><span class="s1">&#39;quarters&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%m&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;period[Q]&#39;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="n">df_month</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;quarters&#39;</span><span class="p">],</span> <span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;v2&#39;</span><span class="p">,</span> <span class="n">drop_first</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">df_month</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</span></span></code></pre></div><h1 id="drop-de-algumas-colunas">Drop de algumas colunas</h1>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
-</span></span></code></pre></div><pre><code>Index(['bin_0', 'bin_1', 'bin_2', 'bin_3', 'bin_4', 'nom_0', 'nom_1', 'nom_2',
+</span></span><span class="line"><span class="cl"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">df_month</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></span></span></code></pre></div></div>
+<h1 id="drop-de-algumas-colunas">Drop de algumas colunas</h1>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">columns</span></span></span></code></pre></div></div>
+<pre><code>Index(['bin_0', 'bin_1', 'bin_2', 'bin_3', 'bin_4', 'nom_0', 'nom_1', 'nom_2',
        'nom_3', 'nom_4', 'nom_5', 'nom_6', 'nom_7', 'nom_8', 'nom_9', 'ord_0',
        'ord_1', 'ord_2', 'ord_3', 'ord_4', 'ord_5', 'day', 'month', 'ord_1_v2',
        'ord_2_v2', 'ord_3_v2', 'ord_4_v2', 'ord_5_v3', 'ord_5_v3_v2',
@@ -706,11 +939,26 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
        'v2_1900Q3', 'v2_1900Q4'],
       dtype='object')
 </code></pre>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># para não perder o progresso no dataset original por algum comando</span>
-</span></span><span class="line"><span class="cl"><span class="n">new_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">new_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;bin_3&#39;</span><span class="p">,</span> <span class="s1">&#39;bin_4&#39;</span><span class="p">,</span> <span class="s1">&#39;ord_1&#39;</span><span class="p">,</span> <span class="s1">&#39;ord_2&#39;</span><span class="p">,</span> <span class="s1">&#39;ord_3&#39;</span><span class="p">,</span> <span class="s1">&#39;ord_4&#39;</span><span class="p">,</span> <span class="s1">&#39;ord_5&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;quarters&#39;</span><span class="p">,</span> <span class="s1">&#39;ord_5_v3&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">new_df</span><span class="o">.</span><span class="n">columns</span>
-</span></span></code></pre></div><pre><code>Index(['bin_0', 'bin_1', 'bin_2', 'nom_0', 'nom_1', 'nom_2', 'nom_3', 'nom_4',
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># para não perder o progresso no dataset original por algum comando</span>
+</span></span><span class="line"><span class="cl"><span class="n">new_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">new_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;bin_3&#39;</span><span class="p">,</span> <span class="s1">&#39;bin_4&#39;</span><span class="p">,</span> <span class="s1">&#39;ord_1&#39;</span><span class="p">,</span> <span class="s1">&#39;ord_2&#39;</span><span class="p">,</span> <span class="s1">&#39;ord_3&#39;</span><span class="p">,</span> <span class="s1">&#39;ord_4&#39;</span><span class="p">,</span> <span class="s1">&#39;ord_5&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;quarters&#39;</span><span class="p">,</span> <span class="s1">&#39;ord_5_v3&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">new_df</span><span class="o">.</span><span class="n">columns</span></span></span></code></pre></div></div>
+<pre><code>Index(['bin_0', 'bin_1', 'bin_2', 'nom_0', 'nom_1', 'nom_2', 'nom_3', 'nom_4',
        'nom_5', 'nom_6', 'nom_7', 'nom_8', 'nom_9', 'ord_0', 'day', 'ord_1_v2',
        'ord_2_v2', 'ord_3_v2', 'ord_4_v2', 'ord_5_v3_v2', 'bin_3_v2',
        'bin_4_v2', 'v2_1900Q1', 'v2_1900Q2', 'v2_1900Q3', 'v2_1900Q4'],
@@ -719,21 +967,46 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
 <h1 id="iniciando-a-criação-da-matriz-esparsa">Iniciando a criação da matriz esparsa</h1>
 <p>Como iremos aplicar o one hot encoder em toda a matriz, a quantidade de memória utilizada é extremamente grande. Para minimizar isso podemos realizar a criação de uma matriz esparsa, que justamente é especializada no armazenamento de uma matriz que possui grande quantidades de zeros com valores esparssados ao longo de sua dimensão.</p>
 <p>Para isso, o Pandas possui o <em>get_dummies</em> com o parâmetro <em>sparse</em>, que precisa receber o valor <strong>True</strong>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">new_df</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">columns</span><span class="p">)</span>
-</span></span></code></pre></div><pre><code>['bin_0', 'bin_1', 'bin_2', 'nom_0', 'nom_1', 'nom_2', 'nom_3', 'nom_4', 'nom_5', 'nom_6', 'nom_7', 'nom_8', 'nom_9', 'ord_0', 'day', 'ord_1_v2', 'ord_2_v2', 'ord_3_v2', 'ord_4_v2', 'ord_5_v3_v2', 'bin_3_v2', 'bin_4_v2', 'v2_1900Q1', 'v2_1900Q2', 'v2_1900Q3', 'v2_1900Q4']
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">new_df</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">columns</span><span class="p">)</span></span></span></code></pre></div></div>
+<pre><code>['bin_0', 'bin_1', 'bin_2', 'nom_0', 'nom_1', 'nom_2', 'nom_3', 'nom_4', 'nom_5', 'nom_6', 'nom_7', 'nom_8', 'nom_9', 'ord_0', 'day', 'ord_1_v2', 'ord_2_v2', 'ord_3_v2', 'ord_4_v2', 'ord_5_v3_v2', 'bin_3_v2', 'bin_4_v2', 'v2_1900Q1', 'v2_1900Q2', 'v2_1900Q3', 'v2_1900Q4']
 </code></pre>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">dummies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">new_df</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span> <span class="n">drop_first</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sparse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">dummies</span><span class="o">.</span><span class="n">shape</span>
-</span></span></code></pre></div><pre><code>(500000, 16382)
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">dummies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">new_df</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span> <span class="n">drop_first</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sparse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">dummies</span><span class="o">.</span><span class="n">shape</span></span></span></code></pre></div></div>
+<pre><code>(500000, 16382)
 </code></pre>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">train</span> <span class="o">=</span> <span class="n">dummies</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">:]</span>
-</span></span><span class="line"><span class="cl"><span class="n">test</span> <span class="o">=</span> <span class="n">dummies</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:,</span> <span class="p">:]</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># preenchemos os NAs com 0, pois fica complicado verificar se existe valor nulo</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">train</span> <span class="o">=</span> <span class="n">dummies</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">:]</span>
+</span></span><span class="line"><span class="cl"><span class="n">test</span> <span class="o">=</span> <span class="n">dummies</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:,</span> <span class="p">:]</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># preenchemos os NAs com 0, pois fica complicado verificar se existe valor nulo</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># devido a dimens</span>
 </span></span><span class="line"><span class="cl"><span class="n">train</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">train</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</span></span></code></pre></div><!-- raw HTML omitted -->
+</span></span><span class="line"><span class="cl"><span class="n">train</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span></span></span></code></pre></div></div>
+<!-- raw HTML omitted -->
 <pre><code>.dataframe tbody tr th {
     vertical-align: top;
 }
@@ -744,20 +1017,40 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
 </code></pre>
 <p><!-- raw HTML omitted --></p>
 <!-- raw HTML omitted -->
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">train</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">to_coo</span><span class="p">()</span><span class="o">.</span><span class="n">tocsr</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="n">test</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">to_coo</span><span class="p">()</span><span class="o">.</span><span class="n">tocsr</span><span class="p">()</span>
-</span></span></code></pre></div><h1 id="modelagem-preditiva">Modelagem Preditiva</h1>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">seed</span> <span class="o">=</span> <span class="mi">7</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">train</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">to_coo</span><span class="p">()</span><span class="o">.</span><span class="n">tocsr</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">test</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">to_coo</span><span class="p">()</span><span class="o">.</span><span class="n">tocsr</span><span class="p">()</span></span></span></code></pre></div></div>
+<h1 id="modelagem-preditiva">Modelagem Preditiva</h1>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">seed</span> <span class="o">=</span> <span class="mi">7</span>
 </span></span><span class="line"><span class="cl"><span class="n">cv_size</span> <span class="o">=</span> <span class="mf">0.30</span>
-</span></span><span class="line"><span class="cl"><span class="n">X_train</span><span class="p">,</span> <span class="n">X_cv</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_cv</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="n">cv_size</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">model</span> <span class="o">=</span> <span class="n">XGBClassifier</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">X_train</span><span class="p">,</span> <span class="n">X_cv</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_cv</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="n">cv_size</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">model</span> <span class="o">=</span> <span class="n">XGBClassifier</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="n">prediction</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_cv</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
 </span></span><span class="line"><span class="cl"><span class="n">roc_score</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_cv</span><span class="p">,</span> <span class="n">prediction</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">roc_score</span><span class="p">)</span>
-</span></span></code></pre></div><pre><code>0.7631479991590155
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">roc_score</span><span class="p">)</span></span></span></code></pre></div></div>
+<pre><code>0.7631479991590155
 </code></pre>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">lr_cv</span> <span class="o">=</span> <span class="n">LogisticRegressionCV</span><span class="p">(</span><span class="n">Cs</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">lr_cv</span> <span class="o">=</span> <span class="n">LogisticRegressionCV</span><span class="p">(</span><span class="n">Cs</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                        <span class="n">solver</span><span class="o">=</span><span class="s2">&#34;lbfgs&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                        <span class="n">tol</span><span class="o">=</span><span class="mf">0.0002</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                        <span class="n">max_iter</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>
@@ -769,15 +1062,25 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
 </span></span><span class="line"><span class="cl"><span class="n">lr_cv_pred</span> <span class="o">=</span> <span class="n">lr_cv</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">train</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
 </span></span><span class="line"><span class="cl"><span class="n">score</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">lr_cv_pred</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;score: &#34;</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span>
-</span></span></code></pre></div><pre><code>score:  0.8177916253269919
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;score: &#34;</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span></span></span></code></pre></div></div>
+<pre><code>score:  0.8177916253269919
 </code></pre>
 <p>O melhor score encontrado foi do método utilizando a Regressão Logística, que teve um comportamento fantástico sendo que processou dados de 16 mil colunas com um score de 81,78% na métrica AUC utilizada para avaliação do modelo.</p>
 <h1 id="geração-do-arquivo-de-submissão-ao-kaggle">Geração do arquivo de Submissão ao Kaggle</h1>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">submission</span><span class="p">[</span><span class="s2">&#34;id&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">test_id</span>
-</span></span><span class="line"><span class="cl"><span class="n">submission</span><span class="p">[</span><span class="s2">&#34;target&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lr_cv</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">submission</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</span></span></code></pre></div><!-- raw HTML omitted -->
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">submission</span><span class="p">[</span><span class="s2">&#34;id&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">test_id</span>
+</span></span><span class="line"><span class="cl"><span class="n">submission</span><span class="p">[</span><span class="s2">&#34;target&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lr_cv</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">submission</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span></span></code></pre></div></div>
+<!-- raw HTML omitted -->
 <pre><code>.dataframe tbody tr th {
     vertical-align: top;
 }
@@ -788,8 +1091,13 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
 </code></pre>
 <p><!-- raw HTML omitted --></p>
 <!-- raw HTML omitted -->
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">submission</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&#34;submission_verX.csv&#34;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</span></span></code></pre></div><h1 id="conclusões">Conclusões</h1>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">submission</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&#34;submission_verX.csv&#34;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></span></span></code></pre></div></div>
+<h1 id="conclusões">Conclusões</h1>
 <p>Logicamente que esses dados possuem uma caracteristica bastante acentuada, que é de ser composto apenas de dados categóricos e ainda com algumas colunas possuíndo mais de 11 mil valores únicos. Na realidade é possivel que não encontremos uma base de dados tão peculiar no dia a dia, mas as skills desenvolvidas aqui continuam sendo válidas para a resolução de diversos problemas.</p>
 <h2 id="fontes">Fontes:</h2>
 <p>Algumas funções são de dois kernels incríveis do kaggle.</p>
@@ -804,7 +1112,7 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://www.lobdata.com.br/posts/cat_in_the_dat/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="https://www.lobdata.com.br/posts/cat_in_the_dat/" data-title="Categorical Feature Encoding Challenge" data-via="Luciano_Bats3" data-hashtags="Project,Challenge,Data Science,Machine Learning"><i class="fab fa-x-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Threads" data-sharer="threads" data-url="https://www.lobdata.com.br/posts/cat_in_the_dat/" data-title="Categorical Feature Encoding Challenge"><i class="fab fa-threads fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://www.lobdata.com.br/posts/cat_in_the_dat/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Diaspora" data-sharer="diaspora" data-url="https://www.lobdata.com.br/posts/cat_in_the_dat/" data-title="Categorical Feature Encoding Challenge" data-description=""><i class="fab fa-diaspora fa-fw" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=https%3a%2f%2fwww.lobdata.com.br%2fposts%2fcat_in_the_dat%2f&amp;text=Categorical%20Feature%20Encoding%20Challenge" target="_blank" title="Share on Telegram"><i class="fab fa-telegram fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -821,15 +1129,18 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
 </div>
 <div id="comments"></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Luba</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.145.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.3.1-DEV"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span></div>
         </div>
     </footer></div>
 
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
                 <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
-            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"search":{"algoliaAppID":"56XLI6KGAP","algoliaIndex":"lobdata","algoliaSearchKey":"d7c82e758baf996bfc63e0fffb1098fd","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><script src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script src="https://cdn.jsdelivr.net/npm/algoliasearch@5.20.2/dist/lite/builds/browser.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.2/sharer.min.js"></script><script>window.config={"comment":{},"search":{"algoliaAppID":"56XLI6KGAP","algoliaIndex":"lobdata","algoliaSearchKey":"d7c82e758baf996bfc63e0fffb1098fd","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script src="/js/theme.min.js"></script></body>
 </html>

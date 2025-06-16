@@ -11,9 +11,9 @@
     <guid>https://www.lobdata.com.br/posts/recommender_systems_001/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/recsys-001.png" referrerpolicy="no-referrer">
-            </div>Welcome to the beginning of an adventure on recommendation systems! I&rsquo;m diving into the book Practical Recommender Systems (you can find the link at the end) and sharing my notes here as part of a practice exercise.
-In this post, I&rsquo;ll focus on Chapter 1. It delves into the fundamental concept of what a recommender system is and introduces key ideas that will likely resurface throughout the book.
-To save some typing, I&rsquo;ll use the abbreviation RecSys for Recommender Systems in the upcoming posts, considering we&rsquo;ll mention it frequently.]]></description>
+            </div><p>Welcome to the beginning of an adventure on recommendation systems! I&rsquo;m diving into the book <em>Practical Recommender Systems</em> (you can find the link at the end) and sharing my notes here as part of a practice exercise.</p>
+<p>In this post, I&rsquo;ll focus on <strong>Chapter 1</strong>. It delves into the fundamental concept of what a recommender system is and introduces key ideas that will likely resurface throughout the book.</p>
+<p>To save some typing, I&rsquo;ll use the abbreviation <strong>RecSys</strong> for Recommender Systems in the upcoming posts, considering we&rsquo;ll mention it frequently.</p>]]></description>
 </item>
 </channel>
 </rss>

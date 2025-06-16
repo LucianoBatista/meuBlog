@@ -11,8 +11,9 @@
     <guid>https://www.lobdata.com.br/posts/image-cleaning/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/computer_vision.png" referrerpolicy="no-referrer">
-            </div>O intuito desse post é compartilhar uma solução simples que resolvou um problema complexo que estávamos enfrentando em de nossos produtos aqui na Studos, a Leitora de Gabaritos. Dessa forma, outros que estejam com problemas similares possam talvez ter um ponto de vista diferente na resolução do problema.
-O que é a leitora de gabaritos? Dando um pouco de contexto sobre o produto, a Leitora de Gabaritos é uma API desenvolvida utilizando (principalmente) a seguinte stack:]]></description>
+            </div><p>O intuito desse post é compartilhar uma solução simples que resolvou um problema complexo que estávamos enfrentando em de nossos produtos aqui na <a href="https://www.studos.com.br" target="_blank" rel="noopener noreffer "><strong>Studos</strong></a>, a <em>Leitora de Gabaritos</em>. Dessa forma, outros que estejam com problemas similares possam talvez ter um ponto de vista diferente na resolução do problema.</p>
+<h2 id="o-que-é-a-leitora-de-gabaritos">O que é a leitora de gabaritos?</h2>
+<p>Dando um pouco de contexto sobre o produto, a Leitora de Gabaritos é uma API desenvolvida utilizando (principalmente) a seguinte stack:</p>]]></description>
 </item>
 </channel>
 </rss>

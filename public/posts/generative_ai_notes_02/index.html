@@ -4,24 +4,31 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Deep Learning - LobData</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Deep Learning" />
-<meta property="og:description" content="Chegamos no capítulo 2 do livro, e o mesmo fala sobre Deep Learning e implementações de CNNs utilizando o Keras como framework base para codar as implementações. Porém, as coisas são explicadas de uma forma bem superficial, e dificilmente quem nunca teve contato com esse conteúdo vai conseguir acompanhar de forma satisfatória.
-Pensando nisso, gostaria de fazer algo diferente, pensei em desmembrar o assunto e fazer uma sequência de 3 posts para cobrir o capítulo 2." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.lobdata.com.br/posts/generative_ai_notes_02/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-06-28T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-06-28T00:00:00+00:00" /><meta property="og:site_name" content="LOBData" />
+        <title>Deep Learning - LobData</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="https://www.lobdata.com.br/posts/generative_ai_notes_02/">
+  <meta property="og:site_name" content="LobData">
+  <meta property="og:title" content="Deep Learning">
+  <meta property="og:description" content="Chegamos no capítulo 2 do livro, e o mesmo fala sobre Deep Learning e implementações de CNNs utilizando o Keras como framework base para codar as implementações. Porém, as coisas são explicadas de uma forma bem superficial, e dificilmente quem nunca teve contato com esse conteúdo vai conseguir acompanhar de forma satisfatória.
+Pensando nisso, gostaria de fazer algo diferente, pensei em desmembrar o assunto e fazer uma sequência de 3 posts para cobrir o capítulo 2.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-06-28T00:00:00+00:00">
+    <meta property="article:modified_time" content="2023-06-28T00:00:00+00:00">
+    <meta property="article:tag" content="AI">
+    <meta property="article:tag" content="Generative">
+    <meta property="article:tag" content="IA Generativa">
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Deep Learning"/>
-<meta name="twitter:description" content="Chegamos no capítulo 2 do livro, e o mesmo fala sobre Deep Learning e implementações de CNNs utilizando o Keras como framework base para codar as implementações. Porém, as coisas são explicadas de uma forma bem superficial, e dificilmente quem nunca teve contato com esse conteúdo vai conseguir acompanhar de forma satisfatória.
-Pensando nisso, gostaria de fazer algo diferente, pensei em desmembrar o assunto e fazer uma sequência de 3 posts para cobrir o capítulo 2."/>
-<meta name="twitter:site" content="@Luciano_Bats3"/>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Deep Learning">
+  <meta name="twitter:description" content="Chegamos no capítulo 2 do livro, e o mesmo fala sobre Deep Learning e implementações de CNNs utilizando o Keras como framework base para codar as implementações. Porém, as coisas são explicadas de uma forma bem superficial, e dificilmente quem nunca teve contato com esse conteúdo vai conseguir acompanhar de forma satisfatória.
+Pensando nisso, gostaria de fazer algo diferente, pensei em desmembrar o assunto e fazer uma sequência de 3 posts para cobrir o capítulo 2.">
+      <meta name="twitter:site" content="@Luciano_Bats3">
 <meta name="application-name" content="My cool site">
-<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="apple-mobile-web-app-title" content="My cool site">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/generative_ai_notes_02/" /><link rel="prev" href="https://www.lobdata.com.br/posts/my_notes/" /><link rel="next" href="https://www.lobdata.com.br/posts/generative_ai_notes_03/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/generative_ai_notes_02/" /><link rel="prev" href="https://www.lobdata.com.br/posts/my_notes/" /><link rel="next" href="https://www.lobdata.com.br/posts/generative_ai_notes_03/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
@@ -40,7 +47,7 @@ Pensando nisso, gostaria de fazer algo diferente, pensei em desmembrar o assunto
             },"description": ""
     }
     </script></head>
-    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -161,8 +168,7 @@ Pensando nisso, gostaria de fazer algo diferente, pensei em desmembrar o assunto
 <p>Essas redes, são compostas por diferentes arquiteturas que nascem de muita pesquisa e que funcionam muito bem para um contexto específico. Esse contexto é chamado aqui de &ldquo;<em>Conhecimento a Priori</em>&rdquo; e basicamente isso quer dizer que nós estamos sempre partindo de um tipo de dado que respeita um algum tipo de estrutura.</p>
 <p>Se eu to partindo de que meu dado possui algum tipo de estrutura, um questionamento pode surgir na sua cabeça:</p>
 <blockquote>
-<p><em>Como assim estruturado? Eu vejo muitos modelos trabalhando com imagens, textos, vídeos&hellip; E são dados desestruturados</em></p>
-</blockquote>
+<p><em>Como assim estruturado? Eu vejo muitos modelos trabalhando com imagens, textos, vídeos&hellip; E são dados desestruturados</em></p></blockquote>
 <p>Justamente, esses dados, por um determinado ponto de vista &#x1f440;, são na verdade estruturados.</p>
 <p>Vamos pegar uma imagem como exemplo:</p>
 <p><img
@@ -207,7 +213,12 @@ Pensando nisso, gostaria de fazer algo diferente, pensei em desmembrar o assunto
             <div class="admonition-content">Todo código mostrado aqui pode ser encontrado no repositório dessa sequência de blog posts, ao final do capítulo você encontra o link.</div>
         </div>
     </div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">torch</span>
 </span></span><span class="line"><span class="cl">
@@ -217,8 +228,8 @@ Pensando nisso, gostaria de fazer algo diferente, pensei em desmembrar o assunto
 </span></span><span class="line"><span class="cl"><span class="n">x_axis_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="n">y_axis_vals_p</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">x_axis_vals</span><span class="p">))</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_axis_vals</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_axis_vals_p</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&#34;$f(x)=(x-2)^2$&#34;</span><span class="p">)</span>
-</span></span></code></pre></div><a class="lightgallery" href="https://i.imgur.com/PmPP787.png" title="https://i.imgur.com/PmPP787.png" data-thumbnail="https://i.imgur.com/PmPP787.png">
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_axis_vals</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_axis_vals_p</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&#34;$f(x)=(x-2)^2$&#34;</span><span class="p">)</span></span></span></code></pre></div></div>
+<a class="lightgallery" href="https://i.imgur.com/PmPP787.png" title="https://i.imgur.com/PmPP787.png" data-thumbnail="https://i.imgur.com/PmPP787.png">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
@@ -280,7 +291,7 @@ Pensando nisso, gostaria de fazer algo diferente, pensei em desmembrar o assunto
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://www.lobdata.com.br/posts/generative_ai_notes_02/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="https://www.lobdata.com.br/posts/generative_ai_notes_02/" data-title="Deep Learning" data-via="Luciano_Bats3" data-hashtags="AI,Generative,IA Generativa"><i class="fab fa-x-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Threads" data-sharer="threads" data-url="https://www.lobdata.com.br/posts/generative_ai_notes_02/" data-title="Deep Learning"><i class="fab fa-threads fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://www.lobdata.com.br/posts/generative_ai_notes_02/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Diaspora" data-sharer="diaspora" data-url="https://www.lobdata.com.br/posts/generative_ai_notes_02/" data-title="Deep Learning" data-description=""><i class="fab fa-diaspora fa-fw" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=https%3a%2f%2fwww.lobdata.com.br%2fposts%2fgenerative_ai_notes_02%2f&amp;text=Deep%20Learning" target="_blank" title="Share on Telegram"><i class="fab fa-telegram fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -297,15 +308,18 @@ Pensando nisso, gostaria de fazer algo diferente, pensei em desmembrar o assunto
 </div>
 <div id="comments"></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Luba</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.145.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.3.1-DEV"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span></div>
         </div>
     </footer></div>
 
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
                 <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
-            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"56XLI6KGAP","algoliaIndex":"lobdata","algoliaSearchKey":"d7c82e758baf996bfc63e0fffb1098fd","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script src="https://cdn.jsdelivr.net/npm/algoliasearch@5.20.2/dist/lite/builds/browser.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.2/sharer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/copy-tex.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/mhchem.min.js"></script><script>window.config={"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"56XLI6KGAP","algoliaIndex":"lobdata","algoliaSearchKey":"d7c82e758baf996bfc63e0fffb1098fd","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script src="/js/theme.min.js"></script></body>
 </html>

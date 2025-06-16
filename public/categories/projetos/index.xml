@@ -11,9 +11,10 @@
     <guid>https://www.lobdata.com.br/posts/bncc-modeling/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/bncc_classifier.png" referrerpolicy="no-referrer">
-            </div>Resolvemos criar um novo artigo para detalhar melhor o que foi feito na etapa de modelagem do projeto do Classificador BNCC. Assim conseguimos dar mais atenção e justificar algumas escolhas.
-Cronograma de modelagem Nosso intuito foi buscar o melhor baseline para nosso problema, mapeando alguns universos de possibilidades, dentre modelos de machine learning e estratégias de transformação de texto em dado numérico.
-Válido lembrar que o dado que está entrando nessa etapa do pipeline está &ldquo;limpo&rdquo;, ou seja, passou pelas etapas de pré-processamentos que julgamos necessárias.]]></description>
+            </div><p>Resolvemos criar um novo artigo para detalhar melhor o que foi feito na etapa de modelagem do projeto do <a href="https://www.lobdata.com.br/2022/06/08/classificador-bncc/" target="_blank" rel="noopener noreffer ">Classificador BNCC</a>. Assim conseguimos dar mais atenção e justificar algumas escolhas.</p>
+<h2 id="cronograma-de-modelagem">Cronograma de modelagem</h2>
+<p>Nosso intuito foi buscar o <strong>melhor baseline</strong> para nosso problema, mapeando alguns universos de possibilidades, dentre modelos de machine learning e estratégias de transformação de texto em dado numérico.</p>
+<p>Válido lembrar que o dado que está entrando nessa etapa do pipeline está <em>&ldquo;limpo&rdquo;</em>, ou seja, passou pelas etapas de pré-processamentos que julgamos necessárias. Resumido abaixo:</p>]]></description>
 </item>
 <item>
     <title>Classificador BNCC</title>
@@ -23,8 +24,10 @@ Válido lembrar que o dado que está entrando nessa etapa do pipeline está &ldq
     <guid>https://www.lobdata.com.br/posts/bncc-classifier/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/bncc_classifier.png" referrerpolicy="no-referrer">
-            </div>Projeto desenvolvido pelos alunos Brisa Rosatti, Luciano Batista, Pedro Moreau, Wilson França do Curso de Data Science &amp; Machine Learning da Tera em colaboração com a Studos e ArcoTech.
-PARTE I: Estrutura do projeto Contexto Segundo o IBGE, no Brasil, existem registradas 124840 escolas de ensino fundamental e 28933 escolas do ensino médio. Em termos de número de matrículas, isso representa 26718830 matrículas para o ensino fundamental e 7550753 para o ensino médio https://cidades.]]></description>
+            </div><p>Projeto desenvolvido pelos alunos Brisa Rosatti, Luciano Batista, Pedro Moreau, Wilson França do Curso de Data Science &amp; Machine Learning da Tera em colaboração com a Studos e ArcoTech.</p>
+<h2 id="parte-i-estrutura-do-projeto">PARTE I: Estrutura do projeto</h2>
+<h3 id="contexto">Contexto</h3>
+<p>Segundo o IBGE, no Brasil, existem registradas 124840 escolas de ensino fundamental e 28933 escolas do ensino médio. Em termos de número de matrículas, isso representa 26718830 matrículas para o ensino fundamental e 7550753 para o ensino médio <a href="https://cidades.ibge.gov.br/brasil/pesquisa/13/5908" target="_blank" rel="noopener noreffer ">https://cidades.ibge.gov.br/brasil/pesquisa/13/5908</a>. Com o intuito de harmonizar a base curricular desse grande número escolas e estudantes, oferecendo assim um modelo de ensino de qualidade e que vise capacitar os alunos para as consecutivas fases da sua vida, o Ministério da Educação publicou, em 16 de setembro de 2015 a primeira versão da [Base Nacional Comum Curricular (BNCC)]~(<a href="http://basenacionalcomum.mec.gov.br/%29" target="_blank" rel="noopener noreffer ">http://basenacionalcomum.mec.gov.br/)</a>. Este documento normativo define o conjunto de aprendizagens que todos os alunos devem desenvolver ao longo da sua formação na Educação Básica.</p>]]></description>
 </item>
 <item>
     <title>Segmentação de clientes de Food Delivery</title>
@@ -34,10 +37,10 @@ PARTE I: Estrutura do projeto Contexto Segundo o IBGE, no Brasil, existem regist
     <guid>https://www.lobdata.com.br/posts/segment-client/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/segmentation.png" referrerpolicy="no-referrer">
-            </div>Segmentação de clientes de Food Delivery Neste projeto o objetivo é segmentar clientes de um food delivery. A segmentação permite que profissionais de marketing e product managers possam identificar subconjuntos de público-alvo para melhor adaptar suas estratégias.
-O dataset utilizado foi cedido pela Data Science Academy, e pode ser encontrado no meu github juntamente com todo o código apresentado aqui.
-Um breve overview do que será abordado no projeto:
-Preparação de dados Visualização de dados Padronização de variáveis Clusterização com K-Means Avaliação do melhor número de cluster com o índice de Calinski-Harabasz Bootstrap para avaliar consistência do cluster Visualização dos clusters Sem mais delongas, vamos ao código!]]></description>
+            </div><h1 id="segmentação-de-clientes-de-food-delivery">Segmentação de clientes de Food Delivery</h1>
+<p>Neste projeto o objetivo é segmentar clientes de um food delivery. A segmentação permite que profissionais de marketing e product managers possam identificar subconjuntos de público-alvo para melhor adaptar suas estratégias.</p>
+<p>O dataset utilizado foi cedido pela Data Science Academy, e pode ser encontrado no meu <a href="https://github.com/LucianoBatista/food-deliver" target="_blank" rel="noopener noreffer ">github</a> juntamente com todo o código apresentado aqui.</p>
+<p>Um breve overview do que será abordado no projeto:</p>]]></description>
 </item>
 <item>
     <title>Categorical Feature Encoding Challenge</title>
@@ -47,8 +50,9 @@ Preparação de dados Visualização de dados Padronização de variáveis Clust
     <guid>https://www.lobdata.com.br/posts/cat_in_the_dat/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/cat_data.png" referrerpolicy="no-referrer">
-            </div>Is there a cat in your dat? Esse é um playground do Kaggle, onde diferentes pessoas competem dentro de um determinado problema &lsquo;incomum&rsquo; porém bastante relevante. Nesta competição foi disponibilizado um dataset repleto de variáveis categóricas.
-Sabemos que uma das tarefas do processo de machine learning é realizar o encoding de variáveis categóricas de forma que os algoritmos possam executar seus cálculos e retornar um resultado. Dominar tal skill é de grande importância para o Cientista de Dados.]]></description>
+            </div><h1 id="is-there-a-cat-in-your-dat">Is there a cat in your dat?</h1>
+<p>Esse é um playground do Kaggle, onde diferentes pessoas competem dentro de um determinado problema &lsquo;incomum&rsquo; porém bastante relevante. Nesta competição foi disponibilizado um dataset repleto de variáveis categóricas.</p>
+<p>Sabemos que uma das tarefas do processo de machine learning é realizar o encoding de variáveis categóricas de forma que os algoritmos possam executar seus cálculos e retornar um resultado. Dominar tal skill é de grande importância para o Cientista de Dados.</p>]]></description>
 </item>
 <item>
     <title>Modelagem Preditiva em IoT</title>
@@ -58,8 +62,9 @@ Sabemos que uma das tarefas do processo de machine learning é realizar o encodi
     <guid>https://www.lobdata.com.br/posts/predictive_iot_energy/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/iotdevice.png" referrerpolicy="no-referrer">
-            </div>Previsão de Uso de Energia Quando falamos de revolução tecnológica, a noção de Internet das Coisas, ou Internet of Things (IoT), é um dos assuntos principais. O seu desenvolvimento está mudando a forma como o ser humando tem se conectado com diversos dispositivos tecnlógicos.
-IoT vem gerando uma quantidade imensa de dados, um dos maiores responsáveis pelo Big Data. Diante da geração de tanta informação, o papel do Cientista de Dados se faz cada vez mais presente, pois torna-se possível a obteção de grandes insights sobre diferentes área até então não analisadas.]]></description>
+            </div><h1 id="previsao-de-uso-de-energia">Previsão de Uso de Energia</h1>
+<p>Quando falamos de revolução tecnológica, a noção de Internet das Coisas, ou Internet of Things (IoT), é um dos assuntos principais. O seu desenvolvimento está mudando a forma como o ser humando tem se conectado com diversos dispositivos tecnlógicos.</p>
+<p>IoT vem gerando uma quantidade imensa de dados, um dos maiores responsáveis pelo Big Data. Diante da geração de tanta informação, o papel do Cientista de Dados se faz cada vez mais presente, pois torna-se possível a obteção de grandes insights sobre diferentes área até então não analisadas.</p>]]></description>
 </item>
 </channel>
 </rss>

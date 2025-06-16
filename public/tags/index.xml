@@ -3,11 +3,19 @@
         <title>Tags - Tag - LobData</title>
         <link>https://www.lobdata.com.br/tags/</link>
         <description>Tags - Tag - LobData</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 20 Nov 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 16 Jun 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>Machine Learning</title>
+    <link>https://www.lobdata.com.br/tags/machine-learning/</link>
+    <pubDate>Mon, 16 Jun 2025 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>https://www.lobdata.com.br/tags/machine-learning/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>AI</title>
     <link>https://www.lobdata.com.br/tags/ai/</link>
     <pubDate>Mon, 20 Nov 2023 00:00:00 &#43;0000</pubDate>
-    <author>Luba</author>
+    <author>xxxx</author>
     <guid>https://www.lobdata.com.br/tags/ai/</guid>
     <description><![CDATA[]]></description>
 </item>
@@ -15,7 +23,7 @@
     <title>Recommender System</title>
     <link>https://www.lobdata.com.br/tags/recommender-system/</link>
     <pubDate>Mon, 20 Nov 2023 00:00:00 &#43;0000</pubDate>
-    <author>Luba</author>
+    <author>xxxx</author>
     <guid>https://www.lobdata.com.br/tags/recommender-system/</guid>
     <description><![CDATA[]]></description>
 </item>
@@ -23,7 +31,7 @@
     <title>Generative</title>
     <link>https://www.lobdata.com.br/tags/generative/</link>
     <pubDate>Mon, 17 Jul 2023 00:00:00 &#43;0000</pubDate>
-    <author>Luba</author>
+    <author>xxxx</author>
     <guid>https://www.lobdata.com.br/tags/generative/</guid>
     <description><![CDATA[]]></description>
 </item>
@@ -31,15 +39,15 @@
     <title>IA Generativa</title>
     <link>https://www.lobdata.com.br/tags/ia-generativa/</link>
     <pubDate>Mon, 17 Jul 2023 00:00:00 &#43;0000</pubDate>
-    <author>Luba</author>
+    <author>xxxx</author>
     <guid>https://www.lobdata.com.br/tags/ia-generativa/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
-    <title>Bag of words</title>
+    <title>Bag of Words</title>
     <link>https://www.lobdata.com.br/tags/bag-of-words/</link>
     <pubDate>Tue, 14 Jun 2022 00:00:00 &#43;0000</pubDate>
-    <author>Luba</author>
+    <author>xxxx</author>
     <guid>https://www.lobdata.com.br/tags/bag-of-words/</guid>
     <description><![CDATA[]]></description>
 </item>
@@ -47,7 +55,7 @@
     <title>Data Science</title>
     <link>https://www.lobdata.com.br/tags/data-science/</link>
     <pubDate>Tue, 14 Jun 2022 00:00:00 &#43;0000</pubDate>
-    <author>Luba</author>
+    <author>xxxx</author>
     <guid>https://www.lobdata.com.br/tags/data-science/</guid>
     <description><![CDATA[]]></description>
 </item>
@@ -55,7 +63,7 @@
     <title>Education</title>
     <link>https://www.lobdata.com.br/tags/education/</link>
     <pubDate>Tue, 14 Jun 2022 00:00:00 &#43;0000</pubDate>
-    <author>Luba</author>
+    <author>xxxx</author>
     <guid>https://www.lobdata.com.br/tags/education/</guid>
     <description><![CDATA[]]></description>
 </item>
@@ -63,7 +71,7 @@
     <title>N-Grams</title>
     <link>https://www.lobdata.com.br/tags/n-grams/</link>
     <pubDate>Tue, 14 Jun 2022 00:00:00 &#43;0000</pubDate>
-    <author>Luba</author>
+    <author>xxxx</author>
     <guid>https://www.lobdata.com.br/tags/n-grams/</guid>
     <description><![CDATA[]]></description>
 </item>
@@ -71,16 +79,8 @@
     <title>NLP</title>
     <link>https://www.lobdata.com.br/tags/nlp/</link>
     <pubDate>Tue, 14 Jun 2022 00:00:00 &#43;0000</pubDate>
-    <author>Luba</author>
+    <author>xxxx</author>
     <guid>https://www.lobdata.com.br/tags/nlp/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>TFIDF</title>
-    <link>https://www.lobdata.com.br/tags/tfidf/</link>
-    <pubDate>Tue, 14 Jun 2022 00:00:00 &#43;0000</pubDate>
-    <author>Luba</author>
-    <guid>https://www.lobdata.com.br/tags/tfidf/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>

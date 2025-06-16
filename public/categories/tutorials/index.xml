@@ -11,9 +11,9 @@
     <guid>https://www.lobdata.com.br/posts/recommender_systems_001/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/recsys-001.png" referrerpolicy="no-referrer">
-            </div>Welcome to the beginning of an adventure on recommendation systems! I&rsquo;m diving into the book Practical Recommender Systems (you can find the link at the end) and sharing my notes here as part of a practice exercise.
-In this post, I&rsquo;ll focus on Chapter 1. It delves into the fundamental concept of what a recommender system is and introduces key ideas that will likely resurface throughout the book.
-To save some typing, I&rsquo;ll use the abbreviation RecSys for Recommender Systems in the upcoming posts, considering we&rsquo;ll mention it frequently.]]></description>
+            </div><p>Welcome to the beginning of an adventure on recommendation systems! I&rsquo;m diving into the book <em>Practical Recommender Systems</em> (you can find the link at the end) and sharing my notes here as part of a practice exercise.</p>
+<p>In this post, I&rsquo;ll focus on <strong>Chapter 1</strong>. It delves into the fundamental concept of what a recommender system is and introduces key ideas that will likely resurface throughout the book.</p>
+<p>To save some typing, I&rsquo;ll use the abbreviation <strong>RecSys</strong> for Recommender Systems in the upcoming posts, considering we&rsquo;ll mention it frequently.</p>]]></description>
 </item>
 <item>
     <title>CNNs</title>
@@ -23,9 +23,23 @@ To save some typing, I&rsquo;ll use the abbreviation RecSys for Recommender Syst
     <guid>https://www.lobdata.com.br/posts/cnns/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/cnn.png" referrerpolicy="no-referrer">
-            </div>Hoje nós vamos avançar mais um pouco em direção ao universo de arquiteturas de Deep Learning relacionadas a IA Generativa. Até aqui, nós já falamos sobre:
-IA Generativa, abordando de forma geral Pytorch, explicando um pouco sobre o framework Deep Learning, trazendo conceitos básicos úteis para nosso entendimento ao decorrer dos artigos. E agora, vamos falar sobre Redes Neurais Convolucionais (CNNs).
-Note O código que estamos rodando aqui pode ser encontrado nesse notebook.]]></description>
+            </div><p>Hoje nós vamos avançar mais um pouco em direção ao universo de arquiteturas de Deep Learning relacionadas a IA Generativa. Até aqui, nós já falamos sobre:</p>
+<ul>
+<li><a href="https://www.lobdata.com.br/posts/my_notes/" target="_blank" rel="noopener noreffer ">IA Generativa, abordando de forma geral</a></li>
+<li><a href="https://www.lobdata.com.br/posts/generative_ai_notes_02/" target="_blank" rel="noopener noreffer ">Pytorch, explicando um pouco sobre o framework</a></li>
+<li><a href="https://www.lobdata.com.br/posts/generative_ai_notes_03/" target="_blank" rel="noopener noreffer ">Deep Learning, trazendo conceitos básicos úteis para nosso entendimento ao decorrer dos artigos.</a></li>
+</ul>
+<p>E agora, vamos falar sobre Redes Neurais Convolucionais (CNNs).</p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>O código que estamos rodando aqui pode ser encontrado nesse <a href="https://github.com/LucianoBatista/generative-ai/blob/main/chapter-02/dl-04-v2.ipynb" target="_blank" rel="noopener noreffer ">notebook</a>. Os imports das bibliotecas necessárias estão no início do arquivo.</strong></div>
+        </div>
+    </div>
+<h2 id="por-que-cnns">Por que CNNs?</h2>
+<p>As <strong>Convolutional Neural Networs</strong> são o lugar comum por onde nós normalmente começamos a estudar a fim de entender sobre arquiteturas de Deep Learning. Acredito que muito pelo trade-of que elas oferecem, em relação a complexidade vs aplicações.</p>]]></description>
 </item>
 <item>
     <title>Intro ao Pytorch</title>
@@ -35,8 +49,8 @@ Note O código que estamos rodando aqui pode ser encontrado nesse notebook.]]></
     <guid>https://www.lobdata.com.br/posts/generative_ai_notes_03/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/intro-torch.png" referrerpolicy="no-referrer">
-            </div>Nesse artigo, vamos de mão na massa! Mas gostaria de fazer um disclaimer um pouco chato pra você, vamos ver tudo de forma superficial, cada tópico abordado aqui por si só precisaria de muitas páginas de explicação, então, vou fazer o melhor para a explicação não se tornar um Frankstein e o post virar uma cocha de retalhos.
-Meu papel aqui é trazer de forma objetiva cada tópico desse para que você consiga correlacionar depois com o avançar dos capítulos do livro que estou trazendo os reviews.]]></description>
+            </div><p>Nesse artigo, vamos de mão na massa! Mas gostaria de fazer um disclaimer um pouco chato pra você, <strong>vamos ver tudo de forma superficial</strong>, cada tópico abordado aqui por si só precisaria de muitas páginas de explicação, então, vou fazer o melhor para a explicação não se tornar um Frankstein e o post virar uma <em>cocha de retalhos</em>.</p>
+<p>Meu papel aqui é trazer de forma objetiva cada tópico desse para que você consiga correlacionar depois com o avançar dos capítulos do livro que estou trazendo os reviews.</p>]]></description>
 </item>
 <item>
     <title>Deep Learning</title>
@@ -46,8 +60,8 @@ Meu papel aqui é trazer de forma objetiva cada tópico desse para que você con
     <guid>https://www.lobdata.com.br/posts/generative_ai_notes_02/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/deep-learnig-network.png" referrerpolicy="no-referrer">
-            </div>Chegamos no capítulo 2 do livro, e o mesmo fala sobre Deep Learning e implementações de CNNs utilizando o Keras como framework base para codar as implementações. Porém, as coisas são explicadas de uma forma bem superficial, e dificilmente quem nunca teve contato com esse conteúdo vai conseguir acompanhar de forma satisfatória.
-Pensando nisso, gostaria de fazer algo diferente, pensei em desmembrar o assunto e fazer uma sequência de 3 posts para cobrir o capítulo 2.]]></description>
+            </div><p>Chegamos no capítulo 2 do livro, e o mesmo fala sobre Deep Learning e implementações de CNNs utilizando o Keras como framework base para codar as implementações. Porém, as coisas são explicadas de uma forma bem superficial, e dificilmente quem nunca teve contato com esse conteúdo vai conseguir acompanhar de forma satisfatória.</p>
+<p>Pensando nisso, gostaria de fazer algo diferente, pensei em desmembrar o assunto e fazer uma sequência de <strong>3 posts</strong> para cobrir o capítulo 2.</p>]]></description>
 </item>
 <item>
     <title>Generative Modeling</title>
@@ -57,8 +71,8 @@ Pensando nisso, gostaria de fazer algo diferente, pensei em desmembrar o assunto
     <guid>https://www.lobdata.com.br/posts/my_notes/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/generative-ai-pt1.png" referrerpolicy="no-referrer">
-            </div>Estou iniciando um série de posts no blog sobre IA Generativa. O conteúdo postado aqui serão minhas anotações sobre um livro que estou lendo, e a intenção é que a cada capítulo seja um compilado do que aprendi em junção com algum material extra que venha a consumir.
-Teremos teoria e código, já que o livro segue essa linha, que eu particularmente curto bastante. Um adendo é que o hands-on do livro é em keras, nada contra, mas eu sou time torch &#x1f525; &#x1f605;.]]></description>
+            </div><p>Estou iniciando um série de posts no blog sobre IA Generativa. O conteúdo postado aqui serão minhas anotações sobre um livro que estou lendo, e a intenção é que a cada capítulo seja um compilado do que aprendi em junção com algum material extra que venha a consumir.</p>
+<p>Teremos teoria e código, já que o livro segue essa linha, que eu particularmente curto bastante. Um adendo é que o hands-on do livro é em <code>keras</code>, nada contra, mas eu sou time <code>torch</code> &#x1f525; &#x1f605;.</p>]]></description>
 </item>
 <item>
     <title>Computer Vision</title>
@@ -68,8 +82,9 @@ Teremos teoria e código, já que o livro segue essa linha, que eu particularmen
     <guid>https://www.lobdata.com.br/posts/image-cleaning/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/computer_vision.png" referrerpolicy="no-referrer">
-            </div>O intuito desse post é compartilhar uma solução simples que resolvou um problema complexo que estávamos enfrentando em de nossos produtos aqui na Studos, a Leitora de Gabaritos. Dessa forma, outros que estejam com problemas similares possam talvez ter um ponto de vista diferente na resolução do problema.
-O que é a leitora de gabaritos? Dando um pouco de contexto sobre o produto, a Leitora de Gabaritos é uma API desenvolvida utilizando (principalmente) a seguinte stack:]]></description>
+            </div><p>O intuito desse post é compartilhar uma solução simples que resolvou um problema complexo que estávamos enfrentando em de nossos produtos aqui na <a href="https://www.studos.com.br" target="_blank" rel="noopener noreffer "><strong>Studos</strong></a>, a <em>Leitora de Gabaritos</em>. Dessa forma, outros que estejam com problemas similares possam talvez ter um ponto de vista diferente na resolução do problema.</p>
+<h2 id="o-que-é-a-leitora-de-gabaritos">O que é a leitora de gabaritos?</h2>
+<p>Dando um pouco de contexto sobre o produto, a Leitora de Gabaritos é uma API desenvolvida utilizando (principalmente) a seguinte stack:</p>]]></description>
 </item>
 <item>
     <title>Efficient Pandas</title>
@@ -79,8 +94,8 @@ O que é a leitora de gabaritos? Dando um pouco de contexto sobre o produto, a L
     <guid>https://www.lobdata.com.br/posts/efficient-pandas/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/efficient_pandas.png" referrerpolicy="no-referrer">
-            </div>Fala galera, tudo certo com vocês? Se você é um Cientista/Analista de dados, ou curte utilizar python para realizar diferentes análises em seu dataset, certamente já utilizou a biblioteca Pandas. Pandas é uma biblioteca open-source para estruturação e análise de dados, seus comandos se assemelham muitas vezes ao SQL, porém sua API traz um conjunto maior operações, maior robustez e se executado de forma correta, mais parformance.
-Nesse tutorial estou me baseando em um minicurso do DataCamp Writing Efficient Code with pandas.]]></description>
+            </div><p></p>
+<p>Fala galera, tudo certo com vocês? Se você é um Cientista/Analista de dados, ou curte utilizar python para realizar diferentes análises em seu dataset, certamente já utilizou a biblioteca <code>Pandas</code>. Pandas é uma biblioteca open-source para estruturação e análise de dados, seus comandos se assemelham muitas vezes ao SQL, porém sua API traz um conjunto maior operações, maior robustez e se executado de forma correta, mais parformance.</p>]]></description>
 </item>
 <item>
     <title>Criando uma API Pronta para Produção com FastAPI - PT.5</title>
@@ -90,10 +105,18 @@ Nesse tutorial estou me baseando em um minicurso do DataCamp Writing Efficient C
     <guid>https://www.lobdata.com.br/posts/econowallet-fastapi-pt5/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/fastapi.png" referrerpolicy="no-referrer">
-            </div>Nos Capítulos Anteriores &hellip; Como dito anteriormente, hoje vamos configurar o SQLAlchemy!!
-Essa é a parte 5 do nosso projeto do EconoWallet e se você quiser verificar o que já fizemos até o momento, acesse os links abaixo:
-Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Sem enrolação, vamos logo ao que interessa!!!
-Reorganizando o projeto Antes de configurar o ORM, vamos ajustar algumas coisas no nosso diretório. Como estamos seguindo para um estágio mais maduro da aplicação e que você já compreende o básico de configuração do FastAPI, precisaremos agora separar melhor as competências dentro do projeto.]]></description>
+            </div><h2 id="nos-capítulos-anteriores-">Nos Capítulos Anteriores &hellip;</h2>
+<p>Como dito anteriormente, hoje vamos configurar o <strong>SQLAlchemy</strong>!!</p>
+<p>Essa é a parte 5 do nosso projeto do <strong>EconoWallet</strong> e se você quiser verificar o que já fizemos até o momento, acesse os links abaixo:</p>
+<ul>
+<li><a href="https://www.lobdata.com.br/2021/03/30/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.1/" target="_blank" rel="noopener noreffer ">Parte 1</a></li>
+<li><a href="https://www.lobdata.com.br/2021/04/03/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.2/" target="_blank" rel="noopener noreffer ">Parte 2</a></li>
+<li><a href="https://www.lobdata.com.br/2021/04/08/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.3/" target="_blank" rel="noopener noreffer ">Parte 3</a></li>
+<li><a href="https://www.lobdata.com.br/2021/07/31/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.4/" target="_blank" rel="noopener noreffer ">Parte 4</a></li>
+<li><a href="https://www.lobdata.com.br/2021/08/01/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.5/" target="_blank" rel="noopener noreffer ">Parte 5</a></li>
+</ul>
+<p>Sem enrolação, vamos logo ao que interessa!!!</p>
+<p></p>]]></description>
 </item>
 <item>
     <title>Criando uma API Pronta para Produção com FastAPI - PT.4</title>
@@ -103,9 +126,17 @@ Reorganizando o projeto Antes de configurar o ORM, vamos ajustar algumas coisas 
     <guid>https://www.lobdata.com.br/posts/econowallet-fastapi-pt4/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/fastapi.png" referrerpolicy="no-referrer">
-            </div>Nos Capítulos Anteriores &hellip; Após um tempinho sem postar nada, vamos dar continuidade a essa série sobre como desenvolver uma API pronta pro Deploy! 🚀 🚀
-Essa é a parte 4 do nosso projeto do EconoWallet e se você quiser verificar o que já fizemos até o momento, acesse os links abaixo:
-Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Dando continuidade a nossa aplicação, hoje vamos configurar qual será nosso banco de dados.]]></description>
+            </div><h2 id="nos-capítulos-anteriores-">Nos Capítulos Anteriores &hellip;</h2>
+<p>Após um tempinho sem postar nada, vamos dar continuidade a essa série sobre como desenvolver uma API pronta pro Deploy! 🚀 🚀</p>
+<p>Essa é a parte 4 do nosso projeto do <strong>EconoWallet</strong> e se você quiser verificar o que já fizemos até o momento, acesse os links abaixo:</p>
+<ul>
+<li><a href="https://www.lobdata.com.br/2021/03/30/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.1/" target="_blank" rel="noopener noreffer ">Parte 1</a></li>
+<li><a href="https://www.lobdata.com.br/2021/04/03/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.2/" target="_blank" rel="noopener noreffer ">Parte 2</a></li>
+<li><a href="https://www.lobdata.com.br/2021/04/08/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.3/" target="_blank" rel="noopener noreffer ">Parte 3</a></li>
+<li><a href="https://www.lobdata.com.br/2021/07/31/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.4/" target="_blank" rel="noopener noreffer ">Parte 4</a></li>
+<li><a href="https://www.lobdata.com.br/2021/08/01/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.5/" target="_blank" rel="noopener noreffer ">Parte 5</a></li>
+</ul>
+<p>Dando continuidade a nossa aplicação, hoje vamos configurar qual será nosso banco de dados. Apesar de ter tido que nesse post iríamos também configurar o <strong>SQLAlchemy</strong>, prefirir deixar para o próximo post, pois iria ficar muito conteúdo nesse artigo.</p>]]></description>
 </item>
 <item>
     <title>Criando uma API Pronta para Produção com FastAPI - PT.3</title>
@@ -115,9 +146,16 @@ Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Dando continuidade a nossa aplicação, 
     <guid>https://www.lobdata.com.br/posts/econowallet-fastapi-pt3/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/fastapi.png" referrerpolicy="no-referrer">
-            </div>Nos Capítulos Anteriores &hellip; Essa é a parte 3 do nosso projeto do EconoWallet, se quiser verificar o que já fizemos até o momento, verifique os links abaixo:
-Parte 1 Parte 2 Parte 3 Parte 4 Parte 5 Dando continuidade a nossa aplicação, hoje vamos iniciar a configuração do Docker em nosso ambiente. E antes de mais nada, precisaremos instalar o Docker e o Docker Compose na nossa máquina.
-A documentação do Docker para instalação é muito bem explicada.]]></description>
+            </div><h1 id="nos-capítulos-anteriores-">Nos Capítulos Anteriores &hellip;</h1>
+<p>Essa é a parte 3 do nosso projeto do EconoWallet, se quiser verificar o que já fizemos até o momento, verifique os links abaixo:</p>
+<ul>
+<li><a href="https://www.lobdata.com.br/2021/03/30/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.1/" target="_blank" rel="noopener noreffer ">Parte 1</a></li>
+<li><a href="https://www.lobdata.com.br/2021/04/03/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.2/" target="_blank" rel="noopener noreffer ">Parte 2</a></li>
+<li><a href="https://www.lobdata.com.br/2021/04/08/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.3/" target="_blank" rel="noopener noreffer ">Parte 3</a></li>
+<li><a href="https://www.lobdata.com.br/2021/07/31/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.4/" target="_blank" rel="noopener noreffer ">Parte 4</a></li>
+<li><a href="https://www.lobdata.com.br/2021/08/01/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.5/" target="_blank" rel="noopener noreffer ">Parte 5</a></li>
+</ul>
+<p>Dando continuidade a nossa aplicação, hoje vamos iniciar a configuração do Docker em nosso ambiente. E antes de mais nada, precisaremos instalar o Docker e o Docker Compose na nossa máquina.</p>]]></description>
 </item>
 </channel>
 </rss>

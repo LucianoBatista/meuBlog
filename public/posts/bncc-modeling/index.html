@@ -4,26 +4,36 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Classificador BNCC Pt.2 - LobData</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Classificador BNCC Pt.2" />
-<meta property="og:description" content="Resolvemos criar um novo artigo para detalhar melhor o que foi feito na etapa de modelagem do projeto do Classificador BNCC. Assim conseguimos dar mais atenção e justificar algumas escolhas.
+        <title>Classificador BNCC Pt.2 - LobData</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="https://www.lobdata.com.br/posts/bncc-modeling/">
+  <meta property="og:site_name" content="LobData">
+  <meta property="og:title" content="Classificador BNCC Pt.2">
+  <meta property="og:description" content="Resolvemos criar um novo artigo para detalhar melhor o que foi feito na etapa de modelagem do projeto do Classificador BNCC. Assim conseguimos dar mais atenção e justificar algumas escolhas.
 Cronograma de modelagem Nosso intuito foi buscar o melhor baseline para nosso problema, mapeando alguns universos de possibilidades, dentre modelos de machine learning e estratégias de transformação de texto em dado numérico.
-Válido lembrar que o dado que está entrando nessa etapa do pipeline está &ldquo;limpo&rdquo;, ou seja, passou pelas etapas de pré-processamentos que julgamos necessárias." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.lobdata.com.br/posts/bncc-modeling/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-06-14T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-06-14T00:00:00+00:00" /><meta property="og:site_name" content="LOBData" />
+Válido lembrar que o dado que está entrando nessa etapa do pipeline está “limpo”, ou seja, passou pelas etapas de pré-processamentos que julgamos necessárias. Resumido abaixo:">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2022-06-14T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-06-14T00:00:00+00:00">
+    <meta property="article:tag" content="Bag of Words">
+    <meta property="article:tag" content="TFIDF">
+    <meta property="article:tag" content="N-Grams">
+    <meta property="article:tag" content="Word2Vec">
+    <meta property="article:tag" content="Data Science">
+    <meta property="article:tag" content="NLP">
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Classificador BNCC Pt.2"/>
-<meta name="twitter:description" content="Resolvemos criar um novo artigo para detalhar melhor o que foi feito na etapa de modelagem do projeto do Classificador BNCC. Assim conseguimos dar mais atenção e justificar algumas escolhas.
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Classificador BNCC Pt.2">
+  <meta name="twitter:description" content="Resolvemos criar um novo artigo para detalhar melhor o que foi feito na etapa de modelagem do projeto do Classificador BNCC. Assim conseguimos dar mais atenção e justificar algumas escolhas.
 Cronograma de modelagem Nosso intuito foi buscar o melhor baseline para nosso problema, mapeando alguns universos de possibilidades, dentre modelos de machine learning e estratégias de transformação de texto em dado numérico.
-Válido lembrar que o dado que está entrando nessa etapa do pipeline está &ldquo;limpo&rdquo;, ou seja, passou pelas etapas de pré-processamentos que julgamos necessárias."/>
-<meta name="twitter:site" content="@Luciano_Bats3"/>
+Válido lembrar que o dado que está entrando nessa etapa do pipeline está “limpo”, ou seja, passou pelas etapas de pré-processamentos que julgamos necessárias. Resumido abaixo:">
+      <meta name="twitter:site" content="@Luciano_Bats3">
 <meta name="application-name" content="My cool site">
-<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="apple-mobile-web-app-title" content="My cool site">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/bncc-modeling/" /><link rel="prev" href="https://www.lobdata.com.br/posts/bncc-classifier/" /><link rel="next" href="https://www.lobdata.com.br/posts/my_notes/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/bncc-modeling/" /><link rel="prev" href="https://www.lobdata.com.br/posts/bncc-classifier/" /><link rel="next" href="https://www.lobdata.com.br/posts/my_notes/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
@@ -42,7 +52,7 @@ Válido lembrar que o dado que está entrando nessa etapa do pipeline está &ldq
             },"description": ""
     }
     </script></head>
-    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -141,7 +151,12 @@ Válido lembrar que o dado que está entrando nessa etapa do pipeline está &ldq
 <h2 id="cronograma-de-modelagem">Cronograma de modelagem</h2>
 <p>Nosso intuito foi buscar o <strong>melhor baseline</strong> para nosso problema, mapeando alguns universos de possibilidades, dentre modelos de machine learning e estratégias de transformação de texto em dado numérico.</p>
 <p>Válido lembrar que o dado que está entrando nessa etapa do pipeline está <em>&ldquo;limpo&rdquo;</em>, ou seja, passou pelas etapas de pré-processamentos que julgamos necessárias. Resumido abaixo:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="p">[</span><span class="s2">&#34;questions_clean&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="p">[</span><span class="s2">&#34;questions_clean&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">      <span class="n">df</span><span class="p">[</span><span class="s2">&#34;questions&#34;</span><span class="p">]</span>
 </span></span><span class="line"><span class="cl">      <span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">      <span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">html</span><span class="o">.</span><span class="n">unescape</span><span class="p">)</span>
@@ -158,8 +173,8 @@ Válido lembrar que o dado que está entrando nessa etapa do pipeline está &ldq
 </span></span><span class="line"><span class="cl">      <span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">cleaning</span><span class="o">.</span><span class="n">remove_en_stopwords</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">      <span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">word_tokenize</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">      <span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">cleaning</span><span class="o">.</span><span class="n">remove_punctuation_2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">      <span class="p">)</span>
-</span></span></code></pre></div><p>Em questão de modelos, utilizamos:</p>
+</span></span><span class="line"><span class="cl">      <span class="p">)</span></span></span></code></pre></div></div>
+<p>Em questão de modelos, utilizamos:</p>
 <ul>
 <li>Regressão Logística</li>
 <li>Random Forest</li>
@@ -173,21 +188,25 @@ Válido lembrar que o dado que está entrando nessa etapa do pipeline está &ldq
 <li>Word2Vec</li>
 </ul>
 <blockquote>
-<p>OBS: Também tentamos utilizar o algorítimo de machine learning Gaussian Naive Bayes, mas por conta do mesmo não trabalhar com matriz esparsa (na implementação do Scikit-Learn), não tivemos recurso computacional para rodar o algorítimo. O dado como matriz não esparsa ocuparia +40 Gb em memória.</p>
-</blockquote>
+<p>OBS: Também tentamos utilizar o algorítimo de machine learning Gaussian Naive Bayes, mas por conta do mesmo não trabalhar com matriz esparsa (na implementação do Scikit-Learn), não tivemos recurso computacional para rodar o algorítimo. O dado como matriz não esparsa ocuparia +40 Gb em memória.</p></blockquote>
 <h2 id="importância-da-validação">Importância da validação</h2>
 <p>Como estamos trabalhando com <strong>múltiplas classes</strong> nos dois classificadores que estamos otimizando, e como também estamos buscando a solução <strong>mais robusta possível</strong>, é importante que utilizemos alguma estratégia de validação.</p>
 <p>A biblioteca do <code>scikit-learn</code> oferece uma série métodos que podem ser utilizados para essa finalidade. Aqui, optamos por utilizar o <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.StratifiedKFold.html" target="_blank" rel="noopener noreffer "><code>StratifiedKFold</code></a> com 5 splits.</p>
 <p>Esse método de validação preserva a proporção inicial de cada uma das classes envolvidas no target.</p>
 <h2 id="pipelines">Pipelines</h2>
 <p>Os baselines que irão ser utilizados abaixo foram configurados como o seguinte dicionário:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># baselines</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># baselines</span>
 </span></span><span class="line"><span class="cl"><span class="n">models</span> <span class="o">=</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="s2">&#34;rg_lg&#34;</span><span class="p">:</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
 </span></span><span class="line"><span class="cl">    <span class="s2">&#34;r_forest&#34;</span><span class="p">:</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
 </span></span><span class="line"><span class="cl">    <span class="s2">&#34;lgbm&#34;</span><span class="p">:</span> <span class="n">LGBMClassifier</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>Dessa forma, conseguimos iterar em cada um dos modelos e automatizar nossas avaliações.</p>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
+<p>Dessa forma, conseguimos iterar em cada um dos modelos e automatizar nossas avaliações.</p>
 <h3 id="bag-of-words">Bag Of Words</h3>
 <p>O BoW (Bag of Words), ou saco de palavras, é uma técnica onde criamos um dicionário de palavras que contemplam nosso dataset, e contamos onde cada uma delas está presente ou não.</p>
 <p><img
@@ -198,7 +217,12 @@ Válido lembrar que o dado que está entrando nessa etapa do pipeline está &ldq
         data-sizes="auto"
         alt="https://ichi.pro/assets/images/max/724/1*hLvya7MXjsSc3NS2SoLMEg.png"
         title="bow" /></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">kfold</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">2020</span><span class="p">)</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">kfold</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">2020</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">train_idx</span><span class="p">,</span> <span class="n">val_idx</span> <span class="ow">in</span> <span class="n">kfold</span><span class="o">.</span><span class="n">split</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="n">modeling</span><span class="o">.</span><span class="n">X_train</span><span class="p">[</span><span class="s2">&#34;questions_clean&#34;</span><span class="p">],</span> <span class="n">modeling</span><span class="o">.</span><span class="n">y_train</span>
 </span></span><span class="line"><span class="cl"><span class="p">):</span>
@@ -230,29 +254,29 @@ Válido lembrar que o dado que está entrando nessa etapa do pipeline está &ldq
 </span></span><span class="line"><span class="cl">        <span class="n">cv_classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_cv</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">cv_classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_val_cv</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="n">f1</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&#34;macro&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Model: </span><span class="si">{}</span><span class="s2">. Macro avg F1: </span><span class="si">{}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">f1</span><span class="p">))</span>
-</span></span></code></pre></div><p>Resultados abaixo:</p>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Model: </span><span class="si">{}</span><span class="s2">. Macro avg F1: </span><span class="si">{}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">f1</span><span class="p">))</span></span></span></code></pre></div></div>
+<p>Resultados abaixo:</p>
 <table>
-<thead>
-<tr>
-<th>Modelos</th>
-<th>Macro Avg F1</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Regressão Logística</td>
-<td>0.743 +/- 0.03</td>
-</tr>
-<tr>
-<td>Random Forest</td>
-<td>0.657 +/- 0.05</td>
-</tr>
-<tr>
-<td>LightGBM</td>
-<td>0.745 +/- 0.002</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>Modelos</th>
+          <th>Macro Avg F1</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Regressão Logística</td>
+          <td>0.743 +/- 0.03</td>
+      </tr>
+      <tr>
+          <td>Random Forest</td>
+          <td>0.657 +/- 0.05</td>
+      </tr>
+      <tr>
+          <td>LightGBM</td>
+          <td>0.745 +/- 0.002</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="n-grams">N-Grams</h3>
 <p>Esta técnica visa realizar o agrupamento de tokens. O tamanho desse agrupamento é escolhido pelo valor do <em>N</em>:</p>
@@ -277,7 +301,12 @@ Válido lembrar que o dado que está entrando nessa etapa do pipeline está &ldq
 <li>uni-gram + bi-gram</li>
 </ul>
 <p>Como podemos ver no código abaixo:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">kfold</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">2020</span><span class="p">)</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">kfold</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">2020</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">train_idx</span><span class="p">,</span> <span class="n">val_idx</span> <span class="ow">in</span> <span class="n">kfold</span><span class="o">.</span><span class="n">split</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="n">modeling</span><span class="o">.</span><span class="n">X_train</span><span class="p">[</span><span class="s2">&#34;questions_clean&#34;</span><span class="p">],</span> <span class="n">modeling</span><span class="o">.</span><span class="n">y_train</span>
 </span></span><span class="line"><span class="cl"><span class="p">):</span>
@@ -310,29 +339,29 @@ Válido lembrar que o dado que está entrando nessa etapa do pipeline está &ldq
 </span></span><span class="line"><span class="cl">        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">cv_classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_val_cv</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="n">f1</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&#34;macro&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="c1"># print(&#39;ROC AUC - {}: {}&#39;.format(name, mean))</span>
-</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Model: </span><span class="si">{}</span><span class="s2">. Macro avg F1: </span><span class="si">{}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">f1</span><span class="p">))</span>
-</span></span></code></pre></div><p>Resultados apenas para o uni-gram + bi-gram:</p>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Model: </span><span class="si">{}</span><span class="s2">. Macro avg F1: </span><span class="si">{}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">f1</span><span class="p">))</span></span></span></code></pre></div></div>
+<p>Resultados apenas para o uni-gram + bi-gram:</p>
 <table>
-<thead>
-<tr>
-<th>Modelos</th>
-<th>Macro Avg F1</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Regressão Logística</td>
-<td>0.739 +/- 0.03</td>
-</tr>
-<tr>
-<td>Random Forest</td>
-<td>0.652 +/- 0.05</td>
-</tr>
-<tr>
-<td>LightGBM</td>
-<td>0.729 +/- 0.003</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>Modelos</th>
+          <th>Macro Avg F1</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Regressão Logística</td>
+          <td>0.739 +/- 0.03</td>
+      </tr>
+      <tr>
+          <td>Random Forest</td>
+          <td>0.652 +/- 0.05</td>
+      </tr>
+      <tr>
+          <td>LightGBM</td>
+          <td>0.729 +/- 0.003</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="tfidf">TFIDF</h3>
 <p><img
@@ -345,7 +374,12 @@ Válido lembrar que o dado que está entrando nessa etapa do pipeline está &ldq
         title="tfidf" /></p>
 <p>Como pode ser visto na imagem acima, aqui nós conseguimos identificar o quão importante cada palavra é, em relação ao todo que estamos tentando prever. Por exemplo: <em>quantas vezes a palavra soma aparece no texto de uma questão de matemática, frente a quantidade de vezes que ela aparece em todas as questões de matemática que temos na base?</em></p>
 <p>Utilizamos para isso, o código abaixo:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">kfold</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">2020</span><span class="p">)</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">kfold</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">2020</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">train_idx</span><span class="p">,</span> <span class="n">val_idx</span> <span class="ow">in</span> <span class="n">kfold</span><span class="o">.</span><span class="n">split</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="n">modeling</span><span class="o">.</span><span class="n">X_train</span><span class="p">[</span><span class="s2">&#34;questions_clean&#34;</span><span class="p">],</span> <span class="n">modeling</span><span class="o">.</span><span class="n">y_train</span>
 </span></span><span class="line"><span class="cl"><span class="p">):</span>
@@ -377,36 +411,41 @@ Válido lembrar que o dado que está entrando nessa etapa do pipeline está &ldq
 </span></span><span class="line"><span class="cl">        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">cv_classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_val_cv</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="n">f1</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&#34;macro&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Model: </span><span class="si">{}</span><span class="s2">. Macro avg F1: </span><span class="si">{}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">f1</span><span class="p">))</span>
-</span></span></code></pre></div><p>Resultados apenas para o uni-gram + bi-gram::</p>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Model: </span><span class="si">{}</span><span class="s2">. Macro avg F1: </span><span class="si">{}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">f1</span><span class="p">))</span></span></span></code></pre></div></div>
+<p>Resultados apenas para o uni-gram + bi-gram::</p>
 <table>
-<thead>
-<tr>
-<th>Modelos</th>
-<th>Macro Avg F1</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Regressão Logística</td>
-<td>0.7151 +/- 0.006</td>
-</tr>
-<tr>
-<td>Random Forest</td>
-<td>0.6609 +/- 0.010</td>
-</tr>
-<tr>
-<td>LightGBM</td>
-<td>0.7230 +/- 0.007</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>Modelos</th>
+          <th>Macro Avg F1</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Regressão Logística</td>
+          <td>0.7151 +/- 0.006</td>
+      </tr>
+      <tr>
+          <td>Random Forest</td>
+          <td>0.6609 +/- 0.010</td>
+      </tr>
+      <tr>
+          <td>LightGBM</td>
+          <td>0.7230 +/- 0.007</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="word2vec">Word2Vec</h3>
 <p>Esse é modelo de <em>word embeddings</em>. Esse tipo de representação de texto busca identificar o significado de uma palavra no seu contexto (conotação). O Word2Vec foi um dos primeiros a aplicar esse tipo de conceito.</p>
 <p>Com o Word2vec, foi possível, por exemplo, realizar a interpretação abaixo:</p>
 <p><em>King - Man + Woman = Queen</em></p>
 <p>Com o Word2vec nós podemos contornar o problema de dimensionalidade, e representar um texto qualquer em um número de features pre-determinado que melhor capte o contexto analisado. Abaixo você pode ver como fizemos.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># creating the wv object</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-python">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># creating the wv object</span>
 </span></span><span class="line"><span class="cl"><span class="n">wv</span> <span class="o">=</span> <span class="n">Word2Vec</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="n">sentences</span><span class="o">=</span><span class="n">modeling</span><span class="o">.</span><span class="n">X_train</span><span class="p">[</span><span class="s2">&#34;questions_clean&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">()),</span>
 </span></span><span class="line"><span class="cl">    <span class="n">vector_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
@@ -446,35 +485,34 @@ Válido lembrar que o dado que está entrando nessa etapa do pipeline está &ldq
 </span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">nome</span><span class="p">,</span> <span class="n">modelo</span> <span class="ow">in</span> <span class="n">modelos_teste</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
 </span></span><span class="line"><span class="cl">    <span class="n">metrica</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">        <span class="n">modelo</span><span class="p">,</span> <span class="n">X_train_emb</span><span class="p">,</span> <span class="n">y_train_emb</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">&#34;f1_macro&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</span></span></code></pre></div><table>
-<thead>
-<tr>
-<th>Modelos</th>
-<th>Macro Avg F1</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Regressão Logística</td>
-<td>0.565</td>
-</tr>
-<tr>
-<td>Random Forest</td>
-<td>0.551</td>
-</tr>
-<tr>
-<td>LightGBM</td>
-<td>0.581</td>
-</tr>
-</tbody>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span></span></span></code></pre></div></div>
+<table>
+  <thead>
+      <tr>
+          <th>Modelos</th>
+          <th>Macro Avg F1</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Regressão Logística</td>
+          <td>0.565</td>
+      </tr>
+      <tr>
+          <td>Random Forest</td>
+          <td>0.551</td>
+      </tr>
+      <tr>
+          <td>LightGBM</td>
+          <td>0.581</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="tuning">Tuning</h2>
 <p>Após toda experimentação, vimos que o modelo mais promissor, em termos de métrica, tempo de processamento e simplicidade, foi a regressão logística em conjunto com o Bag of Words.</p>
 <p>Daí em diante, realizamos o tuning do <em>parâmetro C</em> da regressão logística, e conseguimos subir a acurácia para 0.8 em média dentre as classes, para o modelo que realiza a classificação do <a href="https://www.lobdata.com.br/2022/06/08/classificador-bncc/" target="_blank" rel="noopener noreffer "><strong>segundo classificador</strong></a>.</p>
 <blockquote>
-<p>Além de ajustar o C, nós também retiramos o <code>class_balanced</code>, pois o mesmo estava prejudicando a performance.</p>
-</blockquote>
+<p>Além de ajustar o C, nós também retiramos o <code>class_balanced</code>, pois o mesmo estava prejudicando a performance.</p></blockquote>
 <h2 id="conclusão">Conclusão</h2>
 <p>Ainda existe muito espaço para melhoria do modelo e espaço para melhoria da aplicação como um todo. Continuaremos atualizando de acordo fomos avançado, <em>obrigado pela leitura.</em></p>
 </div><div class="post-footer" id="post-footer">
@@ -486,13 +524,13 @@ Válido lembrar que o dado que está entrando nessa etapa do pipeline está &ldq
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://www.lobdata.com.br/posts/bncc-modeling/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="https://www.lobdata.com.br/posts/bncc-modeling/" data-title="Classificador BNCC Pt.2" data-via="Luciano_Bats3" data-hashtags="Bag of words,TFIDF,N-Grams,Word2Vec,Data Science,NLP,Education"><i class="fab fa-x-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Threads" data-sharer="threads" data-url="https://www.lobdata.com.br/posts/bncc-modeling/" data-title="Classificador BNCC Pt.2"><i class="fab fa-threads fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://www.lobdata.com.br/posts/bncc-modeling/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Diaspora" data-sharer="diaspora" data-url="https://www.lobdata.com.br/posts/bncc-modeling/" data-title="Classificador BNCC Pt.2" data-description=""><i class="fab fa-diaspora fa-fw" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=https%3a%2f%2fwww.lobdata.com.br%2fposts%2fbncc-modeling%2f&amp;text=Classificador%20BNCC%20Pt.2" target="_blank" title="Share on Telegram"><i class="fab fa-telegram fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/bag-of-words/">Bag of words</a>,&nbsp;<a href="/tags/tfidf/">TFIDF</a>,&nbsp;<a href="/tags/n-grams/">N-Grams</a>,&nbsp;<a href="/tags/word2vec/">Word2Vec</a>,&nbsp;<a href="/tags/data-science/">Data Science</a>,&nbsp;<a href="/tags/nlp/">NLP</a>,&nbsp;<a href="/tags/education/">Education</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/bag-of-words/">Bag of Words</a>,&nbsp;<a href="/tags/tfidf/">TFIDF</a>,&nbsp;<a href="/tags/n-grams/">N-Grams</a>,&nbsp;<a href="/tags/word2vec/">Word2Vec</a>,&nbsp;<a href="/tags/data-science/">Data Science</a>,&nbsp;<a href="/tags/nlp/">NLP</a>,&nbsp;<a href="/tags/education/">Education</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
@@ -503,15 +541,18 @@ Válido lembrar que o dado que está entrando nessa etapa do pipeline está &ldq
 </div>
 <div id="comments"></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Luba</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.145.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.3.1-DEV"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span></div>
         </div>
     </footer></div>
 
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
                 <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
-            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"search":{"algoliaAppID":"56XLI6KGAP","algoliaIndex":"lobdata","algoliaSearchKey":"d7c82e758baf996bfc63e0fffb1098fd","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><script src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script src="https://cdn.jsdelivr.net/npm/algoliasearch@5.20.2/dist/lite/builds/browser.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.2/sharer.min.js"></script><script>window.config={"comment":{},"search":{"algoliaAppID":"56XLI6KGAP","algoliaIndex":"lobdata","algoliaSearchKey":"d7c82e758baf996bfc63e0fffb1098fd","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script src="/js/theme.min.js"></script></body>
 </html>

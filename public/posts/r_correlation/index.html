@@ -4,24 +4,32 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>How to Perform Correlation Analysis in Time Series data using R? - LobData</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="How to Perform Correlation Analysis in Time Series data using R?" />
-<meta property="og:description" content="What is it correlation analysis? The concept of correlation is the same used in non-time series data: identify and quantify the relationship between two variables. Due to the continuous and chronologically ordered nature of time series data, there is a likelihood that there will be some degree of correlation between the series observations.
-Measuring and analyzing the correlation between two variables, in the context of time series analysis, can be understood by two different aspects:" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.lobdata.com.br/posts/r_correlation/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-09-15T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-09-15T00:00:00+00:00" /><meta property="og:site_name" content="LOBData" />
+        <title>How to Perform Correlation Analysis in Time Series data using R? - LobData</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="https://www.lobdata.com.br/posts/r_correlation/">
+  <meta property="og:site_name" content="LobData">
+  <meta property="og:title" content="How to Perform Correlation Analysis in Time Series data using R?">
+  <meta property="og:description" content="What is it correlation analysis? The concept of correlation is the same used in non-time series data: identify and quantify the relationship between two variables. Due to the continuous and chronologically ordered nature of time series data, there is a likelihood that there will be some degree of correlation between the series observations.
+Measuring and analyzing the correlation between two variables, in the context of time series analysis, can be understood by two different aspects:">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2020-09-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2020-09-15T00:00:00+00:00">
+    <meta property="article:tag" content="Time Series">
+    <meta property="article:tag" content="Data Science">
+    <meta property="article:tag" content="Autocorrelation">
+    <meta property="article:tag" content="R">
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="How to Perform Correlation Analysis in Time Series data using R?"/>
-<meta name="twitter:description" content="What is it correlation analysis? The concept of correlation is the same used in non-time series data: identify and quantify the relationship between two variables. Due to the continuous and chronologically ordered nature of time series data, there is a likelihood that there will be some degree of correlation between the series observations.
-Measuring and analyzing the correlation between two variables, in the context of time series analysis, can be understood by two different aspects:"/>
-<meta name="twitter:site" content="@Luciano_Bats3"/>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="How to Perform Correlation Analysis in Time Series data using R?">
+  <meta name="twitter:description" content="What is it correlation analysis? The concept of correlation is the same used in non-time series data: identify and quantify the relationship between two variables. Due to the continuous and chronologically ordered nature of time series data, there is a likelihood that there will be some degree of correlation between the series observations.
+Measuring and analyzing the correlation between two variables, in the context of time series analysis, can be understood by two different aspects:">
+      <meta name="twitter:site" content="@Luciano_Bats3">
 <meta name="application-name" content="My cool site">
-<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="apple-mobile-web-app-title" content="My cool site">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/r_correlation/" /><link rel="prev" href="https://www.lobdata.com.br/posts/segment-client/" /><link rel="next" href="https://www.lobdata.com.br/posts/hype_test/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.lobdata.com.br/posts/r_correlation/" /><link rel="prev" href="https://www.lobdata.com.br/posts/segment-client/" /><link rel="next" href="https://www.lobdata.com.br/posts/hype_test/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
@@ -40,7 +48,7 @@ Measuring and analyzing the correlation between two variables, in the context of
             },"description": ""
     }
     </script></head>
-    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -159,7 +167,12 @@ Measuring and analyzing the correlation between two variables, in the context of
 <p>A short disclaimer before start, this article is not meant to explain all the theory behind the correlation analysis and for a more complete explanation, you can access this great reference: <a href="https://otexts.com/fpp3/graphics.html" target="_blank" rel="noopener noreffer ">Forecasting: Principles and Pratice</a>.</p>
 <h1 id="the-different-approaches">The Different Approaches</h1>
 <p>Let&rsquo;s set our environment:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># packages for this tutorial</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># packages for this tutorial</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># first approach</span>
 </span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">feasts</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tsibble</span><span class="p">)</span>
@@ -172,23 +185,38 @@ Measuring and analyzing the correlation between two variables, in the context of
 </span></span><span class="line"><span class="cl"><span class="c1"># third approach</span>
 </span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">timetk</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">lubridate</span><span class="p">)</span>
-</span></span></code></pre></div><h2 id="data">Data</h2>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">lubridate</span><span class="p">)</span></span></span></code></pre></div></div>
+<h2 id="data">Data</h2>
 <p>We&rsquo;ll use a dataset from Stack Overflow, that have the numbers of questions for each month from 2009 to 2019, in different topics. You can access the data using this <a href="https://www.kaggle.com/aishu200023/stackindex" target="_blank" rel="noopener noreffer ">link</a>.</p>
 <p>The dataset contains 9 different features regarding keywords used in Stack Overflow questions, but here, we&rsquo;ll use just <code>r</code> and <code>python</code> columns.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># reading the dataset</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># reading the dataset</span>
 </span></span><span class="line"><span class="cl"><span class="n">stackoverflow_raw</span> <span class="o">&lt;-</span> <span class="nf">read_csv</span><span class="p">(</span><span class="s">&#34;00_data/MLTollsStackOverflow.csv&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># selecting columns to use in this tutorial</span>
 </span></span><span class="line"><span class="cl"><span class="n">stackoverflow_tbl</span> <span class="o">&lt;-</span> <span class="n">stackoverflow_raw</span> <span class="o">%&gt;%</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">select</span><span class="p">(</span><span class="n">month</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">python</span><span class="p">)</span>
-</span></span></code></pre></div><p>I&rsquo;ll do one basic transformation in this dataset that must help-us during the tutorial and in all methods.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># convert to date</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">select</span><span class="p">(</span><span class="n">month</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">python</span><span class="p">)</span></span></span></code></pre></div></div>
+<p>I&rsquo;ll do one basic transformation in this dataset that must help-us during the tutorial and in all methods.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># convert to date</span>
 </span></span><span class="line"><span class="cl"><span class="n">stackoverflow_prep_tbl</span> <span class="o">&lt;-</span> <span class="n">stackoverflow_tbl</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">date</span> <span class="o">=</span> <span class="nf">str_glue</span><span class="p">(</span><span class="s">&#34;20{month}&#34;</span><span class="p">),</span>
 </span></span><span class="line"><span class="cl">         <span class="n">date</span> <span class="o">=</span> <span class="nf">yearmonth</span><span class="p">(</span><span class="n">date</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">as_date</span><span class="p">())</span> <span class="o">%&gt;%</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">select</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">python</span><span class="p">,</span> <span class="o">-</span><span class="n">month</span><span class="p">)</span>
-</span></span></code></pre></div><pre tabindex="0"><code># A tibble: 132 x 3
+</span></span><span class="line"><span class="cl">  <span class="nf">select</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">python</span><span class="p">,</span> <span class="o">-</span><span class="n">month</span><span class="p">)</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><pre tabindex="0"><code># A tibble: 132 x 3
    date           r python
    &lt;date&gt;     &lt;dbl&gt;  &lt;dbl&gt;
  1 2009-01-01     8    631
@@ -201,28 +229,48 @@ Measuring and analyzing the correlation between two variables, in the context of
  8 2009-08-01    47   1143
  9 2009-09-01   139   1169
 10 2009-10-01    73   1424
-# … with 122 more rows
-</code></pre><p>Now we can start!!</p>
+# … with 122 more rows</code></pre></div>
+<p>Now we can start!!</p>
 <h2 id="first-approach">First Approach</h2>
 <p>The first method that I want to show you use the <code>ts</code> object, a built-in format in R for time series. I choose this approach because with the <code>ts</code> object we have a good integration with <code>TSstudio</code> package and nice interactive functions to use.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># ts function is responsible to convert to ts object</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># ts function is responsible to convert to ts object</span>
 </span></span><span class="line"><span class="cl"><span class="n">stackOverflow_ts</span> <span class="o">&lt;-</span> <span class="nf">ts</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">stackoverflow_prep_tbl[</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;python&#34;</span><span class="p">,</span> <span class="s">&#34;r&#34;</span><span class="p">)</span><span class="n">]</span><span class="p">,</span> <span class="c1"># selecting 2 variables</span>
 </span></span><span class="line"><span class="cl">   <span class="n">start</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">2009</span><span class="p">,</span> <span class="m">01</span><span class="p">),</span> <span class="c1"># start date</span>
 </span></span><span class="line"><span class="cl">   <span class="n">end</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">2019</span><span class="p">,</span> <span class="m">12</span><span class="p">),</span> <span class="c1"># end date</span>
-</span></span><span class="line"><span class="cl">   <span class="n">frequency</span> <span class="o">=</span> <span class="m">12</span><span class="p">)</span>
-</span></span></code></pre></div><p>Now you can see all information about the time series that was created with the <code>ts</code> function.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">ts_info</span><span class="p">(</span><span class="n">stackOverflow_ts</span><span class="p">)</span>
-</span></span></code></pre></div><pre tabindex="0"><code> The stackOverflow_ts series is a mts object with 2 variables and 132 observations
+</span></span><span class="line"><span class="cl">   <span class="n">frequency</span> <span class="o">=</span> <span class="m">12</span><span class="p">)</span></span></span></code></pre></div></div>
+<p>Now you can see all information about the time series that was created with the <code>ts</code> function.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">ts_info</span><span class="p">(</span><span class="n">stackOverflow_ts</span><span class="p">)</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><pre tabindex="0"><code> The stackOverflow_ts series is a mts object with 2 variables and 132 observations
  Frequency: 12
  Start time: 2009 1
-` End time: 2019 12
-</code></pre><p>With this summary, it&rsquo;s possible to see that we have two variables, that represent two different time series. Each time series represent one feature (r and python).</p>
+` End time: 2019 12</code></pre></div>
+<p>With this summary, it&rsquo;s possible to see that we have two variables, that represent two different time series. Each time series represent one feature (r and python).</p>
 <p>Lets visualize the time series.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">ts_plot</span><span class="p">(</span><span class="n">stackOverflow_ts</span><span class="p">,</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">ts_plot</span><span class="p">(</span><span class="n">stackOverflow_ts</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">        <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Monthly questions on Stack Overflow platform&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">        <span class="n">Ytitle</span> <span class="o">=</span> <span class="s">&#34;# Questions&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="n">Xtitle</span> <span class="o">=</span> <span class="s">&#34;Year&#34;</span><span class="p">)</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl">        <span class="n">Xtitle</span> <span class="o">=</span> <span class="s">&#34;Year&#34;</span><span class="p">)</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/ts_01.png"
@@ -236,7 +284,12 @@ Measuring and analyzing the correlation between two variables, in the context of
 <p>The <code>TSstudio</code> package doesn&rsquo;t have any function to plot the ACF and PACF measures, and for that, we use the built-in functions <code>acf</code> and <code>pacf</code>. The downside here, for me, is that the object generated by these functions is not a <code>ggplot2</code> object, and we lose all beautiful features from the grammar of graphics.</p>
 <p>Obviously, you can go through the data and try to plot in the <code>ggplot2</code> by yourself but will be a little burdensome.</p>
 <p>For R time series:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">par</span><span class="p">(</span><span class="n">mfrow</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">))</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">par</span><span class="p">(</span><span class="n">mfrow</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># acf R time series</span>
 </span></span><span class="line"><span class="cl"><span class="n">stackOverflow_ts[</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;r&#34;</span><span class="p">)</span><span class="n">]</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">acf</span><span class="p">(</span><span class="n">lag.max</span> <span class="o">=</span> <span class="m">300</span><span class="p">,</span>
@@ -245,8 +298,8 @@ Measuring and analyzing the correlation between two variables, in the context of
 </span></span><span class="line"><span class="cl"><span class="c1"># pacf R time series</span>
 </span></span><span class="line"><span class="cl"><span class="n">stackOverflow_ts[</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;r&#34;</span><span class="p">)</span><span class="n">]</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">pacf</span><span class="p">(</span><span class="n">lag.max</span> <span class="o">=</span> <span class="m">300</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">       <span class="n">main</span> <span class="o">=</span> <span class="s">&#34;Partial Autocorrelation Plot - R&#34;</span><span class="p">)</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl">       <span class="n">main</span> <span class="o">=</span> <span class="s">&#34;Partial Autocorrelation Plot - R&#34;</span><span class="p">)</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/ts_02.png"
@@ -255,7 +308,12 @@ Measuring and analyzing the correlation between two variables, in the context of
         alt="/img/ts_02.png"
         title="Plot" /></p>
 <p>For Python time series:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># acf Python time series</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># acf Python time series</span>
 </span></span><span class="line"><span class="cl"><span class="n">stackOverflow_ts[</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;python&#34;</span><span class="p">)</span><span class="n">]</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">acf</span><span class="p">(</span><span class="n">lag.max</span> <span class="o">=</span> <span class="m">300</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">      <span class="n">main</span> <span class="o">=</span> <span class="s">&#34;Autocorrelation Plot - Python&#34;</span><span class="p">)</span>
@@ -263,8 +321,8 @@ Measuring and analyzing the correlation between two variables, in the context of
 </span></span><span class="line"><span class="cl"><span class="c1"># pacf Python time series</span>
 </span></span><span class="line"><span class="cl"><span class="n">stackOverflow_ts[</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;python&#34;</span><span class="p">)</span><span class="n">]</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">pacf</span><span class="p">(</span><span class="n">lag.max</span> <span class="o">=</span> <span class="m">300</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">       <span class="n">main</span> <span class="o">=</span> <span class="s">&#34;Python Autocorrelation Plot - Python&#34;</span><span class="p">)</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl">       <span class="n">main</span> <span class="o">=</span> <span class="s">&#34;Python Autocorrelation Plot - Python&#34;</span><span class="p">)</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/ts_03.png"
@@ -284,11 +342,16 @@ Measuring and analyzing the correlation between two variables, in the context of
 <p>To summarize, when we look at the PACF plot, we want to know each lag that has relevant information to use as a predictor in a future forecast. How much greater the PACF score, the better.</p>
 <p>And, in our plots, we see that both time series have one lag (closer to lag 1) that may be useful.</p>
 <p>Just know which correlation score has the higher score is not enough, it&rsquo;s important to see visually how these points are distributed. In that, <code>TSstudio</code> has a great interactive function, called <code>ts_lags</code>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># Looking at lag plots</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># Looking at lag plots</span>
 </span></span><span class="line"><span class="cl"><span class="nf">ts_lags</span><span class="p">(</span><span class="n">stackOverflow_ts</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">        <span class="n">lags</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="m">20</span><span class="p">,</span> <span class="m">30</span><span class="p">,</span> <span class="m">40</span><span class="p">,</span> <span class="m">50</span><span class="p">,</span> <span class="m">80</span><span class="p">))</span> <span class="o">%&gt;%</span> <span class="c1"># choosing what lags to plot</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">layout</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Series vs Lags&#34;</span><span class="p">)</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl">  <span class="nf">layout</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Series vs Lags&#34;</span><span class="p">)</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/ts_04.png"
@@ -299,13 +362,18 @@ Measuring and analyzing the correlation between two variables, in the context of
 <h3 id="causality-analysis-i">Causality analysis I</h3>
 <p>Just look at the past pattern within the series is not always a good idea. The main pitfall of this method is that it will fail whenever the changes in the series derive from the exogenous factors. The goal of causality analysis, in the context of time series analysis, is to identify whether a causality relationship exists between the series we wish to forecast other potential exogenous factors.</p>
 <p>Be careful about the fact that correlation doesn&rsquo;t imply causation, we just looking for something that could help the forecast model. In our current case, we just can see if exist some lag in R time series correlated to Python time series.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># ccf time series</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># ccf time series</span>
 </span></span><span class="line"><span class="cl"><span class="nf">par</span><span class="p">(</span><span class="n">mfrow</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl"><span class="nf">ccf</span><span class="p">(</span><span class="n">stackOverflow_ts[</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;r&#34;</span><span class="p">)</span><span class="n">]</span><span class="p">,</span> <span class="n">stackOverflow_ts[</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;python&#34;</span><span class="p">)</span><span class="n">]</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="n">lag.max</span> <span class="o">=</span> <span class="m">300</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="n">main</span> <span class="o">=</span> <span class="s">&#34;Cros-Correlation Plot&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="n">ylab</span> <span class="o">=</span> <span class="s">&#34;CCF&#34;</span><span class="p">)</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl">    <span class="n">ylab</span> <span class="o">=</span> <span class="s">&#34;CCF&#34;</span><span class="p">)</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/ts_05.png"
@@ -317,20 +385,30 @@ Measuring and analyzing the correlation between two variables, in the context of
 <p>The graphic is saying to us that currently (at the date of the dataset) the growth of R questions is highly correlated to Python questions.</p>
 <h2 id="second-approach">Second Approach</h2>
 <p>This second approach uses what is called tsibble, like a tibble with an implicit date index. So, let&rsquo;s convert our tibble to a tsibble.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">stackoverflow_prep_tsbl</span> <span class="o">&lt;-</span> <span class="n">stackoverflow_prep_tbl</span> <span class="o">%&gt;%</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">stackoverflow_prep_tsbl</span> <span class="o">&lt;-</span> <span class="n">stackoverflow_prep_tbl</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">date</span> <span class="o">=</span> <span class="nf">yearmonth</span><span class="p">(</span><span class="n">date</span><span class="p">))</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">pivot_longer</span><span class="p">(</span><span class="n">cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">python</span><span class="p">),</span> <span class="n">names_to</span> <span class="o">=</span> <span class="s">&#34;names&#34;</span><span class="p">,</span> <span class="n">values_to</span> <span class="o">=</span> <span class="s">&#34;value&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">as_tsibble</span><span class="p">(</span><span class="n">key</span> <span class="o">=</span> <span class="n">names</span><span class="p">,</span><span class="n">index</span> <span class="o">=</span> <span class="n">date</span><span class="p">)</span> <span class="c1"># specifying the time series in the object</span>
-</span></span></code></pre></div><p>Differently of what we did before, here the data was converted to a long format, better to plot.</p>
+</span></span><span class="line"><span class="cl">  <span class="nf">as_tsibble</span><span class="p">(</span><span class="n">key</span> <span class="o">=</span> <span class="n">names</span><span class="p">,</span><span class="n">index</span> <span class="o">=</span> <span class="n">date</span><span class="p">)</span> <span class="c1"># specifying the time series in the object</span></span></span></code></pre></div></div>
+<p>Differently of what we did before, here the data was converted to a long format, better to plot.</p>
 <p>Looking at the object created, we see the indication of an interval of these observations [1M] (monthly). And also, we see the key variable, that it&rsquo;s a way to indicate how many time series exist in this object. It&rsquo;s possible to have different combinations of features to do a new time series in the object.</p>
 <p>As we have the objects ready, we can now perform the correlation analysis by this second approach. Attempt that the graphic interpretation was already made, and here I&rsquo;ll just explain the difference between the methods.</p>
 <h3 id="lag-analysis-ii">Lag Analysis II</h3>
 <p>Unlike <code>TSstudio</code>, we do not have interactivity plots, all plots are static, but they are objects of ggplot2 and allow us to use the concepts of the grammar of graphics.</p>
 <p>A problem with these functions is that they may behave differently than expected. Plugging the data to the acf and pacf functions, we are able to automatically see the faceted plots between all time series within the object. But if we try to simply visualize the series over time, it will not be possible to facet. It&rsquo;s not a big problem, and you can plot using ggplot normally (see the code).</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># looking at the data</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># looking at the data</span>
 </span></span><span class="line"><span class="cl"><span class="n">stackoverflow_prep_tsbl</span> <span class="o">%&gt;%</span>
-</span></span><span class="line"><span class="cl">  <span class="n">feasts</span><span class="o">::</span><span class="nf">autoplot</span><span class="p">()</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl">  <span class="n">feasts</span><span class="o">::</span><span class="nf">autoplot</span><span class="p">()</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/ts_06.png"
@@ -338,15 +416,20 @@ Measuring and analyzing the correlation between two variables, in the context of
         data-sizes="auto"
         alt="/img/ts_06.png"
         title="Plot" /></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl">
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># looking at the data facet way</span>
 </span></span><span class="line"><span class="cl"><span class="n">stackoverflow_prep_tsbl</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">date</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">             <span class="n">y</span> <span class="o">=</span> <span class="n">value</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">             <span class="n">color</span> <span class="o">=</span> <span class="n">names</span><span class="p">))</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="n">names</span><span class="p">,</span> <span class="n">scales</span> <span class="o">=</span> <span class="s">&#34;free_y&#34;</span><span class="p">)</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl">  <span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="n">names</span><span class="p">,</span> <span class="n">scales</span> <span class="o">=</span> <span class="s">&#34;free_y&#34;</span><span class="p">)</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/ts_07.png"
@@ -354,12 +437,17 @@ Measuring and analyzing the correlation between two variables, in the context of
         data-sizes="auto"
         alt="/img/ts_07.png"
         title="Plot" /></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl">
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># lag plots</span>
 </span></span><span class="line"><span class="cl"><span class="n">stackoverflow_prep_tsbl</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="n">names</span> <span class="o">==</span> <span class="s">&#34;python&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">gg_lag</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">geom</span><span class="o">=</span><span class="s">&#34;point&#34;</span><span class="p">)</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl">  <span class="nf">gg_lag</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">geom</span><span class="o">=</span><span class="s">&#34;point&#34;</span><span class="p">)</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/ts_08.png"
@@ -367,12 +455,17 @@ Measuring and analyzing the correlation between two variables, in the context of
         data-sizes="auto"
         alt="/img/ts_08.png"
         title="Plot" /></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl">
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># acf</span>
 </span></span><span class="line"><span class="cl"><span class="n">stackoverflow_prep_tsbl</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">ACF</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">lag_max</span> <span class="o">=</span> <span class="m">300</span><span class="p">)</span> <span class="o">%&gt;%</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">autoplot</span><span class="p">()</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl">  <span class="nf">autoplot</span><span class="p">()</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/ts_09.png"
@@ -380,11 +473,16 @@ Measuring and analyzing the correlation between two variables, in the context of
         data-sizes="auto"
         alt="/img/ts_09.png"
         title="Plot" /></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># pacf</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># pacf</span>
 </span></span><span class="line"><span class="cl"><span class="n">stackoverflow_prep_tsbl</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">PACF</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">lag_max</span> <span class="o">=</span> <span class="m">300</span><span class="p">)</span> <span class="o">%&gt;%</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">autoplot</span><span class="p">()</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl">  <span class="nf">autoplot</span><span class="p">()</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/ts_10.png"
@@ -393,12 +491,17 @@ Measuring and analyzing the correlation between two variables, in the context of
         alt="/img/ts_10.png"
         title="Plot" /></p>
 <h3 id="casuality-analysis-ii">Casuality Analysis II</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># ccf</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># ccf</span>
 </span></span><span class="line"><span class="cl"><span class="n">stackoverflow_prep_tsbl</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">pivot_wider</span><span class="p">(</span><span class="n">names_from</span> <span class="o">=</span> <span class="n">names</span><span class="p">,</span> <span class="n">values_from</span> <span class="o">=</span> <span class="n">value</span><span class="p">)</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">CCF</span><span class="p">(</span><span class="n">python</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">lag_max</span> <span class="o">=</span> <span class="m">300</span><span class="p">)</span> <span class="o">%&gt;%</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">autoplot</span><span class="p">()</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl">  <span class="nf">autoplot</span><span class="p">()</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/ts_11.png"
@@ -410,15 +513,25 @@ Measuring and analyzing the correlation between two variables, in the context of
 <p>Until now we have changed our original object several times, but using the <code>timetk</code> package you can perform all these analyzes using just the original object, a tibble data frame. Making analysis much more intuitive, and also integrating with all <code>tidyverse</code> packages.</p>
 <h3 id="lag-analysis-iii">Lag Analysis III</h3>
 <p>You basically use 2 functions to perform all the correlation analysis with much less code and more flexibility. The only thing that you need to do is put the dataset in a long format.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># passing to a long format</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># passing to a long format</span>
 </span></span><span class="line"><span class="cl"><span class="n">stackoverflow_prep_long_tbl</span> <span class="o">&lt;-</span> <span class="n">stackoverflow_prep_tbl</span> <span class="o">%&gt;%</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">pivot_longer</span><span class="p">(</span><span class="n">cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">python</span><span class="p">),</span> <span class="n">names_to</span> <span class="o">=</span> <span class="s">&#34;names&#34;</span><span class="p">,</span> <span class="n">values_to</span> <span class="o">=</span> <span class="s">&#34;value&#34;</span><span class="p">)</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># the series</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">pivot_longer</span><span class="p">(</span><span class="n">cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">python</span><span class="p">),</span> <span class="n">names_to</span> <span class="o">=</span> <span class="s">&#34;names&#34;</span><span class="p">,</span> <span class="n">values_to</span> <span class="o">=</span> <span class="s">&#34;value&#34;</span><span class="p">)</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># the series</span>
 </span></span><span class="line"><span class="cl"><span class="n">stackoverflow_prep_long_tbl</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">plot_time_series</span><span class="p">(</span><span class="n">.date_var</span> <span class="o">=</span> <span class="n">date</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                   <span class="n">.value</span> <span class="o">=</span> <span class="n">value</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">                   <span class="n">.facet_vars</span> <span class="o">=</span> <span class="n">names</span><span class="p">)</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl">                   <span class="n">.facet_vars</span> <span class="o">=</span> <span class="n">names</span><span class="p">)</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/ts_12.png"
@@ -426,13 +539,18 @@ Measuring and analyzing the correlation between two variables, in the context of
         data-sizes="auto"
         alt="/img/ts_12.png"
         title="Plot" /></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># acf/pacf plots</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># acf/pacf plots</span>
 </span></span><span class="line"><span class="cl"><span class="n">stackoverflow_prep_long_tbl</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">names</span><span class="p">)</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">plot_acf_diagnostics</span><span class="p">(</span><span class="n">.date_var</span> <span class="o">=</span> <span class="n">date</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                       <span class="n">.value</span> <span class="o">=</span> <span class="n">value</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">                       <span class="n">.show_white_noise_bars</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl">                       <span class="n">.show_white_noise_bars</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/ts_13.png"
@@ -442,13 +560,18 @@ Measuring and analyzing the correlation between two variables, in the context of
         title="Plot" /></p>
 <h3 id="causality-analysis-iii">Causality Analysis III</h3>
 <p>In the real world, the time series you want to compare will probably not be in the same range as here, and you will probably need to do some transformation to put in the same interval and only then calculate the ccf score.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># CCF plot</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-r">
+        <span class="code-title"><i class="arrow fas fa-angle-right fa-fw" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h fa-fw" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy fa-fw" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># CCF plot</span>
 </span></span><span class="line"><span class="cl"><span class="n">stackoverflow_prep_tbl</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">plot_acf_diagnostics</span><span class="p">(</span><span class="n">.date_var</span> <span class="o">=</span> <span class="n">date</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                       <span class="n">.value</span> <span class="o">=</span> <span class="n">r</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                       <span class="n">.ccf_vars</span> <span class="o">=</span> <span class="n">python</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">                       <span class="n">.show_ccf_vars_only</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
-</span></span></code></pre></div><p><img
+</span></span><span class="line"><span class="cl">                       <span class="n">.show_ccf_vars_only</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span></span></span></code></pre></div></div>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="/img/ts_14.png"
@@ -479,7 +602,7 @@ Measuring and analyzing the correlation between two variables, in the context of
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://www.lobdata.com.br/posts/r_correlation/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="https://www.lobdata.com.br/posts/r_correlation/" data-title="How to Perform Correlation Analysis in Time Series data using R?" data-via="Luciano_Bats3" data-hashtags="Time Series,Data Science,Autocorrelation,R"><i class="fab fa-x-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Threads" data-sharer="threads" data-url="https://www.lobdata.com.br/posts/r_correlation/" data-title="How to Perform Correlation Analysis in Time Series data using R?"><i class="fab fa-threads fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://www.lobdata.com.br/posts/r_correlation/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Diaspora" data-sharer="diaspora" data-url="https://www.lobdata.com.br/posts/r_correlation/" data-title="How to Perform Correlation Analysis in Time Series data using R?" data-description=""><i class="fab fa-diaspora fa-fw" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=https%3a%2f%2fwww.lobdata.com.br%2fposts%2fr_correlation%2f&amp;text=How%20to%20Perform%20Correlation%20Analysis%20in%20Time%20Series%20data%20using%20R%3f" target="_blank" title="Share on Telegram"><i class="fab fa-telegram fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -496,15 +619,18 @@ Measuring and analyzing the correlation between two variables, in the context of
 </div>
 <div id="comments"></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.120.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Luba</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.145.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.3.1-DEV"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span></div>
         </div>
     </footer></div>
 
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
                 <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
-            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"search":{"algoliaAppID":"56XLI6KGAP","algoliaIndex":"lobdata","algoliaSearchKey":"d7c82e758baf996bfc63e0fffb1098fd","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><script src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script src="https://cdn.jsdelivr.net/npm/algoliasearch@5.20.2/dist/lite/builds/browser.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.2/sharer.min.js"></script><script>window.config={"comment":{},"search":{"algoliaAppID":"56XLI6KGAP","algoliaIndex":"lobdata","algoliaSearchKey":"d7c82e758baf996bfc63e0fffb1098fd","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script src="/js/theme.min.js"></script></body>
 </html>

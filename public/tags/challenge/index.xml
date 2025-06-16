@@ -11,8 +11,9 @@
     <guid>https://www.lobdata.com.br/posts/cat_in_the_dat/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/cat_data.png" referrerpolicy="no-referrer">
-            </div>Is there a cat in your dat? Esse é um playground do Kaggle, onde diferentes pessoas competem dentro de um determinado problema &lsquo;incomum&rsquo; porém bastante relevante. Nesta competição foi disponibilizado um dataset repleto de variáveis categóricas.
-Sabemos que uma das tarefas do processo de machine learning é realizar o encoding de variáveis categóricas de forma que os algoritmos possam executar seus cálculos e retornar um resultado. Dominar tal skill é de grande importância para o Cientista de Dados.]]></description>
+            </div><h1 id="is-there-a-cat-in-your-dat">Is there a cat in your dat?</h1>
+<p>Esse é um playground do Kaggle, onde diferentes pessoas competem dentro de um determinado problema &lsquo;incomum&rsquo; porém bastante relevante. Nesta competição foi disponibilizado um dataset repleto de variáveis categóricas.</p>
+<p>Sabemos que uma das tarefas do processo de machine learning é realizar o encoding de variáveis categóricas de forma que os algoritmos possam executar seus cálculos e retornar um resultado. Dominar tal skill é de grande importância para o Cientista de Dados.</p>]]></description>
 </item>
 </channel>
 </rss>
