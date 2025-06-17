@@ -3,18 +3,7 @@
         <title>All Posts - LobData</title>
         <link>https://www.lobdata.com.br/posts/</link>
         <description>All Posts | LobData</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 16 Jun 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>Testing</title>
-    <link>https://www.lobdata.com.br/posts/testing_post/</link>
-    <pubDate>Mon, 16 Jun 2025 00:00:00 &#43;0000</pubDate>
-    <author>Luciano</author>
-    <guid>https://www.lobdata.com.br/posts/testing_post/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/img/ai-aplications.png" referrerpolicy="no-referrer">
-            </div><p>Olá, como sabemos a ciência de dados é uma tecnologia de grande potencial e vem sendo aplicada em diferentes áreas de negócio. Estou iniciando uma série de artigos que visam aprensentar sua aplicação em 5 áreas distintas: Logística, Saúde, Turismo, Esporte e E-Sports e Engenharia.</p>
-<p>Antes de iniciar propriamente os tópicos, é interessante que estejamos na mesma página quando falamos de Data Science. Devido ao grande hype dessa tecnologia, ela pode acabar sendo mal interpretada, por isso eu gosto de utilizar uma definição dada pela DataRobot uma empresa pioneira em Machine Learning, localizada no Quadrante mágico do Gartner.</p>]]></description>
-</item>
-<item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 20 Nov 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.lobdata.com.br/posts/" rel="self" type="application/rss+xml" /><item>
     <title>Understanding recommender systems</title>
     <link>https://www.lobdata.com.br/posts/recommender_systems_001/</link>
     <pubDate>Mon, 20 Nov 2023 00:00:00 &#43;0000</pubDate>
@@ -133,6 +122,27 @@
                 <img src="/img/efficient_pandas.png" referrerpolicy="no-referrer">
             </div><p></p>
 <p>Fala galera, tudo certo com vocês? Se você é um Cientista/Analista de dados, ou curte utilizar python para realizar diferentes análises em seu dataset, certamente já utilizou a biblioteca <code>Pandas</code>. Pandas é uma biblioteca open-source para estruturação e análise de dados, seus comandos se assemelham muitas vezes ao SQL, porém sua API traz um conjunto maior operações, maior robustez e se executado de forma correta, mais parformance.</p>]]></description>
+</item>
+<item>
+    <title>Criando uma API Pronta para Produção com FastAPI - PT.5</title>
+    <link>https://www.lobdata.com.br/posts/econowallet-fastapi-pt5/</link>
+    <pubDate>Sun, 01 Aug 2021 00:00:00 &#43;0000</pubDate>
+    <author>Luciano</author>
+    <guid>https://www.lobdata.com.br/posts/econowallet-fastapi-pt5/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/fastapi.png" referrerpolicy="no-referrer">
+            </div><h2 id="nos-capítulos-anteriores-">Nos Capítulos Anteriores &hellip;</h2>
+<p>Como dito anteriormente, hoje vamos configurar o <strong>SQLAlchemy</strong>!!</p>
+<p>Essa é a parte 5 do nosso projeto do <strong>EconoWallet</strong> e se você quiser verificar o que já fizemos até o momento, acesse os links abaixo:</p>
+<ul>
+<li><a href="https://www.lobdata.com.br/2021/03/30/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.1/" target="_blank" rel="noopener noreffer ">Parte 1</a></li>
+<li><a href="https://www.lobdata.com.br/2021/04/03/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.2/" target="_blank" rel="noopener noreffer ">Parte 2</a></li>
+<li><a href="https://www.lobdata.com.br/2021/04/08/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.3/" target="_blank" rel="noopener noreffer ">Parte 3</a></li>
+<li><a href="https://www.lobdata.com.br/2021/07/31/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.4/" target="_blank" rel="noopener noreffer ">Parte 4</a></li>
+<li><a href="https://www.lobdata.com.br/2021/08/01/criando-uma-api-pronta-para-produ%C3%A7%C3%A3o-com-fastapi-pt.5/" target="_blank" rel="noopener noreffer ">Parte 5</a></li>
+</ul>
+<p>Sem enrolação, vamos logo ao que interessa!!!</p>
+<p></p>]]></description>
 </item>
 </channel>
 </rss>
